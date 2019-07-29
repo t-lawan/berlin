@@ -1,22 +1,21 @@
 import PropTypes from "prop-types"
 import React from "react"
-import styled from 'styled-components';
+import styled from "styled-components"
+import { graphql, StaticQuery, Link } from "gatsby"
 
 const HeaderWrapper = styled.header`
   position: fixed;
   border-bottom: 1px solid black;
-`;
+`
 
-const Header = (props) => (
+const Header = props => (
   <HeaderWrapper className={props.className}>
-    {props.children}
+    <p> bornemannstraße 9, berlin / wedding</p>
   </HeaderWrapper>
 )
 
 Header.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 }
 
-
-export default Header;
+export default Header
