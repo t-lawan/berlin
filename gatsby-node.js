@@ -25,20 +25,58 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpArticle {
+        edges {
+          node {
+            id
+            wordpress_id
+            slug
+            template
+            acf {
+              attachments {
+                image
+                related_documents
+              }
+              de {
+                content
+                title
+              }
+              en {
+                content
+                title
+              }
+              experience {
+                label
+                value
+              }
+              related_articles
+            }
+          }
+        }
+      }
     }
   `)
 
   if (result.errors) {
     throw new Error(result.errors)
   }
+  const { allWordpressPage, allWordpressWpArticle } = result.data;
 
-  const allWordpressPage = result.data.allWordpressPage;
-  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`);
+
   allWordpressPage.edges.forEach(edge => {
-      createPage({
-          path: edge.node.slug,
-          component: slash(pageTemplate),
-          context: edge.node
-      });
+    createPage({
+      path: edge.node.slug,
+      component: slash(pageTemplate),
+      context: edge.node,
+    });
+  });
+
+  allWordpressWpArticle.edges.forEach(edge => {
+    createPage({
+      path: "/article/" +  edge.node.slug,
+      component: slash(pageTemplate),
+      context: edge.node
+    });
   });
 }
