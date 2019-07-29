@@ -9,19 +9,20 @@ const NavWrapper = styled.div`
   z-index: 300;
   top: 0;
   border-bottom: 1px solid black;
-`
+`;
 
 const NavInner = styled.div`
   /*  margin: 0 auto; */
   display: flex;
   width: 100vw;
   /* height: 100%; */
-`
+`;
+
 const NavItem = styled(Link)`
   /* color: white; */
   display: block;
   padding: 8px 16px;
-`
+`;
 
 const Navbar = props => (
   <StaticQuery
