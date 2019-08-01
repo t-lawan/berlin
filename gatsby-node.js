@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { allWordpressPage, allWordpressWpArticle } = result.data;
 
   const pageTemplate = path.resolve(`./src/templates/page.js`);
-
+  const articleTemplate = path.resolve(`./src/templates/article.js`);
   allWordpressPage.edges.forEach(edge => {
     createPage({
       path: edge.node.slug,
@@ -72,10 +72,11 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
+
   allWordpressWpArticle.edges.forEach(edge => {
     createPage({
       path: "/article/" +  edge.node.slug,
-      component: slash(pageTemplate),
+      component: slash(articleTemplate),
       context: edge.node
     });
   });
