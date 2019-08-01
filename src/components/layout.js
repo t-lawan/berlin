@@ -1,27 +1,31 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { createGlobalStyle } from "styled-components"
-import LanguageController from "./languagecontroller"
+import styled, { createGlobalStyle } from "styled-components"
 import Columns from "./columns"
-
 
 const GlobalStyle = createGlobalStyle`
     html,
     body {
+      width: 100vw;
       width: 100%;
       height: 100%;
       margin: 0 auto;
       }
 `
+
+const LayoutWrapper = styled.div`
+  width: 100vw;
+  width: 100%;
+`
 const Layout = ({ children }) => (
-  <div>
+  <LayoutWrapper>
     <GlobalStyle />
     <Columns>{children}</Columns>
-  </div>
+  </LayoutWrapper>
 )
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout;
+export default Layout
