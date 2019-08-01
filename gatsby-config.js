@@ -34,7 +34,7 @@ module.exports = {
          * The base URL of the Wordpress site without the trailingslash and the protocol. This is required.
          * Example : 'gatsbyjsexamplewordpress.wordpress.com' or 'www.example-site.com'
          */
-        baseUrl: "gatsbyjsexamplewordpress.wordpress.com",
+        baseUrl: "http://localhost:8888/berlin",
         // The protocol. This can be http or https.
         protocol: "http",
         // Indicates whether the site is hosted on wordpress.com.
@@ -111,9 +111,11 @@ module.exports = {
           "**/tags",
           "**/taxonomies",
           "**/users",
+          "**/menus",
+          "**/article"
         ],
         // Blacklisted routes using glob patterns
-        excludedRoutes: ["**/posts/1456"],
+        excludedRoutes: [],
         // use a custom normalizer which is applied after the built-in ones.
         normalizer: function({ entities }) {
           return entities

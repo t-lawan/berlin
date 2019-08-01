@@ -29,16 +29,14 @@ const Columns = props => (
     </Column>
 
     <Column className="col-6" rightBorder={true}>
-      <Header className="row">
-        <p> bornemannstraße 9, berlin / wedding</p>
-      </Header>
-      <Navbar className="row"></Navbar>
+      <Header className="row" />
+      <Navbar className="row" />
       {props.children}
     </Column>
 
     <Column className="col-4" rightBorder={true}>
-      <Jumbotron className="row"></Jumbotron>
-      <UpcomingEvents></UpcomingEvents>
+      <Jumbotron className="row" />
+      <UpcomingEvents />
     </Column>
     
     <Column className="col-1" rightBorder={false}>
