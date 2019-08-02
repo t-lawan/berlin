@@ -5,7 +5,8 @@ const intitalState = {
     languages : {
         EN: true,
         DE: false
-    }
+    },
+    experience: 1
 
 }
 
@@ -25,6 +26,10 @@ const reducer = (state = intitalState, action) => {
             DE: true
         }
       })
+    case actionTypes.CHANGE_EXPERIENCE:
+      return Object.assign({}, state, {
+        experience: action.experience
+      });
     default:
       return state
   }
