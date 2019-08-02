@@ -1,0 +1,2 @@
+export const SET_LANGUAGE_TO_EN = "SET_LANGUAGE_TO_EN";
+export const SET_LANGUAGE_TO_DE = "SET_LANGUAGE_TO_DE";
