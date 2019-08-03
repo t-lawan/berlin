@@ -1,10 +1,10 @@
-import { ArticleModel } from "../models/ArticleModel";
+import { NewsModel } from "../models/NewsModel";
 
 export class Convert {
 
     static toArticleModel = (wordpressModel) => {
 
-        return new ArticleModel(
+        return new NewsModel(
             wordpressModel.wordpress_id,
             wordpressModel.slug,
             wordpressModel.acf.en,

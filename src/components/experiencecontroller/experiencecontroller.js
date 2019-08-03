@@ -2,23 +2,10 @@ import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import * as actionTypes from "../store/action"
+import * as actionTypes from "../../store/action";
+import { ExperienceControllerWrapper, ExperienceButton } from "./experiencecontroller.styles";
 
-const ExperienceControllerWrapper = styled.div`
-  margin-top: 5em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
 
-const ExperienceButton = styled.h3`
-  margin-bottom: 1em;
-  :hover {
-      cursor: ${props => (props.hover ? "pointer" : "inherit")};
-  }
-  font-weight: ${props => (props.bold ? "bold" : "normal")};
-`
 const ExperienceController = props => {
   let experiences = [1, 2, 3, 4];
   experiences = experiences.filter(experience => {

@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled, { createGlobalStyle } from "styled-components"
-import Columns from "./columns"
+import Columns from "../columns/columns";
+
+
 
 const GlobalStyle = createGlobalStyle`
     html,
@@ -17,11 +19,12 @@ const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
 `
+
 const Layout = ({ children }) => (
-  <LayoutWrapper>
-    <GlobalStyle />
-    <Columns>{children}</Columns>
-  </LayoutWrapper>
+    <LayoutWrapper>
+      <GlobalStyle />
+      <Columns>{children}</Columns>
+    </LayoutWrapper>
 )
 
 Layout.propTypes = {

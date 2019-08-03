@@ -1,18 +1,25 @@
 import React from "react"
-import Layout from "../components/layout"
-import "@getbase/grid/index.css"
-import ArticleList from "../components/articles/articlelist"
-import Column from "../components/column"
+import styled from "styled-components"
+import NewsList from "../components/news/newslist";
+import Column from "../components/columns/column";
+import Layout from "../components/layout/layout";
+
+const ColumnWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+`
 const IndexPage = () => (
+
   <Layout>
-    <div className="row">
-      <Column className="col-6" rightBorder={true}>
-        <ArticleList />
+    <ColumnWrapper>
+      <Column rightBorder={true}>
+        <NewsList />
       </Column>
-      <Column className="col-6">
+      <Column>
         <h1> Hello</h1>
       </Column>
-    </div>
+    </ColumnWrapper>
   </Layout>
 )
 

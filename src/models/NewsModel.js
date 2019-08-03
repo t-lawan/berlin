@@ -1,4 +1,4 @@
-export class ArticleModel {
+export class NewsModel {
     constructor (id, slug, en, de, experience, related_articles) {
         this.id = id;
         this.slug = slug;
