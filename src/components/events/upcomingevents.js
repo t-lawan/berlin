@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { EventsWrapper, EventItem } from "./upcomingevents.styles";
 import { generateEvents } from "../../models/EventsModel";
 import {connect} from 'react-redux';
