@@ -1,15 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
+import { JumbotronWrapper } from "./jumbotron.styles";
 
-const JumbotronWrapper = styled.div`
-  border-bottom: 1px solid black;
-`
 const Jumbotron = props => (
   <JumbotronWrapper className={props.className}>
-    <h5> berlin biennale for contemporary art </h5>
-    <h5> sept7 — oct14, 2019 </h5>
-    <p> experience 1</p>
+    <h1> berlin biennale for contemporary art </h1>
+
   </JumbotronWrapper>
 )
 Jumbotron.propTypes = {

@@ -1,19 +1,17 @@
 import React from "react"
-import Layout from "../components/layout"
-import "@getbase/grid/index.css"
-import ArticleList from "../components/articles/articlelist"
-import Column from "../components/column"
+import styled from "styled-components"
+import NewsList from "../components/news/newslist"
+import Column from "../components/columns/column"
+import Layout from "../components/layout/layout"
+import UpcomingEvents from "../components/events/upcomingevents"
+
 const IndexPage = () => (
-  <Layout>
-    <div className="row">
-      <Column className="col-6" rightBorder={true}>
-        <ArticleList />
-      </Column>
-      <Column className="col-6">
-        <h1> Hello</h1>
-      </Column>
-    </div>
-  </Layout>
+  <Layout
+    firstColumn={<NewsList />}
+    secondColumn={<p> Hello </p>}
+    numberOfColumnsIsTwo={true}
+    thirdColumn={<UpcomingEvents />}
+  />
 )
 
 export default IndexPage

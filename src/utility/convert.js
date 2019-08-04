@@ -1,10 +1,10 @@
-import { ArticleModel } from "../models/ArticleModel";
+import { NewsModel } from "../models/NewsModel";
 
 export class Convert {
 
-    static toArticleModel = (wordpressModel) => {
+    static toNewsModel = (wordpressModel) => {
 
-        return new ArticleModel(
+        return new NewsModel(
             wordpressModel.wordpress_id,
             wordpressModel.slug,
             wordpressModel.acf.en,
@@ -14,7 +14,7 @@ export class Convert {
             )
     }
 
-    static toArticleModelArray = (wordpressQuery) => {
+    static toNewsModelArray = (wordpressQuery) => {
         const articleArray = [];
         wordpressQuery.edges.map(wordpressArticle => {
             let article = this.toArticleModel(wordpressArticle.node);
@@ -22,4 +22,6 @@ export class Convert {
         });
         return articleArray;
     }
+
+
 }
