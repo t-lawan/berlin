@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 import { EventsWrapper, EventItem } from "./upcomingevents.styles";
 
@@ -13,6 +12,34 @@ const events = [
     },
     {
         id: 2,
+        date: Date.now(),
+        title: 'Architecture',
+        subtitle: 'Subtitle 1',
+        place: 'London'
+    },
+    {
+        id: 3,
+        date: Date.now(),
+        title: 'Architecture',
+        subtitle: 'Subtitle 1',
+        place: 'London'
+    },
+    {
+        id: 4,
+        date: Date.now(),
+        title: 'Architecture',
+        subtitle: 'Subtitle 1',
+        place: 'London'
+    },
+    {
+        id: 5,
+        date: Date.now(),
+        title: 'Architecture',
+        subtitle: 'Subtitle 1',
+        place: 'London'
+    },
+    {
+        id: 6,
         date: Date.now(),
         title: 'Architecture',
         subtitle: 'Subtitle 1',

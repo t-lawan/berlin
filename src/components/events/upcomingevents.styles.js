@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const EventsWrapper = styled.div`
 padding: 2em;
+
 `
 
 export const EventItem = styled.div`
