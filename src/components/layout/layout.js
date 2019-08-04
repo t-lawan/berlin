@@ -34,7 +34,6 @@ const Layout = (props) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
   firstColumn: PropTypes.node.isRequired,
   secondColumn: PropTypes.node,
   thirdColumn: PropTypes.node.isRequired,
