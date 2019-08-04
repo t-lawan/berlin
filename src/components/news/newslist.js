@@ -1,69 +1,34 @@
 import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { graphql, StaticQuery, Link } from "gatsby"
-import { Convert } from "../../utility/convert"
+import { getCurrentLanguageString } from "../../utility/helper";
+import { generateNewsArticles } from "../../models/NewsModel";
+import {connect} from 'react-redux';
+import { NewsListWrapper, NewsItem} from "./newslist.styles";
 
-const NewsListWrapper = styled.div`
-  display: flex;
-  padding: 1em;
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-`
+let newsArray = generateNewsArticles(10);
 
-const NewsListInner = styled.div``
-
-const NewsList = props => (
-  // <StaticQuery
-  //   query={graphql`
-  //     {
-  //       allWordpressWpArticle {
-  //         edges {
-  //           node {
-  //             id
-  //             wordpress_id
-  //             slug
-  //             template
-  //             acf {
-  //               attachments {
-  //                 image
-  //                 related_documents
-  //               }
-  //               de {
-  //                 content
-  //                 title
-  //               }
-  //               en {
-  //                 content
-  //                 title
-  //               }
-  //               experience {
-  //                 label
-  //                 value
-  //               }
-  //               related_articles
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `}
-  //   render={data => {
-  //     const articleArray = Convert.toArticleModelArray(data.allWordpressWpArticle);
-  //     return (
-  //       <ArticleListWrapper>
-  //         {articleArray.map(article => (
-  //           <Article key={article.id} article={article} />
-  //         ))}
-  //       </ArticleListWrapper>
-  //     )
-  //   }}
-  // />
-
+const NewsList = props => {
+  const filteredNews = newsArray.filter((news) =>{
+    return news.experience === props.experience
+  });
+  const language = getCurrentLanguageString(props.languages);
+  return (
   <NewsListWrapper>
-    <h3> Article List</h3>
-  </NewsListWrapper>
-)
+    
+      {filteredNews.map(news => (
+       <NewsItem key={news.id}>
+         <p> {news[language].title}</p>
+         <p> {news[language].description}</p>
+       </NewsItem>
+      ))}
+  
+    </NewsListWrapper>
+  )}
 
-export default NewsList
+const mapStateToProps = state => {
+  return {
+      languages: state.languages,
+      experience: state.experience
+  }
+}
+
+export default connect(mapStateToProps, null) (NewsList);
