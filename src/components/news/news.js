@@ -1,13 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import PropTypes from "prop-types"
 import { NewsModel } from "../../models/NewsModel"
 import { Link } from "gatsby"
-const NewsWrapper = styled.div`
-  border-bottom: 1px solid black;
-`
-
-const NewsLink = styled(Link)``
+import {NewsWrapper, NewsLink} from "./news.styles";
 const News = props => {
   return (
     <NewsWrapper>
