@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const SocialMediaWrapper = styled.div`
     display: flex;
-    position: sticky;
+    position: fixed;
     bottom: 0;
     flex-direction: row;
     background: white;
