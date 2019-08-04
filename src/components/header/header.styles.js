@@ -5,10 +5,9 @@ export const HeaderWrapper = styled.div`
   padding: 0.5em 1em;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  z-index: 300;
-  /* position: fixed; */
   align-items: start;
   justify-items: center;
+  background: white;
 `
 export const Left = styled.div`
   justify-self: start;
