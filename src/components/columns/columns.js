@@ -61,7 +61,6 @@ const Columns = props => {
 export default Columns
 
 Columns.propTypes = {
-  children: PropTypes.node.isRequired,
   firstColumn: PropTypes.node.isRequired,
   secondColumn: PropTypes.node,
   thirdColumn: PropTypes.node,
