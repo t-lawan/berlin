@@ -30,7 +30,6 @@ const Layout = (props) => (
       secondColumn={props.secondColumn}
       thirdColumn={props.thirdColumn} 
       numberOfColumnsIsTwo={true} />
-    />
   </LayoutWrapper>
 )
 
