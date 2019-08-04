@@ -1,25 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
 import { graphql, StaticQuery, Link } from "gatsby"
-
-const NavWrapper = styled.div`
-  display: flex;
-  z-index: 300;
-  top: 0;
-  border-bottom: 1px solid black;
-`;
-
-const NavInner = styled.div`
-  display: flex;
-  width: 100vw;
-`;
-
-const NavItem = styled(Link)`
-  /* color: white; */
-  display: block;
-  padding: 8px 16px;
-`;
+import { NavWrapper, NavInner, NavItem } from "./navbar.styles";
 
 const Navbar = props => (
   // <StaticQuery
@@ -59,7 +41,7 @@ const Navbar = props => (
   //   )}
   // />
 
-  <NavWrapper className={props.className}>
+  <NavWrapper>
     <NavInner>
       <NavItem to={'test'}> Test</NavItem>
       <NavItem to={'test2'}> Test2</NavItem>
