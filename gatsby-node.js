@@ -12,36 +12,42 @@ const slash = require(`slash`)
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
-  // const result = await graphql(`
-  //   {
-  //     allWordpressPage {
-  //       edges {
-  //         node {
-  //           id
-  //           slug
-  //           type
-  //           title
-  //           content
-  //         }
-  //       }
-  //     }
-  // `)
+  const result = await graphql(`
+    {
+      allWordpressPage {
+        edges {
+          node {
+            slug
+            acf {
+              DE {
+                content
+                title
+              }
+              EN {
+                content
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
-  // if (result.errors) {
-  //   throw new Error(result.errors)
-  // }
-  // const { allWordpressPage, allWordpressWpArticle } = result.data;
+  if (result.errors) {
+    throw new Error(result.errors)
+  }
+  const allWordpressPage = result.data.allWordpressPage;
 
-  // const pageTemplate = path.resolve(`./src/templates/page.js`);
+  const pageTemplate = path.resolve(`./src/templates/page.js`);
   // const articleTemplate = path.resolve(`./src/templates/article.js`);
-  // allWordpressPage.edges.forEach(edge => {
-  //   createPage({
-  //     path: edge.node.slug,
-  //     component: slash(pageTemplate),
-  //     context: edge.node,
-  //   });
-  // });
-
+  allWordpressPage.edges.forEach(edge => {
+    createPage({
+      path: edge.node.slug,
+      component: slash(pageTemplate),
+      context: edge.node,
+    });
+  });
 
   // allWordpressWpArticle.edges.forEach(edge => {
   //   createPage({
