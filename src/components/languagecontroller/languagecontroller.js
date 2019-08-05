@@ -3,23 +3,7 @@ import styled from 'styled-components';
 import PropTypes from "prop-types"
 import {connect} from 'react-redux';
 import * as actionTypes from "../../store/action";
-
-const LanguageControllerWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-bottom: 1px solid black;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5em;
-`;
-
-const LanguageButton = styled.span`
-    margin-bottom: 0.25em;
-    font-weight: ${props => props.bold ? "bold" : "normal"};
-    :hover {
-      cursor: ${props => (props.hover ? "pointer" : "inherit")};
-  }
-`;
+import { LanguageControllerWrapper, LanguageButton } from "./languagecontroller.styles";
 
 const LanguageController = (props) => {
     const languages = props.languages;
