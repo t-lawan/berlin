@@ -16,4 +16,6 @@ export const NavItem = styled(Link)`
 /* color: white; */
 display: block;
 padding: 8px 16px;
+text-decoration:none;
+color: black;
 `;
