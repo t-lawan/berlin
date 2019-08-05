@@ -1,9 +1,31 @@
 import React from "react"
-import Layout from "../components/layout";
+import UpcomingEvents from "../components/events/upcomingevents"
+import Layout from "../components/layout/layout";
+import { PageWrapper } from "./page.styles";
+import {connect} from 'react-redux';
+import { getCurrentLanguageString } from "../utility/helper";
 
-export default ({ pageContext }) => (
-  <Layout>
-    <h1 dangerouslySetInnerHTML={{ __html: pageContext.title }} />
-    <div dangerouslySetInnerHTML={{ __html: pageContext.content }} />
-  </Layout>
-);
+const Page = (props) => {
+  const language = getCurrentLanguageString(props.languages);
+  const renderComponent = (
+    <PageWrapper>
+      <div dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].content }} />
+    </PageWrapper>
+  )
+
+  return (
+    <Layout
+      firstColumn={renderComponent}
+      numberOfColumnsIsTwo={false}
+      thirdColumn={<UpcomingEvents />}
+    />
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+      languages: state.languages
+  }
+}
+
+export default connect(mapStateToProps, null)(Page);
