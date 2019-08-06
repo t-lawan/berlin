@@ -11,7 +11,7 @@ export const ExperienceControllerWrapper = styled.div`
 export const ExperienceButton = styled.h3`
   margin-bottom: 1em;
   :hover {
-      cursor: ${props => (props.hover ? "pointer" : "inherit")};
+    cursor: ${props => (props.hover ? "pointer" : "inherit")};
   }
   font-weight: ${props => (props.bold ? "bold" : "normal")};
 `
