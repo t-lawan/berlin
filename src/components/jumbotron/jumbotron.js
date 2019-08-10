@@ -4,7 +4,7 @@ import { JumbotronWrapper, JumbotronHeader } from "./jumbotron.styles"
 
 const Jumbotron = props => (
   <JumbotronWrapper>
-    <JumbotronHeader to="/">
+    <JumbotronHeader to="/" fade direction="left">
       <h1> berlin biennale for contemporary art </h1>
     </JumbotronHeader>
   </JumbotronWrapper>
