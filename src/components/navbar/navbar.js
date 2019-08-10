@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery} from "gatsby"
 import { NavWrapper, NavInner, NavItem } from "./navbar.styles"
-import { getAllMenuItems } from "../../queries/menu.queries"
 
 const Navbar = props => {
   const data = useStaticQuery(
@@ -23,8 +22,7 @@ const Navbar = props => {
         }
       }
     `
-  );
-
+  )
 
   return (
     <NavWrapper>
@@ -34,6 +32,10 @@ const Navbar = props => {
             activeStyle={{ color: "#990033" }}
             to={`/${item.object_slug}`}
             key={item.object_slug}
+            fade
+            duration={0.3}
+            // swipe
+            // entryOffset={95}
           >
             {item.title.toLowerCase()}
           </NavItem>
