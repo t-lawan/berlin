@@ -86,19 +86,18 @@ const Calendar = props => {
     `
   )
 
-  events = generateEvents(100);
+  events = generateEvents(500);
 //   events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel)
 //   const filteredEvents = events.filter(event => {
 //     return event.experience === props.experience
 //   })
-  const calendar = CalendarModel.createCalendar(events)
-  console.log(calendar)
+  const calendar = CalendarModel.createCalendar(events);
 
   const months = Object.keys(calendar);
   return (
     <CalendarWrapper>
       {months.map(month => (
-        <MonthCards key={month} month={calendar[month]} />
+        <MonthCards key={month} month={calendar[month]} title={month} />
       ))}
     </CalendarWrapper>
   )

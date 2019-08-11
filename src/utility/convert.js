@@ -32,6 +32,7 @@ export class Convert {
             wordpressModel.acf.EN,
             wordpressModel.acf.DE,
             wordpressModel.acf.start_date,
+            wordpressModel.acf.start_time,
             wordpressModel.acf.end_date,
             "Venue",
             wordpressModel.acf.event_documentation,

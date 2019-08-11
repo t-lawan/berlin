@@ -4,6 +4,8 @@ import styled from "styled-components"
 import { EventsModel } from "../../models/EventsModel"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
+import { DateManager } from "../../utility/date"
+import moment from "moment"
 
 const DateCardWrapper = styled.div`
   display: flex;
@@ -12,16 +14,17 @@ const DateCardWrapper = styled.div`
   border-right: 0.05em solid black;
   min-height: 400px;
   height: auto;
+  background-color: ${props => (props.addColour ? "#ADEBAD" : "inherit")};
 `
 const EventCardWrapper = styled.div`
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.05em solid black;
   height: auto;
   padding: 0.25em 0.25em;
 `
 
 const CurrentDate = styled.div`
-  border-bottom: 0.1em solid black;
-  padding: 0.15em 0.25em;
+  border-bottom: 0.05em solid black;
+  padding: 0.15em 0.5em;
 `
 
 const EventText = styled.p`
@@ -32,15 +35,29 @@ const EventHeading = styled.strong`
   font-size: x-small;
 `
 
+const DateText = styled.strong`
+  font-size: xx-large;
+  padding-right: 0.5em;
+`
+
+const DayMonthText = styled.span`
+  font-size: small;
+`
+const MonthHeading = styled.h1`
+  padding: 0.25em 0.5em;
+`
+
 const DateCard = props => {
   const language = getCurrentLanguageString(props.languages)
-  let renderComponents
-
+  let renderComponents;
   if (props.containsEvents) {
+    const monthDay = DateManager.createMonthDayString(props.day, props.month)
+    const date = DateManager.createDatetring(props.day, props.month)
     renderComponents = (
-      <DateCardWrapper>
+      <DateCardWrapper id={`date-${DateManager.createDateClass(props.day, props.month)}`}>
         <CurrentDate>
-          <h6> 30 sept/wed</h6>
+          <DateText>{date}</DateText>
+          <DayMonthText> {monthDay.toLocaleLowerCase()} </DayMonthText>
         </CurrentDate>
         {props.events.map(event => (
           <EventCardWrapper key={event.id}>
@@ -53,20 +70,22 @@ const DateCard = props => {
       </DateCardWrapper>
     )
   } else {
+
     renderComponents = (
-      <DateCardWrapper>
-        <h1> Hello </h1>
+      <DateCardWrapper addColour>
+        <MonthHeading> {DateManager.getMonthText(props.month)}</MonthHeading>
       </DateCardWrapper>
     )
   }
 
-  return renderComponents;
+  return renderComponents
 }
 
 DateCard.propTypes = {
   containsEvents: PropTypes.bool.isRequired,
   events: PropTypes.array,
   month: PropTypes.string,
+  day: PropTypes.string,
 }
 
 const mapStateToProps = state => {

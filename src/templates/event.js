@@ -20,7 +20,7 @@ const Event = props => {
     <EventPageWrapper>
       <EventColumn>
         <h2>{event.start_date}</h2>
-        <h2>{event[language].display_time}</h2>
+        <h2>{event.start_time}</h2>
 
         <h5>{event.venue}</h5>
       </EventColumn>

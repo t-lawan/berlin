@@ -1,5 +1,5 @@
 const faker = require("faker")
-
+const moment  = require('moment');
 export class EventsModel {
   constructor(
     id,
@@ -8,6 +8,7 @@ export class EventsModel {
     EN,
     DE,
     start_date,
+    start_time,
     end_date,
     venue,
     event_documentation,
@@ -25,6 +26,7 @@ export class EventsModel {
     this.EN = EN
     this.DE = DE
     this.start_date = start_date
+    this.start_time = start_time;
     this.end_date = end_date
     this.venue = venue
     this.documentation = event_documentation
@@ -33,7 +35,7 @@ export class EventsModel {
     this.limited_capacity = event_limited_capacity
     this.thumbnail_image = thumbnail_image
     this.participants = participants
-    this.related_resource = related_resource
+    this.related_resource = related_resource;
     this.other_language = other_event_language
   }
 
@@ -60,8 +62,9 @@ export const generateEvents = numberOfEvents => {
       `${Math.floor(Math.random() * 4) + 1}exp`,
       language,
       language,
-      faker.date.recent(1),
-      faker.date.recent(10),
+      moment(faker.date.between('2019-08-01', '2019-12-31'), "YYYY-MM-DD HH:mm Z").format('Ymd'),
+      `${faker.random.number(1, 2)} pm`,
+      moment(faker.date.between('2019-08-01', '2019-12-31'), "YYYY-MM-DD HH:mm Z").format('Ymd'),
       faker.random.word(2),
       "",
       faker.random.boolean,
