@@ -16,7 +16,7 @@ import {
 import SocialMedia from "../socialmedia/socialmedia"
 
 const Columns = props => {
-  let renderedComponents
+  let renderedComponents;
   const numberOfColumnsIsTwo = props.numberOfColumnsIsTwo
   if (numberOfColumnsIsTwo) {
     renderedComponents = (
@@ -34,7 +34,11 @@ const Columns = props => {
   }
   return (
     <ColumnsWrapper>
-      <Column rightBorder={true}></Column>
+      <Column rightBorder={true}>
+      <ExperienceController left={true} />
+
+      </Column>
+      
       <Column rightBorder={true}>
         <StickyHeader>
           <Header />
@@ -52,7 +56,7 @@ const Columns = props => {
       </Column>
       <Column rightBorder={false}>
         <LanguageController />
-        <ExperienceController />
+        <ExperienceController left={false} />
       </Column>
     </ColumnsWrapper>
   )

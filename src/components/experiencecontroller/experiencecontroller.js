@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import * as actionTypes from "../../store/action";
@@ -8,17 +7,26 @@ import { ExperienceControllerWrapper, ExperienceButton } from "./experiencecontr
 
 const ExperienceController = props => {
   let experiences = [1, 2, 3, 4];
-  experiences = experiences.filter(experience => {
-    return experience !== props.experience;
-  });
+  
+  experiences = experiences.filter(experience =>
+    filterBasedOnPosition(props, experience)
+  );
   return (
-    <ExperienceControllerWrapper>
+    <ExperienceControllerWrapper left={props.left}>
       <ExperienceButton bold> exp</ExperienceButton>
       {experiences.map(experience => (
-          <ExperienceButton key={experience} bold hover onClick={() => props.changeExperience(experience)}> {experience}</ExperienceButton>
+          <ExperienceButton key={experience} bold hover onClick={() => props.changeExperience(experience)} fade> {experience}</ExperienceButton>
       ))}
     </ExperienceControllerWrapper>
   )
+}
+
+const filterBasedOnPosition = (props, experience) => {
+  if(props.left) {
+    return experience < props.experience
+  } else {
+    return experience > props.experience
+  }
 }
 
 const mapStateToProps = state => {
@@ -32,6 +40,10 @@ const mapDispatchToProps = dispatch => {
     changeExperience: experience =>
       dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
   }
+}
+
+ExperienceController.propTypes = {
+  left: PropTypes.bool.isRequired
 }
 export default connect(
   mapStateToProps,

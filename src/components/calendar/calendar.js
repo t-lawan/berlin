@@ -1,15 +1,46 @@
+import PropTypes from "prop-types"
 import React from "react"
-import { EventsWrapper, EventItem } from "./upcomingevents.styles"
-import { generateEvents } from "../../models/EventsModel"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../../utility/helper"
+import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { Convert } from "../../utility/convert";
+import { Convert } from "../../utility/convert"
+import { CalendarModel } from "../../models/CalendarModel"
+import { generateEvents } from "../../models/EventsModel"
+import MonthCards from "./monthcards";
 
-// let events = generateEvents(20);
+const CalendarWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+`
+
+const DateCardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.05em solid black;
+  border-right: 0.05em solid black;
+  height: auto;
+`
+
+const EventCardWrapper = styled.div`
+  border-bottom: 0.1em solid black;
+  height: auto;
+  padding: 0.25em 0.25em;
+`
+const CurrentDate = styled.div`
+  border-bottom: 0.1em solid black;
+  padding: 0.15em 0.25em;
+`
+
+const EventText = styled.p`
+  /* font-size: x-small; */
+`
+
+const EventHeading = styled.strong`
+  /* font-size: x-small; */
+`
+
 let events = []
-
-const UpcomingEvents = props => {
+const Calendar = props => {
   const data = useStaticQuery(
     graphql`
       {
@@ -55,34 +86,30 @@ const UpcomingEvents = props => {
     `
   )
 
-  events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel);
-  const filteredEvents = events.filter(event => {
-    return event.experience === props.experience;
-  });
-  const language = getCurrentLanguageString(props.languages);
+  events = generateEvents(500);
+//   events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel)
+//   const filteredEvents = events.filter(event => {
+//     return event.experience === props.experience
+//   })
+  const calendar = CalendarModel.createCalendar(events);
 
+  const months = Object.keys(calendar);
   return (
-    <EventsWrapper>
-      {filteredEvents.map(event => (
-        <EventItem key={event.id} to={`/event/${event.slug}`}>
-          <p> {event.start_date.toString()}</p>
-          <p> {event[language].event_title}</p>
-          <p> {event[language].event_subtitle}</p>
-          <p> {event.venue}</p>
-        </EventItem>
+    <CalendarWrapper>
+      {months.map(month => (
+        <MonthCards key={month} month={calendar[month]} title={month} />
       ))}
-    </EventsWrapper>
+    </CalendarWrapper>
   )
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    experience: state.experience,
   }
 }
 
 export default connect(
   mapStateToProps,
   null
-)(UpcomingEvents)
+)(Calendar)

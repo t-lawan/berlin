@@ -1,11 +1,12 @@
 import PropTypes from "prop-types"
 import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
 import { connect } from "react-redux"
 import { HeaderWrapper, Left, Right, RightHeading } from "./header.styles";
 
 
-const Header = props => (
+const Header = props => {
+  const experience = props.experience;
+  return (
   <HeaderWrapper className={props.className}>
     <div>
       <h2> sept 7 — nov 11,  2019</h2>
@@ -16,12 +17,12 @@ const Header = props => (
       <h3> the  </h3>
     </Left>
     <Right>
-      <RightHeading> 1</RightHeading>
+      <RightHeading> {experience} </RightHeading>
       <h3> of </h3>
       <h3> world </h3>
     </Right>
   </HeaderWrapper>
-)
+)}
 
 Header.propTypes = {
   className: PropTypes.string,

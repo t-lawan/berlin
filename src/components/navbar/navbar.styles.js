@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { Link } from "gatsby"
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
+
 export const NavWrapper = styled.div`
 display: flex;
 z-index: 300;
@@ -12,8 +13,10 @@ display: flex;
 width: 100vw;
 `;
 
-export const NavItem = styled(Link)`
+export const NavItem = styled(AniLink)`
 /* color: white; */
 display: block;
 padding: 8px 16px;
+text-decoration:none;
+color: black;
 `;

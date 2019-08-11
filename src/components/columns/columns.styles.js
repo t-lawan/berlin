@@ -9,6 +9,8 @@ export const ColumnsWrapper = styled.div`
 export const FirstColumnWrapper = styled.div`
   background-color: #fff;
   display: grid;
+  grid-template-columns: 1fr 1fr;
+
   grid-template-columns: ${props => props.twoColumns ? "1fr 1fr" : "1fr"};
 `
 

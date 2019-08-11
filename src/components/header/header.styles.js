@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const HeaderWrapper = styled.div`
+  /* opacity: 1; */
+  /* transition: opacity 0.5s; */
   border-bottom: 1px solid black;
   padding: 0.5em 1em;
   display: grid;
@@ -8,6 +10,10 @@ export const HeaderWrapper = styled.div`
   align-items: start;
   justify-items: center;
   background: white;
+
+  :hover {
+    /* opacity: 0.01; */
+  }
 `
 export const Left = styled.div`
   justify-self: start;

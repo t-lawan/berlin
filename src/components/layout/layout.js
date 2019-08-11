@@ -29,7 +29,7 @@ const Layout = (props) => (
       firstColumn={props.firstColumn}
       secondColumn={props.secondColumn}
       thirdColumn={props.thirdColumn} 
-      numberOfColumnsIsTwo={true} />
+      numberOfColumnsIsTwo={props.numberOfColumnsIsTwo} />
   </LayoutWrapper>
 )
 
