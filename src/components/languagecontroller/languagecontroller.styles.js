@@ -11,6 +11,7 @@ padding: 0.5em;
 
 export const LanguageButton = styled.span`
 margin-bottom: 0.25em;
+font-size: xx-large;
 font-weight: ${props => props.bold ? "bold" : "normal"};
 :hover {
   cursor: ${props => (props.hover ? "pointer" : "inherit")};

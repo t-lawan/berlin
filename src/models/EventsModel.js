@@ -22,7 +22,7 @@ export class EventsModel {
   ) {
     this.id = id
     this.slug = slug
-    this.experience = this.convertExperienceStringToInt(experience)
+    this.experience = experience
     this.EN = EN
     this.DE = DE
     this.start_date = start_date
@@ -37,10 +37,6 @@ export class EventsModel {
     this.participants = participants
     this.related_resource = related_resource;
     this.other_language = other_event_language
-  }
-
-  convertExperienceStringToInt = experienceString => {
-    return +experienceString.replace("exp", "")
   }
 }
 
@@ -59,7 +55,7 @@ export const generateEvents = numberOfEvents => {
     const event = new EventsModel(
       i + 1,
       faker.random.word(),
-      `${Math.floor(Math.random() * 4) + 1}exp`,
+      Math.floor(Math.random() * 4) + 1,
       language,
       language,
       moment(faker.date.between('2019-08-01', '2019-12-31'), "YYYY-MM-DD HH:mm Z").format('Ymd'),

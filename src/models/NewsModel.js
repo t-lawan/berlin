@@ -26,8 +26,8 @@ export const generateNewsArticles = (numberOfArticles) => {
             },
             {
                 title: faker.random.word(3),
-                content: faker.random.word(100),
-                description: faker.random.word(10),
+                content: faker.random.words(100),
+                description: faker.random.words(10),
             },
             [faker.random.number(), faker.random.number()]
         );

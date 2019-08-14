@@ -12,7 +12,11 @@ export const ExperienceButton = styled.h3`
   margin-bottom: 1em;
   text-decoration:none;
   color: black;
+  font-size: x-large;
 
+  /* transform: rotate(0deg); */
+  transition-timing-function: ease-in;
+  transition: 1s;
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
   }

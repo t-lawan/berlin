@@ -7,7 +7,8 @@ export const EventsWrapper = styled.div`
 
 export const EventItem = styled(AniLink)`
   padding-top: 1em;
-  border-bottom: 1px solid black;
   text-decoration: none;
   color: black;
+  border-bottom: 1px solid black;
+
 `

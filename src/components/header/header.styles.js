@@ -1,8 +1,9 @@
 import styled from "styled-components"
+import { hideDisplayForTablet } from "../../index.styles";
 
 export const HeaderWrapper = styled.div`
   /* opacity: 1; */
-  /* transition: opacity 0.5s; */
+  transition: opacity 0.5s;
   border-bottom: 1px solid black;
   padding: 0.5em 1em;
   display: grid;
@@ -14,10 +15,12 @@ export const HeaderWrapper = styled.div`
   :hover {
     /* opacity: 0.01; */
   }
+  ${hideDisplayForTablet};
 `
 export const Left = styled.div`
   justify-self: start;
   align-self: flex-start;
+  justify-content: flex-end;
 `
 
 export const Right = styled.div`
