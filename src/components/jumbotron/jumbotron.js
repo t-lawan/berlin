@@ -1,16 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { JumbotronWrapper, JumbotronHeader } from "./jumbotron.styles"
-
+import { BerlinJumbotron } from "../../images/berlin-jumbotron"
+import {ReactComponent as Heading} from "../../images/berlin-heading.svg"
+const svg = BerlinJumbotron()
 const Jumbotron = props => (
-  <JumbotronWrapper>
-    <JumbotronHeader to="/" fade direction="left">
-      <h1> berlin biennale for contemporary art </h1>
+  <JumbotronWrapper showInMobile={props.showInMobile}>
+    <JumbotronHeader to={'/'}>
+      {svg}
     </JumbotronHeader>
   </JumbotronWrapper>
 )
 Jumbotron.propTypes = {
-  className: PropTypes.string,
+  showInMobile: PropTypes.bool
 }
 
 export default Jumbotron

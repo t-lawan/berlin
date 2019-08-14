@@ -18,7 +18,7 @@ export class CalendarModel {
 
   static createCalendar = eventsArray => {
     let calendar = {}
-    const months = Object.keys(DateManager.getMonths())
+    const months = Object.keys(DateManager.getMonths());
     months.map(month => {
       for (let i = 0; i < DateManager.getNumberOfDaysInMonth(month); i++) {
         const filteredEvents = eventsArray.filter(event => {
