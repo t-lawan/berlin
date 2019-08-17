@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import NewsList from "../components/news/newslist"
-import Column from "../components/columns/column"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 

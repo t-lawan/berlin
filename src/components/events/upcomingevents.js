@@ -55,10 +55,13 @@ const UpcomingEvents = props => {
     `
   )
 
-  events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel);
+
+  events = generateEvents(20);
+  // events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel);
   const filteredEvents = events.filter(event => {
-    return event.experience === props.experience;
+    return event.experience == props.experience;
   });
+  console.log('events', events);
   const language = getCurrentLanguageString(props.languages);
 
   return (
@@ -66,8 +69,8 @@ const UpcomingEvents = props => {
       {filteredEvents.map(event => (
         <EventItem key={event.id} to={`/event/${event.slug}`}>
           <p> {event.start_date.toString()}</p>
-          <p> {event[language].event_title}</p>
-          <p> {event[language].event_subtitle}</p>
+          <p> {event[language].title}</p>
+          <p> {event[language].subtitle}</p>
           <p> {event.venue}</p>
         </EventItem>
       ))}

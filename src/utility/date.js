@@ -30,6 +30,10 @@ export class DateManager {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("D");
   }
 
+  static toDatetring = (date) => {
+    return moment(date, 'YYYY-MM-DD').format("DD.MM.YYYY");
+  }
+
   static getMonths = () => {
     return {
       8: {

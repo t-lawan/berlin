@@ -14,9 +14,10 @@ import {
   StickyHeader,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
+import Logo from "../logo/logo";
 
 const Columns = props => {
-  let renderedComponents;
+  let renderedComponents
   const numberOfColumnsIsTwo = props.numberOfColumnsIsTwo
   if (numberOfColumnsIsTwo) {
     renderedComponents = (
@@ -34,27 +35,28 @@ const Columns = props => {
   }
   return (
     <ColumnsWrapper>
-      <Column rightBorder={true}>
-      <ExperienceController left={true} />
-
+      <Column rightBorder={true} hideInMobile>
+        <ExperienceController left={true} />
       </Column>
-      
+
       <Column rightBorder={true}>
         <StickyHeader>
-          <Header />
+          <Jumbotron showInMobile/>
+          <Header hideInMobile/>
           <Navbar />
         </StickyHeader>
 
         {renderedComponents}
       </Column>
-      <Column rightBorder={true}>
+      <Column rightBorder={true} hideInMobile>
         <StickyHeader>
           <Jumbotron />
         </StickyHeader>
+        <Logo />
         {props.thirdColumn}
         <SocialMedia />
       </Column>
-      <Column rightBorder={false}>
+      <Column rightBorder={false} hideInMobile>
         <LanguageController />
         <ExperienceController left={false} />
       </Column>

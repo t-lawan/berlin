@@ -7,7 +7,7 @@ import { HeaderWrapper, Left, Right, RightHeading } from "./header.styles";
 const Header = props => {
   const experience = props.experience;
   return (
-  <HeaderWrapper className={props.className}>
+  <HeaderWrapper className={props.className} hideInMobile>
     <div>
       <h2> sept 7 — nov 11,  2019</h2>
     </div>
@@ -26,6 +26,7 @@ const Header = props => {
 
 Header.propTypes = {
   className: PropTypes.string,
+  hideInMobile: PropTypes.bool
 }
 
 const mapStateToProps = state => {
