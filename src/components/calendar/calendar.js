@@ -63,7 +63,6 @@ const Calendar = props => {
   )
 
   events = generateEvents(500);
-  console.log('events', events);
 //   events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel)
 //   const filteredEvents = events.filter(event => {
 //     return event.experience === props.experience
