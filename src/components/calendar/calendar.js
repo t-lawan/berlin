@@ -68,7 +68,9 @@ const Calendar = props => {
 //   const filteredEvents = events.filter(event => {
 //     return event.experience === props.experience
 //   })
-  const calendar = CalendarModel.createCalendar(events);
+
+  const calendarItems = Convert.eventsToCalendarItemArray(events);
+  const calendar = CalendarModel.createCalendar(calendarItems);
 
   const months = Object.keys(calendar);
   return (
