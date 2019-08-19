@@ -1,4 +1,17 @@
-import styled, { css } from "styled-components"
+import styled, { css, createGlobalStyle } from "styled-components"
+
+export const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i&display=swap');
+@import url('https://use.typekit.net/xcm3ryn.css');
+html,
+body {
+  width: 100vw;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font-family: 'ag-book-pro', sans-serif;
+  }
+`
 
 export const size = {
   mobileS: "320px",
@@ -10,9 +23,8 @@ export const size = {
   desktop: "2560px",
 }
 
-
 export const hideDisplayForTablet = css`
-  ${'' /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
@@ -33,6 +45,6 @@ export const changeGridToOneRow = css`
 
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, 1fr);
   }
 `
