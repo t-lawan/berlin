@@ -34,6 +34,10 @@ export class DateManager {
     return moment(date, 'YYYY-MM-DD').format("DD.MM.YYYY");
   }
 
+  static currentDate = () => {
+    return moment().format("YYYY-MM-DD");
+  }
+
   static getMonths = () => {
     return {
       8: {
