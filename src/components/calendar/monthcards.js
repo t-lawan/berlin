@@ -1,21 +1,40 @@
-import React from "react";
-import PropTypes from "prop-types";
-import DateCard from './datecard';
+import React from "react"
+import PropTypes from "prop-types"
+import DateCard from "./datecard"
+import { DateManager } from "../../utility/date"
 
-const MonthCards = props => {
-  const days = Object.keys(props.month);
-  return (
-    <>
-        <DateCard containsEvents={false} month={props.title} />
-      {days.map(day => (
-        <DateCard key={day} containsEvents={true} events={props.month[day]} month={props.title} day={day} />
-      ))}
-    </>
-  )
+class MonthCards extends React.Component {
+  days = Object.keys(this.props.month);
+  currentDate = DateManager.currentDate();
+  getElement = () => {
+    const element = document.getElementById(`date-${this.currentDate}`);
+    element.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+  }
+
+  componentDidMount() {
+    this.getElement();
+  }
+  render() {
+    return (
+      <>
+        <DateCard containsEvents={false} month={this.props.title} />
+        {this.days.map(day => (
+          <DateCard
+            key={day}
+            containsEvents={true}
+            events={this.props.month[day]}
+            month={this.props.title}
+            day={day}
+          />
+        ))}
+      </>
+    )
+  }
+
 }
 
 MonthCards.propTypes = {
   month: PropTypes.any,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
-export default MonthCards;
+export default MonthCards
