@@ -1,9 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import DateCard from './datecard';
-import { connect } from "react-redux"
-import { DateManager } from "../../utility/date";
 
 const MonthCards = props => {
   const days = Object.keys(props.month);
