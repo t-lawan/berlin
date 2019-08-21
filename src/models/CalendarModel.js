@@ -16,19 +16,19 @@ export class CalendarModel {
     12: 31,
   }
 
-  static createCalendar = eventsArray => {
-    let calendar = {}
+  static createCalendar = calendarItemsArray => {
+    let calendar = {};
     const months = Object.keys(DateManager.getMonths());
     months.map(month => {
       for (let i = 0; i < DateManager.getNumberOfDaysInMonth(month); i++) {
-        const filteredEvents = eventsArray.filter(event => {
-          return (DateManager.get(event.start_date, "month") == month) && (DateManager.get(event.start_date, "date") == i + 1)
+        const filteredCalendarItems = calendarItemsArray.filter(calendarItem => {
+          return (DateManager.get(calendarItem.start_date, "month") == month) && (DateManager.get(calendarItem.start_date, "date") == i + 1)
         });
         calendar = {
           ...calendar,
           [month]: {
             ...calendar[month],
-            [i + 1]: filteredEvents,
+            [i + 1]: filteredCalendarItems,
           },
         }
       }

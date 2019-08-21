@@ -1,10 +1,10 @@
 import { NewsModel } from "../models/NewsModel";
 import { EventsModel } from "../models/EventsModel";
+import { CalendarItemModel } from "../models/CalendarItemModel";
 
 export class Convert {
 
     static toNewsModel = (wordpressModel) => {
-
         return new NewsModel(
             wordpressModel.wordpress_id,
             wordpressModel.slug,
@@ -14,16 +14,6 @@ export class Convert {
             wordpressModel.acf.related_articles
             )
     }
-
-    static toNewsModelArray = (wordpressQuery) => {
-        const articleArray = [];
-        wordpressQuery.edges.map(wordpressArticle => {
-            let article = this.toArticleModel(wordpressArticle.node);
-            articleArray.push(article);
-        });
-        return articleArray;
-    }
-
     static toEventModel = (wordpressModel) => {
         return new EventsModel(
             wordpressModel.id,
@@ -55,8 +45,24 @@ export class Convert {
         return modelArray;
     }
 
-    static eventsToCalendarModel = () => {
-        
+    static eventsToCalendarItemArray = (eventsArray) => {
+        let calendarItems = [];
+        eventsArray.forEach(event => {
+            calendarItems.push(new CalendarItemModel(
+                `event-${event.id}`,
+                `/event/${event.slug}`,
+                'Talk',
+                event.start_time,
+                event.start_date,
+                event.end_date,
+                event.venue,
+                event.is_free,
+                event.participants,
+                event.EN,
+                event.DE
+            ))
+        });
+        return calendarItems;
     }
 
 
