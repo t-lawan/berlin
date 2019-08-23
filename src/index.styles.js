@@ -48,3 +48,11 @@ export const changeGridToThreeEqualRows = css`
     grid-template-columns: repeat(3, 1fr);
   }
 `
+
+export const changeGridToTwoEqualColumns = css`
+  @media (max-width: ${size.mobileL}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
+
+

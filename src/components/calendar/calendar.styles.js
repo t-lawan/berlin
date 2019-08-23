@@ -1,8 +1,9 @@
 import styled from "styled-components"
-import { changeGridToThreeEqualRows } from "../../index.styles";
+import { changeGridToThreeEqualRows, changeGridToTwoEqualColumns } from "../../index.styles";
 
 export const CalendarWrapper = styled.div`
 display: grid;
 grid-template-columns: 1fr 1fr 1fr 1fr;
 ${changeGridToThreeEqualRows};
+${changeGridToTwoEqualColumns};
 `
