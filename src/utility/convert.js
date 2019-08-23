@@ -56,10 +56,28 @@ export class Convert {
                 event.start_date,
                 event.end_date,
                 event.venue,
-                event.is_free,
                 event.participants,
                 event.EN,
                 event.DE
+            ))
+        });
+        return calendarItems;
+    }
+
+    static exhibitionsToCalendarItemArray = (exhibitionsArray) => {
+        let calendarItems = [];
+        exhibitionsArray.forEach(exhibition => {
+            calendarItems.push(new CalendarItemModel(
+                `exhibition-${exhibition.id}`,
+                `/exhibition/${exhibition.slug}`,
+                'Exhibition',
+                exhibition.start_time,
+                exhibition.start_date,
+                exhibition.end_date,
+                exhibition.venue,
+                exhibition.participants,
+                exhibition.EN,
+                exhibition.DE
             ))
         });
         return calendarItems;
