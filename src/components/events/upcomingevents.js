@@ -10,50 +10,50 @@ import { Convert } from "../../utility/convert";
 let events = []
 
 const UpcomingEvents = props => {
-  const data = useStaticQuery(
-    graphql`
-      {
-        allWordpressWpEvents {
-          edges {
-            node {
-              slug
-              id
-              acf {
-                DE {
-                  display_time
-                  event_subtitle
-                  full_description
-                  event_title
-                  other_event_venue
-                  short_calendar_description
-                }
-                EN {
-                  event_title
-                  display_time
-                  event_subtitle
-                  full_description
-                  other_event_venue
-                  short_calendar_description
-                }
-                end_date
-                event_documentation
-                event_is_free
-                event_language
-                event_limited_capacity
-                start_date(formatString: "YYYY.MM.DD")
-                template
-                thumbnail_image
-                exp_number
-                participants
-                related_resources
-                other_event_language
-              }
-            }
-          }
-        }
-      }
-    `
-  )
+  // const data = useStaticQuery(
+  //   graphql`
+  //     {
+  //       allWordpressWpEvents {
+  //         edges {
+  //           node {
+  //             slug
+  //             id
+  //             acf {
+  //               DE {
+  //                 display_time
+  //                 event_subtitle
+  //                 full_description
+  //                 event_title
+  //                 other_event_venue
+  //                 short_calendar_description
+  //               }
+  //               EN {
+  //                 event_title
+  //                 display_time
+  //                 event_subtitle
+  //                 full_description
+  //                 other_event_venue
+  //                 short_calendar_description
+  //               }
+  //               end_date
+  //               event_documentation
+  //               event_is_free
+  //               event_language
+  //               event_limited_capacity
+  //               start_date(formatString: "YYYY.MM.DD")
+  //               template
+  //               thumbnail_image
+  //               exp_number
+  //               participants
+  //               related_resources
+  //               other_event_language
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
 
 
   events = generateEvents(20);
@@ -61,7 +61,6 @@ const UpcomingEvents = props => {
   const filteredEvents = events.filter(event => {
     return event.experience == props.experience;
   });
-  console.log('events', events);
   const language = getCurrentLanguageString(props.languages);
 
   return (

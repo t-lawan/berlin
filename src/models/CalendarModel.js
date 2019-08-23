@@ -22,7 +22,7 @@ export class CalendarModel {
     months.map(month => {
       for (let i = 0; i < DateManager.getNumberOfDaysInMonth(month); i++) {
         const filteredCalendarItems = calendarItemsArray.filter(calendarItem => {
-          return (DateManager.get(calendarItem.start_date, "month") == month) && (DateManager.get(calendarItem.start_date, "date") == i + 1)
+          return isCurrentDate(calendarItem, i, month);
         });
         calendar = {
           ...calendar,
@@ -36,5 +36,10 @@ export class CalendarModel {
 
     return calendar
   }
+
+}
+
+const isCurrentDate = (calendarItem, date, month) => {
+  return (DateManager.get(calendarItem.start_date, "date") == date + 1) && (DateManager.get(calendarItem.start_date, "month") + 1 == month)
 }
 

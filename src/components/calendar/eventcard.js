@@ -12,7 +12,7 @@ const EventCard = props => {
   return (
     <EventCardWrapper>
       <EventHeading>{event[language].display_time}</EventHeading>
-      <EventText>Talk</EventText>
+      <EventText> {event.type}</EventText>
       <EventText>{event.venue}</EventText>
       <EventText>{event[language].short_calendar_description}</EventText>
     </EventCardWrapper>
