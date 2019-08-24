@@ -2,3 +2,6 @@ export const SET_LANGUAGE_TO_EN = "SET_LANGUAGE_TO_EN";
 export const SET_LANGUAGE_TO_DE = "SET_LANGUAGE_TO_DE";
 
 export const CHANGE_EXPERIENCE = "CHANGE_EXPERIENCE";
+
+
+export const SET_EVENTS = "SET_EVENTS";

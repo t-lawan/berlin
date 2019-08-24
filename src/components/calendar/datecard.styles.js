@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components"
+import { changeNthChild, mobile } from "../../index.styles"
 
 export const DateCardWrapper = styled.div`
   display: flex;
@@ -6,9 +7,12 @@ export const DateCardWrapper = styled.div`
   border-bottom: 0.05em solid black;
   border-right: 0.05em solid black;
   min-height: 400px;
-  /* width: auto; */
-  height: auto;
   background-color: ${props => (props.addColour ? "#ADEBAD" : "inherit")};
+
+  /* width: auto; */
+
+  height: auto;
+  /* ${changeNthChild} */
 `
 
 export const CurrentDate = styled.div`

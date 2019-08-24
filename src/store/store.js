@@ -6,7 +6,8 @@ const intitalState = {
         EN: true,
         DE: false
     },
-    experience: 1
+    experience: 1,
+    events: []
 
 }
 
@@ -30,6 +31,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         experience: action.experience
       });
+    case actionTypes.SET_EVENTS:
+      return Object.assign({}, state, {
+        events: action.events
+      })
     default:
       return state
   }

@@ -32,6 +32,48 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpEvents {
+        edges {
+          node {
+            id
+            slug
+            acf {
+              DE {
+                display_time
+                event_subtitle
+                event_title
+                full_description
+                other_event_venue
+                rsvp_note
+                rsvp_required
+                short_calendar_description
+                special_info_notice
+              }
+              EN {
+                display_time
+                full_description
+                event_title
+                event_subtitle
+                other_event_venue
+                rsvp_note
+                rsvp_required
+                short_calendar_description
+                special_info_notice
+              }
+              end_date
+              event_documentation
+              event_is_free
+              event_language
+              event_limited_capacity
+              other_event_language
+              participants
+              start_date
+              start_time
+              template
+            }
+          }
+        }
+      }
     }
   `)
 
@@ -64,6 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const eventTemplate = path.resolve(`./src/templates/event.js`)
   allWordpressWpEvents.edges.forEach(edge => {
+    console.log(1, edge.node);
     createPage({
       path: "/event/" + edge.node.slug,
       component: slash(eventTemplate),

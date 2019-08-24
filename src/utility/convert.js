@@ -48,18 +48,21 @@ export class Convert {
     static eventsToCalendarItemArray = (eventsArray) => {
         let calendarItems = [];
         eventsArray.forEach(event => {
-            calendarItems.push(new CalendarItemModel(
-                `event-${event.id}`,
-                `/event/${event.slug}`,
-                'Talk',
-                event.start_time,
-                event.start_date,
-                event.end_date,
-                event.venue,
-                event.participants,
-                event.EN,
-                event.DE
-            ))
+            event.dates.forEach((date, index) => {
+                calendarItems.push(new CalendarItemModel(
+                    `event-${event.id}-${index}`,
+                    `/event/${event.slug}`,
+                    'Talk',
+                    date.display_time,
+                    date.start_date,
+                    date.end_date,
+                    event.venue,
+                    event.participants,
+                    event.EN,
+                    event.DE
+                ))
+            })
+
         });
         return calendarItems;
     }

@@ -9,9 +9,10 @@ import { EventHeading, EventText, EventCardWrapper } from "./eventcard.styles";
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event;
+  console.log(props.event)
   return (
     <EventCardWrapper>
-      <EventHeading>{event[language].display_time}</EventHeading>
+      <EventHeading>{event.start_time[language]}</EventHeading>
       <EventText> {event.type}</EventText>
       <EventText>{event.venue}</EventText>
       <EventText>{event[language].short_calendar_description}</EventText>
