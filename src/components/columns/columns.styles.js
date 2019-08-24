@@ -4,8 +4,6 @@ import { changeGridToOneRow } from "../../index.styles";
 
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
-  width: 100vw;
-  width: 100vw;
   display: grid;
   grid-template-columns: 1fr 10fr 7fr 1fr;
   ${changeGridToOneRow}
