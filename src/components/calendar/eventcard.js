@@ -9,7 +9,6 @@ import { EventHeading, EventText, EventCardWrapper } from "./eventcard.styles";
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event;
-  console.log(props.event)
   return (
     <EventCardWrapper>
       <EventHeading>{event.start_time[language]}</EventHeading>
