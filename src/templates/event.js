@@ -17,7 +17,6 @@ const EventColumn = styled.div``
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext)
-  console.log(event)
   const renderComponent = (
     <EventPageWrapper>
       <EventColumn>
