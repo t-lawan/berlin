@@ -1,6 +1,7 @@
 import { NewsModel } from "../models/NewsModel";
 import { EventsModel } from "../models/EventsModel";
 import { CalendarItemModel } from "../models/CalendarItemModel";
+import { ExhibitionModel } from "../models/ExhibitionModel";
 
 export class Convert {
 
@@ -33,6 +34,23 @@ export class Convert {
             wordpressModel.acf.participants,
             wordpressModel.acf.related_resources,
             wordpressModel.acf.other_event_language
+        )
+    }
+
+    static toExhibitionModel = wordpressModel => {
+        console.log('wordpressModel', wordpressModel);
+        return new ExhibitionModel(
+            wordpressModel.id,
+            wordpressModel.slug,
+            wordpressModel.acf.exp_number,
+            wordpressModel.acf.EN,
+            wordpressModel.acf.DE,
+            "1 am",
+            wordpressModel.acf.start_date,
+            wordpressModel.acf.end_date,
+            wordpressModel.acf.exhibition_venue,
+            null,
+            null
         )
     }
 
