@@ -87,7 +87,6 @@ export const generateEvents = numberOfEvents => {
     );
     eventsArray.push(event)
   }
-  console.log('hey', eventsArray);
   return eventsArray
 }
 

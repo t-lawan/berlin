@@ -38,7 +38,6 @@ export class Convert {
     }
 
     static toExhibitionModel = wordpressModel => {
-        console.log('wordpressModel', wordpressModel);
         return new ExhibitionModel(
             wordpressModel.id,
             wordpressModel.slug,

@@ -12,8 +12,6 @@ const ExhibitionPageWrapper = styled.div`
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext)
-  console.log('exhibition', exhibition)
-  console.log('pageContext', props.pageContext)
   const renderComponent = (
     <ExhibitionPageWrapper>
       <h4>{exhibition[language].title}</h4>

@@ -3,7 +3,6 @@ import Layout from "../components/layout"
 import { Convert } from "../utility/convert"
 
 export default  ({pageContext}) => {
-    console.log(pageContext);
   const article = Convert.toArticleModel(pageContext)
   return (
     <Layout>
