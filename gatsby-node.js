@@ -74,14 +74,41 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpExhibitions {
+        edges {
+          node {
+            id
+            wordpress_id
+            slug
+            acf {
+              DE {
+                description
+                subtitle
+                title
+              }
+              EN {
+                description
+                subtitle
+                title
+              }
+              end_date
+              exp_number
+              start_date
+            }
+          }
+        }
+      }
     }
   `)
 
   if (result.errors) {
     throw new Error(result.errors)
   }
-  const { allWordpressPage, allWordpressWpEvents } = result.data
-
+  const {
+    allWordpressPage,
+    allWordpressWpEvents,
+    allWordpressWpExhibitions,
+  } = result.data
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
 
@@ -106,10 +133,18 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const eventTemplate = path.resolve(`./src/templates/event.js`)
   allWordpressWpEvents.edges.forEach(edge => {
-    console.log(1, edge.node);
     createPage({
       path: "/event/" + edge.node.slug,
       component: slash(eventTemplate),
+      context: edge.node,
+    })
+  })
+
+  const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
+  allWordpressWpExhibitions.edges.forEach(edge => {
+    createPage({
+      path: "/exhibition/" + edge.node.slug,
+      component: slash(exhibitionTemplate),
       context: edge.node,
     })
   })
