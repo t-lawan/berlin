@@ -26,7 +26,7 @@ export class Convert {
             wordpressModel.acf.start_time,
             wordpressModel.acf.end_date,
             "Venue",
-            wordpressModel.acf.event_documentation,
+            null,
             wordpressModel.acf.event_is_free,
             wordpressModel.acf.event_language,
             wordpressModel.acf.event_limited_capacity,

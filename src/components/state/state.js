@@ -5,7 +5,6 @@ import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
 
 const State = props => {
-    console.log('props', props)
   if (!props.isLoaded) {
     const data = useStaticQuery(
       graphql`
