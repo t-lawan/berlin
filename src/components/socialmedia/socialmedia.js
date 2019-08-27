@@ -15,7 +15,6 @@ const SocialMedia = props => {
   let showNewsletterInput = false
   const toggleNewsletterInput = () => {
     showNewsletterInput = !showNewsletterInput
-    console.log(showNewsletterInput);
   }
   return (
     <SocialMediaWrapper>

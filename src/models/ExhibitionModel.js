@@ -47,7 +47,10 @@ export const generateExhibitions = numberOfExhibitions => {
       Math.floor(Math.random() * 4) + 1,
       language,
       language,
-      `${faker.random.number(1, 2)} pm`,
+      {
+        EN: `${Math.floor(Math.random() * 12) + 1} am`,
+        DE: `${Math.floor(Math.random() * 12) + 1} AM`,
+      },
       moment(
         faker.date.between("2019-08-01", "2019-12-31"),
         "YYYY-MM-DD HH:mm Z"

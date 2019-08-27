@@ -57,9 +57,8 @@ const Calendar = props => {
   //   `
   // )
 
-  events = Convert.eventsToCalendarItemArray(generateEvents(10))
+  events = Convert.eventsToCalendarItemArray(generateEvents(40))
   exhibitions = Convert.exhibitionsToCalendarItemArray(generateExhibitions(50))
-  console.log("exhibitions", exhibitions)
   //   events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel)
   //   const filteredEvents = events.filter(event => {
   //     return event.experience === props.experience

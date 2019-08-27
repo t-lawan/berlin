@@ -1,10 +1,10 @@
 import React from "react"
-import { EventsWrapper, EventItem } from "./upcomingevents.styles"
+import { EventsWrapper, EventItem, EventLink } from "./upcomingevents.styles"
 import { generateEvents } from "../../models/EventsModel"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { Convert } from "../../utility/convert";
+import { Convert } from "../../utility/convert"
 
 // let events = generateEvents(20);
 let events = []
@@ -55,22 +55,23 @@ const UpcomingEvents = props => {
   //   `
   // )
 
-
-  events = generateEvents(20);
+  events = generateEvents(20)
   // events = Convert.toModelArray(data.allWordpressWpEvents, Convert.toEventModel);
   const filteredEvents = events.filter(event => {
-    return event.experience == props.experience;
-  });
-  const language = getCurrentLanguageString(props.languages);
+    return event.experience == props.experience
+  })
+  const language = getCurrentLanguageString(props.languages)
 
   return (
     <EventsWrapper>
       {filteredEvents.map(event => (
-        <EventItem key={event.id} to={`/event/${event.slug}`}>
-          <p> {event.start_date.toString()}</p>
-          <p> {event[language].title}</p>
-          <p> {event[language].subtitle}</p>
-          <p> {event.venue}</p>
+        <EventItem key={event.id}>
+          <EventLink to={`/event/${event.slug}`}>
+            <p> {event.start_date.toString()}</p>
+            <p> {event[language].title}</p>
+            <p> {event[language].subtitle}</p>
+            <p> {event.venue}</p>
+          </EventLink>
         </EventItem>
       ))}
     </EventsWrapper>

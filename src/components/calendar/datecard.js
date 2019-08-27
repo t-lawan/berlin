@@ -12,7 +12,7 @@ const DateCard = props => {
     const monthDay = DateManager.createMonthDayString(props.day, props.month);
     const date = DateManager.createDatetring(props.day, props.month);
     const events = props.events.sort((a,b) => {
-      return a.start_time.charAt(0) - b.start_time.charAt(0);
+      return a.start_time['EN'].charAt(0) - b.start_time['EN'].charAt(0);
     });
     renderComponents = (
       <DateCardWrapper id={`date-${DateManager.createDateClass(props.day, props.month)}`}>

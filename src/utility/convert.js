@@ -1,6 +1,7 @@
 import { NewsModel } from "../models/NewsModel";
 import { EventsModel } from "../models/EventsModel";
 import { CalendarItemModel } from "../models/CalendarItemModel";
+import { ExhibitionModel } from "../models/ExhibitionModel";
 
 export class Convert {
 
@@ -25,7 +26,7 @@ export class Convert {
             wordpressModel.acf.start_time,
             wordpressModel.acf.end_date,
             "Venue",
-            wordpressModel.acf.event_documentation,
+            null,
             wordpressModel.acf.event_is_free,
             wordpressModel.acf.event_language,
             wordpressModel.acf.event_limited_capacity,
@@ -33,6 +34,22 @@ export class Convert {
             wordpressModel.acf.participants,
             wordpressModel.acf.related_resources,
             wordpressModel.acf.other_event_language
+        )
+    }
+
+    static toExhibitionModel = wordpressModel => {
+        return new ExhibitionModel(
+            wordpressModel.id,
+            wordpressModel.slug,
+            wordpressModel.acf.exp_number,
+            wordpressModel.acf.EN,
+            wordpressModel.acf.DE,
+            "1 am",
+            wordpressModel.acf.start_date,
+            wordpressModel.acf.end_date,
+            wordpressModel.acf.exhibition_venue,
+            null,
+            null
         )
     }
 
@@ -48,18 +65,21 @@ export class Convert {
     static eventsToCalendarItemArray = (eventsArray) => {
         let calendarItems = [];
         eventsArray.forEach(event => {
-            calendarItems.push(new CalendarItemModel(
-                `event-${event.id}`,
-                `/event/${event.slug}`,
-                'Talk',
-                event.start_time,
-                event.start_date,
-                event.end_date,
-                event.venue,
-                event.participants,
-                event.EN,
-                event.DE
-            ))
+            event.dates.forEach((date, index) => {
+                calendarItems.push(new CalendarItemModel(
+                    `event-${event.id}-${index}`,
+                    `/event/${event.slug}`,
+                    'Talk',
+                    date.display_time,
+                    date.start_date,
+                    date.end_date,
+                    event.venue,
+                    event.participants,
+                    event.EN,
+                    event.DE
+                ))
+            })
+
         });
         return calendarItems;
     }
