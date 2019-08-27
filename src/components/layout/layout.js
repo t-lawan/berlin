@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import Columns from "../columns/columns"
 import { GlobalStyle } from "../../index.styles";
+import State from "../state/state";
 
 
 const LayoutWrapper = styled.div`
@@ -13,6 +14,7 @@ const LayoutWrapper = styled.div`
 const Layout = props => (
   <LayoutWrapper>
     <GlobalStyle />
+    <State />
     <Columns
       firstColumn={props.firstColumn}
       secondColumn={props.secondColumn}
