@@ -8,7 +8,6 @@
 
 const path = require(`path`)
 const slash = require(`slash`)
-
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
 
@@ -61,7 +60,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 special_info_notice
               }
               end_date
-              event_documentation
               event_is_free
               event_language
               event_limited_capacity
@@ -132,6 +130,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const eventTemplate = path.resolve(`./src/templates/event.js`)
+  
   allWordpressWpEvents.edges.forEach(edge => {
     createPage({
       path: "/event/" + edge.node.slug,
@@ -141,6 +140,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
+  
   allWordpressWpExhibitions.edges.forEach(edge => {
     createPage({
       path: "/exhibition/" + edge.node.slug,
