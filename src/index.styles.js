@@ -3,6 +3,9 @@ import styled, { css, createGlobalStyle } from "styled-components"
 export const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,400i&display=swap');
 @import url('https://use.typekit.net/xcm3ryn.css');
+* {
+  box-sizing: border-box;
+}
 html,
 body {
   width: 100vw;
