@@ -8,11 +8,9 @@ export const DateCardWrapper = styled.div`
   border-right: 0.05em solid black;
   min-height: 400px;
   background-color: ${props => (props.addColour ? "#ADEBAD" : "inherit")};
-
-  /* width: auto; */
-
   height: auto;
-  /* ${changeNthChild} */
+  display: -moz-inline-grid;
+  display: inline-grid;
 `
 
 export const CurrentDate = styled.div`
