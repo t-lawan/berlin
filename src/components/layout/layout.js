@@ -2,9 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 import Columns from "../columns/columns"
-import { GlobalStyle } from "../../index.styles";
-import State from "../state/state";
-
+import { GlobalStyle } from "../../index.styles"
+import State from "../state/state"
+import SEO from "../seo/seo"
 
 const LayoutWrapper = styled.div`
   width: 100vw;
@@ -14,6 +14,7 @@ const LayoutWrapper = styled.div`
 const Layout = props => (
   <LayoutWrapper>
     <GlobalStyle />
+    <SEO title={props.title} description={props.description}/>
     <State />
     <Columns
       firstColumn={props.firstColumn}
@@ -29,6 +30,8 @@ Layout.propTypes = {
   secondColumn: PropTypes.node,
   thirdColumn: PropTypes.node.isRequired,
   numberOfColumnsIsTwo: PropTypes.bool.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
 }
 
 export default Layout
