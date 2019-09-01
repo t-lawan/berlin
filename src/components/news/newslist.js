@@ -1,13 +1,11 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { generateNewsArticles } from "../../models/NewsModel"
 import { connect } from "react-redux"
 import { NewsListWrapper } from "./newslist.styles"
 import NewsItem from './news-item';
-let newsArray = generateNewsArticles(50)
 
 const NewsList = props => {
-  const filteredNews = newsArray.filter(news => {
+  const filteredNews = props.news.filter(news => {
     return news.experience === props.experience
   })
   const language = getCurrentLanguageString(props.languages)
@@ -28,6 +26,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
+    news: state.news
   }
 }
 
