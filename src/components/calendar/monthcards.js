@@ -17,7 +17,7 @@ class MonthCards extends React.Component {
   render() {
     return (
       <>
-        <DateCard containsEvents={false} month={this.props.title} />
+        <DateCard containsEvents={false} month={this.props.title} year={this.props.year}  />
         {this.days.map(day => (
           <DateCard
             key={day}
@@ -25,6 +25,7 @@ class MonthCards extends React.Component {
             events={this.props.month[day]}
             month={this.props.title}
             day={day}
+            year={this.props.year}
           />
         ))}
       </>
@@ -36,5 +37,6 @@ class MonthCards extends React.Component {
 MonthCards.propTypes = {
   month: PropTypes.any,
   title: PropTypes.string,
+  year: PropTypes.any
 }
 export default MonthCards

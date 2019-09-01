@@ -3,6 +3,9 @@ import { connect } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
 import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
+import { generateEvents } from "../../models/EventsModel"
+import { generateExhibitions } from "../../models/ExhibitionModel"
+import { generateNewsArticles } from "../../models/NewsModel";
 
 const State = props => {
   if (!props.isLoaded) {
@@ -77,19 +80,26 @@ const State = props => {
         }
       `
     )
-    const events = Convert.toModelArray(
+    let events = Convert.toModelArray(
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
 
-    const exhibitions = Convert.toModelArray(
+    let news = generateNewsArticles(20);
+
+    events = generateEvents(20)
+
+    let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
       Convert.toExhibitionModel
     )
 
+    exhibitions = generateExhibitions(20)
+
     props.setEvents(events)
+    props.setNews(news);
     props.setExhibitions(exhibitions)
-    props.loaded();
+    props.loaded()
   }
 
   return <></>
@@ -110,6 +120,8 @@ const mapDispatchToProps = dispatch => {
     setExhibitions: exhibitions =>
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
+    setNews: news =>
+      dispatch({ type: actionTypes.SET_NEWS, news: news })
   }
 }
 

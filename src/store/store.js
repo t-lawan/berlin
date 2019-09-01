@@ -9,6 +9,7 @@ const intitalState = {
   experience: 1,
   events: [],
   exhibitions: [],
+  news: [],
   isLoaded: false,
 }
 
@@ -36,13 +37,17 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         events: action.events,
       })
+    case actionTypes.SET_NEWS:
+      return Object.assign({}, state, {
+        news: action.news,
+      })
     case actionTypes.SET_EXHIBITIONS:
       return Object.assign({}, state, {
         exhibitions: action.exhibitions,
       })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
-        isLoaded: true
+        isLoaded: true,
       })
     default:
       return state

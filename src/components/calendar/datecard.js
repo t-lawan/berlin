@@ -10,12 +10,12 @@ const DateCard = props => {
   let renderComponents;
   if (props.containsEvents) {
     const monthDay = DateManager.createMonthDayString(props.day, props.month);
-    const date = DateManager.createDatetring(props.day, props.month);
+    const date = DateManager.createDatetring(props.day, props.month, props.year);
     const events = props.events.sort((a,b) => {
       return a.start_time['EN'].charAt(0) - b.start_time['EN'].charAt(0);
     });
     renderComponents = (
-      <DateCardWrapper id={`date-${DateManager.createDateClass(props.day, props.month)}`}>
+      <DateCardWrapper id={`date-${DateManager.createDateClass(props.day, props.month, props.year)}`}>
         <CurrentDate>
           <DateText>{date}</DateText>
           <DayMonthText> {monthDay.toLocaleLowerCase()} </DayMonthText>
@@ -29,7 +29,7 @@ const DateCard = props => {
 
     renderComponents = (
       <DateCardWrapper addColour>
-        <MonthHeading> {DateManager.getMonthText(props.month)}</MonthHeading>
+        <MonthHeading> {DateManager.getMonthText(props.month, props.year)}</MonthHeading>
       </DateCardWrapper>
     )
   }
@@ -41,6 +41,7 @@ DateCard.propTypes = {
   events: PropTypes.array,
   month: PropTypes.string,
   day: PropTypes.string,
+  year: PropTypes.string
 }
 
 const mapStateToProps = state => {
