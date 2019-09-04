@@ -5,6 +5,7 @@ import { getCurrentLanguageString } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents from "../components/events/upcomingevents"
+import SEO from "../components/seo/seo";
 
 const EventPageWrapper = styled.div`
   padding: 2em 1em;
@@ -19,6 +20,8 @@ const Event = props => {
   const event = Convert.toEventModel(props.pageContext)
   const renderComponent = (
     <EventPageWrapper>
+      <SEO title={`${event.slug}`} description={`${event.slug}`} lang={language}/>
+
       <EventColumn>
         <h4>{event[language].display_time}</h4>
         <h4>Talk</h4>
