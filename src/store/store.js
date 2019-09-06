@@ -11,6 +11,7 @@ const intitalState = {
   exhibitions: [],
   news: [],
   isLoaded: false,
+  participants: [],
 }
 
 const reducer = (state = intitalState, action) => {
@@ -44,6 +45,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_EXHIBITIONS:
       return Object.assign({}, state, {
         exhibitions: action.exhibitions,
+      })
+    case actionTypes.SET_PARTICIPANTS:
+      return Object.assign({}, state, {
+        participants: action.participants,
       })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {

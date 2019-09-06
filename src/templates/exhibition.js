@@ -13,7 +13,6 @@ const ExhibitionPageWrapper = styled.div`
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext)
-  console.log(exhibition);
   const renderComponent = (
     <ExhibitionPageWrapper>
       <SEO title={`${exhibition[language].title}`} description={`${exhibition[language].title}`} lang={language}/>
