@@ -96,6 +96,35 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpParticipants {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              exp_number
+              firstname
+              image_gallery
+              is_artist_in_exhibition
+              lastname
+              participant_group
+              personal_website
+              related_resources
+              EN {
+                group_bios
+                project_description
+                short_bio
+              }
+              participant_venue
+              DE {
+                group_bios
+                project_description
+                short_bio
+              }
+            }
+          }
+        }
+      }     
     }
   `)
 
@@ -106,7 +135,9 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressPage,
     allWordpressWpEvents,
     allWordpressWpExhibitions,
+    allWordpressWpParticipants
   } = result.data
+
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
   const languages = ['en', 'de'];
@@ -163,5 +194,18 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
 
+  })
+
+  const participantTemplate = path.resolve(`./src/templates/participant.js`)
+  
+  allWordpressWpParticipants.edges.forEach(edge => {
+    languages.forEach((language) => {
+      let path = language === "en" ? `/participant/${edge.node.slug}` : `/${language}/participant/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(participantTemplate),
+        context: {...edge.node, language: language}
+      })
+    })
   })
 }
