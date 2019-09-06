@@ -2,6 +2,7 @@ import { NewsModel } from "../models/NewsModel";
 import { EventsModel } from "../models/EventsModel";
 import { CalendarItemModel } from "../models/CalendarItemModel";
 import { ExhibitionModel } from "../models/ExhibitionModel";
+import { ParticipantModel } from "../models/ParticipantModel";
 
 export class Convert {
 
@@ -50,6 +51,23 @@ export class Convert {
             wordpressModel.acf.exhibition_venue,
             null,
             null
+        )
+    }
+
+    static toParticipantModel = wordpressModel => {
+        return new ParticipantModel(
+            wordpressModel.wordpress_id,
+            wordpressModel.slug,
+            wordpressModel.acf.exp_number,
+            wordpressModel.acf.EN,
+            wordpressModel.acf.DE,
+            wordpressModel.acf.firstname,
+            wordpressModel.acf.lastname,
+            wordpressModel.acf.personal_website,
+            wordpressModel.acf.image_gallery,
+            wordpressModel.acf.is_artist_in_exhibition,
+            wordpressModel.acf.participant_group,
+            wordpressModel.acf.participant_venue
         )
     }
 
