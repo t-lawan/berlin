@@ -3,6 +3,7 @@ import { EventsModel } from "../models/EventsModel";
 import { CalendarItemModel } from "../models/CalendarItemModel";
 import { ExhibitionModel } from "../models/ExhibitionModel";
 import { ParticipantModel } from "../models/ParticipantModel";
+import { VenueModel } from "../models/VenueModel";
 
 export class Convert {
 
@@ -71,6 +72,21 @@ export class Convert {
         )
     }
 
+    static toVenueModel = wordpressModel => {
+        return new VenueModel(
+            wordpressModel.id,
+            wordpressModel.slug,
+            wordpressModel.acf.DE,
+            wordpressModel.acf.google_map_link,
+            wordpressModel.acf.thumbnail_image,
+            wordpressModel.acf.venue_address,
+            wordpressModel.acf.venue_city,
+            wordpressModel.acf.venue_plz,
+            wordpressModel.acf.venue_public_transit,
+            wordpressModel.acf.venue_tel,
+            wordpressModel.acf.venue_wheelchair_access
+        )
+    }
     static toModelArray = (wordpressQuery, modelConverter) => {
         const modelArray = [];
         wordpressQuery.edges.map(wordpressModel => {
@@ -120,6 +136,4 @@ export class Convert {
         });
         return calendarItems;
     }
-
-
 }
