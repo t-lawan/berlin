@@ -109,6 +109,7 @@ exports.createPages = async ({ graphql, actions }) => {
   } = result.data
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
+  const languages = ['en', 'de'];
 
   allWordpressPage.edges.forEach(edge => {
     let template
@@ -122,30 +123,45 @@ exports.createPages = async ({ graphql, actions }) => {
       default:
         template = pageTemplate
     }
-    createPage({
-      path: edge.node.slug,
-      component: slash(template),
-      context: edge.node,
+    // Create pages for both EN and DE
+    languages.forEach((language) => {
+      let path = language === "en" ? `/${edge.node.slug}` : `/${language}/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(template),
+        context: edge.node,
+      })
     })
+
+
   })
 
   const eventTemplate = path.resolve(`./src/templates/event.js`)
   
   allWordpressWpEvents.edges.forEach(edge => {
-    createPage({
-      path: "/event/" + edge.node.slug,
-      component: slash(eventTemplate),
-      context: edge.node,
+    languages.forEach((language) => {
+      let path = language === "en" ? `/event/${edge.node.slug}` : `/${language}/event/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(eventTemplate),
+        context: edge.node,
+      })
     })
   })
 
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
   
   allWordpressWpExhibitions.edges.forEach(edge => {
-    createPage({
-      path: "/exhibition/" + edge.node.slug,
-      component: slash(exhibitionTemplate),
-      context: edge.node,
+
+    languages.forEach((language) => {
+      let path = language === "en" ? `/exhibition/${edge.node.slug}` : `/${language}/exhibition/${edge.node.slug}`
+
+      createPage({
+        path: path,
+        component: slash(exhibitionTemplate),
+        context: edge.node,
+      })
     })
+
   })
 }

@@ -5,6 +5,7 @@ import Layout from "../components/layout/layout"
 import { Convert } from "../utility/convert"
 import { getCurrentLanguageString } from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents";
+import SEO from "../components/seo/seo";
 const ExhibitionPageWrapper = styled.div`
   padding: 2em 1em;
 `
@@ -12,8 +13,11 @@ const ExhibitionPageWrapper = styled.div`
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext)
+  console.log(exhibition);
   const renderComponent = (
     <ExhibitionPageWrapper>
+      <SEO title={`${exhibition[language].title}`} description={`${exhibition[language].title}`} lang={language}/>
+
       <h4>{exhibition[language].title}</h4>
       <h5>{exhibition[language].subtitle}</h5>
       <p
