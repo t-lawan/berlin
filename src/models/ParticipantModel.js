@@ -1,4 +1,3 @@
-const faker = require('faker');
 
 export class ParticipantModel {
     constructor(id, slug, experience, en, de, firstname, lastname, personal_website, image_gallery, in_exhibition, group, venues) {
