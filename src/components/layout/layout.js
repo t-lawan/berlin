@@ -4,26 +4,26 @@ import styled from "styled-components"
 import Columns from "../columns/columns"
 import { GlobalStyle } from "../../index.styles"
 import State from "../state/state"
-import SEO from "../seo/seo"
 
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
 `
 
-const Layout = props => (
-  <LayoutWrapper>
-    <GlobalStyle />
-    <SEO title={props.title} description={props.description}/>
-    <State />
-    <Columns
-      firstColumn={props.firstColumn}
-      secondColumn={props.secondColumn}
-      thirdColumn={props.thirdColumn}
-      numberOfColumnsIsTwo={props.numberOfColumnsIsTwo}
-    />
-  </LayoutWrapper>
-)
+const Layout = props => {
+  return (
+    <LayoutWrapper>
+      <GlobalStyle />
+      <State />
+      <Columns
+        firstColumn={props.firstColumn}
+        secondColumn={props.secondColumn}
+        thirdColumn={props.thirdColumn}
+        numberOfColumnsIsTwo={props.numberOfColumnsIsTwo}
+      />
+    </LayoutWrapper>
+  )
+}
 
 Layout.propTypes = {
   firstColumn: PropTypes.node.isRequired,
