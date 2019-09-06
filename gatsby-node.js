@@ -124,7 +124,34 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      }     
+      } 
+      allWordpressWpVenue {
+        edges {
+          node {
+            id
+            wordpress_id
+            slug
+            acf {
+              DE {
+                access_info
+                venue_name
+              }
+              google_map_link
+              thumbnail_image
+              venue_address {
+                address_line
+              }
+              venue_city
+              venue_plz
+              venue_public_transit {
+                transit_option
+              }
+              venue_tel
+              venue_wheelchair_access
+            }
+          }
+        }
+      }    
     }
   `)
 
@@ -135,7 +162,8 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressPage,
     allWordpressWpEvents,
     allWordpressWpExhibitions,
-    allWordpressWpParticipants
+    allWordpressWpParticipants,
+    allWordpressWpVenue
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -208,4 +236,19 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
+
+  const venueTemplate = path.resolve(`./src/templates/venue.js`)
+  
+  allWordpressWpVenue.edges.forEach(edge => {
+    languages.forEach((language) => {
+      let path = language === "en" ? `/venue/${edge.node.slug}` : `/${language}/venue/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(venueTemplate),
+        context: {...edge.node, language: language}
+      })
+    })
+  })
+
+
 }
