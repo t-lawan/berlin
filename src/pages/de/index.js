@@ -9,10 +9,7 @@ const IndexPage = () => (
     firstColumn={<NewsList />}
     secondColumn={<p> Hello </p>}
     numberOfColumnsIsTwo={true}
-    thirdColumn={<UpcomingEvents 
-    title="Index page"
-    description="Index page"
-    />}
+    thirdColumn={<UpcomingEvents/>}
   />
 )
 
