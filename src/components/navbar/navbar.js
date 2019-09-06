@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem } from "./navbar.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
 const Navbar = props => {
   const data = useStaticQuery(
@@ -38,8 +38,6 @@ const Navbar = props => {
             swipe
             direction="up"
             duration={0.3}
-            // swipe
-            // entryOffset={95}
           >
             {item.title.toLowerCase()}
           </NavItem>
@@ -49,10 +47,6 @@ const Navbar = props => {
   )
 }
 
-const createPath = (language, path) => {
-  const newPath =  language === "EN" ? `/${path}` : `/${language.toLowerCase()}/${path}`;
-  return newPath;
-}
 const mapStateToProps = state => {
   return {
     languages: state.languages,
