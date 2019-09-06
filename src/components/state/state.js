@@ -5,7 +5,7 @@ import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
 import { generateEvents } from "../../models/EventsModel"
 import { generateExhibitions } from "../../models/ExhibitionModel"
-import { generateNewsArticles } from "../../models/NewsModel";
+import { generateNewsArticles } from "../../models/NewsModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -77,6 +77,35 @@ const State = props => {
               }
             }
           }
+          allWordpressWpParticipants {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  exp_number
+                  firstname
+                  image_gallery
+                  is_artist_in_exhibition
+                  lastname
+                  participant_group
+                  personal_website
+                  related_resources
+                  EN {
+                    group_bios
+                    project_description
+                    short_bio
+                  }
+                  participant_venue
+                  DE {
+                    group_bios
+                    project_description
+                    short_bio
+                  }
+                }
+              }
+            }
+          }
         }
       `
     )
@@ -84,8 +113,7 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
-
-    let news = generateNewsArticles(20);
+    let news = generateNewsArticles(20)
 
     events = generateEvents(20)
 
@@ -96,8 +124,19 @@ const State = props => {
 
     exhibitions = generateExhibitions(20)
 
+
+    let participants = Convert.toModelArray(
+      data.allWordpressWpParticipants,
+      Convert.toParticipantModel
+    )
+
+
+
+
+
+    props.setParticipants(participants);
     props.setEvents(events)
-    props.setNews(news);
+    props.setNews(news)
     props.setExhibitions(exhibitions)
     props.loaded()
   }
@@ -120,8 +159,8 @@ const mapDispatchToProps = dispatch => {
     setExhibitions: exhibitions =>
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
-    setNews: news =>
-      dispatch({ type: actionTypes.SET_NEWS, news: news })
+    setNews: news => dispatch({ type: actionTypes.SET_NEWS, news: news }),
+    setParticipants: participants => dispatch({type: actionTypes.SET_PARTICIPANTS, participants: participants})
   }
 }
 
