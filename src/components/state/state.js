@@ -106,6 +106,22 @@ const State = props => {
               }
             }
           }
+          allWordpressWpMedia {
+            edges {
+              node {
+                wordpress_id
+                mime_type
+                source_url
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                slug
+                alt_text
+              }
+            }
+          }
           allWordpressWpVenue {
             edges {
               node {
@@ -161,6 +177,11 @@ const State = props => {
       Convert.toVenueModel
     )
 
+    let documents = Convert.toModelArray(
+      data.allWordpressWpMedia,
+      Convert.toDocumentModel
+    )
+    props.setDocuments(documents)
     props.setVenues(venues)
     props.setParticipants(participants)
     props.setEvents(events)
@@ -197,6 +218,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_VENUES,
         venues: venues,
+      }),
+    setDocuments: documents =>
+      dispatch({
+        type: actionTypes.SET_DOCUMENTS,
+        documents: documents,
       }),
   }
 }
