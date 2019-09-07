@@ -4,6 +4,7 @@ import { CalendarItemModel } from "../models/CalendarItemModel";
 import { ExhibitionModel } from "../models/ExhibitionModel";
 import { ParticipantModel } from "../models/ParticipantModel";
 import { VenueModel } from "../models/VenueModel";
+import { DocumentModel } from "../models/DocumentModel";
 
 export class Convert {
 
@@ -85,6 +86,16 @@ export class Convert {
             wordpressModel.acf.venue_public_transit,
             wordpressModel.acf.venue_tel,
             wordpressModel.acf.venue_wheelchair_access
+        )
+    }
+    static toDocumentModel = wordpressModel => {
+        return new DocumentModel(
+            wordpressModel.wordpress_id,
+            wordpressModel.mime_type,
+            wordpressModel.source_url,
+            wordpressModel.slug,
+            wordpressModel.acf ? wordpressModel.acf.caption_en : '',
+            wordpressModel.acf ? wordpressModel.acf.caption_de : ''
         )
     }
     static toModelArray = (wordpressQuery, modelConverter) => {

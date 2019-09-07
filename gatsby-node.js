@@ -13,7 +13,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allWordpressPage {
+      allWordpressPage{
         edges {
           node {
             slug
@@ -22,10 +22,89 @@ exports.createPages = async ({ graphql, actions }) => {
               DE {
                 content
                 title
+                description
+                press_notice
+                preview_information
+                venue_description
+                images_note
+                opening_times {
+                  opening_time_line
+                }
+                access_block {
+                  access_line
+                }
+                address_info {
+                  address_line
+                }
               }
               EN {
                 content
                 title
+                access_block {
+                  access_line
+                }
+                description
+                images_note
+                opening_times {
+                  opening_time_line
+                }
+                press_notice
+                preview_information
+                venue_description
+                address_info {
+                  address_line
+                }
+              }
+              calendar_items {
+                row_type
+                start_date
+              }
+              contact_data {
+                contact_data_line
+              }
+              contact_people {
+                full_name
+                position_de
+                position_en
+              }
+              directions {
+                directions_line
+              }
+              external_url
+              google_map_venue_link
+              press_images {
+                image_group_download_label_de
+                image_group_download_label_en
+                photo_group_title_de
+                photo_group_title_en
+                press_row_type
+                section_header_de
+                section_header_en
+              }
+              press_releases {
+                de_press_release_pdf
+                date
+                en_press_release_pdf
+                title_of_press_release_in_de
+                title_of_press_release_in_en
+              }
+              thumbnail_image
+              funding {
+                funding_type
+                logo_block
+                logo_upload
+                notice_de
+                project_funding_list
+                notice_en
+                support_header_de
+                support_header_en
+              }
+              team_block {
+                position_title_de
+                position_title_en
+                section_title_de
+                section_title_en
+                team_block_type
               }
             }
           }
@@ -168,6 +247,8 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
+  const practicalInformationTemplate = path.resolve(`./src/templates/practical-information.js`)
+
   const languages = ['en', 'de'];
 
   allWordpressPage.edges.forEach(edge => {
@@ -178,6 +259,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "default":
         template = pageTemplate
+        break
+      case "practical_information":
+        template = practicalInformationTemplate
         break
       default:
         template = pageTemplate
