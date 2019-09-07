@@ -106,6 +106,33 @@ const State = props => {
               }
             }
           }
+          allWordpressWpVenue {
+            edges {
+              node {
+                id
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    access_info
+                    venue_name
+                  }
+                  google_map_link
+                  thumbnail_image
+                  venue_address {
+                    address_line
+                  }
+                  venue_city
+                  venue_plz
+                  venue_public_transit {
+                    transit_option
+                  }
+                  venue_tel
+                  venue_wheelchair_access
+                }
+              }
+            }
+          }
         }
       `
     )
@@ -122,19 +149,20 @@ const State = props => {
       Convert.toExhibitionModel
     )
 
-    exhibitions = generateExhibitions(20)
-
+    // exhibitions = generateExhibitions(20)
 
     let participants = Convert.toModelArray(
       data.allWordpressWpParticipants,
       Convert.toParticipantModel
     )
 
+    let venues = Convert.toModelArray(
+      data.allWordpressWpVenue,
+      Convert.toVenueModel
+    )
 
-
-
-
-    props.setParticipants(participants);
+    props.setVenues(venues)
+    props.setParticipants(participants)
     props.setEvents(events)
     props.setNews(news)
     props.setExhibitions(exhibitions)
@@ -160,7 +188,16 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
     setNews: news => dispatch({ type: actionTypes.SET_NEWS, news: news }),
-    setParticipants: participants => dispatch({type: actionTypes.SET_PARTICIPANTS, participants: participants})
+    setParticipants: participants =>
+      dispatch({
+        type: actionTypes.SET_PARTICIPANTS,
+        participants: participants,
+      }),
+    setVenues: venues =>
+      dispatch({
+        type: actionTypes.SET_VENUES,
+        venues: venues,
+      }),
   }
 }
 
