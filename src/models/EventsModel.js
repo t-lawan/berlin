@@ -9,8 +9,6 @@ export class EventsModel {
     EN,
     DE,
     dates,
-    start_date,
-    start_time,
     end_date,
     venue,
     event_documentation,
@@ -28,8 +26,6 @@ export class EventsModel {
     this.EN = EN
     this.DE = DE
     this.dates = dates
-    this.start_date = start_date
-    this.start_time = start_time
     this.end_date = end_date
     this.venue = venue
     this.documentation = event_documentation
