@@ -149,7 +149,7 @@ const State = props => {
       Convert.toExhibitionModel
     )
 
-    exhibitions = generateExhibitions(20)
+    // exhibitions = generateExhibitions(20)
 
     let participants = Convert.toModelArray(
       data.allWordpressWpParticipants,
