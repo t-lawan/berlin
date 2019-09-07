@@ -117,35 +117,28 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             acf {
               DE {
-                display_time
                 event_subtitle
                 event_title
                 full_description
                 other_event_venue
                 rsvp_note
                 rsvp_required
-                short_calendar_description
                 special_info_notice
               }
               EN {
-                display_time
                 full_description
                 event_title
                 event_subtitle
                 other_event_venue
                 rsvp_note
                 rsvp_required
-                short_calendar_description
                 special_info_notice
               }
-              end_date
               event_is_free
               event_language
               event_limited_capacity
               other_event_language
               participants
-              start_date
-              start_time
               template
             }
           }
@@ -248,6 +241,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
   const practicalInformationTemplate = path.resolve(`./src/templates/practical-information.js`)
+  const pressTemplate = path.resolve(`./src/templates/press.js`)
 
   const languages = ['en', 'de'];
 
@@ -262,6 +256,12 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "practical_information":
         template = practicalInformationTemplate
+        break
+      case "press":
+        template = pressTemplate
+        break
+      case "about":
+        template = pressTemplate
         break
       default:
         template = pageTemplate
