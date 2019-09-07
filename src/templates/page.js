@@ -11,7 +11,8 @@ const Page = (props) => {
   const renderComponent = (
     <PageWrapper>
       <SEO title={`${props.pageContext.slug}`} description={`${props.pageContext.slug}`} lang={language}/>
-      <div dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].content }} />
+      <h3 dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].title }} />
+      <p dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].content }} />
     </PageWrapper>
   )
 
