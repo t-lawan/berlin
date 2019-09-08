@@ -19,9 +19,18 @@ const PressWrapper = styled.div`
 const PressReleaseWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    padding-bottom: 1em;
 `
 const PressReleaseText = styled.span`
     margin-right: 2.5em;
+`
+
+const PressReleaseLink = styled.a`
+    text-decoration: none;
+    color: inherit;
+    &:hover{
+        color: red;
+    }
 `
 
 
@@ -57,9 +66,9 @@ const Press = props => {
           <PressReleaseWrapper key={index}>
             <PressReleaseText> {press_release.date}</PressReleaseText>
             <PressReleaseText>
-              <a target="_blank" href={getPdf(props.documents, press_release, language)}>
+              <PressReleaseLink target="_blank" href={getPdf(props.documents, press_release, language)}>
                 {press_release[createProperty("title_of_press_release_in", language)]}
-              </a>
+              </PressReleaseLink>
             </PressReleaseText>
           </PressReleaseWrapper>
         ))}
