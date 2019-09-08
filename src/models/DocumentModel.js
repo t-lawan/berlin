@@ -26,7 +26,7 @@ const getType = mime_type => {
       type = DocumentType.pdf
       break
     default:
-      type = Document.unknown
+      type = DocumentType.unknown
   }
   return type
 }

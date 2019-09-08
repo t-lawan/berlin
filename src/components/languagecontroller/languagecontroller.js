@@ -35,19 +35,22 @@ class LanguageController extends React.Component {
   }
 
   createPath = currentLanguage => {
-    let pathArray = window.location.pathname.split("/")
-    currentLanguage = currentLanguage.toLowerCase()
+    if (typeof window !== `undefined`) {
+      let pathArray = window.location.pathname.split("/")
+      currentLanguage = currentLanguage.toLowerCase()
 
-    if (currentLanguage === "en") {
-      if (pathArray[1] === "de") {
-        pathArray.splice(1, 1)
+      if (currentLanguage === "en") {
+        if (pathArray[1] === "de") {
+          pathArray.splice(1, 1)
+        }
+      } else {
+        if (pathArray[1] !== "de") {
+          pathArray.splice(1, 0, currentLanguage)
+        }
       }
-    } else {
-      if (pathArray[1] !== "de") {
-        pathArray.splice(1, 0, currentLanguage)
-      }
+      return pathArray.join("/")
     }
-    return pathArray.join("/")
+    return ""
   }
 
   changeLanguageFromPath = () => {
