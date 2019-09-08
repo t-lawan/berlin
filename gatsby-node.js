@@ -261,7 +261,7 @@ exports.createPages = async ({ graphql, actions }) => {
         template = pressTemplate
         break
       case "about":
-        template = pressTemplate
+        template = pageTemplate
         break
       default:
         template = pageTemplate
