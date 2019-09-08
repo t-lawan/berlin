@@ -1,11 +1,11 @@
 import React from "react"
 import { EventsWrapper, EventItem, EventLink } from "./upcomingevents.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
-// let events = generateEvents(20);
+
+
 let events = []
-
 const UpcomingEvents = props => {
 
   events = props.events.slice(0, 6);
@@ -17,9 +17,10 @@ const UpcomingEvents = props => {
   return (
     <EventsWrapper>
       {filteredEvents.map(event => (
-        <EventItem key={event.id}>
-          <EventLink to={`/event/${event.slug}`}>
-            <p> {event.start_date.toString()}</p>
+        <EventItem>
+          <EventLink to={createPath(language,`event/${event.slug}`)}>
+            {/* <p> {event.start_date.toString()}</p> */}
+
             <p> {event[language].title}</p>
             <p> {event[language].subtitle}</p>
             <p> {event.venue}</p>

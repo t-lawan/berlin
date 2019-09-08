@@ -11,9 +11,13 @@ const DateCard = props => {
   if (props.containsEvents) {
     const monthDay = DateManager.createMonthDayString(props.day, props.month);
     const date = DateManager.createDatetring(props.day, props.month, props.year);
-    const events = props.events.sort((a,b) => {
-      return a.start_time['EN'].charAt(0) - b.start_time['EN'].charAt(0);
-    });
+
+    // const events = props.events.sort((a,b) => {
+    //   console.log('a', a);
+    //   return a.start_time.charAt(0) - b.start_time.charAt(0);
+    // });
+    const events = props.events;
+
     renderComponents = (
       <DateCardWrapper id={`date-${DateManager.createDateClass(props.day, props.month, props.year)}`}>
         <CurrentDate>

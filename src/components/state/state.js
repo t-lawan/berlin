@@ -5,7 +5,8 @@ import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
 import { generateEvents } from "../../models/EventsModel"
 import { generateExhibitions } from "../../models/ExhibitionModel"
-import { generateNewsArticles } from "../../models/NewsModel";
+
+import { generateNewsArticles } from "../../models/NewsModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -19,35 +20,31 @@ const State = props => {
                 slug
                 acf {
                   DE {
-                    display_time
                     event_subtitle
                     event_title
                     full_description
                     other_event_venue
                     rsvp_note
                     rsvp_required
-                    short_calendar_description
                     special_info_notice
                   }
                   EN {
-                    display_time
+
                     full_description
                     event_title
                     event_subtitle
                     other_event_venue
                     rsvp_note
                     rsvp_required
-                    short_calendar_description
+
                     special_info_notice
                   }
-                  end_date
+
                   event_is_free
                   event_language
                   event_limited_capacity
                   other_event_language
                   participants
-                  start_date
-                  start_time
                   template
                 }
               }
@@ -77,6 +74,79 @@ const State = props => {
               }
             }
           }
+          allWordpressWpParticipants {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  exp_number
+                  firstname
+                  image_gallery
+                  is_artist_in_exhibition
+                  lastname
+                  participant_group
+                  personal_website
+                  related_resources
+                  EN {
+                    group_bios
+                    project_description
+                    short_bio
+                  }
+                  participant_venue
+                  DE {
+                    group_bios
+                    project_description
+                    short_bio
+                  }
+                }
+              }
+            }
+          }
+          allWordpressWpMedia {
+            edges {
+              node {
+                wordpress_id
+                mime_type
+                source_url
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                slug
+                alt_text
+              }
+            }
+          }
+          allWordpressWpVenue {
+            edges {
+              node {
+                id
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    access_info
+                    venue_name
+                  }
+                  google_map_link
+                  thumbnail_image
+                  venue_address {
+                    address_line
+                  }
+                  venue_city
+                  venue_plz
+                  venue_public_transit {
+                    transit_option
+                  }
+                  venue_tel
+                  venue_wheelchair_access
+                }
+              }
+            }
+          }
+
         }
       `
     )
@@ -84,8 +154,8 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
+    let news = generateNewsArticles(20)
 
-    let news = generateNewsArticles(20);
 
     events = generateEvents(20)
 
@@ -94,10 +164,28 @@ const State = props => {
       Convert.toExhibitionModel
     )
 
-    exhibitions = generateExhibitions(20)
+    // exhibitions = generateExhibitions(20)
 
+    let participants = Convert.toModelArray(
+      data.allWordpressWpParticipants,
+      Convert.toParticipantModel
+    )
+
+    let venues = Convert.toModelArray(
+      data.allWordpressWpVenue,
+      Convert.toVenueModel
+    )
+
+    let documents = Convert.toModelArray(
+      data.allWordpressWpMedia,
+      Convert.toDocumentModel
+    )
+    props.setDocuments(documents)
+    props.setVenues(venues)
+    props.setParticipants(participants)
     props.setEvents(events)
-    props.setNews(news);
+    props.setNews(news)
+
     props.setExhibitions(exhibitions)
     props.loaded()
   }
@@ -120,8 +208,23 @@ const mapDispatchToProps = dispatch => {
     setExhibitions: exhibitions =>
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
-    setNews: news =>
-      dispatch({ type: actionTypes.SET_NEWS, news: news })
+    setNews: news => dispatch({ type: actionTypes.SET_NEWS, news: news }),
+    setParticipants: participants =>
+      dispatch({
+        type: actionTypes.SET_PARTICIPANTS,
+        participants: participants,
+      }),
+    setVenues: venues =>
+      dispatch({
+        type: actionTypes.SET_VENUES,
+        venues: venues,
+      }),
+    setDocuments: documents =>
+      dispatch({
+        type: actionTypes.SET_DOCUMENTS,
+        documents: documents,
+      }),
+
   }
 }
 
