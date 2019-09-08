@@ -19,35 +19,28 @@ const State = props => {
                 slug
                 acf {
                   DE {
-                    display_time
                     event_subtitle
                     event_title
                     full_description
                     other_event_venue
                     rsvp_note
                     rsvp_required
-                    short_calendar_description
                     special_info_notice
                   }
                   EN {
-                    display_time
                     full_description
                     event_title
                     event_subtitle
                     other_event_venue
                     rsvp_note
                     rsvp_required
-                    short_calendar_description
                     special_info_notice
                   }
-                  end_date
                   event_is_free
                   event_language
                   event_limited_capacity
                   other_event_language
                   participants
-                  start_date
-                  start_time
                   template
                 }
               }

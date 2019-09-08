@@ -25,6 +25,7 @@ class LanguageController extends React.Component {
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
             bold={this.props.languages[language] ? 1 : 0}
+            fade
           >
             {language.toLowerCase()}
           </LanguageButton>

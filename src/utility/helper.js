@@ -11,3 +11,7 @@ export const createPath = (language, path) => {
     language === "EN" ? `/${path}` : `/${language.toLowerCase()}/${path}`
   return newPath
 }
+
+export const createProperty = (property, language) => {
+  return `${property}_${language.toLowerCase()}`
+}

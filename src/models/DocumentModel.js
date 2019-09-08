@@ -1,14 +1,14 @@
 export class DocumentModel {
   constructor(id, mime_type, url, slug, caption_en, caption_de) {
     this.id = id
-    this.type = getType(mime_type);
-    this.url = url;
-    this.slug = slug;
+    this.type = getType(mime_type)
+    this.url = url
+    this.slug = slug
     this.EN = {
-        caption: caption_en
+      caption: caption_en,
     }
     this.DE = {
-        caption: caption_de
+      caption: caption_de,
     }
   }
 }
@@ -16,21 +16,23 @@ export class DocumentModel {
 const getType = mime_type => {
   let type = ""
   switch (mime_type) {
-    case mime_type.includes('image'):
+    case "image/jpeg":
       type = DocumentType.image
       break
-    case mime_type.includes('pdf'):
+    case "image/png":
+      type = DocumentType.image
+      break
+    case "application/pdf":
       type = DocumentType.pdf
       break
     default:
-        type = Document.unknown 
+      type = Document.unknown
   }
-
-  return type;
+  return type
 }
 
 const DocumentType = {
   image: "image",
   pdf: "pdf",
-  unknown: "unknown"
+  unknown: "unknown",
 }

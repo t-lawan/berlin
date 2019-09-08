@@ -18,7 +18,6 @@ const PracticalInformationWrapper = styled.div`
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
-  console.log("pra", pageInfo)
   const image = getDocument(props.documents, pageInfo.acf.thumbnail_image)
   const url = image ? image.url : '';
   const renderComponent = (
@@ -45,7 +44,7 @@ const PracticalInformation = props => {
 
       <div>
         <img src={url} />
-        <p
+        <div
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
           }}

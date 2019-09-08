@@ -11,7 +11,7 @@ justify-content: center;
 padding: 0.5em;
 `;
 
-export const LanguageButton = styled(Link)`
+export const LanguageButton = styled(AniLink)`
 text-decoration: none;
 color: black;
 margin-bottom: 0.25em;
