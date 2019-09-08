@@ -5,6 +5,7 @@ import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
 import { generateEvents } from "../../models/EventsModel"
 import { generateExhibitions } from "../../models/ExhibitionModel"
+
 import { generateNewsArticles } from "../../models/NewsModel"
 
 const State = props => {
@@ -28,14 +29,17 @@ const State = props => {
                     special_info_notice
                   }
                   EN {
+
                     full_description
                     event_title
                     event_subtitle
                     other_event_venue
                     rsvp_note
                     rsvp_required
+
                     special_info_notice
                   }
+
                   event_is_free
                   event_language
                   event_limited_capacity
@@ -142,6 +146,7 @@ const State = props => {
               }
             }
           }
+
         }
       `
     )
@@ -150,6 +155,7 @@ const State = props => {
       Convert.toEventModel
     )
     let news = generateNewsArticles(20)
+
 
     events = generateEvents(20)
 
@@ -179,6 +185,7 @@ const State = props => {
     props.setParticipants(participants)
     props.setEvents(events)
     props.setNews(news)
+
     props.setExhibitions(exhibitions)
     props.loaded()
   }
@@ -217,6 +224,7 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_DOCUMENTS,
         documents: documents,
       }),
+
   }
 }
 

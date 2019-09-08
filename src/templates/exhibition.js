@@ -16,7 +16,6 @@ const Exhibition = props => {
   const renderComponent = (
     <ExhibitionPageWrapper>
       <SEO title={`${exhibition[language].title}`} description={`${exhibition[language].title}`} lang={language}/>
-
       <h4>{exhibition[language].title}</h4>
       <h5>{exhibition[language].subtitle}</h5>
       <p

@@ -21,7 +21,6 @@ const Event = props => {
   const renderComponent = (
     <EventPageWrapper>
       <SEO title={`${event.slug}`} description={`${event.slug}`} lang={language}/>
-
       <EventColumn>
         <h4>{event[language].display_time}</h4>
         <h4>Talk</h4>

@@ -134,6 +134,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_required
                 special_info_notice
               }
+
               event_is_free
               event_language
               event_limited_capacity
@@ -295,7 +296,6 @@ exports.createPages = async ({ graphql, actions }) => {
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
   
   allWordpressWpExhibitions.edges.forEach(edge => {
-
     languages.forEach((language) => {
       let path = language === "en" ? `/exhibition/${edge.node.slug}` : `/${language}/exhibition/${edge.node.slug}`
 
@@ -333,6 +333,4 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-
-
 }
