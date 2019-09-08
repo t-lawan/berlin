@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
 export const PageWrapper = styled.div`
-  padding: 1em;
+  padding: 2em 1em;
 `;
 

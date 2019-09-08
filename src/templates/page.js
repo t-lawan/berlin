@@ -4,12 +4,15 @@ import Layout from "../components/layout/layout";
 import { PageWrapper } from "./page.styles";
 import {connect} from 'react-redux';
 import { getCurrentLanguageString } from "../utility/helper";
+import SEO from "../components/seo/seo";
 
 const Page = (props) => {
   const language = getCurrentLanguageString(props.languages);
   const renderComponent = (
     <PageWrapper>
-      <div dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].content }} />
+      <SEO title={`${props.pageContext.slug}`} description={`${props.pageContext.slug}`} lang={language}/>
+      <h3 dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].title }} />
+      <p dangerouslySetInnerHTML={{ __html: props.pageContext.acf[language].content }} />
     </PageWrapper>
   )
 

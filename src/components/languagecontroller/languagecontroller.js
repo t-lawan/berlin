@@ -1,35 +1,79 @@
 import React from "react"
-import styled from 'styled-components';
 import PropTypes from "prop-types"
-import {connect} from 'react-redux';
-import * as actionTypes from "../../store/action";
-import { LanguageControllerWrapper, LanguageButton } from "./languagecontroller.styles";
+import { connect } from "react-redux"
+import * as actionTypes from "../../store/action"
+import {
+  LanguageControllerWrapper,
+  LanguageButton,
+} from "./languagecontroller.styles"
+import { getCurrentLanguageString } from "../../utility/helper"
+class LanguageController extends React.Component {
+  languageToFunctionWrapper = {
+    EN: () => this.props.setLanguageToEN(),
+    DE: () => this.props.setLanguageToDE(),
+  }
+  componentDidMount() {
+    this.changeLanguageFromPath()
+  }
 
-const LanguageController = (props) => {
-    const languages = props.languages;
-    const languageToFunctionWrapper = {
-        EN: () => props.setLanguageToEN(),
-        DE: () => props.setLanguageToDE()
-    }
-    return(
-    <LanguageControllerWrapper>    
-        {Object.keys(languages).map(language => (
-         <LanguageButton key={language} onClick={languageToFunctionWrapper[language]} hover bold={languages[language]}> {language.toLowerCase()}</LanguageButton>
+  render() {
+    return (
+      <LanguageControllerWrapper>
+        {Object.keys(this.props.languages).map(language => (
+          <LanguageButton
+            key={language}
+            to={this.createPath(language)}
+            onClick={this.languageToFunctionWrapper[language]}
+            bold={this.props.languages[language] ? 1 : 0}
+            fade
+          >
+            {language.toLowerCase()}
+          </LanguageButton>
         ))}
-    </LanguageControllerWrapper>
-)}
+      </LanguageControllerWrapper>
+    )
+  }
 
+  createPath = currentLanguage => {
+    let pathArray = window.location.pathname.split("/")
+    currentLanguage = currentLanguage.toLowerCase()
+
+    if (currentLanguage === "en") {
+      if (pathArray[1] === "de") {
+        pathArray.splice(1, 1)
+      }
+    } else {
+      if (pathArray[1] !== "de") {
+        pathArray.splice(1, 0, currentLanguage)
+      }
+    }
+    return pathArray.join("/")
+  }
+
+  changeLanguageFromPath = () => {
+    let language = window.location.pathname.split("/")[1]
+    if (
+      language.toUpperCase() !== getCurrentLanguageString(this.props.languages)
+    ) {
+      language = language !== "de" ? "en" : language
+      this.languageToFunctionWrapper[language.toUpperCase()]()
+    }
+  }
+}
 
 const mapStateToProps = state => {
-    return {
-        languages: state.languages
-    }
+  return {
+    languages: state.languages,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        setLanguageToEN: () => dispatch({type: actionTypes.SET_LANGUAGE_TO_EN}),
-        setLanguageToDE: () => dispatch({type: actionTypes.SET_LANGUAGE_TO_DE})
-    }
+  return {
+    setLanguageToEN: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_EN }),
+    setLanguageToDE: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_DE }),
+  }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LanguageController);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LanguageController)

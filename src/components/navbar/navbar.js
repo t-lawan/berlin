@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql, useStaticQuery} from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem } from "./navbar.styles"
+import { connect } from "react-redux"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
 const Navbar = props => {
   const data = useStaticQuery(
@@ -24,18 +26,18 @@ const Navbar = props => {
     `
   )
 
+  const language = getCurrentLanguageString(props.languages)
   return (
     <NavWrapper>
       <NavInner>
         {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
           <NavItem
             activeStyle={{ color: "#990033" }}
-            to={`/${item.object_slug}`}
+            to={createPath(language, item.object_slug)}
             key={item.object_slug}
-            fade
+            swipe
+            direction="up"
             duration={0.3}
-            // swipe
-            // entryOffset={95}
           >
             {item.title.toLowerCase()}
           </NavItem>
@@ -45,9 +47,19 @@ const Navbar = props => {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+    experience: state.experience,
+  }
+}
+
 Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 }
 
-export default Navbar
+export default connect(
+  mapStateToProps,
+  null
+)(Navbar)

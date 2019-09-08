@@ -113,9 +113,14 @@ module.exports = {
           "**/taxonomies",
           "**/users",
           "**/events",
-          "**/venues",
-          "**/exhibition",
-          "**/menus"
+          "**/venue",
+          "**/participants",
+          "**/exhibitions",
+          "**/menus",
+          "**/resources",
+          "**/documentation",
+          "**/news",
+
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: [],

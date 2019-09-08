@@ -16,25 +16,35 @@ export class CalendarModel {
     12: 31,
   }
 
-  static createCalendar = eventsArray => {
-    let calendar = {}
-    const months = Object.keys(DateManager.getMonths());
-    months.map(month => {
-      for (let i = 0; i < DateManager.getNumberOfDaysInMonth(month); i++) {
-        const filteredEvents = eventsArray.filter(event => {
-          return (DateManager.get(event.start_date, "month") == month) && (DateManager.get(event.start_date, "date") == i + 1)
-        });
-        calendar = {
-          ...calendar,
-          [month]: {
-            ...calendar[month],
-            [i + 1]: filteredEvents,
-          },
+  static createCalendar = calendarItemsArray => {
+    let calendar = {};
+    const dates = DateManager.getCalendar();
+    const years = Object.keys(dates);
+    years.forEach(year => {
+      const months = Object.keys(dates[year]);
+      months.map(month => {
+        for (let i = 0; i < DateManager.getNumberOfDaysInMonth(month, year); i++) {
+          const filteredCalendarItems = calendarItemsArray.filter(calendarItem => {
+            return isCurrentDate(calendarItem, i, month, year);
+          });
+          calendar = {
+            ...calendar,
+            [`${year}-${month}`]: {
+              ...calendar[`${year}-${month}`],
+              [i + 1]: filteredCalendarItems,
+            },
+          }
         }
-      }
+      })
     })
-
     return calendar
   }
+
+}
+
+const isCurrentDate = (calendarItem, date, month, year) => {
+  return (DateManager.get(calendarItem.start_date, "date") == date + 1) 
+  && (DateManager.get(calendarItem.start_date, "month") + 1 == month)
+  && (DateManager.get(calendarItem.start_date, "year") == year)
 }
 

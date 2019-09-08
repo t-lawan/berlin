@@ -9,7 +9,6 @@ const NewsWrapper = styled.div``
 const RelatedNews = props => {
   const related_articles = [84];
     const regex = createRegex(related_articles);
-    console.log(regex);
   return (
     // <StaticQuery
     //   query={graphql`
