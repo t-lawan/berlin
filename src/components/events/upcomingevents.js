@@ -17,7 +17,7 @@ const UpcomingEvents = props => {
   return (
     <EventsWrapper>
       {filteredEvents.map(event => (
-        <EventItem>
+        <EventItem key={event.slug}>
           <EventLink to={createPath(language,`event/${event.slug}`)}>
             {/* <p> {event.start_date.toString()}</p> */}
 
