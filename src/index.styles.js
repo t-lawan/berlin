@@ -1,7 +1,6 @@
 import styled, { css, createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i&display=swap');
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
   box-sizing: border-box;
@@ -24,7 +23,6 @@ body {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 2.25rem;
   line-height: 1.1;
 }
@@ -38,7 +36,6 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 1.62671rem;
   line-height: 1.1;
 }
@@ -52,7 +49,6 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 1.38316rem;
   line-height: 1.1;
 }
@@ -66,7 +62,6 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 1rem;
   line-height: 1.1;
 }
@@ -80,7 +75,6 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 0.85028rem;
   line-height: 1.1;
 }
@@ -94,7 +88,6 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 0.78405rem;
 }
 img {
