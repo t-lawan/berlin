@@ -91,8 +91,6 @@ exports.createPages = async ({ graphql, actions }) => {
               thumbnail_image
               funding {
                 funding_type
-                logo_block
-                logo_upload
                 notice_de
                 project_funding_list
                 notice_en
@@ -114,6 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            wordpress_id
             slug
             acf {
               DE {
@@ -134,13 +133,25 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_required
                 special_info_notice
               }
-
+              dates {
+                DE {
+                  display_time
+                }
+                EN {
+                  display_time
+                }
+                display_time_feed_de
+                display_time_feed_en
+                end_date
+                start_date
+              }
               event_is_free
               event_language
               event_limited_capacity
               other_event_language
               participants
               template
+              exp_number
             }
           }
         }

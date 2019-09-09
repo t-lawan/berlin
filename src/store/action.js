@@ -11,5 +11,8 @@ export const SET_EXHIBITIONS = "SET_EXHIBITIONS";
 export const SET_PARTICIPANTS = "SET_PARTICIPANTS";
 export const SET_VENUES = "SET_VENUES";
 export const SET_DOCUMENTS = "SET_DOCUMENTS";
+export const SET_CALENDAR_ITEMS = "SET_CALENDAR_ITEMS";
+export const SET_CALENDAR = "SET_CALENDAR";
+
 
 export const IS_LOADED = "IS_LOADED";

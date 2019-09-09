@@ -7,21 +7,20 @@ import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
 let events = []
 const UpcomingEvents = props => {
-
-  events = props.events.slice(0, 6);
+  events = props.events
   const filteredEvents = events.filter(event => {
-    return event.experience == props.experience
+    return event.experience.includes(props.experience.toString())
   })
   const language = getCurrentLanguageString(props.languages)
 
   return (
     <EventsWrapper>
       {filteredEvents.map(event => (
-        <EventItem key={event.slug}>
+        <EventItem key={event.id}>
           <EventLink to={createPath(language,`event/${event.slug}`)}>
             {/* <p> {event.start_date.toString()}</p> */}
 
-            <p> {event[language].title}</p>
+            <p dangerouslySetInnerHTML={{ __html: event[language].event_title }} />
             <p> {event[language].subtitle}</p>
             <p> {event.venue}</p>
           </EventLink>

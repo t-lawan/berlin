@@ -13,7 +13,9 @@ const intitalState = {
   isLoaded: false,
   participants: [],
   venues: [],
-  documents: []
+  documents: [],
+  calendar_items: [],
+  calendar: {},
 }
 
 const reducer = (state = intitalState, action) => {
@@ -60,6 +62,14 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         documents: action.documents,
       })
+    case actionTypes.SET_CALENDAR_ITEMS:
+      return Object.assign({}, state, {
+        calendar_items: action.calendar_items,
+      })
+    case actionTypes.SET_CALENDAR:
+      return Object.assign({}, state, {
+        calendar: action.calendar,
+      })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
@@ -72,6 +82,5 @@ const reducer = (state = intitalState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null
-
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
