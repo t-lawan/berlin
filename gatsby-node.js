@@ -91,8 +91,6 @@ exports.createPages = async ({ graphql, actions }) => {
               thumbnail_image
               funding {
                 funding_type
-                logo_block
-                logo_upload
                 notice_de
                 project_funding_list
                 notice_en
@@ -114,6 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            wordpress_id
             slug
             acf {
               DE {

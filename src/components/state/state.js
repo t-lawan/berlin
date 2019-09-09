@@ -19,6 +19,7 @@ const State = props => {
             edges {
               node {
                 id
+                wordpress_id
                 slug
                 acf {
                   DE {
@@ -165,8 +166,6 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
-    console.log("events", events)
-
     let news = generateNewsArticles(20)
 
     // events = generateEvents(20)
@@ -180,7 +179,6 @@ const State = props => {
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems.push(Convert.exhibitionsToCalendarItemArray(exhibitions))
-    console.log("calendarItems", calendarItems)
     let calendar = CalendarModel.createCalendar(calendarItems)
     let participants = Convert.toModelArray(
       data.allWordpressWpParticipants,
