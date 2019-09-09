@@ -9,7 +9,6 @@ export class EventsModel {
     EN,
     DE,
     dates,
-    end_date,
     venue,
     event_documentation,
     event_is_free,
@@ -26,7 +25,6 @@ export class EventsModel {
     this.EN = EN
     this.DE = DE
     this.dates = dates
-    this.end_date = end_date
     this.venue = venue
     this.documentation = event_documentation
     this.is_free = event_is_free
@@ -62,15 +60,6 @@ export const generateEvents = numberOfEvents => {
       language,
       language,
       dates,
-      moment(
-        faker.date.between("2019-08-01", "2019-12-31"),
-        "YYYY-MM-DD HH:mm Z"
-      ).format("YYYYMMDD"),
-      `${faker.random.number(1, 2)} pm`,
-      moment(
-        faker.date.between("2019-08-01", "2019-12-31"),
-        "YYYY-MM-DD HH:mm Z"
-      ).format("YYYYMMDD"),
       faker.random.word(2),
       "",
       faker.random.boolean,
