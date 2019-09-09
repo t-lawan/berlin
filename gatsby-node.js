@@ -134,7 +134,18 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_required
                 special_info_notice
               }
-
+              dates {
+                DE {
+                  display_time
+                }
+                EN {
+                  display_time
+                }
+                display_time_feed_de
+                display_time_feed_en
+                end_date
+                start_date
+              }
               event_is_free
               event_language
               event_limited_capacity

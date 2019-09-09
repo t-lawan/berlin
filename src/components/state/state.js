@@ -7,6 +7,8 @@ import { generateEvents } from "../../models/EventsModel"
 import { generateExhibitions } from "../../models/ExhibitionModel"
 
 import { generateNewsArticles } from "../../models/NewsModel"
+import { CalendarItemModel } from "../../models/CalendarItemModel"
+import { CalendarModel } from "../../models/CalendarModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -29,7 +31,6 @@ const State = props => {
                     special_info_notice
                   }
                   EN {
-
                     full_description
                     event_title
                     event_subtitle
@@ -39,7 +40,18 @@ const State = props => {
 
                     special_info_notice
                   }
-
+                  dates {
+                    DE {
+                      display_time
+                    }
+                    EN {
+                      display_time
+                    }
+                    display_time_feed_de
+                    display_time_feed_en
+                    end_date
+                    start_date
+                  }
                   event_is_free
                   event_language
                   event_limited_capacity
@@ -146,7 +158,6 @@ const State = props => {
               }
             }
           }
-
         }
       `
     )
@@ -154,10 +165,11 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
+    console.log("events", events)
+
     let news = generateNewsArticles(20)
 
-
-    events = generateEvents(20)
+    // events = generateEvents(20)
 
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
@@ -166,6 +178,10 @@ const State = props => {
 
     // exhibitions = generateExhibitions(20)
 
+    let calendarItems = Convert.eventsToCalendarItemArray(events)
+    calendarItems.push(Convert.exhibitionsToCalendarItemArray(exhibitions))
+    console.log("calendarItems", calendarItems)
+    let calendar = CalendarModel.createCalendar(calendarItems)
     let participants = Convert.toModelArray(
       data.allWordpressWpParticipants,
       Convert.toParticipantModel
@@ -180,6 +196,8 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
+    props.setCalendarItems(calendarItems)
+    props.setCalendar(calendar)
     props.setDocuments(documents)
     props.setVenues(venues)
     props.setParticipants(participants)
@@ -224,7 +242,16 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_DOCUMENTS,
         documents: documents,
       }),
-
+    setCalendarItems: calendar_items =>
+      dispatch({
+        type: actionTypes.SET_CALENDAR_ITEMS,
+        calendar_items: calendar_items,
+      }),
+    setCalendar: calendar =>
+      dispatch({
+        type: actionTypes.SET_CALENDAR,
+        calendar: calendar,
+      }),
   }
 }
 
