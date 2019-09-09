@@ -16,6 +16,9 @@ const intitalState = {
   documents: [],
   calendar_items: [],
   calendar: {},
+  modal: {
+    show: false
+  },
 }
 
 const reducer = (state = intitalState, action) => {
@@ -73,6 +76,18 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
+      })
+    case actionTypes.SHOW_MODAL:
+      return Object.assign({}, state, {
+        modal: {
+          show: true
+        },
+      })
+    case actionTypes.HIDE_MODAL:
+      return Object.assign({}, state, {
+        modal: {
+          show: false
+        },
       })
     default:
       return state

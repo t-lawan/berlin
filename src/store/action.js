@@ -13,6 +13,7 @@ export const SET_VENUES = "SET_VENUES";
 export const SET_DOCUMENTS = "SET_DOCUMENTS";
 export const SET_CALENDAR_ITEMS = "SET_CALENDAR_ITEMS";
 export const SET_CALENDAR = "SET_CALENDAR";
-
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";
 
 export const IS_LOADED = "IS_LOADED";
