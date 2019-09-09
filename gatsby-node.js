@@ -254,6 +254,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
   const practicalInformationTemplate = path.resolve(`./src/templates/practical-information.js`)
   const pressTemplate = path.resolve(`./src/templates/press.js`)
+  const aboutTemplate = path.resolve(`./src/templates/about.js`)
 
   const languages = ['en', 'de'];
 
@@ -273,7 +274,7 @@ exports.createPages = async ({ graphql, actions }) => {
         template = pressTemplate
         break
       case "about":
-        template = pageTemplate
+        template = aboutTemplate
         break
       default:
         template = pageTemplate
