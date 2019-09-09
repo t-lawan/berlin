@@ -37,9 +37,7 @@ const PressReleaseLink = styled.a`
 
 const Press = props => {
   const language = getCurrentLanguageString(props.languages)
-
-  const pressInfo = props.pageContext
-  console.log("press", pressInfo)
+  const pressInfo = props.pageContext;
   const renderComponent = (
     <PressWrapper>
       {/* firstColumn */}

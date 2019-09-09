@@ -4,6 +4,8 @@ import styled from "styled-components"
 import Columns from "../columns/columns"
 import { GlobalStyle } from "../../index.styles"
 import State from "../state/state"
+import Modal from "../modal/modal";
+import { connect } from "react-redux"
 
 const LayoutWrapper = styled.div`
   width: 100vw;
@@ -15,6 +17,7 @@ const Layout = props => {
     <LayoutWrapper>
       <GlobalStyle />
       <State />
+      <Modal show={props.modal.show} />
       <Columns
         firstColumn={props.firstColumn}
         secondColumn={props.secondColumn}
@@ -34,4 +37,14 @@ Layout.propTypes = {
   description: PropTypes.string,
 }
 
-export default Layout
+const mapStateToProps = state => {
+  return {
+    modal: state.modal
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Layout)
+
