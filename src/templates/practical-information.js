@@ -4,24 +4,16 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { PageWrapper } from "./page.styles"
-import styled from "styled-components"
+import { PageWrapper, TwoColumnPageWrapper } from "./page.styles"
 import { getDocument } from "../store/selector"
-import { changeGridToOneRow } from "../index.styles";
 
-const PracticalInformationWrapper = styled.div`
-  padding: 2em 1em;
-  display: grid;
-  grid-template-columns: 3fr 6fr;
-  ${changeGridToOneRow}
-`
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
   const image = getDocument(props.documents, pageInfo.acf.thumbnail_image)
   const url = image ? image.url : '';
   const renderComponent = (
-    <PracticalInformationWrapper>
+    <TwoColumnPageWrapper>
       <div>
         <div>
           {pageInfo.acf[language].address_info.map((address, index) => (
@@ -50,7 +42,7 @@ const PracticalInformation = props => {
           }}
         />
       </div>
-    </PracticalInformationWrapper>
+    </TwoColumnPageWrapper>
   )
 
   return (
