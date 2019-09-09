@@ -151,6 +151,7 @@ exports.createPages = async ({ graphql, actions }) => {
               other_event_language
               participants
               template
+              exp_number
             }
           }
         }

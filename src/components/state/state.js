@@ -59,6 +59,7 @@ const State = props => {
                   other_event_language
                   participants
                   template
+                  exp_number
                 }
               }
             }
