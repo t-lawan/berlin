@@ -8,7 +8,7 @@ import UpcomingEvents from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo";
 
 const EventPageWrapper = styled.div`
-  padding: 2em 1em;
+  padding: 2em 2em;
   display: grid;
   grid-template-columns: 2fr 5fr;
   grid-gap: 1em;
