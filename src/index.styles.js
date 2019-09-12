@@ -12,6 +12,7 @@ body {
   height: 100%;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
+  font-style: normal;
   }
   h1 {
   margin-left: 0;
@@ -23,7 +24,7 @@ body {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-size: 2.25rem;
+  font-size: 1.8em;
   line-height: 1.1;
 }
 h2 {
@@ -36,6 +37,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
+  
   font-size: 1.62671rem;
   line-height: 1.1;
 }
@@ -109,6 +111,7 @@ p{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
+  font-size: 1.15em;
 }
 `
 
