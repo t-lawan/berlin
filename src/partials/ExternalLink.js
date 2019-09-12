@@ -1,18 +1,37 @@
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { getDocument } from "../store/selector"
+import { connect } from "react-redux"
+import styled from "styled-components"
 
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+const Link = styled.a`
+    color: black;
+    text-decoration: none;
+`
+class ExternalLink extends Component {
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+    children: PropTypes.node,
+  }
+  doc;
 
-export default class ExternalLink extends Component {
-    static propTypes = {
-        link: PropTypes.string.isRequired,
-        text: PropTypes.string.isRequired
-    }
-
-    render() {
-        return (
-            <a target="_blank" href={this.props.link}>
-                {this.props.link}
-            </a>
-        )
-    }
+  render() {
+    this.doc = getDocument(this.props.documents, this.props.id)
+    return (
+      <Link target="_blank" href={this.doc.url}>
+        {this.props.children}
+      </Link>
+    )
+  }
 }
+
+const mapStateToProps = state => {
+  return {
+    documents: state.documents,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(ExternalLink)
