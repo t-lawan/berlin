@@ -7,7 +7,13 @@ export const getDocument = (documents ,id) => {
 }
 
 export const getDocuments = (documents ,ids) => {
-    return documents.filter((document) => {
-        return ids.includes(document.id);
+    return documents.filter((d) => {
+        return ids.includes(d.id);
+    });
+}
+
+export const getVenue = (venues, id) => {
+    return venues.find((venue) => {
+        return venue.id === id;
     });
 }
