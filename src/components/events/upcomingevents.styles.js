@@ -2,6 +2,7 @@ import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const EventsWrapper = styled.div`
+  border-top: 1px solid black;
   padding: 2em;
 `
 
@@ -16,5 +17,4 @@ export const EventLink = styled(AniLink)`
   text-decoration: none;
   color: black;
   border-bottom: 1px solid black;
-
 `
