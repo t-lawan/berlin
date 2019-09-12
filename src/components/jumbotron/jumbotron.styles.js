@@ -8,6 +8,7 @@ export const JumbotronWrapper = styled.div`
   padding-bottom: 0em;
   margin: 0em;
   ${showDisplayForTablet}
+  border-bottom: 1px solid black;
 `
 
 export const JumbotronHeader = styled(AniLink)`
