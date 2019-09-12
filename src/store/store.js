@@ -14,10 +14,17 @@ const intitalState = {
   participants: [],
   venues: [],
   documents: [],
+  resources: [],
   calendar_items: [],
   calendar: {},
   modal: {
-    show: false
+    show: false,
+  },
+  experience_transition: {
+    animationIn: "slideInLeft",
+    animationOut: "slideOutRight",
+    isVisible: true,
+    isTransitioning: false,
   },
 }
 
@@ -65,6 +72,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         documents: action.documents,
       })
+    case actionTypes.SET_RESOURCES:
+      return Object.assign({}, state, {
+        resources: action.resources,
+      })
     case actionTypes.SET_CALENDAR_ITEMS:
       return Object.assign({}, state, {
         calendar_items: action.calendar_items,
@@ -73,6 +84,31 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         calendar: action.calendar,
       })
+    case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
+      return Object.assign({}, state, {
+        experience_transition: {
+          animationIn: "slideInRight",
+          animationOut: "slideOutLeft",
+          isVisible: false,
+          isTransitioning: true,
+        },
+      })
+    case actionTypes.DECREASE_EXPERIENCE_TRANSITION:
+      return Object.assign({}, state, {
+        experience_transition: {
+          animationIn: "slideInLeft",
+          animationOut: "slideOutRight",
+          isVisible: false,
+          isTransitioning: true,
+        },
+      })
+    case actionTypes.SET_IS_VISIBLE_TO_TRUE:
+      return Object.assign({}, state, {
+        experience_transition: {
+          ...state.experience_transition,
+          isVisible: true
+        },
+      })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
@@ -80,13 +116,13 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SHOW_MODAL:
       return Object.assign({}, state, {
         modal: {
-          show: true
+          show: true,
         },
       })
     case actionTypes.HIDE_MODAL:
       return Object.assign({}, state, {
         modal: {
-          show: false
+          show: false,
         },
       })
     default:
