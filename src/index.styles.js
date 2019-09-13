@@ -107,6 +107,7 @@ p{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
+  margin-bottom: 0;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -134,8 +135,10 @@ export const hideDisplayForTablet = css`
 
 export const showDisplayForTablet = css`
   display: ${props => (props.showInMobile ? "none" : "inherit")};
+  ${'' /* visibility: ${props => (props.showInMobile ? "none" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
+    ${'' /* visibility: ${props => (props.showInMobile ? "inherit" : "none")}; */}
   }
 `
 
@@ -183,4 +186,8 @@ export const tablet = props => {
       ${props};
     }
   `
+}
+
+export const Color = {
+  yellow: "#EEEC7A"
 }
