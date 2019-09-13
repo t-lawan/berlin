@@ -51,9 +51,9 @@ class Columns extends React.Component {
           animateOnMount={false}
           animationInDuration={500}
         >
-          <ExperienceControllerMobile showInMobile />
           <Column rightBorder={true}>
             <StickyHeader>
+              <ExperienceControllerMobile showInMobile />
               <Jumbotron hideInMobile />
               <Header hideInMobile />
               <Navbar hideInMobile />

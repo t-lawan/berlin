@@ -10,20 +10,18 @@ export const AnimatedColumn = styled(Animated)`
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 5fr 3fr;
-  @media(max-width: ${size.tablet}) {
-    grid-template-columns: [first] 1fr [line2] 5fr 3fr;
-    grid-template-rows: [row1-start] 100%;
 
-  }
   /* ${changeGridToOneRow} */
 
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
+  @media (max-width: ${size.tablet}) {
+    width: 100vw;
+  }
   display: grid;
   grid-template-columns: 1fr 20fr 1fr;
   ${changeGridToOneRow}
-
 `
 
 export const FirstColumnWrapper = styled.div`
