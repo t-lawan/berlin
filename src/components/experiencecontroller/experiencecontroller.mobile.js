@@ -7,10 +7,6 @@ import {
   ExperienceControllerMobileButton,
 } from "./experiencecontroller.styles"
 
-
-
-
-
 const ExperienceControllerMobile = props => {
   let experiences = [1, 2, 3, 4];
 
