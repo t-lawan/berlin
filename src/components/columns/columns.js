@@ -17,13 +17,13 @@ import {
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
+import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 
-class Columns  extends React.Component {
-  renderedComponents;
-  numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo;
+class Columns extends React.Component {
+  renderedComponents
+  numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
 
-  render(){
-
+  render() {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
         <FirstColumnWrapper twoColumns>
@@ -38,8 +38,7 @@ class Columns  extends React.Component {
         </FirstColumnWrapper>
       )
     }
-  
-    
+
     return (
       <ColumnsWrapper>
         <Column rightBorder={true} hideInMobile>
@@ -52,13 +51,14 @@ class Columns  extends React.Component {
           animateOnMount={false}
           animationInDuration={500}
         >
+          <ExperienceControllerMobile showInMobile />
           <Column rightBorder={true}>
             <StickyHeader>
-              <Jumbotron showInMobile />
+              <Jumbotron hideInMobile />
               <Header hideInMobile />
-              <Navbar />
+              <Navbar hideInMobile />
             </StickyHeader>
-  
+
             {this.renderedComponents}
           </Column>
           <Column rightBorder={true} hideInMobile>
@@ -70,7 +70,7 @@ class Columns  extends React.Component {
             <SocialMedia />
           </Column>
         </AnimatedColumn>
-  
+
         <Column rightBorder={false} hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
