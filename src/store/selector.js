@@ -17,3 +17,9 @@ export const getVenue = (venues, id) => {
         return venue.id === id;
     });
 }
+
+export const getItems = (items, ids) => {
+    return items.filter((item) => {
+        return ids.includes(item.id);
+    })
+}
