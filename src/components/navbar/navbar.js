@@ -28,7 +28,7 @@ const Navbar = props => {
 
   const language = getCurrentLanguageString(props.languages)
   return (
-    <NavWrapper>
+    <NavWrapper hideInMobile>
       <NavInner>
         {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
           <NavItem
@@ -55,6 +55,7 @@ const mapStateToProps = state => {
 Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  hideInMobile: PropTypes.bool
 }
 
 export default connect(
