@@ -329,7 +329,7 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: path,
         component: slash(template),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
   })
@@ -345,7 +345,7 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: path,
         component: slash(eventTemplate),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
   })
@@ -362,7 +362,7 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: path,
         component: slash(exhibitionTemplate),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
   })
