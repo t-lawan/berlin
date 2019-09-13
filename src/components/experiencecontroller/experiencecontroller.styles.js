@@ -22,3 +22,18 @@ export const ExperienceButton = styled.h3`
   }
   font-weight: ${props => (props.bold ? "bold" : "normal")};
 `
+
+export const ExperienceControllerMobileWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: white;
+  border: 1px solid black;
+  border-right: 0;
+  /* ${showDisplayForTablet}; */
+`
+
+export const ExperienceControllerMobileButton = styled.div`
+  padding: 0.5em 2em;
+  border-right: 1px solid black;
+
+`
