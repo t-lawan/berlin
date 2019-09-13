@@ -6,18 +6,18 @@ import Header from "../header/header"
 import Navbar from "../navbar/navbar"
 import Jumbotron from "../jumbotron/jumbotron"
 import ExperienceController from "../experiencecontroller/experiencecontroller"
-import { Animated } from "react-animated-css"
 import { connect } from "react-redux"
-
 import {
   ColumnsWrapper,
   FirstColumnWrapper,
   StickyHeader,
   AnimatedColumn,
+  StickyFooter,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
+import DataPrivacy from "../data-privacy/data-privacy"
 
 class Columns extends React.Component {
   renderedComponents
@@ -53,14 +53,17 @@ class Columns extends React.Component {
         >
           <Column rightBorder={true}>
             <StickyHeader>
-              <ExperienceControllerMobile showInMobile />
-              <Jumbotron hideInMobile />
+              <ExperienceControllerMobile showInMobile={true} />
               <Header hideInMobile />
               <Navbar hideInMobile />
             </StickyHeader>
 
             {this.renderedComponents}
+            <StickyFooter>
+              <DataPrivacy show={!this.props.agreed_to_terms} />
+            </StickyFooter>
           </Column>
+          
           <Column rightBorder={true} hideInMobile>
             <StickyHeader>
               <Jumbotron />
@@ -90,6 +93,7 @@ Columns.propTypes = {
 const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
+    agreed_to_terms: state.agreed_to_terms
   }
 }
 export default connect(

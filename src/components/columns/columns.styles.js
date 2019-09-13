@@ -35,3 +35,9 @@ export const StickyHeader = styled.div`
   top: 0;
   position: sticky;
 `
+
+export const StickyFooter = styled.div`
+  z-index: 300;
+  bottom: 0;
+  position: sticky;
+`
