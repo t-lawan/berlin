@@ -11,9 +11,14 @@ const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
   const image = getDocument(props.documents, pageInfo.acf.thumbnail_image)
-  const url = image ? image.url : '';
+  const url = image ? image.url : ""
   const renderComponent = (
     <TwoColumnPageWrapper>
+      <SEO
+        title={`${pageInfo.slug}`}
+        description={`${pageInfo.slug}`}
+        lang={pageInfo.language}
+      />
       <div>
         <div>
           {pageInfo.acf[language].address_info.map((address, index) => (

@@ -31,7 +31,7 @@ const Event = props => {
         <SEO
           title={`${event.slug}`}
           description={`${event.slug}`}
-          lang={language}
+          lang={props.pageContext.language}
         />
         <EventColumn>
           {event.dates.map((date, index) => (

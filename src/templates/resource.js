@@ -9,9 +9,9 @@ import UpcomingEvents from "../components/events/upcomingevents"
 import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
 import ImageGalleryResource from "../partials/ImageGalleryResource"
-import ExternalLink from "../partials/ExternalLink";
-import { Color } from "../index.styles";
-import RelatedResources from "../components/resources/related-resources";
+import ExternalLink from "../partials/ExternalLink"
+import { Color } from "../index.styles"
+import RelatedResources from "../components/resources/related-resources"
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -19,14 +19,14 @@ const Resource = props => {
   const r = Convert.toResourceModel(resourceInfo)
   let renderComponent
 
-  console.log("Resource", r)
-  let resourceIds = [];
-  if(props.resources.length !==0) {
-    resourceIds = props.resources.map((res) => {
-      return res.id;
+  console.log("Resource", resourceInfo)
+  let resourceIds = []
+  if (props.resources.length !== 0) {
+    resourceIds = props.resources.map(res => {
+      return res.id
     })
-    resourceIds = getRandomIds(props.resources, 4);
-  }  
+    resourceIds = getRandomIds(props.resources, 4)
+  }
   switch (r.type) {
     case "image":
       const image = getDocument(props.documents, r.image)
@@ -70,9 +70,11 @@ const Resource = props => {
           <TwoColumnPageWrapper>
             <div>
               <ImageResource id={r.thumbnail_image} withCaption={false} />
-              <ExternalLink id={r.text_based_resource[0].document_upload}> <p> Download</p>  </ExternalLink>
+              <ExternalLink id={r.text_based_resource[0].document_upload}>
+                {" "}
+                <p> Download</p>{" "}
+              </ExternalLink>
               <p> Language: {r.text_based_resource[0].document_language}</p>
-
             </div>
             <div>
               <h2> {r.title}</h2>
@@ -102,29 +104,35 @@ const Resource = props => {
   }
 
   return (
-    <Layout
-      firstColumn={renderComponent}
-      numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
-    />
+    <>
+      <SEO
+        title={`${resourceInfo.slug}`}
+        description={`${resourceInfo.slug}`}
+        lang={resourceInfo.language}
+      />
+      <Layout
+        firstColumn={renderComponent}
+        numberOfColumnsIsTwo={false}
+        thirdColumn={<UpcomingEvents />}
+      />
+    </>
   )
-
 }
 
 const getRandomIds = (resources, numberOfIds) => {
-  let ints = [];
-  for(let i = 0; i < numberOfIds; i++) {
-    ints.push(resources[Math.floor(Math.random() * resources.length)].id);
+  let ints = []
+  for (let i = 0; i < numberOfIds; i++) {
+    ints.push(resources[Math.floor(Math.random() * resources.length)].id)
   }
   console.log(1, ints)
-  return ints;
+  return ints
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources
+    resources: state.resources,
   }
 }
 
