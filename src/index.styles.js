@@ -107,12 +107,15 @@ p{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0.5rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
   font-size: 1.15em;
+}
+li {
+  list-style-type: lower-roman;
 }
 `
 
@@ -135,10 +138,15 @@ export const hideDisplayForTablet = css`
 
 export const showDisplayForTablet = css`
   display: ${props => (props.showInMobile ? "none" : "inherit")};
-  ${'' /* visibility: ${props => (props.showInMobile ? "none" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
-    ${'' /* visibility: ${props => (props.showInMobile ? "inherit" : "none")}; */}
+  }
+`
+
+export const showDisplayForTabletFunc = (variable) => css`
+  display: ${props => (props.showInMobile ? "none" : `${variable}`)};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInMobile ? `${variable}` : "none")};
   }
 `
 

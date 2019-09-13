@@ -20,6 +20,7 @@ const intitalState = {
   modal: {
     show: false,
   },
+  agreed_to_terms: false,
   experience_transition: {
     animationIn: "slideInLeft",
     animationOut: "slideOutRight",
@@ -106,12 +107,16 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         experience_transition: {
           ...state.experience_transition,
-          isVisible: true
+          isVisible: true,
         },
       })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
+      })
+    case actionTypes.HAS_AGREED_TO_TERMS:
+      return Object.assign({}, state, {
+        agreed_to_terms: true,
       })
     case actionTypes.SHOW_MODAL:
       return Object.assign({}, state, {

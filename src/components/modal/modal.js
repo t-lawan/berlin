@@ -86,7 +86,6 @@ const mapStateToProps = state => {
     experience: state.experience,
   }
 }
-
 const mapDispatchToProps = dispatch => {
   return {
     hideModal: () => dispatch({ type: actionTypes.HIDE_MODAL }),

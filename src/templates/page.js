@@ -20,7 +20,7 @@ const Page = props => {
           __html: props.pageContext.acf[language].title,
         }}
       />
-      <p
+      <div
         dangerouslySetInnerHTML={{
           __html: props.pageContext.acf[language].content,
         }}
