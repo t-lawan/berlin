@@ -42,9 +42,9 @@ const UpcomingEvents = props => {
   )
 }
 
-const freeAdmision = {
+export const freeAdmision = {
   DE: {
-    text: "Freier Eintritt, begrenzte Kapazitat",
+    text: "Freier Eintritt, begrenzte Kapazität",
   },
   EN: {
     text: "Free admission, limited capacity",

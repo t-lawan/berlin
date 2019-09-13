@@ -6,7 +6,7 @@ import { GlobalStyle } from "../../index.styles"
 import State from "../state/state"
 import Modal from "../modal/modal";
 import { connect } from "react-redux"
-
+import {Helmet} from 'react-helmet';
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
@@ -17,6 +17,9 @@ const Layout = props => {
     <LayoutWrapper>
       <GlobalStyle />
       <State />
+      <Helmet>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+      </Helmet>
       <Modal show={props.modal.show} />
       <Columns
         firstColumn={props.firstColumn}

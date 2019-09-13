@@ -8,10 +8,10 @@ import { Convert } from "../utility/convert"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
-import ImageGalleryResource, {
-  GalleryImage,
-} from "../partials/ImageGalleryResource"
+import ImageGalleryResource from "../partials/ImageGalleryResource"
 import ExternalLink from "../partials/ExternalLink";
+import { Color } from "../index.styles";
+import RelatedResources from "../components/resources/related-resources";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -20,12 +20,18 @@ const Resource = props => {
   let renderComponent
 
   console.log("Resource", r)
-
+  let resourceIds = [];
+  if(props.resources.length !==0) {
+    resourceIds = props.resources.map((res) => {
+      return res.id;
+    })
+    resourceIds = getRandomIds(props.resources, 4);
+  }  
   switch (r.type) {
     case "image":
       const image = getDocument(props.documents, r.image)
       renderComponent = (
-        <PageWrapper colour={`rgb(249,239,132)`}>
+        <PageWrapper colour={Color.yellow}>
           <h4> {r.title}</h4>
           <h4> {r.author}</h4>
         </PageWrapper>
@@ -36,7 +42,7 @@ const Resource = props => {
         return image.wordpress_id
       })
       renderComponent = (
-        <PageWrapper colour={`rgb(249,239,132)`}>
+        <PageWrapper colour={Color.yellow}>
           <PageWrapper>
             <ImageGalleryResource ids={r.image_gallery} />
           </PageWrapper>
@@ -54,12 +60,13 @@ const Resource = props => {
               />
             </div>
           </TwoColumnPageWrapper>
+          <RelatedResources ids={resourceIds} />
         </PageWrapper>
       )
       break
     case "text":
       renderComponent = (
-        <PageWrapper colour={`rgb(249,239,132)`}>
+        <PageWrapper colour={Color.yellow}>
           <TwoColumnPageWrapper>
             <div>
               <ImageResource id={r.thumbnail_image} withCaption={false} />
@@ -79,6 +86,7 @@ const Resource = props => {
               />
             </div>
           </TwoColumnPageWrapper>
+          <RelatedResources ids={resourceIds} />
         </PageWrapper>
       )
       break
@@ -87,15 +95,12 @@ const Resource = props => {
         <TwoColumnPageWrapper>
           <div>
             <h4>Hello </h4>
-            <h4>Hello </h4>
-            <h4>Hello </h4>
-            <h4>Hello </h4>
-            <h4>Hello </h4>
           </div>
           <div></div>
         </TwoColumnPageWrapper>
       )
   }
+
   return (
     <Layout
       firstColumn={renderComponent}
@@ -103,12 +108,23 @@ const Resource = props => {
       thirdColumn={<UpcomingEvents />}
     />
   )
+
+}
+
+const getRandomIds = (resources, numberOfIds) => {
+  let ints = [];
+  for(let i = 0; i < numberOfIds; i++) {
+    ints.push(resources[Math.floor(Math.random() * resources.length)].id);
+  }
+  console.log(1, ints)
+  return ints;
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
+    resources: state.resources
   }
 }
 
