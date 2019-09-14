@@ -13,7 +13,7 @@ import {
 import axios from "axios"
 
 class Modal extends React.Component {
-  language
+  language;
 
   constructor(props) {
     super(props)
@@ -25,6 +25,11 @@ class Modal extends React.Component {
     }
   }
 
+  closeModal = () => {
+    this.clearState();
+    this.props.hideModal()
+  }
+
   sendPostRequest = async () => {
     const url =
       "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe"
@@ -33,14 +38,11 @@ class Modal extends React.Component {
         BB_Subscribe_Website: this.state.berlin_biennalle ? 1 : 0,
         KW_Subscribe_Website: this.state.kw_institute ? 1 : 0,
         email: this.state.email
-      },
+      }
     }
 
     data = JSON.stringify(data);
-    console.log(data);
-    await axios.post(url, data).then((response) => {
-      console.log('response', response);
-    })
+    await axios.post(url, data);
   }
 
   handleSubmit = event => {
@@ -52,23 +54,31 @@ class Modal extends React.Component {
     })
   }
 
+  clearState = () => {
+    this.setState({
+      email: '',
+      berlin_biennalle: false,
+      kw_institute: false,
+      hasSubmitted: false,
+    })
+  }
+
   handleInputChange = event => {
-    const target = event.target
-    const value = target.type === "checkbox" ? target.checked : target.value
-    const name = target.name
-    console.log(value, name)
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
 
     this.setState({
       [name]: value,
     })
   }
   render() {
-    this.language = getCurrentLanguageString(this.props.languages)
+    this.language = getCurrentLanguageString(this.props.languages);
     return (
       <>
         <BackDropWrapper
           show={this.props.show}
-          onClick={this.props.hideModal}
+          onClick={this.closeModal}
         ></BackDropWrapper>
         <ModalWrapper show={this.props.show}>
           <div hidden={this.state.hasSubmitted}>
@@ -157,6 +167,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
+    modal: state.modal
   }
 }
 const mapDispatchToProps = dispatch => {
