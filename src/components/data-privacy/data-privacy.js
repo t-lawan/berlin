@@ -33,18 +33,27 @@ export const DataPrivacyLink = styled(Link)`
   color: white;
 `
 
+const text = {
+  EN: {
+    text: "By using this website you agree to the use of cookies in accordance with our ",
+    link: "data privacy policy"
+  },
+  DE: {
+    text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer Datenschutzerklärung einverstanden ",
+    link: "Datenschutzerklärung einverstanden"
+  }
+}
+
 const DataPrivacy = props => {
   const language = getCurrentLanguageString(props.languages);
-    console.log(language);
   return (
     <DataPrivacyWrapper show={props.show}>
       <div>
         <p>
-          By using this website you agree to the use of cookies in accordance
-          with our{" "}
+          {text[language].text}
           <DataPrivacyLink to={createPath(language, 'data-privacy')}>
-            data privacy policy
-          </DataPrivacyLink>{" "}
+            {text[language].link}
+          </DataPrivacyLink>
           .
         </p>
       </div>

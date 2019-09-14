@@ -17,7 +17,7 @@ const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
   const resourceInfo = props.pageContext
   const r = Convert.toResourceModel(resourceInfo)
-  let renderComponent
+  let renderComponent;
 
   console.log("Resource", resourceInfo)
   let resourceIds = []
