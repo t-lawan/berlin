@@ -4,9 +4,10 @@ import styled from "styled-components"
 import Columns from "../columns/columns"
 import { GlobalStyle } from "../../index.styles"
 import State from "../state/state"
-import Modal from "../modal/modal";
+import Modal from "../modal/modal"
 import { connect } from "react-redux"
-import {Helmet} from 'react-helmet';
+import { Helmet } from "react-helmet"
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
@@ -15,10 +16,14 @@ const LayoutWrapper = styled.div`
 const Layout = props => {
   return (
     <LayoutWrapper>
+      <OutboundLink href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"></OutboundLink>
       <GlobalStyle />
       <State />
       <Helmet>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        />
       </Helmet>
       <Modal show={props.modal.show} />
       <Columns
@@ -42,7 +47,7 @@ Layout.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    modal: state.modal
+    modal: state.modal,
   }
 }
 
@@ -50,4 +55,3 @@ export default connect(
   mapStateToProps,
   null
 )(Layout)
-
