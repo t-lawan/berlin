@@ -12,8 +12,8 @@ const About = props => {
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${exhibition.slug}`}
-        description={`${exhibition.slug}`}
+        title={`${props.pageContext.slug}`}
+        description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
       <div>
