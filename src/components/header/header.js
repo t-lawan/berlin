@@ -9,17 +9,17 @@ const Header = props => {
   return (
   <HeaderWrapper className={props.className} hideInMobile>
     <div>
-      <h2> sept 7 — nov 11,  2019</h2>
+      <RightHeading> sept 7 — nov 11,  2019</RightHeading>
     </div>
     <Left>
-      <h3> experience</h3>
-      <h3> the bones </h3>
-      <h3> the  </h3>
+      <RightHeading> exp.</RightHeading>
+      <RightHeading> the bones </RightHeading>
+      <RightHeading> the  </RightHeading>
     </Left>
     <Right>
       <RightHeading> {experience} </RightHeading>
-      <h3> of </h3>
-      <h3> world </h3>
+      <RightHeading> of </RightHeading>
+      <RightHeading> world </RightHeading>
     </Right>
   </HeaderWrapper>
 )}
