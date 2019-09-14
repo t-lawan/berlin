@@ -3,11 +3,12 @@ import styled from "styled-components"
 import NewsList from "../components/news/newslist"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
+import ResourcesList from "../components/resources/resources-list";
 
 const IndexPage = () => {
   const firstColumn = (
     <>
-    <NewsList />
+    <UpcomingEvents />
     </>
   )
   const secondColumn = (
@@ -17,7 +18,7 @@ const IndexPage = () => {
   )
   return (
     <Layout
-    firstColumn={firstColumn}
+    firstColumn={<ResourcesList />}
     secondColumn={secondColumn}
     numberOfColumnsIsTwo={true}
     thirdColumn={<UpcomingEvents />}
