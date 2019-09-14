@@ -21,6 +21,9 @@ exports.createPages = async ({ graphql, actions }) => {
             children {
               id
             }
+            parent_element {
+              slug
+            }
             acf {
               DE_row {
                 description
@@ -319,6 +322,10 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       default:
         template = pageTemplate
+    }
+
+    if(edge.node.parent_element && edge.node.parent_element.slug === 'about') {
+      template = aboutTemplate;
     }
     // Create pages for both EN and DE
     languages.forEach(language => {

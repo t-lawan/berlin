@@ -1,12 +1,16 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
 import { Color } from "../../index.styles"
-
+import { Link } from "gatsby"
 const ResourcesListWrapper = styled.div`
   padding: 2em;
+`
+
+const ResourceItemLink = styled(Link)`
+  text-decoration: none;
 `
 
 const ResourceItem = styled.div`
@@ -22,41 +26,46 @@ const TextBox = styled.div`
   margin-bottom: 1rem;
 `
 const ResourcesList = props => {
-  console.log(1, props.resources);
-  let language = getCurrentLanguageString(props.languages);
+  console.log(1, props.resources)
+  let language = getCurrentLanguageString(props.languages)
 
   const createComponent = index => {
-    const resource = props.resources[index];
-    let renderComponent;
+    const resource = props.resources[index]
+    let renderComponent
     switch (resource.type) {
       case "imagegallery":
         renderComponent = (
-          <ResourceItem key={index}>
-            <ImageResource
-              id={resource.image_gallery[0].wordpress_id}
-              withCaption={false}
-            />
-            <p> {resource.title} </p>
-          </ResourceItem>
+          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)} key={index}>
+            <ResourceItem>
+              <ImageResource
+                id={resource.image_gallery[0].wordpress_id}
+                withCaption={false}
+              />
+              <p> {resource.title} </p>
+            </ResourceItem>
+          </ResourceItemLink>
         )
         break
       case "text":
         renderComponent = (
-          <ResourceItem key={index}>
-            <TextBox>
-              <p> {resource.title} </p>
-              <p> {resource.author} </p>
-            </TextBox>
-            <p> {resource[language].label} </p>
-
-          </ResourceItem>
+          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)} key={index}>
+            <ResourceItem>
+              <TextBox>
+                <p> {resource.title} </p>
+                <p> {resource.author} </p>
+              </TextBox>
+              <p> {resource[language].label} </p>
+            </ResourceItem>
+          </ResourceItemLink>
         )
         break
       default:
         renderComponent = (
-          <ResourceItem key={index}>
-            <p> {resource.title} </p>
-          </ResourceItem>
+          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)}  key={index}>
+            <ResourceItem key={index}>
+              <p> {resource.title} </p>
+            </ResourceItem>
+          </ResourceItemLink>
         )
         break
     }
