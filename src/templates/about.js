@@ -5,10 +5,17 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import { TwoColumnPageWrapper } from "./page.styles"
+import styled from "styled-components"
+import AboutNavbar from "../components/about/about-navbar";
+import AboutComponents from "../components/about/about-components";
 
+
+const ComponentWrapper = styled.section``
 const About = props => {
   const language = getCurrentLanguageString(props.languages)
-  console.log("about", props.pageContext)
+  const content = props.pageContext
+  console.log("about", content)
+
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
@@ -16,14 +23,8 @@ const About = props => {
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
-      <div>
-        <h4>Hello </h4>
-        <h4>Hello </h4>
-        <h4>Hello </h4>
-        <h4>Hello </h4>
-        <h4>Hello </h4>
-      </div>
-      <div></div>
+      <AboutNavbar />
+      <AboutComponents content={content} />
     </TwoColumnPageWrapper>
   )
   return (
