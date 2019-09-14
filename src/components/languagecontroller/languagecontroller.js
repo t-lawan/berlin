@@ -26,7 +26,7 @@ class LanguageController extends React.Component {
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
-            bold={this.props.languages[language] ? 1 : 0}
+            selected={this.props.languages[language] ? 1 : 0}
           >
             {language.toLowerCase()}
           </LanguageButton>
