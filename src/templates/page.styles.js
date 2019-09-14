@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { changeGridToOneRow } from "../index.styles";
 
 export const PageWrapper = styled.div`
-  padding: 2em 1em;
+  padding: 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
 `
 

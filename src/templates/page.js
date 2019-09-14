@@ -15,11 +15,6 @@ const Page = props => {
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
-      <h3
-        dangerouslySetInnerHTML={{
-          __html: props.pageContext.acf[language].title,
-        }}
-      />
       <div
         dangerouslySetInnerHTML={{
           __html: props.pageContext.acf[language].content,
