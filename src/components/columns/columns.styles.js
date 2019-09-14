@@ -41,3 +41,9 @@ export const StickyFooter = styled.div`
   bottom: 0;
   position: sticky;
 `
+
+export const FixedFooter = styled.div`
+  z-index: 500;
+  bottom: 0;
+  position: static;
+`

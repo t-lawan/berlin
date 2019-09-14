@@ -13,12 +13,13 @@ import {
   StickyHeader,
   AnimatedColumn,
   StickyFooter,
+  FixedFooter,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
-
+import FooterComponent from "../footer/footer"
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -62,8 +63,11 @@ class Columns extends React.Component {
             <StickyFooter>
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
+            <FixedFooter>
+              <FooterComponent />
+            </FixedFooter>
           </Column>
-          
+
           <Column rightBorder={true} hideInMobile>
             <StickyHeader>
               <Jumbotron />
@@ -72,6 +76,9 @@ class Columns extends React.Component {
             {this.props.thirdColumn}
             <SocialMedia />
           </Column>
+          {/* <FixedFooter>
+            <FooterComponent />
+          </FixedFooter> */}
         </AnimatedColumn>
 
         <Column rightBorder={false} hideInMobile>
@@ -93,7 +100,7 @@ Columns.propTypes = {
 const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
-    agreed_to_terms: state.agreed_to_terms
+    agreed_to_terms: state.agreed_to_terms,
   }
 }
 export default connect(
