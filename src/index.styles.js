@@ -14,6 +14,10 @@ body {
   font-family: 'ag-book-pro', sans-serif;
   font-style: normal;
   }
+  a {
+    text-decoration: underline;
+    color: black;
+  }
   h1 {
   margin-left: 0;
   margin-right: 0;
@@ -197,5 +201,6 @@ export const tablet = props => {
 }
 
 export const Color = {
-  yellow: "#EEEC7A"
+  yellow: "#EEEC7A",
+  red: '#D9515C'
 }
