@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { NewsModel } from "../../models/NewsModel"
-import { Link } from "gatsby"
 import {NewsWrapper, NewsLink} from "./news.styles";
 const News = props => {
   return (

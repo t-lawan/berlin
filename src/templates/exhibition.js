@@ -15,7 +15,11 @@ const Exhibition = props => {
   const exhibition = Convert.toExhibitionModel(props.pageContext)
   const renderComponent = (
     <ExhibitionPageWrapper>
-      <SEO title={`${exhibition[language].title}`} description={`${exhibition[language].title}`} lang={language}/>
+      <SEO
+          title={`${exhibition.slug}`}
+          description={`${exhibition.slug}`}
+          lang={props.pageContext.language}
+        />
       <h4>{exhibition[language].title}</h4>
       <h5>{exhibition[language].subtitle}</h5>
       <p

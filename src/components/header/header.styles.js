@@ -26,8 +26,9 @@ export const Left = styled.div`
 export const Right = styled.div`
   justify-self: end;
   align-self: flex-end;
+  text-align: right;
 `
 
-export const RightHeading = styled.h3`
+export const RightHeading = styled.h2`
   
 `
