@@ -21,11 +21,12 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {Object.keys(this.props.languages).map(language => (
           <LanguageButton
+            direction="up"
+            duration={0.3}
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
-            bold={this.props.languages[language] ? 1 : 0}
-            fade
+            selected={this.props.languages[language] ? 1 : 0}
           >
             {language.toLowerCase()}
           </LanguageButton>

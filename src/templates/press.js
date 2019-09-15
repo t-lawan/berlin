@@ -17,31 +17,32 @@ const PressWrapper = styled.div`
 `
 
 const PressReleaseWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1em;
 `
 const PressReleaseText = styled.span`
-    margin-right: 2.5em;
+  margin-right: 2.5em;
 `
 
 const PressReleaseLink = styled.a`
-    text-decoration: none;
-    color: inherit;
-    &:hover{
-        color: red;
-    }
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: red;
+  }
 `
-
-
 
 const Press = props => {
   const language = getCurrentLanguageString(props.languages)
-
   const pressInfo = props.pageContext
-  console.log("press", pressInfo)
   const renderComponent = (
     <PressWrapper>
+      <SEO
+        title={`${pressInfo.slug}`}
+        description={`${pressInfo.slug}`}
+        lang={pressInfo.language}
+      />
       {/* firstColumn */}
       <div>
         <p>Contact</p>
@@ -66,8 +67,15 @@ const Press = props => {
           <PressReleaseWrapper key={index}>
             <PressReleaseText> {press_release.date}</PressReleaseText>
             <PressReleaseText>
-              <PressReleaseLink target="_blank" href={getPdf(props.documents, press_release, language)}>
-                {press_release[createProperty("title_of_press_release_in", language)]}
+              <PressReleaseLink
+                target="_blank"
+                href={getPdf(props.documents, press_release, language)}
+              >
+                {
+                  press_release[
+                    createProperty("title_of_press_release_in", language)
+                  ]
+                }
               </PressReleaseLink>
             </PressReleaseText>
           </PressReleaseWrapper>
@@ -92,11 +100,10 @@ const Press = props => {
 }
 
 const getPdf = (documents, press_release, language) => {
-    const id = press_release[`${language.toLowerCase()}_press_release_pdf`];
-    const pdf = getDocument(documents, id)
-    return pdf ? pdf.url : ""
+  const id = press_release[`${language.toLowerCase()}_press_release_pdf`]
+  const pdf = getDocument(documents, id)
+  return pdf ? pdf.url : ""
 }
-
 
 const mapStateToProps = state => {
   return {

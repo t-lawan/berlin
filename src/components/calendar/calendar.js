@@ -10,12 +10,7 @@ import { CalendarWrapper } from "./calendar.styles"
 let events = []
 let exhibitions = []
 const Calendar = props => {
-  events = Convert.eventsToCalendarItemArray(props.events)
-  exhibitions = Convert.exhibitionsToCalendarItemArray(props.exhibitions)
-  let calendarItems = []
-  calendarItems.push(...exhibitions);
-  calendarItems.push(...events);
-  const calendar = CalendarModel.createCalendar(calendarItems)
+  const calendar = props.calendar
   const months = Object.keys(calendar)
   return (
     <CalendarWrapper>
@@ -29,8 +24,8 @@ const Calendar = props => {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    events: state.events,
-    exhibitions: state.exhibitions
+    calendar_items: state.calendar_items,
+    calendar: state.calendar
   }
 }
 

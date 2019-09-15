@@ -7,6 +7,8 @@ import { generateEvents } from "../../models/EventsModel"
 import { generateExhibitions } from "../../models/ExhibitionModel"
 
 import { generateNewsArticles } from "../../models/NewsModel"
+import { CalendarItemModel } from "../../models/CalendarItemModel"
+import { CalendarModel } from "../../models/CalendarModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -17,8 +19,12 @@ const State = props => {
             edges {
               node {
                 id
+                wordpress_id
                 slug
                 acf {
+                  event_venue_selection {
+                    wordpress_id
+                  }
                   DE {
                     event_subtitle
                     event_title
@@ -29,7 +35,6 @@ const State = props => {
                     special_info_notice
                   }
                   EN {
-
                     full_description
                     event_title
                     event_subtitle
@@ -39,13 +44,29 @@ const State = props => {
 
                     special_info_notice
                   }
-
+                  dates {
+                    DE {
+                      display_time
+                    }
+                    EN {
+                      display_time
+                    }
+                    display_time_feed_de
+                    display_time_feed_en
+                    end_date
+                    start_date
+                  }
+                  related_resources {
+                    wordpress_id
+                  }
                   event_is_free
                   event_language
                   event_limited_capacity
                   other_event_language
+                  # thumbnail_image
                   participants
                   template
+                  exp_number
                 }
               }
             }
@@ -103,6 +124,50 @@ const State = props => {
               }
             }
           }
+          allWordpressWpResources {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                  resource_description
+                  resource_type
+                  resource_year
+                  resource_year_de
+                  subtitle
+                  thumbnail_image
+                  title
+                  text_based_resource {
+                    document_download_label
+                    document_language
+                    document_upload
+                    free_text_entry
+                  }
+                  floating_resource
+                  image_gallery {
+                    alt_text
+                    wordpress_id
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    media_type
+                  }
+                  publisher
+                  publisher_external_url
+                  resource_author
+                  resource_external_url
+                  resource_label
+                  resource_external_url_label
+                  resource_label_de
+                }
+              }
+            }
+          }
           allWordpressWpMedia {
             edges {
               node {
@@ -146,7 +211,6 @@ const State = props => {
               }
             }
           }
-
         }
       `
     )
@@ -156,19 +220,23 @@ const State = props => {
     )
     let news = generateNewsArticles(20)
 
-
-    events = generateEvents(20)
-
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
       Convert.toExhibitionModel
     )
 
-    // exhibitions = generateExhibitions(20)
+    let calendarItems = Convert.eventsToCalendarItemArray(events)
+    calendarItems.push(...Convert.exhibitionsToCalendarItemArray(exhibitions))
+    let calendar = CalendarModel.createCalendar(calendarItems)
 
     let participants = Convert.toModelArray(
       data.allWordpressWpParticipants,
       Convert.toParticipantModel
+    )
+
+    let resources = Convert.toModelArray(
+      data.allWordpressWpResources,
+      Convert.toResourceModel
     )
 
     let venues = Convert.toModelArray(
@@ -180,6 +248,9 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
+    props.setResources(resources)
+    props.setCalendarItems(calendarItems)
+    props.setCalendar(calendar)
     props.setDocuments(documents)
     props.setVenues(venues)
     props.setParticipants(participants)
@@ -224,7 +295,21 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_DOCUMENTS,
         documents: documents,
       }),
-
+    setResources: resources =>
+      dispatch({
+        type: actionTypes.SET_RESOURCES,
+        resources: resources,
+      }),
+    setCalendarItems: calendar_items =>
+      dispatch({
+        type: actionTypes.SET_CALENDAR_ITEMS,
+        calendar_items: calendar_items,
+      }),
+    setCalendar: calendar =>
+      dispatch({
+        type: actionTypes.SET_CALENDAR,
+        calendar: calendar,
+      }),
   }
 }
 

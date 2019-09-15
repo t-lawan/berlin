@@ -13,6 +13,11 @@ const Venue = props => {
   const venue = Convert.toVenueModel(props.pageContext)
   const renderComponent = (
     <PageWrapper>
+      <SEO
+        title={`${props.pageContext.slug}`}
+        description={`${props.pageContext.slug}`}
+        lang={props.pageContext.language}
+      />
       <h2
         dangerouslySetInnerHTML={{
           __html: venue[language].venue_name,

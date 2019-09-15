@@ -5,6 +5,8 @@ import {
   SocialMediaLink,
   NewsletterForm,
 } from "./socialmedia.styles"
+import * as actionTypes from "../../store/action"
+import { connect } from "react-redux"
 
 const socialMediaLinks = [
   { name: "facebook", url: "https://www.facebook.com/" },
@@ -14,12 +16,12 @@ const socialMediaLinks = [
 const SocialMedia = props => {
   let showNewsletterInput = false
   const toggleNewsletterInput = () => {
-    showNewsletterInput = !showNewsletterInput
+    props.showModal();
   }
   return (
     <SocialMediaWrapper>
       <div>
-        <SocialMediaText onClick={toggleNewsletterInput}>
+        <SocialMediaText onClick={() => toggleNewsletterInput()}>
           newsletter
         </SocialMediaText>
         {socialMediaLinks.map(link => (
@@ -38,4 +40,20 @@ const SocialMedia = props => {
   )
 }
 
-export default SocialMedia
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+    experience: state.experience,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    }
+  }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SocialMedia)

@@ -13,51 +13,37 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
-      allWordpressPage{
+      allWordpressPage {
         edges {
           node {
+            wordpress_id
             slug
+            children {
+              id
+            }
+            parent_element {
+              slug
+            }
             acf {
-              template
+              DE_row {
+                description
+              }
               DE {
-                content
-                title
-                description
-                press_notice
-                preview_information
-                venue_description
-                images_note
-                opening_times {
-                  opening_time_line
-                }
                 access_block {
                   access_line
                 }
                 address_info {
                   address_line
                 }
-              }
-              EN {
                 content
-                title
-                access_block {
-                  access_line
-                }
-                description
                 images_note
                 opening_times {
                   opening_time_line
                 }
                 press_notice
                 preview_information
+                title
                 venue_description
-                address_info {
-                  address_line
-                }
-              }
-              calendar_items {
-                row_type
-                start_date
               }
               contact_data {
                 contact_data_line
@@ -72,32 +58,13 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               external_url
               google_map_venue_link
-              press_images {
-                image_group_download_label_de
-                image_group_download_label_en
-                photo_group_title_de
-                photo_group_title_en
-                press_row_type
-                section_header_de
-                section_header_en
-              }
+              press_email
               press_releases {
-                de_press_release_pdf
                 date
+                de_press_release_pdf
                 en_press_release_pdf
                 title_of_press_release_in_de
                 title_of_press_release_in_en
-              }
-              thumbnail_image
-              funding {
-                funding_type
-                logo_block
-                logo_upload
-                notice_de
-                project_funding_list
-                notice_en
-                support_header_de
-                support_header_en
               }
               team_block {
                 position_title_de
@@ -105,6 +72,28 @@ exports.createPages = async ({ graphql, actions }) => {
                 section_title_de
                 section_title_en
                 team_block_type
+              }
+              thumbnail_image
+              template
+              EN {
+                content
+                access_block {
+                  access_line
+                }
+                address_info {
+                  address_line
+                }
+                images_note
+                opening_times {
+                  opening_time_line
+                }
+                preview_information
+                press_notice
+                title
+                venue_description
+              }
+              EN_row {
+                description
               }
             }
           }
@@ -114,8 +103,12 @@ exports.createPages = async ({ graphql, actions }) => {
         edges {
           node {
             id
+            wordpress_id
             slug
             acf {
+              event_venue_selection {
+                wordpress_id
+              }
               DE {
                 event_subtitle
                 event_title
@@ -134,13 +127,72 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_required
                 special_info_notice
               }
-
+              dates {
+                DE {
+                  display_time
+                }
+                EN {
+                  display_time
+                }
+                display_time_feed_de
+                display_time_feed_en
+                end_date
+                start_date
+              }
+              related_resources {
+                wordpress_id
+              }
               event_is_free
               event_language
               event_limited_capacity
               other_event_language
               participants
               template
+              exp_number
+            }
+          }
+        }
+      }
+      allWordpressWpResources {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              caption_de
+              caption_en
+              external_url
+              resource_description
+              resource_type
+              resource_year
+              resource_year_de
+              subtitle
+              thumbnail_image
+              title
+              text_based_resource {
+                document_download_label
+                document_language
+                document_upload
+                free_text_entry
+              }
+              floating_resource
+              image_gallery {
+                alt_text
+                wordpress_id
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                media_type
+              }
+              publisher
+              publisher_external_url
+              resource_author
+              resource_external_url
+              resource_label
+              resource_external_url_label
+              resource_label_de
             }
           }
         }
@@ -197,7 +249,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      } 
+      }
       allWordpressWpVenue {
         edges {
           node {
@@ -224,7 +276,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-      }    
+      }
     }
   `)
 
@@ -236,15 +288,19 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpEvents,
     allWordpressWpExhibitions,
     allWordpressWpParticipants,
-    allWordpressWpVenue
+    allWordpressWpVenue,
+    allWordpressWpResources,
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
   const calendarTemplate = path.resolve(`./src/templates/calendar-template.js`)
-  const practicalInformationTemplate = path.resolve(`./src/templates/practical-information.js`)
+  const practicalInformationTemplate = path.resolve(
+    `./src/templates/practical-information.js`
+  )
   const pressTemplate = path.resolve(`./src/templates/press.js`)
+  const aboutTemplate = path.resolve(`./src/templates/about.js`)
 
-  const languages = ['en', 'de'];
+  const languages = ["en", "de"]
 
   allWordpressPage.edges.forEach(edge => {
     let template
@@ -262,74 +318,106 @@ exports.createPages = async ({ graphql, actions }) => {
         template = pressTemplate
         break
       case "about":
-        template = pageTemplate
+        template = aboutTemplate
         break
       default:
         template = pageTemplate
     }
+
+    if(edge.node.parent_element && edge.node.parent_element.slug === 'about') {
+      template = aboutTemplate;
+    }
     // Create pages for both EN and DE
-    languages.forEach((language) => {
-      let path = language === "en" ? `/${edge.node.slug}` : `/${language}/${edge.node.slug}`
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/${edge.node.slug}`
+          : `/${language}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(template),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
-
-
   })
 
   const eventTemplate = path.resolve(`./src/templates/event.js`)
-  
+
   allWordpressWpEvents.edges.forEach(edge => {
-    languages.forEach((language) => {
-      let path = language === "en" ? `/event/${edge.node.slug}` : `/${language}/event/${edge.node.slug}`
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/event/${edge.node.slug}`
+          : `/${language}/event/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(eventTemplate),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
   })
 
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
-  
+
   allWordpressWpExhibitions.edges.forEach(edge => {
-    languages.forEach((language) => {
-      let path = language === "en" ? `/exhibition/${edge.node.slug}` : `/${language}/exhibition/${edge.node.slug}`
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/exhibition/${edge.node.slug}`
+          : `/${language}/exhibition/${edge.node.slug}`
 
       createPage({
         path: path,
         component: slash(exhibitionTemplate),
-        context: edge.node,
+        context: { ...edge.node, language: language },
       })
     })
-
   })
 
   const participantTemplate = path.resolve(`./src/templates/participant.js`)
-  
+
   allWordpressWpParticipants.edges.forEach(edge => {
-    languages.forEach((language) => {
-      let path = language === "en" ? `/participant/${edge.node.slug}` : `/${language}/participant/${edge.node.slug}`
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/participant/${edge.node.slug}`
+          : `/${language}/participant/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(participantTemplate),
-        context: {...edge.node, language: language}
+        context: { ...edge.node, language: language },
+      })
+    })
+  })
+
+  const resourcesTemplate = path.resolve(`./src/templates/resource.js`)
+
+  allWordpressWpResources.edges.forEach(edge => {
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/resource/${edge.node.slug}`
+          : `/${language}/resource/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(resourcesTemplate),
+        context: { ...edge.node, language: language },
       })
     })
   })
 
   const venueTemplate = path.resolve(`./src/templates/venue.js`)
-  
+
   allWordpressWpVenue.edges.forEach(edge => {
-    languages.forEach((language) => {
-      let path = language === "en" ? `/venue/${edge.node.slug}` : `/${language}/venue/${edge.node.slug}`
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/venue/${edge.node.slug}`
+          : `/${language}/venue/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(venueTemplate),
-        context: {...edge.node, language: language}
+        context: { ...edge.node, language: language },
       })
     })
   })

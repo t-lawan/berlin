@@ -1,7 +1,6 @@
 import styled, { css, createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,400i&display=swap');
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
   box-sizing: border-box;
@@ -13,6 +12,11 @@ body {
   height: 100%;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
+  font-style: normal;
+  }
+  a {
+    text-decoration: underline;
+    color: black;
   }
   h1 {
   margin-left: 0;
@@ -24,8 +28,7 @@ body {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
-  font-size: 2.25rem;
+  font-size: 1.8em;
   line-height: 1.1;
 }
 h2 {
@@ -38,7 +41,7 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
+  
   font-size: 1.62671rem;
   line-height: 1.1;
 }
@@ -52,7 +55,6 @@ h3 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 1.38316rem;
   line-height: 1.1;
 }
@@ -66,7 +68,6 @@ h4 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 1rem;
   line-height: 1.1;
 }
@@ -80,7 +81,6 @@ h5 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 0.85028rem;
   line-height: 1.1;
 }
@@ -94,7 +94,6 @@ h6 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-weight: bold;
   font-size: 0.78405rem;
 }
 img {
@@ -112,10 +111,15 @@ p{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
+  margin-bottom: 0.5rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
+  font-size: 1.15em;
+}
+li {
+  list-style-type: lower-roman;
 }
 `
 
@@ -140,6 +144,13 @@ export const showDisplayForTablet = css`
   display: ${props => (props.showInMobile ? "none" : "inherit")};
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
+  }
+`
+
+export const showDisplayForTabletFunc = (variable) => css`
+  display: ${props => (props.showInMobile ? "none" : `${variable}`)};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInMobile ? `${variable}` : "none")};
   }
 `
 
@@ -187,4 +198,9 @@ export const tablet = props => {
       ${props};
     }
   `
+}
+
+export const Color = {
+  yellow: "#EEEC7A",
+  red: '#D9515C'
 }

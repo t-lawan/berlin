@@ -11,7 +11,7 @@ const EventCard = props => {
   const event = props.event;
   return (
     <EventCardWrapper>
-      <EventHeading>{event.start_time[language]}</EventHeading>
+      <EventHeading>{event[language].display_time}</EventHeading>
       <EventText> {event.type}</EventText>
       <EventText>{event.venue}</EventText>
       <EventText>{event[language].short_calendar_description}</EventText>
