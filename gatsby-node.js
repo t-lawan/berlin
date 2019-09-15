@@ -56,6 +56,17 @@ exports.createPages = async ({ graphql, actions }) => {
               directions {
                 directions_line
               }
+              funding {
+                funding_type
+                logo_block {
+                  wordpress_id
+                }
+                notice_de
+                notice_en
+                project_funding_list
+                support_header_de
+                support_header_en
+              }
               external_url
               google_map_venue_link
               press_email
