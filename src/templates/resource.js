@@ -19,7 +19,6 @@ const Resource = props => {
   const r = Convert.toResourceModel(resourceInfo)
   let renderComponent;
 
-  console.log("Resource", resourceInfo)
   let resourceIds = []
   if (props.resources.length !== 0) {
     resourceIds = props.resources.map(res => {
@@ -124,7 +123,6 @@ const getRandomIds = (resources, numberOfIds) => {
   for (let i = 0; i < numberOfIds; i++) {
     ints.push(resources[Math.floor(Math.random() * resources.length)].id)
   }
-  console.log(1, ints)
   return ints
 }
 

@@ -21,7 +21,6 @@ const Event = props => {
     return a.start_date - b.start_date
   })
   let venue = getVenue(props.venues, event.venue[0])
-  console.log(event)
   event.related_resource = event.related_resource.map(resource => {
     return resource.wordpress_id;
   })

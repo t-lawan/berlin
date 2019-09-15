@@ -13,8 +13,7 @@ import AboutComponents from "../components/about/about-components";
 const ComponentWrapper = styled.section``
 const About = props => {
   const language = getCurrentLanguageString(props.languages)
-  const content = props.pageContext
-  console.log("about", content)
+  const content = props.pageContext;
 
   const renderComponent = (
     <TwoColumnPageWrapper>
@@ -23,7 +22,7 @@ const About = props => {
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
-      <AboutNavbar />
+      <AboutNavbar currentPage={content.slug} />
       <AboutComponents content={content} />
     </TwoColumnPageWrapper>
   )

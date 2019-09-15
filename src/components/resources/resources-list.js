@@ -26,7 +26,6 @@ const TextBox = styled.div`
   margin-bottom: 1rem;
 `
 const ResourcesList = props => {
-  console.log(1, props.resources)
   let language = getCurrentLanguageString(props.languages)
 
   const createComponent = index => {

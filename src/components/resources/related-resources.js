@@ -30,7 +30,6 @@ const RelatedResource = styled.div`
 const RelatedResources = props => {
   const language = getCurrentLanguageString(props.languages)
   const resources = getItems(props.resources, props.ids)
-  console.log(resources)
   return (
     <RelatedResourcesWrapper>
       {resources.map((resource, index) => (
