@@ -5,6 +5,7 @@ import { ExhibitionModel } from "../models/ExhibitionModel"
 import { ParticipantModel } from "../models/ParticipantModel"
 import { VenueModel } from "../models/VenueModel"
 import { DocumentModel } from "../models/DocumentModel"
+import { ResourceModel } from "../models/ResourceModel";
 
 export class Convert {
   static toNewsModel = wordpressModel => {
@@ -18,6 +19,9 @@ export class Convert {
     )
   }
   static toEventModel = wordpressModel => {
+    const venue = wordpressModel.acf.event_venue_selection.map((venue) => {
+      return venue.wordpress_id;
+    })
     return new EventsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -25,7 +29,7 @@ export class Convert {
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
       wordpressModel.acf.dates,
-      "Venue",
+      venue,
       null,
       wordpressModel.acf.event_is_free,
       wordpressModel.acf.event_language,
@@ -53,6 +57,33 @@ export class Convert {
     )
   }
 
+  static toResourceModel = wordpressModel => {
+    return new ResourceModel(
+      wordpressModel.wordpress_id,
+      wordpressModel.slug,
+      wordpressModel.acf.caption_de,
+      wordpressModel.acf.caption_en,
+      wordpressModel.acf.publisher,
+      wordpressModel.acf.publisher_external_url,
+      wordpressModel.acf.resource_author,
+      wordpressModel.acf.resource_description,
+      wordpressModel.acf.resource_external_url,
+      wordpressModel.acf.resource_external_url_label,
+      wordpressModel.acf.resource_image,
+      wordpressModel.acf.resource_label,
+      wordpressModel.acf.resource_label_de,
+      wordpressModel.acf.resource_type,
+      wordpressModel.acf.resource_year,
+      wordpressModel.acf.resource_year_de,
+      wordpressModel.acf.subtitle,
+      wordpressModel.acf.thumbnail_image,
+      wordpressModel.acf.title,
+      wordpressModel.acf.text_based_resource ? wordpressModel.acf.text_based_resource : null,
+      wordpressModel.acf.floating_resource,
+      wordpressModel.acf.image_gallery
+    )
+  }
+
   static toParticipantModel = wordpressModel => {
     return new ParticipantModel(
       wordpressModel.wordpress_id,
@@ -72,7 +103,7 @@ export class Convert {
 
   static toVenueModel = wordpressModel => {
     return new VenueModel(
-      wordpressModel.id,
+      wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.acf.DE,
       wordpressModel.acf.google_map_link,
@@ -111,13 +142,16 @@ export class Convert {
         calendarItems.push(
           new CalendarItemModel(
             `event-${event.id}-${index}`,
-            `/event/${event.slug}`,
+            `event/${event.slug}`,
             "Talk",
+            "event",
             date.display_time,
             date.start_date,
             date.end_date,
             event.venue,
             event.participants,
+            event.is_free,
+            event.experience,
             { ...event.EN, ...date.EN },
             { ...event.DE, ...date.DE },
           )
@@ -133,13 +167,16 @@ export class Convert {
       calendarItems.push(
         new CalendarItemModel(
           `exhibition-${exhibition.id}`,
-          `/exhibition/${exhibition.slug}`,
+          `exhibition/${exhibition.slug}`,
           "Exhibition",
+          "exhibition",
           exhibition.start_time,
           exhibition.start_date,
           exhibition.end_date,
           exhibition.venue,
           exhibition.participants,
+          true,
+          [exhibition.experience],
           exhibition.EN,
           exhibition.DE
         )

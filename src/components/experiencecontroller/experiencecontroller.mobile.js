@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import * as actionTypes from "../../store/action"
 import {
-  ExperienceControllerWrapper,
-  ExperienceButton,
+  ExperienceControllerMobileWrapper,
+  ExperienceControllerMobileButton,
 } from "./experiencecontroller.styles"
 
+const ExperienceControllerMobile = props => {
+  let experiences = [1, 2, 3, 4];
 
-const ExperienceController = props => {
-  let experiences = [1, 2, 3, 4]
   const changeExperience = (chosenExperience) => {
     let currentExperience = props.experience;
     if(currentExperience < chosenExperience){
@@ -23,34 +23,15 @@ const ExperienceController = props => {
 
     }, 5);
   }
-  experiences = experiences.filter(experience =>
-    filterBasedOnPosition(props, experience)
-  )
   return (
-    <ExperienceControllerWrapper left={props.left}>
-      <ExperienceButton bold> exp</ExperienceButton>
-      {experiences.map(experience => (
-        <ExperienceButton
-          key={experience}
-          bold
-          hover
-          onClick={() => changeExperience(experience)}
-          fade
-        >
-          {" "}
-          {experience}
-        </ExperienceButton>
+    <ExperienceControllerMobileWrapper showInMobile={props.showInMobile}>
+      {experiences.map((experience, index) => (
+        <ExperienceControllerMobileButton key={index} onClick={()=> changeExperience(experience)}>
+          <p>exp. {experience}</p>  
+        </ExperienceControllerMobileButton>
       ))}
-    </ExperienceControllerWrapper>
+    </ExperienceControllerMobileWrapper>
   )
-}
-
-const filterBasedOnPosition = (props, experience) => {
-  if (props.left) {
-    return experience < props.experience
-  } else {
-    return experience > props.experience
-  }
 }
 
 const mapStateToProps = state => {
@@ -58,6 +39,11 @@ const mapStateToProps = state => {
     experience: state.experience,
   }
 }
+
+ExperienceControllerMobile.propTypes = {
+  showInMobile: PropTypes.bool
+}
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -72,10 +58,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-ExperienceController.propTypes = {
-  left: PropTypes.bool.isRequired,
-}
+
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ExperienceController)
+)(ExperienceControllerMobile)

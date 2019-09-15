@@ -14,18 +14,23 @@ const Participant = props => {
   const participant = Convert.toParticipantModel(props.pageContext)
   const renderComponent = (
     <ParticipantPageWrapper>
+      <SEO
+        title={`${participant.slug}`}
+        description={`${participant.slug}`}
+        lang={props.pageContext.language}
+      />
       <h3>
         {participant.firstname} {participant.lastname}
       </h3>
       <p
         dangerouslySetInnerHTML={{
-          __html: participant[language].project_description
+          __html: participant[language].project_description,
         }}
       />
 
       <p
         dangerouslySetInnerHTML={{
-          __html: participant[language].short_bio
+          __html: participant[language].short_bio,
         }}
       />
     </ParticipantPageWrapper>

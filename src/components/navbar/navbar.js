@@ -28,16 +28,14 @@ const Navbar = props => {
 
   const language = getCurrentLanguageString(props.languages)
   return (
-    <NavWrapper>
+    <NavWrapper hideInMobile>
       <NavInner>
         {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
           <NavItem
             activeStyle={{ color: "#990033" }}
             to={createPath(language, item.object_slug)}
             key={item.object_slug}
-            swipe
-            direction="up"
-            duration={0.3}
+            fade
           >
             {item.title.toLowerCase()}
           </NavItem>
@@ -57,6 +55,7 @@ const mapStateToProps = state => {
 Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  hideInMobile: PropTypes.bool
 }
 
 export default connect(
