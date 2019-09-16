@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { Link } from "gatsby"
+import { size } from "../../index.styles";
 
 export const LanguageControllerWrapper = styled.div`
   display: flex;
@@ -9,6 +9,11 @@ export const LanguageControllerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.5em;
+  @media (max-width: ${size.tablet}) {
+    border: 0;
+    flex-direction: row;
+    padding: 0;
+  }
 `
 
 export const LanguageButton = styled(AniLink)`
@@ -20,6 +25,11 @@ export const LanguageButton = styled(AniLink)`
   font-weight: ${props => (props.selected ? "bold" : "lighter")};
   :hover {
     cursor: "pointer";
+  }
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.4rem;
+    margin: 0;
+    margin-left: 0.5em;
   }
 
 `

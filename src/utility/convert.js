@@ -6,6 +6,7 @@ import { ParticipantModel } from "../models/ParticipantModel"
 import { VenueModel } from "../models/VenueModel"
 import { DocumentModel } from "../models/DocumentModel"
 import { ResourceModel } from "../models/ResourceModel";
+import { NavbarModel } from "../models/NavbarModel";
 
 export class Convert {
   static toNewsModel = wordpressModel => {
@@ -115,6 +116,13 @@ export class Convert {
       wordpressModel.acf.venue_tel,
       wordpressModel.acf.venue_wheelchair_access
     )
+  }
+
+  static toNavbarModel = wordpressModel => {
+    return new NavbarModel(
+      wordpressModel.object_slug,
+      wordpressModel.title
+    );
   }
   static toDocumentModel = wordpressModel => {
     return new DocumentModel(

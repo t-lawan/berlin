@@ -47,3 +47,9 @@ export const FixedFooter = styled.div`
   bottom: 0;
   position: static;
 `
+
+export const FixedNavbar = styled.div`
+  z-index: 700;
+  bottom: 0;
+  position: sticky;
+`
