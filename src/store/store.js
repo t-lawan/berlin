@@ -20,6 +20,7 @@ const intitalState = {
   modal: {
     show: false,
   },
+  navbar: [],
   agreed_to_terms: false,
   experience_transition: {
     animationIn: "slideInLeft",
@@ -85,6 +86,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         calendar: action.calendar,
       })
+    case actionTypes.SET_NAVBAR_ITEMS:
+      return Object.assign({}, state, {
+        navbar: action.navbar,
+      })
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
@@ -137,6 +142,6 @@ const reducer = (state = intitalState, action) => {
 
 export const store = () =>
   createStore(
-    reducer,
+    reducer
     // process.env.NODE_ENV === "development" ? window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() : null
   )
