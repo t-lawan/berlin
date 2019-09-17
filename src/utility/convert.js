@@ -160,8 +160,20 @@ export class Convert {
             event.participants,
             event.is_free,
             event.experience,
-            { ...event.EN, ...date.EN },
-            { ...event.DE, ...date.DE },
+            {
+              title: event.EN.event_title,
+              description: event.EN.full_description,
+              display_time: date.EN.display_time,
+              subtitle: event.EN.event_subtitle,
+            },
+            {
+              title: event.DE.event_title,
+              description: event.DE.full_description,
+              display_time: date.DE.display_time,
+              subtitle: event.DE.event_subtitle,
+            },
+            // { ...event.EN, ...date.EN },
+            // { ...event.DE, ...date.DE },
           )
         )
       })
@@ -185,8 +197,18 @@ export class Convert {
           exhibition.participants,
           true,
           [exhibition.experience],
-          exhibition.EN,
-          exhibition.DE
+          {
+            title: exhibition.EN.title,
+            description: exhibition.EN.description,
+            display_time: exhibition.start_time,
+            subtitle: '',
+          },
+          {
+            title: exhibition.DE.title,
+            description: exhibition.DE.description,
+            display_time: exhibition.start_time,
+            subtitle: '',
+          }
         )
       )
     })

@@ -24,7 +24,6 @@ const Calendar = props => {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    calendar_items: state.calendar_items,
     calendar: state.calendar
   }
 }

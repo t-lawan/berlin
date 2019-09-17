@@ -240,7 +240,6 @@ const State = props => {
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
-    calendarItems.push(...Convert.exhibitionsToCalendarItemArray(exhibitions))
     let calendar = CalendarModel.createCalendar(calendarItems)
 
     let participants = Convert.toModelArray(

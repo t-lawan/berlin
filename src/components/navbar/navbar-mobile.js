@@ -17,10 +17,12 @@ import {
   NavMobileLinks,
   NavMobileLink,
   NavMobileOuterLink,
+  NavMobileModal,
 } from "./navbar.styles"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-import LanguageController from "../languagecontroller/languagecontroller"
-import SocialMedia from "../socialmedia/socialmedia"
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import LanguageController from "../languagecontroller/languagecontroller";
+import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia";
+import * as actionTypes from '../../store/action';
 class NavbarMobile extends React.Component {
   language
 
@@ -32,17 +34,19 @@ class NavbarMobile extends React.Component {
   }
 
   toggleContent = () => {
-    console.log(this.state.showContent)
     this.setState({
       showContent: this.state.showContent ? false : true,
     })
-    console.log(this.state.showContent)
+  }
+
+  showModal = () => {
+      this.props.showModal();
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
 
     return (
-      <NavMobileWrapper>
+      <NavMobileWrapper showInMobile>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
             <NavIcon icon={faBars} />
@@ -92,18 +96,16 @@ class NavbarMobile extends React.Component {
           </NavMobileLinks>
           <NavMobileLinks>
             <div>
-              <SocialMedia />
-              {/* <NavMobileOuterLink> newsletter </NavMobileOuterLink>
-              <NavMobileOuterLink> facebook</NavMobileOuterLink>
-              <NavMobileOuterLink> instagram</NavMobileOuterLink> */}
+              <NavMobileModal onClick={() => this.showModal()}> newsletter </NavMobileModal>
+              {socialMediaLinks.map(link => (
+                <NavMobileOuterLink key={link.name} target="_blank" href={link.url}> {link.name}</NavMobileOuterLink>
+              ))}
             </div>
             <div>
               <NavMobileLink to={createPath(this.language, "imprint")}>
-                {" "}
                 imprint
               </NavMobileLink>
               <NavMobileLink to={createPath(this.language, "data-privacy")}>
-                {" "}
                 data privacy
               </NavMobileLink>
             </div>
@@ -122,6 +124,12 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+      showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    }
+  }
+
 NavbarMobile.propTypes = {
   showInMobile: PropTypes.bool,
   showContent: PropTypes.bool,
@@ -129,5 +137,5 @@ NavbarMobile.propTypes = {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(NavbarMobile)

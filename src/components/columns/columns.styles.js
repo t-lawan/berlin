@@ -49,7 +49,7 @@ export const FixedFooter = styled.div`
 `
 
 export const FixedNavbar = styled.div`
-  z-index: 700;
+  z-index: 600;
   bottom: 0;
   position: sticky;
 `
