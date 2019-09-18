@@ -13,7 +13,8 @@ const UpcomingEvents = props => {
     .filter(item => {
       return (
         item.experience.includes(props.experience.toString()) &&
-        item.item === "event"
+        item.item === "event" && 
+        (moment(item.start_date).diff(moment()) > 0)
       )
     })
     .sort((a, b) => {

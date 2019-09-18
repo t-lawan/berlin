@@ -12,6 +12,7 @@ import ImageResource from "../partials/ImageResource"
 import { getVenue } from "../store/selector"
 import { TwoColumnPageWrapper } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
+import moment from "moment";
 
 const EventColumn = styled.div``
 const Event = props => {
@@ -34,7 +35,9 @@ const Event = props => {
         />
         <EventColumn>
           {event.dates.map((date, index) => (
-            <p key={index}>{date[language].display_time}</p>
+            <div key={index}>
+              <p> {`${moment(date.start_date).format("DD.MM.YYYY")} - ${date[language].display_time}`}</p>
+            </div>
           ))}
           <p> {venue ? venue[language].venue_name : ""}</p>
           <p>{venue ? venue.address[0].address_line : ""}</p>
