@@ -18,11 +18,12 @@ import {
   NavMobileLink,
   NavMobileOuterLink,
   NavMobileModal,
+  NavImageLink,
 } from "./navbar.styles"
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import LanguageController from "../languagecontroller/languagecontroller";
-import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia";
-import * as actionTypes from '../../store/action';
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+import LanguageController from "../languagecontroller/languagecontroller"
+import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
+import * as actionTypes from "../../store/action"
 class NavbarMobile extends React.Component {
   language
 
@@ -40,7 +41,7 @@ class NavbarMobile extends React.Component {
   }
 
   showModal = () => {
-      this.props.showModal();
+    this.props.showModal()
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
@@ -52,7 +53,9 @@ class NavbarMobile extends React.Component {
             <NavIcon icon={faBars} />
           </div>
           <div>
-            <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
+            <NavImageLink to={createPath(this.language, '')}>
+              <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
+            </NavImageLink>
           </div>
           <div>
             <LanguageController />
@@ -96,9 +99,19 @@ class NavbarMobile extends React.Component {
           </NavMobileLinks>
           <NavMobileLinks>
             <div>
-              <NavMobileModal onClick={() => this.showModal()}> newsletter </NavMobileModal>
+              <NavMobileModal onClick={() => this.showModal()}>
+                {" "}
+                newsletter{" "}
+              </NavMobileModal>
               {socialMediaLinks.map(link => (
-                <NavMobileOuterLink key={link.name} target="_blank" href={link.url}> {link.name}</NavMobileOuterLink>
+                <NavMobileOuterLink
+                  key={link.name}
+                  target="_blank"
+                  href={link.url}
+                >
+                  {" "}
+                  {link.name}
+                </NavMobileOuterLink>
               ))}
             </div>
             <div>
@@ -125,10 +138,10 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-      showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
-    }
+  return {
+    showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
   }
+}
 
 NavbarMobile.propTypes = {
   showInMobile: PropTypes.bool,
