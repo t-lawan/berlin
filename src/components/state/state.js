@@ -57,9 +57,6 @@ const State = props => {
                     end_date
                     start_date
                   }
-                  # related_resources {
-                  #   wordpress_id
-                  # }
                   event_is_free
                   event_language
                   event_limited_capacity
