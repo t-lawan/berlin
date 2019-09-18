@@ -33,6 +33,10 @@ export const NavMobileInner = styled.div`
   padding: 0.5em 1.5em;
 `
 
+export const NavImageLink = styled(Link)`
+  text-decoration: none;
+`
+
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
