@@ -21,9 +21,9 @@ const Event = props => {
     return a.start_date - b.start_date
   })
   let venue = getVenue(props.venues, event.venue[0])
-  event.related_resource = event.related_resource.map(resource => {
-    return resource.wordpress_id;
-  })
+  // event.related_resource = event.related_resource.map(resource => {
+  //   return resource.wordpress_id;
+  // })
   const renderComponent = (
     <>
       <TwoColumnPageWrapper>
@@ -61,7 +61,7 @@ const Event = props => {
           />
         </EventColumn>
       </TwoColumnPageWrapper>
-      <RelatedResources ids={event.related_resource} hidden={event.related_resource.length === 0}/>
+      {/* <RelatedResources ids={event.related_resource} hidden={event.related_resource.length === 0}/> */}
     </>
   )
   return (

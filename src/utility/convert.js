@@ -37,7 +37,7 @@ export class Convert {
       wordpressModel.acf.event_limited_capacity,
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.participants,
-      wordpressModel.acf.related_resources,
+      // wordpressModel.acf.related_resources,
       wordpressModel.acf.other_event_language
     )
   }
