@@ -30,3 +30,7 @@ export const DayMonthText = styled.span`
 export const MonthHeading = styled.h1`
   padding: 0.25em 0.5em;
 `
+export const ClosedText = styled.p`
+  margin: 1.5rem;
+  opacity: 0.5;
+`
