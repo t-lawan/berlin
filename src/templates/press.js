@@ -4,10 +4,17 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { PageWrapper } from "./page.styles"
+import { PageWrapper, PressFormInput } from "./page.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
-import { changeGridToOneRow } from "../index.styles"
+import { changeGridToOneRow, Color } from "../index.styles"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
+import {
+  FormLabel,
+  FormInput,
+  FormButton,
+} from "../components/modal/modal.styles"
 
 const PressWrapper = styled.div`
   padding: 2em 1em;
@@ -29,80 +36,194 @@ const PressReleaseLink = styled.a`
   text-decoration: none;
   color: inherit;
   &:hover {
-    color: red;
+    color: ${Color.red};
   }
 `
 
-const Press = props => {
-  const language = getCurrentLanguageString(props.languages)
-  const pressInfo = props.pageContext
-  const renderComponent = (
-    <PressWrapper>
-      <SEO
-        title={`${pressInfo.slug}`}
-        description={`${pressInfo.slug}`}
-        lang={pressInfo.language}
-      />
-      {/* firstColumn */}
-      <div>
-        <p>Contact</p>
-        {pressInfo.acf.contact_people.map((person, index) => (
-          <div key={index}>
-            <p> {person.full_name}</p>
-            <p> {person[createProperty("position", language)]}</p>
-          </div>
-        ))}
+const PressForm = styled.div`
+  padding: 1em 0em;
+`
 
-        {pressInfo.acf.contact_data.map((contact_data, index) => (
-          <div key={index}>
-            <p> {contact_data.contact_data_line}</p>
-          </div>
-        ))}
-      </div>
-      {/* secondColumn */}
+const PressArrowDown = styled(FontAwesomeIcon)`
+  margin-right: 0.5rem;
+  width: 0.4em;
+  opacity: 0.5;
+`
 
-      <div>
-        <p> Press Releases</p>
-        {pressInfo.acf.press_releases.map((press_release, index) => (
-          <PressReleaseWrapper key={index}>
-            <PressReleaseText> {press_release.date}</PressReleaseText>
-            <PressReleaseText>
-              <PressReleaseLink
-                target="_blank"
-                href={getPdf(props.documents, press_release, language)}
-              >
-                {
-                  press_release[
-                    createProperty("title_of_press_release_in", language)
-                  ]
-                }
-              </PressReleaseLink>
-            </PressReleaseText>
-          </PressReleaseWrapper>
-        ))}
+class Press extends React.Component {
+  language
+  pressInfo
+  renderComponent
 
-        <p> Images </p>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: pressInfo.acf[language].images_note,
-          }}
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: "",
+      name: "",
+      media_affliation: "",
+      hasSubmitted: false
+    }
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.setState({
+      hasSubmitted: true,
+    })
+  }
+
+  clearState = () => {
+    this.setState({
+      email: "",
+      name: "",
+      media_affliation: "",
+    })
+  }
+
+  handleInputChange = event => {
+    const target = event.target
+    const value = target.type === "checkbox" ? target.checked : target.value
+    const name = target.name
+    console.log(name, value);
+    this.setState({
+      [name]: value,
+    })
+  }
+
+  render() {
+    this.language = getCurrentLanguageString(this.props.languages)
+
+    this.pressInfo = this.props.pageContext
+
+    this.renderComponent = (
+      <PressWrapper>
+        <SEO
+          title={`${this.pressInfo.slug}`}
+          description={`${this.pressInfo.slug}`}
+          lang={this.pressInfo.language}
         />
-      </div>
-    </PressWrapper>
-  )
-  return (
-    <Layout
-      firstColumn={renderComponent}
-      numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
-    />
-  )
+        {/* firstColumn */}
+        <div>
+          <p>Contact</p>
+          {this.pressInfo.acf.contact_people.map((person, index) => (
+            <div key={index}>
+              <p> {person.full_name}</p>
+              <p> {person[createProperty("position", this.language)]}</p>
+            </div>
+          ))}
+
+          {this.pressInfo.acf.contact_data.map((contact_data, index) => (
+            <div key={index}>
+              <p> {contact_data.contact_data_line}</p>
+            </div>
+          ))}
+        </div>
+        {/* secondColumn */}
+
+        <div>
+          <p> Press Releases</p>
+          {this.pressInfo.acf.press_releases.map((press_release, index) => (
+            <PressReleaseWrapper key={index}>
+              <PressReleaseText> {press_release.date}</PressReleaseText>
+              <PressReleaseText>
+                <PressReleaseLink
+                  target="_blank"
+                  href={getPdf(
+                    this.props.documents,
+                    press_release,
+                    this.language
+                  )}
+                >
+                  <PressArrowDown icon={faLongArrowAltDown} />
+                  {
+                    press_release[
+                      createProperty("title_of_press_release_in", this.language)
+                    ]
+                  }
+                </PressReleaseLink>
+              </PressReleaseText>
+            </PressReleaseWrapper>
+          ))}
+
+          <p> Images </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.pressInfo.acf[this.language].images_note,
+            }}
+          />
+          <PressForm>
+            <form onSubmit={this.handleSubmit.bind(this)}>
+              <FormLabel>
+                <p> {formText[this.language].name}</p>
+                <PressFormInput
+                  type="text"
+                  name="name"
+                  onChange={this.handleInputChange.bind(this)}
+                />
+              </FormLabel>
+              <FormLabel>
+              <p> {formText[this.language].email}</p>
+                <PressFormInput
+                  type="email"
+                  name="email"
+                  onChange={this.handleInputChange.bind(this)}
+                />
+              </FormLabel>
+              <FormLabel>
+              <p> {formText[this.language].media_affliation}</p>
+                <PressFormInput
+                  type="text"
+                  name="media_affliation"
+                  onChange={this.handleInputChange.bind(this)}
+                />
+              </FormLabel>
+
+              <FormButton> {formText[this.language].button} </FormButton>
+            </form>
+          </PressForm>
+        </div>
+      </PressWrapper>
+    )
+    return (
+      <Layout
+        firstColumn={this.renderComponent}
+        numberOfColumnsIsTwo={false}
+        thirdColumn={<UpcomingEvents />}
+      />
+    )
+  }
 }
 
 const getPdf = (documents, press_release, language) => {
   const id = press_release[`${language.toLowerCase()}_press_release_pdf`]
   const pdf = getDocument(documents, id)
   return pdf ? pdf.url : ""
+}
+
+const formText = {
+  EN: {
+    email:
+      "Email",
+    name:
+      "First and Last Name",
+    media_affliation:
+      "Media affliation",
+    button: "Submit",
+    thank_you:
+      "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
+  },
+  DE: {
+    email:
+    "Email",
+  name:
+    "First and Last Name",
+  media_affliation:
+      "Media affliation",
+  thank_you:
+    "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
+    button: "Anmeldung",
+
+  },
 }
 
 const mapStateToProps = state => {
