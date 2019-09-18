@@ -9,13 +9,13 @@ export const SocialMediaWrapper = styled.div`
   background: white;
   width: 100%;
   border-top: 1px solid black;
+  font-size: 1.2rem;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
     width: inherit;
     border: 0;
     background: none;
-    font-size: 1.4rem;
     padding: 0;
     margin: 0;
   }

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { hideDisplayForTablet, changeGridToOneRow } from "../../index.styles"
+import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet } from "../../index.styles"
 
 export const HeaderWrapper = styled.div`
   /* opacity: 1; */
@@ -36,7 +36,7 @@ export const TitleContainer = styled.div`
 `
 
 export const DateContainer = styled.div`
-  ${hideDisplayForTablet};
+  ${showDisplayForTablet};
 `
 
 export const Heading = styled.h2``

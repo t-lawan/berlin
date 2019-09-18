@@ -48,7 +48,7 @@ const Header = props => {
           ))}
         </Right>
       </TitleContainer>
-      <DateContainer>
+      <DateContainer showInMobile>
         <Heading> {content[language].date}</Heading>
       </DateContainer>
     </HeaderWrapper>
