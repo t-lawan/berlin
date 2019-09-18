@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={title + ' | Berlin Biennalle'}
       meta={[
         {
           name: `description`,
