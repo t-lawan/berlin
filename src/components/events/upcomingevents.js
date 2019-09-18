@@ -21,7 +21,6 @@ const UpcomingEvents = props => {
     })
 
   const language = getCurrentLanguageString(props.languages)
-
   return (
     <EventsWrapper>
       {filteredItems.map(item => (
@@ -30,7 +29,7 @@ const UpcomingEvents = props => {
             <p> {moment(item.start_date).format("dddd, DD.MM.YYYY")}</p>
             <p> {item[language].display_time}</p>
             <div
-              dangerouslySetInnerHTML={{ __html: item[language].event_title }}
+              dangerouslySetInnerHTML={{ __html: item[language].title }}
             />
             <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
 

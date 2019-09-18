@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem } from "./navbar.styles"
 import { connect } from "react-redux"
@@ -28,7 +28,7 @@ const Navbar = props => {
 
   const language = getCurrentLanguageString(props.languages)
   return (
-    <NavWrapper hideInMobile>
+    <NavWrapper hideInMobile={props.hideInMobile}>
       <NavInner>
         {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
           <NavItem

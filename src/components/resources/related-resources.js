@@ -21,7 +21,7 @@ const ResourceLink = styled(AniLink)`
 
 const RelatedResource = styled.div`
   background: ${Color.yellow};
-  min-height: 50px;
+  min-height: 100px;
   padding: 1em;
   margin: 1em;
   border: 1px solid black;

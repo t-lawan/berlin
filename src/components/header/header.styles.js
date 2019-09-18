@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { hideDisplayForTablet } from "../../index.styles";
+import { hideDisplayForTablet, changeGridToOneRow } from "../../index.styles"
 
 export const HeaderWrapper = styled.div`
   /* opacity: 1; */
@@ -7,10 +7,11 @@ export const HeaderWrapper = styled.div`
   border-bottom: 1px solid black;
   padding: 0.5em 1em;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns:1fr 1fr;
   align-items: start;
   justify-items: center;
   background: white;
+  ${changeGridToOneRow};
 
   :hover {
     /* opacity: 0.01; */
@@ -29,6 +30,13 @@ export const Right = styled.div`
   text-align: right;
 `
 
-export const RightHeading = styled.h2`
-  
+export const TitleContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `
+
+export const DateContainer = styled.div`
+  ${hideDisplayForTablet};
+`
+
+export const Heading = styled.h2``

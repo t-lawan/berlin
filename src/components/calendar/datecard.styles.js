@@ -1,20 +1,23 @@
 import styled, { css } from "styled-components"
-import { changeNthChild, mobile } from "../../index.styles"
+import { changeNthChild, mobile, Color } from "../../index.styles"
 
 export const DateCardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   border-bottom: 0.05em solid black;
   border-right: 0.05em solid black;
-  min-height: 400px;
-  background-color: ${props => (props.addColour ? "#ADEBAD" : "inherit")};
+  min-height: 100px;
+  background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
   height: auto;
   display: -moz-inline-grid;
   display: inline-grid;
 `
-
+export const EventCardsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
 export const CurrentDate = styled.div`
-  border-bottom: 0.05em solid black;
+  border-right: 0.05em solid black;
   padding: 0.15em 0.5em;
 `
 export const DateText = styled.strong`
