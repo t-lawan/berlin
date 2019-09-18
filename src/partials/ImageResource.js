@@ -4,7 +4,6 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
-import Img from "gatsby-image"
 
 export const GalleryImage = styled.img`
   position: absolute;
@@ -16,6 +15,10 @@ export const GalleryImage = styled.img`
   object-position: center center;
   opacity: 0;
   transition: opacity 500ms ease 0s;
+`
+
+export const Caption = styled.div`
+  font-size: 0.8rem;
 `
 
 class ImageResource extends React.Component {
@@ -33,7 +36,7 @@ class ImageResource extends React.Component {
     return (
       <>
         <img onLoad={this.props.onLoad} src={this.image.url}  />
-        <h6
+        <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
             __html: this.image[this.language].caption,

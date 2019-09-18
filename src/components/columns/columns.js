@@ -57,7 +57,7 @@ class Columns extends React.Component {
           <Column rightBorder={true}>
             <StickyHeader>
               <ExperienceControllerMobile showInMobile={true} />
-              <Header hideInMobile />
+              <Header hideInMobile={false} />
               <Navbar hideInMobile={true} />
             </StickyHeader>
 

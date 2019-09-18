@@ -31,8 +31,8 @@ const Resource = props => {
       const image = getDocument(props.documents, r.image)
       renderComponent = (
         <PageWrapper colour={Color.yellow}>
-          <h4> {r.title}</h4>
-          <h4> {r.author}</h4>
+          <p> {r.title}</p>
+          <p> {r.author}</p>
         </PageWrapper>
       )
       break
@@ -47,12 +47,12 @@ const Resource = props => {
           </PageWrapper>
           <TwoColumnPageWrapper>
             <div>
-              <h4> {r.title}</h4>
-              <h4> {r.author}</h4>
-              <h4> {r[language].year}</h4>
+              <p> {r.title}</p>
+              <p> {r.author}</p>
+              <p> {r[language].year}</p>
             </div>
             <div>
-              <h4
+              <p
                 dangerouslySetInnerHTML={{
                   __html: r.description,
                 }}
@@ -95,7 +95,7 @@ const Resource = props => {
       renderComponent = (
         <TwoColumnPageWrapper>
           <div>
-            <h4>Hello </h4>
+            <p>Hello </p>
           </div>
           <div></div>
         </TwoColumnPageWrapper>
