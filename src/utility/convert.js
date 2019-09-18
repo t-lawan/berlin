@@ -6,6 +6,7 @@ import { ParticipantModel } from "../models/ParticipantModel"
 import { VenueModel } from "../models/VenueModel"
 import { DocumentModel } from "../models/DocumentModel"
 import { ResourceModel } from "../models/ResourceModel";
+import { NavbarModel } from "../models/NavbarModel";
 
 export class Convert {
   static toNewsModel = wordpressModel => {
@@ -36,7 +37,7 @@ export class Convert {
       wordpressModel.acf.event_limited_capacity,
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.participants,
-      wordpressModel.acf.related_resources,
+      // wordpressModel.acf.related_resources,
       wordpressModel.acf.other_event_language
     )
   }
@@ -116,6 +117,13 @@ export class Convert {
       wordpressModel.acf.venue_wheelchair_access
     )
   }
+
+  static toNavbarModel = wordpressModel => {
+    return new NavbarModel(
+      wordpressModel.object_slug,
+      wordpressModel.title
+    );
+  }
   static toDocumentModel = wordpressModel => {
     return new DocumentModel(
       wordpressModel.wordpress_id,
@@ -152,8 +160,20 @@ export class Convert {
             event.participants,
             event.is_free,
             event.experience,
-            { ...event.EN, ...date.EN },
-            { ...event.DE, ...date.DE },
+            {
+              title: event.EN.event_title,
+              description: event.EN.full_description,
+              display_time: date.EN.display_time,
+              subtitle: event.EN.event_subtitle,
+            },
+            {
+              title: event.DE.event_title,
+              description: event.DE.full_description,
+              display_time: date.DE.display_time,
+              subtitle: event.DE.event_subtitle,
+            },
+            // { ...event.EN, ...date.EN },
+            // { ...event.DE, ...date.DE },
           )
         )
       })
@@ -177,8 +197,18 @@ export class Convert {
           exhibition.participants,
           true,
           [exhibition.experience],
-          exhibition.EN,
-          exhibition.DE
+          {
+            title: exhibition.EN.title,
+            description: exhibition.EN.description,
+            display_time: exhibition.start_time,
+            subtitle: '',
+          },
+          {
+            title: exhibition.DE.title,
+            description: exhibition.DE.description,
+            display_time: exhibition.start_time,
+            subtitle: '',
+          }
         )
       )
     })

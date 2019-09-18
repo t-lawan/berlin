@@ -1,14 +1,19 @@
 import styled from "styled-components"
+import { size } from "../../index.styles";
 
 export const ModalWrapper = styled.div`
   padding: 1em 2em;
   z-index: 1000;
   background: white;
-  position: fixed;
+  position: absolute;
   margin: 10% 30%;
   border: 1px solid black;
   width: 40%;
   display: ${props => (props.show ? "inherit" : "none")};
+  @media (max-width: ${size.tablet}) {
+    width: 80%;
+    margin: 10% 10%;
+  }
 `
 
 export const FormInput = styled.input`
@@ -20,7 +25,7 @@ export const FormInput = styled.input`
 `
 
 export const BackDropWrapper = styled.div`
-  z-index: 700;
+  z-index: 900;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;

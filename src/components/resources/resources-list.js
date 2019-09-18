@@ -27,7 +27,6 @@ const TextBox = styled.div`
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
-
   const createComponent = index => {
     const resource = props.resources[index]
     let renderComponent

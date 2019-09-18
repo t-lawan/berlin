@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { changeGridToOneRow } from "../../index.styles";
 const FooterWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr 7fr 1fr;
@@ -11,6 +12,7 @@ const FooterWrapper = styled.div`
   background: white;
   padding: 1em;
   border-top: 1px solid black;
+  ${changeGridToOneRow};
 `
 const FooterComponent = props => {
   return (
@@ -31,7 +33,7 @@ const FooterComponent = props => {
         </p>
       </div>
       <div>
-        <p> Hello</p>
+        <img src="https://11.berlinbiennale.de/temp/img/ksdb_logo.png" />
       </div>
     </FooterWrapper>
   )

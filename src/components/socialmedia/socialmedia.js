@@ -8,7 +8,7 @@ import {
 import * as actionTypes from "../../store/action"
 import { connect } from "react-redux"
 
-const socialMediaLinks = [
+export const socialMediaLinks = [
   { name: "facebook", url: "https://www.facebook.com/" },
   { name: "instagram", url: "https://www.instagram.com/" },
 ]
@@ -16,7 +16,7 @@ const socialMediaLinks = [
 const SocialMedia = props => {
   let showNewsletterInput = false
   const toggleNewsletterInput = () => {
-    props.showModal();
+    props.showModal()
   }
   return (
     <SocialMediaWrapper>
@@ -48,10 +48,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-      showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
-    }
+  return {
+    showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
   }
+}
+
 
 export default connect(
   mapStateToProps,

@@ -25,12 +25,14 @@ export const ExperienceButton = styled.h3`
 export const ExperienceControllerMobileWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background: white;
-  border: 1px solid black;
-  border-right: 0;
+  border-bottom: 1px solid black;
   ${showDisplayForTabletFunc('grid')};
 `
 
 export const ExperienceControllerMobileButton = styled.div`
   padding: 0.5em 2em;
   border-right: 1px solid black;
+  :last-child {
+    border: 0;
+  }
 `

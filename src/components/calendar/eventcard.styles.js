@@ -1,16 +1,20 @@
 import styled, { css } from "styled-components"
+import { Link } from "gatsby";
 
 export const EventCardWrapper = styled.div`
-  border-bottom: 0.05em solid black;
-  height: auto;
-  padding: 0.25em 0.25em;
+  padding: 0.5rem 1rem;
+  display: inline;
   /* &:last-child{
     border:none !important;
   } */
 `
+
+export const EventCardLink = styled(Link)`
+  text-decoration: none;
+`
 export const EventText = styled.p`
   font-size: x-small;
 `
-export const EventHeading = styled.strong`
-  font-size: x-small;
+export const EventHeading = styled.p`
+  /* font-size: x-small; */
 `

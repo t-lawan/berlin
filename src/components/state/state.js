@@ -9,6 +9,7 @@ import { generateExhibitions } from "../../models/ExhibitionModel"
 import { generateNewsArticles } from "../../models/NewsModel"
 import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
+import { NavbarModel } from "../../models/NavbarModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -56,9 +57,9 @@ const State = props => {
                     end_date
                     start_date
                   }
-                  related_resources {
-                    wordpress_id
-                  }
+                  # related_resources {
+                  #   wordpress_id
+                  # }
                   event_is_free
                   event_language
                   event_limited_capacity
@@ -168,6 +169,19 @@ const State = props => {
               }
             }
           }
+          allWordpressWpApiMenusMenusItems(
+            filter: { slug: { eq: "navbar-menu" } }
+          ) {
+            edges {
+              node {
+                items {
+                  object_slug
+                  title
+                }
+                slug
+              }
+            }
+          }
           allWordpressWpMedia {
             edges {
               node {
@@ -226,7 +240,6 @@ const State = props => {
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
-    calendarItems.push(...Convert.exhibitionsToCalendarItemArray(exhibitions))
     let calendar = CalendarModel.createCalendar(calendarItems)
 
     let participants = Convert.toModelArray(
@@ -248,6 +261,15 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
+    let navbarItems = []
+    let navbarItemsWP = data.allWordpressWpApiMenusMenusItems.edges
+
+    navbarItemsWP.forEach(item => {
+      item.node.items.forEach(i => {
+        navbarItems.push(new NavbarModel(i.object_slug, i.title))
+      })
+    })
+    props.setNavbar(navbarItems)
     props.setResources(resources)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
@@ -309,6 +331,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_CALENDAR,
         calendar: calendar,
+      }),
+    setNavbar: navbar =>
+      dispatch({
+        type: actionTypes.SET_NAVBAR_ITEMS,
+        navbar: navbar,
       }),
   }
 }
