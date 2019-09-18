@@ -3,7 +3,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { hideDisplayForTablet, showDisplayForTablet } from "../../index.styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
-import { inherits } from "util"
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
