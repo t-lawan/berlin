@@ -39,6 +39,7 @@ export const PressReleaseText = styled.span`
   margin-right: 2.5em;
 `
 
+
 export const PressReleaseLink = styled.a`
   text-decoration: none;
   color: inherit;
@@ -55,4 +56,10 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
   width: 0.4em;
   opacity: 0.5;
+  /* display: inline; */
+`
+
+export const ResourcePublisherLink = styled.a`
+  text-decoration: underline;
+  text-decoration-color: ${Color.red};
 `

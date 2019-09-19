@@ -3,7 +3,7 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { TwoColumnPageWrapper, PageWrapper } from "./page.styles"
+import { TwoColumnPageWrapper, PageWrapper, ResourcePublisherLink, PressArrowDown } from "./page.styles"
 import { Convert } from "../utility/convert"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { getDocument } from "../store/selector"
@@ -12,6 +12,7 @@ import ImageGalleryResource from "../partials/ImageGalleryResource"
 import ExternalLink from "../partials/ExternalLink"
 import { Color } from "../index.styles"
 import RelatedResources from "../components/resources/related-resources"
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -68,17 +69,22 @@ const Resource = props => {
         <PageWrapper colour={Color.yellow}>
           <TwoColumnPageWrapper>
             <div>
-              <ImageResource id={r.thumbnail_image} withCaption={false} />
+              {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
               <ExternalLink id={r.text_based_resource[0].document_upload}>
-                {" "}
-                <p> Download</p>{" "}
+                <PressArrowDown icon={faLongArrowAltDown}/>
+                <span> Download</span>{" "}
               </ExternalLink>
               <p> Language: {r.text_based_resource[0].document_language}</p>
             </div>
             <div>
-              <h2> {r.title}</h2>
+              <h1> {r.title}</h1>
               <p> {r.author}</p>
-              <p> In: {r.publisher.title}</p>
+              <p>
+                In:{" "}
+                <ResourcePublisherLink target="_blank" href={r.publisher.external_url}>
+                  {r.publisher.title}
+                </ResourcePublisherLink>
+              </p>
               <p> {r[language].year}</p>
               <div
                 dangerouslySetInnerHTML={{
