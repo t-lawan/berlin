@@ -26,14 +26,17 @@ const TextBox = styled.div`
   margin-bottom: 1rem;
 `
 const ResourcesList = props => {
-  let language = getCurrentLanguageString(props.languages)
+  let language = getCurrentLanguageString(props.languages);
   const createComponent = index => {
     const resource = props.resources[index]
     let renderComponent
     switch (resource.type) {
       case "imagegallery":
         renderComponent = (
-          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)} key={index}>
+          <ResourceItemLink
+            to={createPath(language, `resource/${resource.slug}`)}
+            key={index}
+          >
             <ResourceItem>
               <ImageResource
                 id={resource.image_gallery[0].wordpress_id}
@@ -46,7 +49,10 @@ const ResourcesList = props => {
         break
       case "text":
         renderComponent = (
-          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)} key={index}>
+          <ResourceItemLink
+            to={createPath(language, `resource/${resource.slug}`)}
+            key={index}
+          >
             <ResourceItem>
               <TextBox>
                 <p> {resource.title} </p>
@@ -57,9 +63,25 @@ const ResourcesList = props => {
           </ResourceItemLink>
         )
         break
+      case "image":
+        renderComponent = (
+          <ResourceItemLink
+            to={createPath(language, `resource/${resource.slug}`)}
+            key={index}
+          >
+            <ResourceItem key={index}>
+              <ImageResource id={resource.image} withCaption={false} />
+              <p> {resource.title} </p>
+            </ResourceItem>
+          </ResourceItemLink>
+        )
+        break
       default:
         renderComponent = (
-          <ResourceItemLink to={createPath(language, `resource/${resource.slug}`)}  key={index}>
+          <ResourceItemLink
+            to={createPath(language, `resource/${resource.slug}`)}
+            key={index}
+          >
             <ResourceItem key={index}>
               <p> {resource.title} </p>
             </ResourceItem>
