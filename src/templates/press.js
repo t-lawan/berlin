@@ -15,6 +15,7 @@ import {
   FormInput,
   FormButton,
 } from "../components/modal/modal.styles"
+import moment from "moment"
 
 const PressWrapper = styled.div`
   padding: 2em 1em;
@@ -124,7 +125,7 @@ class Press extends React.Component {
           <p> Press Releases</p>
           {this.pressInfo.acf.press_releases.map((press_release, index) => (
             <PressReleaseWrapper key={index}>
-              <PressReleaseText> {press_release.date}</PressReleaseText>
+              <PressReleaseText> {moment(press_release.date).format("DD.MM.YYYY")}</PressReleaseText>
               <PressReleaseText>
                 <PressReleaseLink
                   target="_blank"
@@ -216,9 +217,9 @@ const formText = {
     email:
     "Email",
   name:
-    "First and Last Name",
+    "Vor- und Nachname",
   media_affliation:
-      "Media affliation",
+      "Medium",
   thank_you:
     "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
     button: "Anmeldung",

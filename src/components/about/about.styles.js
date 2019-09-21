@@ -26,6 +26,11 @@ export const AboutNavItemLink = styled(AniLink)`
     text-decoration: none;
 `
 
+export const AboutPageContent = styled.div`
+    a {
+        text-decoration-color: ${Color.red}
+    }
+`
 export const AboutComponentWrapper = styled.section``
 
 export const AboutFundingHeader = styled.p`
