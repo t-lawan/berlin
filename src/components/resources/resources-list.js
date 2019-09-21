@@ -9,8 +9,17 @@ const ResourcesListWrapper = styled.div`
   padding: 2em;
 `
 
+const ResourceTitle = styled.p`
+
+`
+
 const ResourceItemLink = styled(Link)`
   text-decoration: none;
+  :hover {
+    ${ResourceTitle} {
+      color: ${Color.red};
+    }
+  }
 `
 
 const ResourceItem = styled.div`
@@ -42,7 +51,7 @@ const ResourcesList = props => {
                 id={resource.image_gallery[0].wordpress_id}
                 withCaption={false}
               />
-              <p> {resource.title} </p>
+              <ResourceTitle> {resource.title} </ResourceTitle>
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -55,7 +64,7 @@ const ResourcesList = props => {
           >
             <ResourceItem>
               <TextBox>
-                <p> {resource.title} </p>
+                <ResourceTitle> {resource.title} </ResourceTitle>
                 <p> {resource.author} </p>
               </TextBox>
               <p> {resource[language].label} </p>
@@ -71,7 +80,7 @@ const ResourcesList = props => {
           >
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
-              <p> {resource.title} </p>
+              <ResourceTitle> {resource.title} </ResourceTitle>
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -83,7 +92,7 @@ const ResourcesList = props => {
             key={index}
           >
             <ResourceItem key={index}>
-              <p> {resource.title} </p>
+              <ResourceTitle> {resource.title} </ResourceTitle>
             </ResourceItem>
           </ResourceItemLink>
         )
