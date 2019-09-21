@@ -4,14 +4,17 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { PageWrapper, TwoColumnPageWrapper } from "./page.styles"
+import {
+  TwoColumnPageWrapper,
+  TextBlock,
+  ResourcePublisherLink,
+} from "./page.styles"
 import { getDocument } from "../store/selector"
-
+import ImageResource from "../partials/ImageResource"
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
-  const image = getDocument(props.documents, pageInfo.acf.thumbnail_image)
-  const url = image ? image.url : ""
+  console.log("props", pageInfo)
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
@@ -20,27 +23,28 @@ const PracticalInformation = props => {
         lang={pageInfo.language}
       />
       <div>
-        <div>
+        <TextBlock>
           {pageInfo.acf[language].address_info.map((address, index) => (
             <p key={index}> {address.address_line} </p>
           ))}
-        </div>
-        <div>
-          <p>Opening times</p>
+        </TextBlock>
+        <TextBlock>
+          <p>Opening hours</p>
           {pageInfo.acf[language].opening_times.map((time, index) => (
             <p key={index}> {time.opening_time_line} </p>
           ))}
-        </div>
-        <div>
+        </TextBlock>
+        <TextBlock>
           <p>Access</p>
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-        </div>
+          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> Direction</ResourcePublisherLink>
+        </TextBlock>
       </div>
 
       <div>
-        <img src={url} />
+        <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
         <div
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
