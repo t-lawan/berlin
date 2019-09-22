@@ -77,7 +77,7 @@ class Columns extends React.Component {
             <StickyHeader>
               <Jumbotron />
             </StickyHeader>
-            <Logo />
+            {/* <Logo /> */}
             {this.props.thirdColumn}
             <SocialMedia />
           </Column>

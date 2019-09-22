@@ -39,7 +39,8 @@ const RelatedResources = props => {
         >
           <RelatedResource>
             <p>{resource.title}</p>
-            <p>{resource.author}</p>
+            <h4>{resource.author}</h4>
+            <p>{resource[language].label}</p>
           </RelatedResource>
         </ResourceLink>
       ))}

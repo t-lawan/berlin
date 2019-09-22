@@ -4,6 +4,7 @@ import Layout from "../components/layout/layout";
 import {connect} from 'react-redux';
 import { getCurrentLanguageString } from "../utility/helper";
 import Calendar from "../components/calendar/calendar";
+import ResourcesList from "../components/resources/resources-list";
 
 const CalendarTemplate = (props) => {
   const language = getCurrentLanguageString(props.languages);
@@ -15,7 +16,7 @@ const CalendarTemplate = (props) => {
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={<ResourcesList />}
     />
   )
 }

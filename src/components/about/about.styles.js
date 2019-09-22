@@ -1,9 +1,14 @@
 import styled from "styled-components";
-import { Color } from "../../index.styles";
+import { Color, size } from "../../index.styles";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import ImageResource from "../../partials/ImageResource";
 export const AboutSideNavbar = styled.nav`
   padding: 0.25em 1em;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: ${size.tablet}) {
+    flex-direction: row;
+  }
 `
 
 export const AboutNavItem = styled.p`
@@ -12,12 +17,20 @@ export const AboutNavItem = styled.p`
   :hover {
       cursor: pointer;
   }
+  @media (max-width: ${size.tablet}) {
+  padding: 0.5em 0.5em;
+  }
 `
 
 export const AboutNavItemLink = styled(AniLink)`
     text-decoration: none;
 `
 
+export const AboutPageContent = styled.div`
+    a {
+        text-decoration-color: ${Color.red}
+    }
+`
 export const AboutComponentWrapper = styled.section``
 
 export const AboutFundingHeader = styled.p`
