@@ -8,8 +8,9 @@ import {
   Heading,
   TitleContainer,
   DateContainer,
+  HeaderLink,
 } from "./header.styles"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
 const content = {
   EN: {
@@ -32,25 +33,27 @@ const Header = props => {
   const language = getCurrentLanguageString(props.languages)
   return (
     <HeaderWrapper className={props.className}>
-      <DateContainer hideInMobile>
-        <Heading> {content[language].date}</Heading>
-      </DateContainer>
-      <TitleContainer>
-        <Left>
-          {content[language].text.left.map((text, index) => (
-            <Heading key={index}>{text}</Heading>
-          ))}
-        </Left>
-        <Right>
-          <Heading> {experience} </Heading>
-          {content[language].text.right.map((text, index) => (
-            <Heading key={index}>{text}</Heading>
-          ))}
-        </Right>
-      </TitleContainer>
-      <DateContainer showInMobile>
-        <Heading> {content[language].date}</Heading>
-      </DateContainer>
+      <HeaderLink to={createPath(language, '')}>
+        <DateContainer hideInMobile>
+          <Heading> {content[language].date}</Heading>
+        </DateContainer>
+        <TitleContainer>
+          <Left>
+            {content[language].text.left.map((text, index) => (
+              <Heading key={index}>{text}</Heading>
+            ))}
+          </Left>
+          <Right>
+            <Heading> {experience} </Heading>
+            {content[language].text.right.map((text, index) => (
+              <Heading key={index}>{text}</Heading>
+            ))}
+          </Right>
+        </TitleContainer>
+        <DateContainer showInMobile>
+          <Heading> {content[language].date}</Heading>
+        </DateContainer>
+      </HeaderLink>
     </HeaderWrapper>
   )
 }

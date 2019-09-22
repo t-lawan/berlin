@@ -9,8 +9,11 @@ import {
   FormInput,
   FormButton,
   FormLabel,
+  ModalCloseIcon,
+  ModalHeader,
 } from "./modal.styles"
 import axios from "axios"
+import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
 class Modal extends React.Component {
   language;
@@ -81,6 +84,9 @@ class Modal extends React.Component {
           onClick={this.closeModal}
         ></BackDropWrapper>
         <ModalWrapper show={this.props.show}>
+          <ModalHeader>
+            <ModalCloseIcon onClick={this.closeModal} icon={faTimes} />
+          </ModalHeader>
           <div hidden={this.state.hasSubmitted}>
             <p>{modalText[this.language].description}</p>
             <form onSubmit={this.handleSubmit.bind(this)}>
