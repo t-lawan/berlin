@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { size } from "../../index.styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const ModalWrapper = styled.div`
   padding: 1em 2em;
@@ -31,6 +32,18 @@ export const BackDropWrapper = styled.div`
   height: 100%;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
+`
+
+export const ModalHeader = styled.div`
+  padding: 0.5em;
+  text-align: right;
+`;
+
+export const ModalCloseIcon = styled(FontAwesomeIcon)`
+  width: 0.5em;
+  :hover{
+    cursor: pointer;
+  }
 `
 
 export const FormButton = styled.button`
