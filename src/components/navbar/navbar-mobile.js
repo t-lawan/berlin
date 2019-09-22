@@ -70,7 +70,7 @@ class NavbarMobile extends React.Component {
                 key={index}
               >
                 {" "}
-                {item.title.toLowerCase()}{" "}
+                {item[this.language].title.toLowerCase()}{" "}
               </NavMobileLink>
             ))}
           </NavMobileInner>

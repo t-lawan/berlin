@@ -30,14 +30,14 @@ const Navbar = props => {
   return (
     <NavWrapper hideInMobile={props.hideInMobile}>
       <NavInner>
-        {data.allWordpressWpApiMenusMenusItems.edges[0].node.items.map(item => (
+        {props.navbar.map(item => (
           <NavItem
             activeStyle={{ color: "#990033" }}
-            to={createPath(language, item.object_slug)}
-            key={item.object_slug}
+            to={createPath(language, item.slug)}
+            key={item.slug}
             fade
           >
-            {item.title.toLowerCase()}
+            {item[language].title.toLowerCase()}
           </NavItem>
         ))}
       </NavInner>
@@ -49,6 +49,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
+    navbar: state.navbar,
   }
 }
 

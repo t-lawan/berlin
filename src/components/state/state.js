@@ -9,7 +9,7 @@ import { generateExhibitions } from "../../models/ExhibitionModel"
 import { generateNewsArticles } from "../../models/NewsModel"
 import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
-import { NavbarModel } from "../../models/NavbarModel"
+import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -264,9 +264,11 @@ const State = props => {
 
     navbarItemsWP.forEach(item => {
       item.node.items.forEach(i => {
-        navbarItems.push(new NavbarModel(i.object_slug, i.title))
+        navbarItems.push(new NavbarModel(i.object_slug, i.title, NavbarTitleConfig[i.object_slug].DE))
       })
     })
+
+    console.log('navbar', navbarItems);
     props.setNavbar(navbarItems)
     props.setResources(resources)
     props.setCalendarItems(calendarItems)
