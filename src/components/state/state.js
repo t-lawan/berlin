@@ -136,7 +136,8 @@ const State = props => {
                   resource_year
                   resource_year_de
                   subtitle
-                  thumbnail_image
+                  resource_image
+                  resource_type
                   title
                   text_based_resource {
                     document_download_label

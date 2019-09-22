@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { hideDisplayForTablet, showDisplayForTablet } from "../../index.styles"
+import { hideDisplayForTablet, showDisplayForTablet, Color } from "../../index.styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "gatsby"
 
@@ -43,6 +43,9 @@ export const NavItem = styled(AniLink)`
   padding: 8px 16px;
   text-decoration: none;
   color: black;
+  :hover {
+    color: ${Color.red};
+  }
 `
 
 export const NavMobileHeader = styled.div`

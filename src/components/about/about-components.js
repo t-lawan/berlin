@@ -3,7 +3,7 @@ import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import { AboutComponentWrapper } from "./about.styles"
+import { AboutComponentWrapper, AboutPageContent } from "./about.styles"
 import AboutFunding from "./about-funding"
 import AboutTeamBlock from "./about-team-block";
 
@@ -11,11 +11,11 @@ const AboutComponents = props => {
   const content = props.content
   let renderComponent
   const language = getCurrentLanguageString(props.languages)
-
+  console.log('a', content);
   switch (content.slug) {
     case "about":
       renderComponent = (
-        <div
+        <AboutPageContent
           dangerouslySetInnerHTML={{
             __html: content.acf[`${language}_row`].description,
           }}

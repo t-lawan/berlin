@@ -55,4 +55,18 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
   width: 0.4em;
   opacity: 0.5;
+  /* display: inline; */
+`
+
+export const ResourcePublisherLink = styled.a`
+  text-decoration: underline;
+  text-decoration-color: ${Color.red};
+`
+
+export const TextBlock = styled.div`
+  > p {
+    padding: 0;
+    margin: 0;
+  }
+  padding: 1em 0em;
 `

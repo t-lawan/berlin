@@ -1,17 +1,16 @@
 import styled from "styled-components"
 import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet } from "../../index.styles"
+import { Link } from "gatsby";
 
 export const HeaderWrapper = styled.div`
   /* opacity: 1; */
   transition: opacity 0.5s;
   border-bottom: 1px solid black;
   padding: 0.5em 1em;
-  display: grid;
-  grid-template-columns:1fr 1fr;
+
   align-items: start;
   justify-items: center;
   background: white;
-  ${changeGridToOneRow};
 
   :hover {
     /* opacity: 0.01; */
@@ -40,3 +39,11 @@ export const DateContainer = styled.div`
 `
 
 export const Heading = styled.h2``
+
+export const HeaderLink = styled(Link)`
+  text-decoration: none;
+  display: grid;
+  grid-template-columns:1fr 1fr;
+  ${changeGridToOneRow};
+
+`
