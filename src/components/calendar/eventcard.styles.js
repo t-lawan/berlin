@@ -7,8 +7,9 @@ export const EventCardWrapper = styled.div`
   display: inline;
   :hover {
     ${EventText} {
-      color: ${Color.red};
-
+      p {
+        color: ${Color.red};
+      }
     }
   }
 `
