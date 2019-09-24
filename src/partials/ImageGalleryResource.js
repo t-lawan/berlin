@@ -73,9 +73,9 @@ class ImageGalleryResource extends React.Component {
     return this.imageResources.length === this.state.index + 1 ? true : false
   }
   setVisibleToTrue = () => {
-    setTimeout(() => {
+    // setTimeout(() => {
       this.setState({ isVisible: true, isTransitioning: false })
-    }, 1000)
+    // }, 1000)
   }
 
   isFirstImage = () => {

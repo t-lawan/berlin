@@ -192,7 +192,13 @@ const State = props => {
                   external_url
                 }
                 slug
-                alt_text
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
@@ -264,7 +270,13 @@ const State = props => {
 
     navbarItemsWP.forEach(item => {
       item.node.items.forEach(i => {
-        navbarItems.push(new NavbarModel(i.object_slug, i.title, NavbarTitleConfig[i.object_slug].DE))
+        navbarItems.push(
+          new NavbarModel(
+            i.object_slug,
+            i.title,
+            NavbarTitleConfig[i.object_slug].DE
+          )
+        )
       })
     })
 
