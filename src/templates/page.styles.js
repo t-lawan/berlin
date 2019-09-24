@@ -61,6 +61,7 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 export const ResourcePublisherLink = styled.a`
   text-decoration: underline;
   text-decoration-color: ${Color.red};
+  font-size: 1.15em;
 `
 
 export const TextBlock = styled.div`
