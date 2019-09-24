@@ -26,7 +26,28 @@ import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
 import * as actionTypes from "../../store/action"
 class NavbarMobile extends React.Component {
   language
-
+  navLinks = [
+    {
+      EN: 'team',
+      DE: 'team',
+      path: 'team'
+    },
+    {
+      EN: 'organisation',
+      DE: 'verein',
+      path: 'organisation-2'
+    },
+    {
+      EN: 'advisory board',
+      DE: 'beirat',
+      path: 'advisory-board'
+    },
+    {
+      EN: 'support',
+      DE: 'support',
+      path: 'support'
+    },
+  ]
   constructor() {
     super()
     this.state = {
@@ -76,8 +97,13 @@ class NavbarMobile extends React.Component {
           </NavMobileInner>
 
           <NavMobileLinks>
-            <div>
-              <NavMobileLink to={createPath(this.language, "team")}>
+            {/* <div> */}
+              {this.navLinks.map((navLink, index) => (
+                <NavMobileLink key={index} to={createPath(this.language, navLink.path)}>
+                  {navLink[this.language]}
+                </NavMobileLink>
+              ))}
+              {/* <NavMobileLink to={createPath(this.language, "team")}>
                 {" "}
                 team
               </NavMobileLink>
@@ -95,8 +121,9 @@ class NavbarMobile extends React.Component {
                 {" "}
                 support
               </NavMobileLink>
-            </div>
+            </div> */}
           </NavMobileLinks>
+
           <NavMobileLinks>
             <div>
               <NavMobileModal onClick={() => this.showModal()}>
