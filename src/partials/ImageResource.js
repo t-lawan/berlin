@@ -18,7 +18,7 @@ export const GalleryImage = styled.img`
 `
 
 export const Caption = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 `
 
 class ImageResource extends React.Component {
