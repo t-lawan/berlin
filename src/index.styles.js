@@ -4,6 +4,9 @@ export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
   box-sizing: border-box;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 html,
 body {
@@ -147,7 +150,7 @@ export const showDisplayForTablet = css`
   }
 `
 
-export const showDisplayForTabletFunc = (variable) => css`
+export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInMobile ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInMobile ? `${variable}` : "none")};
@@ -202,5 +205,5 @@ export const tablet = props => {
 
 export const Color = {
   yellow: "#EEEC7A",
-  red: '#D9515C'
+  red: "#D9515C",
 }
