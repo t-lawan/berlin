@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   ::-webkit-scrollbar {
     display: none;
   }
+  scrollbar-width: none;
 }
 html,
 body {
