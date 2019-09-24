@@ -61,7 +61,7 @@ const State = props => {
                   event_language
                   event_limited_capacity
                   other_event_language
-                  # thumbnail_image
+                  thumbnail_image
                   participants
                   template
                   exp_number
@@ -268,7 +268,6 @@ const State = props => {
       })
     })
 
-    console.log('navbar', navbarItems);
     props.setNavbar(navbarItems)
     props.setResources(resources)
     props.setCalendarItems(calendarItems)

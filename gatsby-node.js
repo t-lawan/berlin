@@ -155,6 +155,7 @@ exports.createPages = async ({ graphql, actions }) => {
               event_limited_capacity
               other_event_language
               participants
+              thumbnail_image
               template
               exp_number
             }
