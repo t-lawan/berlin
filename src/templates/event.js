@@ -13,6 +13,7 @@ import { getVenue } from "../store/selector"
 import { TwoColumnPageWrapper } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment";
+import EventNavigator from "../components/events/event-navigator";
 
 const EventColumn = styled.div``
 
@@ -35,6 +36,7 @@ const Event = props => {
   // })
   const renderComponent = (
     <>
+    <EventNavigator id={event.id}/>
       <TwoColumnPageWrapper>
         <SEO
           title={`${event.slug}`}
