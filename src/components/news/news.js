@@ -9,7 +9,6 @@ const News = props => {
         <h3> {props.article.en.title}</h3>
       </NewsLink>
       <p dangerouslySetInnerHTML={{ __html: props.news.en.content }} />
-      <img src="https://via.placeholder.com/150" width="100%" height="300px" />
     </NewsWrapper>
   )
 }

@@ -13,8 +13,7 @@ import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
-  const pageInfo = props.pageContext
-  console.log("props", pageInfo)
+  const pageInfo = props.pageContext;
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
