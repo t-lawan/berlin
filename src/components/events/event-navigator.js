@@ -23,7 +23,6 @@ class EventNavigator extends React.Component {
   currentIndex;
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.events.length) {
-        console.log(this.props.events.length, this.currentIndex);
       return `event/${this.props.events[0].slug}`
     }
     return `event/${this.props.events[this.currentIndex + 1].slug}`
