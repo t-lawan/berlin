@@ -56,6 +56,7 @@ export const NavMobileHeader = styled.div`
 
 export const NavIcon = styled(FontAwesomeIcon)`
   font-size: 1.5rem;
+  display: ${props => props.show ? 'inherit': 'none'};
   :hover {
     cursor: pointer;
   }

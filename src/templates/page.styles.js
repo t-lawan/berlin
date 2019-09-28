@@ -22,6 +22,10 @@ export const PressWrapper = styled.div`
   ${changeGridToOneRow}
 `
 
+export const ResourceImageWrapper = styled.div`
+  padding: 1em;
+`
+
 export const PressFormInput = styled.input`
   font-size: 1em;
   border-radius: 0;
@@ -61,6 +65,7 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 export const ResourcePublisherLink = styled.a`
   text-decoration: underline;
   text-decoration-color: ${Color.red};
+  font-size: 1.15em;
 `
 
 export const TextBlock = styled.div`

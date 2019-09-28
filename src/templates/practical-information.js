@@ -13,8 +13,7 @@ import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
-  const pageInfo = props.pageContext
-  console.log("props", pageInfo)
+  const pageInfo = props.pageContext;
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
@@ -29,23 +28,23 @@ const PracticalInformation = props => {
           ))}
         </TextBlock>
         <TextBlock>
-          <p>Opening hours</p>
+          <p>{content[language].opening_hours}</p>
           {pageInfo.acf[language].opening_times.map((time, index) => (
             <p key={index}> {time.opening_time_line} </p>
           ))}
         </TextBlock>
         <TextBlock>
-          <p>Access</p>
+          <p>{content[language].access}</p>
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> Direction</ResourcePublisherLink>
+          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlock>
       </div>
 
       <div>
         <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
-        <div
+        <TextBlock
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
           }}
@@ -62,7 +61,19 @@ const PracticalInformation = props => {
     />
   )
 }
+const content = {
+  EN: {
+    opening_hours: 'Opening hours',
+    access: 'Access',
+    directions: 'Directions'
+  },
+  DE: {
+    opening_hours: 'Öffnungszeiten',
+    access: 'Anfahrt',
+    directions: 'Karte'
 
+  },
+}
 const mapStateToProps = state => {
   return {
     languages: state.languages,

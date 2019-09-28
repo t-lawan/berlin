@@ -3,7 +3,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { Color } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
   padding: 2em;
 `
 

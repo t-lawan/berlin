@@ -38,7 +38,9 @@ export const DateContainer = styled.div`
   ${showDisplayForTablet};
 `
 
-export const Heading = styled.h2``
+export const Heading = styled.p`
+  font-size: 2rem;
+`
 
 export const HeaderLink = styled(Link)`
   text-decoration: none;

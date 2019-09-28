@@ -11,7 +11,6 @@ const AboutComponents = props => {
   const content = props.content
   let renderComponent
   const language = getCurrentLanguageString(props.languages)
-  console.log('a', content);
   switch (content.slug) {
     case "about":
       renderComponent = (
