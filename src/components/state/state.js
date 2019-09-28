@@ -142,7 +142,7 @@ const State = props => {
                   text_based_resource {
                     document_download_label
                     document_language
-                    document_upload
+                    # document_upload
                     free_text_entry
                   }
                   floating_resource

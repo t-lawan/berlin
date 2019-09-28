@@ -182,7 +182,6 @@ exports.createPages = async ({ graphql, actions }) => {
               text_based_resource {
                 document_download_label
                 document_language
-                document_upload
                 free_text_entry
               }
               floating_resource
