@@ -22,6 +22,10 @@ export const PressWrapper = styled.div`
   ${changeGridToOneRow}
 `
 
+export const ResourceImageWrapper = styled.div`
+  padding: 1em;
+`
+
 export const PressFormInput = styled.input`
   font-size: 1em;
   border-radius: 0;
