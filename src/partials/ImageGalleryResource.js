@@ -13,11 +13,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 
 export const NavigatingButton = styled.div`
-  color: ${props => (props.show ? "black" : "grey")};
+  opacity: ${props => (props.show ? '1' : '0.2')};
+  color: black;
   cursor: ${props => (props.show ? "pointer" : "inherit")};
   font-size: 2rem;
-  /* display:inline-block; */
-  /* text-align: center; */
   margin: auto;
   position: relative;
   z-index: 1000;
@@ -31,12 +30,14 @@ export const NavigationButtons = styled.div`
   position: absolute;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   padding: 1rem;
+  transition: all 0.5s ease-in-out;
   visibility: hidden;
   ${NavigationSpace}:hover & {
-    visibility:visible;
+    visibility: visible;
   }
 `
 
@@ -46,9 +47,8 @@ export const AnimatedSpace = styled(Animated)`
 
 export const NavigationIcon = styled(FontAwesomeIcon)`
   width: 0.25rem;
-  align-content: center;
   margin: auto;
-  float: ${props => (props.floatRight ? "right" : "left")};
+  float: ${props => (props.floatright ? "right" : "left")};
 `
 
 export const GalleryImage = styled.img``
@@ -111,11 +111,6 @@ class ImageGalleryResource extends React.Component {
     }
     return false
   }
-
-  changeImage = event => {
-    console.log(event)
-    console.log(1)
-  }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     this.imageResources = getDocuments(this.props.documents, this.props.ids)
@@ -133,7 +128,7 @@ class ImageGalleryResource extends React.Component {
               show={!this.isLastImage()}
               onClick={() => this.nextImage()}
             >
-              <NavigationIcon icon={faLongArrowAltRight} floatRight />
+              <NavigationIcon icon={faLongArrowAltRight} floatright={1} />
             </NavigatingButton>
           </NavigationButtons>
 
@@ -144,7 +139,6 @@ class ImageGalleryResource extends React.Component {
             animateOnMount={false}
           >
             <ImageResource
-              onClick={event => this.changeImage(event)}
               onLoad={() => this.setVisibleToTrue()}
               id={this.props.ids[this.state.index]}
               withCaption={false}
