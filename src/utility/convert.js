@@ -131,7 +131,8 @@ export class Convert {
       wordpressModel.source_url,
       wordpressModel.slug,
       wordpressModel.acf ? wordpressModel.acf.caption_en : "",
-      wordpressModel.acf ? wordpressModel.acf.caption_de : ""
+      wordpressModel.acf ? wordpressModel.acf.caption_de : "",
+      wordpressModel.localFile.childImageSharp ? wordpressModel.localFile.childImageSharp.fluid : null
     )
   }
   static toModelArray = (wordpressQuery, modelConverter) => {

@@ -9,6 +9,7 @@ import {
   ResourcePublisherLink,
   PressArrowDown,
   PressReleaseLink,
+  ResourceImageWrapper,
 } from "./page.styles"
 import { Convert } from "../utility/convert"
 import UpcomingEvents from "../components/events/upcomingevents"
@@ -69,9 +70,9 @@ const Resource = props => {
       renderComponent = (
         <PageWrapper colour={Color.yellow}>
           <ResourceNavigator id={r.id} />
-          <PageWrapper>
+          <ResourceImageWrapper>
             <ImageGalleryResource ids={r.image_gallery} />
-          </PageWrapper>
+          </ResourceImageWrapper>
           <TwoColumnPageWrapper>
             <div>
               <p> {r.title}</p>
@@ -97,10 +98,10 @@ const Resource = props => {
           <TwoColumnPageWrapper>
             <div>
               {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
-              <ExternalLink id={r.text_based_resource[0].document_upload}>
+              {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
                 <PressArrowDown icon={faLongArrowAltDown} />
                 <span> Download</span>{" "}
-              </ExternalLink>
+              </ExternalLink> */}
               <p> Language: {r.text_based_resource[0].document_language}</p>
             </div>
             <div>

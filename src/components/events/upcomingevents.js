@@ -3,11 +3,13 @@ import { EventsWrapper, EventItem, EventLink, EventTitle } from "./upcomingevent
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import moment from "moment"
+import 'moment/locale/en-gb';
+import 'moment/locale/de';
 import { getVenue } from "../../store/selector"
 
 let calendar_items = []
 const UpcomingEvents = props => {
-  const language = getCurrentLanguageString(props.languages)
+  const language = getCurrentLanguageString(props.languages);
   calendar_items = props.calendar_items
   const filteredItems = calendar_items
     .filter(item => {
@@ -20,14 +22,13 @@ const UpcomingEvents = props => {
     .sort((a, b) => {
       return a.start_date - b.start_date
     })
-
   return (
     <EventsWrapper>
       <p hidden={filteredItems.length !== 0}> There are no upcoming events for this experience </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
           <EventLink to={createPath(language, `${item.slug}`)}>
-            <p> {moment(item.start_date).format("dddd, DD.MM.YYYY")}</p>
+            <p> {moment(item.start_date).locale(language.toLowerCase()).format("dddd, DD.MM.YYYY")}</p>
             <p> {item[language].display_time}</p>
             <EventTitle dangerouslySetInnerHTML={{ __html: item[language].title }} />
             <EventTitle dangerouslySetInnerHTML={{ __html: item[language].subtitle }} />

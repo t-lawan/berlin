@@ -13,8 +13,17 @@ import { getVenue } from "../store/selector"
 import { TwoColumnPageWrapper } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment";
+import EventNavigator from "../components/events/event-navigator";
 
 const EventColumn = styled.div``
+
+const EventTitle = styled.div`
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  p {
+    font-size: 1.8rem;
+  }
+`
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext)
@@ -27,6 +36,7 @@ const Event = props => {
   // })
   const renderComponent = (
     <>
+    <EventNavigator id={event.id}/>
       <TwoColumnPageWrapper>
         <SEO
           title={`${event.slug}`}
@@ -44,10 +54,8 @@ const Event = props => {
           <p>{freeAdmision[language].text}</p>
         </EventColumn>
         <EventColumn>
-          <ImageResource id={882} withCaption={true} />
-          {/* <img src="https://placebear.com/g/600/350" width="auto"/> */}
-
-          <h3
+          <ImageResource id={event.thumbnail_image} withCaption={true} />
+          <EventTitle
             dangerouslySetInnerHTML={{
               __html: event[language].event_title,
             }}

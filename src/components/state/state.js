@@ -9,7 +9,7 @@ import { generateExhibitions } from "../../models/ExhibitionModel"
 import { generateNewsArticles } from "../../models/NewsModel"
 import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
-import { NavbarModel } from "../../models/NavbarModel"
+import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 
 const State = props => {
   if (!props.isLoaded) {
@@ -61,7 +61,7 @@ const State = props => {
                   event_language
                   event_limited_capacity
                   other_event_language
-                  # thumbnail_image
+                  thumbnail_image
                   participants
                   template
                   exp_number
@@ -142,7 +142,7 @@ const State = props => {
                   text_based_resource {
                     document_download_label
                     document_language
-                    document_upload
+                    # document_upload
                     free_text_entry
                   }
                   floating_resource
@@ -192,7 +192,13 @@ const State = props => {
                   external_url
                 }
                 slug
-                alt_text
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
           }
@@ -264,9 +270,16 @@ const State = props => {
 
     navbarItemsWP.forEach(item => {
       item.node.items.forEach(i => {
-        navbarItems.push(new NavbarModel(i.object_slug, i.title))
+        navbarItems.push(
+          new NavbarModel(
+            i.object_slug,
+            i.title,
+            NavbarTitleConfig[i.object_slug].DE
+          )
+        )
       })
     })
+
     props.setNavbar(navbarItems)
     props.setResources(resources)
     props.setCalendarItems(calendarItems)
