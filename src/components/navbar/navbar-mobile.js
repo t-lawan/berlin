@@ -20,13 +20,34 @@ import {
   NavMobileModal,
   NavImageLink,
 } from "./navbar.styles"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
 import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
 import * as actionTypes from "../../store/action"
 class NavbarMobile extends React.Component {
   language
-
+  navLinks = [
+    {
+      EN: 'team',
+      DE: 'team',
+      path: 'team'
+    },
+    {
+      EN: 'organisation',
+      DE: 'verein',
+      path: 'organisation-2'
+    },
+    {
+      EN: 'advisory board',
+      DE: 'beirat',
+      path: 'advisory-board'
+    },
+    {
+      EN: 'support',
+      DE: 'support',
+      path: 'support'
+    },
+  ]
   constructor() {
     super()
     this.state = {
@@ -50,7 +71,8 @@ class NavbarMobile extends React.Component {
       <NavMobileWrapper showInMobile>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
-            <NavIcon icon={faBars} />
+            <NavIcon icon={faBars} show={this.state.showContent ? 0 : 1} />
+            <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
           </div>
           <div>
             <NavImageLink to={createPath(this.language, '')}>
@@ -69,34 +91,19 @@ class NavbarMobile extends React.Component {
                 to={createPath(this.language, item.slug)}
                 key={index}
               >
-                {" "}
-                {item.title.toLowerCase()}{" "}
+                {item[this.language].title.toLowerCase()}{" "}
               </NavMobileLink>
             ))}
           </NavMobileInner>
 
           <NavMobileLinks>
-            <div>
-              <NavMobileLink to={createPath(this.language, "team")}>
-                {" "}
-                team
-              </NavMobileLink>
-              <NavMobileLink to={createPath(this.language, "organisation-2")}>
-                {" "}
-                organisation
-              </NavMobileLink>
-            </div>
-            <div>
-              <NavMobileLink to={createPath(this.language, "advisory-board")}>
-                {" "}
-                advisory board
-              </NavMobileLink>
-              <NavMobileLink to={createPath(this.language, "support")}>
-                {" "}
-                support
-              </NavMobileLink>
-            </div>
+              {this.navLinks.map((navLink, index) => (
+                <NavMobileLink key={index} to={createPath(this.language, navLink.path)}>
+                  {navLink[this.language]}
+                </NavMobileLink>
+              ))}
           </NavMobileLinks>
+
           <NavMobileLinks>
             <div>
               <NavMobileModal onClick={() => this.showModal()}>
