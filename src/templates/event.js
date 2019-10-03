@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, createPath } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
@@ -10,10 +10,12 @@ import UpcomingEvents, {
 import SEO from "../components/seo/seo"
 import ImageResource from "../partials/ImageResource"
 import { getVenue } from "../store/selector"
-import { TwoColumnPageWrapper } from "./page.styles"
+import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
-import moment from "moment";
-import EventNavigator from "../components/events/event-navigator";
+import moment from "moment"
+import EventNavigator from "../components/events/event-navigator"
+import { Color } from "../index.styles"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const EventColumn = styled.div``
 
@@ -22,6 +24,13 @@ const EventTitle = styled.div`
   padding-bottom: 0.5rem;
   p {
     font-size: 1.8rem;
+  }
+`
+
+const VenueLink = styled(AniLink)`
+  text-decoration: none;
+  :hover {
+    color: ${Color.red};
   }
 `
 const Event = props => {
@@ -36,7 +45,7 @@ const Event = props => {
   // })
   const renderComponent = (
     <>
-    <EventNavigator id={event.id}/>
+      <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
           title={`${event.slug}`}
@@ -44,13 +53,25 @@ const Event = props => {
           lang={props.pageContext.language}
         />
         <EventColumn>
-          {event.dates.map((date, index) => (
-            <div key={index}>
-              <p> {`${moment(date.start_date).format("DD.MM.YYYY")} - ${date[language].display_time}`}</p>
-            </div>
-          ))}
-          <p> {venue ? venue[language].venue_name : ""}</p>
-          <p>{venue ? venue.address[0].address_line : ""}</p>
+          <TextBlock>
+            {event.dates.map((date, index) => (
+              <div key={index}>
+                <p>
+                  {" "}
+                  {`${moment(date.start_date).format("DD.MM.YYYY")} - ${
+                    date[language].display_time
+                  }`}
+                </p>
+              </div>
+            ))}
+          </TextBlock>
+          <TextBlock>
+            <VenueLink to={createPath(language, venue ? 'venue/' + venue.slug : "")}>
+              {" "}
+              {venue ? venue[language].venue_name : ""}
+            </VenueLink>
+            <p>{venue ? venue.address[0].address_line : ""}</p>
+          </TextBlock>
           <p>{freeAdmision[language].text}</p>
         </EventColumn>
         <EventColumn>
