@@ -198,6 +198,7 @@ exports.createPages = async ({ graphql, actions }) => {
               publisher
               publisher_external_url
               resource_author
+              resource_image
               resource_external_url
               resource_label
               resource_external_url_label
