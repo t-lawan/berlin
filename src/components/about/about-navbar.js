@@ -77,6 +77,27 @@ const AboutNavbar = props => {
   )
 }
 
+const navbarItems = [
+  {
+    slug: "about",
+    EN: {
+      title: "About",
+    },
+    DE: {
+      title: "About",
+    },
+  },
+  {
+    slug: "about",
+    EN: {
+      title: "About",
+    },
+    DE: {
+      title: "About",
+    },
+  },
+]
+
 const mapStateToProps = state => {
   return {
     languages: state.languages,

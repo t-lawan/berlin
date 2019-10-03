@@ -137,6 +137,7 @@ const State = props => {
                   resource_year_de
                   subtitle
                   resource_image
+                  resource_image
                   resource_type
                   title
                   text_based_resource {
