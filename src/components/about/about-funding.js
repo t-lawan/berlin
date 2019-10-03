@@ -59,7 +59,7 @@ const AboutFunding = props => {
         )
         break
       default:
-        renderComponent = <p key={index}>normie</p>
+        renderComponent = <p key={index}></p>
         break
     }
 

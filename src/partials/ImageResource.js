@@ -30,17 +30,18 @@ class ImageResource extends React.Component {
   }
   image
   language
-
+  UNSAFE_componentWillMount() {
+    this.image = getDocument(this.props.documents, this.props.id)
+  }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    this.image = getDocument(this.props.documents, this.props.id)
     return (
       <>
-        <Img onLoad={this.props.onLoad} fluid={this.image.fluid} />
+        <Img onLoad={this.props.onLoad} fluid={this.image ? this.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
-            __html: this.image[this.language].caption,
+            __html: this.image ? this.image[this.language].caption : '',
           }}
         />
       </>

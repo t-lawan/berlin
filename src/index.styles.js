@@ -32,7 +32,7 @@ body {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   line-height: 1.1;
 }
 h2 {
@@ -111,7 +111,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p{
+p, a{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
