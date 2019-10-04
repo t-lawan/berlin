@@ -15,13 +15,16 @@ import {
   StickyFooter,
   FixedFooter,
   FixedNavbar,
+  StickyTopHeader,
+  RelativeHeader,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
-import NavbarMobile from "../navbar/navbar-mobile";
+import NavbarMobile from "../navbar/navbar-mobile"
+import ImageContainer from "../image-container/image-container"
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -55,9 +58,14 @@ class Columns extends React.Component {
           animationInDuration={500}
         >
           <Column rightBorder={true}>
-            <StickyHeader>
+            <StickyTopHeader>
               <ExperienceControllerMobile showInMobile={true} />
-              <Header hideInMobile={false} />
+              <Header hideInMobile={true} />
+            </StickyTopHeader>
+            <RelativeHeader>
+              <ImageContainer hideInMobile={true} />
+            </RelativeHeader>
+            <StickyHeader>
               <Navbar hideInMobile={true} />
             </StickyHeader>
 
@@ -69,7 +77,7 @@ class Columns extends React.Component {
               <FooterComponent />
             </FixedFooter>
             <FixedNavbar>
-              <NavbarMobile showInMobile/>
+              <NavbarMobile showInMobile />
             </FixedNavbar>
           </Column>
 
