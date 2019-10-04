@@ -144,6 +144,13 @@ export const hideDisplayForTablet = css`
   }
 `
 
+export const hideDisplayForMobile = css`
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+  }
+`
+
 export const showDisplayForTablet = css`
   display: ${props => (props.showInMobile ? "none" : "inherit")};
   @media (max-width: ${size.tablet}) {

@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet } from "../../index.styles"
+import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet, hideDisplayForMobile } from "../../index.styles"
 import { Link } from "gatsby";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
   border-bottom: 1px solid black;
@@ -15,7 +15,7 @@ export const HeaderWrapper = styled.div`
   :hover {
     /* opacity: 0.01; */
   }
-  ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
 `
 export const Left = styled.div`
   justify-self: start;

@@ -32,9 +32,9 @@ const Header = props => {
   const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
   return (
-    <HeaderWrapper className={props.className}>
+    <HeaderWrapper hideInMobile={props.hideInMobile}>
       <HeaderLink to={createPath(language, '')}>
-        <DateContainer hideInMobile>
+        <DateContainer>
           <Heading> {content[language].date}</Heading>
         </DateContainer>
         <TitleContainer>
@@ -61,6 +61,7 @@ const Header = props => {
 Header.propTypes = {
   className: PropTypes.string,
   hideInMobile: PropTypes.bool,
+  showInMobile: PropTypes.bool
 }
 
 const mapStateToProps = state => {
