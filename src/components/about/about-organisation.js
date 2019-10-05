@@ -6,12 +6,10 @@ import { UnderlinedText } from "../../index.styles";
 import { TextBlock } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
-p{
-  line-height: 1.2em;
-}
+padding: 0.5em 0;
 `
 
-const AboutAdvisoryBoard = props => {
+const AboutOrganisation = props => {
   const language = getCurrentLanguageString(props.languages)
   const teamBlock = props.team_block
   console.log(teamBlock);
@@ -36,7 +34,7 @@ const AboutAdvisoryBoard = props => {
         break
       case "position":
         renderComponent = (
-            <p key={index}> {teamBlockItem[createProperty("section_title", language)]}</p>
+            <UnderlinedText key={index}> {teamBlockItem[createProperty("position_title", language)]}</UnderlinedText>
         )
         break
       default:
@@ -56,11 +54,11 @@ const mapStateToProps = state => {
   }
 }
 
-AboutAdvisoryBoard.propTypes = {
+AboutOrganisation.propTypes = {
   team_block: PropTypes.array,
 }
 
 export default connect(
   mapStateToProps,
   null
-)(AboutAdvisoryBoard)
+)(AboutOrganisation)

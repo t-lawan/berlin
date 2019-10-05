@@ -215,3 +215,9 @@ export const Color = {
   yellow: "#EEEC7A",
   red: "#D9515C",
 }
+
+export const UnderlinedText = styled.p`
+  text-decoration: underline;
+  text-decoration-color: ${props => props.red ? Color.red : 'black'};
+  color: ${props => props.red ? Color.red : 'black'}
+`
