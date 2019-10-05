@@ -111,7 +111,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p, a{
+p, a, span{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
