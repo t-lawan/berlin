@@ -2,22 +2,36 @@ import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-
+import { UnderlinedText } from "../../index.styles";
+import { TextBlock } from "../../templates/page.styles";
+import styled from 'styled-components';
+const AboutTextBlock = styled(TextBlock)`
+p{
+  line-height: 1.2em;
+}
+`
 
 const AboutAdvisoryBoard = props => {
   const language = getCurrentLanguageString(props.languages)
   const teamBlock = props.team_block
+  console.log(teamBlock);
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
     switch (teamBlockItem.team_block_type) {
       case "section":
         renderComponent = (
-            <p key={index}> {teamBlockItem[createProperty("section_title", language)]}</p>
+          <TextBlock key={index}>
+            <UnderlinedText> {teamBlockItem[createProperty("section_title", language)]}</UnderlinedText>
+          </TextBlock>
         )
         break
       case "section_content":
         renderComponent = (
-            <p key={index}> {teamBlockItem[createProperty("section_title", language)]}</p>
+          <AboutTextBlock key={index}>
+            {teamBlockItem.block_names.map((nameItem, nameIndex) => (
+              <p key={nameIndex}> {nameItem.full_name}</p>
+            ))}
+          </AboutTextBlock>
         )
         break
       case "position":
