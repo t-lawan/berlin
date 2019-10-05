@@ -16,7 +16,7 @@ const ImageContainer = props => {
   const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
   return (
-    <ImageContainerWrapper>
+    <ImageContainerWrapper hideInMobile={props.hideInMobile}>
       <ImageResource id={411} withCaption={true} />
 
     </ImageContainerWrapper>

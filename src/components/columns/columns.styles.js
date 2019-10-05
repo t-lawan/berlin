@@ -10,15 +10,25 @@ export const AnimatedColumn = styled(Animated)`
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 5fr 3fr;
-
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+  }
   /* ${changeGridToOneRow} */
 
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
   @media (max-width: ${size.tablet}) {
+    /* width: 100%; */
     width: 100vw;
   }
+
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+  }
+
   display: grid;
   grid-template-columns: 1fr 20fr 1fr;
   ${changeGridToOneRow}

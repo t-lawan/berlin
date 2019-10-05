@@ -7,7 +7,6 @@ import PropTypes from "prop-types"
 const AboutAdvisoryBoard = props => {
   const language = getCurrentLanguageString(props.languages)
   const teamBlock = props.team_block
-  console.log(teamBlock);
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
     switch (teamBlockItem.team_block_type) {

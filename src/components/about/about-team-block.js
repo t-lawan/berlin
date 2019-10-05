@@ -6,6 +6,7 @@ import { AboutTeamSectionHeader } from "./about.styles"
 
 const AboutTeamBlock = props => {
   const language = getCurrentLanguageString(props.languages)
+  console.log(props.team)
   const generateSection = (item, index) => {
     let renderComponent
     switch (item.team_block_type) {
@@ -18,23 +19,22 @@ const AboutTeamBlock = props => {
         break
       case "section_content":
         renderComponent = (
-          <p key={index}> {item[createProperty("section_title", language)]} </p>
+          <section key={index}>
+            {item.block_names.map((person, i) => (
+              <p key={person.full_name + i}> {person.full_name} </p>
+            ))}
+          </section>
         )
         break
       case "position":
         renderComponent = (
           <div key={index}>
-            <p>
-              {item[createProperty("position_title", language)]}
-            </p>
-            <p>
-              {item[createProperty("section_title", language)]}
-            </p>
+            <p>{item[createProperty("position_title", language)]}</p>
           </div>
         )
         break
       default:
-        renderComponent = <p key={index}> index </p>
+        renderComponent = <p key={index}> </p>
         break
     }
 

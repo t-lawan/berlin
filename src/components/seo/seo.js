@@ -19,7 +19,7 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title + ' |  11. Berlin Biennale for Contemporary Art'}
+      title={'ExRotaprint' + title + ' |  11. Berlin Biennale for Contemporary Art'}
       meta={[
         {
           name: `description`,
