@@ -10,12 +10,23 @@ import {
 } from "./about.styles"
 import { GalleryImage } from "../../partials/ImageGalleryResource"
 import ImageResource from "../../partials/ImageResource"
+import styled from "styled-components"
 
+const AboutImageItem = styled.section`
+  padding: 1em;
+
+`
+
+const AboutCorporateImageItem = styled.section`
+  /* padding: 1em; */
+  width: 25%;
+`
 const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
   const funding = props.funding
+  console.log(funding);
   const generateSection = (fundingItem, index) => {
-    let renderComponent;
+    let renderComponent
     switch (fundingItem.funding_type) {
       case "primary":
         renderComponent = (
@@ -37,6 +48,9 @@ const AboutFunding = props => {
             <AboutFundingHeader>
               {fundingItem[createProperty("support_header", language)]}
             </AboutFundingHeader>
+            <AboutCorporateImageItem>
+                <AboutPartnerImage id={fundingItem.logo_upload} withCaption={false} />
+            </AboutCorporateImageItem>
           </AboutFundingBlock>
         )
         break
@@ -48,11 +62,12 @@ const AboutFunding = props => {
             </AboutFundingHeader>
             <AboutImageBlock>
               {fundingItem.logo_block.map((item, index) => (
-                <AboutPartnerImage
-                  key={index}
-                  id={item.wordpress_id}
-                  withCaption={false}
-                />
+                <AboutImageItem key={index}>
+                  <AboutPartnerImage
+                    id={item.wordpress_id}
+                    withCaption={false}
+                  />
+                </AboutImageItem>
               ))}
             </AboutImageBlock>
           </AboutFundingBlock>

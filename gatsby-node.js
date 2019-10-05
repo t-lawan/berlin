@@ -83,6 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 logo_block {
                   wordpress_id
                 }
+                logo_upload
                 notice_de
                 notice_en
                 project_funding_list
