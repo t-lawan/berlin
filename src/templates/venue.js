@@ -25,7 +25,6 @@ const Venue = props => {
   const language = getCurrentLanguageString(props.languages)
   const venuePageInfo = props.pageContext
   const venue = Convert.toVenueModel(props.pageContext)
-  console.log(1, venue)
 
   const renderComponent = (
     <PageWrapper colour={Color.yellow}>

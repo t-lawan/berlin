@@ -91,7 +91,6 @@ class Press extends React.Component {
       errors,
       [name]: value,
     }, () => {
-      console.log(errors);
     });
   }
 

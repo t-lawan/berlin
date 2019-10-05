@@ -8,8 +8,30 @@
 
 const path = require(`path`)
 const slash = require(`slash`)
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions
+//   const typeDefs = `
+//   type wordpress__PAGEAcf implements Node @dontInfer {
+//     team_block: wordpress__PAGEAcfTeamBlock
+//     press_images: wordpress__PAGEAcfPress_images
+//   }
+//     type wordpress__PAGEAcfPress_images implements Node @dontInfer{
+//       press_row_type: String
+//       section_header_en: String
+//     }
+//     type wordpress__PAGEAcfTeamBlockBlock_names implements Node @dontInfer{
+//       full_name: String
+//     }
+//     type wordpress__PAGEAcfTeamBlock implements Node @dontInfer{
+//       block_names: wordpress__PAGEAcfTeamBlockBlock_names
+//     }
+//   `
+//   createTypes(typeDefs)
+// }
+
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions
+  const { createPage } = actions
 
   const result = await graphql(`
     {
@@ -83,6 +105,26 @@ exports.createPages = async ({ graphql, actions }) => {
                 section_title_de
                 section_title_en
                 team_block_type
+                block_names {
+                  full_name
+                }
+              }
+              press_images {
+                image_group_download_label_de
+                image_group_download_label_en
+                photo_group_title_de
+                photo_group_title_en
+                press_row_type
+                section_header_de
+                section_header_en
+                images {
+                  wordpress_id
+                  acf {
+                    caption_de
+                    caption_en
+                    external_url
+                  }
+                }
               }
               thumbnail_image
               template
@@ -239,20 +281,17 @@ exports.createPages = async ({ graphql, actions }) => {
             acf {
               exp_number
               firstname
-              image_gallery
               is_artist_in_exhibition
               lastname
               participant_group
               personal_website
               related_resources
               EN {
-                group_bios
                 project_description
                 short_bio
               }
               participant_venue
               DE {
-                group_bios
                 project_description
                 short_bio
               }
@@ -309,7 +348,7 @@ exports.createPages = async ({ graphql, actions }) => {
   )
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
-
+  const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
   const languages = ["en", "de"]
 
   allWordpressPage.edges.forEach(edge => {
@@ -330,12 +369,15 @@ exports.createPages = async ({ graphql, actions }) => {
       case "about":
         template = aboutTemplate
         break
+      case "press_images":
+        template = pressImagesTemplate;
+        break;
       default:
         template = pageTemplate
     }
 
-    if(edge.node.parent_element && edge.node.parent_element.slug === 'about') {
-      template = aboutTemplate;
+    if (edge.node.parent_element && edge.node.parent_element.slug === "about") {
+      template = aboutTemplate
     }
     // Create pages for both EN and DE
     languages.forEach(language => {
