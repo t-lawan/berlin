@@ -58,4 +58,5 @@ export const AboutPartnerImage = styled(ImageResource)`
 
 export const AboutTeamSectionHeader = styled.p`
     text-decoration: underline;
+    padding: 0.5em 0em;
 `

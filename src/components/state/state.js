@@ -101,20 +101,20 @@ const State = props => {
                 acf {
                   exp_number
                   firstname
-                  image_gallery
+                  # image_gallery
                   is_artist_in_exhibition
                   lastname
                   participant_group
                   personal_website
                   related_resources
                   EN {
-                    group_bios
+                    # group_bios
                     project_description
-                    short_bio
+                    # short_bio
                   }
                   participant_venue
                   DE {
-                    group_bios
+                    # group_bios
                     project_description
                     short_bio
                   }
@@ -136,6 +136,7 @@ const State = props => {
                   resource_year
                   resource_year_de
                   subtitle
+                  resource_image
                   resource_image
                   resource_type
                   title

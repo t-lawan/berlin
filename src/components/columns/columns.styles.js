@@ -10,15 +10,25 @@ export const AnimatedColumn = styled(Animated)`
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 5fr 3fr;
-
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+  }
   /* ${changeGridToOneRow} */
 
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
   @media (max-width: ${size.tablet}) {
+    /* width: 100%; */
     width: 100vw;
   }
+
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+  }
+
   display: grid;
   grid-template-columns: 1fr 20fr 1fr;
   ${changeGridToOneRow}
@@ -30,10 +40,19 @@ export const FirstColumnWrapper = styled.div`
   grid-template-columns: ${props => (props.twoColumns ? "1fr 1fr" : "1fr")};
 `
 
-export const StickyHeader = styled.div`
+export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
+`
+export const StickyHeader = styled.div`
+  z-index: 250;
+  position: sticky;
+`
+
+export const RelativeHeader = styled.div`
+  z-index: 250;
+  position: relative;
 `
 
 export const StickyFooter = styled.div`

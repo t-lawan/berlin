@@ -32,7 +32,7 @@ body {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  font-size: 1.8em;
+  font-size: 1.8rem;
   line-height: 1.1;
 }
 h2 {
@@ -111,7 +111,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p{
+p, a{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -140,6 +140,13 @@ export const size = {
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+  }
+`
+
+export const hideDisplayForMobile = css`
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  @media (max-width: ${size.mobileM}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
@@ -208,3 +215,9 @@ export const Color = {
   yellow: "#EEEC7A",
   red: "#D9515C",
 }
+
+export const UnderlinedText = styled.p`
+  text-decoration: underline;
+  text-decoration-color: ${props => props.red ? Color.red : 'black'};
+  color: ${props => props.red ? Color.red : 'black'}
+`

@@ -5,10 +5,13 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import { AboutComponentWrapper, AboutPageContent } from "./about.styles"
 import AboutFunding from "./about-funding"
-import AboutTeamBlock from "./about-team-block";
+import AboutTeamBlock from "./about-team-block"
+import AboutAdvisoryBoard from "./about-advisory-board"
+import AboutOrganisation from "./about-organisation";
 
 const AboutComponents = props => {
   const content = props.content
+  console.log(content)
   let renderComponent
   const language = getCurrentLanguageString(props.languages)
   switch (content.slug) {
@@ -23,23 +26,17 @@ const AboutComponents = props => {
       break
     case "advisory-board":
       renderComponent = (
-        <div>
-          {content.acf.team_block.map((item, index) => (
-            <p key={index}>
-              {" "}
-              {item[createProperty("position_title", language)]}
-            </p>
-          ))}
-        </div>
+        <AboutAdvisoryBoard team_block={content.acf.team_block} />
       )
       break
     case "support":
       renderComponent = <AboutFunding funding={content.acf.funding} />
       break
     case "team":
-      renderComponent = (
-          <AboutTeamBlock team={content.acf.team_block} />
-      )
+      renderComponent = <AboutTeamBlock team={content.acf.team_block} />
+      break
+    case "organization-2":
+      renderComponent = <AboutOrganisation team_block={content.acf.team_block} />
       break
     default:
       renderComponent = (

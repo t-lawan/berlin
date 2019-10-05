@@ -21,10 +21,15 @@ const ResourceLink = styled(AniLink)`
 
 const RelatedResource = styled.div`
   background: ${Color.yellow};
-  min-height: 100px;
+  min-height: 15em;
   padding: 1em;
   margin: 1em;
   border: 1px solid black;
+  :hover{
+    >p{
+      color: ${Color.red}
+    }
+  }
 `
 
 const RelatedResources = props => {
@@ -39,7 +44,7 @@ const RelatedResources = props => {
         >
           <RelatedResource>
             <p>{resource.title}</p>
-            <h4>{resource.author}</h4>
+            <p>{resource.author}</p>
             <p>{resource[language].label}</p>
           </RelatedResource>
         </ResourceLink>

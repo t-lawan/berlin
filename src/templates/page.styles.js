@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
   padding: 2em;
+  height: 100%;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
 `
 
@@ -53,6 +54,11 @@ export const PressReleaseLink = styled.a`
 
 export const PressForm = styled.div`
   padding: 1em 0em;
+`
+
+export const PressReleaseFormError = styled.p`
+  padding: 0.5rem 0rem;
+  color: ${Color.red};
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`

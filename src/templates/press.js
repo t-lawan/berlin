@@ -4,7 +4,7 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { PageWrapper, PressFormInput } from "./page.styles"
+import { PageWrapper, PressFormInput, PressReleaseWrapper, PressWrapper, PressReleaseText, PressReleaseLink, PressArrowDown, PressReleaseFormError } from "./page.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import { changeGridToOneRow, Color } from "../index.styles"
@@ -16,41 +16,8 @@ import {
   FormButton,
 } from "../components/modal/modal.styles"
 import moment from "moment"
-
-const PressWrapper = styled.div`
-  padding: 2em 1em;
-  display: grid;
-  grid-template-columns: 3fr 6fr;
-  ${changeGridToOneRow}
-`
-
-const PressReleaseWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 1em;
-`
-const PressReleaseText = styled.span`
-  margin-right: 2.5em;
-`
-
-const PressReleaseLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    color: ${Color.red};
-  }
-`
-
-const PressForm = styled.div`
-  padding: 1em 0em;
-`
-
-const PressArrowDown = styled(FontAwesomeIcon)`
-  margin-right: 0.5rem;
-  width: 0.4em;
-  opacity: 0.5;
-`
-
+import axios from "axios"
+import PressForm from "../components/forms/press-form";
 class Press extends React.Component {
   language
   pressInfo
@@ -62,15 +29,36 @@ class Press extends React.Component {
       email: "",
       name: "",
       media_affliation: "",
-      hasSubmitted: false
+      hasSubmitted: false,
+      errors: {
+        name: '',
+        email: '',
+        media_affliation: ''
+      }
     }
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.setState({
-      hasSubmitted: true,
-    })
+    this.sendPostRequest().then(() => {
+      this.setState({
+        hasSubmitted: true,
+      });
+    });
+  }
+
+  sendPostRequest = async () => {
+    const url =
+      "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe";
+    let data = {
+      recipient: {
+        email: this.state.email,
+        name: this.state.name,
+        media_affliation: this.state.media_affliation,
+      },
+    };
+    data = JSON.stringify(data);
+    await axios.post(url, data);
   }
 
   clearState = () => {
@@ -85,9 +73,25 @@ class Press extends React.Component {
     const target = event.target
     const value = target.type === "checkbox" ? target.checked : target.value
     const name = target.name;
+    let errors = this.state.errors;
+    switch(name) {
+      case 'name': 
+        errors.name = !validator.isAlpha(value) || value.length < 3 ? 'This field requires at least 3 characters' : '';
+        break;
+      case 'email':
+        errors.email = !validator.isEmail(value) ? 'This field requires a valid email' : '';
+        break;
+      case 'media_affliation': 
+        errors.media_affliation = !validator.isAlphanumeric(value) || value.length < 3 ? 'This field requires at least 3 characters' : '';
+        break;
+      default:
+        break;
+    }
     this.setState({
+      errors,
       [name]: value,
-    })
+    }, () => {
+    });
   }
 
   render() {
@@ -102,9 +106,8 @@ class Press extends React.Component {
           description={`${this.pressInfo.slug}`}
           lang={this.pressInfo.language}
         />
-        {/* firstColumn */}
         <div>
-          <p>Contact</p>
+          <p>{content[this.language].contact}</p>
           {this.pressInfo.acf.contact_people.map((person, index) => (
             <div key={index}>
               <p> {person.full_name}</p>
@@ -118,13 +121,15 @@ class Press extends React.Component {
             </div>
           ))}
         </div>
-        {/* secondColumn */}
 
         <div>
-          <p> Press Releases</p>
+          <p> {content[this.language].press_release}</p>
           {this.pressInfo.acf.press_releases.map((press_release, index) => (
             <PressReleaseWrapper key={index}>
-              <PressReleaseText> {moment(press_release.date).format("DD.MM.YYYY")}</PressReleaseText>
+              <PressReleaseText>
+                {" "}
+                {moment(press_release.date).format("DD.MM.YYYY")}
+              </PressReleaseText>
               <PressReleaseText>
                 <PressReleaseLink
                   target="_blank"
@@ -145,42 +150,13 @@ class Press extends React.Component {
             </PressReleaseWrapper>
           ))}
 
-          <p> Images </p>
+          <p> {content[this.language].images} </p>
           <div
             dangerouslySetInnerHTML={{
               __html: this.pressInfo.acf[this.language].images_note,
             }}
           />
-          <PressForm>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <FormLabel>
-                <p> {formText[this.language].name}</p>
-                <PressFormInput
-                  type="text"
-                  name="name"
-                  onChange={this.handleInputChange.bind(this)}
-                />
-              </FormLabel>
-              <FormLabel>
-              <p> {formText[this.language].email}</p>
-                <PressFormInput
-                  type="email"
-                  name="email"
-                  onChange={this.handleInputChange.bind(this)}
-                />
-              </FormLabel>
-              <FormLabel>
-              <p> {formText[this.language].media_affliation}</p>
-                <PressFormInput
-                  type="text"
-                  name="media_affliation"
-                  onChange={this.handleInputChange.bind(this)}
-                />
-              </FormLabel>
-
-              <FormButton> {formText[this.language].button} </FormButton>
-            </form>
-          </PressForm>
+          <PressForm />
         </div>
       </PressWrapper>
     )
@@ -200,30 +176,17 @@ const getPdf = (documents, press_release, language) => {
   return pdf ? pdf.url : ""
 }
 
-const formText = {
+const content = {
   EN: {
-    email:
-      "Email",
-    name:
-      "First and Last Name",
-    media_affliation:
-      "Media affliation",
-    button: "Submit",
-    thank_you:
-      "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
+    contact: 'Contact',
+    press_release: 'Press Release',
+    images: 'Images'
   },
   DE: {
-    email:
-    "Email",
-  name:
-    "Vor- und Nachname",
-  media_affliation:
-      "Medium",
-  thank_you:
-    "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
-    button: "Anmeldung",
-
-  },
+    contact: 'Pressekontakt',
+    press_release: 'Pressemitteilungen',
+    images: 'Pressebilder'
+  }
 }
 
 const mapStateToProps = state => {
