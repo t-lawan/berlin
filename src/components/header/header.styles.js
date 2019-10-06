@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet, hideDisplayForMobile } from "../../index.styles"
-import { Link } from "gatsby";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const HeaderWrapper = styled.header`
   /* opacity: 1; */
@@ -42,7 +42,7 @@ export const Heading = styled.p`
   font-size: 2rem;
 `
 
-export const HeaderLink = styled(Link)`
+export const HeaderLink = styled(AniLink)`
   text-decoration: none;
   display: grid;
   grid-template-columns:1fr 1fr;

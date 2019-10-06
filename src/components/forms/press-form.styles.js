@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Color } from '../../index.styles';
 
-export const PressFormWrapper = styled.div`
+export const PressFormWrapper = styled.section`
   padding: 1em 0em;
 `
 

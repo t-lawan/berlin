@@ -1,6 +1,5 @@
-import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { Color } from "../../index.styles";
+import styled from "styled-components";
+import { Color, UnderlineSectionLink } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
@@ -13,11 +12,7 @@ export const EventItem = styled.div`
   border-bottom: 1px solid black;
 `
 
-export const EventLink = styled(AniLink)`
-  padding-top: 1em;
-  text-decoration: none;
-  color: black;
-  border-bottom: 1px solid black;
+export const EventLink = styled(UnderlineSectionLink)`
   :hover > div {
     color: ${Color.red}
   }

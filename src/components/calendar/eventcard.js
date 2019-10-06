@@ -1,18 +1,18 @@
 import React from "react"
 import PropTypes from "prop-types"
-import styled from "styled-components"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { EventHeading, EventText, EventCardWrapper, EventCardLink } from "./eventcard.styles"
+import { TextSection } from "../../index.styles";
 
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event
   return (
     <EventCardWrapper>
-      <EventCardLink to={createPath(language, event.slug)} >
+      <EventCardLink fade to={createPath(language, event.slug)} >
         <EventHeading>{event[language].display_time}</EventHeading>
-        <EventText
+        <TextSection
           dangerouslySetInnerHTML={{ __html: event[language].title }}
         />
       </EventCardLink>

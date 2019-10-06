@@ -33,7 +33,7 @@ const Header = props => {
   const language = getCurrentLanguageString(props.languages)
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
-      <HeaderLink to={createPath(language, '')}>
+      <HeaderLink fade to={createPath(language, '')}>
         <DateContainer>
           <Heading> {content[language].date}</Heading>
         </DateContainer>

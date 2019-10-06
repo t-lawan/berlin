@@ -1,6 +1,6 @@
-import styled, { css } from "styled-components"
-import { Link } from "gatsby";
+import styled from "styled-components"
 import { Color } from "../../index.styles";
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const EventCardWrapper = styled.div`
   padding: 0.5rem 1rem;
@@ -14,11 +14,9 @@ export const EventCardWrapper = styled.div`
   }
 `
 
-export const EventCardLink = styled(Link)`
+export const EventCardLink = styled(AniLink)`
   text-decoration: none;
 `
-export const EventText = styled.div`
-  
-`
+
 export const EventHeading = styled.p`
 `

@@ -10,28 +10,38 @@ import { hideDisplayForTablet } from "../../index.styles";
 const ImageContainerWrapper = styled.section`
   padding: 1em;
   ${hideDisplayForTablet};
+  display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
 `
 
 const ImageContainer = props => {
   const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
+  const exhibitions = props.exhibitions.filter((item, index)=> {
+    return item.experience === experience.toString();
+  });
+  const exhibition = exhibitions[0];
   return (
-    <ImageContainerWrapper hideInMobile={props.hideInMobile}>
-      <ImageResource id={411} withCaption={true} />
-
+    <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
+      <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} />
     </ImageContainerWrapper>
   )
 }
 
 ImageContainer.propTypes = {
   hideInMobile: PropTypes.bool,
-  showInMobile: PropTypes.bool
+  showInMobile: PropTypes.bool,
+  hideOnHomePage: PropTypes.bool
 }
+
+ImageContainer.defaultProps = {
+  hideOnHomePage: false
+};
 
 const mapStateToProps = state => {
   return {
     experience: state.experience,
     languages: state.languages,
+    exhibitions: state.exhibitions
   }
 }
 

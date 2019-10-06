@@ -10,17 +10,9 @@ import {
 } from "./about.styles"
 import { GalleryImage } from "../../partials/ImageGalleryResource"
 import ImageResource from "../../partials/ImageResource"
-import styled from "styled-components"
+import { Section } from "../../index.styles";
 
-const AboutImageItem = styled.section`
-  padding: 1em;
 
-`
-
-const AboutCorporateImageItem = styled.section`
-  /* padding: 1em; */
-  width: 25%;
-`
 const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
   const funding = props.funding
@@ -62,12 +54,12 @@ const AboutFunding = props => {
             </AboutFundingHeader>
             <AboutImageBlock>
               {fundingItem.logo_block.map((item, index) => (
-                <AboutImageItem key={index}>
+                <Section key={index}>
                   <AboutPartnerImage
                     id={item.wordpress_id}
                     withCaption={false}
                   />
-                </AboutImageItem>
+                </Section>
               ))}
             </AboutImageBlock>
           </AboutFundingBlock>
