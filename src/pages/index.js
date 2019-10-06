@@ -32,6 +32,7 @@ const IndexPage = props => {
       secondColumn={renderComponent}
       numberOfColumnsIsTwo={true}
       thirdColumn={<UpcomingEvents />}
+      isHome={true}
     />
   )
 }

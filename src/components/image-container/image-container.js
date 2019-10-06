@@ -10,13 +10,14 @@ import { hideDisplayForTablet } from "../../index.styles";
 const ImageContainerWrapper = styled.section`
   padding: 1em;
   ${hideDisplayForTablet};
+  display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
 `
 
 const ImageContainer = props => {
   const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
   return (
-    <ImageContainerWrapper hideInMobile={props.hideInMobile}>
+    <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
       <ImageResource id={411} withCaption={true} />
 
     </ImageContainerWrapper>
@@ -25,8 +26,13 @@ const ImageContainer = props => {
 
 ImageContainer.propTypes = {
   hideInMobile: PropTypes.bool,
-  showInMobile: PropTypes.bool
+  showInMobile: PropTypes.bool,
+  hideOnHomePage: PropTypes.bool
 }
+
+ImageContainer.defaultProps = {
+  hideOnHomePage: false
+};
 
 const mapStateToProps = state => {
   return {

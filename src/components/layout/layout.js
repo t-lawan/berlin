@@ -31,6 +31,7 @@ const Layout = props => {
         secondColumn={props.secondColumn}
         thirdColumn={props.thirdColumn}
         numberOfColumnsIsTwo={props.numberOfColumnsIsTwo}
+        isHome={props.isHome}
       />
     </LayoutWrapper>
   )
@@ -43,7 +44,12 @@ Layout.propTypes = {
   numberOfColumnsIsTwo: PropTypes.bool.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
+  isHome: PropTypes.bool
 }
+
+Layout.defaultProps = {
+  isHome: false
+};
 
 const mapStateToProps = state => {
   return {
