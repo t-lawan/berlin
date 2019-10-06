@@ -60,3 +60,9 @@ export const AboutTeamSectionHeader = styled.p`
     text-decoration: underline;
     padding: 0.5em 0em;
 `
+
+
+export const AboutCorporateImageItem = styled.section`
+  /* padding: 1em; */
+  width: 25%;
+`

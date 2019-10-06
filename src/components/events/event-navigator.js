@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux";
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import PropTypes from "prop-types";
-import { EventNavigatorWrapper } from "./event-navigator.styles";
+import { EventNavigatorWrapper, EventNavigatorButton } from "./event-navigator.styles";
 
 
 class EventNavigator extends React.Component {
