@@ -1,12 +1,12 @@
 import styled from "styled-components"
-import { Color } from "../../index.styles";
+import { Color, TextSection } from "../../index.styles";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const EventCardWrapper = styled.div`
   padding: 0.5rem 1rem;
   display: inline;
   :hover {
-    ${EventText} {
+    ${TextSection} {
       p {
         color: ${Color.red};
       }
