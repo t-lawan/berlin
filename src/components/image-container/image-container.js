@@ -16,10 +16,13 @@ const ImageContainerWrapper = styled.section`
 const ImageContainer = props => {
   const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
+  const exhibitions = props.exhibitions.filter((item, index)=> {
+    return item.experience === experience.toString();
+  });
+  const exhibition = exhibitions[0];
   return (
     <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
-      <ImageResource id={411} withCaption={true} />
-
+      <ImageResource id={exhibition.floor_plan} withCaption={true} />
     </ImageContainerWrapper>
   )
 }
@@ -38,6 +41,7 @@ const mapStateToProps = state => {
   return {
     experience: state.experience,
     languages: state.languages,
+    exhibitions: state.exhibitions
   }
 }
 
