@@ -3,9 +3,8 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
-import { Link } from "gatsby"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 export const DataPrivacyWrapper = styled.div`
   display: ${props => (props.show ? "grid" : "none")};
   grid-template-columns: 8fr 1fr;
@@ -27,7 +26,7 @@ export const DataPrivacyButton = styled.button`
   }
 `
 
-export const DataPrivacyLink = styled(Link)`
+export const DataPrivacyLink = styled(AniLink)`
   /* text-decoration: none; */
   text-decoration: underline;
   color: white;
@@ -51,7 +50,7 @@ const DataPrivacy = props => {
       <div>
         <p>
           {text[language].text}
-          <DataPrivacyLink to={createPath(language, 'data-privacy')}>
+          <DataPrivacyLink fade to={createPath(language, 'data-privacy')}>
             {text[language].link}
           </DataPrivacyLink>
           .

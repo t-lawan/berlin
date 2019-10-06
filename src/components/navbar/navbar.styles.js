@@ -2,7 +2,6 @@ import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { hideDisplayForTablet, showDisplayForTablet, Color } from "../../index.styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "gatsby"
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
@@ -33,7 +32,7 @@ export const NavMobileInner = styled.div`
   padding: 0.5em 1.5em;
 `
 
-export const NavImageLink = styled(Link)`
+export const NavImageLink = styled(AniLink)`
   text-decoration: none;
 `
 
@@ -68,7 +67,7 @@ export const NavMobileLinks = styled.div`
   padding: 0.5em 1.5em;
 `
 
-export const NavMobileLink = styled(Link)`
+export const NavMobileLink = styled(AniLink)`
   text-decoration: none;
   font-size: 1.4rem;
   padding-bottom: 0.5rem;

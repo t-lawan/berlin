@@ -10,7 +10,7 @@ const EventCard = props => {
   const event = props.event
   return (
     <EventCardWrapper>
-      <EventCardLink to={createPath(language, event.slug)} >
+      <EventCardLink fade to={createPath(language, event.slug)} >
         <EventHeading>{event[language].display_time}</EventHeading>
         <EventText
           dangerouslySetInnerHTML={{ __html: event[language].title }}
