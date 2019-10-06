@@ -4,32 +4,12 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
-export const DataPrivacyWrapper = styled.div`
+import { UnderlineTransitionLink, LargeButton, Section } from "../../index.styles";
+export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
   grid-template-columns: 8fr 1fr;
   color: white;
   background: black;
-  padding: 1em;
-`
-
-export const DataPrivacyButton = styled.button`
-  margin: 0.5em 0.25em;
-  font-size: 1em;
-  display: block;
-  border-radius: 0;
-  background: white;
-  border: 1px solid black;
-  padding: 1em 2em;
-  :hover {
-    cursor: pointer;
-  }
-`
-
-export const DataPrivacyLink = styled(AniLink)`
-  /* text-decoration: none; */
-  text-decoration: underline;
-  color: white;
 `
 
 const text = {
@@ -50,17 +30,17 @@ const DataPrivacy = props => {
       <div>
         <p>
           {text[language].text}
-          <DataPrivacyLink fade to={createPath(language, 'data-privacy')}>
+          <UnderlineTransitionLink colour="white" fade to={createPath(language, 'data-privacy')}>
             {text[language].link}
-          </DataPrivacyLink>
+          </UnderlineTransitionLink>
           .
         </p>
       </div>
       <div>
-        <DataPrivacyButton onClick={() => props.setAgreedToTrue()}>
+        <LargeButton bgColour="white" onClick={() => props.setAgreedToTrue()}>
           {" "}
           OK{" "}
-        </DataPrivacyButton>
+        </LargeButton>
       </div>
     </DataPrivacyWrapper>
   )

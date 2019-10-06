@@ -1,7 +1,6 @@
 import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
-import styled from "styled-components"
 import PropTypes from "prop-types"
 import { AboutComponentWrapper, AboutPageContent } from "./about.styles"
 import AboutFunding from "./about-funding"

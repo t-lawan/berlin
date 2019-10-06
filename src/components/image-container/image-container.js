@@ -22,7 +22,7 @@ const ImageContainer = props => {
   const exhibition = exhibitions[0];
   return (
     <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
-      <ImageResource id={exhibition.floor_plan} withCaption={true} />
+      <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} />
     </ImageContainerWrapper>
   )
 }

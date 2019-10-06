@@ -27,7 +27,7 @@ const UpcomingEvents = props => {
       <p hidden={filteredItems.length !== 0}> There are no upcoming events for this experience </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
-          <EventLink to={createPath(language, `${item.slug}`)}>
+          <EventLink colour="black" to={createPath(language, `${item.slug}`)}>
             <p> {moment(item.start_date).locale(language.toLowerCase()).format("dddd, DD.MM.YYYY")}</p>
             <p> {item[language].display_time}</p>
             <EventTitle dangerouslySetInnerHTML={{ __html: item[language].title }} />
