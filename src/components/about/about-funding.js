@@ -7,6 +7,7 @@ import {
   AboutFundingBlock,
   AboutImageBlock,
   AboutPartnerImage,
+  AboutCorporateImageItem,
 } from "./about.styles"
 import { GalleryImage } from "../../partials/ImageGalleryResource"
 import ImageResource from "../../partials/ImageResource"
