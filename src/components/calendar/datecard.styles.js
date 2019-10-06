@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components"
-import { changeNthChild, mobile, Color } from "../../index.styles"
+import styled from "styled-components"
+import { Color } from "../../index.styles"
 
 export const DateCardWrapper = styled.div`
   display: grid;

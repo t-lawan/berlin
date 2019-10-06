@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { changeGridToOneRow } from "../../index.styles";
 import ImageResource from "../../partials/ImageResource";
-const FooterWrapper = styled.div`
+const FooterWrapper = styled.footer`
   display: grid;
   grid-template-columns: 1fr 4fr 7fr 2fr;
   grid-column-gap: 1rem;

@@ -26,9 +26,8 @@ import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
 class Columns extends React.Component {
-  renderedComponents
-  numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-
+  renderedComponents;
+  numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo;
   render() {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
@@ -63,7 +62,7 @@ class Columns extends React.Component {
               <Header hideInMobile={true} />
             </StickyTopHeader>
             <RelativeHeader>
-              <ImageContainer hideInMobile={true} />
+              <ImageContainer hideOnHomePage={!this.props.isHome} hideInMobile={true} />
             </RelativeHeader>
             <StickyHeader>
               <Navbar hideInMobile={true} />
@@ -105,8 +104,8 @@ Columns.propTypes = {
   secondColumn: PropTypes.node,
   thirdColumn: PropTypes.node,
   numberOfColumnsIsTwo: PropTypes.bool,
+  isHome: PropTypes.bool
 }
-
 const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,

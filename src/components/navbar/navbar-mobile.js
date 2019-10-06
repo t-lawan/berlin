@@ -75,7 +75,7 @@ class NavbarMobile extends React.Component {
             <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
           </div>
           <div>
-            <NavImageLink to={createPath(this.language, '')}>
+            <NavImageLink fade to={createPath(this.language, '')}>
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
           </div>
@@ -88,6 +88,7 @@ class NavbarMobile extends React.Component {
           <NavMobileInner>
             {this.props.navbar.map((item, index) => (
               <NavMobileLink
+                fade
                 to={createPath(this.language, item.slug)}
                 key={index}
               >
@@ -98,7 +99,7 @@ class NavbarMobile extends React.Component {
 
           <NavMobileLinks>
               {this.navLinks.map((navLink, index) => (
-                <NavMobileLink key={index} to={createPath(this.language, navLink.path)}>
+                <NavMobileLink fade key={index} to={createPath(this.language, navLink.path)}>
                   {navLink[this.language]}
                 </NavMobileLink>
               ))}
@@ -122,10 +123,10 @@ class NavbarMobile extends React.Component {
               ))}
             </div>
             <div>
-              <NavMobileLink to={createPath(this.language, "imprint")}>
+              <NavMobileLink fade to={createPath(this.language, "imprint")}>
                 imprint
               </NavMobileLink>
-              <NavMobileLink to={createPath(this.language, "data-privacy")}>
+              <NavMobileLink fade to={createPath(this.language, "data-privacy")}>
                 data privacy
               </NavMobileLink>
             </div>

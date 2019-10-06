@@ -1,4 +1,5 @@
 import styled, { css, createGlobalStyle } from "styled-components"
+import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
@@ -111,7 +112,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p, a{
+p, a, span{
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -220,4 +221,36 @@ export const UnderlinedText = styled.p`
   text-decoration: underline;
   text-decoration-color: ${props => props.red ? Color.red : 'black'};
   color: ${props => props.red ? Color.red : 'black'}
+`
+
+export const Section = styled.section`
+  padding: 1em;
+`
+
+export const UnderlineTransitionLink = styled(AniLink)`
+  text-decoration: underline;
+  color: ${props => props.colour};
+`
+
+export const UnderlineSectionLink = styled(AniLink)`
+  padding-top: 1em;
+  text-decoration: none;
+  color: ${props => props.colour};
+  border-bottom: 1px solid black;
+`
+
+export const LargeButton = styled.button`
+  margin: 0.5em 0.25em;
+  font-size: 1em;
+  display: block;
+  border-radius: 0;
+  background: ${props => props.bgColour};
+  border: 1px solid black;
+  padding: 1em 2em;
+  :hover {
+    cursor: pointer;
+  }
+`
+
+export const TextSection = styled.section`
 `

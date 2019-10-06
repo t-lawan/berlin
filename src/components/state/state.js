@@ -76,6 +76,14 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
+                  exhibition_floorplan
+                  use_gallery_images
+                  exhibition_participants
+                  exhibition_venue {
+                    wordpress_id
+                  }
+                  exp_number
+                  start_date
                   DE {
                     description
                     subtitle

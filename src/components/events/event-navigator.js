@@ -1,22 +1,9 @@
 import React from "react"
-import { connect } from "react-redux"
-import styled from "styled-components"
+import { connect } from "react-redux";
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import PropTypes from "prop-types";
+import { EventNavigatorWrapper, EventNavigatorButton } from "./event-navigator.styles";
 
-const EventNavigatorWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  background: transparent;
-`
-
-const EventNavigatorButton = styled(AniLink)`
-  text-decoration: none;
-  font-size: 1.3rem;
-  padding: 1em;
-`
 
 class EventNavigator extends React.Component {
   language;

@@ -64,38 +64,6 @@ export class DateManager {
   static getCalendar = () => {
     return {
       2019 : {
-        1: {
-          numberOfDays: 31,
-          text: "January",
-        },
-        2: {
-          numberOfDays: 28,
-          text: "February",
-        },
-        3: {
-          numberOfDays: 31,
-          text: "March",
-        },
-        4: {
-          numberOfDays: 30,
-          text: "April",
-        },
-        5: {
-          numberOfDays: 31,
-          text: "May",
-        },
-        6: {
-          numberOfDays: 30,
-          text: "June",
-        },
-        7: {
-          numberOfDays: 31,
-          text: "July",
-        },
-        8: {
-          numberOfDays: 31,
-          text: "August",
-        },
         9: {
           numberOfDays: 30,
           text: "September",

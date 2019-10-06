@@ -9,8 +9,8 @@ import * as actionTypes from "../../store/action"
 import { connect } from "react-redux"
 
 export const socialMediaLinks = [
-  { name: "facebook", url: "https://www.facebook.com/" },
-  { name: "instagram", url: "https://www.instagram.com/" },
+  { name: "facebook", url: "https://www.facebook.com/BerlinBiennale" },
+  { name: "instagram", url: "https://www.instagram.com/berlinbiennale/" },
 ]
 
 const SocialMedia = props => {

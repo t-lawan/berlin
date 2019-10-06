@@ -53,8 +53,8 @@ export class Convert {
       wordpressModel.acf.start_date,
       wordpressModel.acf.end_date,
       wordpressModel.acf.exhibition_venue,
-      null,
-      null
+      wordpressModel.acf.exhibition_floorplan,
+      wordpressModel.acf.exhibition_participants,
     )
   }
 
