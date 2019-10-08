@@ -21,11 +21,16 @@ import { Color } from "../index.styles"
 import RelatedResources from "../components/resources/related-resources"
 import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
 import ResourceNavigator from "../components/resources/resource-navigator"
+import ResourceImage from "../components/resources/resource-image";
+import ResourceImageGallery from "../components/resources/resource-image-gallery";
+import ResourceText from "../components/resources/resource-text";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
   const resourceInfo = props.pageContext
   const r = Convert.toResourceModel(resourceInfo)
+  console.log(r);
+
   let renderComponent
 
   let resourceIds = []
@@ -38,95 +43,16 @@ const Resource = props => {
   switch (r.type) {
     case "image":
       const image = getDocument(props.documents, r.image)
-      renderComponent = (
-        <PageWrapper colour={Color.yellow}>
-          <ResourceNavigator id={r.id} />
-          <ImageResource id={r.image} withCaption={false} />
-          <TwoColumnPageWrapper>
-            <div>
-              <p> {r.title}</p>
-              <p> {r.author}</p>
-              <ResourcePublisherLink target="_blank" href={r.external_url}>
-                {" "}
-                {r.external_url_label}
-              </ResourcePublisherLink>
-            </div>
-            <div>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: r.description,
-                }}
-              />
-            </div>
-          </TwoColumnPageWrapper>
-          <RelatedResources ids={resourceIds} />
-        </PageWrapper>
-      )
-      break
+      renderComponent = <ResourceImage resource={r} />
+      break;
     case "imagegallery":
       r.image_gallery = r.image_gallery.map(image => {
         return image.wordpress_id
       })
-      renderComponent = (
-        <PageWrapper colour={Color.yellow}>
-          <ResourceNavigator id={r.id} />
-          <ResourceImageWrapper>
-            <ImageGalleryResource ids={r.image_gallery} />
-          </ResourceImageWrapper>
-          <TwoColumnPageWrapper>
-            <div>
-              <p> {r.title}</p>
-              <p> {r.author}</p>
-              <p> {r[language].year}</p>
-            </div>
-            <div>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: r.description,
-                }}
-              />
-            </div>
-          </TwoColumnPageWrapper>
-          <RelatedResources ids={resourceIds} />
-        </PageWrapper>
-      )
-      break
+      renderComponent = <ResourceImageGallery resource={r} />
+      break;
     case "text":
-      renderComponent = (
-        <PageWrapper colour={Color.yellow}>
-          <ResourceNavigator id={r.id} />
-          <TwoColumnPageWrapper>
-            <div>
-              {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
-              {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
-                <PressArrowDown icon={faLongArrowAltDown} />
-                <span> Download</span>{" "}
-              </ExternalLink> */}
-              <p> Language: {r.text_based_resource[0].document_language}</p>
-            </div>
-            <div>
-              <h1> {r.title}</h1>
-              <p> {r.author}</p>
-              <p>
-                In:{" "}
-                <ResourcePublisherLink
-                  target="_blank"
-                  href={r.publisher.external_url}
-                >
-                  {r.publisher.title}
-                </ResourcePublisherLink>
-              </p>
-              <p> {r[language].year}</p>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: r.text_based_resource[0].free_text_entry,
-                }}
-              />
-            </div>
-          </TwoColumnPageWrapper>
-          <RelatedResources ids={resourceIds} />
-        </PageWrapper>
-      )
+      renderComponent = <ResourceText resource={r} />
       break
     default:
       renderComponent = (
