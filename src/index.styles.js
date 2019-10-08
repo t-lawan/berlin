@@ -239,6 +239,12 @@ export const UnderlineSectionLink = styled(AniLink)`
   border-bottom: 1px solid black;
 `
 
+export const ExternalLink = styled.a`
+  :hover {
+    color: ${ props => props.colour};
+  }
+`
+
 export const LargeButton = styled.button`
   margin: 0.5em 0.25em;
   font-size: 1em;
