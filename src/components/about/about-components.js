@@ -9,8 +9,7 @@ import AboutAdvisoryBoard from "./about-advisory-board"
 import AboutOrganisation from "./about-organisation";
 
 const AboutComponents = props => {
-  const content = props.content
-  console.log(content)
+  const content = props.content;
   let renderComponent
   const language = getCurrentLanguageString(props.languages)
   switch (content.slug) {
@@ -40,7 +39,6 @@ const AboutComponents = props => {
     default:
       renderComponent = (
         <div>
-          <p> Hello </p>
         </div>
       )
   }
