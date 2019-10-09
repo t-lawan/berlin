@@ -81,7 +81,9 @@ export class Convert {
       wordpressModel.acf.title,
       wordpressModel.acf.text_based_resource ? wordpressModel.acf.text_based_resource : null,
       wordpressModel.acf.floating_resource,
-      wordpressModel.acf.image_gallery
+      wordpressModel.acf.image_gallery,
+      wordpressModel.acf.mp3_file_upload,
+      wordpressModel.acf.mp3_file_upload_label,
     )
   }
 

@@ -136,6 +136,8 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
+                  mp3_file_upload
+                  mp3_file_upload_label
                   caption_de
                   caption_en
                   external_url
