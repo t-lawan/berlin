@@ -37,7 +37,7 @@ const ResourceImageGallery = props => {
           <p> {r[language].year}</p>
         </div>
         <div>
-          <p
+          <div
             dangerouslySetInnerHTML={{
               __html: r.description,
             }}

@@ -2,37 +2,40 @@ import React from "react"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { getCurrentLanguageString } from "../../utility/helper"
+import ResourceImage from "./resource-image";
+import ResourceImageGallery from "./resource-image-gallery";
+import ResourceText from "./resource-text";
+import ResourceAudio from "./resource-audio";
 
 const ResourcesComponent = props => {
-  const content = props.content
   let renderComponent
+  const r = props.resource;
   const language = getCurrentLanguageString(props.languages)
-  switch (content.type) {
+  switch (r.type) {
     case "image":
-      renderComponent = <p></p>
+      renderComponent = <ResourceImage resource={r} />
       break
     case "imagegallery":
-      renderComponent = <p></p>
-      break
-    case "video":
-      renderComponent = <p></p>
+      r.image_gallery = r.image_gallery.map(image => {
+        return image.wordpress_id
+      })
+      renderComponent = <ResourceImageGallery resource={r} />
       break
     case "text":
-      renderComponent = <p></p>
-      break
-    case "url":
-      renderComponent = <p></p>
+      renderComponent = <ResourceText resource={r} />
       break
     case "mp3":
-      renderComponent = <p></p>
+      renderComponent = <ResourceAudio resource={r} />
       break
     default:
       renderComponent = (
-        <div>
-          <p> Hello </p>
-        </div>
+        <TwoColumnPageWrapper>
+          <div>
+            <p>Hello </p>
+          </div>
+          <div></div>
+        </TwoColumnPageWrapper>
       )
-      break;
   }
 
   return <section> {renderComponent}</section>
@@ -46,7 +49,7 @@ const mapStateToProps = state => {
 }
 
 AboutComponents.propTypes = {
-  content: PropTypes.object,
+  resource: PropTypes.object,
 }
 
 export default connect(

@@ -21,7 +21,9 @@ export class ResourceModel {
     title,
     text_based_resource,
     floating_resource,
-    image_gallery
+    image_gallery,
+    mp3_file_upload,
+    mp3_file_upload_label
   ) {
     this.id = id
     this.slug = slug
@@ -37,6 +39,10 @@ export class ResourceModel {
     this.text_based_resource = text_based_resource;
     this.floating_resource = floating_resource;
     this.image_gallery = image_gallery;
+    this.audio = {
+      file: mp3_file_upload,
+      label: mp3_file_upload_label
+    }
     this.publisher = {
         title: publisher,
         external_url: publisher_external_url
