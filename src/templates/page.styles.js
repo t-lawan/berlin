@@ -34,6 +34,11 @@ export const PressFormInput = styled.input`
    width: 19rem;
 `
 
+export const CenterColumn = styled.div`
+  text-align: center;
+  align-content: center;
+  margin: auto;
+`
 export const PressReleaseWrapper = styled.div`
   display: flex;
   flex-direction: row;

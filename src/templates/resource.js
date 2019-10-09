@@ -21,15 +21,16 @@ import { Color } from "../index.styles"
 import RelatedResources from "../components/resources/related-resources"
 import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
 import ResourceNavigator from "../components/resources/resource-navigator"
-import ResourceImage from "../components/resources/resource-image";
-import ResourceImageGallery from "../components/resources/resource-image-gallery";
-import ResourceText from "../components/resources/resource-text";
+import ResourceImage from "../components/resources/resource-image"
+import ResourceImageGallery from "../components/resources/resource-image-gallery"
+import ResourceText from "../components/resources/resource-text"
+import ResourceAudio from "../components/resources/resource-audio";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
   const resourceInfo = props.pageContext
   const r = Convert.toResourceModel(resourceInfo)
-  console.log(r);
+  console.log(r)
 
   let renderComponent
 
@@ -42,17 +43,19 @@ const Resource = props => {
   }
   switch (r.type) {
     case "image":
-      const image = getDocument(props.documents, r.image)
       renderComponent = <ResourceImage resource={r} />
-      break;
+      break
     case "imagegallery":
       r.image_gallery = r.image_gallery.map(image => {
         return image.wordpress_id
       })
       renderComponent = <ResourceImageGallery resource={r} />
-      break;
+      break
     case "text":
       renderComponent = <ResourceText resource={r} />
+      break
+    case "mp3":
+      renderComponent = <ResourceAudio resource={r} />
       break
     default:
       renderComponent = (
