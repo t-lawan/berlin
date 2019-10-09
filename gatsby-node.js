@@ -211,6 +211,8 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
+              mp3_file_upload
+              mp3_file_upload_label
               caption_de
               caption_en
               external_url
@@ -219,12 +221,14 @@ exports.createPages = async ({ graphql, actions }) => {
               resource_year
               resource_year_de
               subtitle
-              resource_type
               resource_image
+              resource_image
+              resource_type
               title
               text_based_resource {
                 document_download_label
                 document_language
+                # document_upload
                 free_text_entry
               }
               floating_resource
@@ -241,7 +245,6 @@ exports.createPages = async ({ graphql, actions }) => {
               publisher
               publisher_external_url
               resource_author
-              resource_image
               resource_external_url
               resource_label
               resource_external_url_label
