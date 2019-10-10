@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
   padding: 2em;
-  height: 100%;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
 `
 
@@ -35,6 +34,11 @@ export const PressFormInput = styled.input`
    width: 19rem;
 `
 
+export const CenterColumn = styled.div`
+  text-align: center;
+  align-content: center;
+  margin: auto;
+`
 export const PressReleaseWrapper = styled.div`
   display: flex;
   flex-direction: row;

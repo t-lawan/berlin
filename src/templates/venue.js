@@ -8,11 +8,8 @@ import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
 import { PageWrapper, TextBlock } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
-import { Color } from "../index.styles"
-const VenueLink = styled.a`
-  :hover {
-    color: ${Color.red};
-  }
+import { Color, ExternalLink } from "../index.styles"
+const VenueLink = styled(ExternalLink)`
   padding-bottom: 1em;
 `
 
@@ -59,7 +56,7 @@ const Venue = props => {
         <p hidden={!venue.wheelchair_access}> Wheelchair access</p>
       </TextBlock>
       <TextBlock>
-        <VenueLink href={venue.google_map_link} target="_blank">Link to map </VenueLink>
+        <VenueLink colour={Color.red} href={venue.google_map_link} target="_blank">Link to map </VenueLink>
       </TextBlock>
     </PageWrapper>
   )

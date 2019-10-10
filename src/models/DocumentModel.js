@@ -3,8 +3,9 @@ export class DocumentModel {
     this.id = id
     this.type = getType(mime_type)
     this.url = url
+    this.mime_type = mime_type
     this.slug = slug
-    this.fluid = fluid;
+    this.fluid = fluid
     this.EN = {
       caption: caption_en,
     }
@@ -26,6 +27,12 @@ const getType = mime_type => {
     case "application/pdf":
       type = DocumentType.pdf
       break
+    case "audio/mpeg":
+      type = DocumentType.audio
+      break
+    case "application/zip":
+      type = DocumentType.zip
+      break
     default:
       type = DocumentType.unknown
   }
@@ -35,5 +42,7 @@ const getType = mime_type => {
 const DocumentType = {
   image: "image",
   pdf: "pdf",
+  audio: "audio",
+  "zip": "zip",
   unknown: "unknown",
 }
