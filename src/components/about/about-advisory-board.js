@@ -7,7 +7,7 @@ import { TextBlock } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 p{
-  line-height: 1.2em;
+  line-height: 1.9em;
 }
 `
 
