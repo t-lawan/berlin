@@ -18,7 +18,7 @@ const DateCard = props => {
   const language = getCurrentLanguageString(props.languages)
   let renderComponents
   if (props.containsEvents) {
-    const monthDay = DateManager.createMonthDayString(props.day, props.month)
+    const monthDay = DateManager.createMonthDayString(props.day, props.month, props.year, language)
     const date = DateManager.createDatetring(props.day, props.month, props.year)
     let events = []
     events = props.events.sort((a, b) => {
@@ -38,7 +38,7 @@ const DateCard = props => {
       >
         <CurrentDate>
           <DateText>{date}</DateText>
-          <DayMonthText> {monthDay.toLocaleLowerCase()} </DayMonthText>
+          <DayMonthText> {monthDay.toLowerCase()} </DayMonthText>
         </CurrentDate>
         <EventCardsWrapper>
           <ClosedText hidden={events.length !== 0}> Closed</ClosedText>
