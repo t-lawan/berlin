@@ -7,6 +7,7 @@ import { VenueModel } from "../models/VenueModel"
 import { DocumentModel } from "../models/DocumentModel"
 import { ResourceModel } from "../models/ResourceModel";
 import { NavbarModel } from "../models/NavbarModel";
+import { ResourceGenreModel } from "../models/ResourceGenre";
 
 export class Convert {
   static toNewsModel = wordpressModel => {
@@ -17,6 +18,13 @@ export class Convert {
       wordpressModel.acf.de,
       wordpressModel.acf.experience,
       wordpressModel.acf.related_articles
+    )
+  }
+
+  static toResourceGenreModel = wordpressModel => {
+    return new ResourceGenreModel(
+      wordpressModel.slug,
+      wordpressModel.name
     )
   }
   static toEventModel = wordpressModel => {
@@ -55,6 +63,7 @@ export class Convert {
       wordpressModel.acf.exhibition_venue,
       wordpressModel.acf.exhibition_floorplan,
       wordpressModel.acf.exhibition_participants,
+      wordpressModel.acf.active_exhibition,
     )
   }
 

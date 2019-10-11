@@ -16,7 +16,7 @@ const UpcomingEvents = props => {
       return (
         item.experience.includes(props.experience.toString()) &&
         item.item === "event" &&
-        moment(item.start_date).diff(moment()) > 0
+        (props.experience >= props.active_experience ? moment(item.start_date).diff(moment()) > 0 : true)
       )
     })
     .sort((a, b) => {
@@ -55,9 +55,9 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
-    events: state.events,
     calendar_items: state.calendar_items,
     venues: state.venues,
+    active_experience: state.active_experience
   }
 }
 
