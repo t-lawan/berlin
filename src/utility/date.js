@@ -1,4 +1,6 @@
 import moment from "moment"
+import 'moment/locale/en-gb';
+import 'moment/locale/de';
 
 export class DateManager {
   static get = (date, type = "year" | "month" | "date") => {
@@ -19,9 +21,8 @@ export class DateManager {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("YYYY-MM-DD");
   }
 
-  static createMonthDayString = (day, month) => {
-    const year = 2019;
-    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("MMM / ddd");
+  static createMonthDayString = (day, month, year, language) => {
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM / ddd");
   }
 
   static createDatetring = (day, month, year) => {
