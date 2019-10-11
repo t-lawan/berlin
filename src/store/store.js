@@ -7,6 +7,7 @@ const intitalState = {
     DE: false,
   },
   experience: 1,
+  active_experience: 1,
   events: [],
   exhibitions: [],
   news: [],
@@ -140,6 +141,10 @@ const reducer = (state = intitalState, action) => {
           show: false,
         },
       })
+    case actionTypes.SET_ACTIVE_EXPERIENCE:
+      return Object.assign({}, state, {
+        active_experience: action.active_experience,
+      });
     default:
       return state
   }
