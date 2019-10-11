@@ -240,6 +240,14 @@ const State = props => {
               }
             }
           }
+          allWordpressWpResourceGenre {
+            edges {
+              node {
+                slug
+                name
+              }
+            }
+          }
         }
       `
     )
@@ -252,6 +260,11 @@ const State = props => {
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
       Convert.toExhibitionModel
+    )
+
+    let resourceGenres = Convert.toModelArray(
+      data.allWordpressWpResourceGenre,
+      Convert.toResourceGenreModel
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
@@ -300,7 +313,7 @@ const State = props => {
     props.setParticipants(participants)
     props.setEvents(events)
     props.setNews(news)
-
+    props.setResourceGenres(resourceGenres)
     props.setExhibitions(exhibitions)
     props.loaded()
   }
@@ -358,6 +371,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_NAVBAR_ITEMS,
         navbar: navbar,
+      }),
+    setResourceGenres: resourceGenres =>
+      dispatch({
+        type: actionTypes.SET_RESOURCE_GENRES,
+        resource_genres: resourceGenres,
       }),
   }
 }

@@ -15,6 +15,7 @@ const intitalState = {
   venues: [],
   documents: [],
   resources: [],
+  resource_genres: [],
   calendar_items: [],
   calendar: {},
   modal: {
@@ -73,6 +74,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_DOCUMENTS:
       return Object.assign({}, state, {
         documents: action.documents,
+      })
+    case actionTypes.SET_RESOURCE_GENRES:
+      return Object.assign({}, state, {
+        resource_genres: action.resource_genres,
       })
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
@@ -143,5 +148,5 @@ const reducer = (state = intitalState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
