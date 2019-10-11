@@ -121,6 +121,7 @@ module.exports = {
           "**/resources",
           "**/documentation",
           "**/news",
+          "**/resource-genre"
 
         ],
         // Blacklisted routes using glob patterns
