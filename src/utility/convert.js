@@ -63,6 +63,7 @@ export class Convert {
       wordpressModel.acf.exhibition_venue,
       wordpressModel.acf.exhibition_floorplan,
       wordpressModel.acf.exhibition_participants,
+      wordpressModel.acf.active_exhibition,
     )
   }
 

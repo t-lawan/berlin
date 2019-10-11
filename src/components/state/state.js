@@ -77,6 +77,7 @@ const State = props => {
                 slug
                 acf {
                   exhibition_floorplan
+                  active_exhibition
                   use_gallery_images
                   exhibition_participants
                   exhibition_venue {
