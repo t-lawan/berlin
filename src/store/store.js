@@ -25,8 +25,8 @@ const intitalState = {
   navbar: [],
   agreed_to_terms: false,
   experience_transition: {
-    animationIn: "slideInLeft",
-    animationOut: "slideOutRight",
+    animationIn: "fadeInLeft",
+    animationOut: "fadeOutRight",
     isVisible: true,
     isTransitioning: false,
   },
@@ -99,8 +99,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "slideInRight",
-          animationOut: "slideOutLeft",
+          animationIn: "fadeInRight",
+          animationOut: "fadeOutLeft",
           isVisible: false,
           isTransitioning: true,
         },
@@ -108,8 +108,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.DECREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "slideInLeft",
-          animationOut: "slideOutRight",
+          animationIn: "fadeInLeft",
+          animationOut: "fadeOutRight",
           isVisible: false,
           isTransitioning: true,
         },
@@ -153,5 +153,5 @@ const reducer = (state = intitalState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

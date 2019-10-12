@@ -54,7 +54,8 @@ class Columns extends React.Component {
           animationOut={this.props.experience_transition.animationOut}
           isVisible={this.props.experience_transition.isVisible}
           animateOnMount={false}
-          animationInDuration={500}
+          animationInDuration={800}
+          animationOutDuration={1000}
         >
           <Column rightBorder={true}>
             <StickyTopHeader>
