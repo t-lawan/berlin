@@ -16,8 +16,7 @@ import { Section } from "../../index.styles";
 
 const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
-  const funding = props.funding
-  console.log(funding);
+  const funding = props.funding;
   const generateSection = (fundingItem, index) => {
     let renderComponent
     switch (fundingItem.funding_type) {

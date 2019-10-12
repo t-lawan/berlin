@@ -11,8 +11,7 @@ padding: 0.5em 0;
 
 const AboutOrganisation = props => {
   const language = getCurrentLanguageString(props.languages)
-  const teamBlock = props.team_block
-  console.log(teamBlock);
+  const teamBlock = props.team_block;
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
     switch (teamBlockItem.team_block_type) {

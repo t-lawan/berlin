@@ -5,8 +5,7 @@ import PropTypes from "prop-types"
 import { AboutTeamSectionHeader } from "./about.styles"
 
 const AboutTeamBlock = props => {
-  const language = getCurrentLanguageString(props.languages)
-  console.log(props.team)
+  const language = getCurrentLanguageString(props.languages);
   const generateSection = (item, index) => {
     let renderComponent
     switch (item.team_block_type) {
