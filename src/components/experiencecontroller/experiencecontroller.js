@@ -7,38 +7,67 @@ import {
   ExperienceButton,
 } from "./experiencecontroller.styles"
 
-
 const ExperienceController = props => {
-  let experiences = [1, 2, 3, 4]
-  const changeExperience = (chosenExperience) => {
-    let currentExperience = props.experience;
-    if(currentExperience < chosenExperience){
-      props.experienceIncreased();
+  let experiences = [
+    {
+      id: 1,
+      isReady: true,
+    },
+    {
+      id: 2,
+      isReady: true,
+    },
+    {
+      id: 3,
+      isReady: true,
+    },
+    {
+      id: 4,
+      isReady: true,
+    },
+  ]
+  const changeExperience = chosenExperience => {
+    let currentExperience = props.experience
+    if (currentExperience < chosenExperience) {
+      props.experienceIncreased()
     } else {
-      props.experienceDecreased();
+      props.experienceDecreased()
     }
-    props.changeExperience(chosenExperience);
+    props.changeExperience(chosenExperience)
     setTimeout(() => {
-      props.setIsVisibleToTrue();
-
-    }, 5);
+      props.setIsVisibleToTrue()
+    }, 5)
   }
+
+  experiences = experiences.map(item => {
+    let exhibition = props.exhibitions.find(exhibition => {
+      return item.id === parseInt(exhibition.experience)
+    })
+
+    let isReady = exhibition ? true  : false;
+
+    return {
+      id: item.id,
+      isReady: isReady
+    }
+  })
+
   experiences = experiences.filter(experience =>
     filterBasedOnPosition(props, experience)
   )
   return (
     <ExperienceControllerWrapper left={props.left}>
-      <ExperienceButton bold> exp</ExperienceButton>
+      <ExperienceButton bold show> exp</ExperienceButton>
       {experiences.map(experience => (
         <ExperienceButton
-          key={experience}
+          key={experience.id}
           bold
-          hover
-          onClick={() => changeExperience(experience)}
+          hover={experience.isReady}
+          show={experience.isReady}
+          onClick={() => changeExperience(experience.id)}
           fade
         >
-          {" "}
-          {experience}
+          {experience.id}
         </ExperienceButton>
       ))}
     </ExperienceControllerWrapper>
@@ -47,15 +76,16 @@ const ExperienceController = props => {
 
 const filterBasedOnPosition = (props, experience) => {
   if (props.left) {
-    return experience < props.experience
+    return experience.id < props.experience
   } else {
-    return experience > props.experience
+    return experience.id > props.experience
   }
 }
 
 const mapStateToProps = state => {
   return {
     experience: state.experience,
+    exhibitions: state.exhibitions,
   }
 }
 

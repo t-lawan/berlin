@@ -29,8 +29,7 @@ import ResourceAudio from "../components/resources/resource-audio";
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
   const resourceInfo = props.pageContext
-  const r = Convert.toResourceModel(resourceInfo)
-  console.log(r)
+  const r = Convert.toResourceModel(resourceInfo);
 
   let renderComponent
 

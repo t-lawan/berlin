@@ -4,20 +4,30 @@ import DateCard from "./datecard"
 import { DateManager } from "../../utility/date"
 
 class MonthCards extends React.Component {
-  days = Object.keys(this.props.month);
-  currentDate = DateManager.currentDate();
+  days = Object.keys(this.props.month)
+  currentDate = DateManager.currentDate()
   getElement = () => {
-    const element = document.getElementById(`date-${this.currentDate}`);
-    element.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"});
+    const element = document.getElementById(`date-${this.currentDate}`)
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      })
+    }
   }
 
   componentDidMount() {
-    this.getElement();
+    this.getElement()
   }
   render() {
     return (
       <>
-        <DateCard containsEvents={false} month={this.props.title} year={this.props.year}  />
+        <DateCard
+          containsEvents={false}
+          month={this.props.title}
+          year={this.props.year}
+        />
         {this.days.map(day => (
           <DateCard
             key={day}
@@ -31,12 +41,11 @@ class MonthCards extends React.Component {
       </>
     )
   }
-
 }
 
 MonthCards.propTypes = {
   month: PropTypes.any,
   title: PropTypes.string,
-  year: PropTypes.any
+  year: PropTypes.any,
 }
 export default MonthCards
