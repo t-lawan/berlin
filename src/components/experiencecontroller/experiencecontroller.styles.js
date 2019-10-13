@@ -13,6 +13,7 @@ export const ExperienceButton = styled.h3`
   margin-bottom: 1em;
   text-decoration:none;
   color: black;
+  opacity: ${props => props.show ? '1' : '0.5'};
   font-size: x-large;
   transition-timing-function: ease-in;
   transition: 1s;
