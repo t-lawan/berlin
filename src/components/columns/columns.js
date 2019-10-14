@@ -70,9 +70,9 @@ class Columns extends React.Component {
             </StickyHeader>
 
             {this.renderedComponents}
-            <StickyFooter>
+            <StickyTopHeader>
               <DataPrivacy show={!this.props.agreed_to_terms} />
-            </StickyFooter>
+            </StickyTopHeader>
             <FixedFooter>
               <FooterComponent />
             </FixedFooter>
