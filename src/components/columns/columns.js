@@ -82,9 +82,9 @@ class Columns extends React.Component {
           </Column>
 
           <Column rightBorder={true} hideInMobile>
-            <StickyHeader>
+            <StickyTopHeader>
               <Jumbotron />
-            </StickyHeader>
+            </StickyTopHeader>
             {/* <Logo /> */}
             {this.props.thirdColumn}
             <SocialMedia />
