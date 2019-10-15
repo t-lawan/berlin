@@ -13,9 +13,7 @@ export const EventCardWrapper = styled.div`
   display: inline;
   :hover {
     ${EventSection} {
-      p {
-        color: ${Color.red};
-      }
+      color: ${Color.red};
     }
   }
 `
