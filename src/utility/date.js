@@ -1,10 +1,22 @@
 import moment from "moment"
 import 'moment/locale/en-gb';
 import 'moment/locale/de';
+moment.updateLocale('en', {
+  monthsShort : [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+  ]
+});
 
+moment.updateLocale('de', {
+  monthsShort : [
+      "Jan", "Feb", "Mar", "Apr", "Mai", "Jun",
+      "Jul", "Aug", "Sept", "Okt", "Nov", "Dez"
+  ]
+});
 export class DateManager {
   static get = (date, type = "year" | "month" | "date") => {
-    return moment(date, "YYYY-MM-DD HH:mm Z").get(type)
+    return moment(date, "YYYY-MM-DD HH:mm Z").get(type);
   }
 
   static getNumberOfDaysInMonth = (monthNum, year) => {
@@ -14,7 +26,7 @@ export class DateManager {
 
   static getMonthText = (monthNum, year) => {
     const calendar = this.getCalendar();
-    return calendar[year][monthNum].text
+    return calendar[year][monthNum].text;
   }
 
   static createDateClass = (day, month, year) => {
@@ -23,6 +35,14 @@ export class DateManager {
 
   static createMonthDayString = (day, month, year, language) => {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM / ddd");
+  }
+
+  static createShortMonthString = (day, month, year, language) => {
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM");
+  }
+
+  static createShortDayString = (day, month, year, language) => {
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("ddd");
   }
 
   static createDatetring = (day, month, year) => {

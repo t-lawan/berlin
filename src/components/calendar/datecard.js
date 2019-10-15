@@ -48,8 +48,8 @@ const DateCard = props => {
         </CurrentDate>
         <EventCardsWrapper>
           <ClosedText hidden={events.length !== 0}> Closed</ClosedText>
-          {events.map(event => (
-            <EventCard key={event.id} event={event} />
+          {events.map((event, index) => (
+            <EventCard key={index} event={event} />
           ))}
         </EventCardsWrapper>
       </DateCardWrapper>

@@ -39,8 +39,9 @@ export const DateTextWrapper = styled.div`
 export const DayMonthText = styled.span`
   font-size: small;
 `
-export const MonthHeading = styled.h1`
-  padding: 0.25em 0.5em;
+export const MonthHeading = styled.p`
+  padding: 0.25em 0.25em;
+  font-size: 2em;
 `
 export const ClosedText = styled.p`
   margin: 1.5rem;
