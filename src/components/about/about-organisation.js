@@ -6,7 +6,13 @@ import { UnderlinedText } from "../../index.styles";
 import { TextBlock } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
-padding: 0.5em 0;
+padding: 0;
+padding-left: 1em;
+`
+
+const TitleTextBlock = styled(TextBlock)`
+padding: 0;
+padding-top: 1em;
 `
 
 const AboutOrganisation = props => {
@@ -17,9 +23,9 @@ const AboutOrganisation = props => {
     switch (teamBlockItem.team_block_type) {
       case "section":
         renderComponent = (
-          <TextBlock key={index}>
-            <UnderlinedText> {teamBlockItem[createProperty("section_title", language)]}</UnderlinedText>
-          </TextBlock>
+          <TitleTextBlock key={index}>
+            <p> {teamBlockItem[createProperty("section_title", language)]}</p>
+          </TitleTextBlock>
         )
         break
       case "section_content":
@@ -33,7 +39,9 @@ const AboutOrganisation = props => {
         break
       case "position":
         renderComponent = (
-            <UnderlinedText key={index}> {teamBlockItem[createProperty("position_title", language)]}</UnderlinedText>
+          <TitleTextBlock key={index}>
+            <p key={index}> {teamBlockItem[createProperty("position_title", language)]}</p>
+          </TitleTextBlock>
         )
         break
       default:

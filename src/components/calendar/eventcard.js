@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { EventHeading, EventText, EventCardWrapper, EventCardLink } from "./eventcard.styles"
+import { EventHeading, EventText, EventCardWrapper, EventCardLink, EventSection } from "./eventcard.styles"
 import { TextSection } from "../../index.styles";
 
 const EventCard = props => {
@@ -12,7 +12,7 @@ const EventCard = props => {
     <EventCardWrapper>
       <EventCardLink fade to={createPath(language, event.slug)} >
         <EventHeading>{event[language].display_time}</EventHeading>
-        <TextSection
+        <EventSection
           dangerouslySetInnerHTML={{ __html: event[language].title }}
         />
       </EventCardLink>

@@ -6,6 +6,8 @@ import { UnderlinedText } from "../../index.styles";
 import { TextBlock } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
+padding-top: 0;
+padding-left: 1em;
 p{
   line-height: 1.2em;
 }
@@ -20,7 +22,7 @@ const AboutAdvisoryBoard = props => {
       case "section":
         renderComponent = (
           <TextBlock key={index}>
-            <UnderlinedText> {teamBlockItem[createProperty("section_title", language)]}</UnderlinedText>
+            <p> {teamBlockItem[createProperty("section_title", language)]}</p>
           </TextBlock>
         )
         break

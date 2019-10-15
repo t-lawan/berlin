@@ -3,13 +3,17 @@ import { Color, UnderlineSectionLink } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
-  padding: 2em;
+  padding: 1.5em;
+  line-height: 1.4em;
 `
 
 export const EventItem = styled.div`
   padding-top: 1em;
   color: black;
   border-bottom: 1px solid black;
+  p {
+    font-size: 1em;
+  }
 `
 
 export const EventLink = styled(UnderlineSectionLink)`

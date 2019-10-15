@@ -89,15 +89,21 @@ const State = props => {
                     description
                     subtitle
                     title
+                    participant_list
+                    participant_list_label
                   }
                   EN {
                     description
                     subtitle
                     title
+                    participant_list
+                    participant_list_label
                   }
                   end_date
                   exp_number
                   start_date
+                  caption_de
+                  caption_en
                 }
               }
             }
@@ -269,6 +275,10 @@ const State = props => {
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
+    calendarItems = [
+      ...calendarItems,
+      ...Convert.exhibitionsToCalendarItemArray(exhibitions),
+    ]
     let calendar = CalendarModel.createCalendar(calendarItems)
 
     let participants = Convert.toModelArray(
@@ -305,13 +315,13 @@ const State = props => {
       })
     })
     // Get active exhbitions
-    let filteredExhibitions = exhibitions.filter((item) => {
-      return item.active;
+    let filteredExhibitions = exhibitions.filter(item => {
+      return item.active
     })
 
-    if(filteredExhibitions.length > 0) {
-      let experience = filteredExhibitions[0].experience;
-      props.changeExperience(parseInt(experience));
+    if (filteredExhibitions.length > 0) {
+      let experience = filteredExhibitions[0].experience
+      props.changeExperience(parseInt(experience))
       props.setActiveExperience(parseInt(experience))
     }
 
@@ -388,16 +398,16 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_RESOURCE_GENRES,
         resource_genres: resourceGenres,
       }),
-    changeExperience: experience => 
+    changeExperience: experience =>
       dispatch({
         type: actionTypes.CHANGE_EXPERIENCE,
-        experience: experience
+        experience: experience,
       }),
-    setActiveExperience: experience => 
+    setActiveExperience: experience =>
       dispatch({
         type: actionTypes.SET_ACTIVE_EXPERIENCE,
-        active_experience: experience
-      })
+        active_experience: experience,
+      }),
   }
 }
 
