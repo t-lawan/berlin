@@ -46,11 +46,13 @@ export const PressReleaseWrapper = styled.div`
 `
 export const PressReleaseText = styled.span`
   margin-right: 2.5em;
+  font-size: 1.1em;
 `
 
 export const PressReleaseLink = styled.a`
   text-decoration: none;
   color: inherit;
+  font-size: 1em;
   &:hover {
     color: ${Color.red};
   }

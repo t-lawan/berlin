@@ -11,6 +11,8 @@ import {
   MonthHeading,
   EventCardsWrapper,
   ClosedText,
+  DateTextWrapper,
+  DateString
 } from "./datecard.styles"
 import { getCurrentLanguageString } from "../../utility/helper";
 
@@ -38,12 +40,16 @@ const DateCard = props => {
       >
         <CurrentDate>
           <DateText>{date}</DateText>
-          <DayMonthText> {monthDay.toLowerCase()} </DayMonthText>
+          <DateTextWrapper>
+            <DateString> {DateManager.createShortMonthString(props.day, props.month, props.year, language)}</DateString>
+            <DateString> {DateManager.createShortDayString(props.day, props.month, props.year, language)}</DateString>
+          </DateTextWrapper>
+          {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
         </CurrentDate>
         <EventCardsWrapper>
           <ClosedText hidden={events.length !== 0}> Closed</ClosedText>
-          {events.map(event => (
-            <EventCard key={event.id} event={event} />
+          {events.map((event, index) => (
+            <EventCard key={index} event={event} />
           ))}
         </EventCardsWrapper>
       </DateCardWrapper>

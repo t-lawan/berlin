@@ -70,9 +70,9 @@ class Columns extends React.Component {
             </StickyHeader>
 
             {this.renderedComponents}
-            <StickyFooter>
+            <StickyTopHeader>
               <DataPrivacy show={!this.props.agreed_to_terms} />
-            </StickyFooter>
+            </StickyTopHeader>
             <FixedFooter>
               <FooterComponent />
             </FixedFooter>
@@ -82,9 +82,9 @@ class Columns extends React.Component {
           </Column>
 
           <Column rightBorder={true} hideInMobile>
-            <StickyHeader>
+            <StickyTopHeader>
               <Jumbotron />
-            </StickyHeader>
+            </StickyTopHeader>
             {/* <Logo /> */}
             {this.props.thirdColumn}
             <SocialMedia />

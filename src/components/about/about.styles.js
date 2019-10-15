@@ -6,6 +6,7 @@ export const AboutSideNavbar = styled.nav`
   padding: 0.25em 1em;
   display: flex;
   flex-direction: column;
+  line-height: 1em;
   @media (max-width: ${size.tablet}) {
     flex-direction: row;
   }
@@ -27,6 +28,9 @@ export const AboutNavItemLink = styled(AniLink)`
 `
 
 export const AboutPageContent = styled.div`
+    p{
+        padding-bottom: 1em;
+    }
     a {
         text-decoration-color: ${Color.red}
     }
