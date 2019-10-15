@@ -78,8 +78,7 @@ class AudioResource extends React.Component {
   }
 
   play = () => {
-    this.audio_tag.current.play()
-    console.log(this.audio_tag.current)
+    this.audio_tag.current.play();
     this.setState({
       isPlaying: true,
     })

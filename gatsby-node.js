@@ -260,6 +260,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             acf {
               exhibition_floorplan
+              active_exhibition
               use_gallery_images
               exhibition_participants
               exhibition_venue {
@@ -271,15 +272,21 @@ exports.createPages = async ({ graphql, actions }) => {
                 description
                 subtitle
                 title
+                participant_list
+                participant_list_label
               }
               EN {
                 description
                 subtitle
                 title
+                participant_list
+                participant_list_label
               }
               end_date
               exp_number
               start_date
+              caption_de
+              caption_en
             }
           }
         }

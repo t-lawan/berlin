@@ -179,8 +179,8 @@ const getPdf = (documents, press_release, language) => {
 const content = {
   EN: {
     contact: 'Contact',
-    press_release: 'Press Release',
-    images: 'Images'
+    press_release: 'Press Releases',
+    images: 'Press images'
   },
   DE: {
     contact: 'Pressekontakt',

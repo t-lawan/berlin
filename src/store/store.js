@@ -7,6 +7,7 @@ const intitalState = {
     DE: false,
   },
   experience: 1,
+  active_experience: 1,
   events: [],
   exhibitions: [],
   news: [],
@@ -15,6 +16,7 @@ const intitalState = {
   venues: [],
   documents: [],
   resources: [],
+  resource_genres: [],
   calendar_items: [],
   calendar: {},
   modal: {
@@ -23,8 +25,8 @@ const intitalState = {
   navbar: [],
   agreed_to_terms: false,
   experience_transition: {
-    animationIn: "slideInLeft",
-    animationOut: "slideOutRight",
+    animationIn: "fadeInLeft",
+    animationOut: "fadeOutRight",
     isVisible: true,
     isTransitioning: false,
   },
@@ -74,6 +76,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         documents: action.documents,
       })
+    case actionTypes.SET_RESOURCE_GENRES:
+      return Object.assign({}, state, {
+        resource_genres: action.resource_genres,
+      })
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
         resources: action.resources,
@@ -93,8 +99,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "slideInRight",
-          animationOut: "slideOutLeft",
+          animationIn: "fadeInRight",
+          animationOut: "fadeOutLeft",
           isVisible: false,
           isTransitioning: true,
         },
@@ -102,8 +108,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.DECREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "slideInLeft",
-          animationOut: "slideOutRight",
+          animationIn: "fadeInLeft",
+          animationOut: "fadeOutRight",
           isVisible: false,
           isTransitioning: true,
         },
@@ -135,6 +141,10 @@ const reducer = (state = intitalState, action) => {
           show: false,
         },
       })
+    case actionTypes.SET_ACTIVE_EXPERIENCE:
+      return Object.assign({}, state, {
+        active_experience: action.active_experience,
+      });
     default:
       return state
   }

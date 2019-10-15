@@ -54,7 +54,8 @@ class Columns extends React.Component {
           animationOut={this.props.experience_transition.animationOut}
           isVisible={this.props.experience_transition.isVisible}
           animateOnMount={false}
-          animationInDuration={500}
+          animationInDuration={1000}
+          animationOutDuration={200}
         >
           <Column rightBorder={true}>
             <StickyTopHeader>
@@ -69,9 +70,9 @@ class Columns extends React.Component {
             </StickyHeader>
 
             {this.renderedComponents}
-            <StickyFooter>
+            <StickyTopHeader>
               <DataPrivacy show={!this.props.agreed_to_terms} />
-            </StickyFooter>
+            </StickyTopHeader>
             <FixedFooter>
               <FooterComponent />
             </FixedFooter>
@@ -81,9 +82,9 @@ class Columns extends React.Component {
           </Column>
 
           <Column rightBorder={true} hideInMobile>
-            <StickyHeader>
+            <StickyTopHeader>
               <Jumbotron />
-            </StickyHeader>
+            </StickyTopHeader>
             {/* <Logo /> */}
             {this.props.thirdColumn}
             <SocialMedia />

@@ -7,7 +7,8 @@ import { VenueModel } from "../models/VenueModel"
 import { DocumentModel } from "../models/DocumentModel"
 import { ResourceModel } from "../models/ResourceModel";
 import { NavbarModel } from "../models/NavbarModel";
-
+import { ResourceGenreModel } from "../models/ResourceGenre";
+import moment from 'moment';
 export class Convert {
   static toNewsModel = wordpressModel => {
     return new NewsModel(
@@ -17,6 +18,13 @@ export class Convert {
       wordpressModel.acf.de,
       wordpressModel.acf.experience,
       wordpressModel.acf.related_articles
+    )
+  }
+
+  static toResourceGenreModel = wordpressModel => {
+    return new ResourceGenreModel(
+      wordpressModel.slug,
+      wordpressModel.name
     )
   }
   static toEventModel = wordpressModel => {
@@ -49,12 +57,13 @@ export class Convert {
       wordpressModel.acf.exp_number,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
-      "1 am",
+      "2-7pm",
       wordpressModel.acf.start_date,
       wordpressModel.acf.end_date,
       wordpressModel.acf.exhibition_venue,
       wordpressModel.acf.exhibition_floorplan,
       wordpressModel.acf.exhibition_participants,
+      wordpressModel.acf.active_exhibition,
     )
   }
 
@@ -186,35 +195,46 @@ export class Convert {
 
   static exhibitionsToCalendarItemArray = exhibitionsArray => {
     let calendarItems = []
+    
     exhibitionsArray.forEach(exhibition => {
-      calendarItems.push(
-        new CalendarItemModel(
-          `exhibition-${exhibition.id}`,
-          `exhibition/${exhibition.slug}`,
-          "Exhibition",
-          "exhibition",
-          exhibition.start_time,
-          exhibition.start_date,
-          exhibition.end_date,
-          exhibition.venue,
-          exhibition.participants,
-          true,
-          [exhibition.experience],
-          {
-            title: exhibition.EN.title,
-            description: exhibition.EN.description,
-            display_time: exhibition.start_time,
-            subtitle: '',
-          },
-          {
-            title: exhibition.DE.title,
-            description: exhibition.DE.description,
-            display_time: exhibition.start_time,
-            subtitle: '',
-          }
+      let start_date = moment(exhibition.start_date, "YYYYMMDD");
+      let end_date = moment(exhibition.end_date, "YYYYMMDD");
+      let diff = end_date.diff(start_date, 'd');
+      for(let i = 0; i < diff; i++) {
+        let start = start_date.clone();
+        start.add(i, 'days');
+
+        calendarItems.push(
+          new CalendarItemModel(
+            `exhibition-${exhibition.id}`,
+            `exhibition/${exhibition.slug}`,
+            "Exhibition",
+            "exhibition",
+            exhibition.start_time,
+            start,
+            exhibition.end_date,
+            exhibition.venue,
+            exhibition.participants,
+            true,
+            [exhibition.experience],
+            {
+              title: exhibition.EN.title,
+              description: exhibition.EN.description,
+              display_time: exhibition.start_time,
+              subtitle: '',
+            },
+            {
+              title: exhibition.DE.title,
+              description: exhibition.DE.description,
+              display_time: exhibition.start_time,
+              subtitle: '',
+            }
+          )
         )
-      )
+      }
+
     })
+
     return calendarItems
   }
 }
