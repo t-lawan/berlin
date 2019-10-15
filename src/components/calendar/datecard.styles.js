@@ -5,7 +5,7 @@ export const DateCardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 4fr;
   border-bottom: 0.05em solid black;
-  border-right: 0.05em solid black;
+  /* border-right: 0.05em solid black; */
   min-height: 100px;
   background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
   height: auto;
