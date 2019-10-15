@@ -19,10 +19,22 @@ export const EventCardsWrapper = styled.div`
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;
   padding: 0.15em 0.5em;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 export const DateText = styled.strong`
   font-size: xx-large;
   padding-right: 0.5em;
+`
+
+export const DateString = styled.p`
+  font-size: 1em;
+`
+
+export const DateTextWrapper = styled.div`
+  line-height: 1em;
 `
 export const DayMonthText = styled.span`
   font-size: small;
