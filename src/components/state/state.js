@@ -164,6 +164,7 @@ const State = props => {
                     free_text_entry
                   }
                   floating_resource
+                  thumbnail_image
                   image_gallery {
                     alt_text
                     wordpress_id
