@@ -10,7 +10,17 @@ import { Color } from "../../index.styles"
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
+import styled from 'styled-components';
 
+const ResourceTextDiv = styled.div`
+  a {
+    font-size: 1em;
+  }
+`
+
+const ResourceTitle = styled.p`
+  font-size: 1.8em;
+`
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
@@ -31,10 +41,10 @@ const ResourceText = props => {
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
-          <p> Language: {r.text_based_resource[0].document_language}</p>
+          <p hidden={r.text_based_resource[0].document_language.length === 0}> Language: {r.text_based_resource[0].document_language}</p>
         </div>
         <div>
-          <h1> {r.title}</h1>
+          <ResourceTitle> {r.title}</ResourceTitle>
           <p> {r.author}</p>
           <p>
             In:{" "}
@@ -46,7 +56,7 @@ const ResourceText = props => {
             </ResourcePublisherLink>
           </p>
           <p> {r[language].year}</p>
-          <div
+          <ResourceTextDiv
             dangerouslySetInnerHTML={{
               __html: r.text_based_resource[0].free_text_entry,
             }}
