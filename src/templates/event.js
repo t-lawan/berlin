@@ -27,6 +27,13 @@ const EventTitle = styled.div`
   }
 `
 
+const EventRsvpText = styled.div`
+  p,
+  a {
+    font-size: 1.1em;
+  }
+`
+
 const VenueLink = styled(AniLink)`
   text-decoration: none;
   :hover {
@@ -57,40 +64,60 @@ const Event = props => {
             {event.dates.map((date, index) => (
               <div key={index}>
                 <p>
-                  {" "}
-                  {`${moment(date.start_date).format("DD.MM.YYYY")} - ${
-                    date[language].display_time
-                  }`}
+                  {`${moment(date.start_date)
+                    .locale(language.toLowerCase())
+                    .format("dddd, DD.MM.YYYY")}`}
                 </p>
+                <p>{`${date[language].display_time}`}</p>
               </div>
             ))}
+            <p hidden={!event[language].rsvp_required}>
+              {freeAdmision[language].rsvp}
+            </p>
           </TextBlock>
           <TextBlock>
-            <VenueLink to={createPath(language, venue ? 'venue/' + venue.slug : "")}>
+            <VenueLink
+              to={createPath(language, venue ? "venue/" + venue.slug : "")}
+            >
               {" "}
               {venue ? venue[language].venue_name : ""}
             </VenueLink>
             <p>{venue ? venue.address[0].address_line : ""}</p>
           </TextBlock>
-          <p>{freeAdmision[language].text}</p>
+          <TextBlock>
+            <p>{freeAdmision[language][event.language]}</p>
+            <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
+          </TextBlock>
         </EventColumn>
         <EventColumn>
           <ImageResource id={event.thumbnail_image} withCaption={true} />
-          <EventTitle
-            dangerouslySetInnerHTML={{
-              __html: event[language].event_title,
-            }}
-          />
-          <div
-            dangerouslySetInnerHTML={{
-              __html: event[language].event_subtitle,
-            }}
-          />
+          <TextBlock>
+            <EventTitle
+              dangerouslySetInnerHTML={{
+                __html: event[language].event_title,
+              }}
+            />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: event[language].event_subtitle,
+              }}
+            />
+          </TextBlock>
+
           <div
             dangerouslySetInnerHTML={{
               __html: event[language].full_description,
             }}
           />
+
+          <TextBlock>
+            <EventRsvpText
+              hidden={!event[language].rsvp_required}
+              dangerouslySetInnerHTML={{
+                __html: event[language].rsvp_note,
+              }}
+            />
+          </TextBlock>
         </EventColumn>
       </TwoColumnPageWrapper>
       {/* <RelatedResources ids={event.related_resource} hidden={event.related_resource.length === 0}/> */}
