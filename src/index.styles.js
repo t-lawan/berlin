@@ -1,6 +1,11 @@
 import styled, { css, createGlobalStyle } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
+export const Color = {
+  yellow: "#EEEC7A",
+  red: "#D9515C",
+}
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -126,6 +131,10 @@ p, a, span{
 li {
   list-style-type: lower-roman;
 }
+a {
+  text-decoration-line: underline;
+  text-decoration-color: ${Color.red};
+}
 `
 
 export const size = {
@@ -212,10 +221,7 @@ export const tablet = props => {
   `
 }
 
-export const Color = {
-  yellow: "#EEEC7A",
-  red: "#D9515C",
-}
+
 
 export const UnderlinedText = styled.p`
   text-decoration: underline;
