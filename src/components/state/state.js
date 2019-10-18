@@ -214,7 +214,11 @@ const State = props => {
                 localFile {
                   childImageSharp {
                     fluid {
-                      ...GatsbyImageSharpFluid
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
                     }
                   }
                 }
