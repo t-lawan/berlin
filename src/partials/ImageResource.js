@@ -18,7 +18,7 @@ export const GalleryImage = styled.img`
   transition: opacity 500ms ease 0s;
 `
 
-export const Caption = styled.div`
+export const Caption = styled.section`
   font-size: 0.6rem;
 `
 
@@ -30,14 +30,15 @@ class ImageResource extends React.Component {
   }
   image
   language
-  UNSAFE_componentWillMount() {
+  componentWillMount() {
     this.image = getDocument(this.props.documents, this.props.id)
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
+    // console.log(this.image)
     return (
       <>
-        <Img onLoad={this.props.onLoad} fluid={this.image ? this.image.fluid: null} /> 
+        <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.image ? this.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{

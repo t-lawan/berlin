@@ -164,6 +164,7 @@ const State = props => {
                     free_text_entry
                   }
                   floating_resource
+                  thumbnail_image
                   image_gallery {
                     alt_text
                     wordpress_id
@@ -213,7 +214,11 @@ const State = props => {
                 localFile {
                   childImageSharp {
                     fluid {
-                      ...GatsbyImageSharpFluid
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
                     }
                   }
                 }

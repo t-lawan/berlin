@@ -2,7 +2,8 @@ import React from "react"
 import { connect } from "react-redux";
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import PropTypes from "prop-types";
-import { EventNavigatorWrapper, EventNavigatorButton } from "./event-navigator.styles";
+import { EventNavigatorWrapper, EventNavigatorButton, EventNavigatorIcon } from "./event-navigator.styles";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 class EventNavigator extends React.Component {
@@ -30,10 +31,10 @@ class EventNavigator extends React.Component {
     return (
       <EventNavigatorWrapper>
         <EventNavigatorButton to={createPath(this.language, this.previousPage())} fade>
-          -
+          <EventNavigatorIcon icon={faArrowLeft} />
         </EventNavigatorButton>
         <EventNavigatorButton to={createPath(this.language, this.nextPage())} fade>
-          +
+          <EventNavigatorIcon icon={faArrowRight} />
         </EventNavigatorButton>
       </EventNavigatorWrapper>
     )

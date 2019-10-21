@@ -224,6 +224,7 @@ exports.createPages = async ({ graphql, actions }) => {
               resource_image
               resource_type
               title
+              thumbnail_image
               text_based_resource {
                 document_download_label
                 document_language
