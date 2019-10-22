@@ -13,6 +13,7 @@ const FooterWrapper = styled.footer`
   background: white;
   padding: 1em;
   border-top: 1px solid black;
+  border-right: 1px solid black;
   ${changeGridToOneRow};
 `
 
