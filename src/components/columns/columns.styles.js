@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import { changeGridToOneRow, size } from "../../index.styles"
+import { changeGridToOneRow, size, hideDisplayForTablet } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
 export const AnimatedColumn = styled(Animated)`
@@ -10,6 +10,8 @@ export const AnimatedColumn = styled(Animated)`
   overflow-x: hidden;
   display: grid;
   grid-template-columns: 5fr 3fr;
+  grid-template-rows: auto;
+  grid-template-areas: "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
     /* width: 100%; */
     width: 100vw;
@@ -64,7 +66,9 @@ export const StickyFooter = styled.div`
 export const FixedFooter = styled.div`
   z-index: 500;
   bottom: 0;
-  position: static;
+  position: relative;
+  grid-area: footer;
+  ${hideDisplayForTablet};
 `
 
 export const FixedNavbar = styled.div`
