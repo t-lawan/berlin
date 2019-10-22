@@ -13,7 +13,7 @@ const Jumbotron = props => {
   return(
   <JumbotronWrapper showInMobile={props.showInMobile}>
     <JumbotronHeader to={createPath(language, '')}>
-      {svg}
+      <img src={`https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/animation_${language.toLowerCase()}.svg`} />
     </JumbotronHeader>
   </JumbotronWrapper>
 )
