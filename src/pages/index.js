@@ -10,6 +10,7 @@ import { getCurrentLanguageString } from "../utility/helper"
 import { Section } from "../index.styles";
 import SEO from "../components/seo/seo";
 import ExhibitionContent from "../components/exhibition/exhibition-content";
+import Logo from "../components/logo/logo";
 
 const IndexPage = props => {
   const exhibitions = props.exhibitions.filter(exhibition => {
@@ -26,12 +27,19 @@ const IndexPage = props => {
       )}
     </IndexPageWrapper>
   )
+
+  const thirdColumn = (
+    <>
+      <Logo />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={<ResourcesList />}
       secondColumn={renderComponent}
       numberOfColumnsIsTwo={true}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
       isHome={true}
     />
   )

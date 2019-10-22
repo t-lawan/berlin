@@ -45,9 +45,15 @@ const UpcomingEvents = props => {
 export const freeAdmision = {
   DE: {
     text: "Freier Eintritt, begrenzte Kapazität",
+    en: "In English",
+    de: "In German",
+    rsvp: 'RSVP Required'
   },
   EN: {
     text: "Free admission, limited capacity",
+    en: "In English",
+    de: "In German",
+    rsvp: 'RSVP Required'
   },
 }
 

@@ -4,6 +4,9 @@ import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 const RelatedNavigatorWrapper = styled.div`
   display: flex;
@@ -11,15 +14,17 @@ const RelatedNavigatorWrapper = styled.div`
   background: transparent;
 `
 
-const RelatedNavigatorButton = styled(Link)`
+const RelatedNavigatorButton = styled(AniLink)`
   text-decoration: none;
   font-size: 1.3rem;
   padding: 1em;
 `
 
+const RelatedNavigatorIcon = styled(FontAwesomeIcon)``
+
 class ResourceNavigator extends React.Component {
-  language;
-  currentIndex;
+  language
+  currentIndex
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.resources.length) {
       return `resource/${this.props.resources[0].slug}`
@@ -39,14 +44,20 @@ class ResourceNavigator extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
     this.currentIndex = this.props.resources.findIndex(resource => {
       return resource.id === this.props.id
-    });
+    })
     return (
       <RelatedNavigatorWrapper>
-        <RelatedNavigatorButton to={createPath(this.language, this.previousPage())}>
-          -
+        <RelatedNavigatorButton
+          fade
+          to={createPath(this.language, this.previousPage())}
+        >
+          <RelatedNavigatorIcon icon={faArrowLeft} />
         </RelatedNavigatorButton>
-        <RelatedNavigatorButton to={createPath(this.language, this.nextPage())}>
-          +
+        <RelatedNavigatorButton
+          fade
+          to={createPath(this.language, this.nextPage())}
+        >
+          <RelatedNavigatorIcon icon={faArrowRight} />
         </RelatedNavigatorButton>
       </RelatedNavigatorWrapper>
     )
