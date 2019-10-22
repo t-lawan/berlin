@@ -29,12 +29,19 @@ const IndexPage = props => {
       )}
     </IndexPageWrapper>
   )
+
+  const thirdColumn = (
+    <>
+      <Logo />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={<ResourcesList />}
       secondColumn={renderComponent}
       numberOfColumnsIsTwo={true}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
