@@ -15,10 +15,7 @@ export class VenueModel {
     this.id = id
     this.slug = slug
     this.DE = de
-    this.EN = {
-      access_info: "<p>It&#8217;s very nice, boo.</p>\n",
-      venue_name: "11. London Biennale c/o ExRotaprint",
-    }
+    this.EN = de
     this.google_map_link = google_map_link
     this.thumbnail_image = thumbnail_image
     this.address = address

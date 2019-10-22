@@ -57,7 +57,7 @@ const ExperienceController = props => {
   )
   return (
     <ExperienceControllerWrapper left={props.left}>
-      <ExperienceButton bold show> exp</ExperienceButton>
+      <ExperienceButton bold hidden={experiences.length === 0} show> exp</ExperienceButton>
       {experiences.map(experience => (
         <ExperienceButton
           key={experience.id}
@@ -65,7 +65,6 @@ const ExperienceController = props => {
           hover={experience.isReady}
           show={experience.isReady}
           onClick={() => changeExperience(experience.id)}
-          fade
         >
           {experience.id}
         </ExperienceButton>

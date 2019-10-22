@@ -9,6 +9,8 @@ export const LanguageControllerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0.5em;
+  background: white;
+  z-index: 5000;
   @media (max-width: ${size.tablet}) {
     border: 0;
     flex-direction: row;
