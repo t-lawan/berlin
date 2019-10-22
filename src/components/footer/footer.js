@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { changeGridToOneRow } from "../../index.styles";
+import { changeGridToOneRow, size } from "../../index.styles";
 import ImageResource from "../../partials/ImageResource";
 const FooterWrapper = styled.footer`
   display: grid;
@@ -15,6 +15,12 @@ const FooterWrapper = styled.footer`
   border-top: 1px solid black;
   border-right: 1px solid black;
   ${changeGridToOneRow};
+`
+
+const ImageWrapper = styled.div`
+    @media (max-width: ${size.tablet}) {
+    width: 30%;
+  }
 `
 
 const FooterText = styled.p`
@@ -39,9 +45,9 @@ const FooterComponent = props => {
         {content[language].description}
         </FooterText>
       </div>
-      <div>
+      <ImageWrapper>
         <ImageResource id={431} withCaption={false} />
-      </div>
+      </ImageWrapper>
     </FooterWrapper>
   )
 }
