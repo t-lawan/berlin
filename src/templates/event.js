@@ -67,8 +67,8 @@ const Event = props => {
                   {`${moment(date.start_date)
                     .locale(language.toLowerCase())
                     .format("dddd, DD.MM.YYYY")}`}
-                </p>
-                <p>{`${date[language].display_time}`}</p>
+                
+                <br />{`${date[language].display_time}`}</p>
               </div>
             ))}
             <p hidden={!event[language].rsvp_required}>
