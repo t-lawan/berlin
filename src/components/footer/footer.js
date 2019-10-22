@@ -40,7 +40,6 @@ const FooterComponent = props => {
       </div>
       <div>
         <ImageResource id={431} withCaption={false} />
-        {/* <img src="https://11.berlinbiennale.de/temp/img/ksdb_logo.png" /> */}
       </div>
     </FooterWrapper>
   )
