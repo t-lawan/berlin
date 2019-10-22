@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { changeGridToOneRow } from "../../index.styles";
+import { changeGridToOneRow, size } from "../../index.styles";
 import ImageResource from "../../partials/ImageResource";
 const FooterWrapper = styled.footer`
   display: grid;
@@ -13,11 +13,18 @@ const FooterWrapper = styled.footer`
   background: white;
   padding: 1em;
   border-top: 1px solid black;
+  border-right: 1px solid black;
   ${changeGridToOneRow};
 `
 
+const ImageWrapper = styled.div`
+    @media (max-width: ${size.tablet}) {
+    width: 30%;
+  }
+`
+
 const FooterText = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -38,10 +45,9 @@ const FooterComponent = props => {
         {content[language].description}
         </FooterText>
       </div>
-      <div>
+      <ImageWrapper>
         <ImageResource id={431} withCaption={false} />
-        {/* <img src="https://11.berlinbiennale.de/temp/img/ksdb_logo.png" /> */}
-      </div>
+      </ImageWrapper>
     </FooterWrapper>
   )
 }
