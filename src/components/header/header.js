@@ -34,26 +34,10 @@ const Header = props => {
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
       <HeaderLink fade to={createPath(language, '')}>
-        <DateContainer>
-          <Heading> {content[language].date}</Heading>
-        </DateContainer>
-        <TitleContainer>
-          <Left>
-            {content[language].text.left.map((text, index) => (
-              <Heading key={index}>{text}</Heading>
-            ))}
-          </Left>
-          <Right>
-            <Heading> {experience} </Heading>
-            {content[language].text.right.map((text, index) => (
-              <Heading key={index}>{text}</Heading>
-            ))}
-          </Right>
-        </TitleContainer>
-        <DateContainer showInMobile>
-          <Heading> {content[language].date}</Heading>
-        </DateContainer>
+        <img src={`https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/datum_${language.toLowerCase()}.svg`}/>
+        <img src={`https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/title_${language.toLowerCase()}.svg`}/>
       </HeaderLink>
+
     </HeaderWrapper>
   )
 }
