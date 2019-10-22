@@ -77,17 +77,21 @@ class Columns extends React.Component {
             </StickyHeader>
 
             {this.renderedComponents}
+            {/* Only In Mobile */}
             <StickyFooter showInMobile>
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
+            {/* Only In Mobile */}
             <FixedFooter showInMobile>
               <FooterComponent />
             </FixedFooter>
+            {/* Only In Mobile */}
             <FixedNavbar>
               <NavbarMobile showInMobile />
             </FixedNavbar>
           </Column>
           {/* Third Column */}
+          {/* Only In Desktop */}
           <Column rightBorder={true} hideInMobile>
             <StickyTopHeader>
               <Jumbotron />
@@ -96,15 +100,17 @@ class Columns extends React.Component {
             <SocialMedia />
           </Column>
 
+          {/* Only In Desktop */}
           <StickyFooter hideInMobile>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
-
+          {/* Only In Desktop */}
           <FixedFooter hideInMobile>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
         {/* Fourth Column */}
+        {/* Only In Mobile */}
         <Column rightBorder={false} hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
