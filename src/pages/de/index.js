@@ -9,6 +9,7 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import { Section } from "../../index.styles"
 import ExhibitionContent from "../../components/exhibition/exhibition-content"
 import SEO from "../../components/seo/seo";
+import Logo from "../../components/logo/logo";
 
 export const IndexPageWrapper = styled.div`
   padding: 1rem;
