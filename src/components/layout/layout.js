@@ -16,7 +16,7 @@ const LayoutWrapper = styled.div`
 const Layout = props => {
   return (
     <LayoutWrapper>
-      <OutboundLink href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"></OutboundLink>
+      <OutboundLink hidden={!props.agreed_to_terms} href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"></OutboundLink>
       <GlobalStyle />
       <State />
       <Helmet>
@@ -54,6 +54,7 @@ Layout.defaultProps = {
 const mapStateToProps = state => {
   return {
     modal: state.modal,
+    agreed_to_terms: state.agreed_to_terms
   }
 }
 
