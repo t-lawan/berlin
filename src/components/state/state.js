@@ -91,6 +91,9 @@ const State = props => {
                     title
                     participant_list
                     participant_list_label
+                    exp_dates_header
+                    exp_title_header
+                    exp_title_header_mobile
                   }
                   EN {
                     description
@@ -98,6 +101,9 @@ const State = props => {
                     title
                     participant_list
                     participant_list_label
+                    exp_dates_header
+                    exp_title_header
+                    exp_title_header_mobile
                   }
                   end_date
                   exp_number

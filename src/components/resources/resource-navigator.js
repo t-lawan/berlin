@@ -51,13 +51,13 @@ class ResourceNavigator extends React.Component {
           fade
           to={createPath(this.language, this.previousPage())}
         >
-          <RelatedNavigatorIcon icon={faArrowLeft} />
+          {`<`}
         </RelatedNavigatorButton>
         <RelatedNavigatorButton
           fade
           to={createPath(this.language, this.nextPage())}
         >
-          <RelatedNavigatorIcon icon={faArrowRight} />
+          {`>`}
         </RelatedNavigatorButton>
       </RelatedNavigatorWrapper>
     )

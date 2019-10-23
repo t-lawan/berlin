@@ -6,15 +6,22 @@ import {
   HeaderLink,
 } from "./header.styles"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getDocument } from "../../store/selector";
 
 const Header = props => {
-  const experience = props.experience
   const language = getCurrentLanguageString(props.languages)
+  const experience = props.experience;
+  let exhibitions = props.exhibitions.filter(exhibition => {
+    return parseInt(exhibition.experience) === experience;
+  });
+  let dateHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_dates_header);
+  let titleHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_title_header);
+
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
       <HeaderLink fade to={createPath(language, '')}>
-        <img src={`https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/datum_${language.toLowerCase()}.svg`}/>
-        <img src={`https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/title_${language.toLowerCase()}.svg`}/>
+        <img alt="date" src={dateHeaderSvg.url}/>
+        <img alt="title" src={titleHeaderSvg.url}/>
       </HeaderLink>
     </HeaderWrapper>
   )
@@ -30,6 +37,8 @@ const mapStateToProps = state => {
   return {
     experience: state.experience,
     languages: state.languages,
+    documents: state.documents,
+    exhibitions: state.exhibitions
   }
 }
 
