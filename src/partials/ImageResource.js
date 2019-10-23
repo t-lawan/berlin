@@ -35,7 +35,6 @@ class ImageResource extends React.Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    // console.log(this.image)
     return (
       <>
         <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.image ? this.image.fluid: null} /> 

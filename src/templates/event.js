@@ -19,6 +19,12 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const EventColumn = styled.div``
 
+const EventTextBlock = styled(TextBlock)`
+  a,p {
+    margin: 0;
+    font-size: 1.1em;
+  }
+`
 const EventTitle = styled.div`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
@@ -42,7 +48,7 @@ const VenueLink = styled(AniLink)`
 `
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
-  const event = Convert.toEventModel(props.pageContext)
+  const event = Convert.toEventModel(props.pageContext);
   event.dates = event.dates.sort((a, b) => {
     return a.start_date - b.start_date
   })
@@ -60,7 +66,7 @@ const Event = props => {
           lang={props.pageContext.language}
         />
         <EventColumn>
-          <TextBlock>
+          <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
                 <p>
@@ -74,7 +80,7 @@ const Event = props => {
             <p hidden={!event[language].rsvp_required}>
               {freeAdmision[language].rsvp}
             </p>
-          </TextBlock>
+          </EventTextBlock>
           <TextBlock>
             <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
@@ -88,6 +94,10 @@ const Event = props => {
             <p>{freeAdmision[language][event.language]}</p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </TextBlock>
+          <EventTextBlock>
+            <p> Share: <a target="__blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>  Facebook </a></p>
+            
+          </EventTextBlock>
         </EventColumn>
         <EventColumn>
           <ImageResource id={event.thumbnail_image} withCaption={true} />
@@ -118,6 +128,7 @@ const Event = props => {
               }}
             />
           </TextBlock>
+
         </EventColumn>
       </TwoColumnPageWrapper>
       {/* <RelatedResources ids={event.related_resource} hidden={event.related_resource.length === 0}/> */}
