@@ -58,6 +58,8 @@ const eventContent = {
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
+  const facebookLink = typeof window !== `undefined` ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}` : '';
+
   event.dates = event.dates.sort((a, b) => {
     return a.start_date - b.start_date
   })
@@ -104,7 +106,7 @@ const Event = props => {
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </TextBlock>
           <EventTextBlock>
-            <p> {eventContent[language].share}: <a target="__blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>  Facebook </a></p>
+            <p> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></p>
             
           </EventTextBlock>
         </EventColumn>
