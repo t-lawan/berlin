@@ -1,14 +1,17 @@
 import React from "react"
-import { connect } from "react-redux";
+import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import PropTypes from "prop-types";
-import { EventNavigatorWrapper, EventNavigatorButton, EventNavigatorIcon } from "./event-navigator.styles";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import PropTypes from "prop-types"
+import {
+  EventNavigatorWrapper,
+  EventNavigatorButton,
+  EventNavigatorIcon,
+} from "./event-navigator.styles"
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 class EventNavigator extends React.Component {
-  language;
-  currentIndex;
+  language
+  currentIndex
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.events.length) {
       return `event/${this.props.events[0].slug}`
@@ -27,14 +30,20 @@ class EventNavigator extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
     this.currentIndex = this.props.events.findIndex(event => {
       return event.id === this.props.id
-    });
+    })
     return (
       <EventNavigatorWrapper>
-        <EventNavigatorButton to={createPath(this.language, this.previousPage())} fade>
-          <EventNavigatorIcon icon={faArrowLeft} />
+        <EventNavigatorButton
+          to={createPath(this.language, this.previousPage())}
+          fade
+        >
+          {`<`}
         </EventNavigatorButton>
-        <EventNavigatorButton to={createPath(this.language, this.nextPage())} fade>
-          <EventNavigatorIcon icon={faArrowRight} />
+        <EventNavigatorButton
+          to={createPath(this.language, this.nextPage())}
+          fade
+        >
+          {`>`}
         </EventNavigatorButton>
       </EventNavigatorWrapper>
     )
@@ -48,7 +57,7 @@ EventNavigator.propTypes = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    events: state.events
+    events: state.events,
   }
 }
 
