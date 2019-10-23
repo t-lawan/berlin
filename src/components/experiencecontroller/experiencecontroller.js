@@ -27,16 +27,20 @@ const ExperienceController = props => {
     },
   ]
   const changeExperience = chosenExperience => {
-    let currentExperience = props.experience
-    if (currentExperience < chosenExperience) {
-      props.experienceIncreased()
-    } else {
-      props.experienceDecreased()
+
+    if(chosenExperience.isReady) {
+      let currentExperience = props.experience
+      if (currentExperience < chosenExperience.id) {
+        props.experienceIncreased()
+      } else {
+        props.experienceDecreased()
+      }
+      props.changeExperience(chosenExperience.id)
+      setTimeout(() => {
+        props.setIsVisibleToTrue()
+      }, 5)
     }
-    props.changeExperience(chosenExperience)
-    setTimeout(() => {
-      props.setIsVisibleToTrue()
-    }, 5)
+
   }
 
   experiences = experiences.map(item => {
@@ -64,7 +68,7 @@ const ExperienceController = props => {
           bold
           hover={experience.isReady}
           show={experience.isReady}
-          onClick={() => changeExperience(experience.id)}
+          onClick={() => changeExperience(experience)}
         >
           {experience.id}
         </ExperienceButton>

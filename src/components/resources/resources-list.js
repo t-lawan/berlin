@@ -10,7 +10,7 @@ const ResourcesListWrapper = styled.div`
 `
 
 const ResourceTitle = styled.p`
-
+  font-size: 1em;
 `
 
 const ResourceItemLink = styled(Link)`
@@ -35,7 +35,7 @@ const TextBox = styled.div`
   margin-bottom: 1rem;
 `
 const ResourcesList = props => {
-  let language = getCurrentLanguageString(props.languages);
+  let language = getCurrentLanguageString(props.languages)
   const createComponent = index => {
     const resource = props.resources[index]
     let renderComponent
@@ -65,9 +65,9 @@ const ResourcesList = props => {
             <ResourceItem>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
-                <p> {resource.author} </p>
+                <ResourceTitle> {resource.author} </ResourceTitle>
               </TextBox>
-              <p> {resource[language].label} </p>
+              <ResourceTitle> {resource[language].label} </ResourceTitle>
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -81,6 +81,22 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitle> {resource.title} </ResourceTitle>
+            </ResourceItem>
+          </ResourceItemLink>
+        )
+        break
+      case "mp3":
+        renderComponent = (
+          <ResourceItemLink
+            to={createPath(language, `resource/${resource.slug}`)}
+            key={index}
+          >
+            <ResourceItem key={index}>
+              <TextBox>
+                <ResourceTitle> {resource.title} </ResourceTitle>
+              </TextBox>
+              <ResourceTitle> {resource.author} </ResourceTitle>
+
             </ResourceItem>
           </ResourceItemLink>
         )
