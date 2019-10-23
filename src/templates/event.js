@@ -46,6 +46,15 @@ const VenueLink = styled(AniLink)`
     color: ${Color.red};
   }
 `
+
+const eventContent = {
+  EN: {
+    'share': "Share"
+  },
+  DE: {
+    'share': "Teilen"
+  }
+}
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
@@ -95,7 +104,7 @@ const Event = props => {
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </TextBlock>
           <EventTextBlock>
-            <p> Share: <a target="__blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>  Facebook </a></p>
+            <p> {eventContent[language].share}: <a target="__blank" href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}>  Facebook </a></p>
             
           </EventTextBlock>
         </EventColumn>
