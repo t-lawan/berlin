@@ -231,6 +231,9 @@ export const UnderlinedText = styled.p`
 
 export const Section = styled.section`
   padding: 1em;
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.3em
+  }
 `
 
 export const UnderlineTransitionLink = styled(AniLink)`
