@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.header`
   :hover {
     /* opacity: 0.01; */
   }
-  ${hideDisplayForMobile};
+  /* ${hideDisplayForMobile}; */
 `
 
 export const HeaderLink = styled(AniLink)`
