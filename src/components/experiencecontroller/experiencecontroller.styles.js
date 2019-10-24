@@ -11,7 +11,7 @@ export const ExperienceControllerWrapper = styled.div`
   z-index: 5000;
 `
 
-export const ExperienceButton = styled.h3`
+export const ExperienceButton = styled.div`
   margin-bottom: 1em;
   text-decoration:none;
   color: black;
@@ -33,9 +33,14 @@ export const ExperienceControllerMobileWrapper = styled.div`
 `
 
 export const ExperienceControllerMobileButton = styled.div`
-  padding: 0.5em 2em;
+  padding: 0.5em;
   border-right: 1px solid black;
+  opacity: ${props => props.show ? '1' : '0.5'};
   :last-child {
     border: 0;
+  }
+
+  img {
+    width: 80%;
   }
 `
