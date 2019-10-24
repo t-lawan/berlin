@@ -6,13 +6,16 @@ import UpcomingEvents from "../../components/events/upcomingevents"
 import ResourcesList from "../../components/resources/resources-list"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { Section } from "../../index.styles"
+import { Section, size } from "../../index.styles"
 import ExhibitionContent from "../../components/exhibition/exhibition-content"
 import SEO from "../../components/seo/seo";
 import Logo from "../../components/logo/logo";
 
 export const IndexPageWrapper = styled.div`
-  padding: 1rem;
+  padding: 1em;
+  @media (max-width: ${size.mobileM}) {
+    padding: 1em 0em;
+  }
 `
 
 const IndexPage = props => {
