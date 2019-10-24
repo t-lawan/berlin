@@ -8,26 +8,62 @@ import {
 } from "./experiencecontroller.styles"
 
 const ExperienceControllerMobile = props => {
-  let experiences = [1, 2, 3, 4];
+  let experiences = [
+    {
+      id: 1,
+      isReady: true,
+      display: 1
+    },
+    {
+      id: 2,
+      isReady: true,
+      display: 2
+    },
+    {
+      id: 3,
+      isReady: true,
+      display: 3
+    },
+    {
+      id: 4,
+      isReady: true,
+      display: (<img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />)
+    },
+  ]
 
   const changeExperience = (chosenExperience) => {
-    let currentExperience = props.experience;
-    if(currentExperience < chosenExperience){
-      props.experienceIncreased();
-    } else {
-      props.experienceDecreased();
+    if(chosenExperience.isReady) {
+      let currentExperience = props.experience;
+      if(currentExperience < chosenExperience){
+        props.experienceIncreased();
+      } else {
+        props.experienceDecreased();
+      }
+      props.changeExperience(chosenExperience.id);
+      setTimeout(() => {
+        props.setIsVisibleToTrue();
+      }, 5);
     }
-    props.changeExperience(chosenExperience);
-    setTimeout(() => {
-      props.setIsVisibleToTrue();
-
-    }, 5);
   }
+
+  experiences = experiences.map(item => {
+    let exhibition = props.exhibitions.find(exhibition => {
+      return item.id === parseInt(exhibition.experience)
+    })
+
+    let isReady = exhibition ? true  : false;
+
+    return {
+      id: item.id,
+      isReady: isReady,
+      display: item.display
+    }
+  })
   return (
     <ExperienceControllerMobileWrapper showInMobile={props.showInMobile}>
       {experiences.map((experience, index) => (
-        <ExperienceControllerMobileButton key={index} onClick={()=> changeExperience(experience)}>
-          <p>exp. {experience}</p>  
+        <ExperienceControllerMobileButton show={experience.isReady} key={index} onClick={()=> changeExperience(experience)}>
+          <p>{index !== 3 ? "exp." : ""} {experience.display}</p>  
         </ExperienceControllerMobileButton>
       ))}
     </ExperienceControllerMobileWrapper>
@@ -37,6 +73,7 @@ const ExperienceControllerMobile = props => {
 const mapStateToProps = state => {
   return {
     experience: state.experience,
+    exhibitions: state.exhibitions
   }
 }
 
