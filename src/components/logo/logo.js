@@ -5,7 +5,7 @@ const Logo = props => {
 
     return (
         <LogoWrapper>
-            <img src='https://11.berlinbiennale.de/temp/img/animation_prelimWebsite_comp.gif' alt="logo"  height="70%" width="70%"/>
+            <img src='https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/600x834_Animation_BB11.gif' alt="logo"  height="70%" width="70%"/>
         </LogoWrapper>
     );
 }
