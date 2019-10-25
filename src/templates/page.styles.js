@@ -57,6 +57,10 @@ export const PressReleaseLink = styled.a`
   &:hover {
     color: ${Color.red};
   }
+  p {
+    font-size: 1.1em;
+
+  }
 `
 
 export const PressForm = styled.div`
