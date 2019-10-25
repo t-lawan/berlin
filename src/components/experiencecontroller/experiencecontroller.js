@@ -12,22 +12,25 @@ const ExperienceController = props => {
     {
       id: 1,
       isReady: true,
+      display: 1
     },
     {
       id: 2,
       isReady: true,
+      display: 2
     },
     {
       id: 3,
       isReady: true,
+      display: 3
     },
     {
       id: 4,
       isReady: true,
+      display: (<img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />)
     },
   ]
   const changeExperience = chosenExperience => {
-
     if(chosenExperience.isReady) {
       let currentExperience = props.experience
       if (currentExperience < chosenExperience.id) {
@@ -40,7 +43,6 @@ const ExperienceController = props => {
         props.setIsVisibleToTrue()
       }, 5)
     }
-
   }
 
   experiences = experiences.map(item => {
@@ -52,7 +54,8 @@ const ExperienceController = props => {
 
     return {
       id: item.id,
-      isReady: isReady
+      isReady: isReady,
+      display: item.display
     }
   })
 
@@ -70,7 +73,7 @@ const ExperienceController = props => {
           show={experience.isReady}
           onClick={() => changeExperience(experience)}
         >
-          {experience.id}
+          {experience.display}
         </ExperienceButton>
       ))}
     </ExperienceControllerWrapper>

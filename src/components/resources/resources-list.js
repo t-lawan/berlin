@@ -3,10 +3,13 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import { Link } from "gatsby"
 const ResourcesListWrapper = styled.div`
-  padding: 2em;
+  padding: 1em;
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.2em;
+  }
 `
 
 const ResourceTitle = styled.p`
