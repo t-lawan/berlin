@@ -14,6 +14,10 @@ const Header = props => {
   let exhibitions = props.exhibitions.filter(exhibition => {
     return parseInt(exhibition.experience) === experience;
   });
+
+  if(exhibitions.length === 0){
+    exhibitions = props.exhibitions;
+  }
   let dateHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_dates_header);
   let titleHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_title_header);
 
