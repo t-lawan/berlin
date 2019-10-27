@@ -42,5 +42,6 @@ export const ExperienceControllerMobileButton = styled.div`
 
   img {
     width: 80%;
+    margin-bottom: 0;
   }
 `
