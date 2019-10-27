@@ -34,6 +34,8 @@ const State = props => {
                     rsvp_note
                     rsvp_required
                     special_info_notice
+                    event_newsfeed_subtitle
+                    event_sub_subtitle
                   }
                   EN {
                     full_description
@@ -42,8 +44,9 @@ const State = props => {
                     other_event_venue
                     rsvp_note
                     rsvp_required
-
                     special_info_notice
+                    event_newsfeed_subtitle
+                    event_sub_subtitle
                   }
                   dates {
                     DE {

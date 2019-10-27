@@ -4,7 +4,16 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { PageWrapper, PressFormInput, PressReleaseWrapper, PressWrapper, PressReleaseText, PressReleaseLink, PressArrowDown, PressReleaseFormError } from "./page.styles"
+import {
+  PageWrapper,
+  PressFormInput,
+  PressReleaseWrapper,
+  PressWrapper,
+  PressReleaseText,
+  PressReleaseLink,
+  PressArrowDown,
+  PressReleaseFormError,
+} from "./page.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import { changeGridToOneRow, Color } from "../index.styles"
@@ -17,7 +26,7 @@ import {
 } from "../components/modal/modal.styles"
 import moment from "moment"
 import axios from "axios"
-import PressForm from "../components/forms/press-form";
+import PressForm from "../components/forms/press-form"
 class Press extends React.Component {
   language
   pressInfo
@@ -31,34 +40,34 @@ class Press extends React.Component {
       media_affliation: "",
       hasSubmitted: false,
       errors: {
-        name: '',
-        email: '',
-        media_affliation: ''
-      }
+        name: "",
+        email: "",
+        media_affliation: "",
+      },
     }
   }
 
   handleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault()
     this.sendPostRequest().then(() => {
       this.setState({
         hasSubmitted: true,
-      });
-    });
+      })
+    })
   }
 
   sendPostRequest = async () => {
     const url =
-      "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe";
+      "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe"
     let data = {
       recipient: {
         email: this.state.email,
         name: this.state.name,
         media_affliation: this.state.media_affliation,
       },
-    };
-    data = JSON.stringify(data);
-    await axios.post(url, data);
+    }
+    data = JSON.stringify(data)
+    await axios.post(url, data)
   }
 
   clearState = () => {
@@ -72,26 +81,36 @@ class Press extends React.Component {
   handleInputChange = event => {
     const target = event.target
     const value = target.type === "checkbox" ? target.checked : target.value
-    const name = target.name;
-    let errors = this.state.errors;
-    switch(name) {
-      case 'name': 
-        errors.name = !validator.isAlpha(value) || value.length < 3 ? 'This field requires at least 3 characters' : '';
-        break;
-      case 'email':
-        errors.email = !validator.isEmail(value) ? 'This field requires a valid email' : '';
-        break;
-      case 'media_affliation': 
-        errors.media_affliation = !validator.isAlphanumeric(value) || value.length < 3 ? 'This field requires at least 3 characters' : '';
-        break;
+    const name = target.name
+    let errors = this.state.errors
+    switch (name) {
+      case "name":
+        errors.name =
+          !validator.isAlpha(value) || value.length < 3
+            ? "This field requires at least 3 characters"
+            : ""
+        break
+      case "email":
+        errors.email = !validator.isEmail(value)
+          ? "This field requires a valid email"
+          : ""
+        break
+      case "media_affliation":
+        errors.media_affliation =
+          !validator.isAlphanumeric(value) || value.length < 3
+            ? "This field requires at least 3 characters"
+            : ""
+        break
       default:
-        break;
+        break
     }
-    this.setState({
-      errors,
-      [name]: value,
-    }, () => {
-    });
+    this.setState(
+      {
+        errors,
+        [name]: value,
+      },
+      () => {}
+    )
   }
 
   render() {
@@ -130,7 +149,7 @@ class Press extends React.Component {
                 {" "}
                 {moment(press_release.date).format("DD.MM.YYYY")}
               </PressReleaseText>
-              <PressReleaseText>
+              {/* <PressReleaseText> */}
                 <PressReleaseLink
                   target="_blank"
                   href={getPdf(
@@ -140,13 +159,13 @@ class Press extends React.Component {
                   )}
                 >
                   <PressArrowDown icon={faLongArrowAltDown} />
-                  {
-                    press_release[
-                      createProperty("title_of_press_release_in", this.language)
-                    ]
-                  }
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: press_release[createProperty("title_of_press_release_in", this.language)],
+                    }}
+                  />
                 </PressReleaseLink>
-              </PressReleaseText>
+              {/* </PressReleaseText> */}
             </PressReleaseWrapper>
           ))}
 
@@ -178,15 +197,15 @@ const getPdf = (documents, press_release, language) => {
 
 const content = {
   EN: {
-    contact: 'Contact',
-    press_release: 'Press Releases',
-    images: 'Press images'
+    contact: "Contact",
+    press_release: "Press Releases",
+    images: "Press images",
   },
   DE: {
-    contact: 'Pressekontakt',
-    press_release: 'Pressemitteilungen',
-    images: 'Pressebilder'
-  }
+    contact: "Pressekontakt",
+    press_release: "Pressemitteilungen",
+    images: "Pressebilder",
+  },
 }
 
 const mapStateToProps = state => {

@@ -171,6 +171,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_note
                 rsvp_required
                 special_info_notice
+                event_newsfeed_subtitle
+                event_sub_subtitle
               }
               EN {
                 full_description
@@ -180,6 +182,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 rsvp_note
                 rsvp_required
                 special_info_notice
+                event_newsfeed_subtitle
+                event_sub_subtitle
               }
               dates {
                 DE {
@@ -197,8 +201,8 @@ exports.createPages = async ({ graphql, actions }) => {
               event_language
               event_limited_capacity
               other_event_language
-              participants
               thumbnail_image
+              participants
               template
               exp_number
             }
