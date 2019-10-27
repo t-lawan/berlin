@@ -21,5 +21,7 @@ export const HeaderLink = styled(AniLink)`
   grid-template-columns:1fr 1fr;
   grid-column-gap: 1em;
   ${changeGridToOneRow};
-
+  img {
+    margin-bottom: 0.5rem;
+  }
 `
