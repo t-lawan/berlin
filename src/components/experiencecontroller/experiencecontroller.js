@@ -27,7 +27,7 @@ const ExperienceController = props => {
     {
       id: 4,
       isReady: true,
-      display: (<img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />)
+      display: (<img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_nav.svg" />)
     },
   ]
   const changeExperience = chosenExperience => {
@@ -48,8 +48,7 @@ const ExperienceController = props => {
   experiences = experiences.map(item => {
     let exhibition = props.exhibitions.find(exhibition => {
       return item.id === parseInt(exhibition.experience)
-    })
-
+    });
     let isReady = exhibition ? true  : false;
 
     return {
@@ -73,7 +72,7 @@ const ExperienceController = props => {
           show={experience.isReady}
           onClick={() => changeExperience(experience)}
         >
-          {experience.display}
+          <p> {experience.display} </p>
         </ExperienceButton>
       ))}
     </ExperienceControllerWrapper>
