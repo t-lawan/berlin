@@ -3,10 +3,11 @@ import { showDisplayForTablet, showDisplayForTabletFunc } from "../../index.styl
 
 export const ExperienceControllerWrapper = styled.div`
   margin-top: ${props => (props.left ? "8.9em" : "5em")};
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr;
   background: white;
   z-index: 5000;
 `
@@ -17,12 +18,17 @@ export const ExperienceButton = styled.div`
   color: black;
   opacity: ${props => props.show ? '1' : '0.5'};
   font-size: x-large;
-  transition-timing-function: ease-in;
-  transition: 1s;
+  /* transition-timing-function: ease-in;
+  transition: 1s; */
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
-  }
+  } 
   font-weight: ${props => (props.bold ? "bold" : "normal")};
+
+  img {
+    width: 60%;
+    margin-bottom: 0;
+  }
 `
 
 export const ExperienceControllerMobileWrapper = styled.div`
@@ -42,5 +48,6 @@ export const ExperienceControllerMobileButton = styled.div`
 
   img {
     width: 80%;
+    margin-bottom: 0;
   }
 `
