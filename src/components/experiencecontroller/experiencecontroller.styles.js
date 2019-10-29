@@ -22,11 +22,10 @@ export const ExperienceButton = styled.div`
   transition: 1s; */
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
-  }
+  } 
   font-weight: ${props => (props.bold ? "bold" : "normal")};
 
   img {
-    border-top: 1px solid black;
     width: 60%;
     margin-bottom: 0;
   }
