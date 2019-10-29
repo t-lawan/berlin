@@ -57,7 +57,6 @@ class ImageResource extends React.Component {
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages);
-    console.log(this.state.image, this.props.id)
 
     return (
       <>
