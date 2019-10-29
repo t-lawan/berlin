@@ -28,20 +28,44 @@ class ImageResource extends React.Component {
     withCaption: PropTypes.bool.isRequired,
     onLoad: PropTypes.func,
   }
-  image
   language
-  componentWillMount() {
-    this.image = getDocument(this.props.documents, this.props.id)
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null
+    }
   }
+
+
+  componentWillMount() {
+    this.setState({
+      image: getDocument(this.props.documents, this.props.id)
+    });
+    // this.image = getDocument(this.props.documents, this.props.id)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(this.props.id !== prevProps.id) {
+      this.setState({
+        image: getDocument(this.props.documents, this.props.id)
+      });
+    }
+
+    // this.image = getDocument(this.props.documents, this.props.id)
+  }
+
   render() {
-    this.language = getCurrentLanguageString(this.props.languages)
+    this.language = getCurrentLanguageString(this.props.languages);
+    console.log(this.state.image, this.props.id)
+
     return (
       <>
-        <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.image ? this.image.fluid: null} /> 
+        <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
-            __html: this.image ? this.image[this.language].caption : '',
+            __html: this.state.image ? this.state.image[this.language].caption : '',
           }}
         />
       </>
