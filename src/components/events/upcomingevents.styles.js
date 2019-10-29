@@ -11,7 +11,7 @@ export const EventItem = styled.div`
   padding-top: 1em;
   color: black;
   border-bottom: 1px solid black;
-  p {
+  p, span {
     font-size: 1em;
   }
 `
