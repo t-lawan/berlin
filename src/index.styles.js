@@ -2,7 +2,7 @@ import styled, { css, createGlobalStyle } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const Color = {
-  yellow: "#EEEC7A",
+  yellow: "#F9EF84",
   red: "#D9515C",
 }
 
@@ -23,6 +23,7 @@ body {
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
   font-style: normal;
+  font-size: calc(1em + 0.1vw);
   }
   a {
     text-decoration: underline;

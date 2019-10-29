@@ -35,6 +35,7 @@ const ResourceImageGallery = props => {
           <p> {r.title}</p>
           <p> {r.author}</p>
           <p> {r[language].year}</p>
+          <a target="_blank" href={r.external_url}> {r.external_url_label}</a>
         </div>
         <div>
           <div
