@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import {
   HeaderWrapper,
   HeaderLink,
+  HeaderImage,
 } from "./header.styles"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { getDocument } from "../../store/selector";
@@ -24,8 +25,8 @@ const Header = props => {
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
       <HeaderLink fade to={createPath(language, '')}>
-        <img alt="date" src={dateHeaderSvg.url}/>
-        <img alt="title" src={titleHeaderSvg.url}/>
+        <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
+        <HeaderImage alt="title" src={titleHeaderSvg.url}/>
       </HeaderLink>
     </HeaderWrapper>
   )

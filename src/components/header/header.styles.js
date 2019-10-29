@@ -25,3 +25,7 @@ export const HeaderLink = styled(AniLink)`
     margin-bottom: 0.5rem;
   }
 `
+
+export const HeaderImage = styled.img`
+  ${hideDisplayForMobile};
+`
