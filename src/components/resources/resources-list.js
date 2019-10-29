@@ -16,6 +16,10 @@ const ResourceTitle = styled.p`
   font-size: 1em;
 `
 
+const ResourceLabel = styled.p`
+  font-size: 1em;
+`
+
 const ResourceItemLink = styled(Link)`
   text-decoration: none;
   :hover {
@@ -34,7 +38,7 @@ const ResourceItem = styled.div`
 const TextBox = styled.div`
   padding: 1em 0.75em;
   background: ${Color.yellow};
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin-bottom: 1rem;
 `
 const ResourcesList = props => {
@@ -70,7 +74,7 @@ const ResourcesList = props => {
                 <ResourceTitle> {resource.title} </ResourceTitle>
                 <ResourceTitle> {resource.author} </ResourceTitle>
               </TextBox>
-              <ResourceTitle> {resource[language].label} </ResourceTitle>
+              <ResourceLabel> {resource[language].label} </ResourceLabel>
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -98,7 +102,7 @@ const ResourcesList = props => {
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
               </TextBox>
-              <ResourceTitle> {resource.author} </ResourceTitle>
+              <ResourceLabel> {resource.author} </ResourceLabel>
 
             </ResourceItem>
           </ResourceItemLink>

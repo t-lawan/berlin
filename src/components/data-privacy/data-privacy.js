@@ -10,6 +10,16 @@ export const DataPrivacyWrapper = styled(Section)`
   grid-template-columns: 8fr 1fr;
   color: white;
   background: black;
+
+  > p > a {
+    font-size: 0.8em;
+  }
+`
+
+export const DataPrivacyBlock = styled.div`
+    > p > a {
+    font-size: 1em;
+  }
 `
 
 const text = {
@@ -27,7 +37,7 @@ const DataPrivacy = props => {
   const language = getCurrentLanguageString(props.languages);
   return (
     <DataPrivacyWrapper show={props.show}>
-      <div>
+      <DataPrivacyBlock>
         <p>
           {text[language].text}
           <UnderlineTransitionLink colour="white" fade to={createPath(language, 'data-privacy')}>
@@ -35,7 +45,7 @@ const DataPrivacy = props => {
           </UnderlineTransitionLink>
           .
         </p>
-      </div>
+      </DataPrivacyBlock>
       <div>
         <LargeButton bgColour="white" onClick={() => props.setAgreedToTrue()}>
           {" "}

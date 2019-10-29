@@ -63,7 +63,9 @@ const ExperienceController = props => {
   )
   return (
     <ExperienceControllerWrapper left={props.left}>
-      <ExperienceButton bold hidden={experiences.length === 0} show> exp</ExperienceButton>
+      <ExperienceButton bold hidden={experiences.length === 0} show> 
+        <span> exp. </span>
+      </ExperienceButton>
       {experiences.map(experience => (
         <ExperienceButton
           key={experience.id}
@@ -72,7 +74,7 @@ const ExperienceController = props => {
           show={experience.isReady}
           onClick={() => changeExperience(experience)}
         >
-          <p> {experience.display} </p>
+         {experience.display}
         </ExperienceButton>
       ))}
     </ExperienceControllerWrapper>

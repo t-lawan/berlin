@@ -21,7 +21,7 @@ const ResourceLink = styled(AniLink)`
 
 const RelatedResource = styled.div`
   background: ${Color.yellow};
-  min-height: 15em;
+  min-height: 8em;
   padding: 1em;
   margin: 1em;
   border: 1px solid black;
@@ -30,6 +30,10 @@ const RelatedResource = styled.div`
       color: ${Color.red}
     }
   }
+`
+
+const ResourceText = styled.p`
+  font-size: 0.8em;
 `
 
 const RelatedResources = props => {
@@ -43,9 +47,9 @@ const RelatedResources = props => {
           to={createPath(language, `resource/${resource.slug}`)}
         >
           <RelatedResource>
-            <p>{resource.title}</p>
-            <p>{resource.author}</p>
-            <p>{resource[language].label}</p>
+            <ResourceText>{resource.title}</ResourceText>
+            <ResourceText>{resource.author}</ResourceText>
+            <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>
         </ResourceLink>
       ))}

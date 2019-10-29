@@ -29,6 +29,10 @@ export const ExperienceButton = styled.div`
     width: 60%;
     margin-bottom: 0;
   }
+
+  span {
+    font-size: 0.8em;
+  }
 `
 
 export const ExperienceControllerMobileWrapper = styled.div`
