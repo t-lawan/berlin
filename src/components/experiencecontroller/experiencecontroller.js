@@ -53,15 +53,15 @@ class ExperienceController extends React.Component {
     }
   }
 
-  componentDidMount() {
-    let latestExperience = this.experiences.map(item => {
-      return item.isReady
-    });
-    let index = latestExperience.lastIndexOf(true);
-    if(index !== -1) {
-      this.props.changeExperience(this.experiences[index].id);
-    }
-  }
+  // componentDidMount() {
+  //   let latestExperience = this.experiences.map(item => {
+  //     return item.isReady
+  //   });
+  //   let index = latestExperience.lastIndexOf(true);
+  //   if(index !== -1) {
+  //     this.props.changeExperience(this.experiences[index].id);
+  //   }
+  // }
 
   filterBasedOnPosition = (experience) => {
     if (this.props.left) {
