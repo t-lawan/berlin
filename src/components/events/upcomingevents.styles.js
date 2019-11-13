@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Color, UnderlineSectionLink } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
-  /* border-top: 1px solid black; */
+  border-top: 1px solid black;
   padding: 1.5em;
   line-height: 1.4em;
 `
