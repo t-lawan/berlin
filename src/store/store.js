@@ -6,6 +6,7 @@ const intitalState = {
     EN: true,
     DE: false,
   },
+  pages: [],
   experience: 1,
   active_experience: 1,
   events: [],
@@ -96,6 +97,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         navbar: action.navbar,
       })
+    case actionTypes.SET_PAGES:
+      return Object.assign({}, state, {
+        pages : action.pages
+      })
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
@@ -153,5 +158,5 @@ const reducer = (state = intitalState, action) => {
 export const store = () =>
   createStore(
     reducer,
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

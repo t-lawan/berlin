@@ -8,6 +8,7 @@ import { DocumentModel } from "../models/DocumentModel"
 import { ResourceModel } from "../models/ResourceModel";
 import { NavbarModel } from "../models/NavbarModel";
 import { ResourceGenreModel } from "../models/ResourceGenre";
+import { PageModel } from "../models/PageModel";
 import moment from 'moment';
 export class Convert {
   static toNewsModel = wordpressModel => {
@@ -25,6 +26,16 @@ export class Convert {
     return new ResourceGenreModel(
       wordpressModel.slug,
       wordpressModel.name
+    )
+  }
+
+  static toPageModel = wordpressModel => {
+    return new PageModel(
+      wordpressModel.wordpress_id,
+      wordpressModel.slug,
+      wordpressModel.acf.DE_row ? wordpressModel.acf.DE_row.german_page_slug : null,
+      wordpressModel.parent_element ? wordpressModel.parent_element.slug : null
+
     )
   }
   static toEventModel = wordpressModel => {
