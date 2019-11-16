@@ -49,6 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
             acf {
               DE_row {
                 description
+                german_page_slug
               }
               DE {
                 access_block {
@@ -410,10 +411,20 @@ exports.createPages = async ({ graphql, actions }) => {
     }
     // Create pages for both EN and DE
     languages.forEach(language => {
-      let path =
+      let path;
+      if(edge.node.parent_element && edge.node.parent_element.slug === "about") {
+        path =
+        language === "en"
+          ? `/about/${edge.node.slug}`
+          : `/${language}/about/${edge.node.acf.DE_row.german_page_slug}`;
+        edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.acf.DE_row.german_page_slug}`;
+      } else {
+        path =
         language === "en"
           ? `/${edge.node.slug}`
-          : `/${language}/${edge.node.slug}`
+          : `/${language}/${edge.node.slug}`;
+      }
+
       createPage({
         path: path,
         component: slash(template),
