@@ -22,6 +22,7 @@ const AboutNavbar = props => {
                 }
                 DE_row {
                   description
+                  german_page_slug
                 }
                 DE {
                   title
@@ -42,22 +43,27 @@ const AboutNavbar = props => {
     slug: "about",
     EN: {
       title: "About",
+      slug: "about"
     },
     DE: {
       title: "About",
+      slug: "uber"
     },
-  })
+  });
+
   allWordpressPage.edges.forEach(edge => {
     let object = {
       slug: edge.node.slug,
       EN: {
         title: edge.node.acf.EN.title ? edge.node.acf.EN.title : edge.node.slug,
+        slug: `about/${edge.node.slug}`
       },
       DE: {
         title: edge.node.acf.DE.title ? edge.node.acf.DE.title : edge.node.slug,
+        slug: `uber/${edge.node.acf.DE_row.german_page_slug}`
       },
     }
-    items.push(object)
+    items.push(object);
   })
   const language = getCurrentLanguageString(props.languages)
 
@@ -67,7 +73,7 @@ const AboutNavbar = props => {
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (
-        <AboutNavItemLink fade to={createPath(language, item.slug)} key={index}>
+        <AboutNavItemLink fade to={createPath(language, item['EN'].slug)} key={index}>
           <AboutNavItem current={isCurrentPage(index)}>
             {item[language].title.toLowerCase()}
           </AboutNavItem>
