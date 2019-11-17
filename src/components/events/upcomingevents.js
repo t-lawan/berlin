@@ -24,7 +24,7 @@ const UpcomingEvents = props => {
     })
   return (
     <EventsWrapper>
-      <p hidden={filteredItems.length !== 0}> There are no upcoming events for this experience </p>
+      <p hidden={filteredItems.length !== 0}> {language === "EN" ? "There are no upcoming events for this experience" : "Es gibt keine bevorstehenden Veranstaltungen für diese Erfahrung"} </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
           <EventLink colour="black" to={createPath(language, `${item.slug}`)}>

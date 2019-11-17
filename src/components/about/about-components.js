@@ -11,7 +11,7 @@ import AboutOrganisation from "./about-organisation";
 const AboutComponents = props => {
   const content = props.content;
   let renderComponent
-  const language = getCurrentLanguageString(props.languages)
+  const language = getCurrentLanguageString(props.languages);
   switch (content.slug) {
     case "about":
       renderComponent = (
@@ -22,18 +22,18 @@ const AboutComponents = props => {
         />
       )
       break
-    case "advisory-board":
+    case "/about/advisory-board":
       renderComponent = (
         <AboutAdvisoryBoard team_block={content.acf.team_block} />
       )
       break
-    case "support":
+    case "/about/support":
       renderComponent = <AboutFunding funding={content.acf.funding} />
       break
-    case "team":
+    case "/about/team":
       renderComponent = <AboutTeamBlock team={content.acf.team_block} />
       break
-    case "organization-2":
+    case "/about/organization-2":
       renderComponent = <AboutOrganisation team_block={content.acf.team_block} />
       break
     default:

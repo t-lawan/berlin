@@ -6,6 +6,7 @@ const intitalState = {
     EN: true,
     DE: false,
   },
+  pages: [],
   experience: 1,
   active_experience: 1,
   events: [],
@@ -95,6 +96,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_NAVBAR_ITEMS:
       return Object.assign({}, state, {
         navbar: action.navbar,
+      })
+    case actionTypes.SET_PAGES:
+      return Object.assign({}, state, {
+        pages : action.pages
       })
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {

@@ -269,9 +269,28 @@ const State = props => {
               }
             }
           }
+          allWordpressPage {
+            edges {
+              node {
+                slug
+                acf {
+                  DE_row {
+                    german_page_slug
+                  }
+                }
+                parent_element {
+                  slug
+                }
+                wordpress_id
+              }
+            }
+          }
         }
       `
     )
+
+    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel);
+
     let events = Convert.toModelArray(
       data.allWordpressWpEvents,
       Convert.toEventModel
@@ -341,6 +360,7 @@ const State = props => {
 
     props.setNavbar(navbarItems)
     props.setResources(resources)
+    props.setPages(pages)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)
@@ -411,6 +431,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_RESOURCE_GENRES,
         resource_genres: resourceGenres,
+      }),
+    setPages: pages =>
+      dispatch({
+        type: actionTypes.SET_PAGES,
+        pages: pages,
       }),
     changeExperience: experience =>
       dispatch({
