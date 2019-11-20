@@ -3,8 +3,10 @@ import { Color, TextSection } from "../../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const EventSection = styled(TextSection)`
+    font-size: 0.8em;
+
   p {
-    font-size: 1em;
+    font-size: inherit;
   }
 `
 
@@ -25,5 +27,5 @@ export const EventCardLink = styled(AniLink)`
 `
 
 export const EventHeading = styled.p`
-  font-size: 1em;
+  font-size: 0.8em;
 `
