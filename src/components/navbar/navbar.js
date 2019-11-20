@@ -26,7 +26,7 @@ const Navbar = props => {
     `
   )
 
-  const generateLink = (item, language) => {
+   const generateLink = (item, language) => {
     if (item.isExternal) {
       return (
         <NavLink key={item.slug} href={item.slug} target="__blank">

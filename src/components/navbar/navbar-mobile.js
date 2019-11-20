@@ -19,6 +19,7 @@ import {
   NavMobileOuterLink,
   NavMobileModal,
   NavImageLink,
+  NavLink,
 } from "./navbar.styles"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
@@ -86,15 +87,7 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
-            {this.props.navbar.map((item, index) => (
-              <NavMobileLink
-                fade
-                to={createPath(this.language, item.slug)}
-                key={index}
-              >
-                {item[this.language].title.toLowerCase()}{" "}
-              </NavMobileLink>
-            ))}
+            {this.props.navbar.map((item, index) => generateLink(item, this.language))}
           </NavMobileInner>
 
           <NavMobileLinks>
@@ -133,6 +126,27 @@ class NavbarMobile extends React.Component {
           </NavMobileLinks>
         </NavMobileContent>
       </NavMobileWrapper>
+    )
+  }
+}
+
+const generateLink = (item, language) => {
+  if (item.isExternal) {
+    return (
+      <NavMobileOuterLink key={item.slug} href={item.slug} target="__blank">
+        {item[language].title.toLowerCase()}
+      </NavMobileOuterLink>
+    )
+  } else {
+    return (
+      <NavMobileLink
+        activeStyle={{ color: "#990033" }}
+        to={createPath(language, item.slug)}
+        key={item.slug}
+        fade
+      >
+        {item[language].title.toLowerCase()}
+      </NavMobileLink>
     )
   }
 }

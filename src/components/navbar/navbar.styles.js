@@ -8,7 +8,7 @@ export const NavWrapper = styled.nav`
 
   display: flex;
   z-index: 300;
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
   background: white;
 `
 
@@ -16,6 +16,7 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 1em 1em;
+  max-height: 100vh;
   margin: 0;
   width: auto;
   ${showDisplayForTablet};
