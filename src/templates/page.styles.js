@@ -50,10 +50,22 @@ export const PressReleaseText = styled.span`
   font-size: 1.1em;
 `
 
+export const PressReleaseParagraphBlock = styled.div`
+  margin: 0;
+  padding: 0;
+  
+  p {
+    margin: inherit;
+    padding: inherit;
+  }
+`
+
 export const PressReleaseLink = styled.a`
   text-decoration: none;
   color: inherit;
   font-size: 1em;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
   &:hover {
     color: ${Color.red};
   }
@@ -63,6 +75,9 @@ export const PressReleaseLink = styled.a`
   }
 `
 
+export const PressArrowContainer = styled.div`
+  width: 30%;
+`
 export const PressForm = styled.div`
   padding: 1em 0em;
 `

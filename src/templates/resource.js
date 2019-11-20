@@ -5,11 +5,6 @@ import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
-  PageWrapper,
-  ResourcePublisherLink,
-  PressArrowDown,
-  PressReleaseLink,
-  ResourceImageWrapper,
 } from "./page.styles"
 import { Convert } from "../utility/convert"
 import UpcomingEvents from "../components/events/upcomingevents"
@@ -60,9 +55,8 @@ const Resource = props => {
       renderComponent = (
         <TwoColumnPageWrapper>
           <div>
-            <p>Hello </p>
+            <p> </p>
           </div>
-          <div></div>
         </TwoColumnPageWrapper>
       )
   }

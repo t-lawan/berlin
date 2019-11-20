@@ -22,7 +22,7 @@ const EventColumn = styled.div``
 const EventTextBlock = styled(TextBlock)`
   a,p {
     margin: 0;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 `
 const EventTitle = styled.div`
