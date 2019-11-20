@@ -33,6 +33,12 @@ const EventTitle = styled.div`
   }
 `
 
+const EventDescription = styled.div`
+  p {
+    font-size: 1.1rem;
+  }
+`
+
 const EventRsvpText = styled.div`
   p,
   a {
@@ -125,7 +131,7 @@ const Event = props => {
             />
           </TextBlock>
 
-          <div
+          <EventDescription
             dangerouslySetInnerHTML={{
               __html: event[language].full_description,
             }}
