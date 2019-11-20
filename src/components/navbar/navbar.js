@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
-import { NavWrapper, NavInner, NavItem } from "./navbar.styles"
+import { NavWrapper, NavInner, NavItem, NavLink } from "./navbar.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 
@@ -26,20 +26,32 @@ const Navbar = props => {
     `
   )
 
+  const generateLink = (item, language) => {
+    if (item.isExternal) {
+      return (
+        <NavLink key={item.slug} href={item.slug} target="__blank">
+          {item[language].title.toLowerCase()}
+        </NavLink>
+      )
+    } else {
+      return (
+        <NavItem
+          activeStyle={{ color: "#990033" }}
+          to={createPath(language, item.slug)}
+          key={item.slug}
+          fade
+        >
+          {item[language].title.toLowerCase()}
+        </NavItem>
+      )
+    }
+  }
+
   const language = getCurrentLanguageString(props.languages)
   return (
     <NavWrapper hideInMobile={props.hideInMobile}>
       <NavInner>
-        {props.navbar.map(item => (
-          <NavItem
-            activeStyle={{ color: "#990033" }}
-            to={createPath(language, item.slug)}
-            key={item.slug}
-            fade
-          >
-            {item[language].title.toLowerCase()}
-          </NavItem>
-        ))}
+        {props.navbar.map(item => generateLink(item, language))}
       </NavInner>
     </NavWrapper>
   )
@@ -56,7 +68,7 @@ const mapStateToProps = state => {
 Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  hideInMobile: PropTypes.bool
+  hideInMobile: PropTypes.bool,
 }
 
 export default connect(

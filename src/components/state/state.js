@@ -342,11 +342,19 @@ const State = props => {
           new NavbarModel(
             i.object_slug,
             i.title,
-            NavbarTitleConfig[i.object_slug].DE
+            NavbarTitleConfig[i.object_slug].DE,
+            false
           )
         )
       })
     })
+
+    navbarItems.push(new NavbarModel(
+      'https://bb-shop.visitate.net/en/',
+      'shop',
+      NavbarTitleConfig['shop'].DE,
+      true
+    ))
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
       return item.active

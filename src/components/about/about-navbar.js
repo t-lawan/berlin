@@ -60,7 +60,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: edge.node.acf.DE.title ? edge.node.acf.DE.title : edge.node.slug,
-        slug: `uber/${edge.node.acf.DE_row.german_page_slug}`
+        slug: `about/${edge.node.acf.DE_row.german_page_slug}`
       },
     }
     items.push(object);
@@ -68,8 +68,9 @@ const AboutNavbar = props => {
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
-    return items[index].slug === props.currentPage
+    return `/${items[index][language].slug}` === props.currentPage
   }
+
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (

@@ -3,10 +3,7 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { getCurrentLanguageString } from "../../utility/helper";
-import { Convert } from "../../utility/convert";
-import UpcomingEvents from "../events/upcomingevents";
 import { Section, size } from "../../index.styles";
-import SEO from "../seo/seo";
 const ExhibitionPageWrapper = styled.div`
   padding: 2em 1em;
   @media (max-width: ${size.mobileM}) {
@@ -27,14 +24,14 @@ const ExhibitionContent = props => {
         />
       </Section>
 
-      <Section>
+      {/* <Section>
         <p> {content[language].works_and_contributions}</p>
         <div
           dangerouslySetInnerHTML={{
             __html: exhibition[language].participant_list,
           }}
         />
-      </Section>
+      </Section> */}
     </ExhibitionPageWrapper>
   )
   return renderComponent;
