@@ -22,7 +22,7 @@ const EventColumn = styled.div``
 const EventTextBlock = styled(TextBlock)`
   a,p {
     margin: 0;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 `
 const EventTitle = styled.div`
@@ -30,6 +30,12 @@ const EventTitle = styled.div`
   padding-bottom: 0.5rem;
   p {
     font-size: 1.8rem;
+  }
+`
+
+const EventDescription = styled.div`
+  p {
+    font-size: 1.1rem;
   }
 `
 
@@ -125,7 +131,7 @@ const Event = props => {
             />
           </TextBlock>
 
-          <div
+          <EventDescription
             dangerouslySetInnerHTML={{
               __html: event[language].full_description,
             }}

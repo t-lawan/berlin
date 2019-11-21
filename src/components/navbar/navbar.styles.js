@@ -8,7 +8,7 @@ export const NavWrapper = styled.nav`
 
   display: flex;
   z-index: 300;
-  border-bottom: 1px solid black;
+  /* border-top: 1px solid black; */
   background: white;
 `
 
@@ -16,6 +16,7 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 1em 1em;
+  max-height: 100vh;
   margin: 0;
   width: auto;
   ${showDisplayForTablet};
@@ -38,6 +39,16 @@ export const NavImageLink = styled(AniLink)`
 
 export const NavItem = styled(AniLink)`
   /* color: white; */
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: black;
+  :hover {
+    color: ${Color.red};
+  }
+`
+
+export const NavLink = styled.a`
   display: block;
   padding: 8px 16px;
   text-decoration: none;

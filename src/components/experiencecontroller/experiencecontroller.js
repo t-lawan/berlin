@@ -7,85 +7,103 @@ import {
   ExperienceButton,
 } from "./experiencecontroller.styles"
 
-const ExperienceController = props => {
-  let experiences = [
-    {
-      id: 1,
-      isReady: true,
-      display: 1
-    },
-    {
-      id: 2,
-      isReady: true,
-      display: 2
-    },
-    {
-      id: 3,
-      isReady: true,
-      display: 3
-    },
-    {
-      id: 4,
-      isReady: true,
-      display: (<img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_nav.svg" />)
-    },
-  ]
-  const changeExperience = chosenExperience => {
-    if(chosenExperience.isReady) {
-      let currentExperience = props.experience
+class ExperienceController extends React.Component {
+  experiences;
+  constructor(props) {
+    super(props);
+    this.state = {
+      experiences: [
+        {
+          id: 1,
+          isReady: true,
+          display: 1,
+        },
+        {
+          id: 2,
+          isReady: true,
+          display: 2,
+        },
+        {
+          id: 3,
+          isReady: true,
+          display: 3,
+        },
+        {
+          id: 4,
+          isReady: true,
+          display: (
+            <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_nav.svg" />
+          ),
+        },
+      ]
+    }
+  }
+  changeExperience = chosenExperience => {
+    if (chosenExperience.isReady) {
+      let currentExperience = this.props.experience
       if (currentExperience < chosenExperience.id) {
-        props.experienceIncreased()
+        this.props.experienceIncreased()
       } else {
-        props.experienceDecreased()
+        this.props.experienceDecreased()
       }
-      props.changeExperience(chosenExperience.id)
+      this.props.changeExperience(chosenExperience.id)
       setTimeout(() => {
-        props.setIsVisibleToTrue()
+        this.props.setIsVisibleToTrue()
       }, 5)
     }
   }
 
-  experiences = experiences.map(item => {
-    let exhibition = props.exhibitions.find(exhibition => {
-      return item.id === parseInt(exhibition.experience)
-    });
-    let isReady = exhibition ? true  : false;
+  // componentDidMount() {
+  //   let latestExperience = this.experiences.map(item => {
+  //     return item.isReady
+  //   });
+  //   let index = latestExperience.lastIndexOf(true);
+  //   if(index !== -1) {
+  //     this.props.changeExperience(this.experiences[index].id);
+  //   }
+  // }
 
-    return {
-      id: item.id,
-      isReady: isReady,
-      display: item.display
+  filterBasedOnPosition = (experience) => {
+    if (this.props.left) {
+      return experience.id < this.props.experience
+    } else {
+      return experience.id > this.props.experience
     }
-  })
+  }
+  render() {
+    this.experiences = this.state.experiences.map(item => {
+      let exhibition = this.props.exhibitions.find(exhibition => {
+        return item.id === parseInt(exhibition.experience)
+      })
+      let isReady = exhibition ? true : false;
+      return {
+        id: item.id,
+        isReady: isReady,
+        display: item.display,
+      }
+    })
 
-  experiences = experiences.filter(experience =>
-    filterBasedOnPosition(props, experience)
-  )
-  return (
-    <ExperienceControllerWrapper left={props.left}>
-      <ExperienceButton bold hidden={experiences.length === 0} show> 
-        <span> exp. </span>
-      </ExperienceButton>
-      {experiences.map(experience => (
-        <ExperienceButton
-          key={experience.id}
-          bold
-          hover={experience.isReady}
-          show={experience.isReady}
-          onClick={() => changeExperience(experience)}
-        >
-         {experience.display}
+    this.experiences = this.experiences.filter(experience =>
+      this.filterBasedOnPosition(experience)
+    )
+    return (
+      <ExperienceControllerWrapper left={this.props.left}>
+        <ExperienceButton bold hidden={this.experiences.length === 0} show>
+          <span> exp. </span>
         </ExperienceButton>
-      ))}
-    </ExperienceControllerWrapper>
-  )
-}
-
-const filterBasedOnPosition = (props, experience) => {
-  if (props.left) {
-    return experience.id < props.experience
-  } else {
-    return experience.id > props.experience
+        {this.experiences.map(experience => (
+          <ExperienceButton
+            key={experience.id}
+            bold
+            hover={experience.isReady}
+            show={experience.isReady}
+            onClick={() => this.changeExperience(experience)}
+          >
+            {experience.display}
+          </ExperienceButton>
+        ))}
+      </ExperienceControllerWrapper>
+    )
   }
 }
 

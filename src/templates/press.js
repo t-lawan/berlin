@@ -5,14 +5,12 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
-  PageWrapper,
-  PressFormInput,
+  PressArrowContainer,
   PressReleaseWrapper,
   PressWrapper,
   PressReleaseText,
   PressReleaseLink,
-  PressArrowDown,
-  PressReleaseFormError,
+  PressReleaseParagraphBlock
 } from "./page.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
@@ -158,8 +156,11 @@ class Press extends React.Component {
                     this.language
                   )}
                 >
-                  <PressArrowDown icon={faLongArrowAltDown} />
-                  <div
+                  {/* <PressArrowDown icon={faLongArrowAltDown} /> */}
+                  <PressArrowContainer>
+                    <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg" alt="arrow_down" />
+                  </PressArrowContainer>
+                  <PressReleaseParagraphBlock
                     dangerouslySetInnerHTML={{
                       __html: press_release[createProperty("title_of_press_release_in", this.language)],
                     }}

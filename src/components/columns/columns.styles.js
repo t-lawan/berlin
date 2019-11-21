@@ -9,7 +9,7 @@ export const AnimatedColumn = styled(Animated)`
   overflow-y: auto;
   overflow-x: hidden;
   display: grid;
-  grid-template-columns: 5fr 3fr;
+  grid-template-columns: 6fr 3fr;
   grid-template-rows: auto;
   grid-template-areas: "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {

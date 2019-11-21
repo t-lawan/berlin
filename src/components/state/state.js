@@ -269,9 +269,28 @@ const State = props => {
               }
             }
           }
+          allWordpressPage {
+            edges {
+              node {
+                slug
+                acf {
+                  DE_row {
+                    german_page_slug
+                  }
+                }
+                parent_element {
+                  slug
+                }
+                wordpress_id
+              }
+            }
+          }
         }
       `
     )
+
+    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel);
+
     let events = Convert.toModelArray(
       data.allWordpressWpEvents,
       Convert.toEventModel
@@ -323,11 +342,19 @@ const State = props => {
           new NavbarModel(
             i.object_slug,
             i.title,
-            NavbarTitleConfig[i.object_slug].DE
+            NavbarTitleConfig[i.object_slug].DE,
+            false
           )
         )
       })
     })
+
+    navbarItems.push(new NavbarModel(
+      'https://bb-shop.visitate.net/en/',
+      'shop',
+      NavbarTitleConfig['shop'].DE,
+      true
+    ))
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
       return item.active
@@ -341,6 +368,7 @@ const State = props => {
 
     props.setNavbar(navbarItems)
     props.setResources(resources)
+    props.setPages(pages)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)
@@ -411,6 +439,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_RESOURCE_GENRES,
         resource_genres: resourceGenres,
+      }),
+    setPages: pages =>
+      dispatch({
+        type: actionTypes.SET_PAGES,
+        pages: pages,
       }),
     changeExperience: experience =>
       dispatch({

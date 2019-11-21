@@ -1,5 +1,5 @@
 export class NavbarModel {
-  constructor(slug, title_en, title_de) {
+  constructor(slug, title_en, title_de, isExternal = false) {
     this.slug = slug
     this.EN = {
       title: title_en
@@ -8,6 +8,7 @@ export class NavbarModel {
       title: title_de
     }
     this.title = title_en
+    this.isExternal = isExternal
   }
 }
 
@@ -24,5 +25,8 @@ export const NavbarTitleConfig = {
   },
   "press": {
     DE: "presse"
+  },
+  shop: {
+    DE: "shop"
   }
 }
