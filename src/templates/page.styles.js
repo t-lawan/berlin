@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
   padding: 2em;
+  padding-top: 1em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
 `
 
