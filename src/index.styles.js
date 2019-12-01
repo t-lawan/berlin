@@ -118,7 +118,7 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p, a, span{
+p, a, span {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -127,6 +127,10 @@ p, a, span{
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
+  font-size: 1.15em;
+}
+
+p > a {
   font-size: 1.15em;
 }
 li {

@@ -43,7 +43,7 @@ class PressForm extends React.Component {
 
   sendPostRequest = async () => {
     const url =
-      "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe"
+      "https://11.berlinbiennale.de/wp-json/contact-form-7/v1/444"
     let data = {
       recipient: {
         email: this.state.email,

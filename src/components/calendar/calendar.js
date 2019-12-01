@@ -29,11 +29,38 @@ const Calendar = props => {
     months = months.filter((item) => {
       let month = parseInt(item.split('-')[1]);
       let year = parseInt(item.split('-')[0]);
-      return (
-        (month >= start_date.month && year === start_date.year) ||
-        (month <= end_date.month && year === end_date.year)
-      );
+      // Check year is within boundary of start year and end year
+      if(year >= start_date.year && year <= end_date.year ) {
+        // Check if they are the same
+        if(start_date.year === end_date.year) {
+          // Check month is within boundary of start month and end month
+          if(month >= start_date.month && month <= end_date.month) {
+            return true;
+          } else {
+            return false;
+          }
+        } else {
+          // Checks if they are greater than start month and year OR less then thad end month an year
+          if((month >= start_date.month && year >= start_date.year) || (month <= end_date.month && year <= end_date.year))  {
+            // Check if year is equal to end year and month is greater than end date month
+            if(year === end_date.year && month > end_date.month) {
+              return false
+            }
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+      } else {
+        return false;
+      }
+      // return (
+      //   (month >= start_date.month && year === start_date.year) ||
+      //   (month <= end_date.month && year === end_date.year)
+      // );
     });
+
   }
 
 
