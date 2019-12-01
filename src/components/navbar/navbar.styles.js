@@ -8,7 +8,8 @@ export const NavWrapper = styled.nav`
 
   display: flex;
   z-index: 300;
-  /* border-top: 1px solid black; */
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
   background: white;
 `
 
