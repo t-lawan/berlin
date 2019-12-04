@@ -16,7 +16,7 @@ export class EventsModel {
     event_limited_capacity,
     thumbnail_image,
     participants,
-    // related_resource,
+    related_resource,
     other_event_language
   ) {
     this.id = id
@@ -32,7 +32,7 @@ export class EventsModel {
     this.limited_capacity = event_limited_capacity
     this.thumbnail_image = thumbnail_image
     this.participants = participants
-    // this.related_resource = related_resource
+    this.related_resource = related_resource
     this.other_language = other_event_language
   }
 }
