@@ -79,7 +79,6 @@ const RelatedResources = props => {
     resources = resources.slice(0, 9);
   }
 
-  console.log(resources.length);
   }
 
   return (
