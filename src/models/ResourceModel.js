@@ -23,7 +23,8 @@ export class ResourceModel {
     floating_resource,
     image_gallery,
     mp3_file_upload,
-    mp3_file_upload_label
+    mp3_file_upload_label,
+    resource_genre
   ) {
     this.id = id
     this.slug = slug
@@ -39,6 +40,7 @@ export class ResourceModel {
     this.text_based_resource = text_based_resource;
     this.floating_resource = floating_resource;
     this.image_gallery = image_gallery;
+    this.genre = resource_genre;
     this.audio = {
       file: mp3_file_upload,
       label: mp3_file_upload_label

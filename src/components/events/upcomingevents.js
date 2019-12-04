@@ -11,17 +11,27 @@ let calendar_items = []
 const UpcomingEvents = props => {
   const language = getCurrentLanguageString(props.languages);
   calendar_items = props.calendar_items
+  let activeExhibition = props.exhibitions.filter((exhibition) => {
+    return exhibition.active;
+  })
+  
   const filteredItems = calendar_items
     .filter(item => {
-      return (
-        item.experience.includes(props.experience.toString()) &&
-        item.item === "event" &&
-        (props.experience >= props.active_experience ? moment(item.start_date).diff(moment()) > 0 : true)
-      )
+      if(props.experience === props.active_experience) {
+        return (
+          item.experience.includes(props.experience.toString()) &&
+          item.item === "event" &&
+          (props.experience >= props.active_experience ? moment(item.start_date).diff(moment()) > 0 : true)
+        )
+      } else {
+        return (item.item === "event" && item.experience.includes(props.experience.toString()))
+      }
+
     })
     .sort((a, b) => {
-      return a.start_date - b.start_date
-    })
+      return a.start_date - b.start_date;
+    });
+
   return (
     <EventsWrapper>
       <p hidden={filteredItems.length !== 0}> {language === "EN" ? "There are no upcoming events for this experience" : "Es gibt keine bevorstehenden Veranstaltungen für diese Erfahrung"} </p>
@@ -33,7 +43,6 @@ const UpcomingEvents = props => {
             <EventTitle dangerouslySetInnerHTML={{ __html: item[language].title }} />
             <EventTitle dangerouslySetInnerHTML={{ __html: item[language].subtitle }} />
             <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
-
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>
@@ -63,7 +72,8 @@ const mapStateToProps = state => {
     experience: state.experience,
     calendar_items: state.calendar_items,
     venues: state.venues,
-    active_experience: state.active_experience
+    active_experience: state.active_experience,
+    exhibitions: state.exhibitions
   }
 }
 

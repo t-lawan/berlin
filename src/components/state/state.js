@@ -26,6 +26,9 @@ const State = props => {
                   event_venue_selection {
                     wordpress_id
                   }
+                  related_resources {
+                    wordpress_id
+                  }
                   DE {
                     event_subtitle
                     event_title
@@ -65,7 +68,7 @@ const State = props => {
                   event_limited_capacity
                   other_event_language
                   thumbnail_image
-                  participants
+                  # participants
                   template
                   exp_number
                 }
@@ -82,7 +85,7 @@ const State = props => {
                   exhibition_floorplan
                   active_exhibition
                   use_gallery_images
-                  exhibition_participants
+                  # exhibition_participants
                   exhibition_venue {
                     wordpress_id
                   }
@@ -130,7 +133,7 @@ const State = props => {
                   lastname
                   participant_group
                   personal_website
-                  related_resources
+                  # related_resources
                   EN {
                     # group_bios
                     project_description
@@ -151,6 +154,7 @@ const State = props => {
               node {
                 wordpress_id
                 slug
+                resource_genre
                 acf {
                   mp3_file_upload
                   mp3_file_upload_label
@@ -264,6 +268,7 @@ const State = props => {
           allWordpressWpResourceGenre {
             edges {
               node {
+                wordpress_id
                 slug
                 name
               }
@@ -289,7 +294,7 @@ const State = props => {
       `
     )
 
-    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel);
+    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel)
 
     let events = Convert.toModelArray(
       data.allWordpressWpEvents,
@@ -349,12 +354,14 @@ const State = props => {
       })
     })
 
-    navbarItems.push(new NavbarModel(
-      'https://bb-shop.visitate.net/en/',
-      'shop',
-      NavbarTitleConfig['shop'].DE,
-      true
-    ))
+    navbarItems.push(
+      new NavbarModel(
+        "https://bb-shop.visitate.net/en/",
+        "shop",
+        NavbarTitleConfig["shop"].DE,
+        true
+      )
+    )
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
       return item.active

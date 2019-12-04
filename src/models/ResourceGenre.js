@@ -1,5 +1,6 @@
 export class ResourceGenreModel {
-    constructor(slug, name){
+    constructor(id, slug, name){
+        this.id = id;
         this.slug = slug;
         this.name = name;
     }
