@@ -164,6 +164,9 @@ exports.createPages = async ({ graphql, actions }) => {
               event_venue_selection {
                 wordpress_id
               }
+              related_resources {
+                wordpress_id
+              }
               DE {
                 event_subtitle
                 event_title
@@ -203,7 +206,6 @@ exports.createPages = async ({ graphql, actions }) => {
               event_limited_capacity
               other_event_language
               thumbnail_image
-              participants
               template
               exp_number
             }
@@ -268,7 +270,6 @@ exports.createPages = async ({ graphql, actions }) => {
               exhibition_floorplan
               active_exhibition
               use_gallery_images
-              exhibition_participants
               exhibition_venue {
                 wordpress_id
               }
@@ -315,7 +316,6 @@ exports.createPages = async ({ graphql, actions }) => {
               lastname
               participant_group
               personal_website
-              related_resources
               EN {
                 project_description
                 short_bio
