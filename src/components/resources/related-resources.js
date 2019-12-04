@@ -6,6 +6,7 @@ import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { createPath, getCurrentLanguageString } from "../../utility/helper"
+import { get } from "http";
 
 const RelatedResourcesWrapper = styled.div`
   display: grid;
@@ -38,7 +39,49 @@ const ResourceText = styled.p`
 
 const RelatedResources = props => {
   const language = getCurrentLanguageString(props.languages)
-  const resources = getItems(props.resources, props.ids)
+  let resources = getItems(props.resources, props.ids)
+
+  // Get genres from resources
+  let genres = [];
+  resources.forEach((resource )=> {
+    resource.genre.forEach((g) => {
+      if(!genres.includes(g)) {
+        genres.push(g);
+      }
+    })
+  })
+
+  if(genres.length > 0) {
+
+  // Get all resources belonging to genres
+  let resourceGenres = []
+  genres.forEach((genre) => {
+    let rs = props.resources.filter((resource) => {
+      return resource.genre.includes(genre);
+    })
+    resourceGenres.push(...rs);
+  });
+
+  // Filter duplicates
+  resourceGenres = resourceGenres.filter((r, i) => resourceGenres.map((rm) => rm.id).indexOf(r.id) === i );
+  // Filter resources passed in
+  resources.forEach((resource) => {
+    resourceGenres = resourceGenres.filter((rg) => rg.id !== resource.id);
+  })
+  // Shuffle array
+  resourceGenres = resourceGenres.sort(() => Math.random() - 0.5);
+
+  // Add to resources function
+  resources.push(...resourceGenres)
+
+  // Reduce to 9
+  if(resources.length > 9) {
+    resources = resources.slice(0, 9);
+  }
+
+  console.log(resources.length);
+  }
+
   return (
     <RelatedResourcesWrapper>
       {resources.map((resource, index) => (
@@ -58,7 +101,7 @@ const RelatedResources = props => {
 }
 
 RelatedResources.propTypes = {
-  ids: PropTypes.array,
+  ids: PropTypes.array
 }
 
 const mapStateToProps = state => {
