@@ -13,13 +13,14 @@ import { useStaticQuery, graphql } from "gatsby"
 function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description;
-
+  let titleHeading = lang === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale for Contemporary Art"
+  let berlin
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={'11. Berlin Biennale for Contemporary Art | ' + title + ' |  ExRotaprint'}
+      title={titleHeading +  ' | ' + title + ' |  ExRotaprint'}
       meta={[
         {
           name: `description`,
