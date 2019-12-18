@@ -14,7 +14,6 @@ function SEO({ description, lang, meta, title }) {
 
   const metaDescription = description;
   let titleHeading = lang === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale for Contemporary Art"
-  let berlin
   return (
     <Helmet
       htmlAttributes={{
