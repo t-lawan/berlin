@@ -24,6 +24,7 @@ export class Convert {
 
   static toResourceGenreModel = wordpressModel => {
     return new ResourceGenreModel(
+      wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.name
     )
@@ -56,7 +57,7 @@ export class Convert {
       wordpressModel.acf.event_limited_capacity,
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.participants,
-      // wordpressModel.acf.related_resources,
+      wordpressModel.acf.related_resources,
       wordpressModel.acf.other_event_language
     )
   }
@@ -104,6 +105,7 @@ export class Convert {
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.mp3_file_upload,
       wordpressModel.acf.mp3_file_upload_label,
+      wordpressModel.resource_genre
     )
   }
 

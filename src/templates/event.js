@@ -65,14 +65,17 @@ const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
   const facebookLink = typeof window !== `undefined` ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}` : '';
-
   event.dates = event.dates.sort((a, b) => {
     return a.start_date - b.start_date
   })
-  let venue = getVenue(props.venues, event.venue[0])
-  // event.related_resource = event.related_resource.map(resource => {
-  //   return resource.wordpress_id;
-  // })
+  let venue = getVenue(props.venues, event.venue[0]);
+  if(event.related_resource && event.related_resource.length > 0) {
+    event.related_resource = event.related_resource.map(resource => {
+      return resource.wordpress_id;
+    });
+  }
+
+
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -148,7 +151,7 @@ const Event = props => {
 
         </EventColumn>
       </TwoColumnPageWrapper>
-      {/* <RelatedResources ids={event.related_resource} hidden={event.related_resource.length === 0}/> */}
+      <RelatedResources ids={event.related_resource && event.related_resource.length > 0 ?  event.related_resource : []} hidden={!event.related_resource || event.related_resource.length === 0}/>
     </>
   )
   return (
@@ -164,6 +167,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     venues: state.venues,
+    genres: state.resource_genres
   }
 }
 
