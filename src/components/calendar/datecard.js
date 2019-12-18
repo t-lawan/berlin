@@ -58,7 +58,7 @@ const DateCard = props => {
     renderComponents = (
       <DateCardWrapper addColour>
         <MonthHeading>
-          {DateManager.getMonthText(props.month, props.year) + ' ' + props.year}
+          {DateManager.getMonthText(props.month, props.year).toLowerCase()}
         </MonthHeading>
       </DateCardWrapper>
     )
