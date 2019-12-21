@@ -8,8 +8,9 @@ export const SocialMediaWrapper = styled.div`
   flex-direction: row;
   background: white;
   width: 100%;
-  border-top: 1px solid black;
+  /* border-top: 1px solid black; */
   font-size: 1.2rem;
+  z-index: 1000;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;
