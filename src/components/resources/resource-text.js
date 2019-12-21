@@ -29,6 +29,7 @@ const ResourceText = props => {
     resourceIds = props.resources.map(res => {
       return res.id
     })
+  } else {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
