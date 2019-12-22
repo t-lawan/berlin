@@ -3,6 +3,8 @@ import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import { Color } from "../../index.styles"
 import { getCurrentLanguageString } from "../../utility/helper";
 import ResourceNavigator from "./resource-navigator";
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
 
 const ResourceVideo = props => {
     let language = getCurrentLanguageString(props.languages);
