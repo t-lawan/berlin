@@ -260,6 +260,46 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpDocumentation {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                description
+                doc_credits
+                subtitle
+                title
+              }
+              EN {
+                description
+                doc_credits
+                subtitle
+                title
+              }
+              documentation_type
+              event_relation {
+                wordpress_id
+              }
+              exp_number
+              language
+              mp3_upload
+              video
+              image_gallery {
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                alt_text
+                wordpress_id
+                media_type
+              }
+            }
+          }
+        }
+      }
       allWordpressWpExhibitions {
         edges {
           node {
@@ -369,6 +409,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpParticipants,
     allWordpressWpVenue,
     allWordpressWpResources,
+    allWordpressWpDocumentation
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -494,6 +535,19 @@ exports.createPages = async ({ graphql, actions }) => {
         path: path,
         component: slash(resourcesTemplate),
         context: { ...edge.node, language: language },
+      })
+    })
+  })
+
+  const documentationTemplate = path.resolve('./src/templates/documentation.js');
+
+  allWordpressWpDocumentation.edges.forEach(edge => {
+    languages.forEach(language => {
+      let path = language === 'en' ? `/documentation/${edge.node.slug}`: `/${language}/documentation/${edge.node.slug}`;
+      createPage({
+        path: path,
+        component: slash(documentationTemplate),
+        context: {...edge.node, lang: language}
       })
     })
   })
