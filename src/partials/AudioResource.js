@@ -135,7 +135,6 @@ class AudioResource extends React.Component {
 
   calculateTotalValue = length => {
     let hours = Math.floor(length / 3600)
-    console.log(hours)
     let minutes = Math.floor(length / 60),
       seconds_int = length - minutes * 60,
       seconds_str = seconds_int.toString(),
