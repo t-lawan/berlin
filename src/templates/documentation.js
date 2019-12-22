@@ -14,7 +14,6 @@ const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent = <p> Hello </p>
-  console.log('doc', documentationObject);
   switch(documentationObject.type) {
     case 'video': 
       renderComponent = <DocumentationVideo documentation={documentationObject} />
