@@ -120,6 +120,46 @@ const State = props => {
               }
             }
           }
+          allWordpressWpDocumentation {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    description
+                    doc_credits
+                    subtitle
+                    title
+                  }
+                  EN {
+                    description
+                    doc_credits
+                    subtitle
+                    title
+                  }
+                  documentation_type
+                  event_relation {
+                    wordpress_id
+                  }
+                  exp_number
+                  language
+                  mp3_upload
+                  video
+                  image_gallery {
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    alt_text
+                    wordpress_id
+                    media_type
+                  }
+                }
+              }
+            }
+          }
           allWordpressWpParticipants {
             edges {
               node {
@@ -329,6 +369,11 @@ const State = props => {
       Convert.toResourceModel
     )
 
+    let documentation = Convert.toModelArray(
+      data.allWordpressWpDocumentation,
+      Convert.toDocumentationModel
+    )
+
     let venues = Convert.toModelArray(
       data.allWordpressWpVenue,
       Convert.toVenueModel
@@ -375,6 +420,7 @@ const State = props => {
 
     props.setNavbar(navbarItems)
     props.setResources(resources)
+    props.setDocumentation(documentation)
     props.setPages(pages)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
@@ -426,6 +472,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_RESOURCES,
         resources: resources,
+      }),
+    setDocumentation: documentation => 
+      dispatch({
+        type: actionTypes.SET_DOCUMENTATION,
+        documentation: documentation
       }),
     setCalendarItems: calendar_items =>
       dispatch({
