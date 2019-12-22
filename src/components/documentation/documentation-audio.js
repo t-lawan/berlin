@@ -4,12 +4,14 @@ import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import AudioResource from "../../partials/AudioResource"
-import { getDocument } from "../../store/selector"
+import DocumentationNavigator from "./documentation-navigator";
+
 
 const DocumentationAudio = props => {
   let language = getCurrentLanguageString(props.languages)
   return (
     <PageWrapper>
+      <DocumentationNavigator id={props.documentation.id} />      
       <AudioResource id={props.documentation.audio} withCaption={true} />
       <TwoColumnPageWrapper>
         <div>

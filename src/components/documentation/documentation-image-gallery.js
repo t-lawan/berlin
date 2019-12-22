@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
+import DocumentationNavigator from "./documentation-navigator";
 
 const DocumentationImageGallery = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -11,9 +12,9 @@ const DocumentationImageGallery = props => {
   documentation.image_gallery = documentation.image_gallery.map(image => {
     return image.wordpress_id
   })
-
   return (
     <PageWrapper>
+      <DocumentationNavigator id={documentation.id}/>
       <ImageGalleryResource ids={documentation.image_gallery} />
       <TwoColumnPageWrapper>
         <div>
@@ -60,7 +61,7 @@ let content = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    documents: state.documents,
+    documentations: state.documentation,
     exhibitions: state.exhibitions,
   }
 }

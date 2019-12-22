@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import styled from "styled-components"
+import DocumentationNavigator from "./documentation-navigator";
 
 const VideoContainer = styled.div`
   text-align: center;
@@ -13,6 +14,7 @@ const DocumentationVideo = props => {
   let language = getCurrentLanguageString(props.languages)
   return (
     <PageWrapper>
+      <DocumentationNavigator id={props.documentation.id} />
       <VideoContainer
         dangerouslySetInnerHTML={{
           __html: props.documentation.video,
