@@ -2,28 +2,55 @@ import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles";
+import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
+import AudioResource from "../../partials/AudioResource"
+import { getDocument } from "../../store/selector"
 
-const DocumentationAudio= props => {
-  let language = getCurrentLanguageString(props.languages);
-
+const DocumentationAudio = props => {
+  let language = getCurrentLanguageString(props.languages)
   return (
-      <PageWrapper>
-          <h2> Audio </h2>
-          <TwoColumnPageWrapper>
-            <div> 
-                <h2> Text</h2>
-            </div>
-            <div> 
-                <h2> More Text</h2>
-            </div>
-          </TwoColumnPageWrapper>
-      </PageWrapper>
+    <PageWrapper>
+      <AudioResource id={props.documentation.audio} withCaption={true} />
+      <TwoColumnPageWrapper>
+        <div>
+          <p> {content[language].documentation}</p>
+          <p>
+            {" "}
+            {content[language].language}:{" "}
+            {content[language][props.documentation.language]}{" "}
+          </p>
+        </div>
+        <div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: props.documentation[language].title,
+            }}
+          />
+        </div>
+      </TwoColumnPageWrapper>
+    </PageWrapper>
   )
 }
 
 DocumentationAudio.propTypes = {
-    documentation: PropTypes.object
+  documentation: PropTypes.object,
+}
+
+let content = {
+  EN: {
+    language: "Language",
+    documentation: "Documentation",
+    en: "English",
+    de: "German",
+    other: "Other",
+  },
+  DE: {
+    language: "Language",
+    documentation: "Dokumentation",
+    en: "English",
+    de: "Deutsch",
+    other: "Other",
+  },
 }
 
 const mapStateToProps = state => {

@@ -11,7 +11,6 @@ const VideoContainer = styled.div`
 `
 const DocumentationVideo = props => {
   let language = getCurrentLanguageString(props.languages)
-  console.log(props.documentation)
   return (
     <PageWrapper>
       <VideoContainer
@@ -21,7 +20,7 @@ const DocumentationVideo = props => {
       />
       <TwoColumnPageWrapper>
         <div>
-          <p> Documentation</p>
+          <p> {content[language].documentation} </p>
           <p> {content[language].language}: {content[language][props.documentation.language]} </p>
         </div>
         <div>
@@ -55,12 +54,14 @@ DocumentationVideo.propTypes = {
 let content = {
   EN: {
     language: "Language",
+    documentation: "Documentation",
     en: "English",
     de: "German",
     other: "Other",
   },
   DE: {
     language: "Language",
+    documentation: "Dokumentation",
     en: "English",
     de: "Deutsch",
     other: "Other",
