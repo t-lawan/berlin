@@ -78,7 +78,7 @@ class AudioResource extends React.Component {
   }
 
   play = () => {
-    this.audio_tag.current.play();
+    this.audio_tag.current.play()
     this.setState({
       isPlaying: true,
     })
@@ -134,27 +134,54 @@ class AudioResource extends React.Component {
   }
 
   calculateTotalValue = length => {
+    let hours = Math.floor(length / 3600)
+    console.log(hours)
     let minutes = Math.floor(length / 60),
       seconds_int = length - minutes * 60,
       seconds_str = seconds_int.toString(),
-      seconds = seconds_str.substr(0, 2),
-      time = minutes + ":" + seconds
+      seconds = seconds_str.substr(0, 2)
+
+    let time =
+      hours > 0
+        ? `${hours}:${this.showProperTime(minutes - hours * 60)}:${this.showProperTime(seconds)}`
+        : `${this.showProperTime(minutes)}:${this.showProperTime(seconds)}`
 
     return time
   }
 
+  showProperTime = (value) => {
+    let time = value < 10 ? "0" + value : value;
+    return time;
+  }
+
   calculateCurrentValue = currentTime => {
-    let current_hour = parseInt(currentTime / 3600) % 24,
-      current_minute = parseInt(currentTime / 60) % 60,
-      current_seconds_long = currentTime % 60,
-      current_seconds = current_seconds_long.toFixed(),
-      current_time =
-        (current_minute < 10 ? "0" + current_minute : current_minute) +
-        ":" +
-        (current_seconds < 10 ? "0" + current_seconds : current_seconds)
+    let current_hour = Math.floor(currentTime / 3600),
+      current_minute = Math.floor(currentTime / 60),
+      current_seconds_int = currentTime - current_minute * 60,
+      current_seconds_str = current_seconds_int.toString(),
+      current_seconds = current_seconds_str.substr(0, 2)
+
+    let current_time =
+      current_hour > 0 ?
+      `${current_hour}:${this.showProperTime(current_minute - current_hour * 60)}:${this.showProperTime(current_seconds)}`
+      : `${this.showProperTime(current_minute)}:${this.showProperTime(current_seconds)}`;
 
     return current_time
   }
+
+  // calculateCurrentValue = currentTime => {
+  //   let current_hour = parseInt(currentTime / 3600) % 24,
+  //     current_minute = parseInt(currentTime / 60) % 60,
+  //     current_seconds_long = currentTime % 60,
+  //     current_seconds = current_seconds_long.toFixed()
+
+  //   let current_time =
+  //     current_hour > 0 ?
+  //     `${this.showProperTime(current_minute)}:${this.showProperTime(current_seconds)}`
+  //     : `${current_hour}:${this.showProperTime(current_minute)}:${this.showProperTime(current_seconds)}`;
+
+  //   return current_time
+  // }
 
   UNSAFE_componentWillMount() {
     this.audio = getDocument(this.props.documents, this.props.id)
