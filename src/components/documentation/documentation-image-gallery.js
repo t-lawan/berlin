@@ -5,9 +5,13 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import DocumentationNavigator from "./documentation-navigator";
+import { documentationContent } from "./documentation-video";
 
 const DocumentationImageGallery = props => {
-  let language = getCurrentLanguageString(props.languages)
+  let language = getCurrentLanguageString(props.languages);
+  let exhibitions = props.exhibitions.filter((exhibition) => {
+    return exhibition.experience == props.documentation.experience[0];
+  })
   let documentation = props.documentation
   documentation.image_gallery = documentation.image_gallery.map(image => {
     return image.wordpress_id
@@ -18,7 +22,10 @@ const DocumentationImageGallery = props => {
       <ImageGalleryResource ids={documentation.image_gallery} />
       <TwoColumnPageWrapper>
         <div>
-          <p> {content[language].documentation}</p>
+          <p> {documentationContent[language].documentation}</p>
+          <p>
+            {exhibitions[0][language].title}
+          </p>
         </div>
         <div>
           <div
@@ -39,23 +46,6 @@ const DocumentationImageGallery = props => {
 
 DocumentationImageGallery.propTypes = {
   documentation: PropTypes.object,
-}
-
-let content = {
-  EN: {
-    language: "Language",
-    documentation: "Documentation",
-    en: "English",
-    de: "German",
-    other: "Other",
-  },
-  DE: {
-    language: "Language",
-    documentation: "Dokumentation",
-    en: "English",
-    de: "Deutsch",
-    other: "Other",
-  },
 }
 
 const mapStateToProps = state => {

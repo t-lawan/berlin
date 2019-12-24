@@ -5,21 +5,34 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import AudioResource from "../../partials/AudioResource"
 import DocumentationNavigator from "./documentation-navigator";
+import styled from 'styled-components'
+import { documentationContent } from "./documentation-video";
 
-
+const AudioBlock = styled(PageWrapper)`
+  padding: 1em;
+`
 const DocumentationAudio = props => {
-  let language = getCurrentLanguageString(props.languages)
+  let language = getCurrentLanguageString(props.languages);
+  let exhibitions = props.exhibitions.filter((exhibition) => {
+    return exhibition.experience == props.documentation.experience[0];
+  })
+
   return (
-    <PageWrapper>
-      <DocumentationNavigator id={props.documentation.id} />      
-      <AudioResource id={props.documentation.audio} withCaption={true} />
+    <div>
+      <DocumentationNavigator id={props.documentation.id} />    
+      <AudioBlock>
+        <AudioResource id={props.documentation.audio} withCaption={true} />
+      </AudioBlock>  
       <TwoColumnPageWrapper>
         <div>
-          <p> {content[language].documentation}</p>
+          <p> {documentationContent[language].documentation}</p>
           <p>
             {" "}
-            {content[language].language}:{" "}
-            {content[language][props.documentation.language]}{" "}
+            {documentationContent[language].language}:{" "}
+            {documentationContent[language][props.documentation.language]}{" "}
+          </p>
+          <p>
+            {exhibitions[0][language].title}
           </p>
         </div>
         <div>
@@ -30,7 +43,7 @@ const DocumentationAudio = props => {
           />
         </div>
       </TwoColumnPageWrapper>
-    </PageWrapper>
+    </div>
   )
 }
 
@@ -38,27 +51,11 @@ DocumentationAudio.propTypes = {
   documentation: PropTypes.object,
 }
 
-let content = {
-  EN: {
-    language: "Language",
-    documentation: "Documentation",
-    en: "English",
-    de: "German",
-    other: "Other",
-  },
-  DE: {
-    language: "Language",
-    documentation: "Dokumentation",
-    en: "English",
-    de: "Deutsch",
-    other: "Other",
-  },
-}
-
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
+    exhibitions: state.exhibitions
   }
 }
 export default connect(

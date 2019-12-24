@@ -11,7 +11,10 @@ const VideoContainer = styled.div`
   width: 100%;
 `
 const DocumentationVideo = props => {
-  let language = getCurrentLanguageString(props.languages)
+  let language = getCurrentLanguageString(props.languages);
+  let exhibitions = props.exhibitions.filter((exhibition) => {
+    return exhibition.experience == props.documentation.experience[0];
+  })
   return (
     <PageWrapper>
       <DocumentationNavigator id={props.documentation.id} />
@@ -22,8 +25,11 @@ const DocumentationVideo = props => {
       />
       <TwoColumnPageWrapper>
         <div>
-          <p> {content[language].documentation} </p>
-          <p> {content[language].language}: {content[language][props.documentation.language]} </p>
+          <p> {documentationContent[language].documentation} </p>
+          <p> {documentationContent[language].language}: {content[language][props.documentation.language]} </p>
+          <p>
+            {exhibitions[0][language].title}
+          </p>
         </div>
         <div>
           <div
@@ -53,7 +59,7 @@ DocumentationVideo.propTypes = {
   documentation: PropTypes.object,
 }
 
-let content = {
+export const documentationContent = {
   EN: {
     language: "Language",
     documentation: "Documentation",
@@ -74,6 +80,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
+    exhibitions: state.exhibitions
   }
 }
 export default connect(
