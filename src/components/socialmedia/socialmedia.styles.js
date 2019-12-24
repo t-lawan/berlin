@@ -10,7 +10,7 @@ export const SocialMediaWrapper = styled.div`
   width: 100%;
   /* border-top: 1px solid black; */
   font-size: 1.2rem;
-  z-index: 1000;
+  z-index: 5000 !important;
 
   @media (max-width: ${size.tablet}) {
     flex-direction: column;

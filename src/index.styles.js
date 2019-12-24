@@ -5,7 +5,15 @@ export const Color = {
   yellow: "#F9EF84",
   red: "#D9515C",
 }
-
+export const size = {
+  mobileS: "320px",
+  mobileM: "375px",
+  mobileL: "425px",
+  tablet: "768px",
+  laptop: "1024px",
+  laptopL: "1440px",
+  desktop: "2560px",
+}
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -41,6 +49,9 @@ body {
   color: inherit;
   font-size: 1.8rem;
   line-height: 1.1;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.6rem;
+  }
 }
 h2 {
   margin-left: 0;
@@ -52,9 +63,11 @@ h2 {
   padding-top: 0;
   margin-bottom: 1.45rem;
   color: inherit;
-  
   font-size: 1.62671rem;
   line-height: 1.1;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.5rem;
+  }
 }
 h3 {
   margin-left: 0;
@@ -68,6 +81,9 @@ h3 {
   color: inherit;
   font-size: 1.38316rem;
   line-height: 1.1;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.2rem;
+  }
 }
 h4 {
   margin-left: 0;
@@ -81,6 +97,9 @@ h4 {
   color: inherit;
   font-size: 1rem;
   line-height: 1.1;
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.85rem;
+  }
 }
 h5 {
   margin-left: 0;
@@ -94,6 +113,9 @@ h5 {
   color: inherit;
   font-size: 0.85028rem;
   line-height: 1.1;
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.7rem;
+  }
 }
 h6 {
   margin-left: 0;
@@ -106,6 +128,9 @@ h6 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-size: 0.78405rem;
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.65rem;
+  }
 }
 img {
   max-width: 100%;
@@ -128,6 +153,9 @@ p, a, span {
   padding-right: 0;
   padding-top: 0;
   font-size: 1.15em;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1rem;
+  }
 }
 
 p > a {
@@ -142,15 +170,7 @@ a {
 }
 `
 
-export const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
-}
+
 
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
