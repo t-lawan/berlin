@@ -3,13 +3,16 @@ import { Color, UnderlineSectionLink } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
-  padding: 1.5em;
-  line-height: 1.4em;
+  /* padding: 1.5em; */
+  /* line-height: 1.4em; */
 `
 
 export const EventItem = styled.div`
-  padding-top: 1em;
+  padding: 1em;
   color: black;
+  &:first-of-type {
+    border: 6px solid ${Color.yellow}
+  }
   border-bottom: 1px solid black;
   p, span {
     font-size: 1em;
@@ -20,6 +23,10 @@ export const EventLink = styled(UnderlineSectionLink)`
   :hover > div {
     color: ${Color.red}
   }
+  /* padding: 1rem; */
+  /* div:first-child {
+  background: white;
+  } */
 `
 
 export const EventTitle = styled.div`
