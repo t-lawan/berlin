@@ -92,7 +92,7 @@ class NavbarMobile extends React.Component {
 
           <NavMobileLinks>
               {this.navLinks.map((navLink, index) => (
-                <NavMobileLink fade key={index} to={createPath(this.language, navLink.path)}>
+                <NavMobileLink fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
                   {navLink[this.language]}
                 </NavMobileLink>
               ))}
