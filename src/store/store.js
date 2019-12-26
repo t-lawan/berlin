@@ -23,6 +23,7 @@ const intitalState = {
   modal: {
     show: false,
   },
+  documentation: [],
   navbar: [],
   agreed_to_terms: false,
   experience_transition: {
@@ -84,6 +85,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
         resources: action.resources,
+      })
+    case actionTypes.SET_DOCUMENTATION:
+      return Object.assign({}, state,  {
+        documentation: action.documentation
       })
     case actionTypes.SET_CALENDAR_ITEMS:
       return Object.assign({}, state, {

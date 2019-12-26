@@ -98,8 +98,9 @@ class ExperiencePage extends React.Component {
           <ExperienceImage
             src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg"
           />
-          {this.experiences.map((experience) => (
+          {this.experiences.map((experience, index) => (
             <ExperienceImage
+              key={index}
               src={experience.url}
               onClick={() => this.selectExperience(experience.id)}
             />

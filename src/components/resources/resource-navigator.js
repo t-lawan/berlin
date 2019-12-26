@@ -3,10 +3,8 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 
 const RelatedNavigatorWrapper = styled.div`
   display: flex;

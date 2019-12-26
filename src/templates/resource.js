@@ -20,6 +20,7 @@ import ResourceImage from "../components/resources/resource-image"
 import ResourceImageGallery from "../components/resources/resource-image-gallery"
 import ResourceText from "../components/resources/resource-text"
 import ResourceAudio from "../components/resources/resource-audio";
+import resourceVideo from "../components/resources/resource-video";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -38,19 +39,22 @@ const Resource = props => {
   switch (r.type) {
     case "image":
       renderComponent = <ResourceImage resource={r} />
-      break
+      break;
     case "imagegallery":
       r.image_gallery = r.image_gallery.map(image => {
         return image.wordpress_id
       })
       renderComponent = <ResourceImageGallery resource={r} />
-      break
+      break;
     case "text":
       renderComponent = <ResourceText resource={r} />
-      break
+      break;
     case "mp3":
       renderComponent = <ResourceAudio resource={r} />
-      break
+      break;
+    case "video":
+      renderComponent = <ResourceVideo resource={r} />
+      break;
     default:
       renderComponent = (
         <TwoColumnPageWrapper>

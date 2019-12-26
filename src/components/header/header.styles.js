@@ -5,7 +5,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   padding: 0.5em 1em;
   background: white;
 
