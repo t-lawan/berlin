@@ -7,7 +7,21 @@ export const NewsItemWrapper = styled.div`
 `
 
 export const NewsItemLink = styled(UnderlineSectionLink)`
-  :hover > p {
+  :hover > p, span {
     color: ${Color.red}
+  }
+
+`
+
+export const NewsText = styled.div`
+   > p {
+    display: none;
+  }
+  p:first-child {
+    display: inherit;
+    font-size: 0;
+    &::first-line {
+      font-size: 1rem;
+    }
   }
 `

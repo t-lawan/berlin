@@ -1,5 +1,5 @@
 import React from "react"
-import { NewsItemWrapper, NewsItemLink } from "./news-item.styles"
+import { NewsItemWrapper, NewsItemLink, NewsText } from "./news-item.styles"
 import PropTypes from "prop-types"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { connect } from "react-redux"
@@ -14,7 +14,9 @@ const NewsItem = props => {
       <NewsItemLink to={createPath(language, `news/${news.slug}`)}>
         <p> {news[language].news_title}</p>
         <p> {news[language].news_subtitle}</p>
-        <div ref={c => (item = c)} dangerouslySetInnerHTML={{ __html: news[language].news_text.split('<p>')[0] }} />
+        <NewsText ref={c => (item = c)} dangerouslySetInnerHTML={{ __html: news[language].news_text }} />
+        <span hidden={news[language].news_text.length === 0}> ... more </span>
+
       </NewsItemLink>
     )
   } else {
@@ -22,7 +24,7 @@ const NewsItem = props => {
       <>
         <p> {news[language].news_title}</p>
         <p> {news[language].news_subtitle}</p>
-        <div ref={c => (item = c)} dangerouslySetInnerHTML={{ __html: news[language].news_text.split('<p>')[0] }} />
+        <div ref={c => (item = c)} dangerouslySetInnerHTML={{ __html: news[language].news_text }} />
       </>
     )
   }
