@@ -27,7 +27,6 @@ const NewsItem = props => {
     )
   }
 
-  console.log(3, news[language].news_text.split('</p>'));
 
   return <NewsItemWrapper> {renderComponent}</NewsItemWrapper>
 }
