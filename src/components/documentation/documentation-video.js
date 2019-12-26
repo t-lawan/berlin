@@ -26,7 +26,7 @@ const DocumentationVideo = props => {
       <TwoColumnPageWrapper>
         <div>
           <p> {documentationContent[language].documentation} </p>
-          <p> {documentationContent[language].language}: {content[language][props.documentation.language]} </p>
+          <p> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p>
           <p>
             {exhibitions[0][language].title}
           </p>

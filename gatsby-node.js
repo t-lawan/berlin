@@ -454,11 +454,16 @@ exports.createPages = async ({ graphql, actions }) => {
     languages.forEach(language => {
       let path;
       if(edge.node.parent_element && edge.node.parent_element.slug === "about") {
+        // path =
+        // language === "en"
+        //   ? `/about/${edge.node.slug}`
+        //   : `/${language}/about/${edge.node.slug}`;
+        // edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.slug}`;
         path =
         language === "en"
           ? `/about/${edge.node.slug}`
           : `/${language}/about/${edge.node.slug}`;
-        edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.slug}`;
+        edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/about/${edge.node.slug}`;
       } else {
         path =
         language === "en"
