@@ -116,5 +116,9 @@ export const TextBlock = styled.div`
     padding: 0;
     margin: 0;
   }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
   padding: 1em 0em;
 `
