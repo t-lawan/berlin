@@ -16,7 +16,6 @@ export class Convert {
     let dates = wordpressModel.acf.dates.map((item) => {
       return item.start_date
     });
-    console.log(1, dates)
     return new NewsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,

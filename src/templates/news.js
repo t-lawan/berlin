@@ -12,7 +12,6 @@ import { DateManager } from "../utility/date";
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
   let item = Convert.toNewsModel(props.pageContext);
-  console.log(item);
 
   let renderComponent = (
     <>
