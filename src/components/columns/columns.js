@@ -26,6 +26,7 @@ import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
+import NewsList from "../news/newslist";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -106,6 +107,7 @@ class Columns extends React.Component {
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
+            <NewsList />
             {this.props.thirdColumn}
             <StickyFooter>
               <SocialMedia />

@@ -13,13 +13,20 @@ import moment from 'moment';
 import { DocumentationModel } from "../models/DocumentationModel";
 export class Convert {
   static toNewsModel = wordpressModel => {
+    let dates = wordpressModel.acf.dates.map((item) => {
+      return item.start_date
+    });
     return new NewsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
-      wordpressModel.acf.en,
-      wordpressModel.acf.de,
-      wordpressModel.acf.experience,
-      wordpressModel.acf.related_articles
+      wordpressModel.acf.exp_number,
+      wordpressModel.acf.EN,
+      wordpressModel.acf.DE,
+      wordpressModel.acf.show_in_news_feed,
+      !wordpressModel.acf.news_item_is_unlinked,
+      wordpressModel.acf.thumbnail_image,
+      dates,
+
     )
   }
 

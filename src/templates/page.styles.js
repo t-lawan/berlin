@@ -38,7 +38,7 @@ export const ResourceImageWrapper = styled.div`
 `
 
 export const PressFormInput = styled.input`
-  font-size: 1em;
+  /* font-size: 1em; */
   border-radius: 0;
   border: 1px solid black;
    padding: 0.5em 0.5em;
@@ -57,7 +57,7 @@ export const PressReleaseWrapper = styled.div`
 `
 export const PressReleaseText = styled.span`
   margin-right: 2.5em;
-  font-size: 1.1em;
+  /* font-size: 1.1em; */
 `
 
 export const PressReleaseParagraphBlock = styled.div`
@@ -73,15 +73,15 @@ export const PressReleaseParagraphBlock = styled.div`
 export const PressReleaseLink = styled.a`
   text-decoration: none;
   color: inherit;
-  font-size: 1em;
+  /* font-size: 1em; */
   display: grid;
   grid-template-columns: 1fr 8fr;
   &:hover {
     color: ${Color.red};
   }
-  p {
+  /* p {
     font-size: 1.1em;
-  }
+  } */
   /* ${changeGridToOneRow}; */
 
 `
@@ -108,13 +108,17 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 export const ResourcePublisherLink = styled.a`
   text-decoration: underline;
   text-decoration-color: ${Color.red};
-  font-size: 1.15em;
+  /* font-size: 1.15em; */
 `
 
 export const TextBlock = styled.div`
   > p {
     padding: 0;
     margin: 0;
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
   }
   padding: 1em 0em;
 `

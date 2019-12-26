@@ -33,6 +33,10 @@ export class DateManager {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("YYYY-MM-DD");
   }
 
+  static createLongDateString = (date, language) => {
+    return moment(date).locale(language).format('dddd, DD.MM.YYYY');
+  }
+
   static createMonthDayString = (day, month, year, language) => {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM / ddd");
   }
