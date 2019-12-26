@@ -11,10 +11,9 @@ export const AnimatedColumn = styled(Animated)`
   display: grid;
   grid-template-columns: 6fr 3fr;
   grid-template-rows: auto;
-  grid-template-areas: "column column" "footer footer";
+  grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
     /* width: 100%; */
-
     width: 100vw;
   }
 
@@ -52,6 +51,14 @@ export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
+  ${hideDisplayForTablet}
+
+`
+
+export const FixedHeader = styled.div`
+  z-index: 500;
+  top: 0;
+  position: fixed;
 `
 export const StickyHeader = styled.div`
   z-index: 250;
@@ -85,7 +92,7 @@ export const FixedFooter = styled.div`
     grid-area: unset;
   }
   ${showDisplayForTablet};
-  ${hideDisplayForTablet}
+  ${hideDisplayForTablet};
 `
 
 export const FixedNavbar = styled.div`

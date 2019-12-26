@@ -17,6 +17,7 @@ import {
   FixedNavbar,
   StickyTopHeader,
   RelativeHeader,
+  FixedHeader,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
@@ -60,11 +61,20 @@ class Columns extends React.Component {
           animationOutDuration={200}
           style={{ zIndex: 0 }}
         >
+          
+          <StickyTopHeader hideInMobile={true}>
+            <Header hideInMobile={true} />
+          </StickyTopHeader>
+
+          <StickyTopHeader hideInMobile={true}>
+            <Jumbotron hideInMobile />
+          </StickyTopHeader>          
+          
           {/* Second Column */}
           <Column rightBorder={true}>
             <StickyTopHeader>
               <ExperienceControllerMobile showInMobile={true} />
-              <Header hideInMobile={true} />
+              {/* <Header hideInMobile={true} /> */}
             </StickyTopHeader>
             <RelativeHeader>
               <ImageContainer
@@ -93,11 +103,13 @@ class Columns extends React.Component {
           {/* Third Column */}
           {/* Only In Desktop */}
           <Column rightBorder={true} hideInMobile>
-            <StickyTopHeader>
+            {/* <StickyTopHeader>
               <Jumbotron />
-            </StickyTopHeader>
+            </StickyTopHeader> */}
             {this.props.thirdColumn}
-            <SocialMedia />
+            <StickyFooter>
+              <SocialMedia />
+            </StickyFooter>
           </Column>
 
           {/* Only In Desktop */}

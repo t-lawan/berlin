@@ -6,6 +6,7 @@ import ResourceImage from "./resource-image";
 import ResourceImageGallery from "./resource-image-gallery";
 import ResourceText from "./resource-text";
 import ResourceAudio from "./resource-audio";
+import ResourceVideo from "./resource-video";
 
 const ResourcesComponent = props => {
   let renderComponent
@@ -26,6 +27,9 @@ const ResourcesComponent = props => {
       break
     case "mp3":
       renderComponent = <ResourceAudio resource={r} />
+      break
+    case "video":
+      renderComponent = <ResourceVideo resource={r} />
       break
     default:
       renderComponent = (

@@ -12,6 +12,10 @@ export const createPath = (language, path) => {
   return newPath
 }
 
+const getPathForLanguage = (language, slug) => {
+  
+}
+
 export const createProperty = (property, language) => {
   return `${property}_${language.toLowerCase()}`
 }

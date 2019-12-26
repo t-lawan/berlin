@@ -10,6 +10,7 @@ import { NavbarModel } from "../models/NavbarModel";
 import { ResourceGenreModel } from "../models/ResourceGenre";
 import { PageModel } from "../models/PageModel";
 import moment from 'moment';
+import { DocumentationModel } from "../models/DocumentationModel";
 export class Convert {
   static toNewsModel = wordpressModel => {
     return new NewsModel(
@@ -19,6 +20,22 @@ export class Convert {
       wordpressModel.acf.de,
       wordpressModel.acf.experience,
       wordpressModel.acf.related_articles
+    )
+  }
+
+  static toDocumentationModel = wordpressModel => {
+    return new DocumentationModel(
+      wordpressModel.wordpress_id,
+      wordpressModel.slug,
+      wordpressModel.acf.EN,
+      wordpressModel.acf.DE,
+      wordpressModel.acf.documentation_type,
+      wordpressModel.acf.event_relation,
+      wordpressModel.acf.exp_number,
+      wordpressModel.acf.language,
+      wordpressModel.acf.mp3_upload,
+      wordpressModel.acf.video,
+      wordpressModel.acf.image_gallery,
     )
   }
 

@@ -9,6 +9,8 @@ export const AboutSideNavbar = styled.nav`
   line-height: 1em;
   @media (max-width: ${size.tablet}) {
     flex-direction: row;
+    padding: 0;
+    width:100%;
   }
 `
 
