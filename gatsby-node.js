@@ -300,6 +300,33 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpNews {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                news_subtitle
+                news_title
+                news_text
+              }
+              EN {
+                news_subtitle
+                news_text
+                news_title
+              }
+              dates {
+                start_date
+              }
+              exp_number
+              news_item_is_unlinked
+              show_in_news_feed
+              thumbnail_image
+            }
+          }
+        }
+      }
       allWordpressWpExhibitions {
         edges {
           node {
@@ -409,7 +436,8 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpParticipants,
     allWordpressWpVenue,
     allWordpressWpResources,
-    allWordpressWpDocumentation
+    allWordpressWpDocumentation,
+    allWordpressWpNews
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -572,4 +600,18 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
+
+  const newsTemplate = path.resolve('./src/templates/news.js');
+
+  allWordpressWpNews.edges.forEach(edge => {
+    languages.forEach(language => {
+      let path = language === "en" ? `/news/${edge.node.slug}` : `/${language}/news/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(newsTemplate),
+        context: { ...edge.node, language: language },
+      })
+    })
+  })
+
 }

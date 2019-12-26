@@ -6,16 +6,14 @@ import NewsItem from './news-item';
 
 const NewsList = props => {
   const filteredNews = props.news.filter(news => {
-    return news.experience === props.experience
-  })
-  const language = getCurrentLanguageString(props.languages)
+    return news.experience.includes(props.experience.toString()) && news.show_in_feed; 
+  }).reverse();
   return (
-    <NewsListWrapper>
+    <NewsListWrapper show={filteredNews.length > 0}>
       {filteredNews.map(news => (
         <NewsItem
           key={news.id}
-          title={news[language].title}
-          description={news[language].description}
+          newsItem={news}
         />
       ))}
     </NewsListWrapper>
