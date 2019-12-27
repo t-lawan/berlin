@@ -6,7 +6,7 @@ import {
   LanguageControllerWrapper,
   LanguageButton,
 } from "./languagecontroller.styles"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 class LanguageController extends React.Component {
   languageToFunctionWrapper = {
     EN: () => this.props.setLanguageToEN(),
@@ -35,21 +35,15 @@ class LanguageController extends React.Component {
     )
   }
 
-  createPath = currentLanguage => {
+  createPath = chosenLanguage => {
     if (typeof window !== `undefined`) {
-      let pathArray = window.location.pathname.split("/")
-      currentLanguage = currentLanguage.toLowerCase()
-
-      if (currentLanguage === "en") {
-        if (pathArray[1] === "de") {
-          pathArray.splice(1, 1)
-        }
-      } else {
-        if (pathArray[1] !== "de") {
-          pathArray.splice(1, 0, currentLanguage)
-        }
+      let path = window.location.pathname.substr(1);
+      let pathArray = path.split("/")
+      if (pathArray[0] === "de") {
+        pathArray.splice(0, 1)
       }
-      return pathArray.join("/")
+      return createPath(chosenLanguage, pathArray.join('/'))
+
     }
     return ""
   }

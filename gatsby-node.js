@@ -448,7 +448,17 @@ exports.createPages = async ({ graphql, actions }) => {
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
-  const languages = ["en", "de"]
+  const languages = ["en", "de"];
+  const pageMap = [
+    {EN: "event", DE: "veranstaltung"},
+    {EN: "about", DE: "uber"},
+    {EN: "resource", DE: "resource"},
+    {EN: "exhibition", DE: "exhibition"},
+    {EN: "venue", DE: "venue"},
+    {EN: "documentation", DE: "dokumentation"},
+    {EN: "participant", DE: "participant"},
+    {EN: "news", DE: "news"},
+  ]
 
   allWordpressPage.edges.forEach(edge => {
     let template
@@ -487,11 +497,14 @@ exports.createPages = async ({ graphql, actions }) => {
         //   ? `/about/${edge.node.slug}`
         //   : `/${language}/about/${edge.node.slug}`;
         // edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.slug}`;
+        let prePath = pageMap.find((pageType) => {
+          return pageType.EN === "about";
+        });
         path =
         language === "en"
-          ? `/about/${edge.node.slug}`
-          : `/${language}/about/${edge.node.slug}`;
-        edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/about/${edge.node.slug}`;
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`;
+        edge.node.slug = (language === "en") ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`;
       } else {
         path =
         language === "en"
@@ -510,11 +523,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const eventTemplate = path.resolve(`./src/templates/event.js`)
 
   allWordpressWpEvents.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "event";
+    });
     languages.forEach(language => {
       let path =
         language === "en"
-          ? `/event/${edge.node.slug}`
-          : `/${language}/event/${edge.node.slug}`
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(eventTemplate),
@@ -526,11 +542,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
 
   allWordpressWpExhibitions.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "exhibition";
+    });
     languages.forEach(language => {
       let path =
         language === "en"
-          ? `/exhibition/${edge.node.slug}`
-          : `/${language}/exhibition/${edge.node.slug}`
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
 
       createPage({
         path: path,
@@ -543,11 +562,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const participantTemplate = path.resolve(`./src/templates/participant.js`)
 
   allWordpressWpParticipants.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "participant";
+    });
     languages.forEach(language => {
       let path =
         language === "en"
-          ? `/participant/${edge.node.slug}`
-          : `/${language}/participant/${edge.node.slug}`
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(participantTemplate),
@@ -559,11 +581,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const resourcesTemplate = path.resolve(`./src/templates/resource.js`)
 
   allWordpressWpResources.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "resource";
+    });
     languages.forEach(language => {
       let path =
         language === "en"
-          ? `/resource/${edge.node.slug}`
-          : `/${language}/resource/${edge.node.slug}`
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(resourcesTemplate),
@@ -575,8 +600,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const documentationTemplate = path.resolve('./src/templates/documentation.js');
 
   allWordpressWpDocumentation.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "documentation";
+    });
     languages.forEach(language => {
-      let path = language === 'en' ? `/documentation/${edge.node.slug}`: `/${language}/documentation/${edge.node.slug}`;
+      let path = language === 'en' ? `/${prePath.EN}/${edge.node.slug}`: `/${language}/${prePath.DE}/${edge.node.slug}`;
       createPage({
         path: path,
         component: slash(documentationTemplate),
@@ -588,11 +616,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const venueTemplate = path.resolve(`./src/templates/venue.js`)
 
   allWordpressWpVenue.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "venue";
+    });
     languages.forEach(language => {
       let path =
         language === "en"
-          ? `/venue/${edge.node.slug}`
-          : `/${language}/venue/${edge.node.slug}`
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(venueTemplate),
@@ -604,8 +635,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const newsTemplate = path.resolve('./src/templates/news.js');
 
   allWordpressWpNews.edges.forEach(edge => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "news";
+    });
     languages.forEach(language => {
-      let path = language === "en" ? `/news/${edge.node.slug}` : `/${language}/news/${edge.node.slug}`
+      let path = language === "en" ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(newsTemplate),
