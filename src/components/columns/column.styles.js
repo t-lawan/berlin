@@ -10,5 +10,8 @@ export const ColumnLayout = styled.div`
   width:inherit;
   overflow-y: auto;
   ${hideDisplayForTablet};
+  &::first-of-type{
+    border: 0;
+  }
 
 `

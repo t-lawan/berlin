@@ -14,9 +14,6 @@ export const EventItem = styled.div`
     border: 6px solid ${Color.yellow}
   }
   border-bottom: 1px solid black;
-  p, span {
-    font-size: 1em;
-  }
 `
 
 export const EventLink = styled(UnderlineSectionLink)`
