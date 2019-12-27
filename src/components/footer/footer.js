@@ -24,7 +24,7 @@ const ImageWrapper = styled.div`
 `
 
 const FooterText = styled.p`
-  font-size: 1rem;
+  /* font-size: 1rem; */
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)

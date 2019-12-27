@@ -12,13 +12,13 @@ export const DataPrivacyWrapper = styled(Section)`
   background: black;
 
   > p > a {
-    font-size: 0.8em;
+    font-size: 0.8rem;
   }
 `
 
 export const DataPrivacyBlock = styled.div`
     > p > a {
-    font-size: 1em;
+    font-size: 1rem;
   }
 `
 
