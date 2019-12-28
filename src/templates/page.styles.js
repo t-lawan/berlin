@@ -3,8 +3,7 @@ import { changeGridToOneRow, Color, size } from "../index.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
-  padding: 2em;
-  padding-top: 1em;
+  padding: 2.5em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
@@ -12,8 +11,8 @@ export const PageWrapper = styled.div`
 `
 
 export const TwoColumnPageWrapper = styled.div`
-  padding: 2em 1em;
-  padding-top:1em;
+  padding: 2.5em 1em 2em;
+  
   display: grid;
   grid-template-columns: 3fr 6fr;
   grid-column-gap: 1em;
@@ -24,11 +23,20 @@ export const TwoColumnPageWrapper = styled.div`
 `
 
 export const PressWrapper = styled.div`
-  padding: 2em 1em;
+  padding: 2.5em 1em 2em;
   display: grid;
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
+  }
+  div > p {
+  margin-bottom: 0.5em;
+  }
+  div > div > p {
+  margin-bottom: 0.0em;
+  }
+  div > div{
+  margin-bottom: 0.5em;
   }
   ${changeGridToOneRow};
 `
@@ -53,7 +61,7 @@ export const CenterColumn = styled.div`
 export const PressReleaseWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding-bottom: 1em;
+  padding-bottom: 0em;
 `
 export const PressReleaseText = styled.span`
   margin-right: 2.5em;
@@ -75,7 +83,7 @@ export const PressReleaseLink = styled.a`
   color: inherit;
   /* font-size: 1em; */
   display: grid;
-  grid-template-columns: 1fr 8fr;
+  grid-template-columns: 1fr 17fr;
   &:hover {
     color: ${Color.red};
   }
@@ -87,7 +95,8 @@ export const PressReleaseLink = styled.a`
 `
 
 export const PressArrowContainer = styled.div`
-  width: 30%;
+  width: 13px;
+  padding-top: 0.3em;
 `
 export const PressForm = styled.div`
   padding: 1em 0em;
@@ -106,15 +115,20 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 `
 
 export const ResourcePublisherLink = styled.a`
-  text-decoration: underline;
-  text-decoration-color: ${Color.red};
+  text-decoration: none;
+  border-bottom: solid thin;
+  border-color: ${Color.red};
   /* font-size: 1.15em; */
 `
 
 export const TextBlock = styled.div`
   > p {
     padding: 0;
+    line-height:1.4;
     margin: 0;
+  }
+  p {
+    font-size:1rem;
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;

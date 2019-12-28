@@ -14,12 +14,15 @@ import styled from 'styled-components';
 
 const ResourceTextDiv = styled.div`
   a {
-    font-size: 1em;
+    font-size: 1rem;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
   }
 `
 
 const ResourceTitle = styled.p`
   font-size: 1.8em;
+  line-height: 1.2;
 `
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)

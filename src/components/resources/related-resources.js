@@ -10,8 +10,12 @@ import { get } from "http";
 
 const RelatedResourcesWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 1em;
+  width:calc(100% - 1em);
+  margin-left:0.5em;
+  margin-bottom:2em;
+  margin-right:0.5em;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0em;
   ${changeGridToOneRow};
 `
 
@@ -22,9 +26,10 @@ const ResourceLink = styled(AniLink)`
 
 const RelatedResource = styled.div`
   background: ${Color.yellow};
-  min-height: 8em;
-  padding: 1em;
-  margin: 1em;
+  min-height: 9em;
+  position:relative;
+  padding: 0.5em 0.5em 1.5em;
+  margin: 0.35em;
   border: 1px solid black;
   :hover{
     >p{
@@ -34,7 +39,18 @@ const RelatedResource = styled.div`
 `
 
 const ResourceText = styled.p`
-  font-size: 0.8em;
+  font-size: 0.85em;
+  margin-top:0;
+  :first-child {
+    font-size:1em;
+    line-height:1.3;
+    margin-bottom:0.5em;
+  }
+  :last-child {
+    margin-bottom:0em;
+    position:absolute;
+    bottom:0.7em;
+  }
 `
 
 const RelatedResources = props => {
