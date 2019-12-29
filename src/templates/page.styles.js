@@ -15,7 +15,18 @@ export const TwoColumnPageWrapper = styled.div`
   
   display: grid;
   grid-template-columns: 3fr 6fr;
-  grid-column-gap: 1em;
+  grid-column-gap: 2em;
+  @media (max-width: ${size.tablet}) {
+    padding: 1em 0.2em;
+  }
+  ${changeGridToOneRow}
+`
+export const TwoColumnPageWrapperNoPad = styled.div`
+  padding: 2em 0em 2em;
+  
+  display: grid;
+  grid-template-columns: 3fr 6fr;
+  grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
   }

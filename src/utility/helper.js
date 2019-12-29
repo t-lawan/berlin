@@ -10,10 +10,10 @@ export const pageMap = [
   {EN: "event", DE: "veranstaltung"},
   {EN: "about", DE: "uber"},
   {EN: "resource", DE: "resource"},
-  {EN: "exhibition", DE: "exhibition"},
-  {EN: "venue", DE: "venue"},
+  {EN: "exhibition", DE: "austellung"},
+  {EN: "venue", DE: "ort"},
   {EN: "documentation", DE: "dokumentation"},
-  {EN: "participant", DE: "participant"},
+  {EN: "participant", DE: "beteiligte"},
   {EN: "news", DE: "news"},
 ];
 

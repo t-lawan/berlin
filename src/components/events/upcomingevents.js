@@ -56,7 +56,7 @@ const UpcomingEvents = props => {
               {" "}
               {moment(item.start_date)
                 .locale(language.toLowerCase())
-                .format("dddd, DD.MM.YYYY")}
+                .format("dddd, D.M.YYYY")}
             </p>
             <p> {item[language].display_time}</p>
             <EventTitle
