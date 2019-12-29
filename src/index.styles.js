@@ -34,8 +34,9 @@ body {
   font-size: calc(1em + 0.1vw);
   }
   a {
-    text-decoration: underline;
+    text-decoration: none;
     color: black;
+    transition: all 0.2s ease-in-out;
   }
   h1 {
   margin-left: 0;
@@ -143,11 +144,27 @@ img {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-p, a, span {
+a, span {
   margin-left: 0;
   margin-right: 0;
+  line-height: 1.4;
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  font-size: 1rem;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1rem;
+  }
+}
+p {
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 1.4;
+  margin-top: 0;
+  margin-bottom: 1rem;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -165,7 +182,7 @@ li {
   list-style-type: lower-roman;
 }
 a {
-  text-decoration-line: underline;
+  text-decoration-line: none;
   text-decoration-color: ${Color.red};
 }
 `
@@ -249,8 +266,9 @@ export const tablet = props => {
 
 
 export const UnderlinedText = styled.p`
-  text-decoration: underline;
-  text-decoration-color: ${props => props.red ? Color.red : 'black'};
+  text-decoration: none;
+  border-bottom: solid thin;
+  border-color: ${props => props.red ? Color.red : 'black'};
   color: ${props => props.red ? Color.red : 'black'}
 `
 
@@ -262,7 +280,9 @@ export const Section = styled.section`
 `
 
 export const UnderlineTransitionLink = styled(AniLink)`
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom: solid thin;
+  border-color: ${props => props.colour};
   color: ${props => props.colour};
 `
 
@@ -280,13 +300,13 @@ export const ExternalLink = styled.a`
 `
 
 export const LargeButton = styled.button`
-  margin: 0.5em 0.25em;
+  margin: 0.5em 0 0 10px;
   font-size: 1em;
   display: block;
   border-radius: 0;
   background: ${props => props.bgColour};
   border: 1px solid black;
-  padding: 1em 2em;
+  padding: 8px 16px;
   :hover {
     cursor: pointer;
   }

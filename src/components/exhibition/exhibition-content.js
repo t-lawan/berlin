@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import { getCurrentLanguageString } from "../../utility/helper";
 import { Section, size } from "../../index.styles";
 const ExhibitionPageWrapper = styled.div`
-  padding: 2em 1em;
+  padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
     padding: 1em 0em;
   }
@@ -16,22 +16,20 @@ const ExhibitionContent = props => {
   const exhibition = props.exhibition;
   const renderComponent = (
     <ExhibitionPageWrapper>
-      <Section>
+      
         <div
           dangerouslySetInnerHTML={{
             __html: exhibition[language].description,
           }}
         />
-      </Section>
-
-      {/* <Section>
+      
         <p> {content[language].works_and_contributions}</p>
         <div
           dangerouslySetInnerHTML={{
             __html: exhibition[language].participant_list,
           }}
         />
-      </Section> */}
+      
     </ExhibitionPageWrapper>
   )
   return renderComponent;

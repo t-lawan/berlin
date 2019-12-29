@@ -11,7 +11,7 @@ const FooterWrapper = styled.footer`
   grid-column-gap: 1rem;
   color: black;
   background: white;
-  padding: 1em;
+  padding: 0.7em 1em;
   border-top: 1px solid black;
   border-right: 1px solid black;
   ${changeGridToOneRow};
@@ -25,6 +25,7 @@ const ImageWrapper = styled.div`
 
 const FooterText = styled.p`
   /* font-size: 1rem; */
+  margin:0;
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -58,11 +59,11 @@ const content = {
   tel_phone_number: 'T +49 (0)30 24 34 59 70',
   fax_phone_number: 'F +49 (0)30 24 34 59 99',
   EN: {
-    title: 'Contact',
+    title: 'contact',
     description: `The Berlin Biennale is funded by the Kulturstiftung des Bundes (German Federal Cultural Foundation) and organized by KUNST-WERKE BERLIN e. V.`
   },
   DE: {
-    title: 'Kontakt',
+    title: 'kontakt',
     description: `Die Berlin Biennale wird gefördert durch die Kulturstiftung des Bundes und organisiert vom KUNST-WERKE BERLIN e. V.`
   }
 }

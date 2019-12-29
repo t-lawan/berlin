@@ -9,8 +9,8 @@ export const EventNavigatorWrapper = styled.section`
 `
 
 export const EventNavigatorButton = styled(AniLink)`
-  font-size: 1.3rem;
-  padding: 1em;
+  font-size: 1.1rem;
+  padding: 0.7em 0 0 1em;
   text-decoration: none;
 `
 

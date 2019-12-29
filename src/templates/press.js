@@ -198,13 +198,13 @@ const getPdf = (documents, press_release, language) => {
 
 const content = {
   EN: {
-    contact: "Contact",
-    press_release: "Press Releases",
+    contact: "Press contact",
+    press_release: "Downloads",
     images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
-    press_release: "Pressemitteilungen",
+    press_release: "Downloads",
     images: "Pressebilder",
   },
 }

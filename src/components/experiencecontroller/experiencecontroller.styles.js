@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { showDisplayForTablet, showDisplayForTabletFunc } from "../../index.styles";
 
 export const ExperienceControllerWrapper = styled.div`
-  margin-top: ${props => (props.left ? "8.9em" : "5em")};
+  margin-top: ${props => (props.left ? "6.9em" : "4.0em")};
   align-items: center;
   justify-content: center;
   display: grid;
@@ -13,25 +13,28 @@ export const ExperienceControllerWrapper = styled.div`
 `
 
 export const ExperienceButton = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: 0.2em;
   text-decoration:none;
   color: black;
   opacity: ${props => props.show ? '1' : '0.5'};
-  font-size: x-large;
+  font-size: xx-large;
   /* transition-timing-function: ease-in;
   transition: 1s; */
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
   } 
-  font-weight: ${props => (props.bold ? "bold" : "normal")};
+  :last-child {
+    border-top: solid thin #000;
+  }
 
   img {
     width: 60%;
     margin-bottom: 0;
+    margin-top:0.5em;
   }
 
   span {
-    font-size: 0.8em;
+    font-size: 0.6em;
   }
 `
 

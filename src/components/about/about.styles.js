@@ -3,10 +3,10 @@ import { Color, size } from "../../index.styles";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import ImageResource from "../../partials/ImageResource";
 export const AboutSideNavbar = styled.nav`
-  padding: 0.25em 1em;
+  padding: 0.25em 1em 0 0;
   display: flex;
   flex-direction: column;
-  line-height: 1em;
+  line-height: 1;
   @media (max-width: ${size.tablet}) {
     flex-direction: row;
     padding: 0;
@@ -16,9 +16,12 @@ export const AboutSideNavbar = styled.nav`
 
 export const AboutNavItem = styled.p`
   color: ${props => (props.current ? Color.red : "inherit")};
-  padding: 0em 0.5em;
+  padding: 0em;
+  margin:0 0 0.5em;
+  transition: all 0.2s ease-in-out;
   :hover {
       cursor: pointer;
+      color: ${Color.red};
   }
   @media (max-width: ${size.tablet}) {
   padding: 0.5em 0.5em;
@@ -31,16 +34,19 @@ export const AboutNavItemLink = styled(AniLink)`
 
 export const AboutPageContent = styled.div`
     p{
-        padding-bottom: 1em;
+        margin-bottom: 1em;
     }
     a {
-        text-decoration-color: ${Color.red}
+        border-bottom: solid thin ${Color.red}
+        :hover {
+      color: ${Color.red};
+      }
     }
 `
 export const AboutComponentWrapper = styled.section``
 
 export const AboutFundingHeader = styled.p`
-    text-decoration: underline;
+    text-decoration: none;
     padding-bottom: 1rem;
 `
 

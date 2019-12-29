@@ -63,6 +63,7 @@ export const FixedHeader = styled.div`
 export const StickyHeader = styled.div`
   z-index: 250;
   position: sticky;
+  top:0;
 `
 
 export const RelativeHeader = styled.div`

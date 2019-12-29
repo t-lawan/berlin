@@ -36,7 +36,7 @@ const Navbar = props => {
     } else {
       return (
         <NavItem
-          activeStyle={{ color: "#990033" }}
+          activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
           key={item.slug}
           fade

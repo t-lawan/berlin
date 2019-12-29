@@ -5,11 +5,13 @@ export const SocialMediaWrapper = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
+  padding:0.5em 2em 1em;
+  height:60px;
   flex-direction: row;
   background: white;
   width: 100%;
-  /* border-top: 1px solid black; */
-  font-size: 1.2rem;
+  border-top: 1px solid black;
+  font-size: 1rem;
   z-index: 5000 !important;
 
   @media (max-width: ${size.tablet}) {
@@ -23,7 +25,7 @@ export const SocialMediaWrapper = styled.div`
 `
 
 export const SocialMediaText = styled.span`
-  padding: 1em;
+  padding: 1em 0.6em 1em 0em;
   :hover {
     cursor: pointer;
   }

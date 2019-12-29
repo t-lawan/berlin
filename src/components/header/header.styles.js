@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
   /* border-bottom: 1px solid black; */
-  padding: 0.5em 1em;
+  padding: 1.4em 1.95em 0.7em;
   background: white;
 
   :hover {
@@ -17,12 +17,13 @@ export const HeaderWrapper = styled.header`
 
 export const HeaderLink = styled(AniLink)`
   text-decoration: none;
+  margin-bottom:0;
   display: grid;
   grid-template-columns:1fr 1fr;
-  grid-column-gap: 1em;
+  grid-column-gap: 3em;
   ${changeGridToOneRow};
   img {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.0rem;
   }
 `
 
