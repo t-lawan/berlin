@@ -6,7 +6,7 @@ import ImageResource from "../../partials/ImageResource"
 import { Color, size } from "../../index.styles"
 import { Link } from "gatsby"
 const ResourcesListWrapper = styled.div`
-  padding: 1em;
+  padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
     padding: 0.2em;
   }
@@ -18,6 +18,7 @@ const ResourceTitle = styled.p`
 
 const ResourceLabel = styled.p`
   font-size: 1em;
+  margin: 0.5em 0 0;
 `
 
 const ResourceItemLink = styled(Link)`
@@ -32,14 +33,19 @@ const ResourceItemLink = styled(Link)`
 const ResourceItem = styled.div`
   padding-top: 1em;
   color: black;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
   border-bottom: 1px solid black;
+  :first-child {
+    padding-top:0;
+  }
 `
 
 const TextBox = styled.div`
   padding: 1em 0.75em;
   background: ${Color.yellow};
   /* border: 1px solid black; */
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)

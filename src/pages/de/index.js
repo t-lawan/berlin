@@ -12,7 +12,7 @@ import SEO from "../../components/seo/seo";
 import Logo from "../../components/logo/logo";
 
 export const IndexPageWrapper = styled.div`
-  padding: 1em;
+  padding: 0em;
   @media (max-width: ${size.mobileM}) {
     padding: 1em 0em;
   }

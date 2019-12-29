@@ -41,7 +41,9 @@ export const NavImageLink = styled(AniLink)`
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
-  padding: 8px 16px;
+  padding: 1.3em 16px 0.5em;
+  transition: all 0.2s ease-in-out;
+  margin-bottom:0;
   text-decoration: none;
   color: black;
   :hover {
@@ -51,7 +53,9 @@ export const NavItem = styled(AniLink)`
 
 export const NavLink = styled.a`
   display: block;
-  padding: 8px 16px;
+  padding: 1.3em 16px 0.5em;
+  transition: all 0.2s ease-in-out;
+  margin-bottom:0;
   text-decoration: none;
   color: black;
   :hover {

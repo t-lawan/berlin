@@ -30,19 +30,20 @@ const EventTitle = styled.div`
   padding-bottom: 0.5rem;
   p {
     font-size: 1.8rem;
+    line-height:1.2;
   }
 `
 
 const EventDescription = styled.div`
   p {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.1em;
+    font-size: 1.0em;
   }
 `
 

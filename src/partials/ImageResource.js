@@ -20,6 +20,10 @@ export const GalleryImage = styled.img`
 
 export const Caption = styled.section`
   font-size: 0.6rem;
+  p{
+   font-size: 0.65rem; 
+   margin:0.7em 0;
+  }
 `
 
 class ImageResource extends React.Component {
@@ -60,7 +64,7 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+      <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
