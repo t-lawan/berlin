@@ -41,13 +41,16 @@ export const NavImageLink = styled(AniLink)`
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
-  padding: 1.3em 16px 0.5em;
+  padding: 1.3em 0.5em 0.5em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
   color: black;
   :hover {
     color: ${Color.red};
+  }
+  :first-child {
+    padding-left:1em;
   }
 `
 

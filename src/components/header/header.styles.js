@@ -20,7 +20,7 @@ export const HeaderLink = styled(AniLink)`
   margin-bottom:0;
   display: grid;
   grid-template-columns:1fr 1fr;
-  grid-column-gap: 3em;
+  grid-column-gap: 4em;
   ${changeGridToOneRow};
   img {
     margin-bottom: 0.0rem;

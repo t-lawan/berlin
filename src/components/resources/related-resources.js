@@ -22,11 +22,13 @@ const RelatedResourcesWrapper = styled.div`
 const ResourceLink = styled(AniLink)`
   text-decoration: none;
   color: black;
+  grid-auto-rows: 1fr;
 `
 
 const RelatedResource = styled.div`
   background: ${Color.yellow};
   min-height: 9em;
+  height:100%;
   position:relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em;

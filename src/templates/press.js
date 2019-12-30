@@ -145,7 +145,7 @@ class Press extends React.Component {
             <PressReleaseWrapper key={index}>
               <PressReleaseText>
                 {" "}
-                {moment(press_release.date).format("DD.MM.YYYY")}
+                {moment(press_release.date).format("D.M.YYYY")}
               </PressReleaseText>
               {/* <PressReleaseText> */}
                 <PressReleaseLink
