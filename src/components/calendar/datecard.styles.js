@@ -3,7 +3,7 @@ import { Color } from "../../index.styles"
 
 export const DateCardWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
   border-bottom: 0.05em solid black;
   /* border-right: 0.05em solid black; */
   background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
@@ -25,7 +25,7 @@ export const CurrentDate = styled.div`
 `
 export const DateText = styled.strong`
   font-size: xx-large;
-  width:50%;
+  width:55%;
   text-align:right;
   line-height: 1;
   padding-right: 0.3em;

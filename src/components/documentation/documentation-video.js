@@ -2,14 +2,33 @@ import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
+import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.styles"
 import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
 
 const VideoContainer = styled.div`
-  text-align: center;
-  width: 100%;
+  position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    margin-top:2em;
+    width: 100%;
+    height: auto;
+    > iframe {
+      position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
 `
+const NoMarg = {
+margin:"0",
+}
+
+const MargBottom = {
+margin:"0 0 0.7em"
+}
+
 const DocumentationVideo = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -23,11 +42,11 @@ const DocumentationVideo = props => {
           __html: props.documentation.video,
         }}
       />
-      <TwoColumnPageWrapper>
+      <TwoColumnPageWrapperNoPad>
         <div>
-          <p> {documentationContent[language].documentation} </p>
-          <p> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p>
-          <p>
+          <p style={MargBottom}> {documentationContent[language].documentation} </p>
+          <p style={NoMarg}> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p>
+          <p style={NoMarg}>
             {exhibitions[0][language].title}
           </p>
         </div>
@@ -50,7 +69,7 @@ const DocumentationVideo = props => {
             }}
           />
         </div>
-      </TwoColumnPageWrapper>
+      </TwoColumnPageWrapperNoPad>
     </PageWrapper>
   )
 }

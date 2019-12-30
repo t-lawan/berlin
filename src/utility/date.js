@@ -3,15 +3,15 @@ import 'moment/locale/en-gb';
 import 'moment/locale/de';
 moment.updateLocale('en', {
   monthsShort : [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"
+      "Jan", "Feb", "Mar", "Apr", "May", "June",
+      "July", "Aug", "Sept", "Oct", "Nov", "Dec"
   ]
 });
 
 moment.updateLocale('de', {
   monthsShort : [
-      "Jan", "Feb", "Mar", "Apr", "Mai", "Jun",
-      "Jul", "Aug", "Sept", "Okt", "Nov", "Dez"
+      "Jan", "Feb", "März", "Apr", "Mai", "Juni",
+      "Juli", "Aug", "Sept", "Okt", "Nov", "Dez"
   ]
 });
 export class DateManager {

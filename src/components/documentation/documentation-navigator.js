@@ -9,14 +9,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const DocumentationNavigatorWrapper = styled.div`
   display: flex;
+  margin-top:-2em;
+  margin-bottom:0;
   flex-direction: row;
   background: transparent;
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
+   font-size: 1.1rem;
+  padding: 0.0em 1em 0 0em;
   text-decoration: none;
-  font-size: 1.3rem;
-  padding: 1em;
 `
 
 

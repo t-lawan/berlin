@@ -22,8 +22,10 @@ const EventColumn = styled.div``
 const EventTextBlock = styled(TextBlock)`
   a,p {
     margin: 0;
-    font-size: 1em;
+    font-size: 1rem;
   }
+  margin:0 0 0.7em 0;
+  padding:0;
 `
 const EventTitle = styled.div`
   padding-top: 1rem;
@@ -52,6 +54,14 @@ const VenueLink = styled(AniLink)`
   :hover {
     color: ${Color.red};
   }
+`
+const ShareLink = styled.p`
+  a{
+  border-bottom: solid thin ${Color.red};
+  :hover {
+  color: ${Color.red};
+  }
+}
 `
 
 const eventContent = {
@@ -93,7 +103,7 @@ const Event = props => {
                 <p>
                   {`${moment(date.start_date)
                     .locale(language.toLowerCase())
-                    .format("dddd, DD.MM.YYYY")}`}
+                    .format("dddd, D.MM.YYYY")}`}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
@@ -102,7 +112,7 @@ const Event = props => {
               {freeAdmision[language].rsvp}
             </p>
           </EventTextBlock>
-          <TextBlock>
+          <EventTextBlock>
             <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
             >
@@ -110,13 +120,13 @@ const Event = props => {
               {venue ? venue[language].venue_name : ""}
             </VenueLink>
             <p>{venue ? venue.address[0].address_line : ""}</p>
-          </TextBlock>
-          <TextBlock>
+          </EventTextBlock>
+          <EventTextBlock>
             <p>{freeAdmision[language][event.language]}</p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
-          </TextBlock>
+          </EventTextBlock>
           <EventTextBlock>
-            <p> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></p>
+            <ShareLink> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></ShareLink>
             
           </EventTextBlock>
         </EventColumn>
