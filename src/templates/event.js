@@ -16,6 +16,7 @@ import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
 import { Color } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import NewsList from "../components/news/newslist";
 
 const EventColumn = styled.div``
 
@@ -85,6 +86,8 @@ const Event = props => {
       return resource.wordpress_id;
     });
   }
+
+
 
 
   const renderComponent = (
@@ -165,11 +168,18 @@ const Event = props => {
       <RelatedResources ids={event.related_resource && event.related_resource.length > 0 ?  event.related_resource : []} hidden={!event.related_resource || event.related_resource.length === 0}/>
     </>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

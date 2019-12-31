@@ -25,6 +25,7 @@ import {
 import moment from "moment"
 import axios from "axios"
 import PressForm from "../components/forms/press-form"
+import NewsList from "../components/news/newslist";
 class Press extends React.Component {
   language
   pressInfo
@@ -180,11 +181,19 @@ class Press extends React.Component {
         </div>
       </PressWrapper>
     )
+
+    let thirdColumn = (
+      <>
+        <NewsList />
+        <UpcomingEvents />
+      </>
+    )
+    
     return (
       <Layout
         firstColumn={this.renderComponent}
         numberOfColumnsIsTwo={false}
-        thirdColumn={<UpcomingEvents />}
+        thirdColumn={thirdColumn}
       />
     )
   }

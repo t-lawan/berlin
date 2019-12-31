@@ -9,6 +9,7 @@ import Layout from "../components/layout/layout"
 import ImageGalleryResource from "../partials/ImageGalleryResource"
 import ImageResource from "../partials/ImageResource"
 import { Color } from "../index.styles";
+import NewsList from "../components/news/newslist";
 
 const PressImagesGrid = styled.section`
   display: grid;
@@ -121,11 +122,18 @@ const PressImages = props => {
     </PageWrapper>
   )
 
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

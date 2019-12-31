@@ -9,6 +9,7 @@ import SEO from "../components/seo/seo"
 import { PageWrapper, TextBlock } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import { Color, ExternalLink } from "../index.styles"
+import NewsList from "../components/news/newslist";
 const VenueLink = styled(ExternalLink)`
   padding-bottom: 1em;
 `
@@ -61,11 +62,18 @@ const Venue = props => {
     </PageWrapper>
   )
 
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

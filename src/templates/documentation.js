@@ -13,7 +13,13 @@ import DocumentationText from "../components/documentation/documentation-text";
 const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
-  let renderComponent = <p> Hello </p>
+  let renderComponent;
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   switch(documentationObject.type) {
     case 'video': 
       renderComponent = <DocumentationVideo documentation={documentationObject} />
@@ -36,7 +42,7 @@ const Documentation = props => {
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}
-        thirdColumn={<UpcomingEvents />}
+        thirdColumn={thirdColumn}
       />
     </>
   )

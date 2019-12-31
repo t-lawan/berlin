@@ -6,6 +6,7 @@ import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
+import NewsList from "../components/news/newslist";
 const ParticipantPageWrapper = styled.div`
   padding: 2em 1em;
 `
@@ -35,11 +36,19 @@ const Participant = props => {
       />
     </ParticipantPageWrapper>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+  
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

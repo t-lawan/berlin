@@ -31,6 +31,7 @@ const IndexPage = props => {
   const thirdColumn = (
     <>
       <Logo />
+      <NewsList />
       <UpcomingEvents />
     </>
   )
