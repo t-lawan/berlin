@@ -82,9 +82,7 @@ class ExperiencePage extends React.Component {
     })
   }
   render() {
-    this.experiences = this.experiences.filter((experience) => {
-      return experience.id <= parseInt(this.props.active_experience);
-    })
+
     return (
       <ExperiencePageWrapper
         onClick={this.closeExperiencePage}
@@ -102,7 +100,6 @@ class ExperiencePage extends React.Component {
             <ExperienceImage
               key={index}
               src={experience.url}
-              onClick={() => this.selectExperience(experience.id)}
             />
           ))}
 
