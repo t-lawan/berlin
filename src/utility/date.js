@@ -19,6 +19,10 @@ export class DateManager {
     return moment(date, "YYYY-MM-DD HH:mm Z").get(type);
   }
 
+  static getDaysFromCurrentDate = (date) => {
+    return moment().diff(moment(date), 'days');
+  }
+
   static getNumberOfDaysInMonth = (monthNum, year) => {
     const calendar = this.getCalendar();
     return calendar[year][monthNum].numberOfDays
