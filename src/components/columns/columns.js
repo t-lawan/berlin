@@ -107,7 +107,6 @@ class Columns extends React.Component {
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
-            {/* <NewsList /> */}
             {this.props.thirdColumn}
             <StickyFooter>
               <SocialMedia />
