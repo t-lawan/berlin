@@ -13,7 +13,6 @@ const CalendarTemplate = (props) => {
     )
     let thirdColumn = (
       <>
-        <NewsList />
         <ResourcesList />
       </>
     )
