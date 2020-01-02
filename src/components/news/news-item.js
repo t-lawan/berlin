@@ -15,8 +15,7 @@ const NewsItem = props => {
         <p> {news[language].news_title}</p>
         <p> {news[language].news_subtitle}</p>
         <NewsText ref={c => (item = c)} dangerouslySetInnerHTML={{ __html: news[language].news_text }} />
-        <span hidden={news[language].news_text.length === 0}> ... more </span>
-
+        <span hidden={news[language].news_text.length === 0}> ... MORE </span>
       </NewsItemLink>
     )
   } else {
