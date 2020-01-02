@@ -87,9 +87,6 @@ const Event = props => {
     });
   }
 
-
-
-
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -116,12 +113,19 @@ const Event = props => {
             </p>
           </EventTextBlock>
           <EventTextBlock>
-            <VenueLink
+            {props.experience == 4 ? (
+              <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
             >
               {" "}
               {venue ? venue[language].venue_name : ""}
             </VenueLink>
+            ) : (
+              <p>{venue ? venue[language].venue_name : ""} </p>
+            )
+
+            }
+
             <p>{venue ? venue.address[0].address_line : ""}</p>
           </EventTextBlock>
           <EventTextBlock>
@@ -188,7 +192,8 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     venues: state.venues,
-    genres: state.resource_genres
+    genres: state.resource_genres,
+    experience: state.experience
   }
 }
 
