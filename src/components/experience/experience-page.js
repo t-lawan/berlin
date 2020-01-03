@@ -15,8 +15,6 @@ const ExperiencePageWrapper = styled.div`
 `
 
 const ExperienceImagesContainer = styled.div`
-  position: relative;
-  top: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,29 +50,35 @@ class ExperiencePage extends React.Component {
     }
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      // this.closeExperiencePage();
+      this.props.hideOverlay();
+    }, 10000);
+  }
+
   experiences = [
     {
       id: 1,
-      url: "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_2.svg"
+      url:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_2.svg",
     },
     {
       id: 2,
-      url: "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_3.svg"
+      url:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_3.svg",
     },
     {
       id: 3,
-      url: "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_4.svg"
+      url:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_4.svg",
     },
     {
       id: 4,
-      url: "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_5.svg"
+      url:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_5.svg",
     },
   ]
-
-  selectExperience = (experience) => {
-    this.props.changeExperience(experience);
-    this.closeExperiencePage();
-  }
 
   closeExperiencePage = () => {
     this.setState({
@@ -82,27 +86,23 @@ class ExperiencePage extends React.Component {
     })
   }
   render() {
-
     return (
       <ExperiencePageWrapper
         onClick={this.closeExperiencePage}
-        show={this.state.show && this.props.showOnHomePage}
+        show={this.state.show && this.props.showOnHomePage && this.props.show_overlay}
       >
-      <TopRow>
-        <CloseImage onClick={this.closeExperiencePage} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg" />
-      </TopRow>
+        <TopRow>
+          <CloseImage
+            onClick={this.closeExperiencePage}
+            src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
+          />
+        </TopRow>
 
         <ExperienceImagesContainer>
-          <ExperienceImage
-            src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg"
-          />
+          <ExperienceImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
           {this.experiences.map((experience, index) => (
-            <ExperienceImage
-              key={index}
-              src={experience.url}
-            />
+            <ExperienceImage key={index} src={experience.url} />
           ))}
-
         </ExperienceImagesContainer>
       </ExperiencePageWrapper>
     )
@@ -118,14 +118,19 @@ ExperiencePage.propTypes = {
 const mapStateToProps = state => {
   return {
     experience: state.experience,
-    active_experience: state.active_experience
+    active_experience: state.active_experience,
+    show_overlay: state.show_overlay
   }
 }
 const mapDispatchToProps = dispatch => {
   return {
-    changeExperience: experience =>
-      dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
+    hideOverlay:() => {
+      dispatch({type: actionTypes.HIDE_OVERLAY})
+    }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExperiencePage)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ExperiencePage)
