@@ -34,7 +34,7 @@ export class DateManager {
   }
 
   static createDateClass = (day, month, year) => {
-    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("YYYY-MM-DD");
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale('en').format("YYYY-MM-DD");
   }
 
   static createLongDateString = (date, language) => {
@@ -62,7 +62,7 @@ export class DateManager {
   }
 
   static currentDate = () => {
-    return moment().format("YYYY-MM-DD");
+    return moment().locale('en').format("YYYY-MM-DD");
   }
 
   static getMonths = () => {
