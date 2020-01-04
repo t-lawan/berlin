@@ -18,6 +18,7 @@ import {
   StickyTopHeader,
   RelativeHeader,
   FixedHeader,
+  StickyFooterWithHighZIndex,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
@@ -108,9 +109,9 @@ class Columns extends React.Component {
               <Jumbotron />
             </StickyTopHeader> */}
             {this.props.thirdColumn}
-            <StickyFooter>
+            <StickyFooterWithHighZIndex>
               <SocialMedia />
-            </StickyFooter>
+            </StickyFooterWithHighZIndex>
           </Column>
 
           {/* Only In Desktop */}
