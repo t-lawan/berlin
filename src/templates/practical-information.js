@@ -11,6 +11,7 @@ import {
 } from "./page.styles"
 import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
+import NewsList from "../components/news/newslist";
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext;
@@ -58,11 +59,18 @@ const PracticalInformation = props => {
     </TwoColumnPageWrapper>
   )
 
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

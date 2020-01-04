@@ -27,7 +27,14 @@ const DateCard = props => {
       return (
         a[language].display_time.charAt(0) - b[language].display_time.charAt(0)
       )
+    }).sort((a, b) => {
+      if(a.item === "exhibition") {
+        return -1;
+      } else {
+        return 1;
+      }
     })
+
     // const events = props.events;
 
     renderComponents = (

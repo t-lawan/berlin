@@ -8,6 +8,7 @@ import { TwoColumnPageWrapper } from "./page.styles"
 import styled from "styled-components"
 import AboutNavbar from "../components/about/about-navbar";
 import AboutComponents from "../components/about/about-components";
+import NewsList from "../components/news/newslist";
 
 
 const ComponentWrapper = styled.section``
@@ -26,11 +27,18 @@ const About = props => {
       <AboutComponents content={content} />
     </TwoColumnPageWrapper>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

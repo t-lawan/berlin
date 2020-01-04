@@ -2,24 +2,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import DateCard from "./datecard"
 import { DateManager } from "../../utility/date"
+import { connect } from "react-redux"
 
 class MonthCards extends React.Component {
   days = Object.keys(this.props.month)
-  currentDate = DateManager.currentDate()
-  getElement = () => {
-    const element = document.getElementById(`date-${this.currentDate}`)
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "nearest",
-      })
-    }
-  }
+  currentDate;
+  hasBeenRendered;
+  
 
-  componentDidMount() {
-    this.getElement()
-  }
   render() {
     return (
       <>
@@ -48,4 +38,15 @@ MonthCards.propTypes = {
   title: PropTypes.string,
   year: PropTypes.any,
 }
-export default MonthCards
+
+
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(MonthCards)

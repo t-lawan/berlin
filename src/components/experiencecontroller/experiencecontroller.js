@@ -6,11 +6,14 @@ import {
   ExperienceControllerWrapper,
   ExperienceButton,
 } from "./experiencecontroller.styles"
-
+import { navigate } from 'gatsby';
+import { createPath, getCurrentLanguageString } from "../../utility/helper";
 class ExperienceController extends React.Component {
   experiences;
+  language;
   constructor(props) {
     super(props);
+    this.language = getCurrentLanguageString(props.languages);
     this.state = {
       experiences: [
         {
@@ -46,7 +49,10 @@ class ExperienceController extends React.Component {
       } else {
         this.props.experienceDecreased()
       }
-      this.props.changeExperience(chosenExperience.id)
+      setTimeout(() => {
+        this.props.changeExperience(chosenExperience.id);
+      }, 50)
+      navigate(createPath(this.language, '/'));
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
       }, 5)
@@ -111,6 +117,7 @@ const mapStateToProps = state => {
   return {
     experience: state.experience,
     exhibitions: state.exhibitions,
+    languages: state.languages
   }
 }
 

@@ -9,10 +9,9 @@ export const ColumnLayout = styled.div`
   background: white;
   position:relative;
   width:inherit;
-  overflow-y: auto;
+  overflow-y: inherit;
   ${hideDisplayForTablet};
   &::first-of-type{
     border: 0;
   }
-
 `

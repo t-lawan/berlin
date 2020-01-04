@@ -9,11 +9,18 @@ import DocumentationVideo from "../components/documentation/documentation-video"
 import DocumentationAudio from "../components/documentation/documentation-audio";
 import DocumentationImageGallery from "../components/documentation/documentation-image-gallery";
 import DocumentationText from "../components/documentation/documentation-text";
+import NewsList from "../components/news/newslist";
 
 const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
-  let renderComponent = <p> Hello </p>
+  let renderComponent;
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   switch(documentationObject.type) {
     case 'video': 
       renderComponent = <DocumentationVideo documentation={documentationObject} />
@@ -36,7 +43,7 @@ const Documentation = props => {
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}
-        thirdColumn={<UpcomingEvents />}
+        thirdColumn={thirdColumn}
       />
     </>
   )

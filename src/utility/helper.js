@@ -27,9 +27,6 @@ export const createPath = (language, path) => {
   if(prePath && prePath.length !== 0) {
     newPath =
     language === "EN" ? `/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}` : `/${language.toLowerCase()}/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}`
-    console.log(path,path.split('/')[1]);
-    
-
   } else {
     newPath = language === "EN" ? `/${path}` : `/${language.toLowerCase()}/${path}`;
   }

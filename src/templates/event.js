@@ -16,6 +16,7 @@ import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
 import { Color } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import NewsList from "../components/news/newslist";
 
 const EventColumn = styled.div``
 
@@ -86,7 +87,6 @@ const Event = props => {
     });
   }
 
-
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -113,12 +113,19 @@ const Event = props => {
             </p>
           </EventTextBlock>
           <EventTextBlock>
-            <VenueLink
+            {props.experience == 4 ? (
+              <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
             >
               {" "}
               {venue ? venue[language].venue_name : ""}
             </VenueLink>
+            ) : (
+              <p>{venue ? venue[language].venue_name : ""} </p>
+            )
+
+            }
+
             <p>{venue ? venue.address[0].address_line : ""}</p>
           </EventTextBlock>
           <EventTextBlock>
@@ -165,11 +172,18 @@ const Event = props => {
       <RelatedResources ids={event.related_resource && event.related_resource.length > 0 ?  event.related_resource : []} hidden={!event.related_resource || event.related_resource.length === 0}/>
     </>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
@@ -178,7 +192,8 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     venues: state.venues,
-    genres: state.resource_genres
+    genres: state.resource_genres,
+    experience: state.experience
   }
 }
 

@@ -5,6 +5,7 @@ import { PageWrapper } from "./page.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
+import NewsList from "../components/news/newslist";
 
 const Page = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -23,11 +24,18 @@ const Page = props => {
     </PageWrapper>
   )
 
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
