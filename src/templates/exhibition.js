@@ -8,6 +8,7 @@ import UpcomingEvents from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import { Section } from "../index.styles"
 import ExhibitionContent from "../components/exhibition/exhibition-content"
+import NewsList from "../components/news/newslist";
 const ExhibitionPageWrapper = styled.div`
   padding: 2em 1em;
 `
@@ -25,11 +26,18 @@ const Exhibition = props => {
       <ExhibitionContent exhibition={exhibition} />
     </>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }

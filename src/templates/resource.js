@@ -8,19 +8,11 @@ import {
 } from "./page.styles"
 import { Convert } from "../utility/convert"
 import UpcomingEvents from "../components/events/upcomingevents"
-import { getDocument } from "../store/selector"
-import ImageResource from "../partials/ImageResource"
-import ImageGalleryResource from "../partials/ImageGalleryResource"
-import ExternalLink from "../partials/ExternalLink"
-import { Color } from "../index.styles"
-import RelatedResources from "../components/resources/related-resources"
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
-import ResourceNavigator from "../components/resources/resource-navigator"
 import ResourceImage from "../components/resources/resource-image"
 import ResourceImageGallery from "../components/resources/resource-image-gallery"
 import ResourceText from "../components/resources/resource-text"
 import ResourceAudio from "../components/resources/resource-audio";
-import resourceVideo from "../components/resources/resource-video";
+import NewsList from "../components/news/newslist";
 
 const Resource = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -65,6 +57,13 @@ const Resource = props => {
       )
   }
 
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
+
   return (
     <>
       <SEO
@@ -75,7 +74,7 @@ const Resource = props => {
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}
-        thirdColumn={<UpcomingEvents />}
+        thirdColumn={thirdColumn}
       />
     </>
   )

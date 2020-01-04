@@ -84,6 +84,10 @@ export const StickyFooter = styled.div`
   ${hideDisplayForTablet}
 `
 
+export const StickyFooterWithHighZIndex = styled(StickyFooter)`
+  z-index: 400;
+`
+
 export const FixedFooter = styled.div`
   z-index: 500;
   bottom: 0;
