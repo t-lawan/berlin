@@ -90,8 +90,6 @@ class Calendar extends React.Component{
 
 
   render() {
-    // setTimeout()
-    // this.getElement();
 
     return (
       <CalendarWrapper>
