@@ -9,6 +9,7 @@ import DocumentationVideo from "../components/documentation/documentation-video"
 import DocumentationAudio from "../components/documentation/documentation-audio";
 import DocumentationImageGallery from "../components/documentation/documentation-image-gallery";
 import DocumentationText from "../components/documentation/documentation-text";
+import NewsList from "../components/news/newslist";
 
 const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
