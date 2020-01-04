@@ -63,6 +63,7 @@ export const FixedHeader = styled.div`
 export const StickyHeader = styled.div`
   z-index: 250;
   position: sticky;
+  top:0;
 `
 
 export const RelativeHeader = styled.div`
@@ -81,6 +82,10 @@ export const StickyFooter = styled.div`
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet}
+`
+
+export const StickyFooterWithHighZIndex = styled(StickyFooter)`
+  z-index: 400;
 `
 
 export const FixedFooter = styled.div`

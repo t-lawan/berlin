@@ -16,33 +16,37 @@ import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
 import { Color } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import NewsList from "../components/news/newslist";
 
 const EventColumn = styled.div``
 
 const EventTextBlock = styled(TextBlock)`
   a,p {
     margin: 0;
-    font-size: 1em;
+    font-size: 1rem;
   }
+  margin:0 0 0.7em 0;
+  padding:0;
 `
 const EventTitle = styled.div`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
   p {
     font-size: 1.8rem;
+    line-height:1.2;
   }
 `
 
 const EventDescription = styled.div`
   p {
-    font-size: 1.1rem;
+    font-size: 1.0rem;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.1em;
+    font-size: 1.0em;
   }
 `
 
@@ -51,6 +55,14 @@ const VenueLink = styled(AniLink)`
   :hover {
     color: ${Color.red};
   }
+`
+const ShareLink = styled.p`
+  a{
+  border-bottom: solid thin ${Color.red};
+  :hover {
+  color: ${Color.red};
+  }
+}
 `
 
 const eventContent = {
@@ -75,7 +87,6 @@ const Event = props => {
     });
   }
 
-
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -92,7 +103,7 @@ const Event = props => {
                 <p>
                   {`${moment(date.start_date)
                     .locale(language.toLowerCase())
-                    .format("dddd, DD.MM.YYYY")}`}
+                    .format("dddd, D.MM.YYYY")}`}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
@@ -101,21 +112,28 @@ const Event = props => {
               {freeAdmision[language].rsvp}
             </p>
           </EventTextBlock>
-          <TextBlock>
-            <VenueLink
+          <EventTextBlock>
+            {props.experience == 4 ? (
+              <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
             >
               {" "}
               {venue ? venue[language].venue_name : ""}
             </VenueLink>
+            ) : (
+              <p>{venue ? venue[language].venue_name : ""} </p>
+            )
+
+            }
+
             <p>{venue ? venue.address[0].address_line : ""}</p>
-          </TextBlock>
-          <TextBlock>
+          </EventTextBlock>
+          <EventTextBlock>
             <p>{freeAdmision[language][event.language]}</p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
-          </TextBlock>
+          </EventTextBlock>
           <EventTextBlock>
-            <p> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></p>
+            <ShareLink> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></ShareLink>
             
           </EventTextBlock>
         </EventColumn>
@@ -154,11 +172,18 @@ const Event = props => {
       <RelatedResources ids={event.related_resource && event.related_resource.length > 0 ?  event.related_resource : []} hidden={!event.related_resource || event.related_resource.length === 0}/>
     </>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
@@ -167,7 +192,8 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     venues: state.venues,
-    genres: state.resource_genres
+    genres: state.resource_genres,
+    experience: state.experience
   }
 }
 

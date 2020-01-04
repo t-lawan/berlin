@@ -25,6 +25,7 @@ const intitalState = {
   },
   documentation: [],
   navbar: [],
+  show_overlay: true,
   agreed_to_terms: false,
   experience_transition: {
     animationIn: "fadeInLeft",
@@ -82,6 +83,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         resource_genres: action.resource_genres,
       })
+    case actionTypes.HIDE_OVERLAY:
+      return Object.assign({} , state, {
+        show_overlay: false
+      });
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
         resources: action.resources,

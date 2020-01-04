@@ -8,7 +8,7 @@ export const LanguageControllerWrapper = styled.div`
   border-bottom: 1px solid black;
   align-items: center;
   justify-content: center;
-  padding: 0.5em;
+  padding: 0.3em;
   background: white;
   z-index: 5000;
   @media (max-width: ${size.tablet}) {
@@ -26,8 +26,9 @@ export const LanguageButton = styled(AniLink)`
   text-decoration: none;
   color: black;
   opacity: ${props => props.selected ? 0.3 : 1};
-  margin-bottom: 0.25em;
-  font-size: xx-large;
+  margin-bottom: 0.05em;
+  line-height:1.1;
+  font-size: 1.15rem;
   font-weight: ${props => (props.selected ? "bold" : "lighter")};
   :hover {
     cursor: "pointer";

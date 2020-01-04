@@ -7,11 +7,11 @@ export const ColumnLayout = styled.div`
   height: 100%;
   height: 100vh;
   background: white;
+  position:relative;
   width:inherit;
-  overflow-y: auto;
+  overflow-y: inherit;
   ${hideDisplayForTablet};
   &::first-of-type{
     border: 0;
   }
-
 `

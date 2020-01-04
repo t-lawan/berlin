@@ -25,6 +25,7 @@ import {
 import moment from "moment"
 import axios from "axios"
 import PressForm from "../components/forms/press-form"
+import NewsList from "../components/news/newslist";
 class Press extends React.Component {
   language
   pressInfo
@@ -145,7 +146,7 @@ class Press extends React.Component {
             <PressReleaseWrapper key={index}>
               <PressReleaseText>
                 {" "}
-                {moment(press_release.date).format("DD.MM.YYYY")}
+                {moment(press_release.date).format("D.M.YYYY")}
               </PressReleaseText>
               {/* <PressReleaseText> */}
                 <PressReleaseLink
@@ -180,11 +181,19 @@ class Press extends React.Component {
         </div>
       </PressWrapper>
     )
+
+    let thirdColumn = (
+      <>
+        <NewsList />
+        <UpcomingEvents />
+      </>
+    )
+    
     return (
       <Layout
         firstColumn={this.renderComponent}
         numberOfColumnsIsTwo={false}
-        thirdColumn={<UpcomingEvents />}
+        thirdColumn={thirdColumn}
       />
     )
   }
@@ -198,13 +207,13 @@ const getPdf = (documents, press_release, language) => {
 
 const content = {
   EN: {
-    contact: "Contact",
-    press_release: "Press Releases",
+    contact: "Press contact",
+    press_release: "Downloads",
     images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
-    press_release: "Pressemitteilungen",
+    press_release: "Downloads",
     images: "Pressebilder",
   },
 }

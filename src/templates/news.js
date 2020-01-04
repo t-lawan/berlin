@@ -8,6 +8,7 @@ import SEO from "../components/seo/seo"
 import { Convert } from "../utility/convert";
 import ImageResource from "../partials/ImageResource";
 import { DateManager } from "../utility/date";
+import NewsList from "../components/news/newslist";
 
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -44,11 +45,17 @@ const News = props => {
       </TwoColumnPageWrapper>
     </>
   )
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
