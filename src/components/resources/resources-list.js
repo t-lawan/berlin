@@ -13,11 +13,11 @@ const ResourcesListWrapper = styled.div`
 `
 
 const ResourceTitle = styled.p`
-  font-size: 1em;
+  font-size: 1rem;
 `
 
 const ResourceLabel = styled.p`
-  font-size: 1em;
+  font-size: 1rem;
   margin: 0.5em 0 0;
 `
 
@@ -27,10 +27,9 @@ const ResourceItemLink = styled(Link)`
     ${ResourceTitle} {
       color: ${Color.red};
     }
-  :last-child {
-    ${ResourceItem} {
+  }
+  :last-child div {
       border-bottom:none;
-    }
   }
 `
 
