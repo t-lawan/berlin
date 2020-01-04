@@ -3,10 +3,11 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import { NewsListWrapper } from "./newslist.styles"
 import NewsItem from './news-item';
+import { DateManager } from "../../utility/date";
 
 const NewsList = props => {
   const filteredNews = props.news.filter(news => {
-    return news.experience.includes(props.experience.toString()) && news.show_in_feed; 
+    return news.experience.includes(props.experience.toString()) && news.show_in_feed && DateManager.getDaysFromCurrentDate(news.dates[0]) < 0; 
   }).reverse();
   return (
     <NewsListWrapper show={filteredNews.length > 0}>

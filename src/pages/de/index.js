@@ -18,6 +18,7 @@ export const IndexPageWrapper = styled.div`
   }
 `
 
+
 const IndexPage = props => {
   const exhibitions = props.exhibitions.filter(exhibition => {
     return exhibition.experience === props.experience.toString()
@@ -34,9 +35,11 @@ const IndexPage = props => {
     </IndexPageWrapper>
   )
 
+
   const thirdColumn = (
     <>
       <Logo />
+      <NewsList />
       <UpcomingEvents />
     </>
   )

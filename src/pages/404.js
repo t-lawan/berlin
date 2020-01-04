@@ -4,6 +4,7 @@ import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { PageWrapper } from "../templates/page.styles";
 import { Color } from "../index.styles";
+import NewsList from "../components/news/newslist";
 
 const NotFoundPage = () => {
   let renderComponent = (
@@ -17,12 +18,19 @@ const NotFoundPage = () => {
       <p>You just hit a route that doesn&#39;t exist...</p>
     </PageWrapper>
   )
+
+  let thirdColumn = (
+    <>
+      <NewsList />
+      <UpcomingEvents />
+    </>
+  )
   return (
     <Layout
       firstColumn={renderComponent}
       secondColumn={renderComponent}
       numberOfColumnsIsTwo={false}
-      thirdColumn={<UpcomingEvents />}
+      thirdColumn={thirdColumn}
     />
   )
 }
