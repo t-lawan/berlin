@@ -37,12 +37,13 @@ export const ColumnsWrapper = styled.div`
   }
 
   display: grid;
-  grid-template-columns: 1fr 20fr 1fr;
+  grid-template-columns: 1fr 18fr 1fr;
   ${changeGridToOneRow}
 `
 
 export const FirstColumnWrapper = styled.div`
   background-color: #fff;
+  position: relative;
   display: grid;
   grid-template-columns: ${props => (props.twoColumns ? "1fr 1fr" : "1fr")};
 `
