@@ -27,6 +27,10 @@ const ResourceItemLink = styled(Link)`
     ${ResourceTitle} {
       color: ${Color.red};
     }
+  :last-child {
+    ${ResourceItem} {
+      border-bottom:none;
+    }
   }
 `
 
@@ -39,6 +43,7 @@ const ResourceItem = styled.div`
   :first-child {
     padding-top:0;
   }
+  
 `
 
 const TextBox = styled.div`
