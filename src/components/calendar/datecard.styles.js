@@ -26,6 +26,7 @@ export const CurrentDate = styled.div`
 export const DateText = styled.strong`
   font-size: xx-large;
   width:55%;
+  font-weight:normal;
   text-align:right;
   line-height: 1;
   padding-right: 0.3em;
