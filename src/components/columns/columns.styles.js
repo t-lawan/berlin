@@ -9,7 +9,7 @@ export const AnimatedColumn = styled(Animated)`
   overflow-y: auto;
   overflow-x: hidden;
   display: grid;
-  grid-template-columns: 6fr 3fr;
+  grid-template-columns: 66fr 33fr;
   grid-template-rows: auto;
   grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
@@ -46,6 +46,9 @@ export const FirstColumnWrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: ${props => (props.twoColumns ? "1fr 1fr" : "1fr")};
+  & div:last-child {
+    border-left: none;
+  }
 `
 
 export const StickyTopHeader = styled.div`
@@ -53,7 +56,10 @@ export const StickyTopHeader = styled.div`
   top: 0;
   position: sticky;
   ${hideDisplayForTablet}
-
+  :first-child {
+    border-right:solid 1px #000;
+  }
+  
 `
 
 export const FixedHeader = styled.div`
