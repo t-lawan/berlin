@@ -49,6 +49,15 @@ export const PressWrapper = styled.div`
   div > div{
   margin-bottom: 0.5em;
   }
+  ul {
+    list-style:none;
+    font-size: 1rem;
+    margin:0.5rem 0;
+    padding:0;
+    li {
+      list-style-type:none;
+    }
+  }
   ${changeGridToOneRow};
 `
 
@@ -70,12 +79,12 @@ export const CenterColumn = styled.div`
   margin: auto;
 `
 export const PressReleaseWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 0em;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  ${changeGridToOneRow}
 `
 export const PressReleaseText = styled.span`
-  margin-right: 2.5em;
+  margin-right: 0em;
   /* font-size: 1.1em; */
 `
 
