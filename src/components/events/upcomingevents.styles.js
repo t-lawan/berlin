@@ -10,8 +10,19 @@ export const EventsWrapper = styled.div`
 export const EventItem = styled.div`
   padding: 1em 1.7em;
   color: black;
+  position:relative;
   &:first-of-type {
     border: 6px solid ${Color.yellow}
+  };
+  &:first-of-type:after {
+    content:" ";
+    position:absolute;
+    display:block;
+    bottom:-6px;
+    height:1px;
+    left:-6px;
+    width:calc(100% + 12px);
+    background:#000;
   };
   p{
     margin-bottom:0;
