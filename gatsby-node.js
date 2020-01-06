@@ -109,6 +109,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 team_block_type
                 block_names {
                   full_name
+                  additional_info_en
+                  additional_info_de
                 }
               }
               press_images {
@@ -206,6 +208,8 @@ exports.createPages = async ({ graphql, actions }) => {
               thumbnail_image
               template
               exp_number
+              embed_video_in_event
+              event_documentation
             }
           }
         }
@@ -333,6 +337,7 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             acf {
               exhibition_floorplan
+              exp_animation
               active_exhibition
               use_gallery_images
               exhibition_venue {
@@ -349,6 +354,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_dates_header
                 exp_title_header
                 exp_title_header_mobile
+                exp_bb11_right_header
               }
               EN {
                 description
@@ -359,6 +365,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_dates_header
                 exp_title_header
                 exp_title_header_mobile
+                exp_bb11_right_header
               }
               end_date
               exp_number
@@ -401,11 +408,11 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
-              EN {
-                venue_name
-                access_info
-              }
               DE {
+                access_info
+                venue_name
+              }
+              EN {
                 access_info
                 venue_name
               }
