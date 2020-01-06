@@ -26,9 +26,9 @@ export const LanguageButton = styled(AniLink)`
   text-decoration: none;
   color: black;
   opacity: ${props => props.selected ? 0.3 : 1};
-  margin-bottom: 0.05em;
+  margin-bottom: 0.1em;
   line-height:1.1;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: ${props => (props.selected ? "bold" : "lighter")};
   :hover {
     cursor: "pointer";
