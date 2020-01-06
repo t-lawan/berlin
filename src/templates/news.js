@@ -31,7 +31,7 @@ const News = props => {
         <div>
         <ImageResource id={item.thumbnail_image} withCaption={false} />
           <TextBlock>
-            <h2> {item[language].news_title}</h2>
+            <h1> {item[language].news_title}</h1>
             <h2> {item[language].news_subtitle}</h2>
           </TextBlock>
           <TextBlock>

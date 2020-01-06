@@ -28,13 +28,11 @@ const EventTextBlock = styled(TextBlock)`
   margin:0 0 0.7em 0;
   padding:0;
 `
-const EventTitle = styled.div`
+const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  p {
-    font-size: 1.8rem;
-    line-height:1.2;
-  }
+  font-size: 1.8rem;
+  line-height:1.2;
 `
 
 const EventDescription = styled.div`
@@ -73,6 +71,9 @@ const eventContent = {
     'share': "Teilen"
   }
 }
+
+
+
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
@@ -103,7 +104,7 @@ const Event = props => {
                 <p>
                   {`${moment(date.start_date)
                     .locale(language.toLowerCase())
-                    .format("dddd, D.MM.YYYY")}`}
+                    .format("dddd, D.M.YYYY")}`}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>

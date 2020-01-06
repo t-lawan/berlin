@@ -3,7 +3,7 @@ import { changeGridToOneRow, Color, size } from "../index.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
-  padding: 2.5em 1em 2em;
+  padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
@@ -11,10 +11,10 @@ export const PageWrapper = styled.div`
 `
 
 export const TwoColumnPageWrapper = styled.div`
-  padding: 2.5em 1em 2em;
+  padding: 1em 1em 2em;
   
   display: grid;
-  grid-template-columns: 3fr 6fr;
+  grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;

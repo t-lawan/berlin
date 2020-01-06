@@ -35,7 +35,7 @@ class ExperienceController extends React.Component {
           id: 4,
           isReady: true,
           display: (
-            <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_nav.svg" />
+            <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/bb11_logo_nav.svg" />
           ),
         },
       ]
@@ -94,6 +94,10 @@ class ExperienceController extends React.Component {
     )
     return (
       <ExperienceControllerWrapper left={this.props.left}>
+        <ExperienceButton hidden={this.experiences.length === 0} show>
+          <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_prev.svg" />
+          <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_next.svg" />
+        </ExperienceButton>
         <ExperienceButton bold hidden={this.experiences.length === 0} show>
           <span> exp. </span>
         </ExperienceButton>

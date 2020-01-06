@@ -2,14 +2,15 @@ import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Color, size } from "../../index.styles"
+import { Color, size, keyFrameExperienceImage } from "../../index.styles"
 import * as actionTypes from "../../store/action"
 
 const ExperiencePageWrapper = styled.div`
   z-index: 5000;
-  width: 100%;
-  height: 100%;
-  background: ${Color.yellow};
+  left: 5%;
+  width: calc(100% - 10%);
+  height: 100vh;
+  background: #fbf95d;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
 `
@@ -17,6 +18,7 @@ const ExperiencePageWrapper = styled.div`
 const ExperienceImagesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 80vh;
   align-items: center;
   justify-content: center;
 `
@@ -30,12 +32,37 @@ const CloseImage = styled.img`
 `
 const TopRow = styled.div`
   display: flex;
-  padding: 1em;
+  padding: 0.7em;
   flex-direction: row-reverse;
 `
 const ExperienceImage = styled.img`
   width: 30%;
   align-self: center;
+  :nth-child(2) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-top: 3em;
+    opacity: 0;
+    margin-bottom: 0.3em;
+    animation-delay: 0.8s;
+  }
+  :nth-child(3) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-bottom: 0.65em;
+    opacity: 0;
+    animation-delay: 1.2s;
+  }
+  :nth-child(4) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-bottom: 0.65em;
+    opacity: 0;
+    animation-delay: 1.8s;
+  }
+  :nth-child(5) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-top: 3em;
+    opacity: 0;
+    animation-delay: 2.4s;
+  }
 
   @media (max-width: ${size.tablet}) {
     width: 50%;

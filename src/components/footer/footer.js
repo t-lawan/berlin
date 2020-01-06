@@ -7,8 +7,8 @@ import { changeGridToOneRow, size } from "../../index.styles";
 import ImageResource from "../../partials/ImageResource";
 const FooterWrapper = styled.footer`
   display: grid;
-  grid-template-columns: 1fr 4fr 7fr 2fr;
-  grid-column-gap: 1rem;
+  grid-template-columns: 1fr 3.8fr 7.5fr 2fr;
+  grid-column-gap: 0.5rem;
   color: black;
   background: white;
   padding: 0.7em 1em;

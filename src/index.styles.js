@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle } from "styled-components"
+import styled, { css, createGlobalStyle, keyframes } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const Color = {
@@ -14,6 +14,7 @@ export const size = {
   laptopL: "1440px",
   desktop: "2560px",
 }
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -222,7 +223,14 @@ export const changeGridToOneRow = css`
     grid-template-columns: 1fr;
   }
 `
-
+export const keyFrameExperienceImage = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
     grid-template-columns: repeat(3, 1fr);

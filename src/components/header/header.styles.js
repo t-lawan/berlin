@@ -6,7 +6,7 @@ export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
   /* border-bottom: 1px solid black; */
-  padding: 1.4em 1.95em 0.7em;
+  padding: 1.4em 2em 0.7em;
   background: white;
 
   :hover {
