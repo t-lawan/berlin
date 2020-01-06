@@ -41,7 +41,8 @@ export const NavImageLink = styled(AniLink)`
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
-  padding: 1.3em 0.5em 0.5em;
+  line-height:1.2;
+  padding: 1.2em 0.5em 0.5em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
@@ -56,7 +57,8 @@ export const NavItem = styled(AniLink)`
 
 export const NavLink = styled.a`
   display: block;
-  padding: 1.3em 16px 0.5em;
+  line-height:1.2;
+  padding: 1.2em 16px 0.5em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
