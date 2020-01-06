@@ -4,7 +4,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const EventSection = styled(TextSection)`
     font-size: 1rem;
-
+    font-style:italic;
   p {
     font-size: inherit;
     margin:0;
