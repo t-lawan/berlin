@@ -17,6 +17,7 @@ import EventNavigator from "../components/events/event-navigator"
 import { Color } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
 
 const EventColumn = styled.div``
 
@@ -38,13 +39,14 @@ const EventTitle = styled.h1`
 const EventDescription = styled.div`
   p {
     font-size: 1.0rem;
+    line-height:1.4;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.0em;
+    font-size: 1.0rem;
   }
 `
 
@@ -127,7 +129,7 @@ const Event = props => {
 
             }
 
-            <p>{venue ? venue.address[0].address_line : ""}</p>
+            {/* <p>{venue ? venue.address[0].address_line : ""}</p> */}
           </EventTextBlock>
           <EventTextBlock>
             <p>{freeAdmision[language][event.language]}</p>
@@ -143,7 +145,7 @@ const Event = props => {
           <TextBlock>
             <EventTitle
               dangerouslySetInnerHTML={{
-                __html: event[language].event_title,
+                __html: striptags(event[language].event_title, ['em']),
               }}
             />
             <div

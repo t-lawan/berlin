@@ -28,8 +28,8 @@ const intitalState = {
   show_overlay: true,
   agreed_to_terms: false,
   experience_transition: {
-    animationIn: "fadeInLeft",
-    animationOut: "fadeOutRight",
+    animationIn: "slideInRight",
+    animationOut: "slideOutLeft",
     isVisible: true,
     isTransitioning: false,
   },
@@ -114,8 +114,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "fadeInRight",
-          animationOut: "fadeOutLeft",
+          animationIn: "slideInRight",
+          animationOut: "slideOutLeft",
           isVisible: false,
           isTransitioning: true,
         },
@@ -123,8 +123,8 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.DECREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
         experience_transition: {
-          animationIn: "fadeInLeft",
-          animationOut: "fadeOutRight",
+          animationIn: "slideInLeft",
+          animationOut: "slideOutRight",
           isVisible: false,
           isTransitioning: true,
         },

@@ -132,12 +132,12 @@ class Press extends React.Component {
               <p> {person[createProperty("position", this.language)]}</p>
             </div>
           ))}
-
+          <ul>
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
-            <div key={index}>
-              <p> {contact_data.contact_data_line}</p>
-            </div>
+              <li> {contact_data.contact_data_line}</li>
           ))}
+          <li><a target="__blank" href="mailto:{this.pressInfo.acf.press_email}">{this.pressInfo.acf.press_email}</a></li>
+          </ul>
         </div>
 
         <div>

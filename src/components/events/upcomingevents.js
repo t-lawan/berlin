@@ -65,7 +65,7 @@ const UpcomingEvents = props => {
             <EventTitle
               dangerouslySetInnerHTML={{ __html: item[language].subtitle }}
             />
-            <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
+            {/* <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p> */}
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>
