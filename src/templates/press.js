@@ -2,7 +2,7 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createProperty } from "../utility/helper"
+import { getCurrentLanguageString, createProperty, truncateText } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   PressArrowContainer,
@@ -26,6 +26,8 @@ import moment from "moment"
 import axios from "axios"
 import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
+
 class Press extends React.Component {
   language
   pressInfo
@@ -114,14 +116,13 @@ class Press extends React.Component {
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-
-    this.pressInfo = this.props.pageContext
-
+    this.pressInfo = this.props.pageContext;
+    let description = truncateText(striptags(this.pressInfo.acf[`${this.pressInfo.language.toUpperCase()}`].images_note));
     this.renderComponent = (
       <PressWrapper>
         <SEO
           title={`${this.pressInfo.slug}`}
-          description={`${this.pressInfo.slug}`}
+          description={description}
           lang={this.pressInfo.language}
         />
         <div>
@@ -134,7 +135,7 @@ class Press extends React.Component {
           ))}
           <ul>
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
-              <li> {contact_data.contact_data_line}</li>
+              <li key={index}> {contact_data.contact_data_line}</li>
           ))}
           <li><a target="__blank" href="mailto:{this.pressInfo.acf.press_email}">{this.pressInfo.acf.press_email}</a></li>
           </ul>
