@@ -336,12 +336,10 @@ exports.createPages = async ({ graphql, actions }) => {
       allWordpressWpExhibitions {
         edges {
           node {
-            id
             wordpress_id
             slug
             acf {
               exhibition_floorplan
-              exp_animation
               active_exhibition
               use_gallery_images
               exhibition_venue {
@@ -376,6 +374,7 @@ exports.createPages = async ({ graphql, actions }) => {
               start_date
               caption_de
               caption_en
+              exp_animation
             }
           }
         }

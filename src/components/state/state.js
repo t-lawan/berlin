@@ -76,14 +76,12 @@ const State = props => {
           allWordpressWpExhibitions {
             edges {
               node {
-                id
                 wordpress_id
                 slug
                 acf {
                   exhibition_floorplan
                   active_exhibition
                   use_gallery_images
-                  # exhibition_participants
                   exhibition_venue {
                     wordpress_id
                   }
@@ -98,6 +96,7 @@ const State = props => {
                     exp_dates_header
                     exp_title_header
                     exp_title_header_mobile
+                    exp_bb11_right_header
                   }
                   EN {
                     description
@@ -108,12 +107,14 @@ const State = props => {
                     exp_dates_header
                     exp_title_header
                     exp_title_header_mobile
+                    exp_bb11_right_header
                   }
                   end_date
                   exp_number
                   start_date
                   caption_de
                   caption_en
+                  exp_animation
                 }
               }
             }
