@@ -310,7 +310,11 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
-                  DE {
+                  english {
+                    access_info
+                    venue_name
+                  }
+                  deutsch {
                     access_info
                     venue_name
                   }
@@ -365,11 +369,11 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
-    
+
     let news = Convert.toModelArray(
       data.allWordpressWpNews,
       Convert.toNewsModel
-    );
+    )
     // let news = generateNewsArticles(20)
 
     let exhibitions = Convert.toModelArray(
