@@ -38,13 +38,14 @@ const EventTitle = styled.h1`
 const EventDescription = styled.div`
   p {
     font-size: 1.0rem;
+    line-height:1.4;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.0em;
+    font-size: 1.0rem;
   }
 `
 
