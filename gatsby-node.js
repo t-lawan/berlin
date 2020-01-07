@@ -209,7 +209,11 @@ exports.createPages = async ({ graphql, actions }) => {
               template
               exp_number
               embed_video_in_event
-              event_documentation
+              event_documentation {
+                wordpress_id
+              }
+              other_event_language_de
+              other_event_language
             }
           }
         }
@@ -408,11 +412,11 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
-              DE {
+              english {
                 access_info
                 venue_name
               }
-              EN {
+              deutsch {
                 access_info
                 venue_name
               }
