@@ -100,6 +100,7 @@ export class Convert {
       wordpressModel.acf.exhibition_floorplan,
       wordpressModel.acf.exhibition_participants,
       wordpressModel.acf.active_exhibition,
+      wordpressModel.acf.exp_animation
     )
   }
 
