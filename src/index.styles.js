@@ -163,7 +163,7 @@ a, span {
 p {
   margin-left: 0;
   margin-right: 0;
-  line-height: 1.4;
+  line-height: 1.3;
   margin-top: 0;
   margin-bottom: 1rem;
   padding-bottom: 0;
