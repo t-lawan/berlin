@@ -1,13 +1,32 @@
-import React from 'react';
-import { LogoWrapper } from './logo.styles';
-import logo from '../../images/stripes-min.gif'
-const Logo = props => {
+import React from "react"
+import { LogoWrapper } from "./logo.styles"
+import { connect } from "react-redux"
+import { getDocument } from "../../store/selector"
 
-    return (
-        <LogoWrapper>
-            <img src='https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_BB11.gif' alt="11th Berlin Biennale Logo"/>
-        </LogoWrapper>
-    );
+const Logo = props => {
+  let experience = props.experience
+  let exhibition = props.exhibitions.filter(ex => {
+    return ex.experience == experience
+  })[0];
+  let image = getDocument(props.documents, exhibition.animation);
+
+  return (
+    <LogoWrapper>
+      <img src={image.url} alt="11th Berlin Biennale Logo" />
+    </LogoWrapper>
+  )
 }
 
-export default Logo;
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+    experience: state.experience,
+    exhibitions: state.exhibitions,
+    documents: state.documents,
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(Logo)

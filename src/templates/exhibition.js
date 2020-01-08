@@ -3,24 +3,27 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import Layout from "../components/layout/layout"
 import { Convert } from "../utility/convert"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
-import { Section } from "../index.styles"
 import ExhibitionContent from "../components/exhibition/exhibition-content"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
+
 const ExhibitionPageWrapper = styled.div`
   padding: 2em 1em;
 `
 
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
-  const exhibition = Convert.toExhibitionModel(props.pageContext)
+  const exhibition = Convert.toExhibitionModel(props.pageContext);
+  let description = truncateText(striptags(exhibition[props.pageContext.language].description))
+  
   const renderComponent = (
     <>
       <SEO
         title={`${exhibition[language].title}`}
-        description={`${exhibition.slug}`}
+        description={description}
         lang={props.pageContext.language}
       />
       <ExhibitionContent exhibition={exhibition} />

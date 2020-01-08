@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../utility/helper"
+import { getCurrentLanguageString, createPath, truncateText } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
@@ -90,13 +90,15 @@ const Event = props => {
     });
   }
 
+  let description = truncateText(striptags(event[props.pageContext.language].event_subtitle));
+
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
           title={`${event.slug}`}
-          description={`${event.slug}`}
+          description={description}
           lang={props.pageContext.language}
         />
         <EventColumn>

@@ -14,7 +14,8 @@ export class ExhibitionModel {
     venue,
     floor_plan,
     participants,
-    active
+    active,
+    animation
   ) {
     this.id = id
     this.slug = slug
@@ -28,6 +29,7 @@ export class ExhibitionModel {
     this.floor_plan = floor_plan
     this.participants = participants
     this.active = active
+    this.animation = animation;
   }
 }
 

@@ -2,24 +2,26 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
   TextBlock,
   ResourcePublisherLink,
 } from "./page.styles"
-import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
+
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext;
+  let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
         title={`${pageInfo.slug}`}
-        description={`${pageInfo.slug}`}
+        description={description}
         lang={pageInfo.language}
       />
       <div>

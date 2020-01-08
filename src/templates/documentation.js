@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert";
@@ -10,11 +10,13 @@ import DocumentationAudio from "../components/documentation/documentation-audio"
 import DocumentationImageGallery from "../components/documentation/documentation-image-gallery";
 import DocumentationText from "../components/documentation/documentation-text";
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
 
 const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
+  let description = truncateText(striptags(documentationObject[props.pageContext.language].subtitle));
   let thirdColumn = (
     <>
       <NewsList />
@@ -39,7 +41,7 @@ const Documentation = props => {
   }
   return (
     <>
-      <SEO title={documentationObject.slug} description="Hello" lang={props.pageContext.lang} />
+      <SEO title={documentationObject.slug} description={description} lang={props.pageContext.lang} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}
