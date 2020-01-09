@@ -10,12 +10,14 @@ import {
   NavMobileWrapper,
   NavMobileHeader,
   NavIcon,
+  NavIconSVG,
   NavImage,
   NavMobileContent,
   NavInner,
   NavMobileInner,
   NavMobileLinks,
   NavMobileLink,
+  NavMobileLinkSmall,
   NavMobileOuterLink,
   NavMobileModal,
   NavImageLink,
@@ -72,7 +74,7 @@ class NavbarMobile extends React.Component {
       <NavMobileWrapper showInMobile>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
-            <NavIcon icon={faBars} show={this.state.showContent ? 0 : 1} />
+            <NavIconSVG src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk.svg" show={this.state.showContent ? 0 : 1}/>
             <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
           </div>
           <div>
@@ -92,9 +94,9 @@ class NavbarMobile extends React.Component {
 
           <NavMobileLinks>
               {this.navLinks.map((navLink, index) => (
-                <NavMobileLink fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
+                <NavMobileLinkSmall fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
                   {navLink[this.language]}
-                </NavMobileLink>
+                </NavMobileLinkSmall>
               ))}
           </NavMobileLinks>
 
@@ -105,23 +107,23 @@ class NavbarMobile extends React.Component {
                 newsletter{" "}
               </NavMobileModal>
               {socialMediaLinks.map(link => (
-                <NavMobileOuterLink
+                <NavMobileLinkSmall
                   key={link.name}
                   target="_blank"
                   href={link.url}
                 >
                   {" "}
                   {link.name}
-                </NavMobileOuterLink>
+                </NavMobileLinkSmall>
               ))}
             </div>
             <div>
-              <NavMobileLink fade to={createPath(this.language, "imprint")}>
+              <NavMobileLinkSmall fade to={createPath(this.language, "imprint")}>
                 imprint
-              </NavMobileLink>
-              <NavMobileLink fade to={createPath(this.language, "data-privacy")}>
+              </NavMobileLinkSmall>
+              <NavMobileLinkSmall fade to={createPath(this.language, "data-privacy")}>
                 data privacy
-              </NavMobileLink>
+              </NavMobileLinkSmall>
             </div>
           </NavMobileLinks>
         </NavMobileContent>
