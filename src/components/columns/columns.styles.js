@@ -49,6 +49,11 @@ export const FirstColumnWrapper = styled.div`
   & div:last-child {
     border-left: none;
   }
+  @media (max-width: ${size.mobileM}) {
+    display:flex;
+    flex-direction: column-reverse;
+
+  }
 `
 
 export const StickyTopHeader = styled.div`
@@ -58,6 +63,11 @@ export const StickyTopHeader = styled.div`
   ${hideDisplayForTablet}
   :first-child {
     border-right:solid 1px #000;
+  }
+  @media (max-width: ${size.mobileM}) {
+    :first-child {
+    border-right:solid 0px #000;
+  }
   }
   
 `
@@ -114,5 +124,9 @@ export const FixedNavbar = styled.div`
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
+  }
+  @media (max-width: ${size.mobileM}) {
+    position: fixed;
+    width:100%;
   }
 `
