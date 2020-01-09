@@ -15,6 +15,9 @@ const FooterWrapper = styled.footer`
   border-top: 1px solid black;
   border-right: 1px solid black;
   ${changeGridToOneRow};
+  @media (max-width: ${size.mobileM}) {
+    border-right: 0px solid black;
+  }
 `
 
 const ImageWrapper = styled.div`
