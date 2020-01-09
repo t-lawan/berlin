@@ -16,9 +16,10 @@ export const LanguageControllerWrapper = styled.div`
     flex-direction: row;
     padding: 0;
   }
-  @media (max-width: ${size.mobileL}) {
-    padding: 0.25em;
-
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.2em 0 0em;
+    text-align:right;
+    display:block;
   }
 `
 
@@ -40,8 +41,10 @@ export const LanguageButton = styled(AniLink)`
   }
 
   @media (max-width: ${size.mobileL}) {
-    font-size: 1.3rem;
-    margin: 0;
+    font-size: 1.65em;
+    margin-top:0.3em;
+    margin-bottom:0;
+    line-height: 1;
     margin-left: 0.5em;
   }
 
