@@ -17,7 +17,8 @@ export class EventsModel {
     thumbnail_image,
     participants,
     related_resource,
-    other_event_language
+    other_event_language,
+    other_event_language_de
   ) {
     this.id = id
     this.slug = slug
@@ -34,6 +35,7 @@ export class EventsModel {
     this.participants = participants
     this.related_resource = related_resource
     this.other_language = other_event_language
+    this.other_language_de = other_event_language_de
   }
 }
 

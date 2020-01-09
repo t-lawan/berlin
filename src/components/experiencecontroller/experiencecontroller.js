@@ -5,12 +5,15 @@ import * as actionTypes from "../../store/action"
 import {
   ExperienceControllerWrapper,
   ExperienceButton,
+  ExperienceButtonImage,
 } from "./experiencecontroller.styles"
 import { navigate } from 'gatsby';
 import { createPath, getCurrentLanguageString } from "../../utility/helper";
 class ExperienceController extends React.Component {
   experiences;
   language;
+  visibleDelayTime = 5;
+  changeExperienceDelayTime = 50;
   constructor(props) {
     super(props);
     this.language = getCurrentLanguageString(props.languages);
@@ -41,6 +44,37 @@ class ExperienceController extends React.Component {
       ]
     }
   }
+
+  incrementExperience = () => {
+    if(this.props.experience < this.experiences.length) {
+      this.props.experienceIncreased();
+      this.props.experience + 1
+      setTimeout(() => {
+        this.props.changeExperience(this.props.experience + 1);
+      }, this.changeExperienceDelayTime);
+      
+      navigate(createPath(this.language, '/'));
+      setTimeout(() => {
+        this.props.setIsVisibleToTrue()
+      }, this.visibleTransitionTime)
+    }
+  }
+
+  decrementExperience = () => {
+    if(this.props.experience > 0) {
+      this.props.experienceDecreased();
+      this.props.experience + 1
+      setTimeout(() => {
+        this.props.changeExperience(this.props.experience - 1);
+      }, this.changeExperienceDelayTime);
+      
+      navigate(createPath(this.language, '/'));
+      setTimeout(() => {
+        this.props.setIsVisibleToTrue()
+      }, this.visibleTransitionTime)
+    }
+  }
+
   changeExperience = chosenExperience => {
     if (chosenExperience.isReady) {
       let currentExperience = this.props.experience
@@ -55,7 +89,7 @@ class ExperienceController extends React.Component {
       navigate(createPath(this.language, '/'));
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
-      }, 5)
+      }, this.visibleTransitionTime)
     }
   }
 
@@ -95,8 +129,8 @@ class ExperienceController extends React.Component {
     return (
       <ExperienceControllerWrapper left={this.props.left}>
         <ExperienceButton hidden={this.experiences.length === 0} show>
-          <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_prev.svg" />
-          <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_next.svg" />
+          <ExperienceButtonImage hidden={!this.props.left} onClick={() => this.decrementExperience()} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_prev.svg" />
+          <ExperienceButtonImage hidden={this.props.left} onClick={() => this.incrementExperience()}  src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_next.svg" />
         </ExperienceButton>
         <ExperienceButton bold hidden={this.experiences.length === 0} show>
           <span> exp. </span>
