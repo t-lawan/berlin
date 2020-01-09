@@ -86,8 +86,8 @@ const ResourcesList = props => {
             <ResourceItem>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
-                 {resource.subtitle.length > 0 ? <ResourceTitle>   resource.subtitle  </ResourceTitle> : ""}
-                 {resource.author.length > 0 ? <ResourceTitle>   resource.author  </ResourceTitle> : ""}
+                 {resource.subtitle.length > 0 ? <ResourceTitle> {resource.subtitle} </ResourceTitle> : ""}
+                 {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
               </TextBox>
               <ResourceLabel> {resource[language].label} </ResourceLabel>
             </ResourceItem>
