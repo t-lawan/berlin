@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {hideDisplayForTablet } from "../../index.styles";
+import {hideDisplayForTablet, size } from "../../index.styles";
 
 
 export const ColumnLayout = styled.div`
@@ -20,5 +20,8 @@ export const ColumnLayout = styled.div`
   :nth-child(4){
     border-right: none;
     border-top: solid 1px #000;
+  }
+  @media (max-width: ${size.mobileM}) {
+    border-right:solid 0px #000;
   }
 `
