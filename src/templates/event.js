@@ -87,7 +87,7 @@ const Event = props => {
       return resource.wordpress_id;
     });
   }
-  let description = truncateText(striptags(event[`${props.pageContext.language.toUpperCase()}`].event_subtitle));
+  let description = truncateText(striptags(event[`${props.pageContext.language.toUpperCase()}`].full_description));
 
   const renderComponent = (
     <>
