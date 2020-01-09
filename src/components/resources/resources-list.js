@@ -14,6 +14,9 @@ const ResourcesListWrapper = styled.div`
 
 const ResourceTitle = styled.p`
   font-size: 1rem;
+  :last-child {
+    margin-bottom:0;
+  }
 `
 
 const ResourceLabel = styled.p`
@@ -46,10 +49,11 @@ const ResourceItem = styled.div`
 `
 
 const TextBox = styled.div`
-  padding: 1em 0.75em;
+  padding: 0.7em 0.75em;
   background: ${Color.yellow};
   /* border: 1px solid black; */
   margin-bottom: 0rem;
+  
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -82,7 +86,8 @@ const ResourcesList = props => {
             <ResourceItem>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
-                <ResourceTitle> {resource.author} </ResourceTitle>
+                 {resource.subtitle.length > 0 ? <ResourceTitle>   resource.subtitle  </ResourceTitle> : ""}
+                {resource.author.length > 0 ? <ResourceTitle>   resource.author  </ResourceTitle> : ""}
               </TextBox>
               <ResourceLabel> {resource[language].label} </ResourceLabel>
             </ResourceItem>
@@ -112,7 +117,7 @@ const ResourcesList = props => {
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
               </TextBox>
-              <ResourceLabel> {resource.author} </ResourceLabel>
+              <ResourceLabel> {resource.label} </ResourceLabel>
 
             </ResourceItem>
           </ResourceItemLink>
