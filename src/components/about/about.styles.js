@@ -35,6 +35,7 @@ export const AboutNavItemLink = styled(AniLink)`
 export const AboutPageContent = styled.div`
     p{
         margin-bottom: 1em;
+        line-height:1.4;
     }
     a {
         border-bottom: solid thin ${Color.red}
