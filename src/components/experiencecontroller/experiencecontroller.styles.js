@@ -38,6 +38,12 @@ export const ExperienceButton = styled.div`
   }
 `
 
+export const ExperienceButtonImage = styled.img`
+  :hover {
+    cursor: pointer;
+  }
+`
+
 export const ExperienceControllerMobileWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background: white;
