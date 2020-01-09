@@ -11,6 +11,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
 import styled from 'styled-components';
+import striptags from 'striptags';
 
 const ResourceTextDiv = styled.div`
   a {
@@ -20,7 +21,7 @@ const ResourceTextDiv = styled.div`
   }
 `
 
-const ResourceTitle = styled.p`
+const ResourceTitle = styled.h1`
   font-size: 1.8em;
   line-height: 1.2;
 `
@@ -48,7 +49,12 @@ const ResourceText = props => {
           <p hidden={r.text_based_resource[0].document_language.length === 0}> Language: {r.text_based_resource[0].document_language}</p>
         </div>
         <div>
-          <ResourceTitle> {r.title}</ResourceTitle>
+          <ResourceTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(r.title, ['em']),
+              }}
+            />
+          
           <p> {r.author}</p>
           <p>
             In:{" "}
