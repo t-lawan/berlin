@@ -74,8 +74,6 @@ const eventContent = {
   }
 }
 
-
-
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
@@ -89,8 +87,7 @@ const Event = props => {
       return resource.wordpress_id;
     });
   }
-
-  let description = truncateText(striptags(event[props.pageContext.language].event_subtitle));
+  let description = truncateText(striptags(event[`${props.pageContext.language.toUpperCase()}`].event_subtitle));
 
   const renderComponent = (
     <>
@@ -134,7 +131,7 @@ const Event = props => {
             {/* <p>{venue ? venue.address[0].address_line : ""}</p> */}
           </EventTextBlock>
           <EventTextBlock>
-            <p>{freeAdmision[language][event.language]}</p>
+            <p>{event.language == "other" ? event[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][event.language]}</p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </EventTextBlock>
           <EventTextBlock>
