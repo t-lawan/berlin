@@ -411,11 +411,19 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
+<<<<<<< Updated upstream
               english {
                 access_info
                 venue_name
               }
               deutsch {
+=======
+              deutsch {
+                access_info
+                venue_name
+              }
+              english {
+>>>>>>> Stashed changes
                 access_info
                 venue_name
               }
