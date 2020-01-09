@@ -15,8 +15,8 @@ export class VenueModel {
   ) {
     this.id = id
     this.slug = slug
-    this.deutsch = deutsch
-    this.english = english
+    this.DE = deutsch
+    this.EN = english
     this.google_map_link = google_map_link
     this.thumbnail_image = thumbnail_image
     this.address = address
