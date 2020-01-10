@@ -131,7 +131,8 @@ export const NavMobileModal = styled.p`
 `
 
 export const NavMobileContent = styled.div`
-  display: ${props => (props.show ? "inherit" : "none")};
+  max-height: ${props => (props.show ? "1200px" : "0")};
+  transition: all 0.3s ease-in-out;
 `
 
 export const NavImage = styled.img`
