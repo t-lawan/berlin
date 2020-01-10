@@ -8,6 +8,8 @@ const ExhibitionPageWrapper = styled.div`
   padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
     padding: 1em 0.7em;
+    border-top:solid 1px #000;
+    background:#FFF;
   }
 `
 
