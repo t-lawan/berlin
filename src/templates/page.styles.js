@@ -10,6 +10,14 @@ export const PageWrapper = styled.div`
     background:#FFF;
   }
 `
+export const PageWrapperRes = styled.div`
+  padding: 2.0em 1em 2em;
+  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
+  @media (max-width: ${size.tablet}) {
+    padding: 0em;
+    background:#FFF;
+  }
+`
 
 export const TwoColumnPageWrapper = styled.div`
   padding: 1em 1em 2em;
