@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem, NavLink } from "./navbar.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 
 const Navbar = props => {
   const data = useStaticQuery(
@@ -39,7 +39,8 @@ const Navbar = props => {
           activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
           key={item.slug}
-          fade
+          cover direction="down"
+          bg={transitionBackground}
         >
           {item[language].title.toLowerCase()}
         </NavItem>

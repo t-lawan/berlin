@@ -504,8 +504,11 @@ exports.createPages = async ({ graphql, actions }) => {
       template = aboutTemplate
     }
     // Create pages for both EN and DE
+    let slug = edge.node.slug
+
     languages.forEach(language => {
       let path;
+
       if(edge.node.parent_element && edge.node.parent_element.slug === "about") {
         // path =
         // language === "en"
@@ -517,9 +520,10 @@ exports.createPages = async ({ graphql, actions }) => {
         });
         path =
         language === "en"
-          ? `/${prePath.EN}/${edge.node.slug}`
-          : `/${language}/${prePath.DE}/${edge.node.slug}`;
-        edge.node.slug = (language === "en") ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`;
+          ? `/${prePath.EN}/${slug}`
+          : `/${language}/${prePath.DE}/${slug}`;
+          console.log(language, path);
+        edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
       } else {
         path =
         language === "en"

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { JumbotronWrapper, JumbotronHeader } from "./jumbotron.styles"
 import { BerlinJumbotron } from "../../images/berlin-jumbotron"
 import {ReactComponent as Heading} from "../../images/berlin-heading.svg"
-import { createPath, getCurrentLanguageString } from "../../utility/helper";
+import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper";
 import { connect } from "react-redux"
 import { getDocument } from "../../store/selector";
 
@@ -17,7 +17,10 @@ const Jumbotron = props => {
   let image = getDocument(props.documents, exhibition[language].exp_bb11_right_header);
   return(
   <JumbotronWrapper showInMobile={props.showInMobile}>
-    <JumbotronHeader to={createPath(language, '')}>
+    <JumbotronHeader 
+    bg={transitionBackground}
+    cover direction="down"
+    to={createPath(language, '')}>
       <img src={image.url} alt={image.slug}/>
     </JumbotronHeader>
   </JumbotronWrapper>

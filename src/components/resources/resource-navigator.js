@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import { size } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
@@ -66,13 +66,15 @@ class ResourceNavigator extends React.Component {
     return (
       <RelatedNavigatorWrapper>
         <RelatedNavigatorButton
-          fade
+          bg={transitionBackground}
+          cover direction="down"
           to={createPath(this.language, this.previousPage())}
         >
           {`<`}
         </RelatedNavigatorButton>
         <RelatedNavigatorButton
-          fade
+          bg={transitionBackground}
+          cover direction="down"
           to={createPath(this.language, this.nextPage())}
         >
           {`>`}

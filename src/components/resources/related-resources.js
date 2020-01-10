@@ -5,7 +5,7 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString } from "../../utility/helper"
+import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper"
 import { get } from "http";
 
 const RelatedResourcesWrapper = styled.div`
@@ -110,6 +110,8 @@ const RelatedResources = props => {
         <ResourceLink
           key={index}
           to={createPath(language, `resource/${resource.slug}`)}
+          cover direction="down"
+          bg={transitionBackground}
         >
           <RelatedResource>
             <ResourceText>{resource.title}</ResourceText>

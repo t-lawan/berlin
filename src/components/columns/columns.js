@@ -35,6 +35,12 @@ import NewsList from "../news/newslist";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
+  constructor(props) {
+    super(props);
+    this.state = {
+      showEvents: false
+    }
+  }
   render() {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
@@ -112,7 +118,7 @@ class Columns extends React.Component {
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column rightBorder={true} hideInMobile>
+          <Column rightBorder={true} hideInMobile={!this.props.show_events_in_mobile}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
@@ -157,6 +163,7 @@ const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
     agreed_to_terms: state.agreed_to_terms,
+    show_events_in_mobile: state.show_events_in_mobile
   }
 }
 export default connect(

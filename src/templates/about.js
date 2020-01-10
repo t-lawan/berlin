@@ -17,7 +17,6 @@ const About = props => {
   const language = getCurrentLanguageString(props.languages)
   const content = props.pageContext;
   let description = content.acf[`${content.language.toUpperCase()}_row`] ? truncateText(striptags(content.acf[`${content.language.toUpperCase()}_row`].description)) : "";
-
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO

@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, createPath, truncateText, transitionBackground } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
@@ -132,6 +132,8 @@ const Event = props => {
             {props.experience == 4 ? (
               <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
+              bg={transitionBackground}
+              cover direction="down"
             >
               {" "}
               {venue ? venue[language].venue_name : ""}

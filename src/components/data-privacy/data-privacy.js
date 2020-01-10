@@ -3,8 +3,8 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { UnderlineTransitionLink, LargeButton, Section, size } from "../../index.styles";
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
   grid-template-columns: 8fr 1fr;
@@ -46,7 +46,7 @@ const DataPrivacy = props => {
       <DataPrivacyBlock>
         <p>
           {text[language].text}
-          <UnderlineTransitionLink colour="white" fade to={createPath(language, 'data-privacy')}>
+          <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}>
             {text[language].link}
           </UnderlineTransitionLink>
           .

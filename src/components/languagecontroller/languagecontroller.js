@@ -6,7 +6,7 @@ import {
   LanguageControllerWrapper,
   LanguageButton,
 } from "./languagecontroller.styles"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 class LanguageController extends React.Component {
   languageToFunctionWrapper = {
     EN: () => this.props.setLanguageToEN(),
@@ -21,8 +21,8 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {Object.keys(this.props.languages).map(language => (
           <LanguageButton
-            direction="up"
-            duration={0.3}
+            cover direction="down"
+            bg={transitionBackground}
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}

@@ -5,6 +5,7 @@ import {
   getCurrentLanguageString,
   createPath,
   createProperty,
+  transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
@@ -22,6 +23,7 @@ import {
   NavMobileModal,
   NavImageLink,
   NavLink,
+  NavMobileLinkParagraph,
 } from "./navbar.styles"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
@@ -64,6 +66,8 @@ class NavbarMobile extends React.Component {
     })
   }
 
+
+
   showModal = () => {
     this.props.showModal()
   }
@@ -78,7 +82,7 @@ class NavbarMobile extends React.Component {
             <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
           </div>
           <div>
-            <NavImageLink fade to={createPath(this.language, '')}>
+            <NavImageLink cover direction="down" bg={transitionBackground} to={createPath(this.language, '')}>
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
           </div>
@@ -89,12 +93,13 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
+            <NavMobileLinkParagraph onClick={() => this.props.toggleEvents()}> current </NavMobileLinkParagraph>
             {this.props.navbar.map((item, index) => generateLink(item, this.language))}
           </NavMobileInner>
 
           <NavMobileLinks>
               {this.navLinks.map((navLink, index) => (
-                <NavMobileLinkSmall fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
+                <NavMobileLink cover direction="down" bg={transitionBackground} key={index} to={createPath(this.language, `about/${navLink.path}`)}>
                   {navLink[this.language]}
                 </NavMobileLinkSmall>
               ))}
@@ -118,10 +123,10 @@ class NavbarMobile extends React.Component {
               ))}
             </div>
             <div>
-              <NavMobileLinkSmall fade to={createPath(this.language, "imprint")}>
+              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "imprint")}>
                 imprint
-              </NavMobileLinkSmall>
-              <NavMobileLinkSmall fade to={createPath(this.language, "data-privacy")}>
+              </NavMobileLink>
+              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "data-privacy")}>
                 data privacy
               </NavMobileLinkSmall>
             </div>
@@ -145,7 +150,7 @@ const generateLink = (item, language) => {
         activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
         key={item.slug}
-        fade
+        bg={transitionBackground}
       >
         {item[language].title.toLowerCase()}
       </NavMobileLink>
@@ -164,6 +169,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    toggleEvents: () => dispatch({type: actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE})
   }
 }
 
