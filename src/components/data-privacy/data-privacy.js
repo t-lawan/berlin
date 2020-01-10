@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { UnderlineTransitionLink, LargeButton, Section } from "../../index.styles";
+import { UnderlineTransitionLink, LargeButton, Section, size } from "../../index.styles";
 export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
   grid-template-columns: 8fr 1fr;
@@ -17,8 +17,11 @@ export const DataPrivacyWrapper = styled(Section)`
 `
 
 export const DataPrivacyBlock = styled.div`
-    > p > a {
-    font-size: 1rem;
+    > p {
+      @media (max-width: ${size.mobileM}) {
+      font-size: 0.9rem;
+      margin-bottom:0;
+    }
   }
 `
 
