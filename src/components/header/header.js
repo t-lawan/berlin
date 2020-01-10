@@ -5,6 +5,7 @@ import {
   HeaderWrapper,
   HeaderLink,
   HeaderImage,
+  HeaderImageMob,
 } from "./header.styles"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { getDocument } from "../../store/selector";
@@ -29,7 +30,7 @@ const Header = props => {
         <HeaderLink cover direction="down" bg="url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white" to={createPath(language, '')}>
         <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
         <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url}/>
-        <HeaderImage showInMobile alt="title" src={titleHeaderSvgMob.url}/>
+        <HeaderImageMob alt="title" src={titleHeaderSvgMob.url}/>
       </HeaderLink>
     </HeaderWrapper>
   )
