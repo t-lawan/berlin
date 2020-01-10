@@ -16,7 +16,36 @@ export const JumbotronWrapper = styled.div`
 export const JumbotronHeader = styled(AniLink)`
   text-decoration: none;
   color: black;
+  position: relative;
+  display:block;
   :hover {
     cursor: pointer;
+  }
+`
+export const JumbotronWrapperMob = styled.div`
+  background: transparent;
+  padding: 0.5em 0.7rem
+  margin: 0em;
+  position:relative;
+  width:100%;
+  z-index:2;
+  display:block;
+  img {
+    margin-bottom:0;
+    position:relative;
+    z-index:2;
+    padding:0.7em 0.7em;
+    :nth-child(2){
+      padding-top:0em;
+      margin-top:-0.7em;
+    }
+  }
+  img.bg_anim {
+    position: absolute;
+    top:10px;
+    z-index:1;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 `
