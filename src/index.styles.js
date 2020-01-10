@@ -151,7 +151,6 @@ a, span {
   padding: 0;
   transition: all 0.2s ease-in-out;
   @media (max-width: ${size.tablet}) {
-    font-size:1em;
   }
 }
 p {
