@@ -142,7 +142,7 @@ const generateLink = (item, language) => {
   } else {
     return (
       <NavMobileLink
-        activeStyle={{ color: "#990033" }}
+        activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
         key={item.slug}
         fade
