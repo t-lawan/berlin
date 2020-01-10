@@ -6,68 +6,112 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 
 const AboutNavbar = props => {
-  const { allWordpressPage } = useStaticQuery(
-    graphql`
-      {
-        allWordpressPage(
-          filter: { parent_element: { slug: { eq: "about" } } }
-        ) {
-          edges {
-            node {
-              wordpress_id
-              slug
-              acf {
-                EN_row {
-                  description
-                }
-                DE_row {
-                  description
-                  german_page_slug
-                }
-                DE {
-                  title
-                }
-                template
-                EN {
-                  title
-                }
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-  let items = []
-  items.push({
-    slug: "about",
-    EN: {
-      title: "About",
-      slug: "about"
-    },
-    DE: {
-      title: "About",
-      slug: "uber"
-    },
-  });
-
-  allWordpressPage.edges.forEach(edge => {
-    let object = {
-      slug: edge.node.slug,
+  // const { allWordpressPage } = useStaticQuery(
+  //   graphql`
+  //     {
+  //       allWordpressPage(
+  //         filter: { parent_element: { slug: { eq: "about" } } }
+  //       ) {
+  //         edges {
+  //           node {
+  //             wordpress_id
+  //             slug
+  //             acf {
+  //               EN_row {
+  //                 description
+  //               }
+  //               DE_row {
+  //                 description
+  //                 german_page_slug
+  //               }
+  //               DE {
+  //                 title
+  //               }
+  //               template
+  //               EN {
+  //                 title
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
+  let items = [
+    {
       EN: {
-        title: edge.node.acf.EN.title ? edge.node.acf.EN.title : edge.node.slug,
-        slug: `about/${edge.node.slug}`
+        title: "About",
+        slug: "about"
       },
       DE: {
-        title: edge.node.acf.DE.title ? edge.node.acf.DE.title : edge.node.slug,
-        slug: `about/${edge.node.acf.DE_row.german_page_slug}`
+        title: "About",
+        slug: "uber"
       },
-    }
-    items.push(object);
-  })
+    },
+    {
+      EN: {
+        title: "team",
+        slug: "about/team"
+      },
+      DE: {
+        title: "team",
+        slug: "about/team"
+      },
+    },
+    {
+      EN: {
+        title: "organization",
+        slug: "about/organization-2"
+      },
+      DE: {
+        title: "verein",
+        slug: "about/verein"
+      },
+    },
+    {
+      EN: {
+        title: "advisory board",
+        slug: "about/advisory-board"
+      },
+      DE: {
+        title: "beirat",
+        slug: "about/beirat"
+      },
+    },
+    {
+      EN: {
+        title: "support",
+        slug: "about/support"
+      },
+      DE: {
+        title: "support",
+        slug: "about/unterstutzung"
+      },
+    },
+  ]
+  // items.push();
+
+  // allWordpressPage.edges.forEach(edge => {
+  //   let object = {
+  //     slug: edge.node.slug,
+  //     EN: {
+  //       title: edge.node.acf.EN.title ? edge.node.acf.EN.title : edge.node.slug,
+  //       slug: `about/${edge.node.slug}`
+  //     },
+  //     DE: {
+  //       title: edge.node.acf.DE.title ? edge.node.acf.DE.title : edge.node.slug,
+  //       slug: `about/${edge.node.acf.DE_row.german_page_slug}`
+  //     },
+  //   }
+  //   items.push(object);
+  // })
+
+  console.log(1, items);
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
+    console.log(`/${items[index][language].slug}`, props.currentPage)
     return `/${items[index][language].slug}` === props.currentPage
   }
 
@@ -83,27 +127,6 @@ const AboutNavbar = props => {
     </AboutSideNavbar>
   )
 }
-
-const navbarItems = [
-  {
-    slug: "about",
-    EN: {
-      title: "About",
-    },
-    DE: {
-      title: "About",
-    },
-  },
-  {
-    slug: "about",
-    EN: {
-      title: "About",
-    },
-    DE: {
-      title: "About",
-    },
-  },
-]
 
 const mapStateToProps = state => {
   return {

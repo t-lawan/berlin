@@ -40,7 +40,7 @@ const DataPrivacy = props => {
       <DataPrivacyBlock>
         <p>
           {text[language].text}
-          <UnderlineTransitionLink colour="white" bg={transitionBackground} to={createPath(language, 'data-privacy')}>
+          <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}>
             {text[language].link}
           </UnderlineTransitionLink>
           .
