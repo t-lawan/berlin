@@ -23,5 +23,6 @@ export const ColumnLayout = styled.div`
   }
   @media (max-width: ${size.mobileM}) {
     border-right:solid 0px #000;
+    background: transparent;
   }
 `
