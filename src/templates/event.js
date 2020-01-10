@@ -14,7 +14,7 @@ import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
-import { Color } from "../index.styles"
+import { Color, size, hideDisplayForMobile } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
@@ -34,6 +34,15 @@ const EventTitle = styled.h1`
   padding-bottom: 0.5rem;
   font-size: 1.8rem;
   line-height:1.2;
+  ${hideDisplayForMobile};
+`
+const EventTitleMob = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 1.0em;
+  line-height:1.2;
+  @media (min-width: ${size.tablet}) {
+    display:none;
+  }
 `
 
 const EventDescription = styled.div`
@@ -99,6 +108,11 @@ const Event = props => {
           lang={props.pageContext.language}
         />
         <EventColumn>
+        <EventTitleMob
+              dangerouslySetInnerHTML={{
+                __html: striptags(event[language].event_title, ['em']),
+              }}
+            />
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
