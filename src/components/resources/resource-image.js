@@ -1,6 +1,6 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { PageWrapper, TwoColumnPageWrapper, ResourcePublisherLink } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color } from "../../index.styles"
 import PropTypes from "prop-types"
@@ -20,7 +20,7 @@ const ResourceImage = props => {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
-    <PageWrapper colour={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
       <ImageResource id={r.image} withCaption={false} />
       <TwoColumnPageWrapper>
@@ -41,7 +41,7 @@ const ResourceImage = props => {
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={resourceIds} />
-    </PageWrapper>
+    </PageWrapperRes>
   )
 }
 
