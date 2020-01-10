@@ -66,7 +66,7 @@ const UpcomingEvents = props => {
               dangerouslySetInnerHTML={{ __html: item[language].subtitle }}
             />
             {/* <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p> */}
-            
+            <p>{item.language == "other" ? item[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][item.language]}</p>
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>
