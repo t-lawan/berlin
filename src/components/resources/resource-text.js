@@ -1,12 +1,12 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import {
-  PageWrapper,
+  PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
@@ -15,7 +15,6 @@ import striptags from 'striptags';
 
 const ResourceTextDiv = styled.div`
   a {
-    font-size: 1rem;
     border-bottom: solid thin;
     border-color: ${Color.red};
   }
@@ -37,7 +36,7 @@ const ResourceText = props => {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
-    <PageWrapper colour={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
       <TwoColumnPageWrapper>
         <div>
@@ -55,7 +54,7 @@ const ResourceText = props => {
               }}
             />
           
-          <p> {r.author}</p>
+          {r.author.length > 0 ? <p> {r.author} </p> : ""}
           <p>
             In:{" "}
             <ResourcePublisherLink
@@ -74,7 +73,7 @@ const ResourceText = props => {
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={resourceIds} />
-    </PageWrapper>
+    </PageWrapperRes>
   )
 }
 
