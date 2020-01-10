@@ -132,6 +132,9 @@ const ExperienceImageMob = styled.img`
   @media (max-width: ${size.tablet}) {
     width: 100%;
   }
+  @media (min-width: ${size.laptop}) {
+    display:none;
+  }
 `
 
 class ExperiencePage extends React.Component {
