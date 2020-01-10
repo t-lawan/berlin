@@ -18,11 +18,17 @@ const ResourceTitle = styled.p`
   :last-child {
     margin-bottom:0;
   }
+  @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+  }
 `
 
 const ResourceLabel = styled.p`
   font-size: 1rem;
   margin: 0.5em 0 0;
+  @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+  }
 `
 
 const ResourceItemLink = styled(Link)`
