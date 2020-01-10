@@ -1,5 +1,5 @@
 import React from "react"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import { connect } from "react-redux"
 import { AboutSideNavbar, AboutNavItem, AboutNavItemLink } from "./about.styles"
 import PropTypes from "prop-types"
@@ -74,7 +74,7 @@ const AboutNavbar = props => {
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (
-        <AboutNavItemLink fade to={createPath(language, item['EN'].slug)} key={index}>
+        <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}>
           <AboutNavItem current={isCurrentPage(index)}>
             {item[language].title.toLowerCase()}
           </AboutNavItem>

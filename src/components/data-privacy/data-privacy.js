@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import { UnderlineTransitionLink, LargeButton, Section } from "../../index.styles";
 export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
@@ -40,7 +40,7 @@ const DataPrivacy = props => {
       <DataPrivacyBlock>
         <p>
           {text[language].text}
-          <UnderlineTransitionLink colour="white" fade to={createPath(language, 'data-privacy')}>
+          <UnderlineTransitionLink colour="white" bg={transitionBackground} to={createPath(language, 'data-privacy')}>
             {text[language].link}
           </UnderlineTransitionLink>
           .

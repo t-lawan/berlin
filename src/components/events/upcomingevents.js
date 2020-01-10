@@ -6,7 +6,7 @@ import {
   EventTitle,
 } from "./upcomingevents.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import moment from "moment"
 import "moment/locale/en-gb"
 import "moment/locale/de"
@@ -51,7 +51,7 @@ const UpcomingEvents = props => {
       </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
-          <EventLink colour="black" to={createPath(language, `${item.slug}`)}>
+          <EventLink  cover direction="down" bg={transitionBackground} colour="black" to={createPath(language, `${item.slug}`)}>
             <p>
               {" "}
               {moment(item.start_date)

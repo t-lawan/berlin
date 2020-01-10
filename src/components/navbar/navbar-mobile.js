@@ -5,6 +5,7 @@ import {
   getCurrentLanguageString,
   createPath,
   createProperty,
+  transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
@@ -76,7 +77,7 @@ class NavbarMobile extends React.Component {
             <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
           </div>
           <div>
-            <NavImageLink fade to={createPath(this.language, '')}>
+            <NavImageLink cover direction="down" bg={transitionBackground} to={createPath(this.language, '')}>
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
           </div>
@@ -92,7 +93,7 @@ class NavbarMobile extends React.Component {
 
           <NavMobileLinks>
               {this.navLinks.map((navLink, index) => (
-                <NavMobileLink fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
+                <NavMobileLink cover direction="down" bg={transitionBackground} key={index} to={createPath(this.language, `about/${navLink.path}`)}>
                   {navLink[this.language]}
                 </NavMobileLink>
               ))}
@@ -116,10 +117,10 @@ class NavbarMobile extends React.Component {
               ))}
             </div>
             <div>
-              <NavMobileLink fade to={createPath(this.language, "imprint")}>
+              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "imprint")}>
                 imprint
               </NavMobileLink>
-              <NavMobileLink fade to={createPath(this.language, "data-privacy")}>
+              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "data-privacy")}>
                 data privacy
               </NavMobileLink>
             </div>
@@ -143,7 +144,7 @@ const generateLink = (item, language) => {
         activeStyle={{ color: "#990033" }}
         to={createPath(language, item.slug)}
         key={item.slug}
-        fade
+        bg={transitionBackground}
       >
         {item[language].title.toLowerCase()}
       </NavMobileLink>
