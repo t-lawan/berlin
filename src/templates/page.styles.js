@@ -6,7 +6,8 @@ export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
+    background:#FFF;
   }
 `
 
@@ -18,6 +19,7 @@ export const TwoColumnPageWrapper = styled.div`
   grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
+    background:#FFF;
   }
   ${changeGridToOneRow}
 `
@@ -164,6 +166,10 @@ export const TextBlock = styled.div`
   }
   p {
     font-size:1rem;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+    line-height:1.4;
+  }
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;
