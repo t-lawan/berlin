@@ -45,7 +45,7 @@ const AboutNavbar = props => {
         slug: "about"
       },
       DE: {
-        title: "About",
+        title: "uber",
         slug: "uber"
       },
     },
@@ -90,28 +90,10 @@ const AboutNavbar = props => {
       },
     },
   ]
-  // items.push();
 
-  // allWordpressPage.edges.forEach(edge => {
-  //   let object = {
-  //     slug: edge.node.slug,
-  //     EN: {
-  //       title: edge.node.acf.EN.title ? edge.node.acf.EN.title : edge.node.slug,
-  //       slug: `about/${edge.node.slug}`
-  //     },
-  //     DE: {
-  //       title: edge.node.acf.DE.title ? edge.node.acf.DE.title : edge.node.slug,
-  //       slug: `about/${edge.node.acf.DE_row.german_page_slug}`
-  //     },
-  //   }
-  //   items.push(object);
-  // })
-
-  console.log(1, items);
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
-    console.log(`/${items[index][language].slug}`, props.currentPage)
     return `/${items[index][language].slug}` === props.currentPage
   }
 
