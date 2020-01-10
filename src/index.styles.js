@@ -146,17 +146,12 @@ img {
   margin-bottom: 1.45rem;
 }
 a, span {
-  margin-left: 0;
-  margin-right: 0;
-  line-height: 1.4;
-  margin-top: 0;
+  margin:0;
   margin-bottom: 0rem;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
   @media (max-width: ${size.tablet}) {
-    font-size: 1rem;
+    font-size:1em;
   }
 }
 p {
@@ -173,6 +168,9 @@ p {
   @media (max-width: ${size.mobileM}) {
     font-size: 1.1rem;
     line-height:1.4;
+    > a {
+      font-size:1em;
+    }
   }
 }
 
@@ -280,7 +278,7 @@ export const UnderlinedText = styled.p`
 export const Section = styled.section`
   padding: 1em;
   @media (max-width: ${size.mobileM}) {
-    padding: 0.3em
+    padding: 0.7em
   }
 `
 
@@ -314,6 +312,9 @@ export const LargeButton = styled.button`
   padding: 8px 16px;
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: ${size.mobileM}) {
+    margin: 0.2em 0 0 10px;
   }
 `
 
