@@ -9,6 +9,7 @@ const ResourcesListWrapper = styled.div`
   padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
     padding: 0 0.7em;
+    background-color: #fff;
   }
 `
 
