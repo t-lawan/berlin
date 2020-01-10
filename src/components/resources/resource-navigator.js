@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { size } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,12 +13,29 @@ const RelatedNavigatorWrapper = styled.div`
   margin-bottom:0;
   flex-direction: row;
   background: transparent;
+  @media (max-width: ${size.mobileM}) {
+    display:block;
+    margin-top:0em;
+    padding: 0.5em 0 0 0.7em;
+    width:100%;
+    :after {
+      content:"";
+      clear:both;
+      display:table;
+    }
+  }
 `
 
 const RelatedNavigatorButton = styled(AniLink)`
   font-size: 1.1rem;
   padding: 0.0em 1em 0 0em;
   text-decoration: none;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0.6em;
+    margin-top: -0.5em;
+    font-size: 1.55em;
+    padding: 0 1em 0 0;
+  }
 `
 
 const RelatedNavigatorIcon = styled(FontAwesomeIcon)``
