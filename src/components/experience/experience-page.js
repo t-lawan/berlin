@@ -13,15 +13,34 @@ const ExperiencePageWrapper = styled.div`
   background: #fbf95d;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
+  @media (max-width: ${size.mobileM}) {
+    width:100%;
+    left: 0;
+    bottom:45px;
+    height:calc(100vh - 91px);
+    top:45px;
+  }
 `
 
 const ExperienceImagesContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 80vh;
+  display:block
   align-items: center;
   justify-content: center;
+  @media (max-width: ${size.mobileM}) {
+    margin-top:0px;
+    top: 50%;
+    width:60%;
+    display: block;
+    position: absolute;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 `
+
 
 const CloseImage = styled.img`
   width: 3%;
@@ -29,35 +48,41 @@ const CloseImage = styled.img`
   @media (max-width: ${size.tablet}) {
     width: 5%;
   }
+  @media (max-width: ${size.mobileM}) {
+    width: 7%;
+  }
 `
 const TopRow = styled.div`
   display: flex;
   padding: 0.7em;
   flex-direction: row-reverse;
+  > img {
+    margin-bottom:0;
+  }
 `
 const ExperienceImage = styled.img`
-  width: 30%;
+  width: 40%;
   align-self: center;
-  :nth-child(2) {
+  :nth-child(3) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
     margin-top: 3em;
     opacity: 0;
     margin-bottom: 0.3em;
     animation-delay: 0.8s;
   }
-  :nth-child(3) {
+  :nth-child(5) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
     margin-bottom: 0.65em;
     opacity: 0;
     animation-delay: 1.2s;
   }
-  :nth-child(4) {
+  :nth-child(7) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
     margin-bottom: 0.65em;
     opacity: 0;
     animation-delay: 1.8s;
   }
-  :nth-child(5) {
+  :nth-child(9) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
     margin-top: 3em;
     opacity: 0;
@@ -65,7 +90,47 @@ const ExperienceImage = styled.img`
   }
 
   @media (max-width: ${size.tablet}) {
-    width: 50%;
+    display:none;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display:none;
+  }
+`
+
+const ExperienceImageMob = styled.img`
+  width: 100%;
+  align-self: center;
+  :nth-child(4) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-top: 0em;
+    opacity: 0;
+    margin-bottom: 1em;
+    animation-delay: 0.8s;
+  }
+  :nth-child(6) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-bottom: 0.65em;
+    opacity: 0;
+    animation-delay: 1.2s;
+  }
+  :nth-child(8) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-bottom: 0.65em;
+    opacity: 0;
+    animation-delay: 1.8s;
+  }
+  :nth-child(10) {
+    animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
+    margin-top: 1em;
+    margin-bottom:0;
+    opacity: 0;
+    animation-delay: 2.4s;
+  }
+  @media (max-width: ${size.mobileM}) {
+    width: 100%;
+  }
+  @media (max-width: ${size.tablet}) {
+    width: 100%;
   }
 `
 
@@ -89,21 +154,29 @@ class ExperiencePage extends React.Component {
       id: 1,
       url:
         "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_2.svg",
+      urlmob:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_2.svg",
     },
     {
       id: 2,
       url:
         "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_3.svg",
+      urlmob:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_3.svg",
     },
     {
       id: 3,
       url:
         "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_4.svg",
+      urlmob:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_4.svg",
     },
     {
       id: 4,
       url:
         "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_5.svg",
+      urlmob:
+        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_5.svg",
     },
   ]
 
@@ -127,10 +200,15 @@ class ExperiencePage extends React.Component {
 
         <ExperienceImagesContainer>
           <ExperienceImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
+          <ExperienceImageMob src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
+            <React.Fragment>
             <ExperienceImage key={index} src={experience.url} />
+            <ExperienceImageMob key={index} src={`${experience.urlmob}`} />
+            </React.Fragment>
           ))}
         </ExperienceImagesContainer>
+        
       </ExperiencePageWrapper>
     )
   }
