@@ -63,12 +63,15 @@ const State = props => {
                   }
                   event_is_free
                   event_language
+                  other_event_language
+                  other_event_language_de
                   event_limited_capacity
                   other_event_language
                   thumbnail_image
                   # participants
                   template
                   exp_number
+                  embed_video_in_event
                 }
               }
             }
@@ -97,6 +100,8 @@ const State = props => {
                     exp_title_header
                     exp_title_header_mobile
                     exp_bb11_right_header
+                    promotional_sticker_for_homepage
+                    promotional_sticker_url
                   }
                   EN {
                     description
@@ -108,6 +113,8 @@ const State = props => {
                     exp_title_header
                     exp_title_header_mobile
                     exp_bb11_right_header
+                    promotional_sticker_for_homepage
+                    promotional_sticker_url
                   }
                   end_date
                   exp_number

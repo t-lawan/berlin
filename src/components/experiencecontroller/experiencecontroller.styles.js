@@ -46,21 +46,32 @@ export const ExperienceButtonImage = styled.img`
 
 export const ExperienceControllerMobileWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  height:45px;
   background: white;
-  border-bottom: 1px solid black;
+  border-bottom: 0px solid black;
   ${showDisplayForTabletFunc('grid')};
 `
 
 export const ExperienceControllerMobileButton = styled.div`
-  padding: 0.5em;
+  padding: 0em;
+  height:45px;
   border-right: 1px solid black;
+  border-bottom:solid 1px #000;
   opacity: ${props => props.show ? '1' : '0.5'};
   :last-child {
-    border: 0;
+    border-right: 0;
   }
-
+  > p {
+    margin: 0;
+    font-size: 1.1em;
+    line-height:45px;
+    text-align:center;
+  }
   img {
-    width: 80%;
-    margin-bottom: 0;
+   padding: 0;
+    height: 20px;
+    width: auto;
+    margin-top: 0.7em;
+    margin-bottom:0;
   }
 `

@@ -2,8 +2,8 @@ export class VenueModel {
   constructor(
     id,
     slug,
-    DE,
-    EN,
+    deutsch,
+    english,
     google_map_link,
     thumbnail_image,
     address,
@@ -15,8 +15,8 @@ export class VenueModel {
   ) {
     this.id = id
     this.slug = slug
-    this.DE = DE
-    this.EN = EN
+    this.DE = deutsch
+    this.EN = english
     this.google_map_link = google_map_link
     this.thumbnail_image = thumbnail_image
     this.address = address

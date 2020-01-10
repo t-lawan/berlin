@@ -15,6 +15,16 @@ const FooterWrapper = styled.footer`
   border-top: 1px solid black;
   border-right: 1px solid black;
   ${changeGridToOneRow};
+  @media (max-width: ${size.mobileM}) {
+    border-right: 0px solid black;
+    padding-bottom:20px;
+    > div:nth-child(3) {
+      margin-top:0.8rem;
+    }
+    > div:first-child {
+      margin-bottom:0.7rem;
+    }
+  }
 `
 
 const ImageWrapper = styled.div`
@@ -26,6 +36,9 @@ const ImageWrapper = styled.div`
 const FooterText = styled.p`
   /* font-size: 1rem; */
   margin:0;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.9rem;
+  }
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)

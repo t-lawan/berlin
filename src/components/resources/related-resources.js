@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { changeGridToOneRow, Color } from "../../index.styles"
+import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
@@ -16,7 +16,12 @@ const RelatedResourcesWrapper = styled.div`
   margin-right:0.5em;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 0em;
-  ${changeGridToOneRow};
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 1fr 1fr;
+    background-color:#FFF;
+    margin-bottom:0em;
+    padding-bottom:2em;
+  }
 `
 
 const ResourceLink = styled(AniLink)`

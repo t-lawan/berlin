@@ -5,6 +5,7 @@ import LanguageController from "../languagecontroller/languagecontroller"
 import Header from "../header/header"
 import Navbar from "../navbar/navbar"
 import Jumbotron from "../jumbotron/jumbotron"
+import JumbotronMob from "../jumbotron/jumbotronmob"
 import ExperienceController from "../experiencecontroller/experiencecontroller"
 import { connect } from "react-redux"
 import {
@@ -19,6 +20,9 @@ import {
   RelativeHeader,
   FixedHeader,
   StickyFooterWithHighZIndex,
+  FixedTopExpMob,
+  MobTitleCard,
+  MobAnimCard,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import Logo from "../logo/logo"
@@ -59,6 +63,10 @@ class Columns extends React.Component {
         <Column rightBorder={true} hideInMobile>
           <ExperienceController left={true} />
         </Column>
+        <FixedTopExpMob showInMobile={true}>
+              <ExperienceControllerMobile showInMobile={true} />
+              {/* <Header hideInMobile={true} /> */}
+        </FixedTopExpMob>
         {/* Middle Column */}
         <AnimatedColumn
           animationIn={this.props.experience_transition.animationIn}
@@ -75,15 +83,17 @@ class Columns extends React.Component {
           </StickyTopHeader>
 
           <StickyTopHeader hideInMobile={true}>
-            <Jumbotron hideInMobile />
+            <Jumbotron hideInMobile={true} />
           </StickyTopHeader>          
           
           {/* Second Column */}
           <Column rightBorder={true}>
-            <StickyTopHeader>
-              <ExperienceControllerMobile showInMobile={true} />
-              {/* <Header hideInMobile={true} /> */}
-            </StickyTopHeader>
+            <MobTitleCard showInMobile={true}>
+              <JumbotronMob showInMobile={true} />
+            </MobTitleCard>
+            <MobAnimCard showInMobile={true}>
+              <img class="bg_anim" src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_exp2_PRELIM.gif"/>
+            </MobAnimCard>
             <RelativeHeader>
               <ImageContainer
                 hideOnHomePage={!this.props.isHome}
@@ -104,9 +114,7 @@ class Columns extends React.Component {
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}
-            <FixedNavbar>
-              <NavbarMobile showInMobile />
-            </FixedNavbar>
+            
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
@@ -129,12 +137,16 @@ class Columns extends React.Component {
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
+        <FixedNavbar>
+              <NavbarMobile showInMobile />
+        </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
         <Column rightBorder={false} hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
+        
       </ColumnsWrapper>
     )
   }

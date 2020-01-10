@@ -8,6 +8,7 @@ import {
   TwoColumnPageWrapper,
   TextBlock,
   ResourcePublisherLink,
+  PageTitle,
 } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
@@ -25,6 +26,11 @@ const PracticalInformation = props => {
         lang={pageInfo.language}
       />
       <div>
+      <PageTitle
+              dangerouslySetInnerHTML={{
+                __html: content[language].title,
+              }}
+            />
         <TextBlock>
           {pageInfo.acf[language].address_info.map((address, index) => (
             <p key={index}> {address.address_line} </p>
@@ -80,10 +86,12 @@ const content = {
   EN: {
     opening_hours: 'Opening hours',
     access: 'Access',
+    title: 'practical information',
     directions: 'Directions'
   },
   DE: {
     opening_hours: 'Öffnungszeiten',
+    title: 'praktische information',
     access: 'Anfahrt',
     directions: 'Karte'
 

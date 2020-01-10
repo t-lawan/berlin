@@ -87,7 +87,7 @@ export const documentationContent = {
     other: "Other",
   },
   DE: {
-    language: "Language",
+    language: "Sprache",
     documentation: "Dokumentation",
     en: "English",
     de: "Deutsch",

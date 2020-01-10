@@ -2,14 +2,17 @@ import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { UnderlinedText } from "../../index.styles";
-import { TextBlock } from "../../templates/page.styles";
+import { UnderlinedText, size } from "../../index.styles";
+import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding-top: 0;
 padding-left: 1em;
 p{
   line-height: 1.2em;
+  @media (max-width: ${size.mobileM}) {
+    line-height:1.4 !important;
+  }
 }
 `
 
@@ -18,6 +21,11 @@ const AboutAdvisoryBoard = props => {
   const teamBlock = props.team_block;
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
+    <PageTitle
+              dangerouslySetInnerHTML={{
+                __html: advisepage[language].title,
+              }}
+            />
     switch (teamBlockItem.team_block_type) {
       case "section":
         renderComponent = (
@@ -60,7 +68,14 @@ const mapStateToProps = state => {
 AboutAdvisoryBoard.propTypes = {
   team_block: PropTypes.array,
 }
-
+const advisepage = {
+  EN: {
+    title: 'advisory board',
+  },
+  DE: {
+    title: 'beirat',
+  },
+}
 export default connect(
   mapStateToProps,
   null

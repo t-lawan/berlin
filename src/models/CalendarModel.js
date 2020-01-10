@@ -3,7 +3,7 @@ import { DateManager } from "../utility/date"
 export class CalendarModel {
   monthsConfig = {
     1: 31,
-    2: 28,
+    2: 29,
     3: 31,
     4: 30,
     5: 31,

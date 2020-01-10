@@ -5,6 +5,7 @@ import {
   HeaderWrapper,
   HeaderLink,
   HeaderImage,
+  HeaderImageMob,
 } from "./header.styles"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import { getDocument } from "../../store/selector";
@@ -21,12 +22,15 @@ const Header = props => {
   }
   let dateHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_dates_header);
   let titleHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_title_header);
+  let titleHeaderSvgMob = getDocument(props.documents, exhibitions[0][language].exp_title_header_mobile);
+
 
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
       <HeaderLink cover direction="down" bg={transitionBackground} to={createPath(language, '')}>
         <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
-        <HeaderImage alt="title" src={titleHeaderSvg.url}/>
+        <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url}/>
+        <HeaderImageMob alt="title" src={titleHeaderSvgMob.url}/>
       </HeaderLink>
     </HeaderWrapper>
   )

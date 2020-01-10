@@ -15,6 +15,10 @@ export const AnimatedColumn = styled(Animated)`
   @media (max-width: ${size.mobileM}) {
     /* width: 100%; */
     width: 100vw;
+    display: block;
+    position:relative;
+    margin:45px auto 0;
+    height: calc(100vh - 90px);
   }
 
   @media (max-width: ${size.tablet}) {
@@ -49,17 +53,57 @@ export const FirstColumnWrapper = styled.div`
   & div:last-child {
     border-left: none;
   }
+  @media (max-width: ${size.mobileM}) {
+    display:flex;
+    flex-direction: column-reverse;
+    background-color: transparent;
+  }
 `
 
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
-  ${hideDisplayForTablet}
   :first-child {
     border-right:solid 1px #000;
   }
-  
+  @media (max-width: ${size.mobileM}) {
+    :first-child {
+    border-right:solid 0px #000;
+  }
+  }
+`
+export const FixedTopExpMob = styled.div`
+  z-index: 300;
+  top: 0;
+  width:100%;
+  position: fixed;
+  height:45px;
+  @media (min-width: ${size.laptop}) {
+    display:none;
+  }
+  }
+`
+export const MobTitleCard = styled.div`
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  @media (min-width: ${size.laptop}) {
+    display:none;
+  }
+  }
+`
+export const MobAnimCard = styled.div`
+  position: absolute;
+    z-index: 1;
+    top: 0px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+  @media (min-width: ${size.laptop}) {
+    display:none;
+  }
+  }
 `
 
 export const FixedHeader = styled.div`
@@ -114,5 +158,9 @@ export const FixedNavbar = styled.div`
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
+  }
+  @media (max-width: ${size.mobileM}) {
+    position: fixed;
+    width:100%;
   }
 `

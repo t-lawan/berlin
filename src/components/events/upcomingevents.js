@@ -66,6 +66,7 @@ const UpcomingEvents = props => {
               dangerouslySetInnerHTML={{ __html: item[language].subtitle }}
             />
             {/* <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p> */}
+            <p>{item.language == "other" ? item[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][item.language]}</p>
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>
@@ -77,9 +78,9 @@ const UpcomingEvents = props => {
 export const freeAdmision = {
   DE: {
     text: "Freier Eintritt, begrenzte Kapazität",
-    en: "In English",
-    de: "In German",
-    rsvp: "RSVP Required",
+    en: "Auf Englisch",
+    de: "Auf Deutsch",
+    rsvp: "RSVP erforderlich",
   },
   EN: {
     text: "Free admission, limited capacity",

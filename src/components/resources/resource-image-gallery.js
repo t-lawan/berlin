@@ -1,7 +1,7 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import {
-  PageWrapper,
+  PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
   ResourceImageWrapper
@@ -26,7 +26,7 @@ const ResourceImageGallery = props => {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
-    <PageWrapper colour={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
       <ResourceImageWrapper>
         <ImageGalleryResource ids={r.image_gallery} />
@@ -47,7 +47,7 @@ const ResourceImageGallery = props => {
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={resourceIds} />
-    </PageWrapper>
+    </PageWrapperRes>
   )
 }
 

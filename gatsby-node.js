@@ -204,7 +204,6 @@ exports.createPages = async ({ graphql, actions }) => {
               event_is_free
               event_language
               event_limited_capacity
-              other_event_language
               thumbnail_image
               template
               exp_number
@@ -357,6 +356,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_title_header
                 exp_title_header_mobile
                 exp_bb11_right_header
+                promotional_sticker_for_homepage
+                promotional_sticker_url
               }
               EN {
                 description
@@ -368,6 +369,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_title_header
                 exp_title_header_mobile
                 exp_bb11_right_header
+                promotional_sticker_for_homepage
+                promotional_sticker_url
               }
               end_date
               exp_number

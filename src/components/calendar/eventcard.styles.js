@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Color, TextSection } from "../../index.styles"
+import { Color, size, TextSection } from "../../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const EventSection = styled(TextSection)`
@@ -19,6 +19,11 @@ export const EventCardWrapper = styled.div`
     ${EventSection} {
       color: ${Color.red};
     }
+  }
+  @media (max-width: ${size.mobileM}) {
+    width:100%;
+    display:block;
+    padding: 0.3em 0.5em;
   }
 `
 
