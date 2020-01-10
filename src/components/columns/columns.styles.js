@@ -87,7 +87,6 @@ export const FixedTopExpMob = styled.div`
 export const MobTitleCard = styled.div`
   position: fixed;
   z-index: 3;
-  top:182px;
   width: 100%;
   @media (min-width: ${size.laptop}) {
     display:none;
