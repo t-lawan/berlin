@@ -21,12 +21,15 @@ const Header = props => {
   }
   let dateHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_dates_header);
   let titleHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_title_header);
+  let titleHeaderSvgMob = getDocument(props.documents, exhibitions[0][language].exp_title_header_mobile);
+
 
   return (
-    <HeaderWrapper hideInMobile={props.hideInMobile}>
-      <HeaderLink fade to={createPath(language, '')}>
+    <HeaderWrapper>
+        <HeaderLink cover direction="down" bg="url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white" to={createPath(language, '')}>
         <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
-        <HeaderImage alt="title" src={titleHeaderSvg.url}/>
+        <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url}/>
+        <HeaderImage showInMobile alt="title" src={titleHeaderSvgMob.url}/>
       </HeaderLink>
     </HeaderWrapper>
   )
