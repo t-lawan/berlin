@@ -17,7 +17,7 @@ export const TwoColumnPageWrapper = styled.div`
   grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
   }
   ${changeGridToOneRow}
 `
@@ -169,5 +169,5 @@ export const TextBlock = styled.div`
     padding-bottom: 0.1rem;
 
   }
-  padding: 1em 0em;
+  padding: 0 0 1em 0em;
 `
