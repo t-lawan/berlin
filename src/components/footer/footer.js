@@ -36,6 +36,9 @@ const ImageWrapper = styled.div`
 const FooterText = styled.p`
   /* font-size: 1rem; */
   margin:0;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.9rem;
+  }
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)
