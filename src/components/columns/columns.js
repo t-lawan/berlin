@@ -131,15 +131,16 @@ class Columns extends React.Component {
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
+        <FixedNavbar>
+              <NavbarMobile showInMobile />
+        </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
         <Column rightBorder={false} hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
-        <FixedNavbar>
-              <NavbarMobile showInMobile />
-            </FixedNavbar>
+        
       </ColumnsWrapper>
     )
   }
