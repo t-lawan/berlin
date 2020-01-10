@@ -10,7 +10,9 @@ import {
   PressWrapper,
   PressReleaseText,
   PressReleaseLink,
-  PressReleaseParagraphBlock
+  PressReleaseParagraphBlock,
+  PageTitle,
+  PageSubTitle,
 } from "./page.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
@@ -126,6 +128,12 @@ class Press extends React.Component {
           lang={this.pressInfo.language}
         />
         <div>
+          
+          <PageTitle
+              dangerouslySetInnerHTML={{
+                __html: content[this.language].title,
+              }}
+            />
           <p>{content[this.language].contact}</p>
           {this.pressInfo.acf.contact_people.map((person, index) => (
             <div key={index}>
@@ -142,7 +150,12 @@ class Press extends React.Component {
         </div>
 
         <div>
-          <p> {content[this.language].press_release}</p>
+        <PageSubTitle
+              dangerouslySetInnerHTML={{
+                __html: content[this.language].press_release,
+              }}
+            />
+          
           {this.pressInfo.acf.press_releases.map((press_release, index) => (
             <PressReleaseWrapper key={index}>
               <PressReleaseText>
@@ -209,11 +222,13 @@ const getPdf = (documents, press_release, language) => {
 const content = {
   EN: {
     contact: "Press contact",
+    title: "press",
     press_release: "Downloads",
     images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
+    title: "presse",
     press_release: "Downloads",
     images: "Pressebilder",
   },
