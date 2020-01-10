@@ -193,14 +193,14 @@ a {
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+    display: ${props => (props.hideInMobile ? "none" : "")};
   }
 `
 
 export const hideDisplayForMobile = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
-    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+    display: ${props => (props.hideInMobile ? "none" : "none")};
   }
 `
 
