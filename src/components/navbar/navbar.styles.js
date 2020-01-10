@@ -95,6 +95,12 @@ export const NavMobileLink = styled(AniLink)`
   display: block;
 `
 
+export const NavMobileLinkParagraph = styled.p`
+  font-size: 1.4rem;
+  padding-bottom: 0.5rem;
+  display: block;
+`
+
 export const NavMobileOuterLink = styled.a`
   text-decoration: none;
   font-size: 1.4rem;

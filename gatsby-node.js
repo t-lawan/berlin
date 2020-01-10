@@ -520,7 +520,7 @@ exports.createPages = async ({ graphql, actions }) => {
           ? `/${prePath.EN}/${slug}`
           : `/${language}/${prePath.DE}/${slug}`;
           console.log(language, path);
-        edge.node.slug = (language === "en") ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`;
+        edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
       } else {
         path =
         language === "en"

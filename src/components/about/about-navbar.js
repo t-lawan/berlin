@@ -56,7 +56,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "team",
-        slug: "about/team"
+        slug: "de/uber/team"
       },
     },
     {
@@ -66,7 +66,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "verein",
-        slug: "about/verein"
+        slug: "de/uber/organization-2"
       },
     },
     {
@@ -76,7 +76,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "beirat",
-        slug: "about/beirat"
+        slug: "de/uber/advisory-board"
       },
     },
     {
@@ -86,7 +86,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "support",
-        slug: "about/unterstutzung"
+        slug: "de/uber/support"
       },
     },
   ]
@@ -94,6 +94,7 @@ const AboutNavbar = props => {
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
+    console.log( props.currentPage, `/${items[index][language].slug}`)
     return `/${items[index][language].slug}` === props.currentPage
   }
 

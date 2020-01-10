@@ -21,6 +21,7 @@ import {
   NavMobileModal,
   NavImageLink,
   NavLink,
+  NavMobileLinkParagraph,
 } from "./navbar.styles"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
@@ -63,6 +64,8 @@ class NavbarMobile extends React.Component {
     })
   }
 
+
+
   showModal = () => {
     this.props.showModal()
   }
@@ -88,6 +91,7 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
+            <NavMobileLinkParagraph onClick={() => this.props.toggleEvents()}> current </NavMobileLinkParagraph>
             {this.props.navbar.map((item, index) => generateLink(item, this.language))}
           </NavMobileInner>
 
@@ -163,6 +167,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    toggleEvents: () => dispatch({type: actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE})
   }
 }
 
