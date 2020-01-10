@@ -56,7 +56,7 @@ export const FirstColumnWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     display:flex;
     flex-direction: column-reverse;
-
+    background-color: transparent;
   }
 `
 
@@ -86,7 +86,7 @@ export const FixedTopExpMob = styled.div`
 `
 export const MobTitleCard = styled.div`
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top:182px;
   width: 100%;
   @media (min-width: ${size.laptop}) {
@@ -96,7 +96,7 @@ export const MobTitleCard = styled.div`
 `
 export const MobAnimCard = styled.div`
   position: absolute;
-    z-index: 0;
+    z-index: 1;
     top: 0px;
     width: 80%;
     left: 50%;
