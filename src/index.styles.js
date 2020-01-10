@@ -155,7 +155,6 @@ a, span {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  font-size: 1rem;
   @media (max-width: ${size.tablet}) {
     font-size: 1rem;
   }
@@ -171,14 +170,12 @@ p {
   padding-right: 0;
   padding-top: 0;
   font-size: 1rem;
-  @media (max-width: ${size.tablet}) {
-    font-size: 1rem;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1rem;
+    line-height:1.4;
   }
 }
 
-p > a {
-  font-size: 1rem;
-}
 li {
   list-style-type: lower-roman;
 }
