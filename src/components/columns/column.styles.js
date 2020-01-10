@@ -1,5 +1,8 @@
 import styled from "styled-components"
 import {hideDisplayForTablet, size } from "../../index.styles";
+import {
+  ExperienceButton,
+} from "../experiencecontroller/experiencecontroller.styles"
 
 
 export const ColumnLayout = styled.div`
@@ -16,7 +19,10 @@ export const ColumnLayout = styled.div`
   }
   :last-child{
     border-left: solid 1px black;
-  }
+    ${ExperienceButton}:last-child {
+    border-top: solid thin #000;
+    }
+    }
   :nth-child(4){
     border-right: none;
     border-top: solid 1px #000;
