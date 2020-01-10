@@ -27,6 +27,7 @@ const intitalState = {
   navbar: [],
   show_overlay: true,
   agreed_to_terms: false,
+  show_events_in_mobile: false,
   experience_transition: {
     animationIn: "slideInRight",
     animationOut: "slideOutLeft",
@@ -156,6 +157,10 @@ const reducer = (state = intitalState, action) => {
           show: false,
         },
       })
+    case actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE:
+      return Object.assign({}, state, {
+        show_events_in_mobile: !state.show_events_in_mobile
+      });
     case actionTypes.SET_ACTIVE_EXPERIENCE:
       return Object.assign({}, state, {
         active_experience: action.active_experience,
