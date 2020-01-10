@@ -48,7 +48,15 @@ export const AboutPageContent = styled.div`
       }
     
 `
-export const AboutComponentWrapper = styled.section``
+export const AboutComponentWrapper = styled.section`
+  p.team_title {
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+    :first-child {
+      margin-top:0;
+    }
+  }
+`
 
 export const AboutFundingHeader = styled.p`
     text-decoration: none;
