@@ -24,7 +24,7 @@ const Header = props => {
 
   return (
     <HeaderWrapper hideInMobile={props.hideInMobile}>
-      <HeaderLink fade to={createPath(language, '')}>
+      <HeaderLink cover direction="down" bg="url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white" to={createPath(language, '')}>
         <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
         <HeaderImage alt="title" src={titleHeaderSvg.url}/>
       </HeaderLink>
