@@ -38,7 +38,7 @@ export const PressWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
   }
   div > p {
   margin-bottom: 0.5em;
@@ -81,7 +81,10 @@ export const CenterColumn = styled.div`
 export const PressReleaseWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 7fr;
-  ${changeGridToOneRow}
+  @media (max-width: ${size.tablet}) {
+    grid-template-columns: 1fr 3fr;
+    column-gap: 0.7em;
+  }
 `
 export const PressReleaseText = styled.span`
   margin-right: 0em;
@@ -125,6 +128,18 @@ export const PressForm = styled.div`
 export const PressReleaseFormError = styled.p`
   padding: 0.5rem 0rem;
   color: ${Color.red};
+`
+export const PageTitle = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 1.0em;
+  display:none;
+  @media (max-width: ${size.tablet}) {
+    display:block
+  }
+`
+export const PageSubTitle = styled.h3`
+  font-size: 1rem;
+  margin: 1em 0 0.5em;
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`
