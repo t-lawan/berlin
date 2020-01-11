@@ -92,7 +92,7 @@ class Columns extends React.Component {
               <JumbotronMob showInMobile={true} />
             </MobTitleCard>
             <MobAnimCard showInMobile={true}>
-              <img class="bg_anim" src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_exp2_PRELIM.gif"/>
+              <img className="bg_anim" src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_exp2_PRELIM.gif"/>
             </MobAnimCard>
             <RelativeHeader>
               <ImageContainer
