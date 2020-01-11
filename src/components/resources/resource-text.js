@@ -1,26 +1,26 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import {
-  PageWrapper,
+  PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
 import styled from 'styled-components';
+import striptags from 'striptags';
 
 const ResourceTextDiv = styled.div`
   a {
-    font-size: 1rem;
     border-bottom: solid thin;
     border-color: ${Color.red};
   }
 `
 
-const ResourceTitle = styled.p`
+const ResourceTitle = styled.h1`
   font-size: 1.8em;
   line-height: 1.2;
 `
@@ -36,7 +36,7 @@ const ResourceText = props => {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
-    <PageWrapper colour={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
       <TwoColumnPageWrapper>
         <div>
@@ -45,16 +45,22 @@ const ResourceText = props => {
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
-          <p hidden={r.text_based_resource[0].document_language.length === 0}> Language: {r.text_based_resource[0].document_language}</p>
+          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
         </div>
         <div>
-          <ResourceTitle> {r.title}</ResourceTitle>
-          <p> {r.author}</p>
+          <ResourceTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(r.title, ['em']),
+              }}
+            />
+          
+          {r.author.length > 0 ? <p> {r.author} </p> : ""}
           <p>
             In:{" "}
             <ResourcePublisherLink
+              hidden={r.publisher.title}
               target="_blank"
-              href={r.publisher.external_url}
+              href={r.publisher.title}
             >
               {r.publisher.title}
             </ResourcePublisherLink>
@@ -68,7 +74,7 @@ const ResourceText = props => {
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={resourceIds} />
-    </PageWrapper>
+    </PageWrapperRes>
   )
 }
 

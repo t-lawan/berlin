@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../utility/helper"
+import { getCurrentLanguageString, createPath, truncateText } from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import SEO from "../components/seo/seo"
@@ -9,17 +9,19 @@ import { Convert } from "../utility/convert";
 import ImageResource from "../partials/ImageResource";
 import { DateManager } from "../utility/date";
 import NewsList from "../components/news/newslist";
-
+import striptags from 'striptags';
+ 
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
   let item = Convert.toNewsModel(props.pageContext);
+  let description = item[props.pageContext.language] ? truncateText(striptags(item[props.pageContext.language].news_subtitle)) : ""
 
   let renderComponent = (
     <>
       <TwoColumnPageWrapper>
         <SEO
           title={`hi`}
-          description={`hey`}
+          description={description}
           lang={props.pageContext.language}
         />
         <div>
@@ -31,7 +33,7 @@ const News = props => {
         <div>
         <ImageResource id={item.thumbnail_image} withCaption={false} />
           <TextBlock>
-            <h2> {item[language].news_title}</h2>
+            <h1> {item[language].news_title}</h1>
             <h2> {item[language].news_subtitle}</h2>
           </TextBlock>
           <TextBlock>

@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../utility/helper"
+import { getCurrentLanguageString, createPath, truncateText, transitionBackground } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
@@ -14,9 +14,10 @@ import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
-import { Color } from "../index.styles"
+import { Color, size, hideDisplayForMobile } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
 
 const EventColumn = styled.div``
 
@@ -28,25 +29,33 @@ const EventTextBlock = styled(TextBlock)`
   margin:0 0 0.7em 0;
   padding:0;
 `
-const EventTitle = styled.div`
+const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  p {
-    font-size: 1.8rem;
-    line-height:1.2;
+  font-size: 1.8rem;
+  line-height:1.2;
+  ${hideDisplayForMobile};
+`
+const EventTitleMob = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 1.0em;
+  line-height:1.2;
+  @media (min-width: ${size.tablet}) {
+    display:none;
   }
 `
 
 const EventDescription = styled.div`
   p {
     font-size: 1.0rem;
+    line-height:1.4;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.0em;
+    font-size: 1.0rem;
   }
 `
 
@@ -73,6 +82,7 @@ const eventContent = {
     'share': "Teilen"
   }
 }
+
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext);
@@ -86,6 +96,7 @@ const Event = props => {
       return resource.wordpress_id;
     });
   }
+  let description = truncateText(striptags(event[`${props.pageContext.language.toUpperCase()}`].full_description));
 
   const renderComponent = (
     <>
@@ -93,17 +104,22 @@ const Event = props => {
       <TwoColumnPageWrapper>
         <SEO
           title={`${event.slug}`}
-          description={`${event.slug}`}
+          description={description}
           lang={props.pageContext.language}
         />
         <EventColumn>
+        <EventTitleMob
+              dangerouslySetInnerHTML={{
+                __html: striptags(event[language].event_title, ['em']),
+              }}
+            />
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
                 <p>
                   {`${moment(date.start_date)
                     .locale(language.toLowerCase())
-                    .format("dddd, D.MM.YYYY")}`}
+                    .format("dddd, D.M.YYYY")}`}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
@@ -116,6 +132,8 @@ const Event = props => {
             {props.experience == 4 ? (
               <VenueLink
               to={createPath(language, venue ? "venue/" + venue.slug : "")}
+              bg={transitionBackground}
+              cover direction="down"
             >
               {" "}
               {venue ? venue[language].venue_name : ""}
@@ -126,10 +144,10 @@ const Event = props => {
 
             }
 
-            <p>{venue ? venue.address[0].address_line : ""}</p>
+            {/* <p>{venue ? venue.address[0].address_line : ""}</p> */}
           </EventTextBlock>
           <EventTextBlock>
-            <p>{freeAdmision[language][event.language]}</p>
+            <p>{event.language == "other" ? event[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][event.language]}</p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </EventTextBlock>
           <EventTextBlock>
@@ -142,7 +160,7 @@ const Event = props => {
           <TextBlock>
             <EventTitle
               dangerouslySetInnerHTML={{
-                __html: event[language].event_title,
+                __html: striptags(event[language].event_title, ['em']),
               }}
             />
             <div

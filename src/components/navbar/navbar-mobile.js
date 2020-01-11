@@ -5,21 +5,25 @@ import {
   getCurrentLanguageString,
   createPath,
   createProperty,
+  transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
   NavMobileHeader,
   NavIcon,
+  NavIconSVG,
   NavImage,
   NavMobileContent,
   NavInner,
   NavMobileInner,
   NavMobileLinks,
   NavMobileLink,
+  NavMobileLinkSmall,
   NavMobileOuterLink,
   NavMobileModal,
   NavImageLink,
   NavLink,
+  NavMobileLinkParagraph,
 } from "./navbar.styles"
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
@@ -29,24 +33,24 @@ class NavbarMobile extends React.Component {
   language
   navLinks = [
     {
-      EN: 'team',
-      DE: 'team',
-      path: 'team'
+      EN: "team",
+      DE: "team",
+      path: "team",
     },
     {
-      EN: 'organisation',
-      DE: 'verein',
-      path: 'organisation-2'
+      EN: "organisation",
+      DE: "verein",
+      path: "organization-2",
     },
     {
-      EN: 'advisory board',
-      DE: 'beirat',
-      path: 'advisory-board'
+      EN: "advisory board",
+      DE: "beirat",
+      path: "advisory-board",
     },
     {
-      EN: 'support',
-      DE: 'support',
-      path: 'support'
+      EN: "support",
+      DE: "unterstutzung",
+      path: "support",
     },
   ]
   constructor() {
@@ -62,6 +66,21 @@ class NavbarMobile extends React.Component {
     })
   }
 
+  toggleEventList = () => {
+    this.props.toggleEvents()
+    this.toggleContent()
+  }
+
+  showEventList = () => {
+    this.props.showEvents()
+    this.toggleContent()
+  }
+
+  hideEventList = () => {
+    this.props.hideEvents()
+    this.toggleContent()
+  }
+
   showModal = () => {
     this.props.showModal()
   }
@@ -72,11 +91,23 @@ class NavbarMobile extends React.Component {
       <NavMobileWrapper showInMobile>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
-            <NavIcon icon={faBars} show={this.state.showContent ? 0 : 1} />
-            <NavIcon icon={faTimes} show={this.state.showContent ? 1 : 0} />
+            <NavIconSVG
+              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk.svg"
+              show={this.state.showContent ? 0 : 1}
+            />
+            <NavIconSVG
+              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk_close.svg"
+              show={this.state.showContent ? 1 : 0}
+            />
           </div>
           <div>
-            <NavImageLink fade to={createPath(this.language, '')}>
+            <NavImageLink
+              cover
+              direction="down"
+              bg={transitionBackground}
+              to={createPath(this.language, "")}
+              onClick={() => this.hideEventList()}
+            >
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
           </div>
@@ -87,15 +118,27 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
-            {this.props.navbar.map((item, index) => generateLink(item, this.language))}
+            <NavMobileLinkParagraph onClick={() => this.showEventList()}>
+              {" "}
+              current{" "}
+            </NavMobileLinkParagraph>
+            {this.props.navbar.map((item, index) =>
+              generateLink(item, this.language)
+            )}
           </NavMobileInner>
 
           <NavMobileLinks>
-              {this.navLinks.map((navLink, index) => (
-                <NavMobileLink fade key={index} to={createPath(this.language, `about/${navLink.path}`)}>
-                  {navLink[this.language]}
-                </NavMobileLink>
-              ))}
+            {this.navLinks.map((navLink, index) => (
+              <NavMobileLink
+                cover
+                direction="down"
+                bg={transitionBackground}
+                key={index}
+                to={createPath(this.language, `about/${navLink.path}`)}
+              >
+                {navLink[this.language]}
+              </NavMobileLink>
+            ))}
           </NavMobileLinks>
 
           <NavMobileLinks>
@@ -105,23 +148,32 @@ class NavbarMobile extends React.Component {
                 newsletter{" "}
               </NavMobileModal>
               {socialMediaLinks.map(link => (
-                <NavMobileOuterLink
+                <NavMobileLinkSmall
                   key={link.name}
                   target="_blank"
                   href={link.url}
                 >
-                  {" "}
                   {link.name}
-                </NavMobileOuterLink>
+                </NavMobileLinkSmall>
               ))}
             </div>
             <div>
-              <NavMobileLink fade to={createPath(this.language, "imprint")}>
+              <NavMobileLinkSmall
+                cover
+                direction="down"
+                bg={transitionBackground}
+                to={createPath(this.language, "imprint")}
+              >
                 imprint
-              </NavMobileLink>
-              <NavMobileLink fade to={createPath(this.language, "data-privacy")}>
+              </NavMobileLinkSmall>
+              <NavMobileLinkSmall
+                cover
+                direction="down"
+                bg={transitionBackground}
+                to={createPath(this.language, "data-privacy")}
+              >
                 data privacy
-              </NavMobileLink>
+              </NavMobileLinkSmall>
             </div>
           </NavMobileLinks>
         </NavMobileContent>
@@ -140,10 +192,10 @@ const generateLink = (item, language) => {
   } else {
     return (
       <NavMobileLink
-        activeStyle={{ color: "#990033" }}
+        activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
         key={item.slug}
-        fade
+        bg={transitionBackground}
       >
         {item[language].title.toLowerCase()}
       </NavMobileLink>
@@ -162,6 +214,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    toggleEvents: () =>
+      dispatch({ type: actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE }),
+    showEvents: () =>
+      dispatch({ type: actionTypes.SHOW_EVENTS_DISPLAY_IN_MOBILE }),
+    hideEvents: () =>
+      dispatch({ type: actionTypes.HIDE_EVENTS_DISPLAY_IN_MOBILE }),
   }
 }
 

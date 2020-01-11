@@ -8,17 +8,27 @@ import { Link } from "gatsby"
 const ResourcesListWrapper = styled.div`
   padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
-    padding: 0.2em;
+    padding: 0 0.7em;
+    background-color: #fff;
   }
 `
 
 const ResourceTitle = styled.p`
-  font-size: 1em;
+  font-size: 1rem;
+  :last-child {
+    margin-bottom:0;
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+  }
 `
 
 const ResourceLabel = styled.p`
-  font-size: 1em;
+  font-size: 1rem;
   margin: 0.5em 0 0;
+  @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+  }
 `
 
 const ResourceItemLink = styled(Link)`
@@ -27,6 +37,9 @@ const ResourceItemLink = styled(Link)`
     ${ResourceTitle} {
       color: ${Color.red};
     }
+  }
+  :last-child div {
+      border-bottom:none;
   }
 `
 
@@ -39,13 +52,15 @@ const ResourceItem = styled.div`
   :first-child {
     padding-top:0;
   }
+  
 `
 
 const TextBox = styled.div`
-  padding: 1em 0.75em;
+  padding: 0.7em 0.75em;
   background: ${Color.yellow};
   /* border: 1px solid black; */
   margin-bottom: 0rem;
+  
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -78,7 +93,8 @@ const ResourcesList = props => {
             <ResourceItem>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
-                <ResourceTitle> {resource.author} </ResourceTitle>
+                 {resource.subtitle.length > 0 ? <ResourceTitle> {resource.subtitle} </ResourceTitle> : ""}
+                 {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
               </TextBox>
               <ResourceLabel> {resource[language].label} </ResourceLabel>
             </ResourceItem>
@@ -108,7 +124,7 @@ const ResourcesList = props => {
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
               </TextBox>
-              <ResourceLabel> {resource.author} </ResourceLabel>
+              <ResourceLabel> {resource.label} </ResourceLabel>
 
             </ResourceItem>
           </ResourceItemLink>

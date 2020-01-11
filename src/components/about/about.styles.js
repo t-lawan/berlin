@@ -26,6 +26,9 @@ export const AboutNavItem = styled.p`
   @media (max-width: ${size.tablet}) {
   padding: 0.5em 0.5em;
   }
+  @media (max-width: ${size.mobileL}) {
+  display:none;
+  }
 `
 
 export const AboutNavItemLink = styled(AniLink)`
@@ -33,17 +36,27 @@ export const AboutNavItemLink = styled(AniLink)`
 `
 
 export const AboutPageContent = styled.div`
-    p{
+    p {
         margin-bottom: 1em;
-    }
-    a {
-        border-bottom: solid thin ${Color.red}
-        :hover {
-      color: ${Color.red};
+        line-height:1.4;
       }
-    }
+    p > a {
+        border-bottom: solid 1px ${Color.red};
+          :hover {
+          color: ${Color.red};
+          }
+      }
+    
 `
-export const AboutComponentWrapper = styled.section``
+export const AboutComponentWrapper = styled.section`
+  p.team_title {
+    margin-top: 1.5em;
+    margin-bottom: 0em;
+    :first-child {
+      margin-top:0;
+    }
+  }
+`
 
 export const AboutFundingHeader = styled.p`
     text-decoration: none;
