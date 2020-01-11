@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
-
   display: flex;
   z-index: 300;
   border-top: 1px solid black;
@@ -101,6 +100,12 @@ export const NavMobileLinks = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0.5em 1.5em;
+  > a {
+    font-size:1.1em;
+  }
+  :last-child{
+    padding-bottom:1em;
+  }
 `
 
 export const NavMobileLink = styled(AniLink)`
@@ -117,8 +122,9 @@ export const NavMobileLinkSmall = styled(AniLink)`
 `
 
 export const NavMobileLinkParagraph = styled.p`
-  font-size: 1.4rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.55rem;
+  padding-bottom: 0.0rem;
+  margin:0;
   display: block;
 `
 
@@ -139,6 +145,7 @@ export const NavMobileModal = styled.p`
 export const NavMobileContent = styled.div`
   max-height: ${props => (props.show ? "1200px" : "0")};
   transition: all 0.3s ease-in-out;
+  padding-bottom:0.0em;
 `
 
 export const NavImage = styled.img`

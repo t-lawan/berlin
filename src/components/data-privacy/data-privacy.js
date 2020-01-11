@@ -10,10 +10,12 @@ export const DataPrivacyWrapper = styled(Section)`
   grid-template-columns: 8fr 1fr;
   color: white;
   background: black;
-
   > p > a {
     font-size: 0.8rem;
   }
+   > div:last-child {
+    text-align:right;
+   } 
 `
 
 export const DataPrivacyBlock = styled.div`
@@ -22,6 +24,7 @@ export const DataPrivacyBlock = styled.div`
       font-size: 0.9rem;
       margin-bottom:0;
     }
+
   }
 `
 

@@ -49,7 +49,7 @@ class NavbarMobile extends React.Component {
     },
     {
       EN: 'support',
-      DE: 'support',
+      DE: 'unterstutzung',
       path: 'support'
     },
   ]
@@ -101,7 +101,7 @@ class NavbarMobile extends React.Component {
               {this.navLinks.map((navLink, index) => (
                 <NavMobileLink cover direction="down" bg={transitionBackground} key={index} to={createPath(this.language, `about/${navLink.path}`)}>
                   {navLink[this.language]}
-                </NavMobileLinkSmall>
+                </NavMobileLink>
               ))}
           </NavMobileLinks>
 
@@ -123,10 +123,10 @@ class NavbarMobile extends React.Component {
               ))}
             </div>
             <div>
-              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "imprint")}>
+              <NavMobileLinkSmall cover direction="down" bg={transitionBackground} to={createPath(this.language, "imprint")}>
                 imprint
-              </NavMobileLink>
-              <NavMobileLink cover direction="down" bg={transitionBackground} to={createPath(this.language, "data-privacy")}>
+              </NavMobileLinkSmall>
+              <NavMobileLinkSmall cover direction="down" bg={transitionBackground} to={createPath(this.language, "data-privacy")}>
                 data privacy
               </NavMobileLinkSmall>
             </div>

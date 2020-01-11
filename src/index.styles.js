@@ -302,9 +302,9 @@ export const ExternalLink = styled.a`
 `
 
 export const LargeButton = styled.button`
-  margin: 0.5em 0 0 10px;
+  margin: 0.0em 0 0 10px;
   font-size: 1em;
-  display: block;
+  display: inline-block;
   border-radius: 0;
   background: ${props => props.bgColour};
   border: 1px solid black;
