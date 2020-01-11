@@ -27,7 +27,7 @@ const ResourceImage = props => {
         <div>
           <p> {r.title}</p>
           <p> {r.author}</p>
-          <ResourcePublisherLink target="_blank" href={r.external_url}>
+          <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
             {" "}
             {r.external_url_label}
           </ResourcePublisherLink>

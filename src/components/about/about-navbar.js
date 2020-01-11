@@ -6,38 +6,7 @@ import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
 
 const AboutNavbar = props => {
-  // const { allWordpressPage } = useStaticQuery(
-  //   graphql`
-  //     {
-  //       allWordpressPage(
-  //         filter: { parent_element: { slug: { eq: "about" } } }
-  //       ) {
-  //         edges {
-  //           node {
-  //             wordpress_id
-  //             slug
-  //             acf {
-  //               EN_row {
-  //                 description
-  //               }
-  //               DE_row {
-  //                 description
-  //                 german_page_slug
-  //               }
-  //               DE {
-  //                 title
-  //               }
-  //               template
-  //               EN {
-  //                 title
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `
-  // )
+
   let items = [
     {
       EN: {
@@ -94,7 +63,6 @@ const AboutNavbar = props => {
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
-    console.log( props.currentPage, `/${items[index][language].slug}`)
     return `/${items[index][language].slug}` === props.currentPage
   }
 

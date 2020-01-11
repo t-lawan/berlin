@@ -17,7 +17,7 @@ const ExhibitionPageWrapper = styled.div`
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext);
-  let description = truncateText(striptags(exhibition[props.pageContext.language].description))
+  let description = exhibition[props.pageContext.language] ? truncateText(striptags(exhibition[props.pageContext.language].description)) : '';
   
   const renderComponent = (
     <>

@@ -85,16 +85,16 @@ const reducer = (state = intitalState, action) => {
         resource_genres: action.resource_genres,
       })
     case actionTypes.HIDE_OVERLAY:
-      return Object.assign({} , state, {
-        show_overlay: false
-      });
+      return Object.assign({}, state, {
+        show_overlay: false,
+      })
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
         resources: action.resources,
       })
     case actionTypes.SET_DOCUMENTATION:
-      return Object.assign({}, state,  {
-        documentation: action.documentation
+      return Object.assign({}, state, {
+        documentation: action.documentation,
       })
     case actionTypes.SET_CALENDAR_ITEMS:
       return Object.assign({}, state, {
@@ -110,7 +110,7 @@ const reducer = (state = intitalState, action) => {
       })
     case actionTypes.SET_PAGES:
       return Object.assign({}, state, {
-        pages : action.pages
+        pages: action.pages,
       })
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {
@@ -159,12 +159,20 @@ const reducer = (state = intitalState, action) => {
       })
     case actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE:
       return Object.assign({}, state, {
-        show_events_in_mobile: !state.show_events_in_mobile
-      });
+        show_events_in_mobile: !state.show_events_in_mobile,
+      })
+    case actionTypes.SHOW_EVENTS_DISPLAY_IN_MOBILE:
+      return Object.assign({}, state, {
+        show_events_in_mobile: true,
+      })
+    case actionTypes.HIDE_EVENTS_DISPLAY_IN_MOBILE:
+      return Object.assign({}, state, {
+        show_events_in_mobile: false,
+      })
     case actionTypes.SET_ACTIVE_EXPERIENCE:
       return Object.assign({}, state, {
         active_experience: action.active_experience,
-      });
+      })
     default:
       return state
   }
@@ -172,6 +180,6 @@ const reducer = (state = intitalState, action) => {
 
 export const store = () =>
   createStore(
-    reducer,
+    reducer
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )

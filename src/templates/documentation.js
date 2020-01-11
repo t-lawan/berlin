@@ -16,7 +16,7 @@ const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
-  let description = truncateText(striptags(documentationObject[props.pageContext.language].description));
+  let description = documentationObject[props.pageContext.language] ?  truncateText(striptags(documentationObject[props.pageContext.language].description)) : "";
   let thirdColumn = (
     <>
       <NewsList />
