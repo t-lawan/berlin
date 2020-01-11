@@ -1,4 +1,4 @@
-import styled, { css, createGlobalStyle } from "styled-components"
+import styled, { css, createGlobalStyle, keyframes } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const Color = {
@@ -14,6 +14,7 @@ export const size = {
   laptopL: "1440px",
   desktop: "2560px",
 }
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -145,24 +146,17 @@ img {
   margin-bottom: 1.45rem;
 }
 a, span {
-  margin-left: 0;
-  margin-right: 0;
-  line-height: 1.4;
-  margin-top: 0;
+  margin:0;
   margin-bottom: 0rem;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  font-size: 1rem;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
   @media (max-width: ${size.tablet}) {
-    font-size: 1rem;
   }
 }
 p {
   margin-left: 0;
   margin-right: 0;
-  line-height: 1.4;
+  line-height: 1.3;
   margin-top: 0;
   margin-bottom: 1rem;
   padding-bottom: 0;
@@ -170,14 +164,15 @@ p {
   padding-right: 0;
   padding-top: 0;
   font-size: 1rem;
-  @media (max-width: ${size.tablet}) {
-    font-size: 1rem;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1rem;
+    line-height:1.4;
+    > a {
+      font-size:1em;
+    }
   }
 }
 
-p > a {
-  font-size: 1rem;
-}
 li {
   list-style-type: lower-roman;
 }
@@ -192,14 +187,14 @@ a {
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+    display: ${props => (props.hideInMobile ? "none" : "")};
   }
 `
 
 export const hideDisplayForMobile = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
-    display: ${props => (props.hideInMobile ? "none" : "inherit")};
+    display: ${props => (props.hideInMobile ? "none" : "none")};
   }
 `
 
@@ -222,7 +217,14 @@ export const changeGridToOneRow = css`
     grid-template-columns: 1fr;
   }
 `
-
+export const keyFrameExperienceImage = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
     grid-template-columns: repeat(3, 1fr);
@@ -275,7 +277,7 @@ export const UnderlinedText = styled.p`
 export const Section = styled.section`
   padding: 1em;
   @media (max-width: ${size.mobileM}) {
-    padding: 0.3em
+    padding: 0.7em
   }
 `
 
@@ -300,15 +302,18 @@ export const ExternalLink = styled.a`
 `
 
 export const LargeButton = styled.button`
-  margin: 0.5em 0 0 10px;
+  margin: 0.0em 0 0 10px;
   font-size: 1em;
-  display: block;
+  display: inline-block;
   border-radius: 0;
   background: ${props => props.bgColour};
   border: 1px solid black;
   padding: 8px 16px;
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: ${size.mobileM}) {
+    margin: 0.2em 0 0 10px;
   }
 `
 

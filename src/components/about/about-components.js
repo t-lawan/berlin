@@ -6,14 +6,24 @@ import { AboutComponentWrapper, AboutPageContent } from "./about.styles"
 import AboutFunding from "./about-funding"
 import AboutTeamBlock from "./about-team-block"
 import AboutAdvisoryBoard from "./about-advisory-board"
-import AboutOrganisation from "./about-organisation";
+import AboutOrganisation from "./about-organisation"
 
 const AboutComponents = props => {
-  const content = props.content;
+  const content = props.content
   let renderComponent
-  const language = getCurrentLanguageString(props.languages);
+  console.log(content)
+  const language = getCurrentLanguageString(props.languages)
   switch (content.slug) {
     case "about":
+      renderComponent = (
+        <AboutPageContent
+          dangerouslySetInnerHTML={{
+            __html: content.acf[`${language}_row`].description,
+          }}
+        />
+      )
+      break
+    case "uber":
       renderComponent = (
         <AboutPageContent
           dangerouslySetInnerHTML={{
@@ -27,20 +37,35 @@ const AboutComponents = props => {
         <AboutAdvisoryBoard team_block={content.acf.team_block} />
       )
       break
+    case "/de/uber/advisory-board":
+      renderComponent = (
+        <AboutAdvisoryBoard team_block={content.acf.team_block} />
+      )
+      break
     case "/about/support":
+      renderComponent = <AboutFunding funding={content.acf.funding} />
+      break
+    case "/de/uber/support":
       renderComponent = <AboutFunding funding={content.acf.funding} />
       break
     case "/about/team":
       renderComponent = <AboutTeamBlock team={content.acf.team_block} />
       break
+    case "/de/uber/team":
+      renderComponent = <AboutTeamBlock team={content.acf.team_block} />
+      break
     case "/about/organization-2":
-      renderComponent = <AboutOrganisation team_block={content.acf.team_block} />
+      renderComponent = (
+        <AboutOrganisation team_block={content.acf.team_block} />
+      )
+      break
+    case "/de/uber/organization-2":
+      renderComponent = (
+        <AboutOrganisation team_block={content.acf.team_block} />
+      )
       break
     default:
-      renderComponent = (
-        <div>
-        </div>
-      )
+      renderComponent = <div></div>
   }
 
   return <AboutComponentWrapper>{renderComponent}</AboutComponentWrapper>

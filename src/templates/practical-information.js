@@ -2,27 +2,35 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
   TextBlock,
   ResourcePublisherLink,
+  PageTitle,
 } from "./page.styles"
-import { getDocument } from "../store/selector"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
+
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext;
+  let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
         title={`${pageInfo.slug}`}
-        description={`${pageInfo.slug}`}
+        description={description}
         lang={pageInfo.language}
       />
       <div>
+      <PageTitle
+              dangerouslySetInnerHTML={{
+                __html: content[language].title,
+              }}
+            />
         <TextBlock>
           {pageInfo.acf[language].address_info.map((address, index) => (
             <p key={index}> {address.address_line} </p>
@@ -39,7 +47,7 @@ const PracticalInformation = props => {
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+          <ResourcePublisherLink hidden={content[language].directions} target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlock>
         <TextBlock>
           {pageInfo.acf[language].access_block.map((item, index) => (
@@ -78,10 +86,12 @@ const content = {
   EN: {
     opening_hours: 'Opening hours',
     access: 'Access',
+    title: 'practical information',
     directions: 'Directions'
   },
   DE: {
     opening_hours: 'Öffnungszeiten',
+    title: 'praktische information',
     access: 'Anfahrt',
     directions: 'Karte'
 

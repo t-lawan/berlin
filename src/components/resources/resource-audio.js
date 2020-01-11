@@ -1,7 +1,7 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import {
-  PageWrapper,
+  PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
 } from "../../templates/page.styles"
@@ -24,7 +24,7 @@ const ResourceAudio = props => {
     resourceIds = getRandomIds(props.resources, 4)
   }
   return (
-    <PageWrapper colour={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
       <TwoColumnPageWrapper>
         <div>
@@ -44,7 +44,7 @@ const ResourceAudio = props => {
       </TwoColumnPageWrapper>
 
       <RelatedResources ids={resourceIds} />
-    </PageWrapper>
+    </PageWrapperRes>
   )
 }
 

@@ -1,19 +1,25 @@
 import styled from "styled-components"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 
 export const DateCardWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 5fr;
-  border-bottom: 0.05em solid black;
-  /* border-right: 0.05em solid black; */
+  border-bottom: 1px solid black;
+  /* border-right: 1px solid black; */
   background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
   height: auto;
   display: -moz-inline-grid;
   display: inline-grid;
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 2fr 6fr;
+  }
 `
 export const EventCardsWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: ${size.mobileM}) {
+    flex-direction: column;
+  }
 `
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;
@@ -22,13 +28,21 @@ export const CurrentDate = styled.div`
   display: flex;
   flex-direction: row;
   align-items: top;
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.3em 0.5em;
+  }
 `
 export const DateText = styled.strong`
   font-size: xx-large;
   width:55%;
+  font-weight:normal;
   text-align:right;
   line-height: 1;
   padding-right: 0.3em;
+  @media (max-width: ${size.mobileM}) {
+    width:60%;
+    padding-right: 0.2em;
+  }
 `
 
 export const DateString = styled.p`

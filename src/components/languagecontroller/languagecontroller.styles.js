@@ -16,9 +16,10 @@ export const LanguageControllerWrapper = styled.div`
     flex-direction: row;
     padding: 0;
   }
-  @media (max-width: ${size.mobileL}) {
-    padding: 0.25em;
-
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.2em 0 0em;
+    text-align:right;
+    display:block;
   }
 `
 
@@ -26,9 +27,9 @@ export const LanguageButton = styled(AniLink)`
   text-decoration: none;
   color: black;
   opacity: ${props => props.selected ? 0.3 : 1};
-  margin-bottom: 0.05em;
+  margin-bottom: 0.1em;
   line-height:1.1;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: ${props => (props.selected ? "bold" : "lighter")};
   :hover {
     cursor: "pointer";
@@ -40,8 +41,10 @@ export const LanguageButton = styled(AniLink)`
   }
 
   @media (max-width: ${size.mobileL}) {
-    font-size: 1.3rem;
-    margin: 0;
+    font-size: 1.65em;
+    margin-top:0.3em;
+    margin-bottom:0;
+    line-height: 1;
     margin-left: 0.5em;
   }
 

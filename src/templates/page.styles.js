@@ -3,21 +3,31 @@ import { changeGridToOneRow, Color, size } from "../index.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
-  padding: 2.5em 1em 2em;
+  padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
+    background:#FFF;
+  }
+`
+export const PageWrapperRes = styled.div`
+  padding: 2.0em 1em 2em;
+  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
+  @media (max-width: ${size.tablet}) {
+    padding: 0em;
+    background:#FFF;
   }
 `
 
 export const TwoColumnPageWrapper = styled.div`
-  padding: 2.5em 1em 2em;
+  padding: 1em 1em 2em;
   
   display: grid;
-  grid-template-columns: 3fr 6fr;
+  grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
+    background:#FFF;
   }
   ${changeGridToOneRow}
 `
@@ -38,7 +48,7 @@ export const PressWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
-    padding: 1em 0.2em;
+    padding: 1em 0.7em;
   }
   div > p {
   margin-bottom: 0.5em;
@@ -48,6 +58,15 @@ export const PressWrapper = styled.div`
   }
   div > div{
   margin-bottom: 0.5em;
+  }
+  ul {
+    list-style:none;
+    font-size: 1rem;
+    margin:0.5rem 0;
+    padding:0;
+    li {
+      list-style-type:none;
+    }
   }
   ${changeGridToOneRow};
 `
@@ -70,12 +89,15 @@ export const CenterColumn = styled.div`
   margin: auto;
 `
 export const PressReleaseWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 0em;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  @media (max-width: ${size.tablet}) {
+    grid-template-columns: 1fr 3fr;
+    column-gap: 0.7em;
+  }
 `
 export const PressReleaseText = styled.span`
-  margin-right: 2.5em;
+  margin-right: 0em;
   /* font-size: 1.1em; */
 `
 
@@ -117,6 +139,18 @@ export const PressReleaseFormError = styled.p`
   padding: 0.5rem 0rem;
   color: ${Color.red};
 `
+export const PageTitle = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 1.0em;
+  display:none;
+  @media (max-width: ${size.tablet}) {
+    display:block
+  }
+`
+export const PageSubTitle = styled.h3`
+  font-size: 1rem;
+  margin: 1em 0 0.5em;
+`
 
 export const PressArrowDown = styled(FontAwesomeIcon)`
   margin-right: 0.5rem;
@@ -140,10 +174,14 @@ export const TextBlock = styled.div`
   }
   p {
     font-size:1rem;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1rem;
+    line-height:1.4;
+  }
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;
 
   }
-  padding: 1em 0em;
+  padding: 0 0 1em 0em;
 `
