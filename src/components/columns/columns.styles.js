@@ -82,7 +82,7 @@ export const FixedTopExpMob = styled.div`
   @media (min-width: ${size.laptop}) {
     display:none;
   }
-  }
+  
 `
 export const MobTitleCard = styled.div`
   position: fixed;
@@ -91,7 +91,7 @@ export const MobTitleCard = styled.div`
   @media (min-width: ${size.laptop}) {
     display:none;
   }
-  }
+  
 `
 export const MobAnimCard = styled.div`
   position: absolute;
@@ -103,7 +103,7 @@ export const MobAnimCard = styled.div`
   @media (min-width: ${size.laptop}) {
     display:none;
   }
-  }
+  
 `
 
 export const FixedHeader = styled.div`
