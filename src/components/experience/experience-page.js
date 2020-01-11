@@ -205,8 +205,8 @@ class ExperiencePage extends React.Component {
           <ExperienceImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
           <ExperienceImageMob src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
-            <React.Fragment>
-            <ExperienceImage key={index} src={experience.url} />
+            <React.Fragment key={index}>
+            <ExperienceImage src={experience.url} />
             <ExperienceImageMob key={index} src={`${experience.urlmob}`} />
             </React.Fragment>
           ))}
