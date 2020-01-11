@@ -40,7 +40,7 @@ class NavbarMobile extends React.Component {
     {
       EN: "organisation",
       DE: "verein",
-      path: "organisation-2",
+      path: "organization-2",
     },
     {
       EN: "advisory board",
@@ -67,8 +67,18 @@ class NavbarMobile extends React.Component {
   }
 
   toggleEventList = () => {
-    this.props.toggleEvents();
-    this.toggleContent();
+    this.props.toggleEvents()
+    this.toggleContent()
+  }
+
+  showEventList = () => {
+    this.props.showEvents()
+    this.toggleContent()
+  }
+
+  hideEventList = () => {
+    this.props.hideEvents()
+    this.toggleContent()
   }
 
   showModal = () => {
@@ -96,6 +106,7 @@ class NavbarMobile extends React.Component {
               direction="down"
               bg={transitionBackground}
               to={createPath(this.language, "")}
+              onClick={() => this.hideEventList()}
             >
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
@@ -107,7 +118,7 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
-            <NavMobileLinkParagraph onClick={() => this.toggleEventList()}>
+            <NavMobileLinkParagraph onClick={() => this.showEventList()}>
               {" "}
               current{" "}
             </NavMobileLinkParagraph>
@@ -205,6 +216,10 @@ const mapDispatchToProps = dispatch => {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
     toggleEvents: () =>
       dispatch({ type: actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE }),
+    showEvents: () =>
+      dispatch({ type: actionTypes.SHOW_EVENTS_DISPLAY_IN_MOBILE }),
+    hideEvents: () =>
+      dispatch({ type: actionTypes.HIDE_EVENTS_DISPLAY_IN_MOBILE }),
   }
 }
 
