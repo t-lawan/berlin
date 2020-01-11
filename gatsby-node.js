@@ -109,6 +109,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 team_block_type
                 block_names {
                   full_name
+                  additional_info_en
+                  additional_info_de
                 }
               }
               press_images {
@@ -164,9 +166,7 @@ exports.createPages = async ({ graphql, actions }) => {
               event_venue_selection {
                 wordpress_id
               }
-              related_resources {
-                wordpress_id
-              }
+
               DE {
                 event_subtitle
                 event_title
@@ -204,10 +204,15 @@ exports.createPages = async ({ graphql, actions }) => {
               event_is_free
               event_language
               event_limited_capacity
-              other_event_language
               thumbnail_image
               template
               exp_number
+              embed_video_in_event
+              event_documentation {
+                wordpress_id
+              }
+              other_event_language_de
+              other_event_language
             }
           }
         }
@@ -330,7 +335,6 @@ exports.createPages = async ({ graphql, actions }) => {
       allWordpressWpExhibitions {
         edges {
           node {
-            id
             wordpress_id
             slug
             acf {
@@ -351,6 +355,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_dates_header
                 exp_title_header
                 exp_title_header_mobile
+                exp_bb11_right_header
+                promotional_sticker_for_homepage
+                promotional_sticker_url
               }
               EN {
                 description
@@ -361,12 +368,16 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_dates_header
                 exp_title_header
                 exp_title_header_mobile
+                exp_bb11_right_header
+                promotional_sticker_for_homepage
+                promotional_sticker_url
               }
               end_date
               exp_number
               start_date
               caption_de
               caption_en
+              exp_animation
             }
           }
         }
@@ -403,7 +414,11 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
-              DE {
+              english {
+                access_info
+                venue_name
+              }
+              deutsch {
                 access_info
                 venue_name
               }
@@ -453,10 +468,10 @@ exports.createPages = async ({ graphql, actions }) => {
     {EN: "event", DE: "veranstaltung"},
     {EN: "about", DE: "uber"},
     {EN: "resource", DE: "resource"},
-    {EN: "exhibition", DE: "exhibition"},
-    {EN: "venue", DE: "venue"},
+    {EN: "exhibition", DE: "austellung"},
+    {EN: "venue", DE: "ort"},
     {EN: "documentation", DE: "dokumentation"},
-    {EN: "participant", DE: "participant"},
+    {EN: "participant", DE: "beteiligte"},
     {EN: "news", DE: "news"},
   ]
 
@@ -489,8 +504,11 @@ exports.createPages = async ({ graphql, actions }) => {
       template = aboutTemplate
     }
     // Create pages for both EN and DE
+    let slug = edge.node.slug
+
     languages.forEach(language => {
       let path;
+
       if(edge.node.parent_element && edge.node.parent_element.slug === "about") {
         // path =
         // language === "en"
@@ -502,9 +520,10 @@ exports.createPages = async ({ graphql, actions }) => {
         });
         path =
         language === "en"
-          ? `/${prePath.EN}/${edge.node.slug}`
-          : `/${language}/${prePath.DE}/${edge.node.slug}`;
-        edge.node.slug = (language === "en") ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`;
+          ? `/${prePath.EN}/${slug}`
+          : `/${language}/${prePath.DE}/${slug}`;
+          console.log(language, path);
+        edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
       } else {
         path =
         language === "en"

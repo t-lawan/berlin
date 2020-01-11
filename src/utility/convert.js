@@ -82,7 +82,8 @@ export class Convert {
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.participants,
       wordpressModel.acf.related_resources,
-      wordpressModel.acf.other_event_language
+      wordpressModel.acf.other_event_language,
+      wordpressModel.acf.other_event_language_de
     )
   }
 
@@ -100,6 +101,7 @@ export class Convert {
       wordpressModel.acf.exhibition_floorplan,
       wordpressModel.acf.exhibition_participants,
       wordpressModel.acf.active_exhibition,
+      wordpressModel.acf.exp_animation
     )
   }
 
@@ -154,7 +156,8 @@ export class Convert {
     return new VenueModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
-      wordpressModel.acf.DE,
+      wordpressModel.acf.english,
+      wordpressModel.acf.deutsch,
       wordpressModel.acf.google_map_link,
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.venue_address,

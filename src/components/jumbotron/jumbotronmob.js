@@ -1,9 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { JumbotronWrapper, JumbotronHeader } from "./jumbotron.styles"
+import { JumbotronWrapperMob, JumbotronHeader } from "./jumbotron.styles"
 import { BerlinJumbotron } from "../../images/berlin-jumbotron"
 import {ReactComponent as Heading} from "../../images/berlin-heading.svg"
-import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper";
+import { createPath, getCurrentLanguageString } from "../../utility/helper";
 import { connect } from "react-redux"
 import { getDocument } from "../../store/selector";
 
@@ -15,15 +15,14 @@ const Jumbotron = props => {
     return ex.experience == experience
   })[0];
   let image = getDocument(props.documents, exhibition[language].exp_bb11_right_header);
+  let imagedate = getDocument(props.documents, exhibition[language].exp_dates_header);
   return(
-  <JumbotronWrapper showInMobile={props.showInMobile}>
-    <JumbotronHeader 
-    bg={transitionBackground}
-    cover direction="down"
-    to={createPath(language, '')}>
+  <JumbotronWrapperMob showInMobile={props.showInMobile}>
+    <JumbotronHeader to={createPath(language, '')}>
+      <img src={imagedate.url} alt={imagedate.slug}/>
       <img src={image.url} alt={image.slug}/>
     </JumbotronHeader>
-  </JumbotronWrapper>
+  </JumbotronWrapperMob>
 )
 }
 Jumbotron.propTypes = {

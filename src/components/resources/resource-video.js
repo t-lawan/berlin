@@ -1,5 +1,5 @@
 import React from "react"
-import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapper } from "../../templates/page.styles"
 import { Color } from "../../index.styles"
 import { getCurrentLanguageString } from "../../utility/helper";
 import ResourceNavigator from "./resource-navigator";
@@ -18,7 +18,7 @@ const ResourceVideo = props => {
         resourceIds = getRandomIds(props.resources, 4);
     }
   return (
-    <PageWrapper color={Color.yellow}>
+    <PageWrapperRes color={Color.yellow}>
         <ResourceNavigator id={r.id} />
         <TwoColumnPageWrapper>
             <div>
@@ -29,7 +29,7 @@ const ResourceVideo = props => {
                 <p> Video </p>
             </div>
         </TwoColumnPageWrapper>
-    </PageWrapper>
+    </PageWrapperRes>
     )
 }
 

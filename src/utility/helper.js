@@ -6,6 +6,10 @@ export const getCurrentLanguageString = languageStateObject => {
   }
 }
 
+export const truncateText = (text, number = 25) => {
+  return text.split(' ').slice(0, number).join(' ');
+}
+
 export const pageMap = [
   {EN: "event", DE: "veranstaltung"},
   {EN: "about", DE: "uber"},
@@ -16,6 +20,8 @@ export const pageMap = [
   {EN: "participant", DE: "beteiligte"},
   {EN: "news", DE: "news"},
 ];
+
+export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
 
 export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {

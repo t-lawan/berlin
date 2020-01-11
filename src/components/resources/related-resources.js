@@ -1,11 +1,11 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { changeGridToOneRow, Color } from "../../index.styles"
+import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString } from "../../utility/helper"
+import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper"
 import { get } from "http";
 
 const RelatedResourcesWrapper = styled.div`
@@ -16,7 +16,12 @@ const RelatedResourcesWrapper = styled.div`
   margin-right:0.5em;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 0em;
-  ${changeGridToOneRow};
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 1fr 1fr;
+    background-color:#FFF;
+    margin-bottom:0em;
+    padding-bottom:2em;
+  }
 `
 
 const ResourceLink = styled(AniLink)`
@@ -32,7 +37,7 @@ const RelatedResource = styled.div`
   position:relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em;
-  border: 1px solid black;
+  border: 1px solid black !important;
   :hover{
     >p{
       color: ${Color.red}
@@ -105,6 +110,8 @@ const RelatedResources = props => {
         <ResourceLink
           key={index}
           to={createPath(language, `resource/${resource.slug}`)}
+          cover direction="down"
+          bg={transitionBackground}
         >
           <RelatedResource>
             <ResourceText>{resource.title}</ResourceText>

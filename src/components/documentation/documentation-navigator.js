@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
@@ -50,13 +50,14 @@ class DocumentationNavigator extends React.Component {
     return (
         <DocumentationNavigatorWrapper>
           <DocumentationNavigatorButton
-            fade
+            bg={transitionBackground}
+            cover direction="down"
             to={createPath(this.language, this.previousPage())}
           >
             {`<`}
           </DocumentationNavigatorButton>
           <DocumentationNavigatorButton
-            fade
+            bg={transitionBackground}
             to={createPath(this.language, this.nextPage())}
           >
             {`>`}

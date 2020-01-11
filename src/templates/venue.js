@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
@@ -10,6 +10,8 @@ import { PageWrapper, TextBlock } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import { Color, ExternalLink } from "../index.styles"
 import NewsList from "../components/news/newslist";
+import striptags from 'striptags';
+
 const VenueLink = styled(ExternalLink)`
   padding-bottom: 1em;
 `
@@ -27,8 +29,8 @@ const Venue = props => {
   const renderComponent = (
     <PageWrapper colour={Color.yellow}>
       <SEO
-        title={`${venuePageInfo.slug}`}
-        description={`${venuePageInfo.slug}`}
+        title={venue[venuePageInfo.language.toUpperCase()].venue_name}
+        description={venue[venuePageInfo.language.toUpperCase()].venue_name}
         lang={venuePageInfo.language}
       />
       <VenueTitle

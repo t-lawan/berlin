@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
-
   display: flex;
   z-index: 300;
   border-top: 1px solid black;
@@ -16,8 +15,8 @@ export const NavWrapper = styled.nav`
 export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
-  padding: 1em 1em;
-  max-height: 100vh;
+  padding: 0.3em 0.7em;
+  max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;
   ${showDisplayForTablet};
@@ -31,17 +30,22 @@ export const NavInner = styled.div`
 export const NavMobileInner = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0.5em 1.5em;
+  padding: 0.7em 1.3em;
 `
 
 export const NavImageLink = styled(AniLink)`
   text-decoration: none;
+  line-height: 1;
+  > img {
+  margin:0;
+  }
 `
 
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
-  padding: 1.3em 0.5em 0.5em;
+  line-height:1.2;
+  padding: 1.2em 0.5em 0.5em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
@@ -56,7 +60,8 @@ export const NavItem = styled(AniLink)`
 
 export const NavLink = styled.a`
   display: block;
-  padding: 1.3em 16px 0.5em;
+  line-height:1.2;
+  padding: 1.2em 16px 0.5em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
@@ -79,39 +84,73 @@ export const NavIcon = styled(FontAwesomeIcon)`
     cursor: pointer;
   }
 `
+export const NavIconSVG = styled.img`
+  height: 28px;
+    margin-top: 3px;
+    margin-bottom: 0;
+    width: auto;
+    display: inline-block;
+  display: ${props => props.show ? 'inherit': 'none'};
+  :hover {
+    cursor: pointer;
+  }
+`
 
 export const NavMobileLinks = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0.5em 1.5em;
+  > a {
+    font-size:1.1em;
+  }
+  :last-child{
+    padding-bottom:1em;
+  }
 `
 
 export const NavMobileLink = styled(AniLink)`
   text-decoration: none;
-  font-size: 1.4rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.55em;
+  padding-bottom: 0.0rem;
+  display: block;
+`
+export const NavMobileLinkSmall = styled(AniLink)`
+  text-decoration: none;
+  font-size: 1.1em;
+  padding-bottom: 0.0rem;
+  display: block;
+`
+
+export const NavMobileLinkParagraph = styled.p`
+  font-size: 1.55rem;
+  padding-bottom: 0.0rem;
+  margin:0;
   display: block;
 `
 
 export const NavMobileOuterLink = styled.a`
   text-decoration: none;
-  font-size: 1.4rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.55em;
+  padding-bottom: 0.0rem;
   display: block;
 `
 
 export const NavMobileModal = styled.p`
-  font-size: 1.4rem;
-  padding-bottom: 0.5rem;
+  font-size: 1.1em;
+  padding-bottom: 0.0rem;
+  margin: 0;
   display: block;
 `
 
 export const NavMobileContent = styled.div`
-  display: ${props => (props.show ? "inherit" : "none")};
+  max-height: ${props => (props.show ? "1200px" : "0")};
+  transition: all 0.3s ease-in-out;
+  padding-bottom:0.0em;
 `
 
 export const NavImage = styled.img`
-  height: 1.5rem;
-  padding-top: 0em;
-  width: auto;
+  height: 28px;
+    margin-top: 3px !important;
+    margin-left:1.6em !important;
+    width: auto;
 `

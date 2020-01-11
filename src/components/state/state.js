@@ -24,9 +24,9 @@ const State = props => {
                   event_venue_selection {
                     wordpress_id
                   }
-                  related_resources {
-                    wordpress_id
-                  }
+                  # related_resources {
+                  #   wordpress_id
+                  # }
                   DE {
                     event_subtitle
                     event_title
@@ -63,12 +63,15 @@ const State = props => {
                   }
                   event_is_free
                   event_language
+                  other_event_language
+                  other_event_language_de
                   event_limited_capacity
                   other_event_language
                   thumbnail_image
                   # participants
                   template
                   exp_number
+                  embed_video_in_event
                 }
               }
             }
@@ -76,14 +79,12 @@ const State = props => {
           allWordpressWpExhibitions {
             edges {
               node {
-                id
                 wordpress_id
                 slug
                 acf {
                   exhibition_floorplan
                   active_exhibition
                   use_gallery_images
-                  # exhibition_participants
                   exhibition_venue {
                     wordpress_id
                   }
@@ -98,6 +99,9 @@ const State = props => {
                     exp_dates_header
                     exp_title_header
                     exp_title_header_mobile
+                    exp_bb11_right_header
+                    promotional_sticker_for_homepage
+                    promotional_sticker_url
                   }
                   EN {
                     description
@@ -108,12 +112,16 @@ const State = props => {
                     exp_dates_header
                     exp_title_header
                     exp_title_header_mobile
+                    exp_bb11_right_header
+                    promotional_sticker_for_homepage
+                    promotional_sticker_url
                   }
                   end_date
                   exp_number
                   start_date
                   caption_de
                   caption_en
+                  exp_animation
                 }
               }
             }
@@ -310,7 +318,11 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
-                  DE {
+                  english {
+                    access_info
+                    venue_name
+                  }
+                  deutsch {
                     access_info
                     venue_name
                   }
@@ -365,11 +377,11 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
-    
+
     let news = Convert.toModelArray(
       data.allWordpressWpNews,
       Convert.toNewsModel
-    );
+    )
     // let news = generateNewsArticles(20)
 
     let exhibitions = Convert.toModelArray(
