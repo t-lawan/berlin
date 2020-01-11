@@ -20,9 +20,9 @@ export const GalleryImage = styled.img`
 
 export const Caption = styled.section`
   font-size: 0.6rem;
-  p{
-   font-size: 0.65rem; 
-   margin:0.7em 0;
+  p {
+    font-size: 0.65rem;
+    margin: 0.7em 0;
   }
 `
 
@@ -35,40 +35,46 @@ class ImageResource extends React.Component {
   language
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      image: null
+      image: null,
     }
   }
 
-
   componentWillMount() {
     this.setState({
-      image: getDocument(this.props.documents, this.props.id)
-    });
+      image: getDocument(this.props.documents, this.props.id),
+    })
     // this.image = getDocument(this.props.documents, this.props.id)
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.id !== prevProps.id) {
+    if (this.props.id !== prevProps.id) {
       this.setState({
-        image: getDocument(this.props.documents, this.props.id)
-      });
+        image: getDocument(this.props.documents, this.props.id),
+      })
     }
 
     // this.image = getDocument(this.props.documents, this.props.id)
   }
 
   render() {
-    this.language = getCurrentLanguageString(this.props.languages);
+    this.language = getCurrentLanguageString(this.props.languages)
 
     return (
       <>
-        
+        <Img
+          fadeIn={true}
+          onLoad={this.props.onLoad}
+          fluid={this.state.image ? this.state.image.fluid : null}
+        />
+
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
-            __html: this.state.image ? this.state.image[this.language].caption : '',
+            __html: this.state.image
+              ? this.state.image[this.language].caption
+              : "",
           }}
         />
       </>
