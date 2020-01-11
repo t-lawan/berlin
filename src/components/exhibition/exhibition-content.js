@@ -25,7 +25,7 @@ const ExhibitionContent = props => {
           }}
         />
       
-        <p> {content[language].works_and_contributions}</p>
+        <p hidden={!exhibition[language].participant_list}> {content[language].works_and_contributions}</p>
         <div
           dangerouslySetInnerHTML={{
             __html: exhibition[language].participant_list,
