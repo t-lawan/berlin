@@ -45,7 +45,7 @@ const ResourceText = props => {
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
-          <p hidden={r.text_based_resource[0].document_language.length === 0}> Language: {r.text_based_resource[0].document_language}</p>
+          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
         </div>
         <div>
           <ResourceTitle
@@ -58,8 +58,9 @@ const ResourceText = props => {
           <p>
             In:{" "}
             <ResourcePublisherLink
+              hidden={r.publisher.title}
               target="_blank"
-              href={r.publisher.external_url}
+              href={r.publisher.title}
             >
               {r.publisher.title}
             </ResourcePublisherLink>
