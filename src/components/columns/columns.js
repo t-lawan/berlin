@@ -87,7 +87,7 @@ class Columns extends React.Component {
           </StickyTopHeader>          
           
           {/* Second Column */}
-          <Column rightBorder={true}>
+          <Column hideInMobile={this.props.show_events_in_mobile} rightBorder={true}>
             <MobTitleCard showInMobile={true}>
               <JumbotronMob showInMobile={true} />
             </MobTitleCard>
