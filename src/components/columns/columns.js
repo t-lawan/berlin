@@ -25,13 +25,11 @@ import {
   MobAnimCard,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
-import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
-import NewsList from "../news/newslist";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
