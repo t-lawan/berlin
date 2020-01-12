@@ -11,7 +11,6 @@ import AboutOrganisation from "./about-organisation"
 const AboutComponents = props => {
   const content = props.content
   let renderComponent
-  console.log(content)
   const language = getCurrentLanguageString(props.languages)
   switch (content.slug) {
     case "about":

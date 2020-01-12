@@ -67,6 +67,15 @@ export class Convert {
     const venue = wordpressModel.acf.event_venue_selection.map((venue) => {
       return venue.wordpress_id;
     })
+
+    let documentation;
+
+    if(wordpressModel.acf.event_documentation) {
+      documentation = wordpressModel.acf.event_documentation.map((doc) => {
+        return doc.wordpress_id
+      })
+    }
+
     return new EventsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -75,7 +84,7 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.dates,
       venue,
-      null,
+      documentation,
       wordpressModel.acf.event_is_free,
       wordpressModel.acf.event_language,
       wordpressModel.acf.event_limited_capacity,
