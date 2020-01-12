@@ -19,7 +19,8 @@ export const pageMap = [
   {EN: "documentation", DE: "dokumentation"},
   {EN: "participant", DE: "beteiligte"},
   {EN: "news", DE: "news"},
-];
+  {EN: "current", DE: "aktuell"},
+]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
 
@@ -36,6 +37,7 @@ export const createPath = (language, path) => {
   } else {
     newPath = language === "EN" ? `/${path}` : `/${language.toLowerCase()}/${path}`;
   }
+
   return newPath
 }
 
