@@ -12,7 +12,7 @@ const RelatedNavigatorWrapper = styled.div`
   margin-top:-2em;
   margin-bottom:0;
   flex-direction: row;
-  background: transparent;
+  background: white;
   @media (max-width: ${size.mobileM}) {
     display:block;
     margin-top:0em;
