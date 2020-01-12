@@ -6,7 +6,7 @@ import { size } from "../../index.styles"
 export const EventNavigatorWrapper = styled.section`
   display: flex;
   flex-direction: row;
-  background: transparent;
+  background: white;
   @media (max-width: ${size.mobileM}) {
     display:block;
     padding: 0.5em 0 0 0.7em;

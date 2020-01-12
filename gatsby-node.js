@@ -473,6 +473,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {EN: "documentation", DE: "dokumentation"},
     {EN: "participant", DE: "beteiligte"},
     {EN: "news", DE: "news"},
+    {EN: "current", DE: "aktuell"},
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -522,7 +523,6 @@ exports.createPages = async ({ graphql, actions }) => {
         language === "en"
           ? `/${prePath.EN}/${slug}`
           : `/${language}/${prePath.DE}/${slug}`;
-          console.log(language, path);
         edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
       } else {
         path =
@@ -664,6 +664,20 @@ exports.createPages = async ({ graphql, actions }) => {
         component: slash(newsTemplate),
         context: { ...edge.node, language: language },
       })
+    })
+  })
+
+  const currentTemplate = path.resolve('./src/templates/current.js');
+  languages.forEach(language => {
+    let prePath = pageMap.find((pageType) => {
+      return pageType.EN === "current";
+    });
+    let path = language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+
+    createPage({
+      path: path,
+      component: slash(currentTemplate),
+      content: {language: language}
     })
   })
 

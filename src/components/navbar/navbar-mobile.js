@@ -25,10 +25,10 @@ import {
   NavLink,
   NavMobileLinkParagraph,
 } from "./navbar.styles"
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"
 import LanguageController from "../languagecontroller/languagecontroller"
 import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
 import * as actionTypes from "../../store/action"
+import { navigate } from "gatsby"
 class NavbarMobile extends React.Component {
   language
   navLinks = [
@@ -66,21 +66,6 @@ class NavbarMobile extends React.Component {
     })
   }
 
-  toggleEventList = () => {
-    this.props.toggleEvents()
-    this.toggleContent()
-  }
-
-  showEventList = () => {
-    this.props.showEvents()
-    this.toggleContent()
-  }
-
-  hideEventList = () => {
-    this.props.hideEvents()
-    this.toggleContent()
-  }
-
   showModal = () => {
     this.props.showModal()
   }
@@ -106,7 +91,6 @@ class NavbarMobile extends React.Component {
               direction="down"
               bg={transitionBackground}
               to={createPath(this.language, "")}
-              onClick={() => this.hideEventList()}
             >
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
@@ -118,10 +102,14 @@ class NavbarMobile extends React.Component {
 
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
-            <NavMobileLinkParagraph onClick={() => this.showEventList()}>
-              {" "}
-              current{" "}
-            </NavMobileLinkParagraph>
+            <NavMobileLink
+              cover
+              direction="down"
+              bg={transitionBackground}
+              to={createPath(this.language, `current`)}
+            >
+              {this.language === "EN" ? "current" : "aktuell"}
+            </NavMobileLink>
             {this.props.navbar.map((item, index) =>
               generateLink(item, this.language)
             )}
@@ -214,12 +202,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
-    toggleEvents: () =>
-      dispatch({ type: actionTypes.TOGGLE_EVENTS_DISPLAY_IN_MOBILE }),
-    showEvents: () =>
-      dispatch({ type: actionTypes.SHOW_EVENTS_DISPLAY_IN_MOBILE }),
-    hideEvents: () =>
-      dispatch({ type: actionTypes.HIDE_EVENTS_DISPLAY_IN_MOBILE }),
   }
 }
 

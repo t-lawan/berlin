@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
-import { size } from "../../index.styles";
+import { size, Color } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,7 +12,7 @@ const RelatedNavigatorWrapper = styled.div`
   margin-top:-2em;
   margin-bottom:0;
   flex-direction: row;
-  background: transparent;
+  background: ${Color.yellow};
   @media (max-width: ${size.mobileM}) {
     display:block;
     margin-top:0em;
