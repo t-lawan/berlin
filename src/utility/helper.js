@@ -23,7 +23,13 @@ export const pageMap = [
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
-
+export const shuffle = (a) => {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {
     let type = path.split('/')[0].toLowerCase();
