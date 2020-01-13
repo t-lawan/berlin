@@ -24,6 +24,7 @@ import {
   NavImageLink,
   NavLink,
   NavMobileLinkParagraph,
+  NavMobileOuterLinkSmall,
 } from "./navbar.styles"
 import LanguageController from "../languagecontroller/languagecontroller"
 import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
@@ -136,13 +137,13 @@ class NavbarMobile extends React.Component {
                 newsletter{" "}
               </NavMobileModal>
               {socialMediaLinks.map(link => (
-                <NavMobileLinkSmall
+                <NavMobileOuterLinkSmall
                   key={link.name}
                   target="_blank"
                   href={link.url}
                 >
                   {link.name}
-                </NavMobileLinkSmall>
+                </NavMobileOuterLinkSmall>
               ))}
             </div>
             <div>

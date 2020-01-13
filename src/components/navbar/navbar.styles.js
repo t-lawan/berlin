@@ -121,6 +121,13 @@ export const NavMobileLinkSmall = styled(AniLink)`
   display: block;
 `
 
+export const NavMobileOuterLinkSmall = styled.a`
+  text-decoration: none;
+  font-size: 1.1em;
+  padding-bottom: 0.0rem;
+  display: block;
+`
+
 export const NavMobileLinkParagraph = styled.p`
   font-size: 1.55rem;
   padding-bottom: 0.0rem;
