@@ -26,15 +26,16 @@ const ResourceAudio = props => {
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
+      <AudioResource id={r.audio.file} withCaption={true} />
+
       <TwoColumnPageWrapper>
-        <div>
-          <AudioResource id={r.audio.file} withCaption={true} />
-        </div>
         <div>
           <p>
             {r.title} : {r[language].label}
           </p>
           <p> {r.author} </p>
+        </div>
+        <div>
           <div
             dangerouslySetInnerHTML={{
               __html: r.description,
