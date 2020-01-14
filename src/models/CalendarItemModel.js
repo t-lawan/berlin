@@ -12,7 +12,8 @@ export class CalendarItemModel {
     is_free,
     experience,
     EN,
-    DE
+    DE,
+    language = null
   ) {
     this.id = id
     this.slug = slug
@@ -27,5 +28,6 @@ export class CalendarItemModel {
     this.experience = experience
     this.EN = EN;
     this.DE = DE;
+    this.language = language
   }
 }

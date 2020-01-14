@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
-import { size } from "../../index.styles";
+import { size, Color } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -12,7 +12,7 @@ const RelatedNavigatorWrapper = styled.div`
   margin-top:-2em;
   margin-bottom:0;
   flex-direction: row;
-  background: transparent;
+  background: ${Color.yellow};
   @media (max-width: ${size.mobileM}) {
     display:block;
     margin-top:0em;
@@ -42,7 +42,7 @@ const RelatedNavigatorIcon = styled(FontAwesomeIcon)``
 
 class ResourceNavigator extends React.Component {
   language
-  currentIndex
+  currentIndex;
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.resources.length) {
       return `resource/${this.props.resources[0].slug}`
@@ -63,6 +63,7 @@ class ResourceNavigator extends React.Component {
     this.currentIndex = this.props.resources.findIndex(resource => {
       return resource.id === this.props.id
     })
+    this.currentIndex = this.currentIndex < 0 ? 0 : this.currentIndex;
     return (
       <RelatedNavigatorWrapper>
         <RelatedNavigatorButton

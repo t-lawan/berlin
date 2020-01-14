@@ -2,9 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { changeGridToOneRow, size } from "../../index.styles";
-import ImageResource from "../../partials/ImageResource";
+import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { changeGridToOneRow, size } from "../../index.styles"
+import ImageResource from "../../partials/ImageResource"
+import AniLink from "gatsby-plugin-transition-link/AniLink";
+
 const FooterWrapper = styled.footer`
   display: grid;
   grid-template-columns: 1fr 3.8fr 7.5fr 2fr;
@@ -17,25 +19,45 @@ const FooterWrapper = styled.footer`
   ${changeGridToOneRow};
   @media (max-width: ${size.mobileM}) {
     border-right: 0px solid black;
-    padding-bottom:20px;
+    padding-bottom: 20px;
     > div:nth-child(3) {
-      margin-top:0.8rem;
+      margin-top: 0.8rem;
     }
     > div:first-child {
-      margin-bottom:0.7rem;
+      margin-bottom: 0.7rem;
     }
   }
 `
 
+const DoubleDecker = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const BottomRow = styled.div`
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+`
+
 const ImageWrapper = styled.div`
-    @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tablet}) {
     width: 30%;
   }
 `
 
 const FooterText = styled.p`
   /* font-size: 1rem; */
-  margin:0;
+  margin: 0;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.9rem;
+  }
+`
+
+const FooterLink = styled(AniLink)`
+  margin: 0;
+  padding-right: 1rem;
   @media (max-width: ${size.mobileM}) {
     font-size: 0.9rem;
   }
@@ -54,11 +76,13 @@ const FooterComponent = props => {
         <FooterText> {content.tel_phone_number}</FooterText>
         <FooterText> {content.fax_phone_number}</FooterText>
       </div>
-      <div>
-        <FooterText>
-        {content[language].description}
-        </FooterText>
-      </div>
+      <DoubleDecker>
+        <FooterText>{content[language].description}</FooterText>
+        <BottomRow>
+          <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
+          <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
+        </BottomRow>
+      </DoubleDecker>
       <ImageWrapper>
         <ImageResource id={431} withCaption={false} />
       </ImageWrapper>
@@ -67,18 +91,22 @@ const FooterComponent = props => {
 }
 
 const content = {
-  address_line: 'Auguststr. 69, 10117 Berlin',
-  email: 'office@berlinbiennale.de',
-  tel_phone_number: 'T +49 (0)30 24 34 59 70',
-  fax_phone_number: 'F +49 (0)30 24 34 59 99',
+  address_line: "Auguststr. 69, 10117 Berlin",
+  email: "office@berlinbiennale.de",
+  tel_phone_number: "T +49 (0)30 24 34 59 70",
+  fax_phone_number: "F +49 (0)30 24 34 59 99",
   EN: {
-    title: 'contact',
-    description: `The Berlin Biennale is funded by the Kulturstiftung des Bundes (German Federal Cultural Foundation) and organized by KUNST-WERKE BERLIN e. V.`
+    title: "contact",
+    description: `The Berlin Biennale is funded by the Kulturstiftung des Bundes (German Federal Cultural Foundation) and organized by KUNST-WERKE BERLIN e. V.`,
+    imprint: 'imprint',
+    dataPrivacy: "data privacy"
   },
   DE: {
-    title: 'kontakt',
-    description: `Die Berlin Biennale wird gefördert durch die Kulturstiftung des Bundes und organisiert vom KUNST-WERKE BERLIN e. V.`
-  }
+    title: "kontakt",
+    description: `Die Berlin Biennale wird gefördert durch die Kulturstiftung des Bundes und organisiert vom KUNST-WERKE BERLIN e. V.`,
+    imprint: 'impressum',
+    dataPrivacy: "datenschutz"
+  },
 }
 
 const mapStateToProps = state => {

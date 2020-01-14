@@ -67,6 +67,15 @@ export class Convert {
     const venue = wordpressModel.acf.event_venue_selection.map((venue) => {
       return venue.wordpress_id;
     })
+
+    let documentation;
+
+    if(wordpressModel.acf.event_documentation) {
+      documentation = wordpressModel.acf.event_documentation.map((doc) => {
+        return doc.wordpress_id
+      })
+    }
+
     return new EventsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -75,7 +84,7 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.dates,
       venue,
-      null,
+      documentation,
       wordpressModel.acf.event_is_free,
       wordpressModel.acf.event_language,
       wordpressModel.acf.event_limited_capacity,
@@ -217,13 +226,16 @@ export class Convert {
               description: event.EN.full_description,
               display_time: date.EN.display_time,
               subtitle: event.EN.event_subtitle,
+              other_language: event.other_language
             },
             {
               title: event.DE.event_title,
               description: event.DE.full_description,
               display_time: date.DE.display_time,
               subtitle: event.DE.event_subtitle,
+              other_language: event.other_language_de
             },
+            event.language
             // { ...event.EN, ...date.EN },
             // { ...event.DE, ...date.DE },
           )
@@ -262,13 +274,16 @@ export class Convert {
               description: exhibition.EN.description,
               display_time: exhibition.start_time,
               subtitle: '',
+              other_language:null
             },
             {
               title: exhibition.DE.title,
               description: exhibition.DE.description,
               display_time: exhibition.start_time,
               subtitle: '',
-            }
+              other_language:null
+            },
+            null
           )
         )
       }
