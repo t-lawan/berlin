@@ -240,7 +240,6 @@ exports.createPages = async ({ graphql, actions }) => {
               text_based_resource {
                 document_download_label
                 document_language
-                # document_upload
                 free_text_entry
               }
               floating_resource
@@ -261,7 +260,10 @@ exports.createPages = async ({ graphql, actions }) => {
               resource_label
               resource_external_url_label
               resource_label_de
+              resource_author_de
+              resource_url
             }
+            resource_genre
           }
         }
       }
