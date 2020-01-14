@@ -226,13 +226,16 @@ export class Convert {
               description: event.EN.full_description,
               display_time: date.EN.display_time,
               subtitle: event.EN.event_subtitle,
+              other_language: event.other_language
             },
             {
               title: event.DE.event_title,
               description: event.DE.full_description,
               display_time: date.DE.display_time,
               subtitle: event.DE.event_subtitle,
+              other_language: event.other_language_de
             },
+            event.language
             // { ...event.EN, ...date.EN },
             // { ...event.DE, ...date.DE },
           )
@@ -271,13 +274,16 @@ export class Convert {
               description: exhibition.EN.description,
               display_time: exhibition.start_time,
               subtitle: '',
+              other_language:null
             },
             {
               title: exhibition.DE.title,
               description: exhibition.DE.description,
               display_time: exhibition.start_time,
               subtitle: '',
-            }
+              other_language:null
+            },
+            null
           )
         )
       }
