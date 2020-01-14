@@ -15,26 +15,20 @@ import AudioResource from "../../partials/AudioResource"
 const ResourceAudio = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
-  let resourceIds = []
-  if (props.resources.length !== 0) {
-    resourceIds = props.resources.map(res => {
-      return res.id
-    })
-  } else {
-    resourceIds = getRandomIds(props.resources, 4)
-  }
+
   return (
     <PageWrapperRes colour={Color.yellow}>
-      <ResourceNavigator id={r.id} />
+      <ResourceNavigator hidden={!r.id} id={r.id} />
+      <AudioResource id={r.audio.file} withCaption={true} />
+
       <TwoColumnPageWrapper>
-        <div>
-          <AudioResource id={r.audio.file} withCaption={true} />
-        </div>
         <div>
           <p>
             {r.title} : {r[language].label}
           </p>
-          <p> {r.author} </p>
+          <p> {r.author} </p> 
+        </div>
+        <div>
           <div
             dangerouslySetInnerHTML={{
               __html: r.description,
@@ -43,7 +37,7 @@ const ResourceAudio = props => {
         </div>
       </TwoColumnPageWrapper>
 
-      <RelatedResources ids={resourceIds} />
+      <RelatedResources ids={[r.id]} />
     </PageWrapperRes>
   )
 }

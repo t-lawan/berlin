@@ -227,7 +227,6 @@ const State = props => {
               node {
                 wordpress_id
                 slug
-                resource_genre
                 acf {
                   mp3_file_upload
                   mp3_file_upload_label
@@ -240,17 +239,15 @@ const State = props => {
                   resource_year_de
                   subtitle
                   resource_image
-                  resource_image
                   resource_type
                   title
+                  thumbnail_image
                   text_based_resource {
                     document_download_label
                     document_language
-                    # document_upload
                     free_text_entry
                   }
                   floating_resource
-                  thumbnail_image
                   image_gallery {
                     alt_text
                     wordpress_id
@@ -268,7 +265,10 @@ const State = props => {
                   resource_label
                   resource_external_url_label
                   resource_label_de
+                  resource_author_de
+                  resource_url
                 }
+                resource_genre
               }
             }
           }
