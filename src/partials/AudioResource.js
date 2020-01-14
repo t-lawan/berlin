@@ -10,9 +10,7 @@ import {
   faPlayCircle,
   faPlay,
   faPause,
-  faBackward,
-  faForward,
-  faVolumeDown,
+  faPauseCircle,
   faVolumeUp,
   faVolumeMute,
 } from "@fortawesome/free-solid-svg-icons"
@@ -48,7 +46,7 @@ const TimeProgressBar = styled.progress`
     appearance: none;
     background-color: rgba(0, 0, 0, 0.4);
     color: black;
-    height: 0.5rem;
+    height: 0.3rem;
     border: 0;
     /* height: 5px; */
   }
@@ -258,7 +256,8 @@ class AudioResource extends React.Component {
         <AudioPlayerWrapper>
           <ActionIcon
             onClick={() => (this.state.isPlaying ? this.pause() : this.play())}
-            icon={this.state.isPlaying ? faPause : faPlay}
+            icon={this.state.isPlaying ? faPauseCircle : faPlayCircle}
+            size={`lg`}
           />
           <span>{this.calculateCurrentValue(this.state.currentTime)}</span>
           <TimeProgressBar
@@ -272,6 +271,7 @@ class AudioResource extends React.Component {
           <span> {this.calculateTotalValue(this.state.length)}</span>
           <ActionIcon
             onClick={() => this.toggleMute()}
+            color={this.state.volume === 0 ? 'red' : 'black'}
             icon={this.state.volume === 0 ? faVolumeMute : faVolumeUp}
           />
           <VolumeProgressBar
