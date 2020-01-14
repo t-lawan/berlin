@@ -64,7 +64,7 @@ const TextBox = styled.div`
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
-  let resources = shuffle(props.resources).splice(0, 6);
+  let resources = props.resources.splice(0, 6);
   const createComponent = index => {
     const resource = resources[index]
     let renderComponent
