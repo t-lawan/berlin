@@ -41,6 +41,8 @@ const UpcomingEvents = props => {
       return a.start_date - b.start_date
     })
 
+    console.log(filteredItems);
+
   return (
     <EventsWrapper>
       <p hidden={filteredItems.length !== 0}>
@@ -65,8 +67,8 @@ const UpcomingEvents = props => {
             <EventTitle
               dangerouslySetInnerHTML={{ __html: item[language].subtitle }}
             />
-            {/* <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p> */}
-            <p>{item.language == "other" ? item[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][item.language]}</p>
+            <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
+            <p>{item.language == "other" ? item[language].other_language : freeAdmision[language][item.language]}</p>
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>
