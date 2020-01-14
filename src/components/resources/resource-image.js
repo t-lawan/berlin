@@ -11,14 +11,7 @@ import RelatedResources from "./related-resources";
 const ResourceImage = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
-  let resourceIds = []
-  if (props.resources.length !== 0) {
-    resourceIds = props.resources.map(res => {
-      return res.id
-    })
-  } else {
-    resourceIds = getRandomIds(props.resources, 4)
-  }
+
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator id={r.id} />
@@ -40,7 +33,7 @@ const ResourceImage = props => {
           />
         </div>
       </TwoColumnPageWrapper>
-      <RelatedResources ids={resourceIds} />
+      <RelatedResources ids={[r.id]} />
     </PageWrapperRes>
   )
 }
