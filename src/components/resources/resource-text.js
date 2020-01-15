@@ -27,7 +27,6 @@ const ResourceTitle = styled.h1`
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
-  console.log(r.id)
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
@@ -87,7 +86,6 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 
