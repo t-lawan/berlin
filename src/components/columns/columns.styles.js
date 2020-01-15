@@ -1,5 +1,10 @@
 import styled, { css } from "styled-components"
-import { changeGridToOneRow, size, hideDisplayForTablet, showDisplayForTablet } from "../../index.styles"
+import {
+  changeGridToOneRow,
+  size,
+  hideDisplayForTablet,
+  showDisplayForTablet,
+} from "../../index.styles"
 import { Animated } from "react-animated-css"
 
 export const AnimatedColumn = styled(Animated)`
@@ -54,7 +59,7 @@ export const FirstColumnWrapper = styled.div`
     border-left: none;
   }
   @media (max-width: ${size.mobileM}) {
-    display:flex;
+    display: flex;
     flex-direction: column-reverse;
     background-color: transparent;
   }
@@ -65,45 +70,45 @@ export const StickyTopHeader = styled.div`
   top: 0;
   position: sticky;
   :first-child {
-    border-right:solid 1px #000;
+    border-right: solid 1px #000;
   }
   @media (max-width: ${size.mobileM}) {
     :first-child {
-    border-right:solid 0px #000;
-  }
+      border-right: solid 0px #000;
+    }
   }
 `
 export const FixedTopExpMob = styled.div`
-  z-index: 300;
-  top: 0;
-  width:100%;
-  position: fixed;
-  height:45px;
-  @media (min-width: ${size.laptop}) {
-    display:none;
+  display: none;
+  @media (min-width: ${size.tablet}) {
+    z-index: 300;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    height: 45px;
   }
-  
 `
 export const MobTitleCard = styled.div`
-  position: fixed;
-  z-index: 3;
-  width: 100%;
-  @media (min-width: ${size.laptop}) {
-    display:none;
+  display: none;
+  @media (min-width: ${size.tablet}) {
+    display: inherit;
+    position: fixed;
+    z-index: 3;
+    width: 100%;
   }
-  
 `
 export const MobAnimCard = styled.div`
-  position: absolute;
+  display: none;
+
+  @media (min-width: ${size.tablet}) {
+    display: inherit;
+    position: absolute;
     z-index: 1;
     top: 0px;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
-  @media (min-width: ${size.laptop}) {
-    display:none;
   }
-  
 `
 
 export const FixedHeader = styled.div`
@@ -114,7 +119,7 @@ export const FixedHeader = styled.div`
 export const StickyHeader = styled.div`
   z-index: 250;
   position: sticky;
-  top:0;
+  top: 0;
 `
 
 export const RelativeHeader = styled.div`
@@ -161,6 +166,6 @@ export const FixedNavbar = styled.div`
   }
   @media (max-width: ${size.mobileM}) {
     position: fixed;
-    width:100%;
+    width: 100%;
   }
 `
