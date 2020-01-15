@@ -41,13 +41,12 @@ const RelatedNavigatorButton = styled(AniLink)`
 const RelatedNavigatorIcon = styled(FontAwesomeIcon)``
 
 class ResourceNavigator extends React.Component {
-  language
+  language;
   currentIndex;
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.resources.length) {
       return `resource/${this.props.resources[0].slug}`
     }
-
     return `resource/${this.props.resources[this.currentIndex + 1].slug}`
   }
 
@@ -63,19 +62,16 @@ class ResourceNavigator extends React.Component {
     this.currentIndex = this.props.resources.findIndex(resource => {
       return resource.id === this.props.id
     })
-    this.currentIndex = this.currentIndex < 0 ? 0 : this.currentIndex;
     return (
       <RelatedNavigatorWrapper>
         <RelatedNavigatorButton
-          bg={transitionBackground}
-          cover direction="down"
+          fade
           to={createPath(this.language, this.previousPage())}
         >
           {`<`}
         </RelatedNavigatorButton>
         <RelatedNavigatorButton
-          bg={transitionBackground}
-          cover direction="down"
+          fade
           to={createPath(this.language, this.nextPage())}
         >
           {`>`}
