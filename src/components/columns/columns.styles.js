@@ -87,21 +87,21 @@ export const FixedTopExpMob = styled.div`
     position: fixed;
     height: 45px;
   }
+
+  ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
-  display: none;
-  @media (min-width: ${size.tablet}) {
-    display: inherit;
+  ${showDisplayForTablet};
+  @media (max-width: ${size.tablet}) {
     position: fixed;
     z-index: 3;
     width: 100%;
   }
 `
 export const MobAnimCard = styled.div`
-  display: none;
+  ${showDisplayForTablet};
 
-  @media (min-width: ${size.tablet}) {
-    display: inherit;
+  @media (max-width: ${size.tablet}) {
     position: absolute;
     z-index: 1;
     top: 0px;
