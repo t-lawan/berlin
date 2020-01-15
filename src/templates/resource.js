@@ -21,13 +21,6 @@ const Resource = props => {
 
   let renderComponent
 
-  let resourceIds = []
-  if (props.resources.length !== 0) {
-    resourceIds = props.resources.map(res => {
-      return res.id
-    })
-    resourceIds = getRandomIds(props.resources, 4)
-  }
   switch (r.type) {
     case "image":
       renderComponent = <ResourceImage resource={r} />
@@ -79,20 +72,10 @@ const Resource = props => {
     </>
   )
 }
-
-const getRandomIds = (resources, numberOfIds) => {
-  let ints = []
-  for (let i = 0; i < numberOfIds; i++) {
-    ints.push(resources[Math.floor(Math.random() * resources.length)].id)
-  }
-  return ints
-}
-
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 

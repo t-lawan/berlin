@@ -44,13 +44,6 @@ const ResourceImageGallery = props => {
   )
 }
 
-const getRandomIds = (resources, numberOfIds) => {
-  let ints = []
-  for (let i = 0; i < numberOfIds; i++) {
-    ints.push(resources[Math.floor(Math.random() * resources.length)].id)
-  }
-  return ints
-}
 
 ResourceImageGallery.propTypes = {
   resource: PropTypes.object,
@@ -60,7 +53,6 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 

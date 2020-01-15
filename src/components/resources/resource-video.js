@@ -9,14 +9,7 @@ import { connect } from "react-redux"
 const ResourceVideo = props => {
     let language = getCurrentLanguageString(props.languages);
     let r = props.resource;
-    let resourceIds = [];
-    if(props.resources.length !== 0) {
-        resourceIds = props.resources.map(res => {
-            return res.id;
-        })
-    } else {
-        resourceIds = getRandomIds(props.resources, 4);
-    }
+
   return (
     <PageWrapperRes color={Color.yellow}>
         <ResourceNavigator id={r.id} />
@@ -49,7 +42,6 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 
