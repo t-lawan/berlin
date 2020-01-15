@@ -187,6 +187,7 @@ class ExperiencePage extends React.Component {
     this.setState({
       show: false,
     })
+    this.props.hideOverlay();
   }
   render() {
     return (
