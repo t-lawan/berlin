@@ -6,7 +6,7 @@ export const JumbotronWrapper = styled.div`
   background: white;
   padding: 1.4em 1.95rem 0.7em;
   margin: 0em;
-  ${showDisplayForTablet}
+  ${showDisplayForTablet};
   border-top: 0;
   img {
     margin-bottom:0;
@@ -24,12 +24,14 @@ export const JumbotronHeader = styled(AniLink)`
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.5em 0.7rem
+  padding: 0.5em 0.7rem;
   margin: 0em;
   position:relative;
   width:100%;
   z-index:2;
   display:block;
+  ${showDisplayForTablet};
+
   img {
     margin-bottom:0;
     position:relative;

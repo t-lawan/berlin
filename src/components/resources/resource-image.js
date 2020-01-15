@@ -14,7 +14,7 @@ const ResourceImage = props => {
 
   return (
     <PageWrapperRes colour={Color.yellow}>
-      <ResourceNavigator id={r.id} />
+      <ResourceNavigator hidden={!r.id} id={r.id} />
       <ImageResource id={r.image} withCaption={false} />
       <TwoColumnPageWrapper>
         <div>
@@ -38,14 +38,6 @@ const ResourceImage = props => {
   )
 }
 
-const getRandomIds = (resources, numberOfIds) => {
-  let ints = []
-  for (let i = 0; i < numberOfIds; i++) {
-    ints.push(resources[Math.floor(Math.random() * resources.length)].id)
-  }
-  return ints
-}
-
 ResourceImage.propTypes = {
   resource: PropTypes.object,
 }
@@ -54,7 +46,6 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 

@@ -234,11 +234,14 @@ class AudioResource extends React.Component {
   //   return current_time
   // }
 
-  UNSAFE_componentWillMount() {
+  // UNSAFE_componentWillMount() {
+  //   this.audio = getDocument(this.props.documents, this.props.id)
+  // }
+
+  componentWillMount() {
     this.audio = getDocument(this.props.documents, this.props.id)
   }
 
-  componentDidMount() {}
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
@@ -249,7 +252,7 @@ class AudioResource extends React.Component {
           controls
           hidden={true}
           onTimeUpdate={() => this.initProgressBar()}
-          onLoadedMetadata={this.setAudioInfo}
+          onLoadedMetadata={() => this.setAudioInfo()}
         >
           <source src={this.audio.url} />
         </audio>
