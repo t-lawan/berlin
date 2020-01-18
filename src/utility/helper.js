@@ -20,6 +20,7 @@ export const pageMap = [
   {EN: "participant", DE: "beteiligte"},
   {EN: "news", DE: "news"},
   {EN: "current", DE: "aktuell"},
+  {EN: "calendar", DE: "kalendar"},
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
