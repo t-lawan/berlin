@@ -532,7 +532,6 @@ exports.createPages = async ({ graphql, actions }) => {
           path = language === "en" 
             ? '/calendar' : '/de/kalendar'
 
-          console.log('HELLO', path)
 
         } else {
           path =
