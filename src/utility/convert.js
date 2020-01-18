@@ -255,7 +255,6 @@ export class Convert {
       for(let i = 0; i < diff; i++) {
         let start = start_date.clone();
         start.add(i, 'days');
-
         calendarItems.push(
           new CalendarItemModel(
             `exhibition-${exhibition.id}`,
@@ -272,14 +271,14 @@ export class Convert {
             {
               title: exhibition.EN.title,
               description: exhibition.EN.description,
-              display_time: exhibition.start_time,
+              display_time: exhibition.EN.start_time,
               subtitle: '',
               other_language:null
             },
             {
               title: exhibition.DE.title,
               description: exhibition.DE.description,
-              display_time: exhibition.start_time,
+              display_time: exhibition.DE.start_time,
               subtitle: '',
               other_language:null
             },

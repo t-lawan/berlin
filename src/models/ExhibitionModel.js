@@ -20,8 +20,14 @@ export class ExhibitionModel {
     this.id = id
     this.slug = slug
     this.experience = experience
-    this.EN = EN
-    this.DE = DE
+    this.EN = {
+      ...EN,
+      start_time: '2-7pm'
+    }
+    this.DE = {
+      ...DE,
+      start_time: '14-19Uhr'
+    }
     this.start_time = start_time
     this.start_date = start_date
     this.end_date = end_date
