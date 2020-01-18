@@ -27,17 +27,9 @@ const ResourceTitle = styled.h1`
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
-  let resourceIds = []
-  if (props.resources.length !== 0) {
-    resourceIds = props.resources.map(res => {
-      return res.id
-    })
-  } else {
-    resourceIds = getRandomIds(props.resources, 4)
-  }
   return (
     <PageWrapperRes colour={Color.yellow}>
-      <ResourceNavigator id={r.id} />
+      <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
         <div>
           {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
@@ -73,7 +65,7 @@ const ResourceText = props => {
           />
         </div>
       </TwoColumnPageWrapper>
-      <RelatedResources ids={resourceIds} />
+      <RelatedResources ids={[r.id]} />
     </PageWrapperRes>
   )
 }
@@ -94,7 +86,6 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    resources: state.resources,
   }
 }
 

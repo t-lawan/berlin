@@ -25,13 +25,12 @@ import {
   MobAnimCard,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
-import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
-import NewsList from "../news/newslist";
+import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -56,6 +55,12 @@ class Columns extends React.Component {
         </FirstColumnWrapper>
       )
     }
+
+    let exhibition = this.props.exhibitions.find((exh) => {
+      return exh.experience == this.props.experience;
+    });
+
+    let image = getDocument(this.props.documents, exhibition.animation)
 
     return (
       <ColumnsWrapper>
@@ -87,12 +92,12 @@ class Columns extends React.Component {
           </StickyTopHeader>          
           
           {/* Second Column */}
-          <Column hideInMobile={this.props.show_events_in_mobile} rightBorder={true}>
+          <Column rightBorder={true}>
             <MobTitleCard showInMobile={true}>
               <JumbotronMob showInMobile={true} />
             </MobTitleCard>
             <MobAnimCard showInMobile={true}>
-              <img className="bg_anim" src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_exp2_PRELIM.gif"/>
+              <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
               <ImageContainer
@@ -118,7 +123,7 @@ class Columns extends React.Component {
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column rightBorder={true} hideInMobile={!this.props.show_events_in_mobile}>
+          <Column hideInMobile={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
@@ -163,7 +168,10 @@ const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
     agreed_to_terms: state.agreed_to_terms,
-    show_events_in_mobile: state.show_events_in_mobile
+    show_events_in_mobile: state.show_events_in_mobile,
+    exhibitions: state.exhibitions,
+    experience: state.experience,
+    documents: state.documents
   }
 }
 export default connect(

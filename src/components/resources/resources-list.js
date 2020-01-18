@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, shuffle } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
 import { Color, size } from "../../index.styles"
 import { Link } from "gatsby"
@@ -64,8 +64,11 @@ const TextBox = styled.div`
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
+  let resources = shuffle(props.resources);
+  // resources = resources.splice(0, 6);
+
   const createComponent = index => {
-    const resource = props.resources[index]
+    const resource = resources[index]
     let renderComponent
     switch (resource.type) {
       case "imagegallery":
@@ -145,9 +148,10 @@ const ResourcesList = props => {
     }
     return renderComponent
   }
+
   return (
     <ResourcesListWrapper>
-      {props.resources.map((resource, index) => createComponent(index))}
+      {resources.map((resource, index) => createComponent(index))}
     </ResourcesListWrapper>
   )
 }

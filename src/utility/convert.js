@@ -67,6 +67,15 @@ export class Convert {
     const venue = wordpressModel.acf.event_venue_selection.map((venue) => {
       return venue.wordpress_id;
     })
+
+    let documentation;
+
+    if(wordpressModel.acf.event_documentation) {
+      documentation = wordpressModel.acf.event_documentation.map((doc) => {
+        return doc.wordpress_id
+      })
+    }
+
     return new EventsModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -75,7 +84,7 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.dates,
       venue,
-      null,
+      documentation,
       wordpressModel.acf.event_is_free,
       wordpressModel.acf.event_language,
       wordpressModel.acf.event_limited_capacity,
@@ -156,8 +165,8 @@ export class Convert {
     return new VenueModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
-      wordpressModel.acf.english,
       wordpressModel.acf.deutsch,
+      wordpressModel.acf.english,
       wordpressModel.acf.google_map_link,
       wordpressModel.acf.thumbnail_image,
       wordpressModel.acf.venue_address,
@@ -217,13 +226,16 @@ export class Convert {
               description: event.EN.full_description,
               display_time: date.EN.display_time,
               subtitle: event.EN.event_subtitle,
+              other_language: event.other_language
             },
             {
               title: event.DE.event_title,
               description: event.DE.full_description,
               display_time: date.DE.display_time,
               subtitle: event.DE.event_subtitle,
+              other_language: event.other_language_de
             },
+            event.language
             // { ...event.EN, ...date.EN },
             // { ...event.DE, ...date.DE },
           )
@@ -243,7 +255,6 @@ export class Convert {
       for(let i = 0; i < diff; i++) {
         let start = start_date.clone();
         start.add(i, 'days');
-
         calendarItems.push(
           new CalendarItemModel(
             `exhibition-${exhibition.id}`,
@@ -260,15 +271,18 @@ export class Convert {
             {
               title: exhibition.EN.title,
               description: exhibition.EN.description,
-              display_time: exhibition.start_time,
+              display_time: exhibition.EN.start_time,
               subtitle: '',
+              other_language:null
             },
             {
               title: exhibition.DE.title,
               description: exhibition.DE.description,
-              display_time: exhibition.start_time,
+              display_time: exhibition.DE.start_time,
               subtitle: '',
-            }
+              other_language:null
+            },
+            null
           )
         )
       }
