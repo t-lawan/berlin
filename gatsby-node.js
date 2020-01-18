@@ -476,6 +476,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {EN: "participant", DE: "beteiligte"},
     {EN: "news", DE: "news"},
     {EN: "current", DE: "aktuell"},
+    {EN: "calendar", DE: "kalendar"},
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -527,10 +528,19 @@ exports.createPages = async ({ graphql, actions }) => {
           : `/${language}/${prePath.DE}/${slug}`;
         edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
       } else {
-        path =
-        language === "en"
-          ? `/${edge.node.slug}`
-          : `/${language}/${edge.node.slug}`;
+        if(edge.node.acf.template === "calendar") {
+          path = language === "en" 
+            ? '/calendar' : '/de/kalendar'
+
+          console.log('HELLO', path)
+
+        } else {
+          path =
+          language === "en"
+            ? `/${edge.node.slug}`
+            : `/${language}/${edge.node.slug}`;
+        }
+
       }
 
       createPage({
