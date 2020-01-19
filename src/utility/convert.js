@@ -92,7 +92,8 @@ export class Convert {
       wordpressModel.acf.participants,
       wordpressModel.acf.related_resources,
       wordpressModel.acf.other_event_language,
-      wordpressModel.acf.other_event_language_de
+      wordpressModel.acf.other_event_language_de,
+      wordpressModel.acf.embed_video_in_event
     )
   }
 
