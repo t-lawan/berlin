@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const DocumentationNavigatorWrapper = styled.div`
   display: flex;
-  margin-top:-2em;
+  margin-top:-1.5em;
   margin-bottom:0;
   flex-direction: row;
   background: transparent;
