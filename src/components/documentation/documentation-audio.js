@@ -8,8 +8,8 @@ import DocumentationNavigator from "./documentation-navigator";
 import styled from 'styled-components'
 import { documentationContent } from "./documentation-video";
 
-const AudioBlock = styled(PageWrapper)`
-  padding: 1em;
+const AudioBlock = styled.div`
+  padding: 0em !important;
 `
 const NoMarg = {
 margin:"0",
@@ -38,8 +38,8 @@ const DocumentationAudio = props => {
             {documentationContent[language].language}:{" "}
             {documentationContent[language][props.documentation.language]}{" "}
           </p>
-          <p style={NoMarg}>
-            {exhibitions[0][language].title}
+          <p style={NoMarg}><em>
+            {exhibitions[0][language].title}</em>
           </p>
         </div>
         <div>
