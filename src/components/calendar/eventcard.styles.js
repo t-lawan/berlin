@@ -9,6 +9,9 @@ export const EventSection = styled(TextSection)`
     font-size: inherit;
     margin:0;
   }
+  @media (max-width: ${size.mobileM}) {
+    word-break: break-all;
+  }
 `
 
 export const EventCardWrapper = styled.div`
