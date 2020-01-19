@@ -43,6 +43,15 @@ const EventTitle = styled.h1`
   line-height: 1.2;
   ${hideDisplayForMobile};
 `
+
+const VideoContainer = styled.div`
+  > iframe {
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+  }
+`
 const EventTitleMob = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
@@ -73,8 +82,7 @@ const VenueLink = styled(AniLink)`
   }
 `
 
-const DocumentationLink = styled(VenueLink)`
-`
+const DocumentationLink = styled(VenueLink)``
 
 const DocumentationButton = styled(LargeButton)`
   color: white;
@@ -109,10 +117,10 @@ const Event = props => {
     return a.start_date - b.start_date
   })
   let venue = getVenue(props.venues, event.venue[0])
-  let documentation = [];
+  let documentation = []
   if (event.documentation) {
     documentation = props.documentation.filter(doc => {
-      return doc.id === event.documentation[0];
+      return doc.id === event.documentation[0]
     })
   }
 
@@ -121,6 +129,9 @@ const Event = props => {
       return resource.wordpress_id
     })
   }
+  let title = truncateText(
+    striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
+  )
   let description = truncateText(
     striptags(
       event[`${props.pageContext.language.toUpperCase()}`].full_description
@@ -131,7 +142,7 @@ const Event = props => {
       <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
-          title={`${event.slug}`}
+          title={title}
           description={description}
           lang={props.pageContext.language}
         />
@@ -175,16 +186,19 @@ const Event = props => {
           </EventTextBlock>
           <EventTextBlock hidden={documentation.length === 0}>
             <DocumentationLink
-                hidden={documentation.length === 0}
-                to={createPath(language, documentation[0] ? `documentation/${documentation[0].slug}`: ``)}
-                bg={transitionBackground}
-                cover
-                direction="down"
-            > 
-            <DocumentationButton bgColour={'black'}>
-              Documentation 
-            </DocumentationButton>
-             </DocumentationLink>
+              hidden={documentation.length === 0}
+              to={createPath(
+                language,
+                documentation[0] ? `documentation/${documentation[0].slug}` : ``
+              )}
+              bg={transitionBackground}
+              cover
+              direction="down"
+            >
+              <DocumentationButton bgColour={"black"}>
+                Documentation
+              </DocumentationButton>
+            </DocumentationLink>
           </EventTextBlock>
           <EventTextBlock>
             <p>
@@ -225,6 +239,15 @@ const Event = props => {
               __html: event[language].full_description,
             }}
           />
+
+          <TextBlock>
+            <VideoContainer
+              hidden={!event.video}
+              dangerouslySetInnerHTML={{
+                __html: event.video,
+              }}
+            />
+          </TextBlock>
 
           <TextBlock>
             <EventRsvpText

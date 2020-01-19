@@ -57,11 +57,12 @@ const Resource = props => {
     </>
   )
 
+
   return (
     <>
       <SEO
-        title={`${resourceInfo.slug}`}
-        description={`${resourceInfo.slug}`}
+        title={`${resourceInfo.acf.title}`}
+        description={`${resourceInfo.acf.title}`}
         lang={resourceInfo.language}
       />
       <Layout
