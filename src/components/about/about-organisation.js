@@ -13,6 +13,9 @@ padding-left: 1em;
 const TitleTextBlock = styled(TextBlock)`
 padding: 0;
 padding-top: 1em;
+:first-child {
+  padding-top:0;
+}
 `
 
 const AboutOrganisation = props => {
