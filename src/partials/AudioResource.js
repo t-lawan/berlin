@@ -5,15 +5,6 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import { getCurrentLanguageString } from "../utility/helper"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faPlayCircle,
-  faPlay,
-  faPause,
-  faPauseCircle,
-  faVolumeUp,
-  faVolumeMute,
-} from "@fortawesome/free-solid-svg-icons"
 import { TextBlock } from "../templates/page.styles"
 
 const AudioResourceWrapper = styled.section`
@@ -22,25 +13,132 @@ const AudioResourceWrapper = styled.section`
   padding: 1em 0;
 `
 
-const ActionIcon = styled(FontAwesomeIcon)`
+const PlayIcon = styled.div`
   margin-right: 1em;
+  transition: all .2s ease-in-out;
+  background: rgba(200, 200, 200, 0);
+  border: 2px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+    height: 40px;
+    border-radius: 50%;
   :hover {
     cursor: pointer;
   }
-  transition: ease-in-out;
-  transition-duration: 10;
+  > div {
+    content: '';
+    justify-content: center;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    border-top: 7px solid transparent;
+    border-right: none;
+    border-bottom: 7px solid transparent;
+    border-left: 12px solid #000000 !important;
+  }
+  > div.active {
+    content: '';
+    margin-left: 0px;
+    display:flex;
+    justify-content:space-between;
+    width:12px;
+    border-top:none;
+    border-left:none !important;
+    height:14px;
+    border-bottom:none;
+  }
+  > div.active:before, div.active:after {
+    content: '';
+    width: 4px;
+    background-color:#000;
+    height: 14px;
+  }
+`
+const VolumeIcon = styled.div`
+  display: flex;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  :hover {
+    cursor: pointer;
+  }
+  > div {
+    display: flex;
+    width: 6px;
+    height: 8px;
+    background-color: #000;
+    position: relative;
+    :before {
+      width: 0;
+      content: '';
+      position: absolute;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-right: 9px solid #000;
+      border-bottom: 8px solid transparent;
+      border-left: none;
+      top: -4px;
+    }
+    :after {
+    left: 9px;
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    border: 6px double #000;
+    border-width: 6px 6px 0 0;
+    border-radius: 0 12px 0 0;
+    transform: rotate(45deg);
+    }
+  }
+  > div.active {
+    display: flex;
+    width: 6px;
+    height: 8px;
+    background-color: #000;
+    position: relative;
+    :before {
+      width: 0;
+      content: '';
+      position: absolute;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-right: 9px solid #000;
+      border-bottom: 8px solid transparent;
+      border-left: none;
+      top: -4px;
+    }
+    :after {
+    left: 9px;
+    content: '';
+    position: absolute;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    border: 0px double #000;
+    border-width: 0px 0px 0 0;
+    border-radius: 0 12px 0 0;
+    transform: rotate(45deg);
+    }
+  }
 `
 
 const AudioPlayerWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0.5rem;
-  justify-content: space-evenly;
+  padding: 0.0rem;
+  justify-content: space-between;
   align-items: center;
 `
 
 const TimeProgressBar = styled.progress`
-  width: 50%;
+  width: 55%;
+  position:relative;
+  background-color: rgba(0,0,0,0.4);
   &[value] {
     -webkit-appearance: none;
     appearance: none;
@@ -51,7 +149,7 @@ const TimeProgressBar = styled.progress`
     /* height: 5px; */
   }
   &[value]::-webkit-progress-bar {
-    background-color: black;
+    background-color: #CCC;
     border: 0;
     /* border-radius: 2px; */
     /* border: 1px solid lighten(#acacac, 20%); */
@@ -59,14 +157,28 @@ const TimeProgressBar = styled.progress`
   }
 
   &::-moz-progress-bar {
-    background: black;
+    background: #000;
     border: 0;
     color: black;
   }
 
   &::-webkit-progress-value {
     color: black;
-    background-color: black;
+    background-color: #000;
+    ::after {
+      border: 2px solid #000;
+      display: flex;
+    position: absolute;
+    content: '';
+    box-sizing: border-box;
+    top: -5px;
+    right: -1px;
+    margin-right: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: #000;
+    border-radius: 50%;
+    }
   }
 `
 
@@ -257,11 +369,14 @@ class AudioResource extends React.Component {
           <source src={this.audio.url} />
         </audio>
         <AudioPlayerWrapper>
-          <ActionIcon
+          <PlayIcon>
+            <div
+            className={
+                this.state.isPlaying ? 'active' : ''
+            }
             onClick={() => (this.state.isPlaying ? this.pause() : this.play())}
-            icon={this.state.isPlaying ? faPauseCircle : faPlayCircle}
-            size={`lg`}
-          />
+            />
+          </PlayIcon>
           <span>{this.calculateCurrentValue(this.state.currentTime)}</span>
           <TimeProgressBar
             onClick={event => {
@@ -272,11 +387,15 @@ class AudioResource extends React.Component {
             max={this.state.length}
           />
           <span> {this.calculateTotalValue(this.state.length)}</span>
-          <ActionIcon
+          <VolumeIcon>
+            <div
+            className={
+                this.state.volume === 0 ? 'active' : ''
+            }
             onClick={() => this.toggleMute()}
-            color={this.state.volume === 0 ? 'red' : 'black'}
-            icon={this.state.volume === 0 ? faVolumeMute : faVolumeUp}
-          />
+            />
+          </VolumeIcon>
+          
           <VolumeProgressBar
             onClick={event => {
               this.seekVolume(event)
