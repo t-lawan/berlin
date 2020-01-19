@@ -312,6 +312,9 @@ export const LargeButton = styled.button`
   :hover {
     cursor: pointer;
   }
+  :focus {
+    outline: none;
+  }
   @media (max-width: ${size.mobileM}) {
     margin: 0.2em 0 0 10px;
   }
