@@ -132,6 +132,15 @@ const State = props => {
                   caption_en
                   exp_animation
                   temporary_exp_page
+                  exhibition_image_gallery {
+                    acf {
+                      caption_de
+                      caption_en
+                    }
+                    wordpress_id
+                    alt_text
+                    media_type
+                  }
                 }
               }
             }
