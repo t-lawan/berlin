@@ -31,7 +31,12 @@ export const shuffle = (a) => {
   }
   return a;
 }
-export const createPath = (language, path) => {
+
+export const capitalise = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
+ export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {
     let type = path.split('/')[0].toLowerCase();
     return pageType.EN == type || pageType.DE == type;

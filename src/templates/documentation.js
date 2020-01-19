@@ -16,7 +16,8 @@ const Documentation = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
-  let description = documentationObject[props.pageContext.language] ?  truncateText(striptags(documentationObject[props.pageContext.language].description)) : "";
+  let title = documentationObject[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].title)) : ""
+  let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].description)) : "";
   let thirdColumn = (
     <>
       <NewsList />
@@ -41,7 +42,7 @@ const Documentation = props => {
   }
   return (
     <>
-      <SEO title={documentationObject.slug} description={description} lang={props.pageContext.lang} />
+      <SEO title={title} description={description} lang={props.pageContext.lang} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}

@@ -2,7 +2,7 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, truncateText, capitalise } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import { TwoColumnPageWrapper } from "./page.styles"
 import styled from "styled-components"
@@ -20,7 +20,7 @@ const About = props => {
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${props.pageContext.slug}`}
+        title={capitalise(props.pageContext.title)}
         description={`${description}`}
         lang={props.pageContext.language}
       />
