@@ -40,6 +40,7 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             wordpress_id
             slug
+            title
             children {
               id
             }
