@@ -17,11 +17,12 @@ import striptags from 'striptags';
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext;
+  // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
   let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${pageInfo.slug}`}
+        title={`${pageInfo.title}`}
         description={description}
         lang={pageInfo.language}
       />

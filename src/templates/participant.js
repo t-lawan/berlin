@@ -16,7 +16,7 @@ const Participant = props => {
   const renderComponent = (
     <ParticipantPageWrapper>
       <SEO
-        title={`${participant.slug}`}
+        title={`${participant.firstname} ${participant.lastname}`}
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
