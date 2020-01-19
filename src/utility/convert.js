@@ -113,7 +113,9 @@ export class Convert {
       wordpressModel.acf.active_exhibition,
       wordpressModel.acf.exp_animation,
       wordpressModel.acf.temporary_exp_page,
-      wordpressModel.acf.exp_open_days
+      wordpressModel.acf.exp_open_days,
+      wordpressModel.acf.use_gallery_images,
+      wordpressModel.acf.exhibition_image_gallery
     )
   }
 

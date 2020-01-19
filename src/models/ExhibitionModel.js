@@ -16,7 +16,9 @@ export class ExhibitionModel {
     active,
     animation,
     temporary_uploaded, 
-    open_days
+    open_days,
+    has_gallery_images,
+    gallery_images
   ) {
     this.id = id
     this.slug = slug
@@ -38,6 +40,8 @@ export class ExhibitionModel {
     this.animation = animation;
     this.temporary_uploaded = temporary_uploaded;
     this.open_days = open_days;
+    this.has_gallery_images = has_gallery_images;
+    this.gallery_images = gallery_images
   }
 }
 
