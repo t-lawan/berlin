@@ -123,7 +123,7 @@ class Press extends React.Component {
     this.renderComponent = (
       <PressWrapper>
         <SEO
-          title={`${this.pressInfo.slug}`}
+          title={`${this.pressInfo.title}`}
           description={description}
           lang={this.pressInfo.language}
         />

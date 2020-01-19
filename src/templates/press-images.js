@@ -26,7 +26,6 @@ const PressImagesGrid = styled.section`
 const PressImages = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
-
   const generateSection = (item, index) => {
     let renderSection
     switch (item.press_row_type) {
@@ -74,7 +73,7 @@ const PressImages = props => {
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={`${pageInfo.slug}`}
+        title={`${pageInfo.title}`}
         description={`${pageInfo.slug}`}
         lang={pageInfo.language}
       />
