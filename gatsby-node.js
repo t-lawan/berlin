@@ -344,6 +344,15 @@ exports.createPages = async ({ graphql, actions }) => {
             slug
             acf {
               exhibition_floorplan
+              exp_open_days {
+                friday
+                monday
+                saturday
+                sunday
+                thursday
+                tuesday
+                wednesday
+              }
               active_exhibition
               use_gallery_images
               exhibition_venue {
@@ -383,6 +392,7 @@ exports.createPages = async ({ graphql, actions }) => {
               caption_de
               caption_en
               exp_animation
+              temporary_exp_page
             }
           }
         }
