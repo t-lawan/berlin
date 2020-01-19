@@ -16,7 +16,7 @@ const PaddedSection = styled(Section)`
     > li {
       list-style:none;
       padding-left:1.2em;
-      font-size:1.1rem;
+      font-size:1.0rem;
       line-height:1.4;
     }
   }
