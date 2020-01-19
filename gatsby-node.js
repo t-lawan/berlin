@@ -166,7 +166,9 @@ exports.createPages = async ({ graphql, actions }) => {
               event_venue_selection {
                 wordpress_id
               }
-
+              related_resources {
+                wordpress_id
+              }
               DE {
                 event_subtitle
                 event_title
