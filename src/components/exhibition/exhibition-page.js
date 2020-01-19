@@ -27,7 +27,7 @@ class ExhibitionPage extends React.Component {
     })
     return (
       <ExhibitionPageWrapper show={exhibition.temporary_uploaded}>
-        <p> err exhibition</p>
+        <p> eh exhibition no work (spanish accent)</p>
       </ExhibitionPageWrapper>
     )
   }
