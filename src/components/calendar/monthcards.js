@@ -11,6 +11,17 @@ class MonthCards extends React.Component {
   
 
   render() {
+    if(this.props.isStart) {
+      this.days = this.days.filter((day) => {
+        return day >= this.props.startDate.day
+      })
+    }
+
+    if(this.props.isEnd) {
+      this.days = this.days.filter((day) => {
+        return day <= this.props.endDate.day;
+      })
+    }
     return (
       <>
         <DateCard
@@ -37,6 +48,10 @@ MonthCards.propTypes = {
   month: PropTypes.any,
   title: PropTypes.string,
   year: PropTypes.any,
+  isStart: PropTypes.bool,
+  isEnd: PropTypes.bool,
+  startDate: PropTypes.object,
+  endDate: PropTypes.object,
 }
 
 
