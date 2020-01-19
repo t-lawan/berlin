@@ -84,12 +84,22 @@ const State = props => {
                 acf {
                   exhibition_floorplan
                   active_exhibition
+                  temporary_exp_page
                   use_gallery_images
                   exhibition_venue {
                     wordpress_id
                   }
                   exp_number
                   start_date
+                  exp_open_days {
+                    monday
+                    tuesday
+                    wednesday
+                    thursday
+                    friday
+                    saturday
+                    sunday
+                  }
                   DE {
                     description
                     subtitle
@@ -102,6 +112,7 @@ const State = props => {
                     exp_bb11_right_header
                     promotional_sticker_for_homepage
                     promotional_sticker_url
+                    german_page_slug
                   }
                   EN {
                     description
