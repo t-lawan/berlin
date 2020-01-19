@@ -34,6 +34,8 @@ import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
+  animationInDuration = 1000;
+  animationOutDuration = 600;
   constructor(props) {
     super(props);
     this.state = {
@@ -78,8 +80,8 @@ class Columns extends React.Component {
           animationOut={this.props.experience_transition.animationOut}
           isVisible={this.props.experience_transition.isVisible}
           animateOnMount={false}
-          animationInDuration={1000}
-          animationOutDuration={200}
+          animationInDuration={this.props.animationInDuration}
+          animationOutDuration={this.props.animationOutDuration}
           style={{ zIndex: 0 }}
         >
           
