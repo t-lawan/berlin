@@ -256,10 +256,8 @@ export class Convert {
       let openDays = []
 
       let days = Object.keys(exhibition.open_days)
-      console.log(11, days)
       days.forEach(day => {
         if (exhibition.open_days[day]) {
-          // moment().isoWeekday(capitalise(day)).isoWeekday()
           openDays.push(capitalise(day))
         }
       })
