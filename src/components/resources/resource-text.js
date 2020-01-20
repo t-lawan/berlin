@@ -6,7 +6,7 @@ import {
   ResourcePublisherLink,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color, size } from "../../index.styles"
+import { Color, size,} from "../../index.styles"
 import PropTypes from "prop-types";
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
@@ -24,12 +24,26 @@ const ResourceTitle = styled.h1`
   line-height: 1.2;
   @media (max-width: ${size.tablet}) {
     font-size: 1.2em;
-    margin: 0.3em 0 1.5em;
+    margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.8em;
   }
 `
+const Mobhide = styled.div`
+  @media (max-width: ${size.tablet}) { 
+  display:none;
+ }
+`
+const Dthide = styled.div`
+  @media (min-width: ${size.laptop}) { 
+  display:none;
+ }
+`
+const Author = styled.p`
+  margin-bottom:0;
+`
+
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
@@ -37,14 +51,14 @@ const ResourceText = props => {
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
-        <div>
+        <Mobhide>
           {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
           {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
           <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
-        </div>
+        </Mobhide>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -52,8 +66,8 @@ const ResourceText = props => {
               }}
             />
           
-          {r.author.length > 0 ? <p> {r.author} </p> : ""}
-          <p>
+          {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
+          <Author>
             In:{" "}
             <ResourcePublisherLink
               hidden={r.publisher.title}
@@ -62,13 +76,22 @@ const ResourceText = props => {
             >
               {r.publisher.title}
             </ResourcePublisherLink>
-          </p>
+          </Author>
           <p> {r[language].year}</p>
+          <Dthide>
+          {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
+          {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
+          <PressArrowDown icon={faLongArrowAltDown} />
+          <span> Download</span>{" "}
+        </ExternalLink> */}
+          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
+        </Dthide>
           <ResourceTextDiv
             dangerouslySetInnerHTML={{
               __html: r.text_based_resource[0].free_text_entry,
             }}
           />
+
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={[r.id]} />
