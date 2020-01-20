@@ -34,8 +34,8 @@ import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-  animationInDuration = 1000;
-  animationOutDuration = 600;
+  animationInDuration = 600;
+  animationOutDuration = 500;
   constructor(props) {
     super(props);
     this.state = {
