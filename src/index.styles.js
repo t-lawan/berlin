@@ -199,9 +199,9 @@ export const hideDisplayForMobile = css`
 `
 
 export const showDisplayForTablet = css`
-  display: ${props => (props.showInMobile ? "none" : "inherit")};
+  display: ${props => (props.showInTablet ? "none" : "inherit")};
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInMobile ? "inherit" : "none")};
+    display: ${props => (props.showInTablet ? "inherit" : "none")};
   }
 `
 

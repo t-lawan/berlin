@@ -106,11 +106,11 @@ class Columns extends React.Component {
 
             {this.renderedComponents}
             {/* Only In Mobile */}
-            <StickyFooter showInMobile>
+            <StickyFooter showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
             {/* Only In Mobile */}
-            <FixedFooter showInMobile>
+            <FixedFooter showInTablet>
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}
@@ -138,7 +138,7 @@ class Columns extends React.Component {
           </FixedFooter>
         </AnimatedColumn>
         <FixedNavbar>
-              <NavbarMobile showInMobile />
+              <NavbarMobile showInTablet />
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
