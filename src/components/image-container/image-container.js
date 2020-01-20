@@ -24,7 +24,7 @@ const ImageContainer = props => {
   return (
     <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile} hideInTablet={props.hideInTablet}>
       {exhibition.has_gallery_images ? <ImageGalleryResource ids={exhibition.has_gallery_images ? exhibition.gallery_images : []}  /> : null}
-      {!exhibition.has_gallery_images ? <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} /> : null} 
+      {!exhibition.has_gallery_images ? <ImageResource id={exhibition && exhibition.floor_plan ? exhibition.floor_plan : 411} withCaption={true} /> : null} 
     </ImageContainerWrapper>
   )
 }
