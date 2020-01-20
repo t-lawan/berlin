@@ -42,6 +42,7 @@ body {
   h1 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -58,6 +59,7 @@ body {
 h2 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -73,6 +75,7 @@ h2 {
 }
 h3 {
   margin-left: 0;
+  font-weight:normal;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
@@ -90,6 +93,7 @@ h3 {
 h4 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -108,6 +112,7 @@ h5 {
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
+  font-weight:normal;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -122,6 +127,7 @@ h5 {
 h6 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -156,6 +162,7 @@ a, span {
 p {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   line-height: 1.3;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -304,6 +311,7 @@ export const ExternalLink = styled.a`
 export const LargeButton = styled.button`
   margin: 0.0em 0 0 10px;
   font-size: 1em;
+  font-weight:normal;
   display: inline-block;
   border-radius: 0;
   background: ${props => props.bgColour};
