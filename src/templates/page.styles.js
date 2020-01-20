@@ -20,8 +20,7 @@ export const PageWrapperRes = styled.div`
 `
 
 export const TwoColumnPageWrapper = styled.div`
-  padding: 1em 1em 2em;
-  
+  padding: 2em 1em 2em;
   display: grid;
   grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
