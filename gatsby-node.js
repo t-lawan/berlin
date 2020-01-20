@@ -345,9 +345,6 @@ exports.createPages = async ({ graphql, actions }) => {
             acf {
               exhibition_floorplan
               active_exhibition
-<<<<<<< HEAD
-              temporary_exp_page
-=======
               exp_open_days {
                 friday
                 monday
@@ -357,22 +354,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 tuesday
                 wednesday
               }
->>>>>>> Thomas-Fixes
               use_gallery_images
               exhibition_venue {
                 wordpress_id
               }
               exp_number
               start_date
-              exp_open_days {
-                monday
-                tuesday
-                wednesday
-                thursday
-                friday
-                saturday
-                sunday
-              }
               DE {
                 description
                 subtitle
@@ -385,7 +372,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_bb11_right_header
                 promotional_sticker_for_homepage
                 promotional_sticker_url
-                german_page_slug
               }
               EN {
                 description
@@ -407,6 +393,8 @@ exports.createPages = async ({ graphql, actions }) => {
               caption_en
               exp_animation
               temporary_exp_page
+              temp_exp_graphic_en
+              temp_exp_graphic_de
               exhibition_image_gallery {
                 acf {
                   caption_de
