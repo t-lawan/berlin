@@ -53,6 +53,9 @@ const EventTitle = styled.h1`
   font-size: 1.8rem;
   line-height: 1.2;
   ${hideDisplayForMobile};
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `
 const EventSubTitle = styled.h2`
   padding-top: 1rem;
@@ -60,6 +63,9 @@ const EventSubTitle = styled.h2`
   font-size: 1.1rem;
   line-height: 1.2;
   ${hideDisplayForMobile};
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `
 
 const VideoContainer = styled.div`
@@ -74,7 +80,7 @@ const EventTitleMob = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
   line-height: 1.2;
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.laptop}) {
     display: none;
   }
 `
@@ -82,7 +88,7 @@ const EventSubTitleMob = styled.h2`
   font-size: 1.0em;
   margin: -1em 0 1em;
   line-height: 1.2;
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.laptop}) {
     display: none;
   }
 `
@@ -272,7 +278,7 @@ const Event = props => {
             }}
           />
 
-          <TextBlock>
+          <TextBlock hidden={!event.video.length === 0}>
             <VideoContainer
               hidden={!event.video}
               dangerouslySetInnerHTML={{
