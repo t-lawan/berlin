@@ -116,7 +116,7 @@ export class DateManager {
           text: "January",
         },
         2: {
-          numberOfDays: 28,
+          numberOfDays: 29,
           text: "February",
         },
         3: {
