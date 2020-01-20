@@ -104,7 +104,7 @@ export class Convert {
       wordpressModel.acf.exp_number,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
-      "2-7pm",
+      "2–7pm",
       wordpressModel.acf.start_date,
       wordpressModel.acf.end_date,
       wordpressModel.acf.exhibition_venue,
