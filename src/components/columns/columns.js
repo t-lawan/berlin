@@ -60,7 +60,7 @@ class Columns extends React.Component {
     return (
       <ColumnsWrapper>
         {/* First Column */}
-        <Column rightBorder={true} hideInMobile>
+        <Column rightBorder={true} hideInTablet hideInMobile>
           <ExperienceController left={true} />
         </Column>
         <FixedTopExpMob showInMobile={true}>
@@ -97,11 +97,11 @@ class Columns extends React.Component {
             <RelativeHeader>
               <ImageContainer
                 hideOnHomePage={!this.props.isHome}
-                hideInMobile={true}
+                hideInTablet={true}
               />
             </RelativeHeader>
             <StickyHeader>
-              <Navbar hideInMobile={true} />
+              <Navbar hideInTablet={true} />
             </StickyHeader>
 
             {this.renderedComponents}
@@ -129,11 +129,11 @@ class Columns extends React.Component {
           </Column>
 
           {/* Only In Desktop */}
-          <StickyFooter hideInMobile>
+          <StickyFooter hideInTablet>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
-          <FixedFooter hideInMobile>
+          <FixedFooter hideInTablet>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
@@ -142,7 +142,7 @@ class Columns extends React.Component {
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
-        <Column rightBorder={false} hideInMobile>
+        <Column rightBorder={false} hideInTablet hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>

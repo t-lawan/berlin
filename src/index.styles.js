@@ -187,7 +187,7 @@ a {
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.hideInMobile ? "none" : "")};
+    display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
 
