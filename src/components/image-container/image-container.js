@@ -6,6 +6,7 @@ import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource";
 import styled from "styled-components"
 import { hideDisplayForTablet } from "../../index.styles";
+import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
   padding: 1em;
@@ -22,7 +23,8 @@ const ImageContainer = props => {
   const exhibition = exhibitions[0];
   return (
     <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
-      <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} />
+      {exhibition.has_gallery_images ? <ImageGalleryResource ids={exhibition.has_gallery_images ? exhibition.gallery_images : []}  /> : null}
+      {!exhibition.has_gallery_images ? <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} /> : null} 
     </ImageContainerWrapper>
   )
 }

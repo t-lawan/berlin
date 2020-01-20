@@ -8,14 +8,17 @@ export class ExhibitionModel {
     experience,
     EN,
     DE,
-    start_time,
     start_date,
     end_date,
     venue,
     floor_plan,
     participants,
     active,
-    animation
+    animation,
+    temporary_uploaded, 
+    open_days,
+    has_gallery_images,
+    gallery_images
   ) {
     this.id = id
     this.slug = slug
@@ -28,7 +31,6 @@ export class ExhibitionModel {
       ...DE,
       start_time: '14-19Uhr'
     }
-    this.start_time = start_time
     this.start_date = start_date
     this.end_date = end_date
     this.venue = venue
@@ -36,6 +38,10 @@ export class ExhibitionModel {
     this.participants = participants
     this.active = active
     this.animation = animation;
+    this.temporary_uploaded = temporary_uploaded;
+    this.open_days = open_days;
+    this.has_gallery_images = has_gallery_images;
+    this.gallery_images = gallery_images
   }
 }
 
