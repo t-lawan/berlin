@@ -3,7 +3,7 @@ import { Color, size } from "../../index.styles";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import ImageResource from "../../partials/ImageResource";
 export const AboutSideNavbar = styled.nav`
-  padding: 1.5em 1em 0 0;
+  padding: 0em 1em 0 0;
   display: flex;
   flex-direction: column;
   line-height: 1;
@@ -40,7 +40,7 @@ export const AboutPageContent = styled.div`
         margin-bottom: 1em;
         line-height:1.4;
         :first-child {
-          margin-top:1.5em;
+          margin-top:0em;
         }
       }
     p > a {
@@ -60,7 +60,7 @@ export const AboutComponentWrapper = styled.section`
     }
   }
   > div:first-child {
-    margin-top:1.5em;
+    margin-top:0em;
   }
 `
 
