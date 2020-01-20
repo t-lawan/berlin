@@ -28,9 +28,9 @@ export const ColumnLayout = styled.div`
     border-right: none;
     border-top: solid 1px #000;
   }
-  @media (min-width: ${size.mobileL}) {
+  @media (min-width: ${size.mobileS}) {
     border-right:solid 0px #000;
-    background: transparent;
+    background: white;
   }
   @media (min-width: ${size.tablet}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
