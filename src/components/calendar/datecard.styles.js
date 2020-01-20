@@ -24,7 +24,6 @@ export const EventCardsWrapper = styled.div`
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;
   padding: 0.5em 1em;
-  padding-bottom: 0;
   display: flex;
   flex-direction: row;
   align-items: top;
@@ -65,6 +64,6 @@ export const MonthHeading = styled.p`
   font-size: 2em;
 `
 export const ClosedText = styled.p`
-  margin: 1.5rem;
+  margin: 0.5em 1em;
   opacity: 0.5;
 `
