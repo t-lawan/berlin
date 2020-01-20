@@ -38,7 +38,7 @@ export const LanguageButton = styled(AniLink)`
     cursor: "pointer";
   }
   @media (min-width: ${size.mobileL}) {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin: 0;
     padding-top:0.2em;
     margin-left: 0.0em;

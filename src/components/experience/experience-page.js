@@ -24,8 +24,8 @@ const ExperiencePageWrapper = styled.div`
     width:100%;
     left: 0;
     bottom:0px;
-    height:calc(100vh - 45px);
-    top:45px;
+    height:calc(100vh - 40px);
+    top:40px;
   }
   @media (min-width: ${size.laptop}) {
     left: 5%;

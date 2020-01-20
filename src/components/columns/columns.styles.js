@@ -25,19 +25,19 @@ export const AnimatedColumn = styled(Animated)`
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-rows: auto;
-    margin-top:45px;
+    margin-top:40px;
     grid-template-areas: "column" "footer";
     grid-template-columns: 1fr;
     width:100%;
-    height: calc(100vh - 45px);
+    height: calc(100vh - 40px);
   }
   @media (min-width: ${size.tablet}) {
     grid-template-rows: auto;
-    margin-top:45px;
+    margin-top:40px;
     grid-template-columns: 66fr 33fr;
     grid-template-areas: "column column" "column column" "footer footer";
     width:100%;
-    height: calc(100vh - 45px);
+    height: calc(100vh - 40px);
   }
   @media (min-width:${size.laptop}) {
     height: 100%;
