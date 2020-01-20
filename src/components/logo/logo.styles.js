@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { size } from "../../index.styles"
 
 export const LogoWrapper = styled.div`
   display: block;
@@ -14,5 +15,10 @@ export const LogoWrapper = styled.div`
   	margin-left: auto;
     margin-right: auto;
     display: block;
+  }
+  @media (max-width: ${size.tablet}) {
+  >img {
+    max-width:190px;
+  }
   }
 `

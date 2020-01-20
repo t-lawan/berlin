@@ -14,13 +14,16 @@ const RelatedResourcesWrapper = styled.div`
   margin-left:0.5em;
   margin-bottom:2em;
   margin-right:0.5em;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 0em;
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr 1fr;
     background-color:#FFF;
     margin-bottom:0em;
     padding-bottom:2em;
+  }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 `
 

@@ -13,12 +13,25 @@ const ExperiencePageWrapper = styled.div`
   background: #fbf95d;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     width:100%;
     left: 0;
     bottom:45px;
     height:calc(100vh - 91px);
     top:45px;
+  }
+  @media (min-width: ${size.mobileL}) {
+    width:100%;
+    left: 0;
+    bottom:0px;
+    height:calc(100vh - 45px);
+    top:45px;
+  }
+  @media (min-width: ${size.laptop}) {
+    left: 5%;
+    top:0;
+    width: calc(100% - 10%);
+    height: 100vh;
   }
 `
 
@@ -29,7 +42,7 @@ const ExperienceImagesContainer = styled.div`
   /* display:block; */
   align-items: center;
   justify-content: center;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     margin-top:0px;
     top: 50%;
     width:60%;
@@ -38,6 +51,25 @@ const ExperienceImagesContainer = styled.div`
     height: auto;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+  }
+  @media (min-width: ${size.mobileL}) {
+    margin-top:0px;
+    top: 50%;
+    width:45%;
+    display: block;
+    position: absolute;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  @media (min-width: ${size.laptop}) {
+    width:100%;
+    display: flex;
+  flex-direction: column;
+  height: 80vh;
+  /* display:block; */
+  align-items: center;
+  justify-content: center;
   }
 `
 

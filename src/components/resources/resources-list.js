@@ -10,6 +10,10 @@ const ResourcesListWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     padding: 0 0.7em;
     background-color: #fff;
+    border-top:1px solid #000;
+  }
+  @media (max-width: ${size.tablet}) {
+    padding: 0.7em 0.7em;
   }
 `
 
@@ -21,6 +25,12 @@ const ResourceTitle = styled.p`
   @media (max-width: ${size.mobileM}) {
     font-size:1.1rem;
   }
+  @media (min-width: ${size.mobileL}) {
+    font-size:0.95rem;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size:1rem;
+  }
 `
 
 const ResourceLabel = styled.p`
@@ -28,6 +38,12 @@ const ResourceLabel = styled.p`
   margin: 0.5em 0 0;
   @media (max-width: ${size.mobileM}) {
     font-size:1.1rem;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size:0.95rem;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size:1rem;
   }
 `
 
@@ -60,6 +76,9 @@ const TextBox = styled.div`
   background: ${Color.yellow};
   /* border: 1px solid black; */
   margin-bottom: 0rem;
+  @media (max-width: ${size.tablet}) {
+    padding: 0.7em 0.7em;
+  }
   
 `
 const ResourcesList = props => {

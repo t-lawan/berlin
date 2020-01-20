@@ -23,13 +23,17 @@ export const ColumnLayout = styled.div`
     border-top: solid thin #000;
     margin-top:0.4em;
     }
-    }
+  }
   :nth-child(4){
     border-right: none;
     border-top: solid 1px #000;
   }
-  @media (max-width: ${size.mobileM}) {
+  @media (min-width: ${size.mobileL}) {
     border-right:solid 0px #000;
     background: transparent;
+  }
+  @media (min-width: ${size.tablet}) {
+    border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
+    background: white;
   }
 `

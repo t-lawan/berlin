@@ -8,13 +8,15 @@ export const HeaderWrapper = styled.header`
   /* border-bottom: 1px solid black; */
   padding: 1.4em 2em 0.7em;
   background: white;
-
   :hover {
     /* opacity: 0.01; */
   }
   @media (max-width: ${size.mobileM}) {
   padding: 0.6em 0.7em;
   border-bottom:solid 1px #000;
+  }
+  @media (max-width: ${size.tablet}) {
+  padding: 0.7em 0em 0.5em;
   }
 `
 
@@ -28,14 +30,21 @@ export const HeaderLink = styled(AniLink)`
   img {
     margin-bottom: 0.0rem;
   }
+  @media (max-width: ${size.tablet}) {
+  grid-column-gap: 0.5em;
+  }
 `
 
 export const HeaderImage = styled.img`
   ${hideDisplayForMobile};
+  @media (max-width: ${size.tablet}) {
+  margin: 0 0.7em;
+  }
 `
 export const HeaderImageMob = styled.img`
 display:none;
   @media (max-width: ${size.mobileM}) {
   display:block;
+  margin:0 0.7em;
   }
 `

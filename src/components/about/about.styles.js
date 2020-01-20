@@ -12,6 +12,12 @@ export const AboutSideNavbar = styled.nav`
     padding: 0;
     width:100%;
   }
+  @media (min-width: ${size.mobileS}) {
+    display:none
+  }
+  @media (min-width: ${size.tablet}) {
+    display:block;
+  }
 `
 
 export const AboutNavItem = styled.p`

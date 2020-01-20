@@ -1,7 +1,7 @@
 import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { PageWrapper } from "./page.styles"
+import { PageWrapper,PageTitle,PageSubTitle } from "./page.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
@@ -16,6 +16,7 @@ const Page = props => {
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
+      
       <div
         dangerouslySetInnerHTML={{
           __html: props.pageContext.acf[language].content,

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, UnderlineSectionLink } from "../../index.styles";
+import { Color, UnderlineSectionLink, size } from "../../index.styles";
 
 export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
@@ -39,6 +39,12 @@ export const EventItem = styled.div`
     margin-bottom:0;
   }
   border-bottom: 1px solid black;
+  @media (max-width: ${size.tablet}) {
+    padding: 1em 1em;
+  }
+  @media (max-width: ${size.mobileL}) {
+    padding: 1em 1.7em;
+  }
 `
 
 export const EventLink = styled(UnderlineSectionLink)`

@@ -156,8 +156,6 @@ a, span {
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
-  @media (max-width: ${size.tablet}) {
-  }
 }
 p {
   margin-left: 0;
@@ -177,6 +175,16 @@ p {
     > a {
       font-size:1em;
     }
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95rem;
+    line-height:1.3;
+    > a {
+      font-size:0.95rem;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1rem;
   }
 }
 
@@ -208,7 +216,7 @@ export const hideDisplayForMobile = css`
 export const showDisplayForTablet = css`
   display: ${props => (props.showInMobile ? "none" : "inherit")};
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInMobile ? "inherit" : "none")};
+    display: ${props => (props.showInMobile ? "inherit" : "inherit")};
   }
 `
 
@@ -220,7 +228,7 @@ export const showDisplayForTabletFunc = variable => css`
 `
 
 export const changeGridToOneRow = css`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
   }
 `

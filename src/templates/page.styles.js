@@ -15,7 +15,6 @@ export const PageWrapperRes = styled.div`
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
     padding: 0em;
-    background:#FFF;
   }
 `
 
@@ -26,8 +25,11 @@ export const TwoColumnPageWrapper = styled.div`
   grid-column-gap: 2em;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
-    background:#FFF;
   }
+  @media (min-width: 426px) {
+    grid-template-columns: 1fr;
+  }
+  
   ${changeGridToOneRow}
 `
 export const TwoColumnPageWrapperNoPad = styled.div`
@@ -48,6 +50,13 @@ export const PressWrapper = styled.div`
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: ${size.tablet}) {
+    border-top:solid 1px #000;
+  }
+  @media (max-width: ${size.mobileM}) {
+    border-top:none;
   }
   div > p {
   margin-bottom: 0.5em;
@@ -143,7 +152,11 @@ export const PageTitle = styled.h1`
   margin: -0.3em 0 1.0em;
   display:none;
   @media (max-width: ${size.tablet}) {
-    display:block
+    display:block;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size:1.2rem;
+    margin-bottom:1.5rem;
   }
 `
 export const PageSubTitle = styled.h3`
@@ -175,6 +188,14 @@ export const TextBlock = styled.div`
     font-size:1rem;
     @media (max-width: ${size.mobileM}) {
     font-size:1.1rem;
+    line-height:1.4;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size:0.95rem;
+    line-height:1.3;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size:1rem;
     line-height:1.4;
   }
   }

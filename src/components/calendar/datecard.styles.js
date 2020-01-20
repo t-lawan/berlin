@@ -13,6 +13,12 @@ export const DateCardWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 2fr 6fr;
   }
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 1fr 4fr;
+  }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 1fr 5fr;
+  }
 `
 export const EventCardsWrapper = styled.div`
   display: flex;
@@ -42,6 +48,12 @@ export const DateText = styled.strong`
     width:60%;
     padding-right: 0.2em;
   }
+  @media (max-width: ${size.tablet}) {
+   font-size: 1.5em; 
+  }
+  @media (min-width: ${size.laptop}) {
+   font-size: xx-large;
+  }
 `
 
 export const DateString = styled.p`
@@ -62,6 +74,13 @@ export const MonthHeading = styled.p`
   line-height: 1;
   margin:0;
   font-size: 2em;
+  @media (min-width: ${size.tablet}) {
+    font-size: 1.5em;
+    padding: 0.25em 0.4em;
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size: 2em;
+  }
 `
 export const ClosedText = styled.p`
   margin: 0.5em 1em;

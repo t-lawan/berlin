@@ -21,8 +21,14 @@ const ResourceTextDiv = styled.div`
 `
 
 const ResourceTitle = styled.h1`
-  font-size: 1.8em;
   line-height: 1.2;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.2em;
+    margin: 0.3em 0 1.5em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.8em;
+  }
 `
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)

@@ -11,6 +11,9 @@ const ExhibitionPageWrapper = styled.div`
     border-top:solid 1px #000;
     background:#FFF;
   }
+  @media (max-width: ${size.tablet}) {
+    padding: 0.7em 0.7em;
+  }
 `
 
 const ExhibitionContent = props => {

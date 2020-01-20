@@ -1,15 +1,21 @@
 import styled from "styled-components"
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { showDisplayForTablet } from "../../index.styles";
+import { showDisplayForTablet, size } from "../../index.styles";
 
 export const JumbotronWrapper = styled.div`
   background: white;
   padding: 1.4em 1.95rem 0.7em;
   margin: 0em;
   ${showDisplayForTablet};
+  @media (max-width: ${size.tablet}) {
+  padding: 0.7em 0.7em;
+  }
   border-top: 0;
   img {
     margin-bottom:0;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display:none;
   }
 `
 
@@ -24,7 +30,7 @@ export const JumbotronHeader = styled(AniLink)`
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.5em 0.7rem;
+  padding: 0.5em 0.0rem;
   margin: 0em;
   position:relative;
   width:100%;

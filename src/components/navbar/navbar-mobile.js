@@ -74,7 +74,7 @@ class NavbarMobile extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
 
     return (
-      <NavMobileWrapper showInMobile>
+      <NavMobileWrapper showInMobile showInTablet>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
             <NavIconSVG

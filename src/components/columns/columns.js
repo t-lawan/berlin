@@ -153,7 +153,6 @@ class Columns extends React.Component {
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
-        
       </ColumnsWrapper>
     )
   }
