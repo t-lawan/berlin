@@ -74,7 +74,7 @@ class NavbarMobile extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
 
     return (
-      <NavMobileWrapper showInMobile>
+      <NavMobileWrapper showInTablet={this.props.showInTablet} showInMobile={this.props.showInMobile}>
         <NavMobileHeader>
           <div onClick={() => this.toggleContent()}>
             <NavIconSVG
@@ -207,6 +207,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 NavbarMobile.propTypes = {
+  showInTablet: PropTypes.bool,
   showInMobile: PropTypes.bool,
   showContent: PropTypes.bool,
 }
