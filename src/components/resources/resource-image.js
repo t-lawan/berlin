@@ -2,11 +2,27 @@ import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import ImageResource from "../../partials/ImageResource"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources";
+import styled from 'styled-components';
+import striptags from 'striptags';
+
+const ResourceTitle = styled.h1`
+  line-height: 1.2;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.2em;
+    margin: 0.3em 0 1.0em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.8em;
+  }
+`
+const Author = styled.p`
+  margin-bottom:0;
+`
 
 const ResourceImage = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -18,8 +34,13 @@ const ResourceImage = props => {
       <ImageResource id={r.image} withCaption={false} />
       <TwoColumnPageWrapper>
         <div>
-          <p> {r.title}</p>
-          <p> {r.author}</p>
+          <ResourceTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(r.title, ['em']),
+              }}
+            />
+          {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
+          <p> {r[language].year}</p>
           <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
             {" "}
             {r.external_url_label}
