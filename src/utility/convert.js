@@ -106,8 +106,14 @@ export class Convert {
       wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.acf.exp_number,
-      wordpressModel.acf.EN,
-      wordpressModel.acf.DE,
+      {
+        ...wordpressModel.acf.EN,
+        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_en
+      },
+      {
+        ...wordpressModel.acf.DE,
+        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_de
+      },
       wordpressModel.acf.start_date,
       wordpressModel.acf.end_date,
       wordpressModel.acf.exhibition_venue,

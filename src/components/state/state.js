@@ -141,6 +141,8 @@ const State = props => {
                     alt_text
                     media_type
                   }
+                  temp_exp_graphic_de
+                  temp_exp_graphic_en
                 }
               }
             }
