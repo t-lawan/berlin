@@ -77,6 +77,8 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
+  display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
+
 `
 export const FixedTopExpMob = styled.div`
   display: none;

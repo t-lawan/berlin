@@ -85,8 +85,8 @@ class Columns extends React.Component {
           style={{ zIndex: 0 }}
         >
           
-          <StickyTopHeader hideInMobile={true}>
-            <Header hideInMobile={true} />
+          <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={true}>
+            <Header hideOnHomePage={!this.props.isHome} hideInMobile={true} />
           </StickyTopHeader>
 
           <StickyTopHeader hideInMobile={true}>

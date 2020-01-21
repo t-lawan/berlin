@@ -26,7 +26,7 @@ const Header = props => {
 
 
   return (
-    <HeaderWrapper hideInMobile={props.hideInMobile}>
+    <HeaderWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
       <HeaderLink cover direction="down" bg={transitionBackground} to={createPath(language, '')}>
         <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
         <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url}/>
@@ -47,7 +47,8 @@ const mapStateToProps = state => {
     experience: state.experience,
     languages: state.languages,
     documents: state.documents,
-    exhibitions: state.exhibitions
+    exhibitions: state.exhibitions,
+    hideOnHomePage: state.hideOnHomePage
   }
 }
 
