@@ -30,8 +30,7 @@ const ResourceTitle = styled.h1`
 `
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
-  const r = props.resource
-  console.log("RESOURCES", r)
+  const r = props.resource;
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
