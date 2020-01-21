@@ -3,7 +3,7 @@ import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { UnderlinedText } from "../../index.styles";
-import { TextBlock } from "../../templates/page.styles";
+import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding: 0;
@@ -13,9 +13,6 @@ padding-left: 1em;
 const TitleTextBlock = styled(TextBlock)`
 padding: 0;
 padding-top: 1em;
-:first-child {
-  padding-top:0;
-}
 `
 
 const AboutOrganisation = props => {
@@ -55,13 +52,29 @@ const AboutOrganisation = props => {
     return renderComponent
   }
 
-  return <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+  return (
+  <>
+    <PageTitle> {content[language].title}</PageTitle>
+    <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+
+  </>
+  
+  )
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
   }
+}
+
+let content = {
+  EN: {
+    title: "organisation"
+  },
+  DE: {
+    title: "verein"
+  },
 }
 
 AboutOrganisation.propTypes = {
