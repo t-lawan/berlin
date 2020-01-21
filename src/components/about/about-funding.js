@@ -12,6 +12,7 @@ import {
 import { GalleryImage } from "../../partials/ImageGalleryResource"
 import ImageResource from "../../partials/ImageResource"
 import { Section } from "../../index.styles";
+import { PageTitle } from "../../templates/page.styles";
 
 
 const AboutFunding = props => {
@@ -73,12 +74,27 @@ const AboutFunding = props => {
     return renderComponent
   }
 
-  return <div>{funding.map((item, index) => generateSection(item, index))}</div>
+  return (
+  <>
+  <PageTitle> {content[language].title}</PageTitle>
+    <div>{funding.map((item, index) => generateSection(item, index))}</div>
+  </>
+  
+  )
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+  }
+}
+
+let content = {
+  EN: {
+    title: 'funding'
+  },
+  DE: {
+    title: 'funding'
   }
 }
 
