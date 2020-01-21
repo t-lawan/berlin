@@ -69,6 +69,9 @@ const ResourceText = styled.p`
     position:absolute;
     bottom:0.7em;
   }
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.9em !important;
+  }
 `
 
 const RelatedResources = props => {
