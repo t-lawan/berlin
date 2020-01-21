@@ -180,6 +180,9 @@ a {
   text-decoration-line: none;
   text-decoration-color: ${Color.red};
 }
+h1, h2, h3, h4, h5, h6, p, a, em {
+  word-wrap: break-word;
+}
 `
 
 
