@@ -90,7 +90,7 @@ class Columns extends React.Component {
           </StickyTopHeader>
 
           <StickyTopHeader hideInMobile={true}>
-            <Jumbotron hideInMobile={true} />
+            <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
           {/* Second Column */}
