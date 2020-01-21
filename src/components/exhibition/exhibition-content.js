@@ -1,65 +1,79 @@
+import PropTypes from "prop-types"
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import PropTypes from "prop-types"
+import { size } from "../../index.styles"
+import { getDocument } from "../../store/selector"
 import { getCurrentLanguageString } from "../../utility/helper";
-import { Section, size } from "../../index.styles";
+
+
 const ExhibitionPageWrapper = styled.div`
+  z-index: 6000;
+  left: 5%;
   padding: 0.7em 1em;
+  width: calc(100% - 10%);
+  height: 100vh;
+  position: fixed;
+  background: #fbf95d;
+  display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
+    width: 100%;
+    left: 0;
     padding: 1em 0.7em;
-    border-top:solid 1px #000;
-    background:#FFF;
+    bottom: 45px;
+    height: calc(100vh - 91px);
+    top: 45px;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.7em;
+    top:40px;
+    left:0;
+    width:100%;
+    bottom:0;
+    height: calc(100vh - 40px);
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 0.7em 1em;
+    width: calc(100% - 10%);
+    height: 100vh;
+    left: 5%;
+    top:0;
   }
 `
+const ExhibitionPageImage = styled.img`
+  width: 30%;
+`
 
-const ExhibitionContent = props => {
-  const language = getCurrentLanguageString(props.languages);
-  const exhibition = props.exhibition;
-  const renderComponent = (
-    <ExhibitionPageWrapper>
-      
-        <div
-          dangerouslySetInnerHTML={{
-            __html: exhibition[language].description,
-          }}
-        />
-      
-        <p hidden={!exhibition[language].participant_list}> {content[language].works_and_contributions}</p>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: exhibition[language].participant_list,
-          }}
-        />
-      
-    </ExhibitionPageWrapper>
-  )
-  return renderComponent;
-}
+class ExhibitionPage extends React.Component {
+  language;
+  image;
+  render() {
+    let exhibition = this.props.exhibitions.find(ex => {
+      return ex.experience == this.props.experience
+    })
 
-const content = {
-  EN: {
-    works_and_contributions : 'With works and contributions by:'
-  },
-  DE: {
-    works_and_contributions : 'Mit Arbeiten und Beiträgen von:'
+    this.language = getCurrentLanguageString(this.props.languages);
+
+    this.image = getDocument(this.props.documents, exhibition[this.language].temp_exp_graphic)
+
+    return (
+      <ExhibitionPageWrapper show={exhibition.temporary_uploaded}>
+        {this.image ? <ExhibitionPageImage src={this.image.url} /> : null}
+      </ExhibitionPageWrapper>
+    )
   }
 }
 
 const mapStateToProps = state => {
   return {
-    languages: state.languages,
+    experience: state.experience,
+    exhibitions: state.exhibitions,
+    documents: state.documents,
+    languages: state.languages
   }
 }
 
-ExhibitionContent.propTypes = {
-    exhibition: PropTypes.object,
-  }
-  
 export default connect(
   mapStateToProps,
   null
-)(ExhibitionContent)
+)(ExhibitionPage)
