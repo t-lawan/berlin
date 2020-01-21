@@ -4,14 +4,18 @@ import {
   PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
+  TextBlock,
+  PressArrowDown,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color, size } from "../../index.styles"
-import PropTypes from "prop-types";
+import { Color, size, ExternalLink } from "../../index.styles"
+import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
-import styled from 'styled-components';
-import striptags from 'striptags';
+import styled from "styled-components"
+import striptags from "striptags"
+import ImageResource from "../../partials/ImageResource"
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
 const ResourceTextDiv = styled.div`
   a {
@@ -27,25 +31,37 @@ const ResourceTitle = styled.h1`
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
+  console.log("RESOURCES", r)
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
         <div>
-          {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
-          {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
-          <PressArrowDown icon={faLongArrowAltDown} />
-          <span> Download</span>{" "}
-        </ExternalLink> */}
-          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
+          {r.thumbnail_image ? (
+            <ImageResource id={r.thumbnail_image} withCaption={false} />
+          ) : null}
+          <TextBlock>
+
+          {r.thumbnail_image ? (
+              <ExternalLink id={r.text_based_resource[0].document_upload}>
+                <PressArrowDown icon={faLongArrowAltDown} />
+                <span> Download</span>{" "}
+              </ExternalLink>
+          ) : null}
+            <p hidden={r.text_based_resource[0].document_language.length === 0}>
+              {" "}
+              {language === "EN" ? "Language" : "Sprache"}:{" "}
+              {r.text_based_resource[0].document_language}
+            </p>
+          </TextBlock>
         </div>
         <div>
           <ResourceTitle
-              dangerouslySetInnerHTML={{
-                __html: striptags(r.title, ['em']),
-              }}
-            />
-          
+            dangerouslySetInnerHTML={{
+              __html: striptags(r.title, ["em"]),
+            }}
+          />
+
           {r.author.length > 0 ? <p> {r.author} </p> : ""}
           <p>
             In:{" "}

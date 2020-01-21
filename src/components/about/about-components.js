@@ -7,6 +7,7 @@ import AboutFunding from "./about-funding"
 import AboutTeamBlock from "./about-team-block"
 import AboutAdvisoryBoard from "./about-advisory-board"
 import AboutOrganisation from "./about-organisation"
+import { PageTitle } from "../../templates/page.styles";
 
 const AboutComponents = props => {
   const content = props.content
@@ -15,21 +16,27 @@ const AboutComponents = props => {
   switch (content.slug) {
     case "about":
       renderComponent = (
-        <AboutPageContent
-          dangerouslySetInnerHTML={{
-            __html: content.acf[`${language}_row`].description,
-          }}
-        />
+        <>
+          <PageTitle> {language === "EN" ? "About" : "Uber"}</PageTitle>
+          <AboutPageContent
+            dangerouslySetInnerHTML={{
+              __html: content.acf[`${language}_row`].description,
+            }}
+          />
+        </>
       )
       break
     case "uber":
-      renderComponent = (
+    renderComponent = (
+      <>
+        <PageTitle> {language === "EN" ? "About" : "Uber"}</PageTitle>
         <AboutPageContent
           dangerouslySetInnerHTML={{
             __html: content.acf[`${language}_row`].description,
           }}
         />
-      )
+      </>
+    )
       break
     case "/about/advisory-board":
       renderComponent = (
