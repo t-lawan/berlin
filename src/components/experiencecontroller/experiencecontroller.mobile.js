@@ -81,7 +81,7 @@ class ExperienceControllerMobile extends  React.Component {
     })
 
     return (
-      <ExperienceControllerMobileWrapper showInMobile={this.props.showInMobile}>
+      <ExperienceControllerMobileWrapper showInTablet={this.props.showInTablet} showInMobile={this.props.showInMobile}>
         {this.experiences.map((experience, index) => (
           <ExperienceControllerMobileButton isSelected={experience.id === this.props.experience} show={experience.isReady} key={index} onClick={()=> this.changeExperience(experience)}>
             <p>{index !== 3 ? "exp." : ""} {experience.display}</p>  
@@ -102,7 +102,8 @@ const mapStateToProps = state => {
 }
 
 ExperienceControllerMobile.propTypes = {
-  showInMobile: PropTypes.bool
+  showInMobile: PropTypes.bool,
+  showInTablet: PropTypes.bool,
 }
 
 

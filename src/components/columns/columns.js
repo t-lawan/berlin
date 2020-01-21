@@ -70,9 +70,9 @@ class Columns extends React.Component {
         <Column rightBorder={true} hideInTablet hideInMobile>
           <ExperienceController left={true} />
         </Column>
-        <FixedTopExpMob showInMobile={true}>
-              <ExperienceControllerMobile showInMobile={true} />
-              {/* <Header hideInMobile={true} /> */}
+        <FixedTopExpMob showInTablet={true}>
+          <ExperienceControllerMobile showInTablet={true} />
+          {/* <Header hideInMobile={true} /> */}
         </FixedTopExpMob>
         {/* Middle Column */}
         <AnimatedColumn
@@ -95,10 +95,10 @@ class Columns extends React.Component {
           
           {/* Second Column */}
           <Column rightBorder={true}>
-            <MobTitleCard showInMobile={true}>
-              <JumbotronMob showInMobile={true} />
+            <MobTitleCard showInTablet={true}>
+              <JumbotronMob showInTablet={true} />
             </MobTitleCard>
-            <MobAnimCard showInMobile={true}>
+            <MobAnimCard showInTablet={true}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
@@ -145,7 +145,7 @@ class Columns extends React.Component {
           </FixedFooter>
         </AnimatedColumn>
         <FixedNavbar>
-              <NavbarMobile showInTablet />
+            <NavbarMobile showInTablet={true} />
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}

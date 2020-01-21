@@ -209,9 +209,9 @@ export const showDisplayForTablet = css`
 `
 
 export const showDisplayForTabletFunc = variable => css`
-  display: ${props => (props.showInMobile ? "none" : `${variable}`)};
+  display: ${props => (props.showInTablet ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInMobile ? `${variable}` : "none")};
+    display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
 `
 
