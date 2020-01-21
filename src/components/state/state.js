@@ -24,9 +24,9 @@ const State = props => {
                   event_venue_selection {
                     wordpress_id
                   }
-                  # related_resources {
-                  #   wordpress_id
-                  # }
+                  related_resources {
+                    wordpress_id
+                  }
                   DE {
                     event_subtitle
                     event_title
@@ -84,6 +84,15 @@ const State = props => {
                 acf {
                   exhibition_floorplan
                   active_exhibition
+                  exp_open_days {
+                    friday
+                    monday
+                    saturday
+                    sunday
+                    thursday
+                    tuesday
+                    wednesday
+                  }
                   use_gallery_images
                   exhibition_venue {
                     wordpress_id
@@ -122,6 +131,18 @@ const State = props => {
                   caption_de
                   caption_en
                   exp_animation
+                  temporary_exp_page
+                  exhibition_image_gallery {
+                    acf {
+                      caption_de
+                      caption_en
+                    }
+                    wordpress_id
+                    alt_text
+                    media_type
+                  }
+                  temp_exp_graphic_de
+                  temp_exp_graphic_en
                 }
               }
             }
@@ -227,7 +248,6 @@ const State = props => {
               node {
                 wordpress_id
                 slug
-                resource_genre
                 acf {
                   mp3_file_upload
                   mp3_file_upload_label
@@ -240,17 +260,15 @@ const State = props => {
                   resource_year_de
                   subtitle
                   resource_image
-                  resource_image
                   resource_type
                   title
+                  thumbnail_image
                   text_based_resource {
                     document_download_label
                     document_language
-                    # document_upload
                     free_text_entry
                   }
                   floating_resource
-                  thumbnail_image
                   image_gallery {
                     alt_text
                     wordpress_id
@@ -268,7 +286,10 @@ const State = props => {
                   resource_label
                   resource_external_url_label
                   resource_label_de
+                  resource_author_de
+                  resource_url
                 }
+                resource_genre
               }
             }
           }

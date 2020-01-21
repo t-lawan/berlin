@@ -17,7 +17,7 @@ const Jumbotron = props => {
   let image = getDocument(props.documents, exhibition[language].exp_bb11_right_header);
   let imagedate = getDocument(props.documents, exhibition[language].exp_dates_header);
   return(
-  <JumbotronWrapperMob showInMobile={props.showInMobile}>
+  <JumbotronWrapperMob showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader to={createPath(language, '')}>
       <img src={imagedate.url} alt={imagedate.slug}/>
       <img src={image.url} alt={image.slug}/>
@@ -26,7 +26,8 @@ const Jumbotron = props => {
 )
 }
 Jumbotron.propTypes = {
-  showInMobile: PropTypes.bool
+  showInMobile: PropTypes.bool,
+  showInTablet: PropTypes.bool
 }
 
 const mapStateToProps = state => {

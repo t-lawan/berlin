@@ -25,16 +25,17 @@ import {
   MobAnimCard,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
-import Logo from "../logo/logo"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
-import NewsList from "../news/newslist";
+import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
+  animationInDuration = 600;
+  animationOutDuration = 500;
   constructor(props) {
     super(props);
     this.state = {
@@ -57,15 +58,21 @@ class Columns extends React.Component {
       )
     }
 
+    let exhibition = this.props.exhibitions.find((exh) => {
+      return exh.experience == this.props.experience;
+    });
+
+    let image = getDocument(this.props.documents, exhibition.animation)
+
     return (
       <ColumnsWrapper>
         {/* First Column */}
         <Column rightBorder={true} hideInTablet hideInMobile>
           <ExperienceController left={true} />
         </Column>
-        <FixedTopExpMob showInMobile={true}>
-              <ExperienceControllerMobile showInMobile={true} />
-              {/* <Header hideInMobile={true} /> */}
+        <FixedTopExpMob showInTablet={true}>
+          <ExperienceControllerMobile showInTablet={true} />
+          {/* <Header hideInMobile={true} /> */}
         </FixedTopExpMob>
         {/* Middle Column */}
         <AnimatedColumn
@@ -73,26 +80,26 @@ class Columns extends React.Component {
           animationOut={this.props.experience_transition.animationOut}
           isVisible={this.props.experience_transition.isVisible}
           animateOnMount={false}
-          animationInDuration={1000}
-          animationOutDuration={200}
+          animationInDuration={this.props.animationInDuration}
+          animationOutDuration={this.props.animationOutDuration}
           style={{ zIndex: 0 }}
         >
           
-          <StickyTopHeader hideInMobile={true}>
-            <Header hideInMobile={true} />
+          <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={true}>
+            <Header showOnHomePage={this.props.isHome} hideInMobile={true} />
           </StickyTopHeader>
 
           <StickyTopHeader hideInMobile={true}>
-            <Jumbotron hideInMobile={true} />
+            <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
           {/* Second Column */}
           <Column rightBorder={true}>
-            <MobTitleCard showInMobile={true}>
-              <JumbotronMob showInMobile={true} />
+            <MobTitleCard showInTablet={true}>
+              <JumbotronMob showInTablet={true} />
             </MobTitleCard>
-            <MobAnimCard showInMobile={true}>
-              <img className="bg_anim" src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/600x834_Animation_exp2_PRELIM.gif"/>
+            <MobAnimCard showInTablet={true}>
+              <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
               <ImageContainer
@@ -118,7 +125,7 @@ class Columns extends React.Component {
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column rightBorder={true} hideInMobile={!this.props.show_events_in_mobile}>
+          <Column hideInMobile={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
@@ -138,7 +145,7 @@ class Columns extends React.Component {
           </FixedFooter>
         </AnimatedColumn>
         <FixedNavbar>
-              <NavbarMobile showInTablet />
+            <NavbarMobile showInTablet={true} />
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
@@ -163,7 +170,10 @@ const mapStateToProps = state => {
   return {
     experience_transition: state.experience_transition,
     agreed_to_terms: state.agreed_to_terms,
-    show_events_in_mobile: state.show_events_in_mobile
+    show_events_in_mobile: state.show_events_in_mobile,
+    exhibitions: state.exhibitions,
+    experience: state.experience,
+    documents: state.documents
   }
 }
 export default connect(

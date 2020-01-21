@@ -32,15 +32,10 @@ const AboutTeamBlock = props => {
   const language = getCurrentLanguageString(props.languages);
   const generateSection = (item, index) => {
     let renderComponent
-    <PageTitle
-              dangerouslySetInnerHTML={{
-                __html: teampage[language].title,
-              }}
-            />
     switch (item.team_block_type) {
       case "section":
         renderComponent = (
-          <p key={index} class="team_title">
+          <p key={index} className="team_title">
             {item[createProperty("section_title", language)]}{" "}
           </p>
         )
@@ -57,7 +52,7 @@ const AboutTeamBlock = props => {
       case "position":
         renderComponent = (
           <PaddedSectionPosition key={index}>
-            <p class="position_title">{item[createProperty("position_title", language)]}</p>
+            <p className="position_title">{item[createProperty("position_title", language)]}</p>
           </PaddedSectionPosition>
         )
         break
@@ -69,7 +64,11 @@ const AboutTeamBlock = props => {
     return renderComponent
   }
   return (
+    <>
+    <PageTitle> {teampage[language].title}</PageTitle>
     <div>{props.team.map((item, index) => generateSection(item, index))}</div>
+
+    </>
   )
 }
 

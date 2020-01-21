@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Color, size, keyFrameExperienceImage } from "../../index.styles"
+import { Color, size, keyFrameExperienceImage, showDisplayForTablet, hideDisplayForTablet } from "../../index.styles"
 import * as actionTypes from "../../store/action"
 
 const ExperiencePageWrapper = styled.div`
@@ -13,7 +13,7 @@ const ExperiencePageWrapper = styled.div`
   background: #fbf95d;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     width:100%;
     left: 0;
     bottom:45px;
@@ -26,10 +26,10 @@ const ExperienceImagesContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 80vh;
-  display:block
+  /* display:block; */
   align-items: center;
   justify-content: center;
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     margin-top:0px;
     top: 50%;
     width:60%;
@@ -88,13 +88,7 @@ const ExperienceImage = styled.img`
     opacity: 0;
     animation-delay: 2.4s;
   }
-
-  @media (max-width: ${size.tablet}) {
-    display:none;
-  }
-  @media (max-width: ${size.mobileM}) {
-    display:none;
-  }
+  ${hideDisplayForTablet};
 `
 
 const ExperienceImageMob = styled.img`
@@ -126,15 +120,7 @@ const ExperienceImageMob = styled.img`
     opacity: 0;
     animation-delay: 2.4s;
   }
-  @media (max-width: ${size.mobileM}) {
-    width: 100%;
-  }
-  @media (max-width: ${size.tablet}) {
-    width: 100%;
-  }
-  @media (min-width: ${size.laptop}) {
-    display:none;
-  }
+  ${showDisplayForTablet};
 `
 
 class ExperiencePage extends React.Component {
@@ -184,15 +170,13 @@ class ExperiencePage extends React.Component {
   ]
 
   closeExperiencePage = () => {
-    this.setState({
-      show: false,
-    })
+    this.props.hideOverlay();
   }
   render() {
     return (
       <ExperiencePageWrapper
         onClick={this.closeExperiencePage}
-        show={this.state.show && this.props.showOnHomePage && this.props.show_overlay}
+        show={this.props.showOnHomePage && this.props.show_overlay}
       >
         <TopRow>
           <CloseImage
@@ -202,12 +186,12 @@ class ExperiencePage extends React.Component {
         </TopRow>
 
         <ExperienceImagesContainer>
-          <ExperienceImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
-          <ExperienceImageMob src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
+          <ExperienceImage hideInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
+          <ExperienceImageMob showInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
             <React.Fragment key={index}>
-            <ExperienceImage  src={experience.url} />
-            <ExperienceImageMob key={index} src={`${experience.urlmob}`} />
+            <ExperienceImage hideInMobile={true} src={experience.url} />
+            <ExperienceImageMob showInMobile={true} key={index} src={`${experience.urlmob}`} />
             </React.Fragment>
           ))}
         </ExperienceImagesContainer>

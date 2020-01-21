@@ -1,7 +1,12 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath, truncateText, transitionBackground } from "../utility/helper"
+import {
+  getCurrentLanguageString,
+  createPath,
+  truncateText,
+  transitionBackground,
+} from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
@@ -14,48 +19,59 @@ import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
 import EventNavigator from "../components/events/event-navigator"
-import { Color, size, hideDisplayForMobile } from "../index.styles"
+import { Color, size, hideDisplayForMobile, LargeButton } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import NewsList from "../components/news/newslist";
-import striptags from 'striptags';
+import NewsList from "../components/news/newslist"
+import striptags from "striptags"
+import { EventsModel } from "../models/EventsModel"
 
 const EventColumn = styled.div``
 
 const EventTextBlock = styled(TextBlock)`
-  a,p {
+  a,
+  p {
     margin: 0;
     font-size: 1rem;
   }
-  margin:0 0 0.7em 0;
-  padding:0;
+  margin: 0 0 0.7em 0;
+  padding: 0;
 `
 const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
   font-size: 1.8rem;
-  line-height:1.2;
+  line-height: 1.2;
   ${hideDisplayForMobile};
+`
+
+const VideoContainer = styled.div`
+  > iframe {
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+  }
 `
 const EventTitleMob = styled.h1`
   font-size: 1.55em;
-  margin: -0.3em 0 1.0em;
-  line-height:1.2;
+  margin: -0.3em 0 1em;
+  line-height: 1.2;
   @media (min-width: ${size.tablet}) {
-    display:none;
+    display: none;
   }
 `
 
 const EventDescription = styled.div`
   p {
-    font-size: 1.0rem;
-    line-height:1.4;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 `
 
 const EventRsvpText = styled.div`
   p,
   a {
-    font-size: 1.0rem;
+    font-size: 1rem;
   }
 `
 
@@ -65,54 +81,77 @@ const VenueLink = styled(AniLink)`
     color: ${Color.red};
   }
 `
+
+const DocumentationLink = styled(VenueLink)``
+
+const DocumentationButton = styled(LargeButton)`
+  color: white;
+  margin: 0;
+`
 const ShareLink = styled.p`
-  a{
-  border-bottom: solid thin ${Color.red};
-  :hover {
-  color: ${Color.red};
+  a {
+    border-bottom: solid thin ${Color.red};
+    :hover {
+      color: ${Color.red};
+    }
   }
-}
 `
 
 const eventContent = {
   EN: {
-    'share': "Share"
+    share: "Share",
   },
   DE: {
-    'share': "Teilen"
-  }
+    share: "Teilen",
+  },
 }
 
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
-  const event = Convert.toEventModel(props.pageContext);
-  const facebookLink = typeof window !== `undefined` ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}` : '';
+  const event = Convert.toEventModel(props.pageContext)
+  const facebookLink =
+    typeof window !== `undefined`
+      ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
+      : ""
   event.dates = event.dates.sort((a, b) => {
     return a.start_date - b.start_date
   })
-  let venue = getVenue(props.venues, event.venue[0]);
-  if(event.related_resource && event.related_resource.length > 0) {
-    event.related_resource = event.related_resource.map(resource => {
-      return resource.wordpress_id;
-    });
+  let venue = getVenue(props.venues, event.venue[0])
+  let documentation = []
+  if (event.documentation) {
+    documentation = props.documentation.filter(doc => {
+      return doc.id === event.documentation[0]
+    })
   }
-  let description = truncateText(striptags(event[`${props.pageContext.language.toUpperCase()}`].full_description));
 
+  if (event.related_resource && event.related_resource.length > 0) {
+    event.related_resource = event.related_resource.map(resource => {
+      return resource.wordpress_id
+    })
+  }
+  let title = truncateText(
+    striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
+  )
+  let description = truncateText(
+    striptags(
+      event[`${props.pageContext.language.toUpperCase()}`].full_description
+    )
+  )
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
-          title={`${event.slug}`}
+          title={title}
           description={description}
           lang={props.pageContext.language}
         />
         <EventColumn>
-        <EventTitleMob
-              dangerouslySetInnerHTML={{
-                __html: striptags(event[language].event_title, ['em']),
-              }}
-            />
+          <EventTitleMob
+            dangerouslySetInnerHTML={{
+              __html: striptags(event[language].event_title, ["em"]),
+            }}
+          />
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
@@ -131,28 +170,53 @@ const Event = props => {
           <EventTextBlock>
             {props.experience == 4 ? (
               <VenueLink
-              to={createPath(language, venue ? "venue/" + venue.slug : "")}
-              bg={transitionBackground}
-              cover direction="down"
-            >
-              {" "}
-              {venue ? venue[language].venue_name : ""}
-            </VenueLink>
+                to={createPath(language, venue ? "venue/" + venue.slug : "")}
+                bg={transitionBackground}
+                cover
+                direction="down"
+              >
+                {" "}
+                {venue ? venue[language].venue_name : ""}
+              </VenueLink>
             ) : (
               <p>{venue ? venue[language].venue_name : ""} </p>
-            )
+            )}
 
-            }
-
-            {/* <p>{venue ? venue.address[0].address_line : ""}</p> */}
+            <p>{venue ? venue.address[0].address_line : ""}</p>
+          </EventTextBlock>
+          <EventTextBlock hidden={documentation.length === 0}>
+            <DocumentationLink
+              hidden={documentation.length === 0}
+              to={createPath(
+                language,
+                documentation[0] ? `documentation/${documentation[0].slug}` : ``
+              )}
+              bg={transitionBackground}
+              cover
+              direction="down"
+            >
+              <DocumentationButton bgColour={"black"}>
+                Documentation
+              </DocumentationButton>
+            </DocumentationLink>
           </EventTextBlock>
           <EventTextBlock>
-            <p>{event.language == "other" ? event[`other_language${language == 'EN' ? '' : '_de'}`] : freeAdmision[language][event.language]}</p>
+            <p>
+              {event.language == "other"
+                ? event[`other_language${language == "EN" ? "" : "_de"}`]
+                : freeAdmision[language][event.language]}
+            </p>
             <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
           </EventTextBlock>
           <EventTextBlock>
-            <ShareLink> {eventContent[language].share}: <a target="__blank" href={facebookLink}>  Facebook </a></ShareLink>
-            
+            <ShareLink>
+              {" "}
+              {eventContent[language].share}:{" "}
+              <a target="__blank" href={facebookLink}>
+                {" "}
+                Facebook{" "}
+              </a>
+            </ShareLink>
           </EventTextBlock>
         </EventColumn>
         <EventColumn>
@@ -160,7 +224,7 @@ const Event = props => {
           <TextBlock>
             <EventTitle
               dangerouslySetInnerHTML={{
-                __html: striptags(event[language].event_title, ['em']),
+                __html: striptags(event[language].event_title, ["em"]),
               }}
             />
             <div
@@ -177,6 +241,15 @@ const Event = props => {
           />
 
           <TextBlock>
+            <VideoContainer
+              hidden={!event.video}
+              dangerouslySetInnerHTML={{
+                __html: event.video,
+              }}
+            />
+          </TextBlock>
+
+          <TextBlock>
             <EventRsvpText
               hidden={!event[language].rsvp_required}
               dangerouslySetInnerHTML={{
@@ -184,10 +257,16 @@ const Event = props => {
               }}
             />
           </TextBlock>
-
         </EventColumn>
       </TwoColumnPageWrapper>
-      <RelatedResources ids={event.related_resource && event.related_resource.length > 0 ?  event.related_resource : []} hidden={!event.related_resource || event.related_resource.length === 0}/>
+      <RelatedResources
+        ids={
+          event.related_resource && event.related_resource.length > 0
+            ? event.related_resource
+            : []
+        }
+        hidden={!event.related_resource || event.related_resource.length === 0}
+      />
     </>
   )
 
@@ -211,7 +290,8 @@ const mapStateToProps = state => {
     languages: state.languages,
     venues: state.venues,
     genres: state.resource_genres,
-    experience: state.experience
+    experience: state.experience,
+    documentation: state.documentation,
   }
 }
 

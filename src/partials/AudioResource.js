@@ -10,22 +10,15 @@ import {
   faPlayCircle,
   faPlay,
   faPause,
-  faBackward,
-  faForward,
-  faVolumeDown,
+  faPauseCircle,
   faVolumeUp,
+  faVolumeMute,
 } from "@fortawesome/free-solid-svg-icons"
 import { TextBlock } from "../templates/page.styles"
 
 const AudioResourceWrapper = styled.section`
   /* display: flex;
   flex-direction: row; */
-  padding: 1em 0;
-`
-
-const ActionIcons = styled.div`
-  display: flex;
-  flex-direction: row;
   padding: 1em 0;
 `
 
@@ -36,10 +29,50 @@ const ActionIcon = styled(FontAwesomeIcon)`
   }
   transition: ease-in-out;
   transition-duration: 10;
-  display: ${props => (props.show ? "inherit" : "none")};
 `
 
-const ProgressEl = styled.progress``
+const AudioPlayerWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 0.5rem;
+  justify-content: space-evenly;
+  align-items: center;
+`
+
+const TimeProgressBar = styled.progress`
+  width: 50%;
+  &[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: black;
+    height: 0.3rem;
+    border: 0;
+    /* height: 5px; */
+  }
+  &[value]::-webkit-progress-bar {
+    background-color: black;
+    border: 0;
+    /* border-radius: 2px; */
+    /* border: 1px solid lighten(#acacac, 20%); */
+    color: black;
+  }
+
+  &::-moz-progress-bar {
+    background: black;
+    border: 0;
+    color: black;
+  }
+
+  &::-webkit-progress-value {
+    color: black;
+    background-color: black;
+  }
+`
+
+const VolumeProgressBar = styled(TimeProgressBar)`
+  width: 10%;
+`
 class AudioResource extends React.Component {
   static propTypes = {
     id: PropTypes.number.isRequired,
@@ -49,10 +82,14 @@ class AudioResource extends React.Component {
   constructor(props) {
     super(props)
     this.audio_tag = React.createRef()
+    this.time_progress_ref = React.createRef()
+    this.volume_progress_ref = React.createRef()
     this.state = {
       isPlaying: false,
       currentTime: 0,
       length: 0,
+      volume: 1,
+      prevVolume: 0
     }
   }
   audio
@@ -65,6 +102,7 @@ class AudioResource extends React.Component {
     this.setState({
       currentTime: audio.currentTime,
       length: audio.duration,
+      volume: audio.volume,
     })
   }
   initProgressBar = () => {
@@ -97,39 +135,13 @@ class AudioResource extends React.Component {
     }
   }
 
-  forward = () => {
-    if (this.audio_tag.current.currentTime !== this.state.length) {
-      this.audio_tag.current.currentTime =
-        this.audio_tag.current.currentTime +
-        this.skipPercentage * this.state.length
-    }
-  }
-  backward = () => {
-    if (
-      this.audio_tag.current.currentTime >
-      this.skipPercentage * this.state.length
-    ) {
-      this.audio_tag.current.currentTime =
-        this.audio_tag.current.currentTime -
-        this.skipPercentage * this.state.length
-    } else {
-      this.audio_tag.current.currentTime =
-        this.audio_tag.current.currentTime -
-        (this.skipPercentage / 4) * this.state.length
-    }
-  }
-
   increaseVolume = () => {
     if (this.audio_tag.current.volume !== 1) {
       this.audio_tag.current.volume =
         this.audio_tag.current.volume + this.changeVolume
-    }
-  }
-
-  decreaseVolume = () => {
-    if (this.audio_tag.current.volume > this.changeVolume) {
-      this.audio_tag.current.volume =
-        this.audio_tag.current.volume - this.changeVolume
+      this.setState({
+        volume: this.audio_tag.current.volume,
+      })
     }
   }
 
@@ -142,15 +154,51 @@ class AudioResource extends React.Component {
 
     let time =
       hours > 0
-        ? `${hours}:${this.showProperTime(minutes - hours * 60)}:${this.showProperTime(seconds)}`
+        ? `${hours}:${this.showProperTime(
+            minutes - hours * 60
+          )}:${this.showProperTime(seconds)}`
         : `${this.showProperTime(minutes)}:${this.showProperTime(seconds)}`
 
     return time
   }
 
-  showProperTime = (value) => {
-    let time = value < 10 ? "0" + value : value;
-    return time;
+  showProperTime = value => {
+    let time = value < 10 ? "0" + value : value
+    return time
+  }
+
+  seekTime = event => {
+    if (this.state.isPlaying) {
+      let rect = this.time_progress_ref.current.getBoundingClientRect()
+      const percent = (event.clientX - rect.left) / rect.width
+      this.audio_tag.current.currentTime = percent * this.state.length
+    }
+  }
+
+  seekVolume = event => {
+      let rect = this.volume_progress_ref.current.getBoundingClientRect()
+      const percent = (event.clientX - rect.left) / rect.width;
+      this.audio_tag.current.volume = percent;
+      this.setState({
+        volume: percent
+      })
+  }
+
+  toggleMute = () => {
+    if(this.audio_tag.current.volume > 0) {
+      let prevVolume = this.audio_tag.current.volume 
+      this.audio_tag.current.volume = 0;
+      this.setState({
+        volume: 0,
+        prevVolume: prevVolume
+      })
+    } else {
+      this.audio_tag.current.volume = this.state.prevVolume;
+      this.setState({
+        volume: this.state.prevVolume
+      })
+    }
+
   }
 
   calculateCurrentValue = currentTime => {
@@ -161,9 +209,13 @@ class AudioResource extends React.Component {
       current_seconds = current_seconds_str.substr(0, 2)
 
     let current_time =
-      current_hour > 0 ?
-      `${current_hour}:${this.showProperTime(current_minute - current_hour * 60)}:${this.showProperTime(current_seconds)}`
-      : `${this.showProperTime(current_minute)}:${this.showProperTime(current_seconds)}`;
+      current_hour > 0
+        ? `${current_hour}:${this.showProperTime(
+            current_minute - current_hour * 60
+          )}:${this.showProperTime(current_seconds)}`
+        : `${this.showProperTime(current_minute)}:${this.showProperTime(
+            current_seconds
+          )}`
 
     return current_time
   }
@@ -182,11 +234,14 @@ class AudioResource extends React.Component {
   //   return current_time
   // }
 
-  UNSAFE_componentWillMount() {
+  // UNSAFE_componentWillMount() {
+  //   this.audio = getDocument(this.props.documents, this.props.id)
+  // }
+
+  componentWillMount() {
     this.audio = getDocument(this.props.documents, this.props.id)
   }
 
-  componentDidMount() {}
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
@@ -197,54 +252,40 @@ class AudioResource extends React.Component {
           controls
           hidden={true}
           onTimeUpdate={() => this.initProgressBar()}
-          onLoadedMetadata={this.setAudioInfo}
+          onLoadedMetadata={() => this.setAudioInfo()}
         >
           <source src={this.audio.url} />
         </audio>
-        <ActionIcons>
+        <AudioPlayerWrapper>
           <ActionIcon
-            onClick={() => this.play()}
-            show={!this.state.isPlaying ? 1 : 0}
-            icon={faPlay}
+            onClick={() => (this.state.isPlaying ? this.pause() : this.play())}
+            icon={this.state.isPlaying ? faPauseCircle : faPlayCircle}
+            size={`lg`}
           />
+          <span>{this.calculateCurrentValue(this.state.currentTime)}</span>
+          <TimeProgressBar
+            onClick={event => {
+              this.seekTime(event)
+            }}
+            ref={this.time_progress_ref}
+            value={this.state.currentTime}
+            max={this.state.length}
+          />
+          <span> {this.calculateTotalValue(this.state.length)}</span>
           <ActionIcon
-            onClick={() => this.pause()}
-            show={this.state.isPlaying ? 1 : 0}
-            icon={faPause}
+            onClick={() => this.toggleMute()}
+            color={this.state.volume === 0 ? 'red' : 'black'}
+            icon={this.state.volume === 0 ? faVolumeMute : faVolumeUp}
           />
-        </ActionIcons>
-        <TextBlock>
-          <p>
-            {this.calculateCurrentValue(this.state.currentTime)} |{" "}
-            {this.calculateTotalValue(this.state.length)}
-          </p>
-        </TextBlock>
-        <ActionIcons hidden={this.state.isPlaying}>
-          <ActionIcon
-            onClick={() => this.backward()}
-            icon={faBackward}
-            show={this.state.isPlaying ? 1 : 0}
+          <VolumeProgressBar
+            onClick={event => {
+              this.seekVolume(event)
+            }}
+            ref={this.volume_progress_ref}
+            value={this.state.volume}
+            max={1}
           />
-          <ActionIcon
-            onClick={() => this.forward()}
-            icon={faForward}
-            show={this.state.isPlaying ? 1 : 0}
-          />
-          <ActionIcon
-            onClick={() => this.decreaseVolume()}
-            icon={faVolumeDown}
-            show={this.state.isPlaying ? 1 : 0}
-          />
-          <ActionIcon
-            onClick={() => this.increaseVolume()}
-            icon={faVolumeUp}
-            show={this.state.isPlaying ? 1 : 0}
-          />
-        </ActionIcons>
-        {/* <ActionIcons hidden={this.state.isPlaying}>
-            <ActionIcon onClick={() => this.backward()} icon={faVolumeDown} show={this.state.isPlaying ? 1 : 0}/>
-            <ActionIcon onClick={() => this.forward()} icon={faVolumeUp} show={this.state.isPlaying ? 1 : 0}/>
-        </ActionIcons> */}
+        </AudioPlayerWrapper>
       </AudioResourceWrapper>
     )
   }

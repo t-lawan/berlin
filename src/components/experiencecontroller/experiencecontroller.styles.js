@@ -52,7 +52,7 @@ export const ExperienceControllerMobileButton = styled.div`
   padding: 0em;
   height:45px;
   border-right: 1px solid black;
-  border-bottom:solid 1px #000;
+  border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
   opacity: ${props => props.show ? '1' : '0.5'};
   :last-child {
     border-right: 0;

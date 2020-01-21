@@ -17,12 +17,13 @@ const ExhibitionPageWrapper = styled.div`
 const Exhibition = props => {
   const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext);
-  let description = truncateText(striptags(exhibition[props.pageContext.language].description))
+  let description = exhibition[props.pageContext.language.toUpperCase()] ? truncateText(striptags(exhibition[props.pageContext.language.toUpperCase()].description)) : '';
+  let title = exhibition[props.pageContext.language.toUpperCase()] ? truncateText(striptags(exhibition[props.pageContext.language.toUpperCase()].title)) : '';
   
   const renderComponent = (
     <>
       <SEO
-        title={`${exhibition[language].title}`}
+        title={title}
         description={description}
         lang={props.pageContext.language}
       />

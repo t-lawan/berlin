@@ -10,17 +10,17 @@ import ImageResource from "../partials/ImageResource";
 import { DateManager } from "../utility/date";
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
-
+ 
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
   let item = Convert.toNewsModel(props.pageContext);
-  let description = truncateText(striptags(item[props.pageContext.language].news_subtitle))
-
+  let description = item[props.pageContext.language.toUpperCase()] ? truncateText(striptags(item[props.pageContext.language.toUpperCase()].news_subtitle)) : ""
+  let title = item[props.pageContext.language.toUpperCase()].news_title
   let renderComponent = (
     <>
       <TwoColumnPageWrapper>
         <SEO
-          title={`hi`}
+          title={title}
           description={description}
           lang={props.pageContext.language}
         />

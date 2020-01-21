@@ -17,11 +17,12 @@ import striptags from 'striptags';
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext;
+  // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
   let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${pageInfo.slug}`}
+        title={`${pageInfo.title}`}
         description={description}
         lang={pageInfo.language}
       />
@@ -47,7 +48,7 @@ const PracticalInformation = props => {
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+          <ResourcePublisherLink hidden={content[language].directions} target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlock>
         <TextBlock>
           {pageInfo.acf[language].access_block.map((item, index) => (

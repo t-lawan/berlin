@@ -7,8 +7,9 @@ import State from "../state/state"
 import Modal from "../modal/modal"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
-import { OutboundLink } from 'gatsby-plugin-google-analytics'
-import ExperiencePage from "../experience/experience-page";
+import { OutboundLink } from "gatsby-plugin-google-analytics"
+import ExperiencePage from "../experience/experience-page"
+import ExhibitionPage from "../exhibition/exhibition-page";
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
@@ -17,7 +18,10 @@ const LayoutWrapper = styled.div`
 const Layout = props => {
   return (
     <LayoutWrapper>
-      <OutboundLink hidden={!props.agreed_to_terms} href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"></OutboundLink>
+      <OutboundLink
+        hidden={!props.agreed_to_terms}
+        href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"
+      ></OutboundLink>
       <GlobalStyle />
       <State />
       <Helmet>
@@ -28,6 +32,7 @@ const Layout = props => {
       </Helmet>
       <Modal show={props.modal.show} />
       <ExperiencePage showOnHomePage={props.isHome} />
+      <ExhibitionPage />
       <Columns
         firstColumn={props.firstColumn}
         secondColumn={props.secondColumn}
@@ -46,17 +51,17 @@ Layout.propTypes = {
   numberOfColumnsIsTwo: PropTypes.bool.isRequired,
   title: PropTypes.string,
   description: PropTypes.string,
-  isHome: PropTypes.bool
+  isHome: PropTypes.bool,
 }
 
 Layout.defaultProps = {
-  isHome: false
-};
+  isHome: false,
+}
 
 const mapStateToProps = state => {
   return {
     modal: state.modal,
-    agreed_to_terms: state.agreed_to_terms
+    agreed_to_terms: state.agreed_to_terms,
   }
 }
 
