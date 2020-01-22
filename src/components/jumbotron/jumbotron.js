@@ -27,7 +27,8 @@ const Jumbotron = props => {
 )
 }
 Jumbotron.propTypes = {
-  showInMobile: PropTypes.bool
+  showInMobile: PropTypes.bool,
+  showInTablet: PropTypes.bool
 }
 
 const mapStateToProps = state => {

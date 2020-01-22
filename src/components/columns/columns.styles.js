@@ -4,6 +4,8 @@ import {
   size,
   hideDisplayForTablet,
   showDisplayForTablet,
+  showDisplayForMobile,
+  hideDisplayForMobile,
 } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
@@ -203,8 +205,17 @@ export const FixedFooter = styled.div`
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
   }
-  ${showDisplayForTablet};
-  ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
+`
+export const FixedFooterMobile = styled.div`
+  z-index: 500;
+  bottom: 0;
+  position: relative;
+  grid-area: footer;
+  @media (max-width: ${size.mobileL}) {
+    grid-area: unset;
+  }
+  ${showDisplayForMobile};
 `
 
 export const FixedNavbar = styled.div`
