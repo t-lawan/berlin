@@ -92,7 +92,7 @@ const ExperienceImage = styled.img`
 `
 
 const ExperienceImageMob = styled.img`
-  width: 100%;
+  width: 90%;
   align-self: center;
   :nth-child(4) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
@@ -134,7 +134,7 @@ class ExperiencePage extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       // this.closeExperiencePage();
-      this.props.hideOverlay();
+      // this.props.hideOverlay();
     }, 10000);
   }
 
@@ -186,12 +186,12 @@ class ExperiencePage extends React.Component {
         </TopRow>
 
         <ExperienceImagesContainer>
-          <ExperienceImage hideInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
-          <ExperienceImageMob showInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
+          <ExperienceImage hideInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
+          <ExperienceImageMob showInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
             <React.Fragment key={index}>
-            <ExperienceImage hideInMobile={true} src={experience.url} />
-            <ExperienceImageMob showInMobile={true} key={index} src={`${experience.urlmob}`} />
+            <ExperienceImage hideInTablet={true} src={experience.url} />
+            <ExperienceImageMob showInTablet={true} key={index} src={`${experience.urlmob}`} />
             </React.Fragment>
           ))}
         </ExperienceImagesContainer>
