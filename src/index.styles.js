@@ -208,26 +208,36 @@ export const hideDisplayForTablet = css`
     display: ${props => (props.hideInMobile ? "none" : "")};
   }
 `
-
+export const showDisplayForTablet = css`
+  display: ${props => (props.showInTablet ? "none" : "inherit")};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInTablet ? "inherit" : "inherit")};
+  }
+`
+export const showDisplayForTabletLaptop = css`
+  display: ${props => (props.showInTabletLaptop ? "none" : "none")};
+  @media (min-width: ${size.tablet}) {
+    display: ${props => (props.showInTabletLaptop ? "inherit" : "inherit")};
+  }
+`
+export const showDisplayForMobile = css`
+  display: ${props => (props.showInMobile ? "none" : "none")};
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => (props.showInMobile ? "inherit" : "inherit")};
+  }
+`
 export const hideDisplayForMobile = css`
-  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  display: ${props => (props.hideInMobile ? "inherit" : "inherit")};
   @media (max-width: ${size.mobileM}) {
     display: ${props => (props.hideInMobile ? "none" : "none")};
   }
 `
-
-export const showDisplayForTablet = css`
-  display: ${props => (props.showInMobile ? "none" : "inherit")};
-  @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInMobile ? "inherit" : "inherit")};
-  }
-`
-
 export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInTablet ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
+  
 `
 
 export const changeGridToOneRow = css`

@@ -107,6 +107,7 @@ class Columns extends React.Component {
               <ImageContainer
                 hideOnHomePage={!this.props.isHome}
                 hideInMobile={true}
+                showInTabletLaptop={true}
               />
             </RelativeHeader>
             <StickyHeader>
