@@ -19,6 +19,7 @@ import {
   FixedNavbar,
   StickyTopHeader,
   RelativeHeader,
+  FixedFooterMobile,
   FixedHeader,
   StickyFooterWithHighZIndex,
   FixedTopExpMob,
@@ -118,15 +119,15 @@ class Columns extends React.Component {
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </FixedDataPrivacy>
             {/* Only In Mobile */}
-            <FixedFooter showInMobile>
+            <FixedFooterMobile showInMobile>
               <FooterComponent />
-            </FixedFooter>
+            </FixedFooterMobile>
             {/* Only In Mobile */}
             
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column hideInMobile={true} showInTablet={true} rightBorder={true}>
+          <Column hideInMobile={true} showInTabletLaptop rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
@@ -137,7 +138,7 @@ class Columns extends React.Component {
           </Column>
 
           {/* Only In Desktop */}
-          <StickyFooter hideInMobile>
+          <StickyFooter hideInMobile showInTabletLaptop>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
