@@ -9,7 +9,7 @@ export const ColumnLayout = styled.div`
   border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
   height: 100%;
   background: white;
-  z-index:9;
+  
   position:relative;
   width:inherit;
   overflow-y: inherit;
