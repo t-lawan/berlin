@@ -208,6 +208,13 @@ export const showDisplayForTablet = css`
   }
 `
 
+export const showDisplayForMobile = css`
+  display: ${props => (props.mobileM ? "none" : "inherit")};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.mobileM ? "inherit" : "none")};
+  }
+`
+
 export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInTablet ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
