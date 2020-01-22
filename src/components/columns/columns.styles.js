@@ -165,7 +165,19 @@ export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
 `
-
+export const FixedDataPrivacy = styled.div`
+  z-index: 5000;
+  bottom: 45px;
+  position: fixed;
+  grid-area: footer;
+  @media (min-width: ${size.tablet}) {
+    /* width: 100%; */
+    grid-area: unset;
+    bottom: 0px;
+  }
+  ${showDisplayForTablet};
+  ${hideDisplayForTablet}
+`
 export const StickyFooter = styled.div`
   z-index: 500;
   bottom: 0;

@@ -15,6 +15,7 @@ import {
   AnimatedColumn,
   StickyFooter,
   FixedFooter,
+  FixedDataPrivacy,
   FixedNavbar,
   StickyTopHeader,
   RelativeHeader,
@@ -113,9 +114,9 @@ class Columns extends React.Component {
 
             {this.renderedComponents}
             {/* Only In Mobile */}
-            <StickyFooter showInMobile>
+            <FixedDataPrivacy showInMobile>
               <DataPrivacy show={!this.props.agreed_to_terms} />
-            </StickyFooter>
+            </FixedDataPrivacy>
             {/* Only In Mobile */}
             <FixedFooter showInMobile>
               <FooterComponent />
@@ -125,7 +126,7 @@ class Columns extends React.Component {
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column hideInMobile={true} rightBorder={true}>
+          <Column hideInMobile={true} showInTablet={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
