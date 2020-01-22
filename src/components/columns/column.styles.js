@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import {hideDisplayForTablet, size } from "../../index.styles";
+import {hideDisplayForTablet, size, hideDisplayForMobile } from "../../index.styles";
 import {
   ExperienceButton,
 } from "../experiencecontroller/experiencecontroller.styles"
@@ -11,9 +11,11 @@ export const ColumnLayout = styled.div`
   background: white;
   
   position:relative;
-  width:inherit;
+  width:auto;
+  grid-area: 'column';
   overflow-y: inherit;
   ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
   &::first-of-type{
     border: 0;
   }

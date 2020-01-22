@@ -15,11 +15,9 @@ import {
   AnimatedColumn,
   StickyFooter,
   FixedFooter,
-  FixedDataPrivacy,
   FixedNavbar,
   StickyTopHeader,
   RelativeHeader,
-  FixedFooterMobile,
   FixedHeader,
   StickyFooterWithHighZIndex,
   FixedTopExpMob,
@@ -36,8 +34,8 @@ import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-  animationInDuration = 1000;
-  animationOutDuration = 600;
+  animationInDuration = 600;
+  animationOutDuration = 500;
   constructor(props) {
     super(props);
     this.state = {
@@ -69,7 +67,7 @@ class Columns extends React.Component {
     return (
       <ColumnsWrapper>
         {/* First Column */}
-        <Column rightBorder={true} hideInMobile>
+        <Column rightBorder={true} hideInMobile={true} hideInTablet>
           <ExperienceController left={true} />
         </Column>
         <FixedTopExpMob showInTablet={true}>
@@ -87,12 +85,12 @@ class Columns extends React.Component {
           style={{ zIndex: 0 }}
         >
           
-          <StickyTopHeader hideInMobile={true}>
-            <Header hideInMobile={true} />
+          <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={true} hideInTablet={false}>
+            <Header showOnHomePage={this.props.isHome} hideInMobile={true} />
           </StickyTopHeader>
 
-          <StickyTopHeader hideInMobile={true}>
-            <Jumbotron hideInMobile={true} />
+          <StickyTopHeader hideInTablet={true} hideInMobile={true} hideInTablet={true}>
+            <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
           {/* Second Column */}
@@ -106,29 +104,28 @@ class Columns extends React.Component {
             <RelativeHeader>
               <ImageContainer
                 hideOnHomePage={!this.props.isHome}
-                hideInMobile={true}
-                showInTabletLaptop={true}
+                hideInTablet={true}
               />
             </RelativeHeader>
             <StickyHeader>
-              <Navbar hideInMobile={true} />
+              <Navbar hideInTablet={true} />
             </StickyHeader>
 
             {this.renderedComponents}
             {/* Only In Mobile */}
-            <FixedDataPrivacy showInMobile>
+            <StickyFooter showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
-            </FixedDataPrivacy>
+            </StickyFooter>
             {/* Only In Mobile */}
-            <FixedFooterMobile showInMobile>
+            <FixedFooter showInTablet>
               <FooterComponent />
-            </FixedFooterMobile>
+            </FixedFooter>
             {/* Only In Mobile */}
             
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column hideInMobile={true} showInTabletLaptop rightBorder={true}>
+          <Column hideInMobile={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
@@ -139,23 +136,24 @@ class Columns extends React.Component {
           </Column>
 
           {/* Only In Desktop */}
-          <StickyFooter hideInMobile showInTabletLaptop>
+          <StickyFooter hideInTablet>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
-          <FixedFooter hideInMobile>
+          <FixedFooter hideInTablet>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
         <FixedNavbar>
-              <NavbarMobile showInTablet={true} />
+            <NavbarMobile showInTablet={true} />
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
-        <Column rightBorder={false} hideInMobile>
+        <Column rightBorder={true} hideInMobile={true} hideInTablet>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
+        
       </ColumnsWrapper>
     )
   }

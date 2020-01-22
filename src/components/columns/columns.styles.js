@@ -4,12 +4,13 @@ import {
   size,
   hideDisplayForTablet,
   showDisplayForTablet,
-  showDisplayForMobile,
   hideDisplayForMobile,
 } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
 export const AnimatedColumn = styled(Animated)`
+  height: 100%;
+  height: 100vh;
   width: inherit;
   overflow-y: auto;
   overflow-x: hidden;
@@ -22,31 +23,13 @@ export const AnimatedColumn = styled(Animated)`
     width: 100vw;
     display: block;
     position:relative;
-    margin:0px auto 0;
+    margin:45px auto 0;
     height: calc(100vh - 90px);
   }
-  @media (min-width: ${size.mobileL}) {
-    grid-template-rows: auto;
-    margin-top:40px;
-    grid-template-areas: "column" "footer";
-    grid-template-columns: 1fr;
-    width:100%;
-    height: calc(100vh - 40px);
+
+  @media (max-width: ${size.tablet}) {
+    grid-template-areas:"column" "column column" "footer" !important;
   }
-  @media (min-width: ${size.tablet}) {
-    grid-template-rows: auto;
-    margin-top:40px;
-    grid-template-columns: 66fr 33fr;
-    grid-template-areas: "column column" "column column" "footer footer";
-    width:100%;
-    height: calc(100vh - 40px);
-  }
-  @media (min-width:${size.laptop}) {
-    height: 100%;
-    margin-top:0px;
-    height: 100vh;
-  }
-  /* ${changeGridToOneRow} */
 
 `
 export const ColumnsWrapper = styled.div`
@@ -54,7 +37,6 @@ export const ColumnsWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     /* width: 100%; */
     width: 100vw;
-    grid-template-columns: 1fr;
   }
 
   @media (max-width: ${size.mobileM}) {
@@ -86,69 +68,52 @@ export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
-  
-  @media (max-width: ${size.mobileL}) {
+  grid-area: "column";
+  @media (max-width: ${size.tablet}) {
+       grid-column-start: span 2;
+  }
+  :first-child {
+    border-right: solid 1px #000;
+  }
+  @media (max-width: ${size.mobileM}) {
     :first-child {
       border-right: solid 0px #000;
     }
   }
-  @media (min-width: ${size.mobileL}) {
-    :nth-child(2) {
-      display:none;
-    }
-  }
-  @media (min-width: ${size.tablet}) {
-    :nth-child(2) {
-      display:block;
-    }
-    :first-child {
-    border-right: solid 1px #000;
-    }
-  }
+  ${hideDisplayForMobile};
+  ${hideDisplayForTablet};
+
 `
 export const FixedTopExpMob = styled.div`
   display: none;
-  @media (min-width: ${size.mobileM}) {
+  @media (min-width: ${size.tablet}) {
     z-index: 300;
     top: 0;
     width: 100%;
     position: fixed;
     height: 45px;
   }
-  @media (min-width: ${size.mobileL}) {
-    z-index: 300;
-    top: 0;
-    border-right:1px solid #000;
-    width: 66.66%;
-    position: fixed;
-    height: 45px;
-  }
+
   ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
   ${showDisplayForTablet};
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     position: fixed;
     z-index: 3;
     width: 100%;
-  }
-  @media (min-width: ${size.mobileL}) {
-    display:none;
   }
 `
 export const MobAnimCard = styled.div`
   ${showDisplayForTablet};
 
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     position: absolute;
     z-index: 1;
     top: 0px;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
-  }
-  @media (min-width: ${size.mobileL}) {
-    display:none;
   }
 `
 
@@ -167,19 +132,7 @@ export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
 `
-export const FixedDataPrivacy = styled.div`
-  z-index: 5000;
-  bottom: 45px;
-  position: fixed;
-  grid-area: footer;
-  @media (min-width: ${size.tablet}) {
-    /* width: 100%; */
-    grid-area: unset;
-    bottom: 0px;
-  }
-  ${showDisplayForTablet};
-  ${hideDisplayForTablet}
-`
+
 export const StickyFooter = styled.div`
   z-index: 500;
   bottom: 0;
@@ -202,20 +155,11 @@ export const FixedFooter = styled.div`
   bottom: 0;
   position: relative;
   grid-area: footer;
-  @media (max-width: ${size.mobileL}) {
+  @media (max-width: ${size.tablet}) {
     grid-area: unset;
   }
-  ${hideDisplayForMobile};
-`
-export const FixedFooterMobile = styled.div`
-  z-index: 500;
-  bottom: 0;
-  position: relative;
-  grid-area: footer;
-  @media (max-width: ${size.mobileL}) {
-    grid-area: unset;
-  }
-  ${showDisplayForMobile};
+  ${showDisplayForTablet};
+  ${hideDisplayForTablet};
 `
 
 export const FixedNavbar = styled.div`
@@ -223,13 +167,8 @@ export const FixedNavbar = styled.div`
   bottom: 0;
   position: sticky;
   grid-area: footer;
-  @media (min-width: ${size.mobileL}) {
+  @media (max-width: ${size.tablet}) {
     grid-area: unset;
-    bottom: auto;
-    top:0;
-    width:33.33%;
-    right:0;
-    position: fixed;
   }
   @media (max-width: ${size.mobileM}) {
     position: fixed;
