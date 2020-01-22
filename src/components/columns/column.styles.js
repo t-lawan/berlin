@@ -30,7 +30,7 @@ export const ColumnLayout = styled.div`
   }
   @media (min-width: ${size.mobileS}) {
     border-right:solid 0px #000;
-    background: white;
+    background: transparent;
   }
   @media (min-width: ${size.tablet}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};

@@ -81,9 +81,17 @@ export const MonthHeading = styled.p`
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 2em;
+    padding: 0.25em 0.4em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 2em;
+    padding: 0.25em 0.5em;
   }
 `
 export const ClosedText = styled.p`
   margin: 0.5em 1em;
   opacity: 0.5;
+  @media (max-width: ${size.mobileM}) {
+    margin: 0.3em 0.5em;
+  }
 `
