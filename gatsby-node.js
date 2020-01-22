@@ -501,6 +501,8 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "news", DE: "news" },
     { EN: "current", DE: "aktuell" },
     { EN: "calendar", DE: "kalendar" },
+    { EN: "data-privacy", DE: "datenschutz" },
+    { EN: "imprint", DE: "impressum" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -561,10 +563,20 @@ exports.createPages = async ({ graphql, actions }) => {
         if (edge.node.acf.template === "calendar") {
           path = language === "en" ? "/calendar" : "/de/kalendar"
         } else {
-          path =
-            language === "en"
-              ? `/${edge.node.slug}`
-              : `/${language}/${edge.node.slug}`
+
+          if(edge.node.slug === "data-privacy") {
+            path = language === "en" ? "/data-privacy" : "/datenschutz";
+          } else {
+            if(edge.node.slug === "imprint") {
+              path = language === "en" ? "/imprint" : "/impressum";
+            } else {
+              path =
+              language === "en"
+                ? `/${edge.node.slug}`
+                : `/${language}/${edge.node.slug}`
+            }
+          }
+
         }
       }
 
