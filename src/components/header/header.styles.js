@@ -15,9 +15,7 @@ export const HeaderWrapper = styled.header`
   padding: 0.6em 0.7em;
   border-bottom:solid 1px #000;
   }
-  @media (max-width: ${size.tablet}) {
-  padding: 0.7em 0em 0.5em;
-  }
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 `
 
 export const HeaderLink = styled(AniLink)`

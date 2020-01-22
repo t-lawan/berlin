@@ -16,7 +16,7 @@ const Jumbotron = props => {
   })[0];
   let image = getDocument(props.documents, exhibition[language].exp_bb11_right_header);
   return(
-  <JumbotronWrapper showInMobile={props.showInMobile}>
+  <JumbotronWrapper showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader 
     bg={transitionBackground}
     cover direction="down"
@@ -29,7 +29,6 @@ const Jumbotron = props => {
 Jumbotron.propTypes = {
   showInMobile: PropTypes.bool,
   showInTablet: PropTypes.bool,
-  showInTabletLaptop: PropTypes.bool
 }
 
 const mapStateToProps = state => {

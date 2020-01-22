@@ -40,7 +40,6 @@ let content = {
     title: "Kalender",
   },
 }
-
 const mapStateToProps = state => {
   return {
     languages: state.languages,

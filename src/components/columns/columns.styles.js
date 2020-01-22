@@ -80,8 +80,6 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
-  ${hideDisplayForMobile};
-  ${hideDisplayForTablet};
 
 `
 export const FixedTopExpMob = styled.div`

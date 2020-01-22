@@ -205,7 +205,7 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.hideInMobile ? "none" : "")};
+    display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
 export const showDisplayForTablet = css`
@@ -226,10 +226,11 @@ export const showDisplayForMobile = css`
     display: ${props => (props.showInMobile ? "inherit" : "inherit")};
   }
 `
-export const hideDisplayForMobile = css`
-  display: ${props => (props.hideInMobile ? "inherit" : "inherit")};
-  @media (max-width: ${size.mobileM}) {
-     display: ${props => (props.hideInMobile ? "none" : "inherit")};
+
+export const showDisplayForTablet = css`
+  display: ${props => (props.showInTablet ? "none" : "inherit")};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInTablet ? "inherit" : "none")};
   }
 `
 export const showDisplayForTabletFunc = variable => css`

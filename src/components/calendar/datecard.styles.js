@@ -23,7 +23,7 @@ export const DateCardWrapper = styled.div`
 export const EventCardsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
   @media (max-width: ${size.mobileM}) {
     flex-direction: column;
   }

@@ -4,14 +4,18 @@ import {
   PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
+  TextBlock,
+  PressArrowDown,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color, size,} from "../../index.styles"
-import PropTypes from "prop-types";
+import { Color, size, ExternalLink } from "../../index.styles"
+import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
-import styled from 'styled-components';
-import striptags from 'striptags';
+import styled from "styled-components"
+import striptags from "striptags"
+import ImageResource from "../../partials/ImageResource"
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
 const ResourceTextDiv = styled.div`
   a {
@@ -46,19 +50,19 @@ const Author = styled.p`
 
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
-  const r = props.resource
+  const r = props.resource;
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
-        <Mobhide>
+        <div>
           {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
           {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
           <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
-        </Mobhide>
+        </div>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -66,8 +70,8 @@ const ResourceText = props => {
               }}
             />
           
-          {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <Author>
+          {r.author.length > 0 ? <p> {r.author} </p> : ""}
+          <p>
             In:{" "}
             <ResourcePublisherLink
               hidden={r.publisher.title}
