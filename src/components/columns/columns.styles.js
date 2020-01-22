@@ -4,6 +4,7 @@ import {
   size,
   hideDisplayForTablet,
   showDisplayForTablet,
+  hideDisplayForMobile,
 } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
@@ -27,10 +28,8 @@ export const AnimatedColumn = styled(Animated)`
   }
 
   @media (max-width: ${size.tablet}) {
-    grid-template-rows: auto;
-    grid-template-areas: "column" "footer";
+    grid-template-areas:"column" "column column" "footer" !important;
   }
-  /* ${changeGridToOneRow} */
 
 `
 export const ColumnsWrapper = styled.div`
@@ -69,6 +68,8 @@ export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
+  grid-area: "column";
+  grid-column-start: span 2;
   :first-child {
     border-right: solid 1px #000;
   }
@@ -77,6 +78,8 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
+  ${hideDisplayForMobile};
+  ${hideDisplayForTablet};
 
 `
 export const FixedTopExpMob = styled.div`

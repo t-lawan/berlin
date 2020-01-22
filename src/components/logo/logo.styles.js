@@ -9,7 +9,7 @@ export const LogoWrapper = styled.div`
   max-height:500px;
   border-bottom:solid 1px black;
   >img {
-  	max-width:310px;
+  	/* max-width:310px; */
   	margin-left: auto;
     margin-right: auto;
     display: block;

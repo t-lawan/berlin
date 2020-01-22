@@ -25,7 +25,7 @@ export const HeaderLink = styled(AniLink)`
   display: grid;
   grid-template-columns:1fr 1fr;
   grid-column-gap: 4em;
-  ${changeGridToOneRow};
+  /* ${changeGridToOneRow}; */
   img {
     margin-bottom: 0.0rem;
   }

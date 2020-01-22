@@ -9,7 +9,7 @@ export const size = {
   mobileS: "320px",
   mobileM: "375px",
   mobileL: "425px",
-  tablet: "768px",
+  tablet: "835px",
   laptop: "1024px",
   laptopL: "1440px",
   desktop: "2560px",
@@ -197,7 +197,7 @@ export const hideDisplayForTablet = css`
 export const hideDisplayForMobile = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
-    display: ${props => (props.hideInMobile ? "none" : "none")};
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
