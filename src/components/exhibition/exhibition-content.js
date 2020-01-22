@@ -9,9 +9,9 @@ import { getCurrentLanguageString } from "../../utility/helper";
 
 const ExhibitionPageWrapper = styled.div`
   z-index: 6000;
-  left: 5%;
+  left: 0%;
   padding: 0.7em 1em;
-  width: calc(100% - 10%);
+  width: calc(100% - 0%);
   height: 100vh;
   position: fixed;
   background: #fbf95d;
@@ -22,7 +22,7 @@ const ExhibitionPageWrapper = styled.div`
     padding: 1em 0.7em;
     bottom: 45px;
     height: calc(100vh - 91px);
-    top: 45px;
+    top: 40px;
   }
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.7em;
@@ -34,9 +34,9 @@ const ExhibitionPageWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     padding: 0.7em 1em;
-    width: calc(100% - 10%);
+    width: calc(100% - 0%);
     height: 100vh;
-    left: 5%;
+    left: 0%;
     top:0;
   }
 `
