@@ -67,7 +67,7 @@ class Columns extends React.Component {
     return (
       <ColumnsWrapper>
         {/* First Column */}
-        <Column rightBorder={true} hideInTablet>
+        <Column rightBorder={true} hideInMobile={true} hideInTablet>
           <ExperienceController left={true} />
         </Column>
         <FixedTopExpMob showInTablet={true}>
@@ -149,7 +149,7 @@ class Columns extends React.Component {
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
-        <Column rightBorder={false} hideInTablet>
+        <Column rightBorder={false} hideInMobile={true} hideInTablet>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
