@@ -23,7 +23,8 @@ const ResourceTitle = styled.p`
     margin-bottom:0;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size:1.1rem;
+    font-size:1.0rem;
+    margin-bottom:0.3em;
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95rem;
@@ -37,7 +38,7 @@ const ResourceLabel = styled.p`
   font-size: 1rem;
   margin: 0.5em 0 0;
   @media (max-width: ${size.mobileM}) {
-    font-size:1.1rem;
+    font-size:1.0rem;
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95rem;
