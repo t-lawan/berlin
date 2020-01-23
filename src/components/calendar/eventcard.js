@@ -14,7 +14,6 @@ import { TextSection } from "../../index.styles"
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event
-  console.log("EVENT", event.item)
   return (
     <EventCardWrapper>
       <EventCardLink fade to={createPath(language, event.slug)}>

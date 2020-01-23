@@ -60,7 +60,6 @@ class Columns extends React.Component {
       // footer.class = "bottom: -200px; display: none;"
 
       if(percent > 0.75) {
-        console.log(footer.classList)
         footer.classList.remove('hide-footer');
         footer.classList.add('show-footer');
         // footer.style = "bottom: 0; display: inherit;"
