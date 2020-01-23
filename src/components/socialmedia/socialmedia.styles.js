@@ -15,29 +15,35 @@ export const SocialMediaWrapper = styled.div`
   /* z-index: 5000 !important; */
 
   @media (max-width: ${size.tablet}) {
-    flex-direction: column;
-    width: inherit;
-    border: 0;
-    background: none;
-    padding: 0;
+    flex-direction: row;
+    width: calc(33.33% - 1px);
+    background: white;
+    position:fixed;
+    right:0;
+    height:55px;
+    padding: 0.7em;
     margin: 0;
   }
 `
 
 export const SocialMediaText = styled.span`
-  padding: 1em 0.6em 1em 0em;
+  padding: 0em 0.6em 0.5em 0em;
   :hover {
     cursor: pointer;
   }
   @media (max-width: ${size.tablet}) {
-    display: block;
+    display: inline-block;
   }
 `
 
 export const SocialMediaLink = styled.a`
-  padding: 1em;
+  padding: 0em 0.6em 0.5em 0em;
+  display:inline-block;
   :hover {
     cursor: pointer;
+  }
+  :last-child {
+    padding-right:0;
   }
   color: inherit;
   text-decoration: none;
