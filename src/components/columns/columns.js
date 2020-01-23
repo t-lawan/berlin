@@ -36,10 +36,39 @@ class Columns extends React.Component {
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
   animationInDuration = 600;
   animationOutDuration = 500;
+  footerRef;
+  columnsRef;
   constructor(props) {
     super(props);
+    this.footerRef = React.createRef();
+    this.columnsRef = React.createRef();
     this.state = {
-      showEvents: false
+      showFooter: false,
+      scrollHeight: 0,
+      scrollTop: 0
+    }
+  }
+
+  scroll = (e) => {
+    let column = this.columnsRef.current.columnRef.current
+    let footer = this.footerRef.current;
+
+    if(!column) {
+      return false;
+    } else {
+      let percent = column.scrollTop/column.scrollHeight
+      // footer.class = "bottom: -200px; display: none;"
+
+      if(percent > 0.75) {
+        console.log(footer.classList)
+        footer.classList.remove('hide-footer');
+        footer.classList.add('show-footer');
+        // footer.style = "bottom: 0; display: inherit;"
+      } else {
+        footer.classList.remove('show-footer');
+        footer.classList.add('hide-footer');
+        // return false
+      }
     }
   }
   render() {
@@ -63,9 +92,8 @@ class Columns extends React.Component {
     });
 
     let image = getDocument(this.props.documents, exhibition.animation)
-
     return (
-      <ColumnsWrapper>
+      <ColumnsWrapper onScroll={(x) => this.scroll(x)}>
         {/* First Column */}
         <Column rightBorder={true} hideInMobile={true} hideInTablet>
           <ExperienceController left={true} />
@@ -94,7 +122,7 @@ class Columns extends React.Component {
           </StickyTopHeader>          
           
           {/* Second Column */}
-          <Column rightBorder={true}>
+          <Column ref={this.columnsRef} rightBorder={true}>
             <MobTitleCard showInTablet={true}>
               <JumbotronMob showInTablet={true} />
             </MobTitleCard>
@@ -113,7 +141,7 @@ class Columns extends React.Component {
 
             {this.renderedComponents}
             {/* Only In Mobile */}
-            <StickyFooter showInTablet>
+            <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
             {/* Only In Mobile */}
@@ -136,11 +164,11 @@ class Columns extends React.Component {
           </Column>
 
           {/* Only In Desktop */}
-          <StickyFooter hideInTablet>
+          <StickyFooter show={this.props.agreed_to_terms} hideInTablet>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
-          <FixedFooter hideInTablet>
+          <FixedFooter ref={this.footerRef} hideInTablet>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>

@@ -1,5 +1,5 @@
 import styled, { css, createGlobalStyle, keyframes } from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const Color = {
   yellow: "#F9EF84",
@@ -183,9 +183,22 @@ a {
 h1, h2, h3, h4, h5, h6, p, a, em {
   word-wrap: break-word;
 }
+
+.hide-footer {
+  @media (min-width: ${size.tablet}) {
+    bottom: -200px !important; 
+    display: none !important;
+  }
+
+}
+
+.show-footer {
+  @media (min-width: ${size.tablet}) {
+    bottom: 0 !important;
+    display: inherit !important;
+  }
+}
 `
-
-
 
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
@@ -275,19 +288,17 @@ export const tablet = props => {
   `
 }
 
-
-
 export const UnderlinedText = styled.p`
   text-decoration: none;
   border-bottom: solid thin;
-  border-color: ${props => props.red ? Color.red : 'black'};
-  color: ${props => props.red ? Color.red : 'black'}
+  border-color: ${props => (props.red ? Color.red : "black")};
+  color: ${props => (props.red ? Color.red : "black")};
 `
 
 export const Section = styled.section`
   padding: 1em;
   @media (max-width: ${size.mobileM}) {
-    padding: 0.7em
+    padding: 0.7em;
   }
 `
 
@@ -307,12 +318,12 @@ export const UnderlineSectionLink = styled(AniLink)`
 
 export const ExternalLink = styled.a`
   :hover {
-    color: ${ props => props.colour};
+    color: ${props => props.colour};
   }
 `
 
 export const LargeButton = styled.button`
-  margin: 0.0em 0 0 10px;
+  margin: 0em 0 0 10px;
   font-size: 1em;
   display: inline-block;
   border-radius: 0;
@@ -327,5 +338,4 @@ export const LargeButton = styled.button`
   }
 `
 
-export const TextSection = styled.section`
-`
+export const TextSection = styled.section``

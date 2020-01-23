@@ -22,15 +22,14 @@ export const AnimatedColumn = styled(Animated)`
     /* width: 100%; */
     width: 100vw;
     display: block;
-    position:relative;
-    margin:45px auto 0;
+    position: relative;
+    margin: 45px auto 0;
     height: calc(100vh - 90px);
   }
 
   @media (max-width: ${size.tablet}) {
-    grid-template-areas:"column" "column column" "footer" !important;
+    grid-template-areas: "column" "column column" "footer" !important;
   }
-
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
@@ -82,7 +81,6 @@ export const StickyTopHeader = styled.div`
   }
   ${hideDisplayForMobile};
   ${hideDisplayForTablet};
-
 `
 export const FixedTopExpMob = styled.div`
   display: none;
@@ -142,8 +140,11 @@ export const StickyFooter = styled.div`
     /* width: 100%; */
     grid-area: unset;
   }
+  transition: all 0.3s ease-in-out;
   ${showDisplayForTablet};
-  ${hideDisplayForTablet}
+  ${hideDisplayForTablet};
+
+  /* display: ${props => (props.show ? "inherit" : "none")}; */
 `
 
 export const StickyFooterWithHighZIndex = styled(StickyFooter)`
@@ -160,6 +161,7 @@ export const FixedFooter = styled.div`
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
+  transition: all 0.3s ease-in-out;
 `
 
 export const FixedNavbar = styled.div`
