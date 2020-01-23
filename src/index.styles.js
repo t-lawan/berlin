@@ -199,31 +199,17 @@ h1, h2, h3, h4, h5, h6, p, a, em {
   word-wrap: break-word;
 }
 `
-
-
-
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
-export const showDisplayForTablet = css`
-  display: ${props => (props.showInTablet ? "none" : "inherit")};
-  @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInTablet ? "inherit" : "inherit")};
-  }
-`
-export const showDisplayForTabletLaptop = css`
-  display: ${props => (props.showInTabletLaptop ? "none" : "none")};
-  @media (min-width: ${size.tablet}) {
-    display: ${props => (props.showInTabletLaptop ? "inherit" : "inherit")};
-  }
-`
-export const showDisplayForMobile = css`
-  display: ${props => (props.showInMobile ? "none" : "none")};
+
+export const hideDisplayForMobile = css`
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
-    display: ${props => (props.showInMobile ? "inherit" : "inherit")};
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
@@ -233,16 +219,21 @@ export const showDisplayForTablet = css`
     display: ${props => (props.showInTablet ? "inherit" : "none")};
   }
 `
+export const showDisplayForMobile = css`
+  display: ${props => (props.mobileM ? "none" : "inherit")};
+  @media (max-width: ${size.tablet}) {
+    display: ${props => (props.mobileM ? "inherit" : "none")};
+  }
+`
 export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInTablet ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
     display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
-  
 `
 
 export const changeGridToOneRow = css`
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     grid-template-columns: 1fr;
   }
 `
@@ -294,6 +285,8 @@ export const tablet = props => {
   `
 }
 
+
+
 export const UnderlinedText = styled.p`
   text-decoration: none;
   border-bottom: solid thin;
@@ -331,7 +324,6 @@ export const ExternalLink = styled.a`
 export const LargeButton = styled.button`
   margin: 0.0em 0 0 10px;
   font-size: 1em;
-  font-weight:normal;
   display: inline-block;
   border-radius: 0;
   background: ${props => props.bgColour};
@@ -339,9 +331,6 @@ export const LargeButton = styled.button`
   padding: 8px 16px;
   :hover {
     cursor: pointer;
-  }
-  :focus {
-    outline: none;
   }
   @media (max-width: ${size.mobileM}) {
     margin: 0.2em 0 0 10px;
