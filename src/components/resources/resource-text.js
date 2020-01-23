@@ -74,7 +74,7 @@ const ResourceText = props => {
           <Author>
             In:{" "}
             <ResourcePublisherLink
-              hidden={r.publisher.title}
+              hidden={!r.publisher.title}
               target="_blank"
               href={r.publisher.title}
             >
