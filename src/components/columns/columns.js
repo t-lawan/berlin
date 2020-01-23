@@ -74,8 +74,8 @@ class Columns extends React.Component {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
         <FirstColumnWrapper twoColumns>
-          <Column rightBorder={true}>{this.props.firstColumn} </Column>
-          <Column>{this.props.secondColumn} </Column>
+          <Column hideInMobile rightBorder={true}>{this.props.firstColumn} </Column>
+          <Column >{this.props.secondColumn} </Column>
         </FirstColumnWrapper>
       )
     } else {
@@ -122,10 +122,10 @@ class Columns extends React.Component {
           
           {/* Second Column */}
           <Column ref={this.columnsRef} rightBorder={true}>
-            <MobTitleCard showInTablet={true}>
-              <JumbotronMob showInTablet={true} />
+            <MobTitleCard showInMobile={true}>
+              <JumbotronMob showInMobile={true}/>
             </MobTitleCard>
-            <MobAnimCard showInTablet={true}>
+            <MobAnimCard showInMobile={true}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>

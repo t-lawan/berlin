@@ -5,6 +5,7 @@ import {
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
+  showDisplayForMobile,
 } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
@@ -110,16 +111,15 @@ export const FixedTopExpMob = styled.div`
   ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
-  ${showDisplayForTablet};
+/* background: pink; */
   @media (max-width: ${size.tablet}) {
-    position: fixed;
+    /* position: fixed; */
     z-index: 3;
     width: 100%;
   }
+  ${showDisplayForMobile};
 `
 export const MobAnimCard = styled.div`
-  ${showDisplayForTablet};
-
   @media (max-width: ${size.mobileM}) {
     position: absolute;
     z-index: 1;
@@ -131,6 +131,8 @@ export const MobAnimCard = styled.div`
   @media (min-width: ${size.mobileL}) {
     display:none;
   }
+  ${showDisplayForMobile};
+  /* ${showDisplayForTablet}; */
 `
 
 export const FixedHeader = styled.div`

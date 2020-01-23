@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { showDisplayForTablet, size } from "../../index.styles";
+import { showDisplayForTablet, size, showDisplayForMobile, hideDisplayForMobile } from "../../index.styles";
 
 export const JumbotronWrapper = styled.div`
   background: white;
@@ -40,11 +40,9 @@ export const JumbotronWrapperMob = styled.div`
   width:100%;
   z-index:2;
   display:block;
-  ${showDisplayForTablet};
-  @media (min-width: ${size.mobileL}) {
+  /* @media (min-width: ${size.mobileL}) {
     display:none;
-  }
-
+  } */
   img {
     margin-bottom:0;
     position:relative;
@@ -63,4 +61,6 @@ export const JumbotronWrapperMob = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+  ${showDisplayForMobile};
+
 `
