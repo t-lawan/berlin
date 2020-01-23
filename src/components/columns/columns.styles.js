@@ -60,9 +60,10 @@ export const FirstColumnWrapper = styled.div`
     border-left: none;
   }
   @media (max-width: ${size.mobileM}) {
-    display: flex;
+    grid-template-columns: 1fr;
+    /*display: flex;
     flex-direction: column-reverse;
-    background-color: transparent;
+    background-color: transparent;*/
   }
 `
 

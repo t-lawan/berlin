@@ -35,7 +35,7 @@ export const ColumnLayout = styled.div`
     background: transparent;
     z-index:9;
   }
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileL}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
     background: white;
   }

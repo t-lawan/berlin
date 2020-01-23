@@ -16,7 +16,7 @@ export const SocialMediaWrapper = styled.div`
 
   @media (max-width: ${size.tablet}) {
     flex-direction: row;
-    width: calc(33.33% - 1px);
+    width: calc(33.33% - 0px);
     background: white;
     position:fixed;
     right:0;

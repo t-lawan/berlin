@@ -333,7 +333,7 @@ export const LargeButton = styled.button`
     cursor: pointer;
   }
   @media (max-width: ${size.mobileM}) {
-    margin: 0.2em 0 0 10px;
+    margin: 0.2em 0 0 0px;
   }
 `
 
