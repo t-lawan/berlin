@@ -17,7 +17,7 @@ const RelatedResourcesWrapper = styled.div`
   margin-bottom:2em;
   margin-right:0.5em;
   @media (max-width: ${size.mobileM}) {
-    background-color:#FFF;
+    /*background-color:#FFF;*/
     margin-bottom:0em;
     padding-bottom:2em;
   }

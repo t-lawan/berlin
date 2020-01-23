@@ -55,14 +55,14 @@ const ResourceText = props => {
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
-        <div>
+        <Mobhide>
           {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
           {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
           <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
-        </div>
+        </Mobhide>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -70,8 +70,8 @@ const ResourceText = props => {
               }}
             />
           
-          {r.author.length > 0 ? <p> {r.author} </p> : ""}
-          <p>
+          {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
+          <Author>
             In:{" "}
             <ResourcePublisherLink
               hidden={r.publisher.title}
