@@ -561,7 +561,7 @@ exports.createPages = async ({ graphql, actions }) => {
             : `/${language}/${prePath.DE}/${slug}`
       } else {
         if (edge.node.acf.template === "calendar") {
-          path = language === "en" ? "/calendar" : "/de/kalendar"
+          path = language === "en" ? "/calendar" : "/de/kalender"
         } else {
 
           if(edge.node.slug === "data-privacy") {
@@ -579,6 +579,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
         }
       }
+
 
       createPage({
         path: path,

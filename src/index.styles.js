@@ -42,6 +42,7 @@ body {
   h1 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -58,6 +59,7 @@ body {
 h2 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -73,6 +75,7 @@ h2 {
 }
 h3 {
   margin-left: 0;
+  font-weight:normal;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
@@ -90,6 +93,7 @@ h3 {
 h4 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -108,6 +112,7 @@ h5 {
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
+  font-weight:normal;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -122,6 +127,7 @@ h5 {
 h6 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -150,12 +156,11 @@ a, span {
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
-  @media (max-width: ${size.tablet}) {
-  }
 }
 p {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   line-height: 1.3;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -170,6 +175,16 @@ p {
     > a {
       font-size:1em;
     }
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95rem;
+    line-height:1.3;
+    > a {
+      font-size:0.95rem;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1rem;
   }
 }
 
@@ -334,7 +349,7 @@ export const LargeButton = styled.button`
     cursor: pointer;
   }
   @media (max-width: ${size.mobileM}) {
-    margin: 0.2em 0 0 10px;
+    margin: 0.2em 0 0 0px;
   }
 `
 

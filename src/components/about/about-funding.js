@@ -94,7 +94,7 @@ let content = {
     title: 'funding'
   },
   DE: {
-    title: 'funding'
+    title: 'unterstützung'
   }
 }
 

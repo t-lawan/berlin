@@ -99,9 +99,6 @@ export class Convert {
   }
 
   static toExhibitionModel = wordpressModel => {
-    let image_gallery = wordpressModel.acf.exhibition_image_gallery ? wordpressModel.acf.exhibition_image_gallery.map((img) => {
-      return img.wordpress_id
-    }) : null
     return new ExhibitionModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -124,7 +121,7 @@ export class Convert {
       wordpressModel.acf.temporary_exp_page,
       wordpressModel.acf.exp_open_days,
       wordpressModel.acf.use_gallery_images,
-      image_gallery
+      wordpressModel.acf.exhibition_image_gallery
     )
   }
 

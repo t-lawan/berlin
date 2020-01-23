@@ -4,17 +4,23 @@ import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.styles"
 import AudioResource from "../../partials/AudioResource"
+import { size } from "../../index.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import styled from 'styled-components'
 import { documentationContent } from "./documentation-video";
 
-const AudioBlock = styled(PageWrapper)`
-  padding: 1em;
+const AudioBlock = styled.div`
+  padding: 0em !important;
 `
 const NoMarg = {
 margin:"0",
 }
-
+const MargTop = styled.div`
+margin:0em 0 0em;
+@media (max-width: ${size.mobileM}) {
+    margin:1em 0 0em;
+  }
+`
 const MargBottom = {
 margin:"0 0 0.7em"
 }
@@ -38,17 +44,17 @@ const DocumentationAudio = props => {
             {documentationContent[language].language}:{" "}
             {documentationContent[language][props.documentation.language]}{" "}
           </p>
-          <p style={NoMarg}>
-            {exhibitions[0][language].title}
+          <p style={NoMarg}><em>
+            {exhibitions[0][language].title}</em>
           </p>
         </div>
-        <div>
+        <MargTop>
           <div
             dangerouslySetInnerHTML={{
               __html: props.documentation[language].title,
             }}
           />
-        </div>
+        </MargTop>
       </TwoColumnPageWrapperNoPad>
     </PageWrapper>
   )

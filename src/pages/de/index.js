@@ -15,6 +15,7 @@ export const IndexPageWrapper = styled.div`
   padding: 0em;
   @media (max-width: ${size.mobileM}) {
     padding: 315px 0em 0;
+    background:#FFF;
   }
 `
 

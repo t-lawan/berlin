@@ -28,8 +28,11 @@ export const AnimatedColumn = styled(Animated)`
   }
 
   @media (max-width: ${size.tablet}) {
-    grid-template-areas: "column" "column column" "footer" !important;
+    grid-template-areas:"column" "column column" "footer" !important;
+    margin:40px auto 0;
+    height: calc(100vh - 40px);
   }
+
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
@@ -57,9 +60,10 @@ export const FirstColumnWrapper = styled.div`
     border-left: none;
   }
   @media (max-width: ${size.mobileM}) {
-    display: flex;
+    grid-template-columns: 1fr;
+    /*display: flex;
     flex-direction: column-reverse;
-    background-color: transparent;
+    background-color: transparent;*/
   }
 `
 
@@ -84,14 +88,25 @@ export const StickyTopHeader = styled.div`
 `
 export const FixedTopExpMob = styled.div`
   display: none;
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileS}) {
+    width: 100%;
     z-index: 300;
     top: 0;
-    width: 100%;
+    bottom:auto;
     position: fixed;
-    height: 45px;
+    height: 40px;
   }
-
+  @media (min-width: ${size.mobileL}) {
+    z-index: 300;
+    top: 0;
+    border-right:solid 1px #000;
+    width: 66.66%;
+    position: fixed;
+    height: 40px;
+  }
+  @media (min-width: ${size.laptop}) {
+    display: none;
+  }
   ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
@@ -105,13 +120,16 @@ export const MobTitleCard = styled.div`
 export const MobAnimCard = styled.div`
   ${showDisplayForTablet};
 
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     position: absolute;
     z-index: 1;
     top: 0px;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
+  }
+  @media (min-width: ${size.mobileL}) {
+    display:none;
   }
 `
 
@@ -171,9 +189,16 @@ export const FixedNavbar = styled.div`
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
+    position: fixed;
+    bottom:auto;
+    top:0;
+    right:0;
+    width:33.33%;
   }
   @media (max-width: ${size.mobileM}) {
     position: fixed;
     width: 100%;
+    bottom: 0;
+    top:auto;
   }
 `
