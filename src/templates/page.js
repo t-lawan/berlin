@@ -9,6 +9,7 @@ import NewsList from "../components/news/newslist";
 
 const Page = props => {
   const language = getCurrentLanguageString(props.languages)
+  let content = props.pageContext;
   const renderComponent = (
     <PageWrapper>
       <SEO
@@ -16,6 +17,8 @@ const Page = props => {
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
+
+      <PageTitle> {content.title} </PageTitle>
       
       <div
         dangerouslySetInnerHTML={{
