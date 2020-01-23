@@ -393,8 +393,6 @@ exports.createPages = async ({ graphql, actions }) => {
               caption_en
               exp_animation
               temporary_exp_page
-              temp_exp_graphic_en
-              temp_exp_graphic_de
               exhibition_image_gallery {
                 acf {
                   caption_de
@@ -502,7 +500,9 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "participant", DE: "beteiligte" },
     { EN: "news", DE: "news" },
     { EN: "current", DE: "aktuell" },
-    { EN: "calendar", DE: "kalendar" },
+    { EN: "calendar", DE: "kalender" },
+    { EN: "data-privacy", DE: "datenschutz" },
+    { EN: "imprint", DE: "impressum" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -561,14 +561,25 @@ exports.createPages = async ({ graphql, actions }) => {
             : `/${language}/${prePath.DE}/${slug}`
       } else {
         if (edge.node.acf.template === "calendar") {
-          path = language === "en" ? "/calendar" : "/de/kalendar"
+          path = language === "en" ? "/calendar" : "/de/kalender"
         } else {
+          
+          if(edge.node.slug === "data-privacy") {
+            path = language === "en" ? "/data-privacy" : "/datenschutz";
+          } else {
+            if(edge.node.slug === "imprint") {
+              path = language === "en" ? "/imprint" : "/impressum";
+            } else {
           path =
-            language === "en"
-              ? `/${edge.node.slug}`
-              : `/${language}/${edge.node.slug}`
+              language === "en"
+                ? `/${edge.node.slug}`
+                : `/${language}/${edge.node.slug}`
+            }
+          }
+
         }
       }
+
 
       createPage({
         path: path,

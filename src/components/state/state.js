@@ -132,8 +132,6 @@ const State = props => {
                   caption_en
                   exp_animation
                   temporary_exp_page
-                  temp_exp_graphic_en
-                  temp_exp_graphic_de
                   exhibition_image_gallery {
                     acf {
                       caption_de
