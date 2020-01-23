@@ -149,7 +149,7 @@ class Columns extends React.Component {
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
-        <Column rightBorder={false} hideInMobile>
+        <Column rightBorder={false} hideInTablet hideInMobile>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>
