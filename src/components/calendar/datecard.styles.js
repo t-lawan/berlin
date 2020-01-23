@@ -80,8 +80,8 @@ export const MonthHeading = styled.p`
     padding: 0.25em 0.4em;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size: 2em;
-    padding: 0.25em 0.4em;
+    font-size: 1.55em;
+    padding: 0.3em 0.4em;
   }
   @media (min-width: ${size.laptop}) {
     font-size: 2em;
@@ -93,5 +93,6 @@ export const ClosedText = styled.p`
   opacity: 0.5;
   @media (max-width: ${size.mobileM}) {
     margin: 0.3em 0.5em;
+    font-size: 1rem;
   }
 `

@@ -26,8 +26,12 @@ export const TwoColumnPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
   }
-  @media (min-width: 426px) {
+  @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
+    background:#FFF;
+  }
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 33fr 66fr;
   }
   
   ${changeGridToOneRow}
@@ -149,7 +153,7 @@ export const PressReleaseFormError = styled.p`
 `
 export const PageTitle = styled.h1`
   font-size: 1.55em;
-  margin: -0.3em 0 1.0em;
+  margin: -0.3em 0 1em;
   display:none;
   @media (max-width: ${size.tablet}) {
     display:block;
@@ -157,6 +161,25 @@ export const PageTitle = styled.h1`
   @media (min-width: ${size.mobileL}) {
     font-size:1.2rem;
     margin-bottom:1.5rem;
+  }
+`
+export const PageTitleCalendar = styled.h1`
+  font-size: 1.55em;
+  margin: 0;
+  display:none;
+  @media (max-width: ${size.mobileL}) {
+    font-size:1.55rem;
+    margin-bottom:0 !important;
+    background:#FFF;
+    padding:0.3em 0.4em;
+    border-bottom:solid 1px #000;
+    width:100%;
+    position:sticky;
+    margin-bottom:1.0rem;
+  }
+  @media (max-width: ${size.tablet}) {
+    display:block;
+    position:sticky;
   }
 `
 export const PageSubTitle = styled.h3`
