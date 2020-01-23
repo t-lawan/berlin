@@ -5,6 +5,10 @@ export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
   /* padding: 1.5em; */
   /* line-height: 1.4em; */
+  @media (max-width: ${size.mobileM}) {
+    width: calc(100% + 1.4em);
+    margin-left: -0.7em;
+  }
 `
 
 export const EventItem = styled.div`
@@ -35,6 +39,9 @@ export const EventItem = styled.div`
     width:calc(100% + 12px);
     background:#000;
   };
+  :last-child {
+    border-bottom:none;
+  }
   p{
     margin-bottom:0;
   }

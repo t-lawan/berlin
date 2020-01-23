@@ -11,7 +11,7 @@ export const LogoWrapper = styled.div`
   background: white;
   max-height:500px;
   >img {
-  	/*max-width:310px;*/
+  	max-width:310px;
   	margin-left: auto;
     margin-right: auto;
     display: block;
