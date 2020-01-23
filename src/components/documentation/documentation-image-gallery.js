@@ -7,7 +7,7 @@ import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
 import { size } from "../../index.styles"
-
+import styled from 'styled-components';
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
