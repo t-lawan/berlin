@@ -5,6 +5,8 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.styles"
 import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
+import { size } from "../../index.styles"
+
 
 const VideoContainer = styled.div`
   position: relative;
@@ -28,7 +30,12 @@ margin:"0",
 const MargBottom = {
 margin:"0 0 0.7em"
 }
-
+const MargTop = styled.div`
+margin:0em 0 0em;
+@media (max-width: ${size.mobileM}) {
+    margin:1em 0 0em;
+  }
+`
 const DocumentationVideo = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -50,7 +57,7 @@ const DocumentationVideo = props => {
             {exhibitions[0][language].title}
           </p>
         </div>
-        <div>
+        <MargTop>
           <div
             dangerouslySetInnerHTML={{
               __html: props.documentation[language].title,
@@ -68,7 +75,7 @@ const DocumentationVideo = props => {
               __html: props.documentation[language].doc_credits,
             }}
           />
-        </div>
+        </MargTop>
       </TwoColumnPageWrapperNoPad>
     </PageWrapper>
   )
