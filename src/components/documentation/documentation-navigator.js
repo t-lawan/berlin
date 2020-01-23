@@ -2,23 +2,53 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const DocumentationNavigatorWrapper = styled.div`
   display: flex;
-  margin-top:-1.5em;
-  margin-bottom:0;
   flex-direction: row;
-  background: transparent;
+  background: white;
+  @media (max-width: ${size.mobileM}) {
+    display:block;
+    margin-top:-0.5em;
+    padding: 0.0em 0 0 0.0em;
+    width:100%;
+    :after {
+      content:"";
+      clear:both;
+      display:table;
+    }
+  }
+  @media (min-width: ${size.mobileL}) {
+    padding: 0.5em 0 0 0.7em;
+  }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
-   font-size: 1.1rem;
-  padding: 0.0em 1em 0 0em;
+  font-size: 1.1rem;
+  line-height:1;
+  padding: 0.5em 0 0 1em;
   text-decoration: none;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0.6em;
+    margin-top: -0.5em;
+    font-size: 1.45em;
+    padding: 0 1em 0 0;
+  }
+  @media (min-width: ${size.mobileL}) {
+    margin-bottom: 0.6em;
+    margin-top: 0em;
+    font-size: 1.35em;
+    padding: 0 1em 0 0;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1rem;
+  line-height:1;
+  padding: 0.5em 0 0 1em;
+  }
 `
 
 

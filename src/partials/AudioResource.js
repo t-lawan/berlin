@@ -1,7 +1,9 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-
+import {
+  size,
+} from "../index.styles"
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import { getCurrentLanguageString } from "../utility/helper"
@@ -54,6 +56,9 @@ const PlayIcon = styled.div`
     width: 4px;
     background-color:#000;
     height: 14px;
+  }
+  @media (max-width: ${size.mobileM}) {
+    margin-right: 0.3em;
   }
 `
 const VolumeIcon = styled.div`
@@ -180,10 +185,16 @@ const TimeProgressBar = styled.progress`
     border-radius: 50%;
     }
   }
+  @media (max-width: ${size.mobileM}) {
+    width: 35%;
+  }
 `
 
 const VolumeProgressBar = styled(TimeProgressBar)`
   width: 10%;
+  @media (max-width: ${size.mobileM}) {
+    width: 8%;
+  }
 `
 class AudioResource extends React.Component {
   static propTypes = {
