@@ -14,7 +14,7 @@ import Logo from "../../components/logo/logo";
 export const IndexPageWrapper = styled.div`
   padding: 0em;
   @media (max-width: ${size.mobileM}) {
-    /* padding: 315px 0em 0; */
+    margin-top:75px;
     background:#FFF;
   }
 `
