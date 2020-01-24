@@ -74,7 +74,7 @@ export const StickyTopHeader = styled.div`
   position: sticky;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
-    grid-column-start: span 2;
+    /*grid-column-start: span 2;*/
   }
   :first-child {
     border-right: solid 1px #000;

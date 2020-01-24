@@ -119,7 +119,7 @@ class Columns extends React.Component {
             <Header showOnHomePage={this.props.isHome} hideInMobile={true} />
           </StickyTopHeader>
 
-          <StickyTopHeader hideInTablet={true} hideInMobile={true} hideInTablet={true}>
+          <StickyTopHeader hideInMobile={true}>
             <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
@@ -134,7 +134,7 @@ class Columns extends React.Component {
             <RelativeHeader>
               <ImageContainer
                 hideOnHomePage={!this.props.isHome}
-                hideInTablet={true}
+                hideInMobile={true}
               />
             </RelativeHeader>
             <StickyHeader>

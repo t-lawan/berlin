@@ -6,11 +6,17 @@ import {
   EventTitle,
 } from "./upcomingevents.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import {
+  getCurrentLanguageString,
+  createPath,
+  transitionBackground,
+  truncateText,
+} from "../../utility/helper"
 import moment from "moment"
 import "moment/locale/en-gb"
 import "moment/locale/de"
 import { getVenue } from "../../store/selector"
+import striptags from "striptags"
 
 let calendar_items = []
 const UpcomingEvents = props => {
@@ -41,6 +47,8 @@ const UpcomingEvents = props => {
       return a.start_date - b.start_date
     })
 
+  console.log("EVENT", filteredItems)
+
   return (
     <EventsWrapper>
       <p hidden={filteredItems.length !== 0}>
@@ -51,7 +59,13 @@ const UpcomingEvents = props => {
       </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
-          <EventLink  cover direction="down" bg={transitionBackground} colour="black" to={createPath(language, `${item.slug}`)}>
+          <EventLink
+            cover
+            direction="down"
+            bg={transitionBackground}
+            colour="black"
+            to={createPath(language, `${item.slug}`)}
+          >
             <p>
               {" "}
               {moment(item.start_date)
@@ -62,11 +76,20 @@ const UpcomingEvents = props => {
             <EventTitle
               dangerouslySetInnerHTML={{ __html: item[language].title }}
             />
-            <EventTitle
-              dangerouslySetInnerHTML={{ __html: item[language].subtitle }}
-            />
+            {item[language].subtitle ? (
+              <EventTitle
+                dangerouslySetInnerHTML={{
+                  __html: `<p>${truncateText(striptags(item[language].subtitle), 16)} ...<p>`,
+                }}
+              />
+            ) : null}
+
             <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
-            <p>{item.language == "other" ? item[language].other_language : freeAdmision[language][item.language]}</p>
+            <p>
+              {item.language == "other"
+                ? item[language].other_language
+                : freeAdmision[language][item.language]}
+            </p>
             <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
           </EventLink>
         </EventItem>

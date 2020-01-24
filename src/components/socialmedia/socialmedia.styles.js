@@ -6,7 +6,7 @@ export const SocialMediaWrapper = styled.div`
   position: fixed;
   bottom: 0;
   padding:0.5em 2em 1em;
-  height:60px;
+  height:70px;
   flex-direction: row;
   background: white;
   width: 100%;
@@ -20,7 +20,7 @@ export const SocialMediaWrapper = styled.div`
     background: white;
     position:fixed;
     right:0;
-    height:55px;
+    height:65px;
     padding: 0.7em;
     margin: 0;
   }
