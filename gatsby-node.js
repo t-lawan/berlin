@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
               }
               thumbnail_image
+              venue_map_graphic
               template
               EN {
                 content
