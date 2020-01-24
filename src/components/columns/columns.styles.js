@@ -176,13 +176,12 @@ export const StickyFooterWithHighZIndex = styled(StickyFooter)`
 
 export const FixedFooter = styled.div`
   z-index: 500;
-  bottom: 0;
-  position: relative;
+  bottom: -150px;
+  position: fixed;
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
   }
-  display: none;
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
   transition: all 0.3s ease-in-out;

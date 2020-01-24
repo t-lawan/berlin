@@ -202,7 +202,6 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 .hide-footer {
   @media (min-width: ${size.tablet}) {
     bottom: -200px !important; 
-    display: none !important;
   }
 
 }
@@ -210,7 +209,6 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 .show-footer {
   @media (min-width: ${size.tablet}) {
     bottom: 0 !important;
-    display: inherit !important;
   }
 }
 `
