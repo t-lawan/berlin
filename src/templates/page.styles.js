@@ -9,6 +9,9 @@ export const PageWrapper = styled.div`
     padding: 1em 0.7em;
     background:#FFF;
   }
+  @media (min-width: ${size.laptop}) {
+    padding-bottom:115px;
+  }
 `
 export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
@@ -82,6 +85,9 @@ export const PressWrapper = styled.div`
     }
   }
   ${changeGridToOneRow};
+  @media (min-width: ${size.laptop}) {
+    padding-bottom:115px;
+  }
 `
 
 export const ResourceImageWrapper = styled.div`
@@ -190,6 +196,9 @@ export const PageTitleCalendar = styled.h1`
 export const PageSubTitle = styled.h3`
   font-size: 1rem;
   margin: 1em 0 0.5em;
+  :first-child {
+    margin-top:0;
+  }
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`
