@@ -20,11 +20,12 @@ const ExhibitionPageWrapper = styled.div`
     left: 0;
     padding: 1em 0.7em;
     bottom: 45px;
-    height: calc(100vh - 91px);
+    height: calc(100vh - 87px);
     top: 40px;
   }
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.7em;
+    z-index: 6;
     top:40px;
     left:0;
     width:100%;
@@ -42,6 +43,12 @@ const ExhibitionPageWrapper = styled.div`
 
 const ExhibitionPageImage = styled.img`
   width: 30%;
+  @media (max-width: ${size.mobileM}) {
+    width:100%;
+  }
+  @media (max-width: ${size.tablet}) {
+    width:50%;
+  }
 `
 class ExhibitionPage extends React.Component {
   language;

@@ -232,12 +232,12 @@ export const NavMobileContent = styled.div`
   transition: all 0.3s ease-in-out;
   padding-bottom:0.0em;
   @media (min-width: ${size.mobileL}) {
-    max-height: calc(100vh - 45px);
+    max-height: calc(100vh - 40px);
     position:fixed;
     background:#FFF;
     width:33.33%;
-    top:45px;
-    height:calc(100vh - 45px);
+    top:40px;
+    height:calc(100vh - 40px);
     margin-top: 0em;
     right:${props => (props.show ? "0px" : "-100%")};
   }
