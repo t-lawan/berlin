@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import { getCurrentLanguageString } from "../../utility/helper";
 import { Section, size } from "../../index.styles";
 const ExhibitionPageWrapper = styled.div`
-  padding: 0.7em 1em;
+  padding: 0.7em 1em 140px;
   @media (max-width: ${size.mobileM}) {
     padding: 1em 0.7em;
     border-top:solid 1px #000;
