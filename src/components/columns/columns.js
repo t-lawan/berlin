@@ -151,7 +151,6 @@ class Columns extends React.Component {
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}
-            
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
@@ -170,7 +169,7 @@ class Columns extends React.Component {
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
-          <FixedFooter ref={this.footerRef} hideInTablet>
+          <FixedFooter ref={this.footerRef} hideInMobile>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>

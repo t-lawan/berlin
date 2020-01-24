@@ -5,12 +5,12 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource";
 import styled from "styled-components"
-import { hideDisplayForTablet } from "../../index.styles";
+import { hideDisplayForTablet, hideDisplayForMobile } from "../../index.styles";
 import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
   padding: 1em;
-  ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
 `
 
