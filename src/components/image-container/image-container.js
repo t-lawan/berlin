@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource";
 import styled from "styled-components"
-import { hideDisplayForTablet, size } from "../../index.styles";
+import { hideDisplayForMobile, size } from "../../index.styles";
 import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
@@ -14,7 +14,7 @@ const ImageContainerWrapper = styled.section`
     padding: 1em 0.7em;
     border-bottom:solid 1px #000;
   }
-  ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
 `
 

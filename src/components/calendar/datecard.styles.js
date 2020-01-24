@@ -94,9 +94,14 @@ export const MonthHeading = styled.p`
 `
 export const ClosedText = styled.p`
   margin: 0.5em 1em;
+  text-transform:lowercase;
   opacity: 0.5;
   @media (max-width: ${size.mobileM}) {
     margin: 0.3em 0.5em;
     font-size: 1rem;
+  }
+  @media (max-width: ${size.tablet}) {
+    margin: 0.5em 0.7em;
+    font-size: 0.95rem;
   }
 `

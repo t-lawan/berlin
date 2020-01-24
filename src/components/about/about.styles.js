@@ -11,12 +11,10 @@ export const AboutSideNavbar = styled.nav`
     flex-direction: row;
     padding: 0;
     width:100%;
+    display: flex;
   }
-  @media (min-width: ${size.mobileS}) {
+  @media (max-width: ${size.mobileM}) {
     display:none
-  }
-  @media (min-width: ${size.tablet}) {
-    display:block;
   }
 `
 

@@ -87,6 +87,7 @@ export const PressWrapper = styled.div`
   ${changeGridToOneRow};
   @media (min-width: ${size.laptop}) {
     padding-bottom:115px;
+    border-top: none;
   }
 `
 
@@ -191,6 +192,12 @@ export const PageTitleCalendar = styled.h1`
     display:block;
     position:sticky;
     top:0;
+    background:#FFF;
+    z-index:3;
+    border-top: solid 1px #000;
+    padding:0.3em 0.4em;
+    border-bottom:solid 1px #000;
+    width:100%;
   }
 `
 export const PageSubTitle = styled.h3`
