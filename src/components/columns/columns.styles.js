@@ -118,6 +118,7 @@ export const MobTitleCard = styled.div`
     width: 100%;
   }
   ${showDisplayForMobile};
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -132,6 +133,8 @@ export const MobAnimCard = styled.div`
     display:none;
   }
   ${showDisplayForMobile};
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
+
   /* ${showDisplayForTablet}; */
 `
 
@@ -179,6 +182,7 @@ export const FixedFooter = styled.div`
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
   }
+  display: none;
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
   transition: all 0.3s ease-in-out;

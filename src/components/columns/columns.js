@@ -37,11 +37,13 @@ class Columns extends React.Component {
   animationInDuration = 600;
   animationOutDuration = 500;
   footerRef;
-  columnsRef;
+  columnOneRef;
+  columnTwoRef;
   constructor(props) {
     super(props);
     this.footerRef = React.createRef();
-    this.columnsRef = React.createRef();
+    this.columnOneRef = React.createRef();
+    this.columnTwoRef = React.createRef();
     this.state = {
       showFooter: false,
       scrollHeight: 0,
@@ -50,19 +52,20 @@ class Columns extends React.Component {
   }
 
   scroll = (e) => {
-    let column = this.columnsRef.current.columnRef.current
+    let columnOne = this.columnOneRef.current.columnRef.current
+    let columnTwo = this.columnTwoRef.current.columnRef.current
     let footer = this.footerRef.current;
 
-    if(!column) {
+
+    if(!columnOne || !columnTwo) {
       return false;
     } else {
-      let percent = column.scrollTop/column.scrollHeight
-      // footer.class = "bottom: -200px; display: none;"
+      let columnOnePercent = (columnOne.scrollTop + columnOne.clientHeight)/columnOne.scrollHeight
+      let columnTwoPercent = (columnTwo.scrollTop + columnTwo.clientHeight)/columnTwo.scrollHeight
 
-      if(percent > 0.75) {
+      if(columnOnePercent > 0.75 || columnTwoPercent > 0.8 ) {
         footer.classList.remove('hide-footer');
         footer.classList.add('show-footer');
-        // footer.style = "bottom: 0; display: inherit;"
       } else {
         footer.classList.remove('show-footer');
         footer.classList.add('hide-footer');
@@ -121,11 +124,11 @@ class Columns extends React.Component {
           </StickyTopHeader>          
           
           {/* Second Column */}
-          <Column ref={this.columnsRef} rightBorder={true}>
-            <MobTitleCard showInMobile={true}>
+          <Column ref={this.columnOneRef} rightBorder={true}>
+            <MobTitleCard showOnHomePage={this.props.isHome} showInMobile={true}>
               <JumbotronMob showInMobile={true}/>
             </MobTitleCard>
-            <MobAnimCard showInMobile={true}>
+            <MobAnimCard showOnHomePage={this.props.isHome} showInMobile={true}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
@@ -152,7 +155,7 @@ class Columns extends React.Component {
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column hideInMobile={true} rightBorder={true}>
+          <Column ref={this.columnTwoRef} hideInMobile={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
