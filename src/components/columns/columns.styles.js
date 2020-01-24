@@ -175,11 +175,15 @@ export const StickyFooter = styled.div`
     bottom: 45px;
     z-index: 999999;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.tablet}) {
     position: fixed;
     bottom: 0px;
     z-index: 999999;
   }
+   @media (min-width: ${size.laptop}) {
+    position: sticky;
+    z-index: 500;
+   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
 
@@ -225,4 +229,19 @@ export const FixedNavbar = styled.div`
     bottom: 0;
     top:auto;
   }
+`
+export const FixedTicker = styled.div`
+  z-index: 500;
+  bottom: 70px;
+  position: fixed;
+  /*grid-area: footer;*/
+  @media (max-width: ${size.mobileL}) {
+    grid-area: unset;
+    position:relative;
+    bottom:0px;
+    padding-bottom:60px;
+  }
+  ${showDisplayForTablet};
+  ${hideDisplayForTablet};
+  transition: all 0.3s ease-in-out;
 `

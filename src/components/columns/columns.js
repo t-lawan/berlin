@@ -5,6 +5,7 @@ import LanguageController from "../languagecontroller/languagecontroller"
 import Header from "../header/header"
 import Navbar from "../navbar/navbar"
 import Jumbotron from "../jumbotron/jumbotron"
+import Ticker from "../ticker/ticker"
 import JumbotronMob from "../jumbotron/jumbotronmob"
 import ExperienceController from "../experiencecontroller/experiencecontroller"
 import { connect } from "react-redux"
@@ -23,6 +24,7 @@ import {
   FixedTopExpMob,
   MobTitleCard,
   MobAnimCard,
+  FixedTicker,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -125,10 +127,10 @@ class Columns extends React.Component {
           
           {/* Second Column */}
           <Column ref={this.columnOneRef} rightBorder={true}>
-            <MobTitleCard showOnHomePage={this.props.isHome} showInMobile={true}>
+            <MobTitleCard showOnHomePage={this.props.isHome} showInMobile={true} hideInTablet={true}>
               <JumbotronMob showInMobile={true}/>
             </MobTitleCard>
-            <MobAnimCard showOnHomePage={this.props.isHome} showInMobile={true}>
+            <MobAnimCard showOnHomePage={this.props.isHome} showInMobile={true} hideInTablet={true}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
@@ -160,6 +162,9 @@ class Columns extends React.Component {
               <Jumbotron />
             </StickyTopHeader> */}
             {this.props.thirdColumn}
+            <FixedTicker>
+              <Ticker />
+            </FixedTicker>
             <StickyFooterWithHighZIndex>
               <SocialMedia />
             </StickyFooterWithHighZIndex>
