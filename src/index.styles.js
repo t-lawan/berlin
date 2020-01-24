@@ -7,9 +7,9 @@ export const Color = {
 }
 export const size = {
   mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "835px",
+  mobileM: "420px",
+  mobileL: "500px",
+  tablet: "768px",
   laptop: "1024px",
   laptopL: "1440px",
   desktop: "2560px",

@@ -60,6 +60,8 @@ const EventTitle = styled.h1`
 const EventSubTitle = styled.h2`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
+  margin-top:-1.5em;
+  margin-bottom:0;
   font-size: 1.1rem;
   line-height: 1.2;
   ${hideDisplayForMobile};

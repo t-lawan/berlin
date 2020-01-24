@@ -112,7 +112,8 @@ export const FixedTopExpMob = styled.div`
 `
 export const MobTitleCard = styled.div`
   @media (max-width: ${size.tablet}) {
-    /* position: fixed; */
+    position: sticky;
+    top:0;
     z-index: 3;
     width: 100%;
   }
@@ -176,8 +177,11 @@ export const FixedFooter = styled.div`
   bottom: -150px;
   position: fixed;
   grid-area: footer;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileL}) {
     grid-area: unset;
+    position:relative;
+    bottom:0px;
+    padding-bottom:60px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};

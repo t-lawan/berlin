@@ -61,6 +61,7 @@ export const PressWrapper = styled.div`
   }
   @media (max-width: ${size.mobileM}) {
     border-top:none;
+    background:#FFF;
   }
   div > p {
   margin-bottom: 0.5em;
@@ -154,6 +155,7 @@ export const PressReleaseFormError = styled.p`
 export const PageTitle = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
+  text-transform:lowercase;
   display:none;
   @media (max-width: ${size.tablet}) {
     display:block;
@@ -174,12 +176,15 @@ export const PageTitleCalendar = styled.h1`
     padding:0.3em 0.4em;
     border-bottom:solid 1px #000;
     width:100%;
+    top:0;
+    z-index:3;
     position:sticky;
     margin-bottom:1.0rem;
   }
   @media (max-width: ${size.tablet}) {
     display:block;
     position:sticky;
+    top:0;
   }
 `
 export const PageSubTitle = styled.h3`
