@@ -7,6 +7,9 @@ import {
   hideDisplayForMobile,
   showDisplayForMobile,
 } from "../../index.styles"
+import {
+  ColumnLayout,
+} from "./column.styles"
 import { Animated } from "react-animated-css"
 
 export const AnimatedColumn = styled(Animated)`
@@ -32,6 +35,9 @@ export const AnimatedColumn = styled(Animated)`
     grid-template-areas:"column" "column column" "footer" !important;
     margin:40px auto 0;
     height: calc(100vh - 40px);
+    ${ColumnLayout}:nth-child(3) {
+      z-index:10;
+    }
   }
 
 `
@@ -164,6 +170,16 @@ export const StickyFooter = styled.div`
     grid-area: unset;
   }
   transition: all 0.3s ease-in-out;
+  @media (max-width: ${size.mobileM}) {
+    position: fixed;
+    bottom: 45px;
+    z-index: 999999;
+  }
+  @media (max-width: ${size.tablet}) {
+    position: fixed;
+    bottom: 0px;
+    z-index: 999999;
+  }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
 
