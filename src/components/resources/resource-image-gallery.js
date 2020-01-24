@@ -42,7 +42,7 @@ const ResourceImageGallery = props => {
       </ResourceImageWrapper>
       <TwoColumnPageWrapper>
         <div>
-          <ResourceTitle
+          <p
               dangerouslySetInnerHTML={{
                 __html: striptags(r.title, ['em']),
               }}

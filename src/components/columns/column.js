@@ -2,8 +2,16 @@ import React from "react"
 import PropTypes from "prop-types"
 import { ColumnLayout } from "./column.styles";
 
-const Column = props => {
-  return <ColumnLayout rightBorder={props.rightBorder} hideInMobile={props.hideInMobile} hideInTablet={props.hideInTablet}>{props.children}</ColumnLayout>
+class Column extends React.Component {
+  columnRef;
+  constructor(props) {
+    super(props);
+    this.columnRef = React.createRef();
+  }
+  render() {
+    return <ColumnLayout ref={this.columnRef} rightBorder={this.props.rightBorder} hideInMobile={this.props.hideInMobile} hideInTablet={this.props.hideInTablet}>{this.props.children}</ColumnLayout>
+
+  }
 }
 
 Column.propTypes = {

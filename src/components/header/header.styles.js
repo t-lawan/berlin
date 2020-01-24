@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.header`
   @media (max-width: ${size.mobileM}) {
   padding: 0.6em 0.7em;
   border-bottom:solid 1px #000;
-  display: ${props => props.showOnHomePage ? 'none': 'inherit'};
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
   }
   @media (min-width: ${size.mobileL}) {
   padding: 0.7em 0em 0.7em;

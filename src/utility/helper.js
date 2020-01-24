@@ -9,7 +9,6 @@ export const getCurrentLanguageString = languageStateObject => {
 export const truncateText = (text, number = 25) => {
   return text.split(' ').slice(0, number).join(' ');
 }
-
 export const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "about", DE: "uber" },
@@ -20,7 +19,7 @@ export const pageMap = [
   { EN: "participant", DE: "beteiligte" },
   { EN: "news", DE: "news" },
   { EN: "current", DE: "aktuell" },
-  { EN: "calendar", DE: "kalender" },
+  { EN: "calendar", DE: "kalendar" },
   { EN: "data-privacy", DE: "datenschutz" },
   { EN: "imprint", DE: "impressum" },
 ]

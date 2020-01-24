@@ -32,8 +32,9 @@ const DateCard = props => {
         return 0;
       } else {
         if(a.item === "exhibition") {
-                 return 1;
+          return 1;
         }
+
         if(b.item === "exhibition") {
           return -1
         }

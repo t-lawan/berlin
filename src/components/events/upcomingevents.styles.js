@@ -4,7 +4,7 @@ import { Color, UnderlineSectionLink, size } from "../../index.styles";
 export const EventsWrapper = styled.div`
   /* border-top: 1px solid black; */
   /* padding: 1.5em; */
-  padding-bottom:65px;
+  padding-bottom:130px;
   /* line-height: 1.4em; */
   @media (max-width: ${size.mobileM}) {
     width: calc(100% + 1.4em);

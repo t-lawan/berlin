@@ -5,6 +5,7 @@ import {
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
+  showDisplayForMobile,
 } from "../../index.styles"
 import { Animated } from "react-animated-css"
 
@@ -22,8 +23,8 @@ export const AnimatedColumn = styled(Animated)`
     /* width: 100%; */
     width: 100vw;
     display: block;
-    position:relative;
-    margin:45px auto 0;
+    position: relative;
+    margin: 45px auto 0;
     height: calc(100vh - 90px);
   }
 
@@ -72,8 +73,8 @@ export const StickyTopHeader = styled.div`
   top: 0;
   position: sticky;
   grid-area: "column";
-  @media (min-width: ${size.mobileL}) {
-       
+  @media (max-width: ${size.tablet}) {
+    grid-column-start: span 2;
   }
   :first-child {
     border-right: solid 1px #000;
@@ -83,7 +84,8 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
-
+  ${hideDisplayForMobile};
+  ${hideDisplayForTablet};
 `
 export const FixedTopExpMob = styled.div`
   display: none;
@@ -109,16 +111,16 @@ export const FixedTopExpMob = styled.div`
   ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
-  ${showDisplayForTablet};
+/* background: pink; */
   @media (max-width: ${size.tablet}) {
-    position: fixed;
+    /* position: fixed; */
     z-index: 3;
     width: 100%;
   }
+  ${showDisplayForMobile};
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 `
 export const MobAnimCard = styled.div`
-  ${showDisplayForTablet};
-
   @media (max-width: ${size.mobileM}) {
     position: absolute;
     z-index: 1;
@@ -130,6 +132,10 @@ export const MobAnimCard = styled.div`
   @media (min-width: ${size.mobileL}) {
     display:none;
   }
+  ${showDisplayForMobile};
+  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
+
+  /* ${showDisplayForTablet}; */
 `
 
 export const FixedHeader = styled.div`
@@ -157,8 +163,11 @@ export const StickyFooter = styled.div`
     /* width: 100%; */
     grid-area: unset;
   }
+  transition: all 0.3s ease-in-out;
   ${showDisplayForTablet};
-  ${hideDisplayForTablet}
+  ${hideDisplayForTablet};
+
+  /* display: ${props => (props.show ? "inherit" : "none")}; */
 `
 
 export const StickyFooterWithHighZIndex = styled(StickyFooter)`
@@ -167,14 +176,15 @@ export const StickyFooterWithHighZIndex = styled(StickyFooter)`
 
 export const FixedFooter = styled.div`
   z-index: 500;
-  bottom: 0;
-  position: relative;
+  bottom: -150px;
+  position: fixed;
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
+  transition: all 0.3s ease-in-out;
 `
 
 export const FixedNavbar = styled.div`

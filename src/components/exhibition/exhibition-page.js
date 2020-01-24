@@ -8,19 +8,35 @@ import { getCurrentLanguageString } from "../../utility/helper";
 
 const ExhibitionPageWrapper = styled.div`
   z-index: 6000;
-  left: 5%;
-  padding: 1rem;
-  width: calc(100% - 10%);
+  left: 0%;
+  padding: 0.7em 1em;
+  width: calc(100% - 0%);
   height: 100vh;
   position: fixed;
   background: #fbf95d;
   display: ${props => (props.show ? "inherit" : "none")};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     width: 100%;
     left: 0;
+    padding: 1em 0.7em;
     bottom: 45px;
     height: calc(100vh - 91px);
-    top: 45px;
+    top: 40px;
+  }
+  @media (min-width: ${size.mobileL}) {
+    padding: 0.7em 0.7em;
+    top:40px;
+    left:0;
+    width:100%;
+    bottom:0;
+    height: calc(100vh - 40px);
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 0.7em 1em;
+    width: calc(100% - 0%);
+    height: 100vh;
+    left: 0%;
+    top:0;
   }
 `
 

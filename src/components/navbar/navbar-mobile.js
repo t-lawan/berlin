@@ -133,8 +133,8 @@ class NavbarMobile extends React.Component {
           <NavMobileLinks>
             <div>
               <NavMobileModal onClick={() => this.showModal()}>
-                {" "}
-                newsletter{" "}
+                {content[this.language]['newsletter']}
+
               </NavMobileModal>
               {socialMediaLinks.map(link => (
                 <NavMobileOuterLinkSmall
@@ -153,7 +153,8 @@ class NavbarMobile extends React.Component {
                 bg={transitionBackground}
                 to={createPath(this.language, "imprint")}
               >
-                imprint
+                {content[this.language]['imprint']}
+
               </NavMobileLinkSmall>
               <NavMobileLinkSmall
                 cover
@@ -161,7 +162,7 @@ class NavbarMobile extends React.Component {
                 bg={transitionBackground}
                 to={createPath(this.language, "data-privacy")}
               >
-                data privacy
+                {content[this.language]['data-privacy']}
               </NavMobileLinkSmall>
             </div>
           </NavMobileLinks>
@@ -169,6 +170,19 @@ class NavbarMobile extends React.Component {
       </NavMobileWrapper>
     )
   }
+}
+
+const content = {
+  EN: {
+    imprint: "imprint",
+    "data-privacy": "data privacy",
+    newsletter: 'newsletter'
+  },
+  DE: {
+    imprint: "impressum",
+    "data-privacy": "datenschutz",
+    newsletter: 'newsletter'
+  },
 }
 
 const generateLink = (item, language) => {

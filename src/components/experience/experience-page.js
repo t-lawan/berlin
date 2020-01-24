@@ -166,7 +166,7 @@ class ExperiencePage extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       // this.closeExperiencePage();
-      //this.props.hideOverlay();
+      // this.props.hideOverlay();
     }, 10000);
   }
 
