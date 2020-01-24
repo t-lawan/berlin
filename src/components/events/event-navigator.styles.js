@@ -18,7 +18,7 @@ export const EventNavigatorWrapper = styled.section`
     }
   }
   @media (min-width: ${size.mobileL}) {
-    padding: 0.5em 0 0 0.7em;
+    padding: 0.5em 0.7em 0 0;
   }
 `
 

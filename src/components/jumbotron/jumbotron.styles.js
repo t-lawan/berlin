@@ -34,7 +34,7 @@ export const JumbotronHeader = styled(AniLink)`
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.5em 0.0rem;
+  padding: 0.0em 0.0rem 0px;
   margin: 0em;
   position:relative;
   width:100%;
