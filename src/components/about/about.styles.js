@@ -68,6 +68,9 @@ export const AboutComponentWrapper = styled.section`
   > div:first-child {
     margin-top:0em;
   }
+  @media (min-width: ${size.laptop}) {
+  padding-bottom:115px;
+  }
 `
 
 export const AboutFundingHeader = styled.p`

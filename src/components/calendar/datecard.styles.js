@@ -18,6 +18,10 @@ export const DateCardWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 5fr;
+    :last-child {
+      padding-bottom:115px;
+      border-bottom:none;
+    }
   }
 `
 export const EventCardsWrapper = styled.div`
