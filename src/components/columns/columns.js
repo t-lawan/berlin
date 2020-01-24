@@ -125,10 +125,10 @@ class Columns extends React.Component {
           
           {/* Second Column */}
           <Column ref={this.columnOneRef} rightBorder={true}>
-            <MobTitleCard showOnHomePage={this.props.isHome} showInMobile={true}>
+            <MobTitleCard showInMobile={this.props.isHome}>
               <JumbotronMob showInMobile={true}/>
             </MobTitleCard>
-            <MobAnimCard showOnHomePage={this.props.isHome} showInMobile={true}>
+            <MobAnimCard showInMobile={this.props.isHome}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>

@@ -111,14 +111,12 @@ export const FixedTopExpMob = styled.div`
   ${showDisplayForTablet};
 `
 export const MobTitleCard = styled.div`
-/* background: pink; */
   @media (max-width: ${size.tablet}) {
     /* position: fixed; */
     z-index: 3;
     width: 100%;
   }
   ${showDisplayForMobile};
-  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -133,7 +131,6 @@ export const MobAnimCard = styled.div`
     display:none;
   }
   ${showDisplayForMobile};
-  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 
   /* ${showDisplayForTablet}; */
 `
