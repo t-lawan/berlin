@@ -1,6 +1,11 @@
 import styled from "styled-components"
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { showDisplayForTablet, size, showDisplayForMobile, hideDisplayForMobile } from "../../index.styles";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import {
+  showDisplayForTablet,
+  size,
+  showDisplayForMobile,
+  hideDisplayForMobile,
+} from "../../index.styles"
 
 export const JumbotronWrapper = styled.div`
   background: white;
@@ -8,15 +13,15 @@ export const JumbotronWrapper = styled.div`
   margin: 0em;
   ${showDisplayForTablet};
   @media (min-width: ${size.mobileL}) {
-  padding: 0.7em 0.7em;
-  display:inherit;
+    padding: 0.7em 0.7em;
+    display: inherit;
   }
   border-top: 0;
   img {
-    margin-bottom:0;
+    margin-bottom: 0;
   }
   @media (max-width: ${size.mobileM}) {
-    display:none;
+    display: none;
   }
   @media (min-width: ${size.laptop}) {
     padding: 1.4em 1.95rem 0.7em;
@@ -27,7 +32,7 @@ export const JumbotronHeader = styled(AniLink)`
   text-decoration: none;
   color: black;
   position: relative;
-  display:block;
+  display: block;
   :hover {
     cursor: pointer;
   }
