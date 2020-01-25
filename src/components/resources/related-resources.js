@@ -8,7 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper"
 import { get } from "http";
 
-const RelatedResourcesWrapper = styled.div`
+export const RelatedResourcesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

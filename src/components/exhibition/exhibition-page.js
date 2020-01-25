@@ -12,7 +12,7 @@ const ExhibitionPageWrapper = styled.div`
   padding: 0.7em 1em;
   width: calc(100% - 0%);
   height: 100vh;
-  position: fixed;
+  position: absolute;
   background: #fbf95d;
   display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
@@ -34,9 +34,9 @@ const ExhibitionPageWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     padding: 0.7em 1em;
-    width: calc(100% - 0%);
+    width: calc(100% - 10%);
     height: 100vh;
-    left: 0%;
+    left: 5%;
     top:0;
   }
 `

@@ -235,11 +235,13 @@ export const FixedTicker = styled.div`
   z-index: 5;
   bottom: 60px;
   height:42px;
-  position: sticky;
+  width: calc(33.33% - 3.3%);
+  position: fixed;
+  overflow:hidden;
   border-top: solid 1px #000;
-    background: ${Color.yellow};
-  right: 0;
-  left:0;
+  background: ${Color.yellow};
+  right: 5%;
+  left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;

@@ -20,7 +20,7 @@ export const TickerWrapper = styled.div`
       animation: ${TickerAnim} infinite 10s linear;
       > span {
         white-space: nowrap;
-      position: relative;
+        position: relative;
       }
     }
     

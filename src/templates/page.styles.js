@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { changeGridToOneRow, Color, size } from "../index.styles";
+import { RelatedResourcesWrapper } from "../components/resources/related-resources";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const PageWrapper = styled.div`
@@ -11,6 +12,9 @@ export const PageWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     padding-bottom:115px;
+  }
+  > ${TwoColumnPageWrapper} {
+    padding: 0;
   }
 `
 export const PageWrapperRes = styled.div`
@@ -25,6 +29,9 @@ export const PageWrapperRes = styled.div`
     }
   }
   > ${TwoColumnPageWrapper} {
+    padding: 0;
+  }
+  > ${RelatedResourcesWrapper} {
     padding: 0;
   }
 `
