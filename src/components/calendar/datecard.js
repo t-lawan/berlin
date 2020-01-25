@@ -5,6 +5,7 @@ import { DateManager } from "../../utility/date"
 import EventCard from "./eventcard"
 import {
   DateCardWrapper,
+  MonthCardWrapper,
   CurrentDate,
   DateText,
   DayMonthText,
@@ -69,11 +70,11 @@ const DateCard = props => {
     )
   } else {
     renderComponents = (
-      <DateCardWrapper addColour>
+      <MonthCardWrapper addColour>
         <MonthHeading>
           {DateManager.getMonthText(props.month, props.year).toLowerCase()}
         </MonthHeading>
-      </DateCardWrapper>
+      </MonthCardWrapper>
     )
   }
   return renderComponents

@@ -18,6 +18,33 @@ export const DateCardWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 5fr;
+    padding-top:55px;
+    margin-top:-55px;
+    :last-child {
+      padding-bottom:115px;
+      border-bottom:none;
+    }
+  }
+`
+export const MonthCardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  border-bottom: 1px solid black;
+  /* border-right: 1px solid black; */
+  background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
+  height: auto;
+  display: -moz-inline-grid;
+  display: inline-grid;
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 2fr 6fr;
+  }
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 1fr 4fr;
+  }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 1fr 5fr;
+    padding-top:0px;
+    margin-top:0px;
     :last-child {
       padding-bottom:115px;
       border-bottom:none;
