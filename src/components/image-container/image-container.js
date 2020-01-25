@@ -22,8 +22,8 @@ const ImageContainerWrapper = styled.section`
   }
 }
 
-animation: increaseHeight 5s;
--webkit-animation: increaseHeight 5s;
+animation: increaseHeight 3s;
+-webkit-animation: increaseHeight 3s;
 `
 
 const ImageContainer = props => {
