@@ -33,7 +33,7 @@ const UpcomingEvents = props => {
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
           (props.experience >= props.active_experience
-            ? moment(item.start_date).diff(moment()) > 0
+            ? moment(item.start_date).diff(moment()) >= 0
             : true)
         )
       } else {

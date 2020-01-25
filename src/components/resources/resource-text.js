@@ -71,7 +71,7 @@ const ResourceText = props => {
             />
           
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <Author>
+          <Author hidden={!r.publisher.title}>
             In:{" "}
             <ResourcePublisherLink
               hidden={!r.publisher.title}
