@@ -12,6 +12,18 @@ const ImageContainerWrapper = styled.section`
   padding: 1em;
   ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
+  @keyframes increaseHeight {
+  from {
+    margin-top: -60%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
+
+animation: increaseHeight 5s;
+-webkit-animation: increaseHeight 5s;
 `
 
 const ImageContainer = props => {
