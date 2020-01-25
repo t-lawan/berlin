@@ -42,13 +42,13 @@ const ResourceImageGallery = props => {
       </ResourceImageWrapper>
       <TwoColumnPageWrapper>
         <div>
-          <p
+          <ResourceTitle
               dangerouslySetInnerHTML={{
                 __html: striptags(r.title, ['em']),
               }}
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <p> {r[language].year}</p>
+          <Author> {r[language].year}</Author>
           <a target="_blank" href={r.external_url}> {r.external_url_label}</a>
         </div>
         <div>
