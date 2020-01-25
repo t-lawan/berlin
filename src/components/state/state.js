@@ -111,6 +111,7 @@ const State = props => {
                     exp_bb11_right_header
                     promotional_sticker_for_homepage
                     promotional_sticker_url
+                    external_link_url
                   }
                   EN {
                     description
@@ -124,6 +125,7 @@ const State = props => {
                     exp_bb11_right_header
                     promotional_sticker_for_homepage
                     promotional_sticker_url
+                    external_link_url
                   }
                   end_date
                   exp_number
