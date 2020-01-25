@@ -19,6 +19,11 @@ export const PageWrapperRes = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 0em;
   }
+  @media (max-width: ${size.mobileM}) {
+    > div {
+      background: ${Color.yellow};
+    }
+  }
 `
 
 export const TwoColumnPageWrapper = styled.div`
