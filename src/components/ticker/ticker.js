@@ -16,7 +16,7 @@ const Ticker = props => {
 
   return (
     <TickerWrapper show={exhibition[language].promotional_sticker_for_homepage}>
-      {exhibition[language].promotional_sticker_for_homepage ? (<p> {exhibition[language].promotional_sticker_for_homepage}</p>) : null }
+      {exhibition[language].promotional_sticker_for_homepage ? (<div><span> {exhibition[language].promotional_sticker_for_homepage}</span></div>) : null }
     </TickerWrapper>
   )
 }

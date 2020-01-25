@@ -261,6 +261,14 @@ export const keyFrameExperienceImage = keyframes`
     opacity: 1;
   }
 `
+export const TickerAnim = keyframes`
+  0% {
+    right: 0%;
+}
+100% {
+    right: -50%;
+}
+`
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
     grid-template-columns: repeat(3, 1fr);

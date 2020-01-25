@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 import {
   changeGridToOneRow,
   size,
+  Color,
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
@@ -231,15 +232,18 @@ export const FixedNavbar = styled.div`
   }
 `
 export const FixedTicker = styled.div`
-  z-index: 500;
-  bottom: 70px;
-  position: fixed;
+  z-index: 5;
+  bottom: 60px;
+  height:42px;
+  position: sticky;
+  border-top: solid 1px #000;
+    background: ${Color.yellow};
+  right: 0;
+  left:0;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
-    position:relative;
-    bottom:0px;
-    padding-bottom:60px;
+    
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
