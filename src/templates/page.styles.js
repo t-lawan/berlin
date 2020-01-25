@@ -24,6 +24,9 @@ export const PageWrapperRes = styled.div`
       background: ${Color.yellow};
     }
   }
+  > ${TwoColumnPageWrapper} {
+    padding: 0;
+  }
 `
 
 export const TwoColumnPageWrapper = styled.div`
@@ -40,8 +43,7 @@ export const TwoColumnPageWrapper = styled.div`
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 33fr 66fr;
-  }
-  
+  }  
   ${changeGridToOneRow}
 `
 export const TwoColumnPageWrapperNoPad = styled.div`
