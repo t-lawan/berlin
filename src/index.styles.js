@@ -184,7 +184,7 @@ p {
     }
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1rem;
+    font-size: 1.05rem !important;
   }
 }
 

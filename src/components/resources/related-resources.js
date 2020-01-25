@@ -5,7 +5,8 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper"
+import { createPath, getCurrentLanguageString, transitionBackground, truncateText } from "../../utility/helper"
+import striptags from "striptags"
 import { get } from "http";
 
 export const RelatedResourcesWrapper = styled.div`
@@ -72,6 +73,11 @@ const ResourceText = styled.p`
   @media (max-width: ${size.tablet}) {
     font-size: 0.9em !important;
   }
+  @media (min-width: ${size.laptop}) {
+    :last-child {
+      font-size: 0.85em !important;
+    }
+  }
 `
 
 const RelatedResources = props => {
@@ -128,7 +134,11 @@ const RelatedResources = props => {
           bg={transitionBackground}
         >
           <RelatedResource>
-            <ResourceText>{resource.title}</ResourceText>
+            <ResourceText
+                dangerouslySetInnerHTML={{
+                  __html: `${truncateText(striptags(resource.title), 10)} ...`,
+                }}
+              />
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>

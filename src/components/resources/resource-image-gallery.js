@@ -23,11 +23,16 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
   }
 `
 const Author = styled.p`
   margin-bottom:0;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
 `
 
 const ResourceImageGallery = props => {
