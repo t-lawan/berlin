@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
               }
               thumbnail_image
+              venue_map_graphic
               template
               EN {
                 content
@@ -345,6 +346,15 @@ exports.createPages = async ({ graphql, actions }) => {
             acf {
               exhibition_floorplan
               active_exhibition
+              exp_open_days {
+                friday
+                monday
+                saturday
+                sunday
+                thursday
+                tuesday
+                wednesday
+              }
               use_gallery_images
               exhibition_venue {
                 wordpress_id
@@ -363,6 +373,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_bb11_right_header
                 promotional_sticker_for_homepage
                 promotional_sticker_url
+                external_link_url
               }
               EN {
                 description
@@ -376,6 +387,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_bb11_right_header
                 promotional_sticker_for_homepage
                 promotional_sticker_url
+                external_link_url
               }
               end_date
               exp_number
@@ -383,6 +395,18 @@ exports.createPages = async ({ graphql, actions }) => {
               caption_de
               caption_en
               exp_animation
+              temporary_exp_page
+              exhibition_image_gallery {
+                acf {
+                  caption_de
+                  caption_en
+                }
+                wordpress_id
+                alt_text
+                media_type
+              }
+              temp_exp_graphic_de
+              temp_exp_graphic_en
             }
           }
         }
@@ -457,7 +481,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpVenue,
     allWordpressWpResources,
     allWordpressWpDocumentation,
-    allWordpressWpNews
+    allWordpressWpNews,
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -468,18 +492,20 @@ exports.createPages = async ({ graphql, actions }) => {
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
-  const languages = ["en", "de"];
+  const languages = ["en", "de"]
   const pageMap = [
-    {EN: "event", DE: "veranstaltung"},
-    {EN: "about", DE: "uber"},
-    {EN: "resource", DE: "resource"},
-    {EN: "exhibition", DE: "austellung"},
-    {EN: "venue", DE: "ort"},
-    {EN: "documentation", DE: "dokumentation"},
-    {EN: "participant", DE: "beteiligte"},
-    {EN: "news", DE: "news"},
-    {EN: "current", DE: "aktuell"},
-    {EN: "calendar", DE: "kalendar"},
+    { EN: "event", DE: "veranstaltung" },
+    { EN: "about", DE: "uber" },
+    { EN: "resource", DE: "resource" },
+    { EN: "exhibition", DE: "austellung" },
+    { EN: "venue", DE: "ort" },
+    { EN: "documentation", DE: "dokumentation" },
+    { EN: "participant", DE: "beteiligte" },
+    { EN: "news", DE: "news" },
+    { EN: "current", DE: "aktuell" },
+    { EN: "calendar", DE: "kalendar" },
+    { EN: "data-privacy", DE: "datenschutz" },
+    { EN: "imprint", DE: "impressum" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -501,8 +527,8 @@ exports.createPages = async ({ graphql, actions }) => {
         template = aboutTemplate
         break
       case "press_images":
-        template = pressImagesTemplate;
-        break;
+        template = pressImagesTemplate
+        break
       default:
         template = pageTemplate
     }
@@ -514,36 +540,49 @@ exports.createPages = async ({ graphql, actions }) => {
     let slug = edge.node.slug
 
     languages.forEach(language => {
-      let path;
+      let path
 
-      if(edge.node.parent_element && edge.node.parent_element.slug === "about") {
+      if (
+        edge.node.parent_element &&
+        edge.node.parent_element.slug === "about"
+      ) {
         // path =
         // language === "en"
         //   ? `/about/${edge.node.slug}`
         //   : `/${language}/about/${edge.node.slug}`;
         // edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.slug}`;
-        let prePath = pageMap.find((pageType) => {
-          return pageType.EN === "about";
-        });
+        let prePath = pageMap.find(pageType => {
+          return pageType.EN === "about"
+        })
         path =
-        language === "en"
-          ? `/${prePath.EN}/${slug}`
-          : `/${language}/${prePath.DE}/${slug}`;
-        edge.node.slug = (language === "en") ? `/${prePath.EN}/${slug}` : `/${language}/${prePath.DE}/${slug}`;
-      } else {
-        if(edge.node.acf.template === "calendar") {
-          path = language === "en" 
-            ? '/calendar' : '/de/kalendar'
-
-
-        } else {
-          path =
           language === "en"
-            ? `/${edge.node.slug}`
-            : `/${language}/${edge.node.slug}`;
-        }
+            ? `/${prePath.EN}/${slug}`
+            : `/${language}/${prePath.DE}/${slug}`
+        edge.node.slug =
+          language === "en"
+            ? `/${prePath.EN}/${slug}`
+            : `/${language}/${prePath.DE}/${slug}`
+      } else {
+        if (edge.node.acf.template === "calendar") {
+          path = language === "en" ? "/calendar" : "/de/kalender"
+        } else {
 
+          if(edge.node.slug === "data-privacy") {
+            path = language === "en" ? "/data-privacy" : "/datenschutz";
+          } else {
+            if(edge.node.slug === "imprint") {
+              path = language === "en" ? "/imprint" : "/impressum";
+            } else {
+              path =
+              language === "en"
+                ? `/${edge.node.slug}`
+                : `/${language}/${edge.node.slug}`
+            }
+          }
+
+        }
       }
+
 
       createPage({
         path: path,
@@ -556,9 +595,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const eventTemplate = path.resolve(`./src/templates/event.js`)
 
   allWordpressWpEvents.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "event";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "event"
+    })
     languages.forEach(language => {
       let path =
         language === "en"
@@ -575,9 +614,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const exhibitionTemplate = path.resolve(`./src/templates/exhibition.js`)
 
   allWordpressWpExhibitions.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "exhibition";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "exhibition"
+    })
     languages.forEach(language => {
       let path =
         language === "en"
@@ -595,9 +634,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const participantTemplate = path.resolve(`./src/templates/participant.js`)
 
   allWordpressWpParticipants.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "participant";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "participant"
+    })
     languages.forEach(language => {
       let path =
         language === "en"
@@ -614,9 +653,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const resourcesTemplate = path.resolve(`./src/templates/resource.js`)
 
   allWordpressWpResources.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "resource";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "resource"
+    })
     languages.forEach(language => {
       let path =
         language === "en"
@@ -630,18 +669,21 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const documentationTemplate = path.resolve('./src/templates/documentation.js');
+  const documentationTemplate = path.resolve("./src/templates/documentation.js")
 
   allWordpressWpDocumentation.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "documentation";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "documentation"
+    })
     languages.forEach(language => {
-      let path = language === 'en' ? `/${prePath.EN}/${edge.node.slug}`: `/${language}/${prePath.DE}/${edge.node.slug}`;
+      let path =
+        language === "en"
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(documentationTemplate),
-        context: {...edge.node, lang: language}
+        context: { ...edge.node, lang: language },
       })
     })
   })
@@ -649,9 +691,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const venueTemplate = path.resolve(`./src/templates/venue.js`)
 
   allWordpressWpVenue.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "venue";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "venue"
+    })
     languages.forEach(language => {
       let path =
         language === "en"
@@ -665,14 +707,17 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const newsTemplate = path.resolve('./src/templates/news.js');
+  const newsTemplate = path.resolve("./src/templates/news.js")
 
   allWordpressWpNews.edges.forEach(edge => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "news";
-    });
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "news"
+    })
     languages.forEach(language => {
-      let path = language === "en" ? `/${prePath.EN}/${edge.node.slug}` : `/${language}/${prePath.DE}/${edge.node.slug}`
+      let path =
+        language === "en"
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
       createPage({
         path: path,
         component: slash(newsTemplate),
@@ -681,18 +726,18 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const currentTemplate = path.resolve('./src/templates/current.js');
+  const currentTemplate = path.resolve("./src/templates/current.js")
   languages.forEach(language => {
-    let prePath = pageMap.find((pageType) => {
-      return pageType.EN === "current";
-    });
-    let path = language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "current"
+    })
+    let path =
+      language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
 
     createPage({
       path: path,
       component: slash(currentTemplate),
-      content: {language: language}
+      content: { language: language },
     })
   })
-
 }

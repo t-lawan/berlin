@@ -5,12 +5,29 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource";
 import styled from "styled-components"
-import { hideDisplayForTablet } from "../../index.styles";
+import { hideDisplayForTablet, hideDisplayForMobile, size } from "../../index.styles";
+import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
   padding: 1em;
-  ${hideDisplayForTablet};
+  @media (max-width: ${size.tablet}) {
+    padding: 1em 0.7em;
+    border-bottom:solid 1px #000;
+  }
+  ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
+  @keyframes increaseHeight {
+  from {
+    margin-top: -60%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
+
+animation: increaseHeight 3s;
+-webkit-animation: increaseHeight 3s;
 `
 
 const ImageContainer = props => {
@@ -21,14 +38,16 @@ const ImageContainer = props => {
   });
   const exhibition = exhibitions[0];
   return (
-    <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile}>
-      <ImageResource id={exhibition ? exhibition.floor_plan : 411} withCaption={true} />
+    <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile} hideInTablet={props.hideInTablet}>
+      {exhibition.has_gallery_images ? <ImageGalleryResource ids={exhibition.has_gallery_images ? exhibition.gallery_images : []}  /> : null}
+      {!exhibition.has_gallery_images ? <ImageResource id={exhibition && exhibition.floor_plan ? exhibition.floor_plan : 411} withCaption={true} /> : null} 
     </ImageContainerWrapper>
   )
 }
 
 ImageContainer.propTypes = {
   hideInMobile: PropTypes.bool,
+  hideInTablet: PropTypes.bool,
   showInMobile: PropTypes.bool,
   hideOnHomePage: PropTypes.bool
 }

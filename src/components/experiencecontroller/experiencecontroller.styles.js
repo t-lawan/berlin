@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { showDisplayForTablet, showDisplayForTabletFunc } from "../../index.styles";
+import { showDisplayForTablet, showDisplayForTabletFunc, size } from "../../index.styles";
 
 export const ExperienceControllerWrapper = styled.div`
   margin-top: ${props => (props.left ? "6.9em" : "3.2em")};
@@ -28,7 +28,6 @@ export const ExperienceButton = styled.div`
     margin-bottom: 0;
     margin-top:0.5em;
   }
-
   span {
     font-size: 0.6em;
   }
@@ -42,7 +41,7 @@ export const ExperienceButtonImage = styled.img`
 
 export const ExperienceControllerMobileWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  height:45px;
+  height:40px;
   background: white;
   border-bottom: 0px solid black;
   ${showDisplayForTabletFunc('grid')};
@@ -50,7 +49,7 @@ export const ExperienceControllerMobileWrapper = styled.div`
 
 export const ExperienceControllerMobileButton = styled.div`
   padding: 0em;
-  height:45px;
+  height:40px;
   border-right: 1px solid black;
   border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
   opacity: ${props => props.show ? '1' : '0.5'};
@@ -60,14 +59,21 @@ export const ExperienceControllerMobileButton = styled.div`
   > p {
     margin: 0;
     font-size: 1.1em;
-    line-height:45px;
+    line-height:40px;
     text-align:center;
+    @media (min-width: ${size.mobileL}) {
+    font-size: 1.0em;
+    }
   }
   img {
    padding: 0;
     height: 20px;
     width: auto;
-    margin-top: 0.7em;
+    margin-top: 0.5em;
     margin-bottom:0;
+    @media (min-width: ${size.mobileL}) {
+      height: 18px;
+      margin-top: 0.65em;
+    }
   }
 `

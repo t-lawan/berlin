@@ -13,12 +13,25 @@ const ExperiencePageWrapper = styled.div`
   background: #fbf95d;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     width:100%;
     left: 0;
     bottom:45px;
-    height:calc(100vh - 91px);
-    top:45px;
+    height:calc(100vh - 87px);
+    top:40px;
+  }
+  @media (min-width: ${size.mobileL}) {
+    width:100%;
+    left: 0;
+    bottom:0px;
+    height:calc(100vh - 40px);
+    top:40px;
+  }
+  @media (min-width: ${size.laptop}) {
+    left: 5%;
+    top:0;
+    width: calc(100% - 10%);
+    height: 100vh;
   }
 `
 
@@ -29,7 +42,7 @@ const ExperienceImagesContainer = styled.div`
   /* display:block; */
   align-items: center;
   justify-content: center;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     margin-top:0px;
     top: 50%;
     width:60%;
@@ -38,6 +51,25 @@ const ExperienceImagesContainer = styled.div`
     height: auto;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+  }
+  @media (min-width: ${size.mobileL}) {
+    margin-top:0px;
+    top: 50%;
+    width:45%;
+    display: block;
+    position: absolute;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  @media (min-width: ${size.laptop}) {
+    width:100%;
+    display: flex;
+  flex-direction: column;
+  height: 80vh;
+  /* display:block; */
+  align-items: center;
+  justify-content: center;
   }
 `
 
@@ -92,7 +124,7 @@ const ExperienceImage = styled.img`
 `
 
 const ExperienceImageMob = styled.img`
-  width: 100%;
+  width: 90%;
   align-self: center;
   :nth-child(4) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
@@ -134,7 +166,7 @@ class ExperiencePage extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       // this.closeExperiencePage();
-      this.props.hideOverlay();
+      // this.props.hideOverlay();
     }, 10000);
   }
 
@@ -186,12 +218,12 @@ class ExperiencePage extends React.Component {
         </TopRow>
 
         <ExperienceImagesContainer>
-          <ExperienceImage hideInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
-          <ExperienceImageMob showInMobile={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
+          <ExperienceImage hideInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
+          <ExperienceImageMob showInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
             <React.Fragment key={index}>
-            <ExperienceImage hideInMobile={true} src={experience.url} />
-            <ExperienceImageMob showInMobile={true} key={index} src={`${experience.urlmob}`} />
+            <ExperienceImage hideInTablet={true} src={experience.url} />
+            <ExperienceImageMob showInTablet={true} key={index} src={`${experience.urlmob}`} />
             </React.Fragment>
           ))}
         </ExperienceImagesContainer>

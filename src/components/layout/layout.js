@@ -9,6 +9,7 @@ import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import ExperiencePage from "../experience/experience-page"
+import ExhibitionPage from "../exhibition/exhibition-page";
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
@@ -31,7 +32,7 @@ const Layout = props => {
       </Helmet>
       <Modal show={props.modal.show} />
       <ExperiencePage showOnHomePage={props.isHome} />
-
+      <ExhibitionPage />
       <Columns
         firstColumn={props.firstColumn}
         secondColumn={props.secondColumn}

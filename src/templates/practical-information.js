@@ -64,6 +64,7 @@ const PracticalInformation = props => {
             __html: pageInfo.acf[language].venue_description,
           }}
         />
+        <ImageResource id={pageInfo.acf.venue_map_graphic} withCaption={false} />
       </div>
     </TwoColumnPageWrapper>
   )

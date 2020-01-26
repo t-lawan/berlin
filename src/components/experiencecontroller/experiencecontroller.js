@@ -46,7 +46,7 @@ class ExperienceController extends React.Component {
   }
 
   incrementExperience = () => {
-    if(this.props.experience < this.experiences.length) {
+    if(this.props.experience < this.state.experiences.length) {
       this.props.experienceIncreased();
       this.props.experience + 1
       setTimeout(() => {

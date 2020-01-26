@@ -10,17 +10,22 @@ export const truncateText = (text, number = 25) => {
   return text.split(' ').slice(0, number).join(' ');
 }
 
+export const getNumberOfWords = (text) => {
+  return text.split(' ').length;
+}
 export const pageMap = [
-  {EN: "event", DE: "veranstaltung"},
-  {EN: "about", DE: "uber"},
-  {EN: "resource", DE: "resource"},
-  {EN: "exhibition", DE: "austellung"},
-  {EN: "venue", DE: "ort"},
-  {EN: "documentation", DE: "dokumentation"},
-  {EN: "participant", DE: "beteiligte"},
-  {EN: "news", DE: "news"},
-  {EN: "current", DE: "aktuell"},
-  {EN: "calendar", DE: "kalendar"},
+  { EN: "event", DE: "veranstaltung" },
+  { EN: "about", DE: "uber" },
+  { EN: "resource", DE: "resource" },
+  { EN: "exhibition", DE: "austellung" },
+  { EN: "venue", DE: "ort" },
+  { EN: "documentation", DE: "dokumentation" },
+  { EN: "participant", DE: "beteiligte" },
+  { EN: "news", DE: "news" },
+  { EN: "current", DE: "aktuell" },
+  { EN: "calendar", DE: "kalendar" },
+  { EN: "data-privacy", DE: "datenschutz" },
+  { EN: "imprint", DE: "impressum" },
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"

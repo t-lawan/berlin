@@ -24,6 +24,21 @@ const RelatedNavigatorWrapper = styled.div`
       display:table;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    display:block;
+    margin-top:0em;
+    padding: 0.5em 0 0 0.7em;
+    width:100%;
+    :after {
+      content:"";
+      clear:both;
+      display:table;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    margin-top:-2em;
+    padding-left: 0;
+  }
 `
 
 const RelatedNavigatorButton = styled(AniLink)`

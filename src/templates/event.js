@@ -25,7 +25,18 @@ import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { EventsModel } from "../models/EventsModel"
 
-const EventColumn = styled.div``
+const EventColumn = styled.div`
+:first-child {
+  border-bottom: solid 1px #000;
+  margin-bottom: 1.3em;
+}
+@media (min-width: ${size.tablet}) {
+    :first-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    }
+  }
+`
 
 const EventTextBlock = styled(TextBlock)`
   a,
@@ -42,6 +53,21 @@ const EventTitle = styled.h1`
   font-size: 1.8rem;
   line-height: 1.2;
   ${hideDisplayForMobile};
+  @media (max-width: 1023px) {
+    display: none;
+  }
+`
+const EventSubTitle = styled.h2`
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  margin-top:-1.5em;
+  margin-bottom:0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  ${hideDisplayForMobile};
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `
 
 const VideoContainer = styled.div`
@@ -56,7 +82,15 @@ const EventTitleMob = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
   line-height: 1.2;
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.laptop}) {
+    display: none;
+  }
+`
+const EventSubTitleMob = styled.h2`
+  font-size: 1.0em;
+  margin: -1em 0 1em;
+  line-height: 1.2;
+  @media (min-width: ${size.laptop}) {
     display: none;
   }
 `
@@ -152,6 +186,11 @@ const Event = props => {
               __html: striptags(event[language].event_title, ["em"]),
             }}
           />
+          <EventSubTitleMob
+            dangerouslySetInnerHTML={{
+              __html: striptags(event[language].event_subtitle, ["em"]),
+            }}
+          />
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
@@ -227,11 +266,12 @@ const Event = props => {
                 __html: striptags(event[language].event_title, ["em"]),
               }}
             />
-            <div
+            <EventSubTitle
               dangerouslySetInnerHTML={{
-                __html: event[language].event_subtitle,
+                __html: striptags(event[language].event_subtitle, ["em"]),
               }}
             />
+            
           </TextBlock>
 
           <EventDescription
@@ -240,7 +280,7 @@ const Event = props => {
             }}
           />
 
-          <TextBlock>
+          <TextBlock hidden={!event.video}>
             <VideoContainer
               hidden={!event.video}
               dangerouslySetInnerHTML={{
