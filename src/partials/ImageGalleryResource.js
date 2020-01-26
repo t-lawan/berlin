@@ -141,7 +141,7 @@ class ImageGalleryResource extends React.Component {
             <ImageResource
               onLoad={() => this.setVisibleToTrue()}
               id={this.props.ids[this.state.index]}
-              withCaption={false}
+              withCaption={true}
             />
           </AnimatedSpace>
         </NavigationSpace>
