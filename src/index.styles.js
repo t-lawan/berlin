@@ -184,7 +184,7 @@ p {
     }
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1rem;
+    font-size: 1.05rem !important;
   }
 }
 
@@ -260,6 +260,14 @@ export const keyFrameExperienceImage = keyframes`
   100% {
     opacity: 1;
   }
+`
+export const TickerAnim = keyframes`
+  0% {
+    right: 0%;
+}
+100% {
+    right: -50%;
+}
 `
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {

@@ -10,6 +10,10 @@ import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
   padding: 1em;
+  @media (max-width: ${size.tablet}) {
+    padding: 1em 0.7em;
+    border-bottom:solid 1px #000;
+  }
   ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
   @keyframes increaseHeight {

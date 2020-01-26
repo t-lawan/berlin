@@ -47,6 +47,8 @@ const UpcomingEvents = props => {
       return a.start_date - b.start_date
     })
 
+  console.log("EVENT", filteredItems)
+
   return (
     <EventsWrapper>
       <p hidden={filteredItems.length !== 0}>

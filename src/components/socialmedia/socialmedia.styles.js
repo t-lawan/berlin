@@ -20,7 +20,7 @@ export const SocialMediaWrapper = styled.div`
     background: white;
     position:fixed;
     right:0;
-    height:55px;
+    height:65px;
     padding: 0.7em;
     margin: 0;
   }

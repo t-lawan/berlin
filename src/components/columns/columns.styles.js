@@ -2,11 +2,15 @@ import styled, { css } from "styled-components"
 import {
   changeGridToOneRow,
   size,
+  Color,
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
   showDisplayForMobile,
 } from "../../index.styles"
+import {
+  ColumnLayout,
+} from "./column.styles"
 import { Animated } from "react-animated-css"
 
 export const AnimatedColumn = styled(Animated)`
@@ -32,6 +36,9 @@ export const AnimatedColumn = styled(Animated)`
     grid-template-areas:"column" "column column" "footer" !important;
     margin:40px auto 0;
     height: calc(100vh - 40px);
+    ${ColumnLayout}:nth-child(3) {
+      z-index:10;
+    }
   }
 
 `
@@ -74,7 +81,7 @@ export const StickyTopHeader = styled.div`
   position: sticky;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
-    grid-column-start: span 2;
+    /*grid-column-start: span 2;*/
   }
   :first-child {
     border-right: solid 1px #000;
@@ -162,6 +169,20 @@ export const StickyFooter = styled.div`
     grid-area: unset;
   }
   transition: all 0.3s ease-in-out;
+  @media (max-width: ${size.mobileM}) {
+    position: fixed;
+    bottom: 45px;
+    z-index: 999999;
+  }
+  @media (min-width: ${size.tablet}) {
+    position: fixed;
+    bottom: 0px;
+    z-index: 999999;
+  }
+   @media (min-width: ${size.laptop}) {
+    position: sticky;
+    z-index: 500;
+   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
 
@@ -208,4 +229,24 @@ export const FixedNavbar = styled.div`
     bottom: 0;
     top:auto;
   }
+`
+export const FixedTicker = styled.div`
+  z-index: 5;
+  bottom: 60px;
+  height:42px;
+  width: calc(33.33% - 3.3%);
+  position: fixed;
+  overflow:hidden;
+  border-top: solid 1px #000;
+  background: ${Color.yellow};
+  right: 5%;
+  left:auto;
+  /*grid-area: footer;*/
+  @media (max-width: ${size.mobileL}) {
+    grid-area: unset;
+    
+  }
+  ${showDisplayForTablet};
+  ${hideDisplayForTablet};
+  transition: all 0.3s ease-in-out;
 `

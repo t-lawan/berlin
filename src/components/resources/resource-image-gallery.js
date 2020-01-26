@@ -23,11 +23,16 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.8em;
+    font-size: 1.05rem;
+    line-height: 1.3;
   }
 `
 const Author = styled.p`
   margin-bottom:0;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
 `
 
 const ResourceImageGallery = props => {
@@ -42,13 +47,13 @@ const ResourceImageGallery = props => {
       </ResourceImageWrapper>
       <TwoColumnPageWrapper>
         <div>
-          <p
+          <ResourceTitle
               dangerouslySetInnerHTML={{
                 __html: striptags(r.title, ['em']),
               }}
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <p> {r[language].year}</p>
+          <Author> {r[language].year}</Author>
           <a target="_blank" href={r.external_url}> {r.external_url_label}</a>
         </div>
         <div>

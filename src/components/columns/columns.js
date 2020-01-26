@@ -5,6 +5,7 @@ import LanguageController from "../languagecontroller/languagecontroller"
 import Header from "../header/header"
 import Navbar from "../navbar/navbar"
 import Jumbotron from "../jumbotron/jumbotron"
+import Ticker from "../ticker/ticker"
 import JumbotronMob from "../jumbotron/jumbotronmob"
 import ExperienceController from "../experiencecontroller/experiencecontroller"
 import { connect } from "react-redux"
@@ -23,6 +24,7 @@ import {
   FixedTopExpMob,
   MobTitleCard,
   MobAnimCard,
+  FixedTicker,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -119,7 +121,7 @@ class Columns extends React.Component {
             <Header showOnHomePage={this.props.isHome} hideInMobile={this.props.isHome} />
           </StickyTopHeader>
 
-          <StickyTopHeader hideInTablet={true} hideInMobile={true} hideInTablet={true}>
+          <StickyTopHeader hideInMobile={true}>
             <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
@@ -159,6 +161,9 @@ class Columns extends React.Component {
               <Jumbotron />
             </StickyTopHeader> */}
             {this.props.thirdColumn}
+            <FixedTicker>
+              <Ticker />
+            </FixedTicker>
             <StickyFooterWithHighZIndex>
               <SocialMedia />
             </StickyFooterWithHighZIndex>

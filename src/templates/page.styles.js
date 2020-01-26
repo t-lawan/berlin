@@ -1,22 +1,7 @@
 import styled from "styled-components"
 import { changeGridToOneRow, Color, size } from "../index.styles";
+import { RelatedResourcesWrapper } from "../components/resources/related-resources";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-export const PageWrapper = styled.div`
-  padding: 2.0em 1em 2em;
-  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
-  @media (max-width: ${size.tablet}) {
-    padding: 1em 0.7em;
-    background:#FFF;
-  }
-`
-export const PageWrapperRes = styled.div`
-  padding: 2.0em 1em 2em;
-  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
-  @media (max-width: ${size.tablet}) {
-    padding: 0em;
-  }
-`
 
 export const TwoColumnPageWrapper = styled.div`
   padding: 2em 1em 2em;
@@ -32,10 +17,50 @@ export const TwoColumnPageWrapper = styled.div`
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 33fr 66fr;
-  }
-  
+  } 
+  @media (min-width: ${size.laptopL}) {
+    grid-template-columns: 1fr 4fr;
+  }  
   ${changeGridToOneRow}
 `
+
+export const PageWrapper = styled.div`
+  padding: 2.0em 1em 2em;
+  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
+  @media (max-width: ${size.tablet}) {
+    padding: 1em 0.7em;
+    background:#FFF;
+  }
+  @media (min-width: ${size.laptop}) {
+    padding-bottom:115px;
+  }
+  > ${TwoColumnPageWrapper} {
+    padding: 1.5em 0 0 0;
+  }
+`
+export const PageWrapperRes = styled.div`
+  padding: 2.0em 1em 2em;
+  background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
+  @media (max-width: ${size.tablet}) {
+    padding: 0em;
+  }
+  @media (max-width: ${size.mobileM}) {
+    > div {
+      background: ${Color.yellow};
+    }
+  }
+  > ${TwoColumnPageWrapper} {
+    padding: 1.5em 0 0 0;
+  }
+  > ${RelatedResourcesWrapper} {
+    padding: 1.5em 0 0 0;
+    margin-left:-0.35em;
+    margin-right:-0.35em;
+    width:calc(100% + 0.7em);
+  }
+`
+
+
 export const TwoColumnPageWrapperNoPad = styled.div`
   padding: 2em 0em 2em;
   
@@ -82,6 +107,10 @@ export const PressWrapper = styled.div`
     }
   }
   ${changeGridToOneRow};
+  @media (min-width: ${size.laptop}) {
+    padding-bottom:115px;
+    border-top: none;
+  }
 `
 
 export const ResourceImageWrapper = styled.div`
@@ -185,11 +214,20 @@ export const PageTitleCalendar = styled.h1`
     display:block;
     position:sticky;
     top:0;
+    background:#FFF;
+    z-index:3;
+    border-top: solid 1px #000;
+    padding:0.3em 0.4em;
+    border-bottom:solid 1px #000;
+    width:100%;
   }
 `
 export const PageSubTitle = styled.h3`
   font-size: 1rem;
   margin: 1em 0 0.5em;
+  :first-child {
+    margin-top:0;
+  }
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`

@@ -132,6 +132,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
               }
               thumbnail_image
+              venue_map_graphic
               template
               EN {
                 content
@@ -372,6 +373,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_bb11_right_header
                 promotional_sticker_for_homepage
                 promotional_sticker_url
+                external_link_url
               }
               EN {
                 description
@@ -385,6 +387,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 exp_bb11_right_header
                 promotional_sticker_for_homepage
                 promotional_sticker_url
+                external_link_url
               }
               end_date
               exp_number

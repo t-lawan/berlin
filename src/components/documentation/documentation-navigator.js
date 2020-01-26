@@ -25,6 +25,10 @@ const DocumentationNavigatorWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0 0 0.7em;
   }
+  @media (min-width: ${size.laptop}) {
+    margin:-2em 0 0 0;
+    padding:0;
+  }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
@@ -47,7 +51,7 @@ const DocumentationNavigatorButton = styled(AniLink)`
   @media (min-width: ${size.laptop}) {
     font-size: 1.1rem;
   line-height:1;
-  padding: 0.5em 0 0 1em;
+  padding: 0.5em 1em 0 0em;
   }
 `
 

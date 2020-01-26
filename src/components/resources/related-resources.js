@@ -5,10 +5,11 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import striptags from "striptags"
 import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import { get } from "http";
 
-const RelatedResourcesWrapper = styled.div`
+export const RelatedResourcesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -71,6 +72,11 @@ const ResourceText = styled.p`
   }
   @media (max-width: ${size.tablet}) {
     font-size: 0.9em !important;
+  }
+  @media (min-width: ${size.laptop}) {
+    :last-child {
+      font-size: 0.85em !important;
+    }
   }
 `
 
