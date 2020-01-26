@@ -5,6 +5,7 @@ import LanguageController from "../languagecontroller/languagecontroller"
 import Header from "../header/header"
 import Navbar from "../navbar/navbar"
 import Jumbotron from "../jumbotron/jumbotron"
+import Ticker from "../ticker/ticker"
 import JumbotronMob from "../jumbotron/jumbotronmob"
 import ExperienceController from "../experiencecontroller/experiencecontroller"
 import { connect } from "react-redux"
@@ -23,6 +24,7 @@ import {
   FixedTopExpMob,
   MobTitleCard,
   MobAnimCard,
+  FixedTicker,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -34,18 +36,51 @@ import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
+  animationInDuration = 600;
+  animationOutDuration = 500;
+  footerRef;
+  columnOneRef;
+  columnTwoRef;
   constructor(props) {
     super(props);
+    this.footerRef = React.createRef();
+    this.columnOneRef = React.createRef();
+    this.columnTwoRef = React.createRef();
     this.state = {
-      showEvents: false
+      showFooter: false,
+      scrollHeight: 0,
+      scrollTop: 0
+    }
+  }
+
+  scroll = (e) => {
+    let columnOne = this.columnOneRef.current.columnRef.current
+    let columnTwo = this.columnTwoRef.current.columnRef.current
+    let footer = this.footerRef.current;
+
+
+    if(!columnOne || !columnTwo) {
+      return false;
+    } else {
+      let columnOnePercent = (columnOne.scrollTop + columnOne.clientHeight)/columnOne.scrollHeight
+      let columnTwoPercent = (columnTwo.scrollTop + columnTwo.clientHeight)/columnTwo.scrollHeight
+
+      if(columnOnePercent > 0.75 || columnTwoPercent > 0.8 ) {
+        footer.classList.remove('hide-footer');
+        footer.classList.add('show-footer');
+      } else {
+        footer.classList.remove('show-footer');
+        footer.classList.add('hide-footer');
+        // return false
+      }
     }
   }
   render() {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
         <FirstColumnWrapper twoColumns>
-          <Column rightBorder={true}>{this.props.firstColumn} </Column>
-          <Column>{this.props.secondColumn} </Column>
+          <Column hideInMobile rightBorder={true}>{this.props.firstColumn} </Column>
+          <Column >{this.props.secondColumn} </Column>
         </FirstColumnWrapper>
       )
     } else {
@@ -61,16 +96,15 @@ class Columns extends React.Component {
     });
 
     let image = getDocument(this.props.documents, exhibition.animation)
-
     return (
-      <ColumnsWrapper>
+      <ColumnsWrapper onScroll={(x) => this.scroll(x)}>
         {/* First Column */}
-        <Column rightBorder={true} hideInMobile>
+        <Column rightBorder={true} hideInMobile={true} hideInTablet>
           <ExperienceController left={true} />
         </Column>
-        <FixedTopExpMob showInMobile={true}>
-              <ExperienceControllerMobile showInMobile={true} />
-              {/* <Header hideInMobile={true} /> */}
+        <FixedTopExpMob showInTablet={true}>
+          <ExperienceControllerMobile showInTablet={true} />
+          {/* <Header hideInMobile={true} /> */}
         </FixedTopExpMob>
         {/* Middle Column */}
         <AnimatedColumn
@@ -78,25 +112,25 @@ class Columns extends React.Component {
           animationOut={this.props.experience_transition.animationOut}
           isVisible={this.props.experience_transition.isVisible}
           animateOnMount={false}
-          animationInDuration={1000}
-          animationOutDuration={200}
+          animationInDuration={this.props.animationInDuration}
+          animationOutDuration={this.props.animationOutDuration}
           style={{ zIndex: 0 }}
         >
           
-          <StickyTopHeader hideInMobile={true}>
-            <Header hideInMobile={true} />
+          <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={this.props.isHome} hideInTablet={false}>
+            <Header showOnHomePage={this.props.isHome} hideInMobile={this.props.isHome} />
           </StickyTopHeader>
 
           <StickyTopHeader hideInMobile={true}>
-            <Jumbotron hideInMobile={true} />
+            <Jumbotron hideInTablet={true} />
           </StickyTopHeader>          
           
           {/* Second Column */}
-          <Column rightBorder={true}>
-            <MobTitleCard showInMobile={true}>
-              <JumbotronMob showInMobile={true} />
+          <Column ref={this.columnOneRef} rightBorder={true}>
+            <MobTitleCard showInMobile={this.props.isHome}>
+              <JumbotronMob showInMobile={true}/>
             </MobTitleCard>
-            <MobAnimCard showInMobile={true}>
+            <MobAnimCard showInMobile={this.props.isHome}>
               <img className="bg_anim" src={image.url}/>
             </MobAnimCard>
             <RelativeHeader>
@@ -106,48 +140,50 @@ class Columns extends React.Component {
               />
             </RelativeHeader>
             <StickyHeader>
-              <Navbar hideInMobile={true} />
+              <Navbar hideInTablet={true} />
             </StickyHeader>
 
             {this.renderedComponents}
             {/* Only In Mobile */}
-            <StickyFooter showInMobile>
+            <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
             {/* Only In Mobile */}
-            <FixedFooter showInMobile>
+            <FixedFooter showInTablet>
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}
-            
           </Column>
           {/* Third Column */}
           {/* Only In Desktop */}
-          <Column hideInMobile={true} rightBorder={true}>
+          <Column ref={this.columnTwoRef} hideInMobile={true} rightBorder={true}>
             {/* <StickyTopHeader>
               <Jumbotron />
             </StickyTopHeader> */}
             {this.props.thirdColumn}
+            <FixedTicker>
+              <Ticker />
+            </FixedTicker>
             <StickyFooterWithHighZIndex>
               <SocialMedia />
             </StickyFooterWithHighZIndex>
           </Column>
 
           {/* Only In Desktop */}
-          <StickyFooter hideInMobile>
+          <StickyFooter show={this.props.agreed_to_terms} hideInTablet>
             <DataPrivacy show={!this.props.agreed_to_terms} />
           </StickyFooter>
           {/* Only In Desktop */}
-          <FixedFooter hideInMobile>
+          <FixedFooter ref={this.footerRef} hideInMobile>
             <FooterComponent />
           </FixedFooter>
         </AnimatedColumn>
         <FixedNavbar>
-              <NavbarMobile showInMobile />
+            <NavbarMobile showInTablet={true} />
         </FixedNavbar>
         {/* Fourth Column */}
         {/* Only In Mobile */}
-        <Column rightBorder={false} hideInMobile>
+        <Column rightBorder={false} hideInMobile={true} hideInTablet>
           <LanguageController />
           <ExperienceController left={false} />
         </Column>

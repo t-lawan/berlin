@@ -13,18 +13,64 @@ export const DateCardWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 2fr 6fr;
   }
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 1fr 4fr;
+  }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 1fr 5fr;
+    padding-top:55px;
+    margin-top:-55px;
+    :last-child {
+      padding-bottom:115px;
+      border-bottom:none;
+    }
+  }
+`
+export const MonthCardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  border-bottom: 1px solid black;
+  /* border-right: 1px solid black; */
+  background-color: ${props => (props.addColour ? Color.yellow : "inherit")};
+  height: auto;
+  display: -moz-inline-grid;
+  display: inline-grid;
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 2fr 6fr;
+  }
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 1fr 4fr;
+  }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 1fr 5fr;
+    padding-top:0px;
+    margin-top:0px;
+    :last-child {
+      padding-bottom:115px;
+      border-bottom:none;
+    }
+  }
 `
 export const EventCardsWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   @media (max-width: ${size.mobileM}) {
     flex-direction: column;
   }
 `
+
+export const EventsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
+
+export const EventsContainer = styled.div`
+  
+`
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;
   padding: 0.5em 1em;
-  padding-bottom: 0;
   display: flex;
   flex-direction: row;
   align-items: top;
@@ -42,6 +88,12 @@ export const DateText = styled.strong`
   @media (max-width: ${size.mobileM}) {
     width:60%;
     padding-right: 0.2em;
+  }
+  @media (max-width: ${size.tablet}) {
+   font-size: 1.5em; 
+  }
+  @media (min-width: ${size.laptop}) {
+   font-size: xx-large;
   }
 `
 
@@ -63,8 +115,29 @@ export const MonthHeading = styled.p`
   line-height: 1;
   margin:0;
   font-size: 2em;
+  @media (min-width: ${size.tablet}) {
+    font-size: 1.5em;
+    padding: 0.25em 0.4em;
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.55em;
+    padding: 0.3em 0.4em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 2em;
+    padding: 0.25em 0.5em;
+  }
 `
 export const ClosedText = styled.p`
-  margin: 1.5rem;
+  margin: 0.5em 1em;
+  text-transform:lowercase;
   opacity: 0.5;
+  @media (max-width: ${size.mobileM}) {
+    margin: 0.3em 0.5em;
+    font-size: 1rem;
+  }
+  @media (max-width: ${size.tablet}) {
+    margin: 0.5em 0.7em;
+    font-size: 0.95rem;
+  }
 `

@@ -1,15 +1,30 @@
 import styled from "styled-components"
-import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { showDisplayForTablet } from "../../index.styles";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+import {
+  showDisplayForTablet,
+  size,
+  showDisplayForMobile,
+  hideDisplayForMobile,
+} from "../../index.styles"
 
 export const JumbotronWrapper = styled.div`
   background: white;
   padding: 1.4em 1.95rem 0.7em;
   margin: 0em;
   ${showDisplayForTablet};
+  @media (min-width: ${size.mobileL}) {
+    padding: 0.7em 0.7em;
+    display: inherit;
+  }
   border-top: 0;
   img {
-    margin-bottom:0;
+    margin-bottom: 0;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display: none;
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 1.4em 1.95rem 0.7em;
   }
 `
 
@@ -17,21 +32,22 @@ export const JumbotronHeader = styled(AniLink)`
   text-decoration: none;
   color: black;
   position: relative;
-  display:block;
+  display: block;
   :hover {
     cursor: pointer;
   }
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.5em 0.7rem;
+  padding: 0.0em 0.0rem 0px;
   margin: 0em;
   position:relative;
   width:100%;
   z-index:2;
   display:block;
-  ${showDisplayForTablet};
-
+  /* @media (min-width: ${size.mobileL}) {
+    display:none;
+  } */
   img {
     margin-bottom:0;
     position:relative;
@@ -50,4 +66,6 @@ export const JumbotronWrapperMob = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+  ${showDisplayForMobile};
+
 `

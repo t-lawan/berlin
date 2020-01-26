@@ -9,7 +9,7 @@ const AboutTextBlock = styled(TextBlock)`
 padding-top: 0;
 padding-left: 1em;
 p{
-  line-height: 1.2em;
+  line-height: 1.3;
   @media (max-width: ${size.mobileM}) {
     line-height:1.4 !important;
   }

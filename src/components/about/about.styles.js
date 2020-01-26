@@ -3,7 +3,7 @@ import { Color, size } from "../../index.styles";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import ImageResource from "../../partials/ImageResource";
 export const AboutSideNavbar = styled.nav`
-  padding: 0.25em 1em 0 0;
+  padding: 0em 1em 0 0;
   display: flex;
   flex-direction: column;
   line-height: 1;
@@ -11,6 +11,10 @@ export const AboutSideNavbar = styled.nav`
     flex-direction: row;
     padding: 0;
     width:100%;
+    display: flex;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display:none
   }
 `
 
@@ -39,6 +43,9 @@ export const AboutPageContent = styled.div`
     p {
         margin-bottom: 1em;
         line-height:1.4;
+        :first-child {
+          margin-top:0em;
+        }
       }
     p > a {
         border-bottom: solid 1px ${Color.red};
@@ -56,11 +63,17 @@ export const AboutComponentWrapper = styled.section`
       margin-top:0;
     }
   }
+  > div:first-child {
+    margin-top:0em;
+  }
+  @media (min-width: ${size.laptop}) {
+  padding-bottom:115px;
+  }
 `
 
 export const AboutFundingHeader = styled.p`
     text-decoration: none;
-    padding-bottom: 1rem;
+    padding-bottom: 0rem;
 `
 
 export const AboutFundingBlock = styled.article`

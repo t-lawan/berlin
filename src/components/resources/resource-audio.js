@@ -6,11 +6,28 @@ import {
   ResourcePublisherLink,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color } from "../../index.styles"
+import { Color, size, } from "../../index.styles"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
-import AudioResource from "../../partials/AudioResource"
+import styled from 'styled-components';
+import AudioResource from "../../partials/AudioResource";
+import striptags from "striptags";
+
+const ResourceTitle = styled.h1`
+  line-height: 1.2;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.2em;
+    margin: 0.3em 0 1.0em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+    margin: 0em;
+  }
+`
+const Author = styled.p`
+  margin-bottom:0;
+`
 
 const ResourceAudio = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -23,10 +40,14 @@ const ResourceAudio = props => {
 
       <TwoColumnPageWrapper>
         <div>
-          <p>
-            {r.title} : {r[language].label}
-          </p>
-          <p> {r.author} </p> 
+          <ResourceTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(r.title, ['em']),
+              }}
+            />
+          
+          {r[language].label ? <Author> {r[language].label} </Author> : ""} 
+          {r.author ? <Author> {r.author} </Author> : ""} 
         </div>
         <div>
           <div

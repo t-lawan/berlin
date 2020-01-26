@@ -1,5 +1,5 @@
 import styled, { css, createGlobalStyle, keyframes } from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const Color = {
   yellow: "#F9EF84",
@@ -7,8 +7,8 @@ export const Color = {
 }
 export const size = {
   mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
+  mobileM: "420px",
+  mobileL: "500px",
   tablet: "768px",
   laptop: "1024px",
   laptopL: "1440px",
@@ -42,6 +42,7 @@ body {
   h1 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -58,6 +59,7 @@ body {
 h2 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -73,6 +75,7 @@ h2 {
 }
 h3 {
   margin-left: 0;
+  font-weight:normal;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
@@ -90,6 +93,7 @@ h3 {
 h4 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -108,6 +112,7 @@ h5 {
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
+  font-weight:normal;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -122,6 +127,7 @@ h5 {
 h6 {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -150,12 +156,11 @@ a, span {
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
-  @media (max-width: ${size.tablet}) {
-  }
 }
 p {
   margin-left: 0;
   margin-right: 0;
+  font-weight:normal;
   line-height: 1.3;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -171,6 +176,16 @@ p {
       font-size:1em;
     }
   }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95rem;
+    line-height:1.3;
+    > a {
+      font-size:0.95rem;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem !important;
+  }
 }
 
 li {
@@ -180,35 +195,56 @@ a {
   text-decoration-line: none;
   text-decoration-color: ${Color.red};
 }
+h1, h2, h3, h4, h5, h6, p, a, em {
+  word-wrap: break-word;
+}
+
+.hide-footer {
+  @media (min-width: ${size.tablet}) {
+    bottom: -200px !important; 
+  }
+
+}
+
+.show-footer {
+  @media (min-width: ${size.tablet}) {
+    bottom: 0 !important;
+  }
+}
 `
-
-
 
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.hideInMobile ? "none" : "")};
+    display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
 
 export const hideDisplayForMobile = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
-    display: ${props => (props.hideInMobile ? "none" : "none")};
+    display: ${props => (props.hideInMobile ? "none" : "inherit")};
   }
 `
 
 export const showDisplayForTablet = css`
-  display: ${props => (props.showInMobile ? "none" : "inherit")};
+  display: ${props => (props.showInTablet ? "none" : "inherit")};
   @media (max-width: ${size.tablet}) {
+    display: ${props => (props.showInTablet ? "inherit" : "none")};
+  }
+`
+
+export const showDisplayForMobile = css`
+  display: ${props => (props.showInMobile ? "none" : "inherit")};
+  @media (max-width: ${size.mobileM}) {
     display: ${props => (props.showInMobile ? "inherit" : "none")};
   }
 `
 
 export const showDisplayForTabletFunc = variable => css`
-  display: ${props => (props.showInMobile ? "none" : `${variable}`)};
+  display: ${props => (props.showInTablet ? "none" : `${variable}`)};
   @media (max-width: ${size.tablet}) {
-    display: ${props => (props.showInMobile ? `${variable}` : "none")};
+    display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
 `
 
@@ -224,6 +260,14 @@ export const keyFrameExperienceImage = keyframes`
   100% {
     opacity: 1;
   }
+`
+export const TickerAnim = keyframes`
+  0% {
+    right: 0%;
+}
+100% {
+    right: -50%;
+}
 `
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
@@ -265,19 +309,17 @@ export const tablet = props => {
   `
 }
 
-
-
 export const UnderlinedText = styled.p`
   text-decoration: none;
   border-bottom: solid thin;
-  border-color: ${props => props.red ? Color.red : 'black'};
-  color: ${props => props.red ? Color.red : 'black'}
+  border-color: ${props => (props.red ? Color.red : "black")};
+  color: ${props => (props.red ? Color.red : "black")};
 `
 
 export const Section = styled.section`
   padding: 1em;
   @media (max-width: ${size.mobileM}) {
-    padding: 0.7em
+    padding: 0.7em;
   }
 `
 
@@ -297,12 +339,12 @@ export const UnderlineSectionLink = styled(AniLink)`
 
 export const ExternalLink = styled.a`
   :hover {
-    color: ${ props => props.colour};
+    color: ${props => props.colour};
   }
 `
 
 export const LargeButton = styled.button`
-  margin: 0.0em 0 0 10px;
+  margin: 0em 0 0 10px;
   font-size: 1em;
   display: inline-block;
   border-radius: 0;
@@ -313,9 +355,8 @@ export const LargeButton = styled.button`
     cursor: pointer;
   }
   @media (max-width: ${size.mobileM}) {
-    margin: 0.2em 0 0 10px;
+    margin: 0.2em 0 0 0px;
   }
 `
 
-export const TextSection = styled.section`
-`
+export const TextSection = styled.section``

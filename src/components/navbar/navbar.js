@@ -50,7 +50,7 @@ const Navbar = props => {
 
   const language = getCurrentLanguageString(props.languages)
   return (
-    <NavWrapper hideInMobile={props.hideInMobile}>
+    <NavWrapper hideInTablet={props.hideInTablet}>
       <NavInner>
         {props.navbar.map(item => generateLink(item, language))}
       </NavInner>
@@ -70,6 +70,7 @@ Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   hideInMobile: PropTypes.bool,
+  hideInTablet: PropTypes.bool
 }
 
 export default connect(

@@ -6,7 +6,14 @@ import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
-
+import { size } from "../../index.styles"
+import styled from 'styled-components';
+const MargTop = styled.div`
+margin:0em 0 0em;
+@media (max-width: ${size.mobileM}) {
+    margin:1em 0 0em;
+  }
+`
 const DocumentationImageGallery = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -27,7 +34,7 @@ const DocumentationImageGallery = props => {
             {exhibitions[0][language].title}
           </p>
         </div>
-        <div>
+        <MargTop>
           <div
             dangerouslySetInnerHTML={{
               __html: documentation[language].title,
@@ -38,7 +45,7 @@ const DocumentationImageGallery = props => {
               __html: documentation[language].doc_credits,
             }}
           />
-        </div>
+        </MargTop>
       </TwoColumnPageWrapper>
     </PageWrapper>
   )
