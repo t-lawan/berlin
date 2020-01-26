@@ -1,9 +1,5 @@
-import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
-
-import { Convert } from "../../utility/convert"
-import { CalendarModel } from "../../models/CalendarModel"
 import MonthCards from "./monthcards"
 import { CalendarWrapper } from "./calendar.styles"
 import { DateManager } from "../../utility/date";
@@ -80,7 +76,7 @@ class Calendar extends React.Component{
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
-        block: "center",
+        block: "start",
         inline: "nearest",
       })
     }

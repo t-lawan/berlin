@@ -11,6 +11,7 @@ import {
   FormLabel,
   ModalCloseIcon,
   ModalHeader,
+  CloseImage,
 } from "./modal.styles"
 import axios from "axios"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
@@ -85,7 +86,10 @@ class Modal extends React.Component {
         ></BackDropWrapper>
         <ModalWrapper show={this.props.show}>
           <ModalHeader>
-            <ModalCloseIcon onClick={this.closeModal} icon={faTimes} />
+            <CloseImage
+            onClick={this.closeModal}
+            src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
+             />
           </ModalHeader>
           <div hidden={this.state.hasSubmitted}>
             <p>{modalText[this.language].description}</p>

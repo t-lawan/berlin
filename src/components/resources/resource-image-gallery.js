@@ -7,12 +7,33 @@ import {
   ResourceImageWrapper
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import ImageResource from "../../partials/ImageResource"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
 import ImageGalleryResource from "../../partials/ImageGalleryResource";
+import styled from 'styled-components';
+import striptags from 'striptags';
+
+const ResourceTitle = styled.h1`
+  line-height: 1.2;
+  @media (max-width: ${size.tablet}) {
+    font-size: 1.2em;
+    margin: 0.3em 0 1.0em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+`
+const Author = styled.p`
+  margin-bottom:0;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+`
 
 const ResourceImageGallery = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -26,9 +47,13 @@ const ResourceImageGallery = props => {
       </ResourceImageWrapper>
       <TwoColumnPageWrapper>
         <div>
-          <p> {r.title}</p>
-          <p> {r.author}</p>
-          <p> {r[language].year}</p>
+          <ResourceTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(r.title, ['em']),
+              }}
+            />
+          {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
+          <Author> {r[language].year}</Author>
           <a target="_blank" href={r.external_url}> {r.external_url_label}</a>
         </div>
         <div>

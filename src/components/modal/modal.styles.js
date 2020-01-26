@@ -35,7 +35,7 @@ export const BackDropWrapper = styled.div`
 `
 
 export const ModalHeader = styled.div`
-  padding: 0.5em;
+  padding: 0.5em 0;
   text-align: right;
 `;
 
@@ -45,7 +45,16 @@ export const ModalCloseIcon = styled(FontAwesomeIcon)`
     cursor: pointer;
   }
 `
-
+export const CloseImage = styled.img`
+  width: 8%;
+  align-self: flex-end;
+  @media (max-width: ${size.tablet}) {
+    width: 5%;
+  }
+  @media (max-width: ${size.mobileM}) {
+    width: 7%;
+  }
+`
 export const FormButton = styled.button`
   margin: 0.5em 0.25em;
   font-size: 1em;

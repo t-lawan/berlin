@@ -5,6 +5,7 @@ import { DateManager } from "../../utility/date"
 import EventCard from "./eventcard"
 import {
   DateCardWrapper,
+  MonthCardWrapper,
   CurrentDate,
   DateText,
   DayMonthText,
@@ -12,30 +13,35 @@ import {
   EventCardsWrapper,
   ClosedText,
   DateTextWrapper,
-  DateString
+  DateString,
+  EventsGrid,
 } from "./datecard.styles"
-import { getCurrentLanguageString } from "../../utility/helper";
+import { getCurrentLanguageString } from "../../utility/helper"
 
 const DateCard = props => {
   const language = getCurrentLanguageString(props.languages)
   let renderComponents
   if (props.containsEvents) {
-    const monthDay = DateManager.createMonthDayString(props.day, props.month, props.year, language)
+    const monthDay = DateManager.createMonthDayString(
+      props.day,
+      props.month,
+      props.year,
+      language
+    )
     const date = DateManager.createDatetring(props.day, props.month, props.year)
-    let events = []
-    events = props.events.sort((a, b) => {
-      return (
-        a[language].display_time.charAt(0) - b[language].display_time.charAt(0)
-      )
-    }).sort((a, b) => {
-      if(a.item === "exhibition") {
-        return -1;
-      } else {
-        return 1;
-      }
+    let events = props.events
+      .filter(ev => {
+        return ev.item === "event"
+      })
+      .sort((a, b) => {
+        return (
+          a[language].display_time.charAt(0) -
+          b[language].display_time.charAt(0)
+        )
+      })
+    let exhibitions = props.events.filter(ex => {
+      return ex.item === "exhibition"
     })
-
-    // const events = props.events;
 
     renderComponents = (
       <DateCardWrapper
@@ -48,26 +54,49 @@ const DateCard = props => {
         <CurrentDate>
           <DateText>{date}</DateText>
           <DateTextWrapper>
-            <DateString> {DateManager.createShortMonthString(props.day, props.month, props.year, language)}</DateString>
-            <DateString> {DateManager.createShortDayString(props.day, props.month, props.year, language)}</DateString>
+            <DateString>
+              {" "}
+              {DateManager.createShortMonthString(
+                props.day,
+                props.month,
+                props.year,
+                language
+              )}
+            </DateString>
+            <DateString>
+              {" "}
+              {DateManager.createShortDayString(
+                props.day,
+                props.month,
+                props.year,
+                language
+              )}
+            </DateString>
           </DateTextWrapper>
           {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
         </CurrentDate>
-        <EventCardsWrapper>
-          <ClosedText hidden={events.length !== 0}> Closed</ClosedText>
-          {events.map((event, index) => (
-            <EventCard key={index} event={event} />
-          ))}
-        </EventCardsWrapper>
+        <EventsGrid>
+          <EventCardsWrapper>
+            {exhibitions.length === 0 ? <ClosedText> Closed</ClosedText> : null} 
+            {exhibitions.map((exhibition, index) => (
+              <EventCard key={index} event={exhibition} />
+            ))}
+          </EventCardsWrapper>
+          <EventCardsWrapper>
+            {events.map((event, index) => (
+              <EventCard key={index} event={event} />
+            ))}
+          </EventCardsWrapper>
+        </EventsGrid>
       </DateCardWrapper>
     )
   } else {
     renderComponents = (
-      <DateCardWrapper addColour>
+      <MonthCardWrapper addColour>
         <MonthHeading>
           {DateManager.getMonthText(props.month, props.year).toLowerCase()}
         </MonthHeading>
-      </DateCardWrapper>
+      </MonthCardWrapper>
     )
   }
   return renderComponents

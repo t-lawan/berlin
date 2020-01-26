@@ -32,11 +32,6 @@ const AboutTeamBlock = props => {
   const language = getCurrentLanguageString(props.languages);
   const generateSection = (item, index) => {
     let renderComponent
-    <PageTitle
-              dangerouslySetInnerHTML={{
-                __html: teampage[language].title,
-              }}
-            />
     switch (item.team_block_type) {
       case "section":
         renderComponent = (
@@ -69,7 +64,11 @@ const AboutTeamBlock = props => {
     return renderComponent
   }
   return (
+    <>
+    <PageTitle> {teampage[language].title}</PageTitle>
     <div>{props.team.map((item, index) => generateSection(item, index))}</div>
+
+    </>
   )
 }
 

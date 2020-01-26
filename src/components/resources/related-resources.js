@@ -5,29 +5,41 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper"
+import striptags from "striptags"
+import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import { get } from "http";
 
-const RelatedResourcesWrapper = styled.div`
-  display: grid;
+export const RelatedResourcesWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width:calc(100% - 1em);
   margin-left:0.5em;
   margin-bottom:2em;
   margin-right:0.5em;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 0em;
   @media (max-width: ${size.mobileM}) {
-    grid-template-columns: 1fr 1fr;
-    background-color:#FFF;
+    /*background-color:#FFF;*/
     margin-bottom:0em;
     padding-bottom:2em;
+  }
+  @media (min-width: ${size.laptop}) {
   }
 `
 
 const ResourceLink = styled(AniLink)`
   text-decoration: none;
   color: black;
-  grid-auto-rows: 1fr;
+  margin-bottom:0.7em;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+  width:50%;
+  }
+  @media (min-width: ${size.mobileL}) {
+  width:33.33%;
+  }
+  @media (min-width: ${size.laptop}) {
+  width:25%;
+  }
 `
 
 const RelatedResource = styled.div`
@@ -36,7 +48,7 @@ const RelatedResource = styled.div`
   height:100%;
   position:relative;
   padding: 0.5em 0.5em 1.5em;
-  margin: 0.35em;
+  margin: 0.35em 0.35em 0 0.35em;
   border: 1px solid black !important;
   :hover{
     >p{
@@ -57,6 +69,14 @@ const ResourceText = styled.p`
     margin-bottom:0em;
     position:absolute;
     bottom:0.7em;
+  }
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.9em !important;
+  }
+  @media (min-width: ${size.laptop}) {
+    :last-child {
+      font-size: 0.85em !important;
+    }
   }
 `
 
@@ -114,7 +134,7 @@ const RelatedResources = props => {
           bg={transitionBackground}
         >
           <RelatedResource>
-            <ResourceText>{resource.title}</ResourceText>
+            <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>
