@@ -11,6 +11,7 @@ import {
   createPath,
   transitionBackground,
   truncateText,
+  getNumberOfWords,
 } from "../../utility/helper"
 import moment from "moment"
 import "moment/locale/en-gb"
@@ -33,7 +34,7 @@ const UpcomingEvents = props => {
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
           (props.experience >= props.active_experience
-            ? moment(item.start_date).diff(moment()) > 0
+            ? moment(item.start_date).diff(moment()) >= 0
             : true)
         )
       } else {
@@ -79,7 +80,7 @@ const UpcomingEvents = props => {
             {item[language].subtitle ? (
               <EventTitle
                 dangerouslySetInnerHTML={{
-                  __html: `<p>${truncateText(striptags(item[language].subtitle), 16)} ...<p>`,
+                  __html: `<p>${truncateText(striptags(item[language].subtitle), 16)} ...</p>`,
                 }}
               />
             ) : null}

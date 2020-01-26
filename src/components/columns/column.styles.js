@@ -39,4 +39,16 @@ export const ColumnLayout = styled.div`
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
     background: white;
   }
+  @media (min-width: ${size.mobileL}) {
+    :nth-child(4){
+    border-right: none;
+    border-top: solid 0px #000;
+  }
+  }
+  @media (min-width: ${size.laptop}) {
+    :nth-child(4){
+    border-right: none;
+    border-top: solid 1px #000;
+  }
+  }
 `
