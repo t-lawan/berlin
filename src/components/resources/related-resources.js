@@ -5,7 +5,7 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString, transitionBackground, truncateText } from "../../utility/helper"
+import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import striptags from "striptags"
 import { get } from "http";
 
@@ -134,11 +134,7 @@ const RelatedResources = props => {
           bg={transitionBackground}
         >
           <RelatedResource>
-            <ResourceText
-                dangerouslySetInnerHTML={{
-                  __html: `${truncateText(striptags(resource.title), 10)} ...`,
-                }}
-              />
+            <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>
