@@ -20,9 +20,9 @@ export const LogoWrapper = styled.div`
   }
 }
 
-animation: increaseHeight 2s forwards;
--webkit-animation: increaseHeight 2s forwards;
-animation-delay: 1.5s;
+animation: increaseHeight 1.5s forwards;
+-webkit-animation: increaseHeight 1.5s forwards;
+animation-delay: 1.4s;
   >img {
   	max-width: 310px;
     width: 100%;
