@@ -1,7 +1,6 @@
 import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
-
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource";
 import styled from "styled-components"
@@ -10,12 +9,24 @@ import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
   padding: 1em;
-  @media (max-width: ${size.tablet}) {
-    padding: 1em 0.7em;
-    border-bottom:solid 1px #000;
-  }
   ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
+  @keyframes increaseHeight {
+  from {
+    margin-top: -60%;
+  }
+
+  to {
+    margin-top: 0%;
+  }
+}
+
+animation: increaseHeight 1.5s;
+-webkit-animation: increaseHeight 1.5s;
+animation-delay: 0.3s;
+@media (max-width: ${size.tablet}) {
+    padding: 0.7em;
+    }
 `
 
 const ImageContainer = props => {
