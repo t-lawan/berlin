@@ -46,7 +46,7 @@ export const AnimatedSpace = styled(Animated)`
 `
 
 export const NavigationIcon = styled(FontAwesomeIcon)`
-  width: 0.25rem;
+  
   margin: auto;
   float: ${props => (props.floatright ? "right" : "left")};
 `
@@ -122,13 +122,14 @@ class ImageGalleryResource extends React.Component {
               show={!this.isFirstImage()}
               onClick={() => this.previousImage()}
             >
-              <NavigationIcon icon={faLongArrowAltLeft} />
+            
+              <NavigationIcon src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/img_gallery_prev@2x.png" />
             </NavigatingButton>
             <NavigatingButton
               show={!this.isLastImage()}
               onClick={() => this.nextImage()}
             >
-              <NavigationIcon icon={faLongArrowAltRight} floatright={1} />
+              <NavigationIcon src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/img_gallery_next@2x.png" floatright={1} />
             </NavigatingButton>
           </NavigationButtons>
 
