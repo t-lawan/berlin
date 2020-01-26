@@ -17,8 +17,11 @@ export const EventNavigatorWrapper = styled.section`
       display:table;
     }
   }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.5em 0.7em 0 0.7em;
+  }
   @media (min-width: ${size.mobileL}) {
-    padding: 0.5em 0.7em 0 0;
+    padding: 0.5em 0 0 0.7em;
   }
 `
 
