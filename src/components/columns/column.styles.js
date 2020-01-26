@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {hideDisplayForTablet, size, hideDisplayForMobile } from "../../index.styles";
 import {
   ExperienceButton,
+  ExperienceControllerWrapper,
 } from "../experiencecontroller/experiencecontroller.styles"
 
 
@@ -16,6 +17,13 @@ export const ColumnLayout = styled.div`
   overflow-y: inherit;
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
+  :first-child {
+    ${ExperienceControllerWrapper} {
+      @media (min-width: ${size.laptop}) {
+        margin-top: 9.6em;
+      }
+    }
+  }
   &::first-of-type{
     border: 0;
   }
