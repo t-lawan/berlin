@@ -280,7 +280,7 @@ const Event = props => {
             }}
           />
 
-          <TextBlock hidden={!event.video.length === 0}>
+          <TextBlock hidden={!event.video}>
             <VideoContainer
               hidden={!event.video}
               dangerouslySetInnerHTML={{
