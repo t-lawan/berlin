@@ -8,22 +8,24 @@ import { hideDisplayForMobile, size } from "../../index.styles";
 import ImageGalleryResource from "../../partials/ImageGalleryResource";
 
 const ImageContainerWrapper = styled.section`
-  padding: 1em;
+  padding: 0em;
+  max-height: 0;
+  transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
   ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
   @keyframes increaseHeight {
-  from {
-    margin-top: -60%;
+  0% {
+    max-height: 0;
   }
 
-  to {
-    margin-top: 0%;
+  100% {
+    max-height: 1000px;
   }
 }
 
-animation: increaseHeight 1.5s;
--webkit-animation: increaseHeight 1.5s;
-animation-delay: 0.3s;
+animation: increaseHeight 3s forwards;
+-webkit-animation: increaseHeight 3s forwards;
+animation-delay: 1.2s;
 @media (max-width: ${size.tablet}) {
     padding: 0.7em;
     }
