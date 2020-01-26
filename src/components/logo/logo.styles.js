@@ -6,10 +6,23 @@ export const LogoWrapper = styled.div`
   margin: auto;
   position: sticky;
   top: 0;
+  max-height:0;
   z-index: 0;
   padding: 0em 1em;
   background: white;
-  max-height:500px;
+  @keyframes increaseHeight {
+  0% {
+    max-height: 0;
+  }
+
+  100% {
+    max-height: 1000px;
+  }
+}
+
+animation: increaseHeight 2s forwards;
+-webkit-animation: increaseHeight 2s forwards;
+animation-delay: 1.5s;
   >img {
   	max-width: 310px;
     width: 100%;
