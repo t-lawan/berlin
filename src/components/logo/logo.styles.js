@@ -20,6 +20,7 @@ export const LogoWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
   >img {
     max-width:190px;
+    margin-bottom:0.7em;
   }
   }
 `
