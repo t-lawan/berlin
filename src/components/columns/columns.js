@@ -65,7 +65,7 @@ class Columns extends React.Component {
       let columnOnePercent = (columnOne.scrollTop + columnOne.clientHeight)/columnOne.scrollHeight
       let columnTwoPercent = (columnTwo.scrollTop + columnTwo.clientHeight)/columnTwo.scrollHeight
 
-      if(columnOnePercent > 0.75 || columnTwoPercent > 0.8 ) {
+      if(columnOnePercent > 0.8 || columnTwoPercent > 0.8 ) {
         footer.classList.remove('hide-footer');
         footer.classList.add('show-footer');
       } else {
