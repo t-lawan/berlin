@@ -25,7 +25,7 @@ const ExhibitionPageWrapper = styled.div`
   }
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.7em;
-    z-index: 6;
+    z-index: 6000;
     top:40px;
     left:0;
     width:100%;
