@@ -12,8 +12,8 @@ import { createPath, getCurrentLanguageString } from "../../utility/helper";
 class ExperienceController extends React.Component {
   experiences;
   language;
-  visibleDelayTime = 5;
-  changeExperienceDelayTime = 50;
+  visibleDelayTime = 100;
+  changeExperienceDelayTime = 200;
   constructor(props) {
     super(props);
     this.language = getCurrentLanguageString(props.languages);
@@ -46,7 +46,7 @@ class ExperienceController extends React.Component {
   }
 
   incrementExperience = () => {
-    if(this.props.experience < this.state.experiences.length) {
+    if(this.props.experience < this.state.experiences.length && !this.props.experience_transition.isTransitioning) {
       this.props.experienceIncreased();
       this.props.experience + 1
       setTimeout(() => {
@@ -61,7 +61,7 @@ class ExperienceController extends React.Component {
   }
 
   decrementExperience = () => {
-    if(this.props.experience > 0) {
+    if(this.props.experience > 0  && !this.props.experience_transition.isTransitioning) {
       this.props.experienceDecreased();
       this.props.experience + 1
       setTimeout(() => {
@@ -155,7 +155,8 @@ const mapStateToProps = state => {
   return {
     experience: state.experience,
     exhibitions: state.exhibitions,
-    languages: state.languages
+    languages: state.languages,
+    experience_transition: state.experience_transition
   }
 }
 
