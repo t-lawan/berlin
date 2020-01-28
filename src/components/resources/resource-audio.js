@@ -47,7 +47,7 @@ const ResourceAudio = props => {
             />
           
           {r[language].label ? <Author> {r[language].label} </Author> : ""} 
-          {r[language].author ? <Author> {r.author} </Author> : ""} 
+          {r.author ? <Author> {r.author} </Author> : ""} 
         </div>
         <div>
           <div
