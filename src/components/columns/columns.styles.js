@@ -234,12 +234,11 @@ export const FixedTicker = styled.div`
   z-index: 5;
   bottom: 60px;
   height:42px;
-  width: calc(33.33% - 3.3%);
+  /* width: calc(33.33% - 3.3%); */
+  width: 40%;
   position: fixed;
   overflow:hidden;
-  border-top: solid 1px #000;
-  background: ${Color.yellow};
-  right: 5%;
+  /* right: 5%; */
   left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
