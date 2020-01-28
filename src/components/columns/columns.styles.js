@@ -73,6 +73,12 @@ export const FirstColumnWrapper = styled.div`
     flex-direction: column-reverse;
     background-color: transparent;*/
   }
+  @media (min-width: ${size.mobileL}) {
+    border-top: solid 0px #000;
+  }
+  @media (min-width: ${size.laptop}) {
+    border-top: none;
+  }
 `
 
 export const StickyTopHeader = styled.div`
@@ -91,6 +97,12 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    border-bottom:solid 1px #000;
+  }
+  @media (min-width: ${size.laptop}) {
+    border-bottom:none;
+    }
   ${hideDisplayForMobile};
   ${hideDisplayForTablet};
 `

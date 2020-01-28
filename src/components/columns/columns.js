@@ -139,7 +139,7 @@ class Columns extends React.Component {
                 hideInMobile={true}
               />
             </RelativeHeader>
-            <StickyHeader>
+            <StickyHeader hideInTablet={true}>
               <Navbar hideInTablet={true} />
             </StickyHeader>
 
