@@ -156,6 +156,9 @@ a, span {
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.05rem;
+  }
 }
 p {
   margin-left: 0;
@@ -184,7 +187,10 @@ p {
     }
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.05rem !important;
+    font-size: 1.05rem;
+    > a {
+      font-size:1.05rem;
+    }
   }
 }
 

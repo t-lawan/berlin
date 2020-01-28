@@ -13,6 +13,7 @@ export const truncateText = (text, number = 25) => {
 export const getNumberOfWords = (text) => {
   return text.split(' ').length;
 }
+
 export const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "about", DE: "uber" },

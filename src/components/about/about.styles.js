@@ -8,10 +8,7 @@ export const AboutSideNavbar = styled.nav`
   flex-direction: column;
   line-height: 1;
   @media (max-width: ${size.tablet}) {
-    flex-direction: row;
-    padding: 0;
-    width:100%;
-    display: flex;
+    display:none;
   }
   @media (max-width: ${size.mobileM}) {
     display:none

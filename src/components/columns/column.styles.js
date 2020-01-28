@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {hideDisplayForTablet, size, hideDisplayForMobile } from "../../index.styles";
 import {
   ExperienceButton,
+  ExperienceControllerWrapper,
 } from "../experiencecontroller/experiencecontroller.styles"
 
 
@@ -16,6 +17,13 @@ export const ColumnLayout = styled.div`
   overflow-y: inherit;
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
+  :first-child {
+    ${ExperienceControllerWrapper} {
+      @media (min-width: ${size.laptop}) {
+        margin-top: 9.6em;
+      }
+    }
+  }
   &::first-of-type{
     border: 0;
   }
@@ -38,5 +46,17 @@ export const ColumnLayout = styled.div`
   @media (min-width: ${size.mobileL}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
     background: white;
+  }
+  @media (min-width: ${size.mobileL}) {
+    :nth-child(4){
+    border-right: none;
+    border-top: solid 0px #000;
+  }
+  }
+  @media (min-width: ${size.laptop}) {
+    :nth-child(4){
+    border-right: none;
+    border-top: solid 1px #000;
+  }
   }
 `

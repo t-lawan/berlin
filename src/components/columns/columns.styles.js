@@ -73,6 +73,12 @@ export const FirstColumnWrapper = styled.div`
     flex-direction: column-reverse;
     background-color: transparent;*/
   }
+  @media (min-width: ${size.mobileL}) {
+    border-top: solid 0px #000;
+  }
+  @media (min-width: ${size.laptop}) {
+    border-top: none;
+  }
 `
 
 export const StickyTopHeader = styled.div`
@@ -91,6 +97,12 @@ export const StickyTopHeader = styled.div`
       border-right: solid 0px #000;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    border-bottom:solid 1px #000;
+  }
+  @media (min-width: ${size.laptop}) {
+    border-bottom:none;
+    }
   ${hideDisplayForMobile};
   ${hideDisplayForTablet};
 `
@@ -234,12 +246,11 @@ export const FixedTicker = styled.div`
   z-index: 5;
   bottom: 60px;
   height:42px;
-  width: calc(33.33% - 3.3%);
+  /* width: calc(33.33% - 3.3%); */
+  width: 40%;
   position: fixed;
   overflow:hidden;
-  border-top: solid 1px #000;
-  background: ${Color.yellow};
-  right: 5%;
+  /* right: 5%; */
   left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {

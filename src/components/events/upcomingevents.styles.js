@@ -49,6 +49,9 @@ export const EventItem = styled.div`
   border-bottom: 1px solid black;
   @media (max-width: ${size.tablet}) {
     padding: 1em 1em;
+    p{
+    font-size: 0.75rem;
+    }
   }
   @media (max-width: ${size.mobileL}) {
     padding: 1em 1.7em;

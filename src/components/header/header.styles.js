@@ -18,6 +18,7 @@ export const HeaderWrapper = styled.header`
   }
   @media (min-width: ${size.mobileL}) {
   padding: 0.7em 0em 0.7em;
+  
   }
   @media (min-width: ${size.laptop}) {
   padding: 1.4em 2em 0.7em;

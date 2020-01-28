@@ -135,6 +135,7 @@ const reducer = (state = intitalState, action) => {
         experience_transition: {
           ...state.experience_transition,
           isVisible: true,
+          isTransitioning: false
         },
       })
     case actionTypes.IS_LOADED:
