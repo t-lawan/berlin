@@ -71,7 +71,7 @@ const ResourceText = props => {
             />
           
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          {r.publisher.length > 0 ? <Author>
+          <Author hidden={!r.publisher.title}>
             In:{" "}
             <ResourcePublisherLink
               hidden={!r.publisher.title}
@@ -80,7 +80,7 @@ const ResourceText = props => {
             >
               {r.publisher.title}
             </ResourcePublisherLink>
-          </Author> : ""}
+          </Author>
           <p> {r[language].year}</p>
           <Dthide>
           {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}

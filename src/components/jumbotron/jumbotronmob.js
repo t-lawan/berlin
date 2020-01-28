@@ -19,8 +19,8 @@ const Jumbotron = props => {
   return(
   <JumbotronWrapperMob showOnHomePage={props.showOnHomePage} showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader to={createPath(language, '')}>
-      <img src={imagedate.url} alt={imagedate.slug}/>
-      <img src={image.url} alt={image.slug}/>
+      {imagedate ? <img src={imagedate.url} alt={imagedate.slug}/> : null}
+      {image ? <img src={image.url} alt={image.slug}/> : null}
     </JumbotronHeader>
   </JumbotronWrapperMob>
 )

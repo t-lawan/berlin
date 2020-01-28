@@ -7,30 +7,56 @@ import {
   HeaderImage,
   HeaderImageMob,
 } from "./header.styles"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
-import { getDocument } from "../../store/selector";
+import {
+  getCurrentLanguageString,
+  createPath,
+  transitionBackground,
+} from "../../utility/helper"
+import { getDocument } from "../../store/selector"
 
 const Header = props => {
   const language = getCurrentLanguageString(props.languages)
-  const experience = props.experience;
+  const experience = props.experience
   let exhibitions = props.exhibitions.filter(exhibition => {
-    return parseInt(exhibition.experience) === experience;
-  });
+    return parseInt(exhibition.experience) === experience
+  })
 
-  if(exhibitions.length === 0){
-    exhibitions = props.exhibitions;
+  if (exhibitions.length === 0) {
+    exhibitions = props.exhibitions
   }
-  let dateHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_dates_header);
-  let titleHeaderSvg = getDocument(props.documents, exhibitions[0][language].exp_title_header);
-  let titleHeaderSvgMob = getDocument(props.documents, exhibitions[0][language].exp_title_header_mobile);
-
+  let dateHeaderSvg = getDocument(
+    props.documents,
+    exhibitions[0][language].exp_dates_header
+  )
+  let titleHeaderSvg = getDocument(
+    props.documents,
+    exhibitions[0][language].exp_title_header
+  )
+  let titleHeaderSvgMob = getDocument(
+    props.documents,
+    exhibitions[0][language].exp_title_header_mobile
+  )
 
   return (
-    <HeaderWrapper showOnHomePage={props.showOnHomePage} hideInMobile={props.hideInMobile}>
-      <HeaderLink cover direction="down" bg={transitionBackground} to={createPath(language, '')}>
-        <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url}/>
-        <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url}/>
-        <HeaderImageMob alt="title" src={titleHeaderSvgMob.url}/>
+    <HeaderWrapper
+      showOnHomePage={props.showOnHomePage}
+      hideInMobile={props.hideInMobile}
+    >
+      <HeaderLink
+        cover
+        direction="down"
+        bg={transitionBackground}
+        to={createPath(language, "")}
+      >
+        {dateHeaderSvg ? (
+          <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url} />
+        ) : null}
+        {titleHeaderSvg ? (
+          <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url} />
+        ) : null}
+        {titleHeaderSvgMob ? (
+          <HeaderImageMob alt="title" src={titleHeaderSvgMob.url} />
+        ) : null}
       </HeaderLink>
     </HeaderWrapper>
   )
@@ -40,7 +66,7 @@ Header.propTypes = {
   className: PropTypes.string,
   hideInMobile: PropTypes.bool,
   showInMobile: PropTypes.bool,
-  showOnHomePage: PropTypes.bool
+  showOnHomePage: PropTypes.bool,
 }
 
 const mapStateToProps = state => {

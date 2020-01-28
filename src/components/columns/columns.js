@@ -36,8 +36,8 @@ import { getDocument } from "../../store/selector";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-  animationInDuration = 600;
-  animationOutDuration = 500;
+  animationInDuration = 1000;
+  animationOutDuration = 1000;
   footerRef;
   columnOneRef;
   columnTwoRef;
@@ -65,7 +65,7 @@ class Columns extends React.Component {
       let columnOnePercent = (columnOne.scrollTop + columnOne.clientHeight)/columnOne.scrollHeight
       let columnTwoPercent = (columnTwo.scrollTop + columnTwo.clientHeight)/columnTwo.scrollHeight
 
-      if(columnOnePercent > 0.8 || columnTwoPercent > 0.8 ) {
+      if(columnOnePercent > 0.9 || columnTwoPercent > 0.9) {
         footer.classList.remove('hide-footer');
         footer.classList.add('show-footer');
       } else {
@@ -139,7 +139,7 @@ class Columns extends React.Component {
                 hideInMobile={true}
               />
             </RelativeHeader>
-            <StickyHeader>
+            <StickyHeader hideInTablet={true}>
               <Navbar hideInTablet={true} />
             </StickyHeader>
 
