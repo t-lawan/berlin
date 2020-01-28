@@ -46,8 +46,8 @@ const ResourceAudio = props => {
               }}
             />
           
-          {r.label.length > 0 ? <Author> {r[language].label} </Author> : ""} 
-          {r.author.length > 0 ? <Author> {r.author} </Author> : ""} 
+          {r[language].label ? <Author> {r[language].label} </Author> : ""} 
+          {r[language].author ? <Author> {r.author} </Author> : ""} 
         </div>
         <div>
           <div
