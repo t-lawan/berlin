@@ -84,16 +84,24 @@ class DocumentationNavigator extends React.Component {
     return (
         <DocumentationNavigatorWrapper>
           <DocumentationNavigatorButton
+            fade
+            to={createPath(this.language, this.previousPage())}
+          >
+          {/* <DocumentationNavigatorButton
             bg={transitionBackground}
             cover direction="down"
             to={createPath(this.language, this.previousPage())}
-          >
+          > */}
             {`<`}
           </DocumentationNavigatorButton>
           <DocumentationNavigatorButton
-            bg={transitionBackground}
+            fade
             to={createPath(this.language, this.nextPage())}
           >
+          {/* <DocumentationNavigatorButton
+            bg={transitionBackground}
+            to={createPath(this.language, this.nextPage())}
+          > */}
             {`>`}
           </DocumentationNavigatorButton>
         </DocumentationNavigatorWrapper>

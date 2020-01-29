@@ -103,8 +103,10 @@ const FooterComponent = props => {
       <DoubleDecker>
         <FooterText>{content[language].description}</FooterText>
         <BottomRow>
-          <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
-          <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
+          <FooterLink fade to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
+          {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink> */}
+          <FooterLink fade to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
+          {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink> */}
         </BottomRow>
       </DoubleDecker>
       <ImageWrapper>
