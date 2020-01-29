@@ -12,7 +12,6 @@ const Ticker = props => {
     return ex.experience == experience
   })[0]
   let image = getDocument(props.documents, exhibition.animation)
-  console.log("LOG", exhibition)
   return (
     <TickerWrapper
       show={exhibition[language].promotional_sticker_for_homepage.length > 0}
