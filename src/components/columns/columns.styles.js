@@ -59,6 +59,15 @@ export const ColumnsWrapper = styled.div`
   ${changeGridToOneRow}
 `
 
+export const ResourcesOnlyInMobile = styled.div`
+  display: none;
+  z-index: 9;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => props.hide ? 'none' : 'inherit'};
+  }
+`
+
 export const FirstColumnWrapper = styled.div`
   background-color: #fff;
   position: relative;

@@ -102,7 +102,7 @@ class ExperienceController extends React.Component {
     experiences.forEach((xp, ind) => {
       setTimeout(() => {
         this.changeExperience(xp)
-      }, 1300 * (ind + 1));
+      }, 1100 * (ind + 1));
     })
   }
 
