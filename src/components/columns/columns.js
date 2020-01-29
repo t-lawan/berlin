@@ -35,6 +35,7 @@ import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
 import { getDocument } from "../../store/selector";
 import ResourcesList from "../resources/resources-list";
+import ExhibitionPage from "../exhibition/exhibition-page";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -67,7 +68,7 @@ class Columns extends React.Component {
       let columnOnePercent = (columnOne.scrollTop + columnOne.clientHeight)/columnOne.scrollHeight
       let columnTwoPercent = (columnTwo.scrollTop + columnTwo.clientHeight)/columnTwo.scrollHeight
 
-      if(columnOnePercent > 0.9 || columnTwoPercent > 0.9) {
+      if(columnOnePercent > 0.95 || columnTwoPercent > 0.95) {
         footer.classList.remove('hide-footer');
         footer.classList.add('show-footer');
       } else {
@@ -118,6 +119,7 @@ class Columns extends React.Component {
           animationOutDuration={this.props.animationOutDuration}
           style={{ zIndex: 0 }}
         >
+          <ExhibitionPage />
           
           <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={this.props.isHome} hideInTablet={false}>
             <Header showOnHomePage={this.props.isHome} hideInMobile={this.props.isHome} />
@@ -125,8 +127,7 @@ class Columns extends React.Component {
 
           <StickyTopHeader hideInMobile={true}>
             <Jumbotron hideInTablet={true} />
-          </StickyTopHeader>          
-          
+          </StickyTopHeader>             
           {/* Second Column */}
           <Column ref={this.columnOneRef} rightBorder={true}>
             <MobTitleCard showInMobile={this.props.isHome}>
