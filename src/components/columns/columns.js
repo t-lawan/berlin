@@ -25,6 +25,7 @@ import {
   MobTitleCard,
   MobAnimCard,
   FixedTicker,
+  ResourcesOnlyInMobile,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -33,11 +34,12 @@ import FooterComponent from "../footer/footer"
 import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
 import { getDocument } from "../../store/selector";
+import ResourcesList from "../resources/resources-list";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
   animationInDuration = 1000;
-  animationOutDuration = 1000;
+  animationOutDuration = 1300;
   footerRef;
   columnOneRef;
   columnTwoRef;
@@ -144,6 +146,9 @@ class Columns extends React.Component {
             </StickyHeader>
 
             {this.renderedComponents}
+            <ResourcesOnlyInMobile hide={!this.props.isHome}>
+              <ResourcesList />    
+            </ResourcesOnlyInMobile>
             {/* Only In Mobile */}
             <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
