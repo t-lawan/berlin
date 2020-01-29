@@ -15,10 +15,11 @@ export const getNumberOfWords = (text) => {
 }
 
 export const transitionTimes = {
-  animationInDuration: 200,
-  animationOutDuration: 200,
-  visibleDelayTime: 300,
-  changeExperienceDelayTime: 370
+  animationInDuration: 140,
+  animationOutDuration: 140,
+  visibleDelayTime: 290,
+  changeExperienceDelayTime: 280,
+  timeOutForEachExperiences: 290
 }
 
 export const pageMap = [
