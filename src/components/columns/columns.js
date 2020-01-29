@@ -119,7 +119,7 @@ class Columns extends React.Component {
           animationOutDuration={this.props.animationOutDuration}
           style={{ zIndex: 0 }}
         >
-          <ExhibitionPage />
+          {exhibition.temporary_uploaded ? <ExhibitionPage /> : null} 
           
           <StickyTopHeader hideOnHomePage={!this.props.isHome} hideInMobile={this.props.isHome} hideInTablet={false}>
             <Header showOnHomePage={this.props.isHome} hideInMobile={this.props.isHome} />
