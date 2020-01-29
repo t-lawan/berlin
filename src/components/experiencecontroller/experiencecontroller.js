@@ -8,12 +8,12 @@ import {
   ExperienceButtonImage,
 } from "./experiencecontroller.styles"
 import { navigate } from "gatsby"
-import { createPath, getCurrentLanguageString } from "../../utility/helper"
+import { createPath, getCurrentLanguageString, transitionTimes } from "../../utility/helper"
 class ExperienceController extends React.Component {
   experiences
   language
-  visibleDelayTime = 300
-  changeExperienceDelayTime = 400
+  visibleDelayTime = transitionTimes.visibleDelayTime;
+  changeExperienceDelayTime = transitionTimes.changeExperienceDelayTime;
   constructor(props) {
     super(props)
     this.language = getCurrentLanguageString(props.languages)
@@ -102,7 +102,7 @@ class ExperienceController extends React.Component {
     experiences.forEach((xp, ind) => {
       setTimeout(() => {
         this.changeExperience(xp)
-      }, 600 * (ind + 1));
+      }, transitionTimes.timeOutForEachExperiences * (ind + 1));
     })
   }
 

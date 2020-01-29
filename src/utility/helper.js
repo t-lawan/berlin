@@ -14,6 +14,14 @@ export const getNumberOfWords = (text) => {
   return text.split(' ').length;
 }
 
+export const transitionTimes = {
+  animationInDuration: 140,
+  animationOutDuration: 140,
+  visibleDelayTime: 290,
+  changeExperienceDelayTime: 280,
+  timeOutForEachExperiences: 290
+}
+
 export const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "about", DE: "uber" },

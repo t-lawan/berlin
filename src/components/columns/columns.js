@@ -36,11 +36,12 @@ import ImageContainer from "../image-container/image-container"
 import { getDocument } from "../../store/selector";
 import ResourcesList from "../resources/resources-list";
 import ExhibitionPage from "../exhibition/exhibition-page";
+import { transitionTimes } from "../../utility/helper";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-  animationInDuration = 600;
-  animationOutDuration = 500;
+  animationInDuration = transitionTimes.animationInDuration;
+  animationOutDuration = transitionTimes.animationOutDuration;
   footerRef;
   columnOneRef;
   columnTwoRef;
