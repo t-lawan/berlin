@@ -32,7 +32,7 @@ const Layout = props => {
       </Helmet>
       <Modal show={props.modal.show} />
       <ExperiencePage showOnHomePage={props.isHome} />
-      <ExhibitionPage />
+      {/* <ExhibitionPage /> */}
       <Columns
         firstColumn={props.firstColumn}
         secondColumn={props.secondColumn}
