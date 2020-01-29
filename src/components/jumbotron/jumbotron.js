@@ -18,9 +18,12 @@ const Jumbotron = props => {
   return(
   <JumbotronWrapper showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader 
+      fade
+      to={createPath(language, '')}>
+    {/* <JumbotronHeader 
     bg={transitionBackground}
     cover direction="down"
-    to={createPath(language, '')}>
+    to={createPath(language, '')}> */}
       {image ? <img src={image.url} alt={image.slug}/> : null}
     </JumbotronHeader>
   </JumbotronWrapper>
