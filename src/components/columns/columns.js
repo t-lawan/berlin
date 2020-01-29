@@ -39,8 +39,8 @@ import ExhibitionPage from "../exhibition/exhibition-page";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
-  animationInDuration = 1000;
-  animationOutDuration = 1300;
+  animationInDuration = 600;
+  animationOutDuration = 500;
   footerRef;
   columnOneRef;
   columnTwoRef;

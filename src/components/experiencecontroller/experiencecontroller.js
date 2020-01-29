@@ -12,8 +12,8 @@ import { createPath, getCurrentLanguageString } from "../../utility/helper"
 class ExperienceController extends React.Component {
   experiences
   language
-  visibleDelayTime = 100
-  changeExperienceDelayTime = 200
+  visibleDelayTime = 300
+  changeExperienceDelayTime = 400
   constructor(props) {
     super(props)
     this.language = getCurrentLanguageString(props.languages)
@@ -102,7 +102,7 @@ class ExperienceController extends React.Component {
     experiences.forEach((xp, ind) => {
       setTimeout(() => {
         this.changeExperience(xp)
-      }, 1100 * (ind + 1));
+      }, 600 * (ind + 1));
     })
   }
 
