@@ -69,7 +69,8 @@ const AboutNavbar = props => {
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (
-        <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}>
+        <AboutNavItemLink fade to={createPath(language, item['EN'].slug)} key={index}>
+        {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
             {item[language].title.toLowerCase()}
           </AboutNavItem>

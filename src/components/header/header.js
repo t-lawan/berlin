@@ -43,11 +43,15 @@ const Header = props => {
       hideInMobile={props.hideInMobile}
     >
       <HeaderLink
+        fade
+        to={createPath(language, "")}
+      >
+      {/* <HeaderLink
         cover
         direction="down"
         bg={transitionBackground}
         to={createPath(language, "")}
-      >
+      > */}
         {dateHeaderSvg ? (
           <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url} />
         ) : null}
