@@ -13,6 +13,15 @@ const ImageContainerWrapper = styled.section`
   transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
   overflow:hidden;
   z-index:0;
+  > img {
+    margin:0 0.7em;
+    @media (min-width: ${size.laptop}) {
+       margin:0 1em;
+    }
+    @media (max-width: ${size.tablet}) {
+    margin: 0.7em;
+    }
+  }
   position:relative;
   ${hideDisplayForMobile};
   display: ${props => props.hideOnHomePage ? 'none': 'block'};
@@ -28,10 +37,8 @@ const ImageContainerWrapper = styled.section`
 
 animation: increaseHeight 3s forwards;
 -webkit-animation: increaseHeight 3s forwards;
-animation-delay: 1.2s;
-@media (max-width: ${size.tablet}) {
-    padding: 0.7em;
-    }
+animation-delay: 1.5s;
+
 `
 
 const ImageContainer = props => {
