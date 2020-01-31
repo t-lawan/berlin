@@ -32,7 +32,7 @@ export const pageMap = [
   { EN: "participant", DE: "beteiligte" },
   { EN: "news", DE: "news" },
   { EN: "current", DE: "aktuell" },
-  { EN: "calendar", DE: "kalendar" },
+  { EN: "calendar", DE: "kalender" },
   { EN: "data-privacy", DE: "datenschutz" },
   { EN: "imprint", DE: "impressum" },
 ]
