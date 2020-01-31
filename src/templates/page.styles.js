@@ -18,6 +18,9 @@ export const TwoColumnPageWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 33fr 66fr;
   } 
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 3fr 7fr;
+  } 
   @media (min-width: ${size.laptopL}) {
     grid-template-columns: 1fr 4fr;
   }  
