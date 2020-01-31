@@ -152,6 +152,16 @@ class Press extends React.Component {
         <div>
         <PageSubTitle
               dangerouslySetInnerHTML={{
+                __html: content[this.language].previewtitle,
+              }}
+            />
+        <div
+            dangerouslySetInnerHTML={{
+              __html: this.pressInfo.acf[this.language].preview_information,
+            }}
+          />
+        <PageSubTitle
+              dangerouslySetInnerHTML={{
                 __html: content[this.language].press_release,
               }}
             />
@@ -223,12 +233,14 @@ const content = {
   EN: {
     contact: "Press contact",
     title: "press",
+    previewtitle: "Preview",
     press_release: "Downloads",
     images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
     title: "presse",
+    previewtitle: "Vorbesichtigung",
     press_release: "Downloads",
     images: "Pressebilder",
   },
