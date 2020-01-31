@@ -11,8 +11,11 @@ const ImageContainerWrapper = styled.section`
   padding: 0em;
   max-height: 0;
   transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
+  overflow:hidden;
+  z-index:0;
+  position:relative;
   ${hideDisplayForMobile};
-  display: ${props => props.hideOnHomePage ? 'none': 'inherit'};
+  display: ${props => props.hideOnHomePage ? 'none': 'block'};
   @keyframes increaseHeight {
   0% {
     max-height: 0;
