@@ -245,6 +245,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 document_download_label
                 document_language
                 free_text_entry
+                document_upload
               }
               floating_resource
               image_gallery {
