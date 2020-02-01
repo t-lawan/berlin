@@ -69,7 +69,9 @@ const ResourceItem = styled.div`
   :first-child {
     padding-top:0;
   }
-  
+  > img {
+    margin-bottom:0.3em;
+  }
 `
 
 const TextBox = styled.div`
