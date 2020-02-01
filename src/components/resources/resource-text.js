@@ -44,6 +44,8 @@ const Dthide = styled.div`
   @media (min-width: ${size.laptop}) {
     display: none;
   }
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
 `
 const Author = styled.p`
   margin-bottom: 0;
@@ -56,8 +58,6 @@ const ResourceText = props => {
   if (r.text_based_resource[0].document_upload) {
     doc = getDocument(props.documents, r.text_based_resource[0].document_upload)
   }
-  console.log(" doc RESO", r)
-  console.log("LOG DOC", doc)
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
