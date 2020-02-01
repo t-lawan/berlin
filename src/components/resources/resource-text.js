@@ -44,6 +44,8 @@ const Dthide = styled.div`
   @media (min-width: ${size.laptop}) {
     display: none;
   }
+  border-bottom: 1px solid black;
+  margin-bottom: 1rem;
 `
 const Author = styled.p`
   margin-bottom: 0;
