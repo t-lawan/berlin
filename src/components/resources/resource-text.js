@@ -15,7 +15,8 @@ import RelatedResources from "./related-resources"
 import styled from "styled-components"
 import striptags from "striptags"
 import ImageResource from "../../partials/ImageResource"
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
+import { getDocument } from "../../store/selector"
 
 const ResourceTextDiv = styled.div`
   a {
@@ -28,48 +29,63 @@ const ResourceTitle = styled.h1`
   line-height: 1.2;
   @media (max-width: ${size.tablet}) {
     font-size: 1.2em;
-    margin: 0.3em 0 1.0em;
+    margin: 0.3em 0 1em;
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.8em;
   }
 `
 const Mobhide = styled.div`
-  @media (max-width: ${size.tablet}) { 
-  display:none;
- }
+  @media (max-width: ${size.tablet}) {
+    display: none;
+  }
 `
 const Dthide = styled.div`
-  @media (min-width: ${size.laptop}) { 
-  display:none;
- }
+  @media (min-width: ${size.laptop}) {
+    display: none;
+  }
 `
 const Author = styled.p`
-  margin-bottom:0;
+  margin-bottom: 0;
 `
 
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
-  const r = props.resource;
+  const r = props.resource
+  let doc
+  if (r.text_based_resource[0].document_upload) {
+    doc = getDocument(props.documents, r.text_based_resource[0].document_upload)
+  }
+  console.log(" doc RESO", r)
+  console.log("LOG DOC", doc)
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <TwoColumnPageWrapper>
         <Mobhide>
-          {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
-          {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
-          <PressArrowDown icon={faLongArrowAltDown} />
-          <span> Download</span>{" "}
-        </ExternalLink> */}
-          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
+          {r.thumbnail_image ? (
+            <ImageResource id={r.thumbnail_image} withCaption={false} />
+          ) : null}
+          {doc ? (
+            <ExternalLink href={doc.url} target="__blank">
+              <PressArrowDown icon={faLongArrowAltDown} />
+              <span> {r.text_based_resource[0].document_download_label} </span>
+            </ExternalLink>
+          ) : null}
+
+          <p hidden={r.text_based_resource[0].document_language.length === 0}>
+            {" "}
+            {language === "EN" ? "Language" : "Sprache"}:{" "}
+            {r.text_based_resource[0].document_language}
+          </p>
         </Mobhide>
         <div>
           <ResourceTitle
-              dangerouslySetInnerHTML={{
-                __html: striptags(r.title, ['em']),
-              }}
-            />
-          
+            dangerouslySetInnerHTML={{
+              __html: striptags(r.title, ["em"]),
+            }}
+          />
+
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
           <Author hidden={!r.publisher.title}>
             In:{" "}
@@ -83,19 +99,37 @@ const ResourceText = props => {
           </Author>
           <p> {r[language].year}</p>
           <Dthide>
-          {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
-          {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
+            {doc ? (
+              <ExternalLink href={doc.url} target="__blank">
+                <PressArrowDown icon={faLongArrowAltDown} />
+                <span>
+                  {" "}
+                  {r.text_based_resource[0].document_download_label}{" "}
+                </span>
+              </ExternalLink>
+            ) : null}
+
+            <p hidden={r.text_based_resource[0].document_language.length === 0}>
+              {" "}
+              {language === "EN" ? "Language" : "Sprache"}:{" "}
+              {r.text_based_resource[0].document_language}
+            </p>
+            {/* <ImageResource id={r.thumbnail_image} withCaption={false} /> */}
+            {/* <ExternalLink id={r.text_based_resource[0].document_upload}>
           <PressArrowDown icon={faLongArrowAltDown} />
           <span> Download</span>{" "}
         </ExternalLink> */}
-          <p hidden={r.text_based_resource[0].document_language.length === 0}> {language === "EN" ? "Language" : "Sprache"}: {r.text_based_resource[0].document_language}</p>
-        </Dthide>
+            {/* <p hidden={r.text_based_resource[0].document_language.length === 0}>
+              {" "}
+              {language === "EN" ? "Language" : "Sprache"}:{" "}
+              {r.text_based_resource[0].document_language}
+            </p> */}
+          </Dthide>
           <ResourceTextDiv
             dangerouslySetInnerHTML={{
               __html: r.text_based_resource[0].free_text_entry,
             }}
           />
-
         </div>
       </TwoColumnPageWrapper>
       <RelatedResources ids={[r.id]} />
