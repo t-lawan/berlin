@@ -219,6 +219,12 @@ export const FixedFooter = styled.div`
   bottom: -150px;
   position: fixed;
   grid-area: footer;
+  @media (min-width: ${size.tablet}) {
+    width: 100%;
+  }
+  @media (min-width: ${size.laptop}) {
+    width: 90%;
+  }
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
     position:relative;

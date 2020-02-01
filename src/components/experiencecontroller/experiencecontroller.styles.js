@@ -31,6 +31,8 @@ export const ExperienceButton = styled.div`
   span {
     font-size: 0.6em;
   }
+  transition: opacity 2s;
+  transition-timing-function: ease-in-out
 `
 
 export const ExperienceButtonImage = styled.img`

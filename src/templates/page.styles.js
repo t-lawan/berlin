@@ -18,6 +18,9 @@ export const TwoColumnPageWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 33fr 66fr;
   } 
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 3fr 7fr;
+  } 
   @media (min-width: ${size.laptopL}) {
     grid-template-columns: 1fr 4fr;
   }  
@@ -42,7 +45,8 @@ export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
-    padding: 0em;
+    /* padding: 0em; */
+    padding: 0.5em;
   }
   @media (max-width: ${size.mobileM}) {
     > div {
