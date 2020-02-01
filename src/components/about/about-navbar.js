@@ -14,7 +14,7 @@ const AboutNavbar = props => {
         slug: "about"
       },
       DE: {
-        title: "uber",
+        title: "über",
         slug: "uber"
       },
     },
