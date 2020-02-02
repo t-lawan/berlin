@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { size } from "../../index.styles";
+import { size, Color } from "../../index.styles";
 
 export const LanguageControllerWrapper = styled.div`
   display: flex;
@@ -36,6 +36,7 @@ export const LanguageButton = styled(AniLink)`
   font-weight: ${props => (props.selected ? "normal" : "normal")};
   :hover {
     cursor: "pointer";
+    color: ${Color.red};
   }
   @media (min-width: ${size.mobileL}) {
     font-size: 1.15rem;
