@@ -217,6 +217,26 @@ h1, h2, h3, h4, h5, h6, p, a, em {
     bottom: 0 !important;
   }
 }
+
+.fade-in {
+  -webkit-animation: fadeIn 2s linear forwards;
+    animation: fadeIn 2s linear forwards;
+}
+
+.fade-out{
+  -webkit-animation: fadeOut 4s linear forwards;
+    animation: fadeOut 4s linear forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
 `
 
 export const hideDisplayForTablet = css`
