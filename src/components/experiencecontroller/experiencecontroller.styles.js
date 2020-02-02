@@ -32,8 +32,12 @@ export const ExperienceButton = styled.div`
   span {
     font-size: 0.6em;
   }
-  -webkit-animation: fadeIn 1s linear forwards;
-    animation: fadeIn 1.7s linear forwards;
+  -webkit-animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
+    /* :nth-of-type(2) {
+      -webkit-animation: fadeIn 5s ease-in-out;
+    animation: fadeIn 5s ease-in-out;
+    } */
   /* transition: opacity 2s;
   transition-timing-function: ease-in-out */
 `
