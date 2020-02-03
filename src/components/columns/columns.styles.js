@@ -225,6 +225,7 @@ export const StickyFooter = styled.div`
   bottom: 0;
   position: sticky;
   grid-area: footer;
+  width: 100%;
   @media (max-width: ${size.tablet}) {
     /* width: 100%; */
     grid-area: unset;
