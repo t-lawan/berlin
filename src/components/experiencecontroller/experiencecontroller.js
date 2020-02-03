@@ -124,16 +124,6 @@ class ExperienceController extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   let latestExperience = this.experiences.map(item => {
-  //     return item.isReady
-  //   });
-  //   let index = latestExperience.lastIndexOf(true);
-  //   if(index !== -1) {
-  //     this.props.changeExperience(this.experiences[index].id);
-  //   }
-  // }
-
   filterBasedOnPosition = experience => {
     if (this.props.left) {
       return experience.id < this.props.experience
@@ -180,7 +170,7 @@ class ExperienceController extends React.Component {
             bold
             hover={experience.isReady}
             show={experience.isReady}
-            onClick={() => this.runThroughAllExperiences(experience)}
+            onClick={() => this.changeExperience(experience)}
           >
             {experience.display}
           </ExperienceButton>

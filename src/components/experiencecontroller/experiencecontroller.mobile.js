@@ -6,14 +6,14 @@ import {
   ExperienceControllerMobileWrapper,
   ExperienceControllerMobileButton,
 } from "./experiencecontroller.styles"
-import { getCurrentLanguageString, createPath } from "../../utility/helper";
+import { getCurrentLanguageString, createPath, transitionTimes } from "../../utility/helper";
 import { navigate } from "gatsby";
 
 class ExperienceControllerMobile extends  React.Component {
   experiences;
   language;
-  visibleDelayTime = 5;
-  changeExperienceDelayTime = 50;
+  visibleDelayTime = transitionTimes.visibleDelayTime;
+  changeExperienceDelayTime = transitionTimes.changeExperienceDelayTime;
 
   constructor(props) {
     super(props);
@@ -56,7 +56,7 @@ class ExperienceControllerMobile extends  React.Component {
       }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id);
-      }, 50)
+      }, transitionTimes.changeExperienceDelayTime)
       navigate(createPath(this.language, '/'));
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
