@@ -6,22 +6,22 @@ export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
   /* border-bottom: 1px solid black; */
-  padding: 1.4em 2em 0.7em;
+  padding: 1.4em 2em 0.7em !important;
   background: white;
   :hover {
     /* opacity: 0.01; */
   }
   @media (max-width: ${size.mobileM}) {
-  padding: 0.6em 0.7em;
-  border-bottom:solid 1px #000;
+  padding: 0.6em 0.7em !important;
+  border-bottom:solid 1px #000 !important;
   display: ${props => props.showOnHomePage ? 'inherit': 'none'};
   }
   @media (min-width: ${size.mobileL}) {
-  padding: 0.7em 0em 0.7em;
+  padding: 0.7em 0.1em 0.7em !important;
   
   }
   @media (min-width: ${size.laptop}) {
-  padding: 1.4em 2em 0.7em;
+  padding: 1.4em 2em 0.7em !important;
   }
 `
 
@@ -50,15 +50,17 @@ export const HeaderLink = styled(AniLink)`
 `
 
 export const HeaderImage = styled.img`
-  ${hideDisplayForMobile};
   @media (max-width: ${size.tablet}) {
-  margin: 0 0.7em;
+  margin: 0 0.7em !important;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => (props.hideInMobile ? "none" : "inherit")} !important;
   }
 `
 export const HeaderImageMob = styled.img`
-display:none;
+  display:none !important;
   @media (max-width: ${size.mobileM}) {
-  display:block;
-  margin:0 0.0em;
+  display:block !important;
+  margin:0 0.0em !important;
   }
 `
