@@ -12,6 +12,46 @@ import {
   ColumnLayout,
 } from "./column.styles"
 import { Animated } from "react-animated-css"
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
+export const ExperienceCarousel = styled(Carousel)`
+  text-align: left !important;
+  width: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+`
+
+export const ExperienceContainer = styled.div`
+  text-align: left !important;
+  display: grid;
+  height: 100%;
+  height: 100vh;
+  grid-template-columns: 66fr 33fr;
+  grid-template-rows: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: inherit;
+  background: white;
+  grid-template-areas: "column column" "column column" "footer footer";
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+    display: block;
+    position: relative;
+    margin: 45px auto 0;
+    height: calc(100vh - 90px);
+  }
+
+  @media (max-width: ${size.tablet}) {
+    grid-template-areas:"column" "column column" "footer" !important;
+    margin:40px auto 0;
+    height: calc(100vh - 40px);
+    ${ColumnLayout}:nth-child(3) {
+      z-index:10;
+    }
+  }
+`
 
 export const AnimatedColumn = styled(Animated)`
   height: 100%;
@@ -185,6 +225,7 @@ export const StickyFooter = styled.div`
   bottom: 0;
   position: sticky;
   grid-area: footer;
+  width: 100%;
   @media (max-width: ${size.tablet}) {
     /* width: 100%; */
     grid-area: unset;
@@ -223,7 +264,7 @@ export const FixedFooter = styled.div`
     width: 100%;
   }
   @media (min-width: ${size.laptop}) {
-    width: 90%;
+    /* width: 90%; */
   }
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;

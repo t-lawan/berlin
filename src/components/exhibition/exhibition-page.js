@@ -43,12 +43,12 @@ const ExhibitionPageWrapper = styled.div`
 `
 
 const ExhibitionPageImage = styled.img`
-  width: 30%;
+  width: 30% !important;
   @media (max-width: ${size.mobileM}) {
-    width:100%;
+    width:100% !important;
   }
   @media (max-width: ${size.tablet}) {
-    width:50%;
+    width:50% !important;
   }
 `
 class ExhibitionPage extends React.Component {

@@ -81,7 +81,7 @@ class ImageGalleryResource extends React.Component {
   }
   nextImage = () => {
     if (
-      this.state.index + 1 < this.imageResources.length &&
+      this.state.index + 1 < this.props.ids.length &&
       !this.state.isTransitioning
     ) {
       this.setState({
@@ -97,7 +97,7 @@ class ImageGalleryResource extends React.Component {
     }
   }
   isLastImage = () => {
-    return this.imageResources.length === this.state.index + 1 ? true : false
+    return this.props.ids.length === this.state.index + 1 ? true : false
   }
   setVisibleToTrue = () => {
     this.setState({ isVisible: true, isTransitioning: false })
@@ -110,7 +110,7 @@ class ImageGalleryResource extends React.Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    this.imageResources = getDocuments(this.props.documents, this.props.ids)
+
     return (
       <>
         <NavigationSpace>

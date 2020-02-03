@@ -19,14 +19,19 @@ const DocumentationImageGallery = props => {
   let exhibitions = props.exhibitions.filter((exhibition) => {
     return exhibition.experience == props.documentation.experience[0];
   })
-  let documentation = props.documentation
-  documentation.image_gallery = documentation.image_gallery.map(image => {
-    return image.wordpress_id
-  })
+  let documentation = props.documentation;
+  let image_gallery;
+  if(documentation.image_gallery) {
+    image_gallery = documentation.image_gallery.map(image => {
+      return image.wordpress_id
+    })
+  }
+
+
   return (
     <PageWrapper>
       <DocumentationNavigator id={documentation.id}/>
-      <ImageGalleryResource ids={documentation.image_gallery} />
+      {image_gallery ? <ImageGalleryResource ids={image_gallery} /> : null }
       <TwoColumnPageWrapper>
         <div>
           <p> {documentationContent[language].documentation}</p>
