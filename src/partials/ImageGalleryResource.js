@@ -6,25 +6,28 @@ import { getDocuments } from "../store/selector"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faLongArrowAltLeft,
-  faLongArrowAltRight,
-} from "@fortawesome/free-solid-svg-icons"
 
+const leftArrow =
+  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
+const rightArrow =
+  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_next.png"
 export const NavigatingButton = styled.div`
-  opacity: ${props => (props.show ? '1' : '0.2')};
+  opacity: ${props => (props.show ? "1" : "0.2")};
   color: black;
-  cursor: ${props => (props.show ? "pointer" : "inherit")};
   font-size: 2rem;
   margin: auto;
   position: relative;
   z-index: 1000;
   width: 50%;
+  height: 100%;
+  :hover {
+    cursor: url(${props => (props.left ? (props.show ? leftArrow : 'none') : (props.show ? rightArrow : 'none'))}) 0 0, none;
+  }
 `
 
 export const NavigationSpace = styled.div`
   position: relative;
+  height: 100%;
 `
 export const NavigationButtons = styled.div`
   position: absolute;
@@ -43,12 +46,6 @@ export const NavigationButtons = styled.div`
 
 export const AnimatedSpace = styled(Animated)`
   z-index: 100;
-`
-
-export const NavigationIcon = styled(FontAwesomeIcon)`
-  
-  margin: auto;
-  float: ${props => (props.floatright ? "right" : "left")};
 `
 
 export const GalleryImage = styled.img``
@@ -84,7 +81,7 @@ class ImageGalleryResource extends React.Component {
   }
   nextImage = () => {
     if (
-      this.state.index + 1 < this.imageResources.length &&
+      this.state.index + 1 < this.props.ids.length &&
       !this.state.isTransitioning
     ) {
       this.setState({
@@ -100,7 +97,7 @@ class ImageGalleryResource extends React.Component {
     }
   }
   isLastImage = () => {
-    return this.imageResources.length === this.state.index + 1 ? true : false
+    return this.props.ids.length === this.state.index + 1 ? true : false
   }
   setVisibleToTrue = () => {
     this.setState({ isVisible: true, isTransitioning: false })
@@ -113,24 +110,21 @@ class ImageGalleryResource extends React.Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    this.imageResources = getDocuments(this.props.documents, this.props.ids)
+
     return (
       <>
         <NavigationSpace>
           <NavigationButtons>
             <NavigatingButton
+              left={true}
               show={!this.isFirstImage()}
               onClick={() => this.previousImage()}
-            >
-            
-              <NavigationIcon src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/img_gallery_prev@2x.png" />
-            </NavigatingButton>
+            />
             <NavigatingButton
+              left={false}
               show={!this.isLastImage()}
               onClick={() => this.nextImage()}
-            >
-              <NavigationIcon src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/img_gallery_next@2x.png" floatright={1} />
-            </NavigatingButton>
+            />
           </NavigationButtons>
 
           <AnimatedSpace

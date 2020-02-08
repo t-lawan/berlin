@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { showDisplayForTablet, showDisplayForTabletFunc, size } from "../../index.styles";
+import { showDisplayForTablet, showDisplayForTabletFunc, size, Color } from "../../index.styles";
 
 export const ExperienceControllerWrapper = styled.div`
   margin-top: ${props => (props.left ? "6.9em" : "3.6em")};
@@ -22,6 +22,7 @@ export const ExperienceButton = styled.div`
   transition: 1s; */
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
+    color: ${Color.red};
   }
   img {
     width: 60%;
@@ -31,11 +32,20 @@ export const ExperienceButton = styled.div`
   span {
     font-size: 0.6em;
   }
+  -webkit-animation: fadeIn 1.5s ease-in-out;
+    animation: fadeIn 1.5s ease-in-out;
+    /* :nth-of-type(2) {
+      -webkit-animation: fadeIn 5s ease-in-out;
+    animation: fadeIn 5s ease-in-out;
+    } */
+  /* transition: opacity 2s;
+  transition-timing-function: ease-in-out */
 `
 
 export const ExperienceButtonImage = styled.img`
   :hover {
     cursor: pointer;
+    color: ${Color.red};
   }
 `
 

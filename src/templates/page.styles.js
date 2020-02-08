@@ -45,7 +45,8 @@ export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tablet}) {
-    padding: 0em;
+    /* padding: 0em; */
+    padding: 0.5em;
   }
   @media (max-width: ${size.mobileM}) {
     > div {

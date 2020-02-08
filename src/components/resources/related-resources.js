@@ -5,8 +5,8 @@ import { changeGridToOneRow, Color, size } from "../../index.styles"
 import { getItems } from "../../store/selector"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import striptags from "striptags"
+import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import { get } from "http";
 
 export const RelatedResourcesWrapper = styled.div`
@@ -130,8 +130,9 @@ const RelatedResources = props => {
         <ResourceLink
           key={index}
           to={createPath(language, `resource/${resource.slug}`)}
-          cover direction="down"
-          bg={transitionBackground}
+          fade
+          // cover direction="down"
+          // bg={transitionBackground}
         >
           <RelatedResource>
             <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>

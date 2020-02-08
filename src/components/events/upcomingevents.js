@@ -60,12 +60,16 @@ const UpcomingEvents = props => {
       {filteredItems.map(item => (
         <EventItem key={item.id}>
           <EventLink
+            fade
+            to={createPath(language, `${item.slug}`)}
+          >
+          {/* <EventLink
             cover
             direction="down"
             bg={transitionBackground}
             colour="black"
             to={createPath(language, `${item.slug}`)}
-          >
+          > */}
             <p>
               {" "}
               {moment(item.start_date)

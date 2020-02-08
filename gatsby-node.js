@@ -245,6 +245,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 document_download_label
                 document_language
                 free_text_entry
+                document_upload
               }
               floating_resource
               image_gallery {
@@ -503,7 +504,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "participant", DE: "beteiligte" },
     { EN: "news", DE: "news" },
     { EN: "current", DE: "aktuell" },
-    { EN: "calendar", DE: "kalendar" },
+    { EN: "calendar", DE: "kalender" },
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
   ]

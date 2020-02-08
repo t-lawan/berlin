@@ -17,7 +17,7 @@ const AboutComponents = props => {
     case "about":
       renderComponent = (
         <>
-          <PageTitle> {language === "EN" ? "About" : "Uber"}</PageTitle>
+          <PageTitle> {language === "EN" ? "About" : "über"}</PageTitle>
           <AboutPageContent
             dangerouslySetInnerHTML={{
               __html: content.acf[`${language}_row`].description,
@@ -29,7 +29,7 @@ const AboutComponents = props => {
     case "uber":
     renderComponent = (
       <>
-        <PageTitle> {language === "EN" ? "About" : "Uber"}</PageTitle>
+        <PageTitle> {language === "EN" ? "About" : "über"}</PageTitle>
         <AboutPageContent
           dangerouslySetInnerHTML={{
             __html: content.acf[`${language}_row`].description,

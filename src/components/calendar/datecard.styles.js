@@ -59,6 +59,15 @@ export const EventCardsWrapper = styled.div`
     flex-direction: column;
   }
 `
+
+export const EventsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`
+
+export const EventsContainer = styled.div`
+  
+`
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;
   padding: 0.5em 1em;

@@ -88,9 +88,10 @@ class NavbarMobile extends React.Component {
           </div>
           <div>
             <NavImageLink
-              cover
-              direction="down"
-              bg={transitionBackground}
+              // cover
+              // direction="down"
+              // bg={transitionBackground}
+              fade
               to={createPath(this.language, "")}
             >
               <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
@@ -104,9 +105,10 @@ class NavbarMobile extends React.Component {
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
             <NavMobileLink
-              cover
-              direction="down"
-              bg={transitionBackground}
+              // cover
+              // direction="down"
+              // bg={transitionBackground}
+              fade
               to={createPath(this.language, `current`)}
             >
               {this.language === "EN" ? "current" : "aktuell"}
@@ -119,9 +121,10 @@ class NavbarMobile extends React.Component {
           <NavMobileLinks>
             {this.navLinks.map((navLink, index) => (
               <NavMobileLink
-                cover
-                direction="down"
-                bg={transitionBackground}
+                fade
+                // cover
+                // direction="down"
+                // bg={transitionBackground}
                 key={index}
                 to={createPath(this.language, `about/${navLink.path}`)}
               >
@@ -148,18 +151,20 @@ class NavbarMobile extends React.Component {
             </div>
             <div>
               <NavMobileLinkSmall
-                cover
-                direction="down"
-                bg={transitionBackground}
+                fade
+                // cover
+                // direction="down"
+                // bg={transitionBackground}
                 to={createPath(this.language, "imprint")}
               >
                 {content[this.language]['imprint']}
 
               </NavMobileLinkSmall>
               <NavMobileLinkSmall
-                cover
-                direction="down"
-                bg={transitionBackground}
+                fade
+                // cover
+                // direction="down"
+                // bg={transitionBackground}
                 to={createPath(this.language, "data-privacy")}
               >
                 {content[this.language]['data-privacy']}
