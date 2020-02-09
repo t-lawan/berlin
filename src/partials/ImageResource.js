@@ -18,6 +18,10 @@ export const GalleryImage = styled.img`
   transition: opacity 500ms ease 0s;
 `
 
+export const Image = styled(Img)`
+  max-height: 650px;
+`
+
 export const Caption = styled.section`
   font-size: 0.6rem;
   p {
@@ -63,7 +67,7 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Img fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+        <Image fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{

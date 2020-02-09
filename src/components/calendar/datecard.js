@@ -15,6 +15,7 @@ import {
   DateTextWrapper,
   DateString,
   EventsGrid,
+  ExhibitionCardsWrapper,
 } from "./datecard.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 
@@ -76,12 +77,12 @@ const DateCard = props => {
           {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
         </CurrentDate>
         <EventsGrid>
-          <EventCardsWrapper>
+          <ExhibitionCardsWrapper>
             {exhibitions.length === 0 ? <ClosedText> Closed</ClosedText> : null} 
             {exhibitions.map((exhibition, index) => (
               <EventCard key={index} event={exhibition} />
             ))}
-          </EventCardsWrapper>
+          </ExhibitionCardsWrapper>
           <EventCardsWrapper>
             {events.map((event, index) => (
               <EventCard key={index} event={event} />
