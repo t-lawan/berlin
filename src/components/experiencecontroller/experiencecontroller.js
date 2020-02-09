@@ -128,7 +128,7 @@ class ExperienceController extends React.Component {
     if (this.props.left) {
       return experience.id < this.props.experience
     } else {
-      return experience.id > this.props.experience
+      return experience.id >= this.props.experience
     }
   }
   render() {
