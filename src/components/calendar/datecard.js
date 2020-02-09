@@ -77,13 +77,18 @@ const DateCard = props => {
           {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
         </CurrentDate>
         <EventsGrid>
-          <ExhibitionCardsWrapper>
+        <EventCardsWrapper hideInMobile={false}>
+            {events.map((event, index) => (
+              <EventCard key={index} event={event} />
+            ))}
+          </EventCardsWrapper>
+          <ExhibitionCardsWrapper hideInMobile={true}>
             {exhibitions.length === 0 ? <ClosedText> Closed</ClosedText> : null} 
             {exhibitions.map((exhibition, index) => (
               <EventCard key={index} event={exhibition} />
             ))}
           </ExhibitionCardsWrapper>
-          <EventCardsWrapper>
+          <EventCardsWrapper hideInMobile={true}>
             {events.map((event, index) => (
               <EventCard key={index} event={event} />
             ))}

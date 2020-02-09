@@ -228,6 +228,28 @@ h1, h2, h3, h4, h5, h6, p, a, em {
     animation: fadeOut 4s linear forwards;
 }
 
+.remove-animation {
+  max-height: inherit;
+  animation: 0;
+  -webkit-animation: 0;
+}
+
+.increase-height {
+  animation: increaseHeight 3s forwards;
+  -webkit-animation: increaseHeight 3s forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes increaseHeight {
+    0% {
+      max-height: 0 !important;
+    }
+
+    100% {
+      max-height: 1000px !important;
+    }
+  }
+
 @keyframes fadeIn {
   0% { opacity: 0 }
   100% { opacity: 1 }
