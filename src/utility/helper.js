@@ -18,7 +18,7 @@ export const transitionTimes = {
   animationInDuration: 120,
   animationOutDuration: 100,
   visibleDelayTime: 290,
-  changeExperienceDelayTime: 10,
+  changeExperienceDelayTime: 100,
   timeOutForEachExperiences: 10
 }
 
