@@ -23,13 +23,13 @@ let calendar_items = []
 const UpcomingEvents = props => {
   const language = getCurrentLanguageString(props.languages)
   calendar_items = props.calendar_items
-  let activeExhibition = props.exhibitions.filter(exhibition => {
-    return exhibition.active
+  let currentExhibition = props.exhibitions.find(exhibition => {
+    return exhibition.experience == props.experience
   })
 
   const filteredItems = calendar_items
     .filter(item => {
-      if (props.experience === props.active_experience) {
+      if (moment().diff(moment(currentExhibition.end_date)) <= 0) {
         return (
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
@@ -59,11 +59,8 @@ const UpcomingEvents = props => {
       </p>
       {filteredItems.map(item => (
         <EventItem key={item.id}>
-          <EventLink
-            fade
-            to={createPath(language, `${item.slug}`)}
-          >
-          {/* <EventLink
+          <EventLink fade to={createPath(language, `${item.slug}`)}>
+            {/* <EventLink
             cover
             direction="down"
             bg={transitionBackground}
@@ -83,7 +80,10 @@ const UpcomingEvents = props => {
             {item[language].subtitle ? (
               <EventTitle
                 dangerouslySetInnerHTML={{
-                  __html: `<p>${truncateText(striptags(item[language].subtitle), 16)} ...</p>`,
+                  __html: `<p>${truncateText(
+                    striptags(item[language].subtitle),
+                    16
+                  )} ...</p>`,
                 }}
               />
             ) : null}
@@ -129,7 +129,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(UpcomingEvents)
+export default connect(mapStateToProps, null)(UpcomingEvents)
