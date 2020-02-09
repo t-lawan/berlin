@@ -60,6 +60,10 @@ export const EventCardsWrapper = styled.div`
   }
 `
 
+export const ExhibitionCardsWrapper = styled(EventCardsWrapper)`
+
+`
+
 export const EventsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
