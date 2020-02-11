@@ -18,7 +18,7 @@ export const EventItem = styled.div`
   background-color:#FFF;
   position:relative;
   &:first-of-type {
-    border: 6px solid ${Color.yellow}
+    border: ${props => props.isActive ? `6px solid ${Color.yellow}` : ''}; 
   };
   &:first-of-type:before {
     content:" ";
