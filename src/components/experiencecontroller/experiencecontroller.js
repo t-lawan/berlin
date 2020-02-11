@@ -116,7 +116,7 @@ class ExperienceController extends React.Component {
       }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
-      }, 50)
+      }, transitionTimes.changeExperienceDelayTime)
       navigate(createPath(this.language, "/"))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
