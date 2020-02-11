@@ -27,6 +27,10 @@ const UpcomingEvents = props => {
     return exhibition.experience == props.experience
   })
 
+
+  console.log('EX', currentExhibition);
+
+
   const filteredItems = calendar_items
     .filter(item => {
       if (moment().diff(moment(currentExhibition.end_date)) <= 0) {
@@ -58,7 +62,7 @@ const UpcomingEvents = props => {
           : "Es gibt keine bevorstehenden Veranstaltungen für diese Erfahrung"}{" "}
       </p>
       {filteredItems.map(item => (
-        <EventItem key={item.id}>
+        <EventItem isActive={currentExhibition.active} key={item.id}>
           <EventLink fade to={createPath(language, `${item.slug}`)}>
             {/* <EventLink
             cover
