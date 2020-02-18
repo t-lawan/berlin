@@ -11,6 +11,9 @@ export const TwoColumnPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
   }
+  :nth-child(2){
+    padding-top:0;
+  }
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
     background:#FFF;
@@ -266,7 +269,7 @@ export const TextBlock = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     font-size:1rem;
-    line-height:1.4;
+    line-height:1.3;
   }
   }
   > h1,h2,h3,h4,h5,h6 {

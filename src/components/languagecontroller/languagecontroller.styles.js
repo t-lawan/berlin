@@ -15,7 +15,7 @@ export const LanguageControllerWrapper = styled.div`
   border-bottom: 1px solid black;
   align-items: center;
   justify-content: center;
-  padding: 0.3em;
+  padding: 0.4em;
   background: white;
   }
   @media (max-width: ${size.mobileM}) {
@@ -29,7 +29,7 @@ export const LanguageControllerWrapper = styled.div`
 export const LanguageButton = styled(AniLink)`
   text-decoration: none;
   color: black;
-  opacity: ${props => props.selected ? 0.3 : 1};
+  opacity: ${props => props.selected ? 1 : 0.3};
   margin-bottom: 0.1em;
   line-height:1.1;
   font-size: 1.2rem;
@@ -50,7 +50,7 @@ export const LanguageButton = styled(AniLink)`
     padding-top:0;
     margin-bottom: 0.0em;
   line-height:1.1;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 1.65em;

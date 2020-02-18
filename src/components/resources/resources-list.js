@@ -19,6 +19,7 @@ const ResourcesListWrapper = styled.div`
 
 const ResourceTitle = styled.p`
   font-size: 1rem;
+  transition:all 0.2s ease-in-out;
   :last-child {
     margin-bottom:0;
   }

@@ -93,8 +93,9 @@ const TopRow = styled.div`
   }
 `
 const ExperienceImage = styled.img`
-  width: 40%;
+  width: 35%;
   align-self: center;
+  margin-bottom:0;
   :nth-child(3) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
     margin-top: 3em;
@@ -116,7 +117,7 @@ const ExperienceImage = styled.img`
   }
   :nth-child(9) {
     animation: ${keyFrameExperienceImage} 0.2s ease-in-out 0s forwards;
-    margin-top: 3em;
+    margin-top: 2em;
     opacity: 0;
     animation-delay: 2.4s;
   }

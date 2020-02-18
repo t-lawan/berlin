@@ -10,7 +10,7 @@ const NewsList = props => {
     return news.experience.includes(props.experience.toString()) && news.show_in_feed && DateManager.getDaysFromCurrentDate(news.dates[0]) < 0; 
   }).reverse();
   return (
-    <NewsListWrapper show={filteredNews.length > 0}>
+    <NewsListWrapper show={filteredNews.length > 0} isHome={true}>
       {filteredNews.map(news => (
         <NewsItem
           key={news.id}
