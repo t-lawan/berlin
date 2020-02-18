@@ -27,10 +27,6 @@ const UpcomingEvents = props => {
     return exhibition.experience == props.experience
   })
 
-
-  console.log('EX', currentExhibition);
-
-
   const filteredItems = calendar_items
     .filter(item => {
       if (moment().diff(moment(currentExhibition.end_date)) <= 0) {
