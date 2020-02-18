@@ -10,6 +10,7 @@ export class CalendarItemModel {
     venue,
     participants,
     is_free,
+    limited_capacity,
     experience,
     EN,
     DE,
@@ -25,6 +26,7 @@ export class CalendarItemModel {
     this.venue = venue
     this.participants = participants
     this.is_free = is_free;
+    this.limited_capacity = limited_capacity;
     this.experience = experience
     this.EN = EN;
     this.DE = DE;

@@ -14,7 +14,7 @@ const Ticker = props => {
   let image = getDocument(props.documents, exhibition.animation)
   return (
     <TickerWrapper
-      show={exhibition[language].promotional_sticker_for_homepage.length > 0}
+    show={exhibition[language].promotional_sticker_for_homepage && exhibition[language].promotional_sticker_for_homepage.length > 0}
     >
       {exhibition[language].promotional_sticker_for_homepage ? 
           createComp(

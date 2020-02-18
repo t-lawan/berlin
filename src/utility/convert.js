@@ -235,6 +235,7 @@ export class Convert {
             event.venue,
             event.participants,
             event.is_free,
+            event.limited_capacity,
             event.experience,
             {
               title: event.EN.event_title,
@@ -295,6 +296,7 @@ export class Convert {
               exhibition.end_date,
               exhibition.venue,
               exhibition.participants,
+              true,
               true,
               [exhibition.experience],
               {

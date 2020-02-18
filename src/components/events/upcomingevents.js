@@ -94,7 +94,7 @@ const UpcomingEvents = props => {
                 ? item[language].other_language
                 : freeAdmision[language][item.language]}
             </p>
-            <p hidden={!item.is_free}> {freeAdmision[language].text}</p>
+            <p hidden={!item.is_free}> {`${freeAdmision[language].free_admission}${item.limited_capacity ? `, ${freeAdmision[language].limited_capacity}` : ''}`}</p>
           </EventLink>
         </EventItem>
       ))}
@@ -104,13 +104,15 @@ const UpcomingEvents = props => {
 
 export const freeAdmision = {
   DE: {
-    text: "Freier Eintritt, begrenzte Kapazität",
+    free_admission: "Freier Eintritt",
+    limited_capacity: "begrenzte Kapazität",
     en: "Auf Englisch",
     de: "Auf Deutsch",
     rsvp: "RSVP erforderlich",
   },
   EN: {
-    text: "Free admission, limited capacity",
+    free_admission: "Free admission",
+    limited_capacity: "limited capacity",
     en: "In English",
     de: "In German",
     rsvp: "RSVP Required",
