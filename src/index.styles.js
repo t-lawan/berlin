@@ -357,7 +357,7 @@ export const increaseHeightKeyFrames = keyframes`
     }
 
     100% {
-      max-height: 2000px;
+      max-height: 1000px;
     }
 `
 
