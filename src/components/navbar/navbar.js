@@ -39,8 +39,9 @@ const Navbar = props => {
           activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
           key={item.slug}
-          cover direction="down"
-          bg={transitionBackground}
+          fade
+          // cover direction="down"
+          // bg={transitionBackground}
         >
           {item[language].title.toLowerCase()}
         </NavItem>

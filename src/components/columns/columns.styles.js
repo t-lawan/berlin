@@ -12,6 +12,46 @@ import {
   ColumnLayout,
 } from "./column.styles"
 import { Animated } from "react-animated-css"
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
+export const ExperienceCarousel = styled(Carousel)`
+  text-align: left !important;
+  width: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+`
+
+export const ExperienceContainer = styled.div`
+  text-align: left !important;
+  display: grid;
+  height: 100%;
+  height: 100vh;
+  grid-template-columns: 66fr 33fr;
+  grid-template-rows: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: inherit;
+  background: white;
+  grid-template-areas: "column column" "column column" "footer footer";
+  @media (max-width: ${size.mobileM}) {
+    /* width: 100%; */
+    width: 100vw;
+    display: block;
+    position: relative;
+    margin: 45px auto 0;
+    height: calc(100vh - 90px);
+  }
+
+  @media (max-width: ${size.tablet}) {
+    grid-template-areas:"column" "column column" "footer" !important;
+    margin:40px auto 0;
+    height: calc(100vh - 40px);
+    ${ColumnLayout}:nth-child(3) {
+      z-index:10;
+    }
+  }
+`
 
 export const AnimatedColumn = styled(Animated)`
   height: 100%;
@@ -57,6 +97,15 @@ export const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 18fr 1fr;
   ${changeGridToOneRow}
+`
+
+export const ResourcesOnlyInMobile = styled.div`
+  display: none;
+  z-index: 9;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => props.hide ? 'none' : 'inherit'};
+  }
 `
 
 export const FirstColumnWrapper = styled.div`
@@ -137,7 +186,6 @@ export const MobTitleCard = styled.div`
     width: 100%;
   }
   ${showDisplayForMobile};
-  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -152,7 +200,6 @@ export const MobAnimCard = styled.div`
     display:none;
   }
   ${showDisplayForMobile};
-  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
 
   /* ${showDisplayForTablet}; */
 `
@@ -178,6 +225,7 @@ export const StickyFooter = styled.div`
   bottom: 0;
   position: sticky;
   grid-area: footer;
+  width: 100%;
   @media (max-width: ${size.tablet}) {
     /* width: 100%; */
     grid-area: unset;
@@ -212,6 +260,12 @@ export const FixedFooter = styled.div`
   bottom: -150px;
   position: fixed;
   grid-area: footer;
+  @media (min-width: ${size.tablet}) {
+    width: 100%;
+  }
+  @media (min-width: ${size.laptop}) {
+    /* width: 90%; */
+  }
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
     position:relative;
@@ -220,6 +274,7 @@ export const FixedFooter = styled.div`
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
+  ${hideDisplayForMobile};
   transition: all 0.3s ease-in-out;
 `
 
@@ -247,12 +302,11 @@ export const FixedTicker = styled.div`
   z-index: 5;
   bottom: 60px;
   height:42px;
-  width: calc(33.33% - 0%);
+  /* width: calc(33.33% - 3.3%); */
+  width: 40%;
   position: fixed;
   overflow:hidden;
-  border-top: solid 1px #000;
-  background: ${Color.yellow};
-  right: 0%;
+  /* right: 5%; */
   left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {

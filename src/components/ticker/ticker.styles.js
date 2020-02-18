@@ -12,7 +12,9 @@ export const TickerWrapper = styled.div`
     align-items: center;
     overflow: hidden;
     width: calc(100% - 0em);
-    >div {
+    background: ${Color.yellow};
+    border-top: solid 1px #000;
+    > a >div {
       position: absolute;
       white-space: nowrap;
       overflow: visible;

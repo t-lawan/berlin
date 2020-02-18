@@ -213,9 +213,10 @@ const Event = props => {
             {props.experience == 4 ? (
               <VenueLink
                 to={createPath(language, venue ? "venue/" + venue.slug : "")}
-                bg={transitionBackground}
-                cover
-                direction="down"
+                // bg={transitionBackground}
+                // cover
+                // direction="down"
+                fade
               >
                 {" "}
                 {venue ? venue[language].venue_name : ""}
@@ -233,9 +234,10 @@ const Event = props => {
                 language,
                 documentation[0] ? `documentation/${documentation[0].slug}` : ``
               )}
-              bg={transitionBackground}
-              cover
-              direction="down"
+              fade
+              // bg={transitionBackground}
+              // cover
+              // direction="down"
             >
               <DocumentationButton bgColour={"black"}>
                 Documentation

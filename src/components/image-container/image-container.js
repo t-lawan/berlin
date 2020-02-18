@@ -2,80 +2,164 @@ import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import ImageResource from "../../partials/ImageResource";
+import ImageResource from "../../partials/ImageResource"
 import styled from "styled-components"
-import { hideDisplayForMobile, size } from "../../index.styles";
-import ImageGalleryResource from "../../partials/ImageGalleryResource";
+import {
+  hideDisplayForTablet,
+  hideDisplayForMobile,
+  size,
+  increaseHeightKeyFrames,
+} from "../../index.styles"
+import ImageGalleryResource from "../../partials/ImageGalleryResource"
+import { CSSTransition } from "react-transition-group"
+
+let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
-  padding: 0em;
   max-height: 0;
-  transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
-  overflow:hidden;
-  z-index:0;
-  > img {
-    margin:0 0.7em;
+  /* transition: max-height 1.5s cubic-bezier(0, 1, 0, 1); */
+  overflow: hidden;
+  z-index: 0;
+  padding: 0 0.7em;
+  padding-top: 0.7em;
+  /* transition: max-height 3s ease-in-out;
+  transition-delay: 4s; */
+
+  @media (min-width: ${size.laptop}) {
+    padding: 0 1em;
+  }
+  @media (max-width: ${size.tablet}) {
+    padding: 0.7em;
+  }
+
+  /* transition: max-height 5s ease-in-out; */
+
+  /* > img {
+    margin: 0 0.7em;
     @media (min-width: ${size.laptop}) {
-       margin:0 1em;
+      margin: 0 1em;
     }
     @media (max-width: ${size.tablet}) {
-    margin: 0.7em;
+      margin: 0.7em;
     }
-  }
-  position:relative;
+  } */
+  position: relative;
   ${hideDisplayForMobile};
-  display: ${props => props.hideOnHomePage ? 'none': 'block'};
-  @keyframes increaseHeight {
-  0% {
-    max-height: 0;
-  }
-
-  100% {
-    max-height: 1000px;
-  }
-}
-
-animation: increaseHeight 3s forwards;
--webkit-animation: increaseHeight 3s forwards;
-animation-delay: 1.5s;
-
+  display: ${props => (props.hideOnHomePage ? "none" : "block")};
+  animation-name: ${increaseHeightKeyFrames};
+  animation-duration: 3s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+  animation-delay: 1.5s;
 `
 
-const ImageContainer = props => {
-  const experience = props.experience
-  const language = getCurrentLanguageString(props.languages)
-  const exhibitions = props.exhibitions.filter((item, index)=> {
-    return item.experience === experience.toString();
-  });
-  const exhibition = exhibitions[0];
-  return (
-    <ImageContainerWrapper hideOnHomePage={props.hideOnHomePage} hideInMobile={props.hideInMobile} hideInTablet={props.hideInTablet}>
-      {exhibition.has_gallery_images ? <ImageGalleryResource ids={exhibition.has_gallery_images ? exhibition.gallery_images : []}  /> : null}
-      {!exhibition.has_gallery_images ? <ImageResource id={exhibition && exhibition.floor_plan ? exhibition.floor_plan : 411} withCaption={true} /> : null} 
-    </ImageContainerWrapper>
-  )
+export const Animation = styled(CSSTransition)`
+  &.${transitionName}-enter {
+    max-height: 0 !important;
+  }
+
+  &.${transitionName}-enter-active {
+    animation-name: ${increaseHeightKeyFrames};
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+  }
+
+  &.${transitionName}-exit {
+    /* max-height: 1000px !important; */
+  }
+
+  &.${transitionName}-exit-active {
+  }
+`
+
+class ImageContainer extends React.Component {
+  experience
+  language
+  exhibitions
+  exhibition
+  ref
+
+  constructor(props) {
+    super(props)
+    this.ref = React.createRef()
+  }
+
+  componentDidMount() {
+    this.experience = this.props.experience
+    this.language = getCurrentLanguageString(this.props.languages)
+  }
+
+  render() {
+    this.exhibitions = this.props.exhibitions.filter((item, index) => {
+      return item.experience === this.props.experience.toString()
+    })
+    this.exhibition = this.exhibitions[0]
+    return (
+      <Animation
+        in={false}
+        // in={!this.props.show_overlay}
+        timeout={15000}
+        // mountOnEnter
+        // unmountOnExit
+        classNames={{
+          enter: `${transitionName}-enter`,
+          enterActive: `${transitionName}-active-enter`,
+          exit: `${transitionName}-exit`,
+          exitActive: `${transitionName}-active-exit`,
+        }}
+      >
+        <ImageContainerWrapper
+          hideOnHomePage={this.props.hideOnHomePage}
+          hideInMobile={this.props.hideInMobile}
+          hideInTablet={this.props.hideInTablet}
+          // ref={this.ref}
+          //  onAnimationEnd={() => this.removeAnimation()}
+        >
+          {this.exhibition && this.exhibition.has_gallery_images ? (
+            <ImageGalleryResource
+              ids={
+                this.exhibition.has_gallery_images
+                  ? this.exhibition.gallery_images
+                  : []
+              }
+            />
+          ) : null}
+          {this.exhibition && !this.exhibition.has_gallery_images ? (
+            <ImageResource
+              id={
+                this.exhibition && this.exhibition.floor_plan
+                  ? this.exhibition.floor_plan
+                  : 411
+              }
+              withCaption={true}
+            />
+          ) : null}
+        </ImageContainerWrapper>
+      </Animation>
+    )
+  }
 }
 
 ImageContainer.propTypes = {
   hideInMobile: PropTypes.bool,
   hideInTablet: PropTypes.bool,
   showInMobile: PropTypes.bool,
-  hideOnHomePage: PropTypes.bool
+  hideOnHomePage: PropTypes.bool,
 }
 
 ImageContainer.defaultProps = {
-  hideOnHomePage: false
-};
+  hideOnHomePage: false,
+}
 
 const mapStateToProps = state => {
   return {
     experience: state.experience,
     languages: state.languages,
-    exhibitions: state.exhibitions
+    exhibitions: state.exhibitions,
+    show_overlay: state.show_overlay,
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(ImageContainer)
+export default connect(mapStateToProps, null)(ImageContainer)

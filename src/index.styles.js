@@ -217,6 +217,58 @@ h1, h2, h3, h4, h5, h6, p, a, em {
     bottom: 0 !important;
   }
 }
+
+.fade-in {
+  -webkit-animation: fadeIn 2s linear forwards;
+    animation: fadeIn 2s linear forwards;
+}
+
+.fade-out{
+  -webkit-animation: fadeOut 4s linear forwards;
+    animation: fadeOut 4s linear forwards;
+}
+
+.remove-animation {
+  max-height: inherit;
+  animation: 0;
+  -webkit-animation: 0;
+}
+
+.increase-height {
+  animation: increaseHeight 3s forwards;
+  -webkit-animation: increaseHeight 3s forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes increaseHeight {
+    0% {
+      max-height: 0 !important;
+    }
+
+    100% {
+      max-height: 1000px !important;
+    }
+  }
+
+  @keyframes decreaseHeight {
+    0% {
+      max-height: 1000px !important;
+    }
+
+    100% {
+      max-height: 0 !important;
+    }
+  }
+
+@keyframes fadeIn {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
 `
 
 export const hideDisplayForTablet = css`
@@ -297,6 +349,16 @@ export const changeNthChild = css`
       border-right: none;
     }
   }
+`
+
+export const increaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      max-height: 1000px;
+    }
 `
 
 export const mobile = props => {

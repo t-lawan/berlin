@@ -52,12 +52,39 @@ export const MonthCardWrapper = styled.div`
   }
 `
 export const EventCardsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: ${props => props.hideInMobile ? 'flex' : 'none'};
+  flex-direction: column;
   flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
+  /* width: 70%; */
+  
   @media (max-width: ${size.mobileM}) {
     flex-direction: column;
+    display: ${props => props.hideInMobile ? 'none' : 'flex'};
   }
+`
+
+export const ExhibitionCardsWrapper = styled(EventCardsWrapper)`
+  display: flex !important;
+  justify-content: flex-start;
+  flex-direction: row;
+
+  /* width: 30%; */
+`
+
+export const EventsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  grid-column-gap: 1rem;
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 1fr;
+
+  }
+`
+
+export const EventsContainer = styled.div`
+  
 `
 export const CurrentDate = styled.div`
   border-right: 0.05em solid black;

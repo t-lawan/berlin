@@ -14,6 +14,7 @@ const ExhibitionPageWrapper = styled.div`
   height: 100vh;
   position: absolute;
   background: #fbf95d;
+  z-index: 6000;
   display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
     width: 100%;
@@ -21,12 +22,11 @@ const ExhibitionPageWrapper = styled.div`
     padding: 1em 0.7em;
     bottom: 45px;
     height: calc(100vh - 87px);
-    top: 40px;
+    /* top: 40px; */
   }
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.7em;
-    z-index: 6;
-    top:40px;
+    /* top:40px; */
     left:0;
     width:100%;
     bottom:0;
@@ -34,20 +34,21 @@ const ExhibitionPageWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     padding: 0.7em 1em;
-    width: calc(100% - 10%);
+    /* width: calc(100% - 10%); */
+    width: 100%;
     height: 100vh;
-    left: 5%;
+    /* left: 5%; */
     top:0;
   }
 `
 
 const ExhibitionPageImage = styled.img`
-  width: 30%;
+  width: 30% !important;
   @media (max-width: ${size.mobileM}) {
-    width:100%;
+    width:100% !important;
   }
   @media (max-width: ${size.tablet}) {
-    width:50%;
+    width:50% !important;
   }
 `
 class ExhibitionPage extends React.Component {
