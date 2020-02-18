@@ -11,7 +11,7 @@ const Ticker = props => {
   let exhibition = props.exhibitions.filter(ex => {
     return ex.experience == experience
   })[0]
-  let image = getDocument(props.documents, exhibition.animation)
+  let image = getDocument(props.documents, exhibition[language].promotional_sticker_for_homepage)
   return (
     <TickerWrapper
       show={exhibition[language].promotional_sticker_for_homepage.length > 0}
@@ -21,7 +21,7 @@ const Ticker = props => {
             exhibition,
             (<div>
               <span>
-                {exhibition[language].promotional_sticker_for_homepage}
+                <img className="tickergraf" src={image.url} />
               </span>
             </div>),
             exhibition[language].external_link_url,
