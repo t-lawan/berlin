@@ -246,9 +246,13 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 
 export const ResourcePublisherLink = styled.a`
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
   border-bottom: solid thin;
   border-color: ${Color.red};
   /* font-size: 1.15em; */
+  :hover {
+    color:${Color.red};
+  }
 `
 
 export const TextBlock = styled.div`

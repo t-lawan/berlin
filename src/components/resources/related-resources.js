@@ -59,6 +59,7 @@ const RelatedResource = styled.div`
 
 const ResourceText = styled.p`
   font-size: 0.85em;
+  transition: all 0.2s ease-in-out;
   margin-top:0;
   :first-child {
     font-size:1em;

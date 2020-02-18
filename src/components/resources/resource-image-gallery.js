@@ -25,6 +25,7 @@ const ResourceTitle = styled.h1`
   @media (min-width: ${size.laptop}) {
     font-size: 1.05rem;
     line-height: 1.3;
+    margin: 0em 0 0.5em;
   }
 `
 const Author = styled.p`
@@ -32,6 +33,16 @@ const Author = styled.p`
   @media (min-width: ${size.laptop}) {
     font-size: 1.05rem;
     line-height: 1.3;
+  }
+`
+const ResLink = styled.div`
+  > a {
+    transition: all 0.2s ease-in-out;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
+    :hover {
+      color: ${Color.red};
+    }
   }
 `
 
@@ -54,7 +65,8 @@ const ResourceImageGallery = props => {
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
           <Author> {r[language].year}</Author>
-          <a target="_blank" href={r.external_url}> {r.external_url_label}</a>
+          {r.external_url.length > 0 ? <ResLink> <a target="_blank" href={r.external_url}> {r.external_url_label}</a> </ResLink> : ""}
+          
         </div>
         <div>
           <div

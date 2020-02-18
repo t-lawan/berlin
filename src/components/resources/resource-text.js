@@ -50,6 +50,14 @@ const Dthide = styled.div`
 const Author = styled.p`
   margin-bottom: 0;
 `
+const ArrowDown = styled.span`
+background-image: url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg);
+    background-repeat: no-repeat;
+    background-position: 0px 6px;
+    background-size: 18px 13px;
+    padding-left: 21px;
+`
+
 
 const ResourceText = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -68,7 +76,7 @@ const ResourceText = props => {
           ) : null}
           {doc ? (
             <ExternalLink href={doc.url} target="__blank">
-              <PressArrowDown icon={faLongArrowAltDown} />
+              <ArrowDown />
               <span> {r.text_based_resource[0].document_download_label} </span>
             </ExternalLink>
           ) : null}
@@ -88,20 +96,20 @@ const ResourceText = props => {
 
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
           <Author hidden={!r.publisher.title}>
-            In:{" "}
+            In:{" "}<em>
             <ResourcePublisherLink
               hidden={!r.publisher.title}
               target="_blank"
               href={r.publisher.title}
             >
               {r.publisher.title}
-            </ResourcePublisherLink>
+            </ResourcePublisherLink></em>
           </Author>
           <p> {r[language].year}</p>
           <Dthide>
             {doc ? (
               <ExternalLink href={doc.url} target="__blank">
-                <PressArrowDown icon={faLongArrowAltDown} />
+                <ArrowDown />
                 <span>
                   {" "}
                   {r.text_based_resource[0].document_download_label}{" "}
