@@ -17,12 +17,12 @@ import { CSSTransition } from "react-transition-group"
 let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
-  /* max-height: 0; */
+  max-height: 0;
   transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
   overflow: hidden;
   z-index: 0;
   /* padding: 0 0.7em; */
-  padding-top: 0.7em;
+  /* padding-top: 0.7em; */
   /* transition: max-height 3s ease-in-out;
   transition-delay: 4s; */
 
@@ -45,11 +45,11 @@ const ImageContainerWrapper = styled.section`
   position: relative;
   ${hideDisplayForMobile};
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
-  /* animation-name: ${increaseHeightKeyFrames};
+  animation-name: ${increaseHeightKeyFrames};
   animation-duration: 3s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
-  animation-delay: 1.5s; */
+  animation-delay: 1.5s;
 `
 
 export const Animation = styled(CSSTransition)`
@@ -103,7 +103,6 @@ class ImageContainer extends React.Component {
       this.setState({
         experience_changed: true
       })
-      console.log('CHANGE');
     }
   }
 
@@ -111,8 +110,6 @@ class ImageContainer extends React.Component {
     this.setState({
       experience_changed: false
     })
-
-    console.log('HEY')
   }
 
   render() {
@@ -122,8 +119,10 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0]
     return (
       <Animation
-        in={this.state.experience_changed}
-        onExited={() => this.setExperienceChangeToFalse()}
+        in={(this.props.show_overlay) || this.state.experience_changed}
+        onEntered={() => this.setExperienceChangeToFalse()}
+        mountOnEnter
+        unMountOnExit
         timeout={{
           appear: 100,
           enter: 3000,
@@ -135,8 +134,6 @@ class ImageContainer extends React.Component {
           exit: `${transitionName}-exit`,
           exitActive: `${transitionName}-active-exit`,
         }}
-        mountOnEnter
-        unmountOnExit
       >
         <ImageContainerWrapper
           hideOnHomePage={this.props.hideOnHomePage}
@@ -185,6 +182,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     exhibitions: state.exhibitions,
     show_overlay: state.show_overlay,
+    isLoaded: state.isLoaded
   }
 }
 
