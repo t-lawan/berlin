@@ -17,35 +17,19 @@ let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
   max-height: 0;
-  transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
+  /* transition: max-height 1.5s cubic-bezier(0, 1, 0, 1); */
   overflow: hidden;
   z-index: 0;
   padding: 0 0.7em;
   padding-top: 0.7em;
-  transition: max-height 3s ease-in-out;
-  transition-delay: 4s;
+  /* transition: max-height 3s ease-in-out;
+  transition-delay: 4s; */
 
   @media (min-width: ${size.laptop}) {
     padding: 0 1em;
   }
   @media (max-width: ${size.tablet}) {
     padding: 0.7em;
-  }
-
-  &.${transitionName}-enter {
-    max-height: 0 !important;
-  }
-
-  &.${transitionName}-enter-active {
-    max-height: 1000px !important;
-  }
-
-  &.${transitionName}-exit {
-    max-height: 1000px !important;
-  }
-
-  &.${transitionName}-exit-active {
-    max-height: 0 !important;
   }
 
   /* transition: max-height 5s ease-in-out; */
@@ -67,6 +51,27 @@ const ImageContainerWrapper = styled.section`
   animation-timing-function: ease;
   animation-fill-mode: forwards;
   animation-delay: 1.5s;
+`
+
+export const Animation = styled(CSSTransition)`
+  &.${transitionName}-enter {
+    max-height: 0 !important;
+  }
+
+  &.${transitionName}-enter-active {
+    animation-name: ${increaseHeightKeyFrames};
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+  }
+
+  &.${transitionName}-exit {
+    /* max-height: 1000px !important; */
+  }
+
+  &.${transitionName}-exit-active {
+  }
 `
 
 class ImageContainer extends React.Component {
@@ -92,13 +97,19 @@ class ImageContainer extends React.Component {
     })
     this.exhibition = this.exhibitions[0]
     return (
-      // <CSSTransition
-      //   in={true}
-      //   timeout={1000}
-      //   // mountOnEnter
-      //   // unmountOnExit
-      //   classNames={transitionName}
-      // >
+      <Animation
+        in={false}
+        // in={!this.props.show_overlay}
+        timeout={15000}
+        // mountOnEnter
+        // unmountOnExit
+        classNames={{
+          enter: `${transitionName}-enter`,
+          enterActive: `${transitionName}-active-enter`,
+          exit: `${transitionName}-exit`,
+          exitActive: `${transitionName}-active-exit`,
+        }}
+      >
         <ImageContainerWrapper
           hideOnHomePage={this.props.hideOnHomePage}
           hideInMobile={this.props.hideInMobile}
@@ -126,7 +137,7 @@ class ImageContainer extends React.Component {
             />
           ) : null}
         </ImageContainerWrapper>
-      // </CSSTransition>
+      </Animation>
     )
   }
 }
@@ -147,6 +158,7 @@ const mapStateToProps = state => {
     experience: state.experience,
     languages: state.languages,
     exhibitions: state.exhibitions,
+    show_overlay: state.show_overlay,
   }
 }
 
