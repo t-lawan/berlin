@@ -1,20 +1,28 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath, truncateText } from "../utility/helper"
+import {
+  getCurrentLanguageString,
+  createPath,
+  truncateText,
+} from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import SEO from "../components/seo/seo"
-import { Convert } from "../utility/convert";
-import ImageResource from "../partials/ImageResource";
-import { DateManager } from "../utility/date";
-import NewsList from "../components/news/newslist";
-import striptags from 'striptags';
- 
+import { Convert } from "../utility/convert"
+import ImageResource from "../partials/ImageResource"
+import { DateManager } from "../utility/date"
+import NewsList from "../components/news/newslist"
+import striptags from "striptags"
+
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
-  let item = Convert.toNewsModel(props.pageContext);
-  let description = item[props.pageContext.language.toUpperCase()] ? truncateText(striptags(item[props.pageContext.language.toUpperCase()].news_subtitle)) : ""
+  let item = Convert.toNewsModel(props.pageContext)
+  let description = item[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(item[props.pageContext.language.toUpperCase()].news_subtitle)
+      )
+    : ""
   let title = item[props.pageContext.language.toUpperCase()].news_title
   let renderComponent = (
     <>
@@ -26,22 +34,30 @@ const News = props => {
         />
         <div>
           {item.dates.map((date, index) => (
-              <p key={index}> {DateManager.createLongDateString(date, language.toLowerCase())} </p>
+            <p key={index}>
+              {" "}
+              {DateManager.createLongDateString(
+                date,
+                language.toLowerCase()
+              )}{" "}
+            </p>
           ))}
         </div>
 
         <div>
-        <ImageResource id={item.thumbnail_image} withCaption={false} />
+          {item.thumbnail_image ? (
+            <ImageResource id={item.thumbnail_image} withCaption={false} />
+          ) : null}
           <TextBlock>
             <h1> {item[language].news_title}</h1>
             <h2> {item[language].news_subtitle}</h2>
           </TextBlock>
           <TextBlock>
-          <div
-          dangerouslySetInnerHTML={{
-            __html: item[language].news_text,
-          }}
-        />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: item[language].news_text,
+              }}
+            />
           </TextBlock>
         </div>
       </TwoColumnPageWrapper>
@@ -68,7 +84,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(News)
+export default connect(mapStateToProps, null)(News)
