@@ -37,6 +37,7 @@
     "react-helmet": "^5.2.1",
     "react-redux": "^7.1.3",
     "react-responsive-carousel": "^3.1.51",
+    "react-transition-group": "^4.3.0",
     "striptags": "^3.1.1",
     "styled-components": "^4.4.1",
     "validator": "^11.1.0"

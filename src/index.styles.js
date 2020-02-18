@@ -250,6 +250,16 @@ h1, h2, h3, h4, h5, h6, p, a, em {
     }
   }
 
+  @keyframes decreaseHeight {
+    0% {
+      max-height: 1000px !important;
+    }
+
+    100% {
+      max-height: 0 !important;
+    }
+  }
+
 @keyframes fadeIn {
   0% { opacity: 0 }
   100% { opacity: 1 }
@@ -339,6 +349,16 @@ export const changeNthChild = css`
       border-right: none;
     }
   }
+`
+
+export const increaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      max-height: 2000px;
+    }
 `
 
 export const mobile = props => {
