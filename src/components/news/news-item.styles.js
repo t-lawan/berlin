@@ -25,7 +25,7 @@ export const NewsItemContainer = styled.div`
 `
 
 export const NewsText = styled.div`
-   > p {
+   /* > p {
     display: none;
   }
   p:first-child {
@@ -37,5 +37,5 @@ export const NewsText = styled.div`
   }
   p {
     margin:0;
-  }
+  } */
 `

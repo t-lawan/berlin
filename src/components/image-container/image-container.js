@@ -9,6 +9,7 @@ import {
   hideDisplayForMobile,
   size,
   increaseHeightKeyFrames,
+  decreaseHeightKeyFrames,
 } from "../../index.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { CSSTransition } from "react-transition-group"
@@ -17,11 +18,11 @@ let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
   max-height: 0;
-  /* transition: max-height 1.5s cubic-bezier(0, 1, 0, 1); */
+  transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
   overflow: hidden;
   z-index: 0;
-  padding: 0 0.7em;
-  padding-top: 0.7em;
+  /* padding: 0 0.7em; */
+  /* padding-top: 0.7em; */
   /* transition: max-height 3s ease-in-out;
   transition-delay: 4s; */
 
@@ -31,8 +32,26 @@ const ImageContainerWrapper = styled.section`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em;
   }
+  &.${transitionName}-enter {
+    max-height: 0 !important;
+  }
 
-  /* transition: max-height 5s ease-in-out; */
+  &.${transitionName}-enter-active {
+  -webkit-animation: ${increaseHeightKeyFrames} 3s forwards;
+  animation: ${increaseHeightKeyFrames} 3s forwards;
+  }
+
+  &.${transitionName}-exit {
+    /* max-height: 1000px !important; */
+  }
+
+  &.${transitionName}-exit-active {
+    animation-name: ${decreaseHeightKeyFrames};
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    /* animation-delay: 1.5s; */
+  }
 
   /* > img {
     margin: 0 0.7em;
@@ -48,31 +67,12 @@ const ImageContainerWrapper = styled.section`
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
   animation-name: ${increaseHeightKeyFrames};
   animation-duration: 3s;
-  animation-timing-function: ease;
+  /* animation-timing-function: ease; */
   animation-fill-mode: forwards;
   animation-delay: 1.5s;
 `
 
-export const Animation = styled(CSSTransition)`
-  &.${transitionName}-enter {
-    max-height: 0 !important;
-  }
-
-  &.${transitionName}-enter-active {
-    animation-name: ${increaseHeightKeyFrames};
-    animation-duration: 3s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    animation-delay: 1.5s;
-  }
-
-  &.${transitionName}-exit {
-    /* max-height: 1000px !important; */
-  }
-
-  &.${transitionName}-exit-active {
-  }
-`
+export const Animation = styled(CSSTransition)``
 
 class ImageContainer extends React.Component {
   experience
@@ -84,11 +84,28 @@ class ImageContainer extends React.Component {
   constructor(props) {
     super(props)
     this.ref = React.createRef()
+    this.state = {
+      experience_changed: false,
+    }
   }
 
   componentDidMount() {
     this.experience = this.props.experience
     this.language = getCurrentLanguageString(this.props.languages)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.experience !== prevProps.experience) {
+      this.setState({
+        experience_changed: true,
+      })
+    }
+  }
+
+  setExperienceChangeToFalse = () => {
+    this.setState({
+      experience_changed: false,
+    })
   }
 
   render() {
@@ -98,11 +115,11 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0]
     return (
       <Animation
-        in={false}
-        // in={!this.props.show_overlay}
-        timeout={15000}
+        in={this.props.show_overlay || this.state.experience_changed}
+        onEntered={() => this.setExperienceChangeToFalse()}
         // mountOnEnter
-        // unmountOnExit
+        // unMountOnExit
+        timeout={2000}
         classNames={{
           enter: `${transitionName}-enter`,
           enterActive: `${transitionName}-active-enter`,
@@ -114,8 +131,6 @@ class ImageContainer extends React.Component {
           hideOnHomePage={this.props.hideOnHomePage}
           hideInMobile={this.props.hideInMobile}
           hideInTablet={this.props.hideInTablet}
-          // ref={this.ref}
-          //  onAnimationEnd={() => this.removeAnimation()}
         >
           {this.exhibition && this.exhibition.has_gallery_images ? (
             <ImageGalleryResource
@@ -159,6 +174,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     exhibitions: state.exhibitions,
     show_overlay: state.show_overlay,
+    isLoaded: state.isLoaded,
   }
 }
 
