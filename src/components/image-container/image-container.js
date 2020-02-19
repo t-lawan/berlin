@@ -67,7 +67,7 @@ const ImageContainerWrapper = styled.section`
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
   animation-name: ${increaseHeightKeyFrames};
   animation-duration: 3s;
-  animation-timing-function: ease;
+  /* animation-timing-function: ease; */
   animation-fill-mode: forwards;
   animation-delay: 1.5s;
 `
@@ -117,9 +117,9 @@ class ImageContainer extends React.Component {
       <Animation
         in={this.props.show_overlay || this.state.experience_changed}
         onEntered={() => this.setExperienceChangeToFalse()}
-        mountOnEnter
-        unMountOnExit
-        timeout={3000}
+        // mountOnEnter
+        // unMountOnExit
+        timeout={2000}
         classNames={{
           enter: `${transitionName}-enter`,
           enterActive: `${transitionName}-active-enter`,

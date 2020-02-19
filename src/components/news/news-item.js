@@ -22,9 +22,9 @@ const NewsItem = props => {
           <p> {news[language].news_title}</p>
           <p> {news[language].news_subtitle}</p>
           <NewsText
-            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20)}}
+            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat(' ... more') }}
           />
-          <span hidden={news[language].news_text.length === 0}> ... more </span>
+          {/* <span hidden={news[language].news_text.length === 0}> ... more </span> */}
         </NewsItemLink>
       </NewsItemContainer>
     )
