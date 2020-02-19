@@ -6,8 +6,9 @@ import {
   NewsItemContainer,
 } from "./news-item.styles"
 import PropTypes from "prop-types"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString, createPath, truncateText } from "../../utility/helper"
 import { connect } from "react-redux"
+import striptags from "striptags"
 
 const NewsItem = props => {
   let renderComponent
@@ -21,9 +22,9 @@ const NewsItem = props => {
           <p> {news[language].news_title}</p>
           <p> {news[language].news_subtitle}</p>
           <NewsText
-            dangerouslySetInnerHTML={{ __html: news[language].news_text }}
+            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat(' ... more') }}
           />
-          <span hidden={news[language].news_text.length === 0}> ... more </span>
+          {/* <span hidden={news[language].news_text.length === 0}> ... more </span> */}
         </NewsItemLink>
       </NewsItemContainer>
     )

@@ -250,7 +250,7 @@ const Event = props => {
                 ? event[`other_language${language == "EN" ? "" : "_de"}`]
                 : freeAdmision[language][event.language]}
             </p>
-            <p hidden={!event.is_free}>{freeAdmision[language].text}</p>
+            <p hidden={!event.is_free}> {`${freeAdmision[language].free_admission}${event.limited_capacity ? `, ${freeAdmision[language].limited_capacity}` : ''}`}</p>
           </EventTextBlock>
           <EventTextBlock>
             <ShareLink>
