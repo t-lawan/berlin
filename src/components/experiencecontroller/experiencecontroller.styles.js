@@ -15,6 +15,7 @@ export const ExperienceControllerWrapper = styled.div`
 export const ExperienceButton = styled.div`
   margin-bottom: 0.0em;
   text-decoration:none;
+  transition: all 0.2s ease-in-out;
   color: black;
   opacity: ${props => props.show ? '1' : '0.5'};
   font-size: xx-large;

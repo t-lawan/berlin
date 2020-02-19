@@ -22,6 +22,10 @@ const ResourceTextDiv = styled.div`
   a {
     border-bottom: solid thin;
     border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
   }
 `
 
