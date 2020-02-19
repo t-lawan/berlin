@@ -32,6 +32,26 @@ const ImageContainerWrapper = styled.section`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em;
   }
+  &.${transitionName}-enter {
+    max-height: 0 !important;
+  }
+
+  &.${transitionName}-enter-active {
+  -webkit-animation: ${increaseHeightKeyFrames} 3s forwards;
+  animation: ${increaseHeightKeyFrames} 3s forwards;
+  }
+
+  &.${transitionName}-exit {
+    /* max-height: 1000px !important; */
+  }
+
+  &.${transitionName}-exit-active {
+    animation-name: ${decreaseHeightKeyFrames};
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    /* animation-delay: 1.5s; */
+  }
 
   /* > img {
     margin: 0 0.7em;
@@ -52,31 +72,7 @@ const ImageContainerWrapper = styled.section`
   animation-delay: 1.5s;
 `
 
-export const Animation = styled(CSSTransition)`
-  &.${transitionName}-enter {
-    max-height: 0 !important;
-  }
-
-  &.${transitionName}-enter-active {
-    animation-name: ${increaseHeightKeyFrames};
-    animation-duration: 3s;
-    animation-fill-mode: forwards;
-    animation-delay: 1.5s;
-  }
-
-  &.${transitionName}-exit {
-    /* max-height: 1000px !important; */
-  }
-
-  &.${transitionName}-exit-active {
-    animation-name: ${decreaseHeightKeyFrames};
-    animation-duration: 3s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    animation-delay: 1.5s;
-    
-  }
-`
+export const Animation = styled(CSSTransition)``
 
 class ImageContainer extends React.Component {
   experience
@@ -87,9 +83,9 @@ class ImageContainer extends React.Component {
 
   constructor(props) {
     super(props)
-    this.ref = React.createRef();
+    this.ref = React.createRef()
     this.state = {
-      experience_changed: false
+      experience_changed: false,
     }
   }
 
@@ -99,16 +95,16 @@ class ImageContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.experience !== prevProps.experience) {
+    if (this.props.experience !== prevProps.experience) {
       this.setState({
-        experience_changed: true
+        experience_changed: true,
       })
     }
   }
 
   setExperienceChangeToFalse = () => {
     this.setState({
-      experience_changed: false
+      experience_changed: false,
     })
   }
 
@@ -119,15 +115,11 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0]
     return (
       <Animation
-        in={(this.props.show_overlay) || this.state.experience_changed}
+        in={this.props.show_overlay || this.state.experience_changed}
         onEntered={() => this.setExperienceChangeToFalse()}
         mountOnEnter
         unMountOnExit
-        timeout={{
-          appear: 100,
-          enter: 3000,
-          exit: 500,
-        }}
+        timeout={3000}
         classNames={{
           enter: `${transitionName}-enter`,
           enterActive: `${transitionName}-active-enter`,
@@ -182,7 +174,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     exhibitions: state.exhibitions,
     show_overlay: state.show_overlay,
-    isLoaded: state.isLoaded
+    isLoaded: state.isLoaded,
   }
 }
 

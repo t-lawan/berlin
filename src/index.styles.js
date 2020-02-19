@@ -377,10 +377,6 @@ export const increaseHeightKeyFrames = keyframes`
       max-height: 0;
     }
 
-    50% {
-      max-height: 600px;
-    }
-
     100% {
       max-height: 1000px;
     }
