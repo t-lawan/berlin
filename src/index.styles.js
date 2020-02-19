@@ -15,6 +15,26 @@ export const size = {
   desktop: "2560px",
 }
 
+export const increaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      max-height: 1000px;
+    }
+`
+
+export const decreaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 1000px;
+    }
+
+    100% {
+      max-height: 0;
+    }
+`
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -372,25 +392,6 @@ export const changeNthChild = css`
   }
 `
 
-export const increaseHeightKeyFrames = keyframes`
-    0% {
-      max-height: 0;
-    }
-
-    100% {
-      max-height: 1000px;
-    }
-`
-
-export const decreaseHeightKeyFrames = keyframes`
-    0% {
-      max-height: 1000px;
-    }
-
-    100% {
-      max-height: 0;
-    }
-`
 
 export const mobile = props => {
   return css`
