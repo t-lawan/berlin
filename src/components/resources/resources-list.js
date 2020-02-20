@@ -15,6 +15,9 @@ const ResourcesListWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em 0.7em;
   }
+  @media (min-width: ${size.laptop}) {
+    padding-bottom: 120px;
+  }
 `
 
 const ResourceTitle = styled.p`
