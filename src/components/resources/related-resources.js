@@ -23,6 +23,7 @@ export const RelatedResourcesWrapper = styled.div`
     padding-bottom:2em;
   }
   @media (min-width: ${size.laptop}) {
+    margin-bottom:4em;
   }
 `
 

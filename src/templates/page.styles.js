@@ -43,6 +43,30 @@ export const PageWrapper = styled.div`
   > ${TwoColumnPageWrapper} {
     padding: 1.5em 0 0 0;
   }
+  > div > p > a {
+    transition: all 0.2s ease-in-out;
+    border-bottom: solid thin;
+    border-color:${Color.red};
+    :hover {
+      color:${Color.red} 
+    }
+  }
+  > div > ul {
+    list-style:none;
+    margin: 1em 6em 1em 1em;
+    padding: 0;
+  }
+  > div > ul > li {
+    margin-bottom: 1em;
+    list-style-type: none;
+    text-indent: -10px;
+    padding-left: 25px;
+    :before {
+      content: "–";
+      display: inline-block;
+      width: 10px;
+    }
+  }
 `
 export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
