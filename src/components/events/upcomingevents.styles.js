@@ -6,9 +6,11 @@ export const EventsWrapper = styled.div`
   /* padding: 1.5em; */
   padding-bottom:130px;
   /* line-height: 1.4em; */
+
   @media (max-width: ${size.mobileM}) {
     width: calc(100% + 1.4em);
     margin-left: -0.7em;
+    margin-top:-1.5em;
   }
 `
 
