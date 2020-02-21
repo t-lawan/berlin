@@ -48,6 +48,9 @@ export const EventCardLink = styled(AniLink)`
   text-decoration: none;
   > p {
     margin-bottom: 0;
+    @media (max-width: ${size.mobileM}) {
+      font-size: 1rem;
+    }
   }
 `
 
