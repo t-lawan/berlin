@@ -28,12 +28,8 @@ const intitalState = {
   show_overlay: true,
   agreed_to_terms: false,
   show_events_in_mobile: false,
-  experience_transition: {
-    animationIn: "slideInRight",
-    animationOut: "slideOutLeft",
-    isVisible: true,
-    isTransitioning: false,
-  },
+  isViewing: false,
+  isInTransition: false,
 }
 
 const reducer = (state = intitalState, action) => {
@@ -112,35 +108,25 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         pages: action.pages,
       })
-    case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
+    case actionTypes.IS_VIEWING:
       return Object.assign({}, state, {
-        experience_transition: {
-          animationIn: "slideInRight",
-          animationOut: "slideOutLeft",
-          isVisible: false,
-          isTransitioning: true,
-        },
+        isViewing: true,
       })
-    case actionTypes.DECREASE_EXPERIENCE_TRANSITION:
+    case actionTypes.SET_IS_VIEWING_TO_FALSE:
       return Object.assign({}, state, {
-        experience_transition: {
-          animationIn: "slideInLeft",
-          animationOut: "slideOutRight",
-          isVisible: false,
-          isTransitioning: true,
-        },
-      })
-    case actionTypes.SET_IS_VISIBLE_TO_TRUE:
-      return Object.assign({}, state, {
-        experience_transition: {
-          ...state.experience_transition,
-          isVisible: true,
-          isTransitioning: false
-        },
+        isViewing: false,
       })
     case actionTypes.IS_LOADED:
       return Object.assign({}, state, {
         isLoaded: true,
+      })
+    case actionTypes.START_TRANSITION:
+      return Object.assign({}, state, {
+        isInTransition: true,
+      })
+    case actionTypes.STOP_TRANSITION:
+      return Object.assign({}, state, {
+        isInTransition: false,
       })
     case actionTypes.HAS_AGREED_TO_TERMS:
       return Object.assign({}, state, {
@@ -181,6 +167,6 @@ const reducer = (state = intitalState, action) => {
 
 export const store = () =>
   createStore(
-    reducer,
+    reducer
     // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
