@@ -24,5 +24,5 @@ export const TickerWrapper = styled.div`
     @media (max-width: ${size.tablet}) {
     
     }
-    display: ${props => props.show ? 'none': 'inherit'};
+    display: ${props => props.show ? 'inherit': 'none'};
 `
