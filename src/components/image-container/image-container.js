@@ -17,13 +17,9 @@ import * as actionTypes from '../../store/action';
 let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
-  /* max-height: 0; */
-  /* transition: max-height 5s cubic-bezier(0, 1, 0, 1); */
   transition: max-height 5s ease;
   overflow: hidden;
   z-index: 0;
-  /* padding: 0 0.7em; */
-  /* padding-top: 0.7em; */
 
   @media (min-width: ${size.laptop}) {
     padding: 0 1em;
@@ -46,23 +42,9 @@ const ImageContainerWrapper = styled.section`
 
   &.${transitionName}-exit-active {
   }
-
-  /* > img {
-    margin: 0 0.7em;
-    @media (min-width: ${size.laptop}) {
-      margin: 0 1em;
-    }
-    @media (max-width: ${size.tablet}) {
-      margin: 0.7em;
-    }
-  } */
   position: relative;
   ${hideDisplayForMobile};
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
-  /* animation-name: ${increaseHeightKeyFrames};
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  animation-delay: 3s; */
 `
 
 export const Animation = styled(CSSTransition)``
