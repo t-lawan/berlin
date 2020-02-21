@@ -18,7 +18,7 @@ export const TickerWrapper = styled.div`
       white-space: nowrap;
       overflow: visible;
       line-height: 40px;
-      animation: ${TickerAnim} infinite 20s linear;
+      animation: ${TickerAnim} infinite 30s linear;
     }
     
     @media (max-width: ${size.tablet}) {
