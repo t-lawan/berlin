@@ -67,7 +67,11 @@ class ImageResource extends React.Component {
 
     return (
       <>
-         
+        <Img
+          fadeIn={true}
+          onLoad={this.props.onLoad}
+          fluid={this.state.image ? this.state.image.fluid : null}
+        />
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
@@ -87,7 +91,4 @@ const mapStateToProps = state => {
     documents: state.documents,
   }
 }
-export default connect(
-  mapStateToProps,
-  null
-)(ImageResource)
+export default connect(mapStateToProps, null)(ImageResource)
