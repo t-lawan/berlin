@@ -4,7 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem, NavLink } from "./navbar.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
-
+import * as actionTypes from '../../store/action';
 const Navbar = props => {
   const data = useStaticQuery(
     graphql`
@@ -39,7 +39,8 @@ const Navbar = props => {
           activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
           key={item.slug}
-          fade
+          onClick={() => props.startTransition()}
+          // fade
           // cover direction="down"
           // bg={transitionBackground}
         >
@@ -67,6 +68,13 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 Navbar.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
@@ -76,5 +84,5 @@ Navbar.propTypes = {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Navbar)
