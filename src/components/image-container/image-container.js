@@ -45,6 +45,7 @@ const ImageContainerWrapper = styled.section`
   }
 
   &.${transitionName}-exit-active {
+    /* max-height: 0 !important; */
   }
 
   /* > img {
@@ -59,10 +60,6 @@ const ImageContainerWrapper = styled.section`
   position: relative;
   ${hideDisplayForMobile};
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
-  /* animation-name: ${increaseHeightKeyFrames};
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-  animation-delay: 3s; */
 `
 
 export const Animation = styled(CSSTransition)``
