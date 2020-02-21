@@ -11,11 +11,11 @@ export const GalleryImage = styled.img`
   top: 0px;
   left: 0px;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center center;
   opacity: 0;
-  transition: opacity 500ms ease 0s;
+  transition: opacity 200ms ease 0s;
 `
 
 export const Image = styled(Img)`
