@@ -75,7 +75,9 @@ class MainSection extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(prevProps.firstColumn !==  this.props.firstColumn) {
-      this.props.stopTransition();
+      setTimeout(() => {
+        this.props.stopTransition();
+      }, 200)
     }
   }
 

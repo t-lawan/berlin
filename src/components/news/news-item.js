@@ -9,7 +9,7 @@ import PropTypes from "prop-types"
 import { getCurrentLanguageString, createPath, truncateText } from "../../utility/helper"
 import { connect } from "react-redux"
 import striptags from "striptags"
-
+import * as actionTypes from '../../store/action';
 
 const NewsItem = props => {
   let renderComponent
@@ -19,7 +19,7 @@ const NewsItem = props => {
   if (news.has_link) {
     renderComponent = (
       <NewsItemContainer>
-        <NewsItemLink to={createPath(language, `news/${news.slug}`)}>
+        <NewsItemLink to={createPath(language, `news/${news.slug}`)} onClick={() => props.startTransition()}>
           <p> {news[language].news_title}</p>
           <p> {news[language].news_subtitle}</p>
           <NewsText
@@ -47,6 +47,12 @@ const NewsItem = props => {
 NewsItem.propTypes = {
   newsItem: PropTypes.object,
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
 
 const mapStateToProps = state => {
   return {
@@ -55,4 +61,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(NewsItem)
+export default connect(mapStateToProps, mapDispatchToProps)(NewsItem)

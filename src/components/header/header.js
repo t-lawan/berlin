@@ -13,6 +13,7 @@ import {
   transitionBackground,
 } from "../../utility/helper"
 import { getDocument } from "../../store/selector"
+import * as actionTypes from '../../store/action';
 
 const Header = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -43,7 +44,8 @@ const Header = props => {
       hideInMobile={props.hideInMobile}
     >
       <HeaderLink
-        fade
+        // fade
+        onClick={() => props.startTransition()}
         to={createPath(language, "")}
       >
       {/* <HeaderLink
@@ -81,8 +83,13 @@ const mapStateToProps = state => {
     exhibitions: state.exhibitions,
   }
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Header)

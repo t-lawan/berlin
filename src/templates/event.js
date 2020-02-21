@@ -294,7 +294,7 @@ const Event = props => {
             />
           </TextBlock>
 
-          <TextBlock>
+          <TextBlock hidden={!event[language].rsvp_required}>
             <EventRsvpText
               hidden={!event[language].rsvp_required}
               dangerouslySetInnerHTML={{
