@@ -50,9 +50,7 @@ class ExperienceControllerMobile extends  React.Component {
     if (chosenExperience.isReady) {
       let currentExperience = this.props.experience
       if (currentExperience < chosenExperience.id) {
-        this.props.experienceIncreased()
       } else {
-        this.props.experienceDecreased()
       }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id);
@@ -111,10 +109,6 @@ const mapDispatchToProps = dispatch => {
   return {
     changeExperience: experience =>
       dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
-    experienceIncreased: () =>
-      dispatch({ type: actionTypes.INCREASE_EXPERIENCE_TRANSITION }),
-    experienceDecreased: () =>
-      dispatch({ type: actionTypes.DECREASE_EXPERIENCE_TRANSITION }),
     setIsVisibleToTrue: () =>
       dispatch({ type: actionTypes.SET_IS_VISIBLE_TO_TRUE }),
   }

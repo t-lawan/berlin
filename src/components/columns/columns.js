@@ -140,7 +140,6 @@ Columns.propTypes = {
 }
 const mapStateToProps = state => {
   return {
-    experience_transition: state.experience_transition,
     agreed_to_terms: state.agreed_to_terms,
     show_events_in_mobile: state.show_events_in_mobile,
     exhibitions: state.exhibitions,
