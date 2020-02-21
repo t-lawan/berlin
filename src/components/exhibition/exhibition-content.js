@@ -14,6 +14,13 @@ const ExhibitionPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
   padding: 0.7em 0.7em;
   }
+  > div > p > a {
+    border-bottom:solid thin rgb(217,81,92);
+    transition:all 0.2s ease-in-out;
+    :hover {
+      color:rgb(217,81,92);
+    }
+  }
 `
 
 const ExhibitionContent = props => {

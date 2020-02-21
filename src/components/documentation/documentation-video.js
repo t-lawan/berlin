@@ -16,10 +16,11 @@ const VideoContainer = styled.div`
     width: 100%;
     height: auto;
     > iframe {
-      position: absolute;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100% !important;
+    margin: 0 !important;
     height: 100%;
     }
 `
@@ -53,8 +54,9 @@ const DocumentationVideo = props => {
         <div>
           <p style={MargBottom}> {documentationContent[language].documentation} </p>
           <p style={NoMarg}> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p>
-          <p style={NoMarg}>
+          <p style={NoMarg}><em>
             {exhibitions[0][language].title}
+            </em>
           </p>
         </div>
         <MargTop>

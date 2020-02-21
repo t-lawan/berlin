@@ -67,7 +67,7 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Image fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+         
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{

@@ -17,11 +17,11 @@ export const EventNavigatorWrapper = styled.section`
       display:table;
     }
   }
-  @media (min-width: ${size.tablet}) {
-    padding: 0.5em 0.7em 0 0.7em;
-  }
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0 0 0.7em;
+  }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.5em 0.7em 0 0.9em;
   }
 `
 
@@ -45,7 +45,7 @@ export const EventNavigatorButton = styled(AniLink)`
   @media (min-width: ${size.laptop}) {
     font-size: 1.1rem;
   line-height:1;
-  padding: 0.5em 0 0 1em;
+  padding: 0.5em 1em 0 0em;
   }
 `
 

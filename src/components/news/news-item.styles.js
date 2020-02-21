@@ -6,25 +6,10 @@ export const NewsItemWrapper = styled.div`
   padding: 0.7em 2em;
   border-bottom: 1px solid black;
 `
-export const NewsItemLink = styled(Link)`
-  :hover > p {
-    color: ${Color.red}
-  };
-  :hover > span {
-    color: ${Color.red}
-  };
-`
-export const NewsItemContainer = styled.div`
-  transition: all 0.2s ease-in-out;
-  cursor:pointer;
-
-  p {
-    margin:0;
-  }
-
-`
-
 export const NewsText = styled.div`
+  > span {
+    transition: all 0.2s ease-in-out;
+  }
    /* > p {
     display: none;
   }
@@ -39,3 +24,29 @@ export const NewsText = styled.div`
     margin:0;
   } */
 `
+
+export const NewsItemLink = styled(Link)`
+  > p {
+   transition: all 0.2s ease-in-out; 
+  }
+  :hover > p {
+    color: ${Color.red}
+  };
+  :hover > ${NewsText} > span {
+    color: ${Color.red}
+  } 
+  :hover > p > span {
+    color: ${Color.red}
+  };
+
+`
+export const NewsItemContainer = styled.div`
+  transition: all 0.2s ease-in-out;
+  cursor:pointer;
+
+  p {
+    margin:0;
+  }
+
+`
+

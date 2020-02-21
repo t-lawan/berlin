@@ -15,7 +15,6 @@ const FooterWrapper = styled.footer`
   background: white;
   padding: 0.7em 1em;
   border-top: 1px solid black;
-  border-right: 1px solid black;
   ${changeGridToOneRow};
   @media (max-width: ${size.tablet}) {
     border-right: 0px solid black;
