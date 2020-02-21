@@ -29,7 +29,7 @@ const intitalState = {
   agreed_to_terms: false,
   show_events_in_mobile: false,
   isViewing: false,
-  isInTransition: true,
+  isInTransition: false,
 }
 
 const reducer = (state = intitalState, action) => {
