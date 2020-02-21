@@ -73,9 +73,10 @@ class ImageGalleryResource extends React.Component {
       })
       this.setState({
         index: this.state.index - 1,
-        animationIn: "slideInRight",
-        animationOut: "slideOutLeft",
+        animationIn: "slideInLeft",
+        animationOut: "slideOutRight",
         isTransitioning: true,
+
       })
     }
   }
@@ -90,8 +91,8 @@ class ImageGalleryResource extends React.Component {
 
       this.setState({
         index: this.state.index + 1,
-        animationIn: "slideInLeft",
-        animationOut: "slideOutRight",
+        animationIn: "slideInRight",
+        animationOut: "slideOutLeft",
         isTransitioning: true,
       })
     }
