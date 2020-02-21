@@ -28,6 +28,7 @@ const intitalState = {
   show_overlay: true,
   agreed_to_terms: false,
   show_events_in_mobile: false,
+  isViewing: false,
   experience_transition: {
     animationIn: "slideInRight",
     animationOut: "slideOutLeft",
@@ -111,6 +112,14 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_PAGES:
       return Object.assign({}, state, {
         pages: action.pages,
+      })
+    case actionTypes.IS_VIEWING:
+      return Object.assign({}, state, {
+        isViewing: true
+      })
+    case actionTypes.SET_IS_VIEWING_TO_FALSE:
+      return Object.assign({}, state, {
+        isViewing: false
       })
     case actionTypes.INCREASE_EXPERIENCE_TRANSITION:
       return Object.assign({}, state, {

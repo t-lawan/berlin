@@ -202,6 +202,7 @@ class ExperiencePage extends React.Component {
   ]
 
   closeExperiencePage = () => {
+    this.props.isViewing();
     this.props.hideOverlay();
   }
   render() {
@@ -248,9 +249,10 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    hideOverlay:() => {
-      dispatch({type: actionTypes.HIDE_OVERLAY})
-    }
+    hideOverlay:() => 
+      dispatch({type: actionTypes.HIDE_OVERLAY}),
+    isViewing: () => 
+      dispatch({type: actionTypes.IS_VIEWING})
   }
 }
 
