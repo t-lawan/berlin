@@ -12,18 +12,20 @@ const Ticker = props => {
     return ex.experience == experience
   })[0]
   let image = getDocument(props.documents, exhibition[language].promotional_sticker_for_homepage)
+  
   return (
     <TickerWrapper
-      show={exhibition[language].promotional_sticker_for_homepage.length > 0}
+    show={exhibition[language].promotional_sticker_for_homepage && exhibition[language].promotional_sticker_for_homepage.length > 0}
     >
       {exhibition[language].promotional_sticker_for_homepage ? 
           createComp(
             exhibition,
-            (<div>
-              <span>
-                <img className="tickergraf" src={image.url} />
-              </span>
-            </div>),
+            (
+             
+              <div style={{ backgroundImage:`url(${image.url})`,backgroundSize: '2400px 40px', height:'40px',backgroundPosition:'center' }}></div>
+                
+              
+            ),
             exhibition[language].external_link_url,
             language
           )

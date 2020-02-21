@@ -15,6 +15,25 @@ export const size = {
   desktop: "2560px",
 }
 
+export const increaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 0;
+    }
+
+    100% {
+      max-height: 1000px;
+    }
+`
+export const decreaseHeightKeyFrames = keyframes`
+    0% {
+      max-height: 1000px;
+    }
+
+    100% {
+      max-height: 0;
+    }
+`
+
 export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
@@ -320,12 +339,8 @@ export const keyFrameExperienceImage = keyframes`
   }
 `
 export const TickerAnim = keyframes`
-  0% {
-    right: 0%;
-}
-100% {
-    right: -50%;
-}
+  0% { background-position: 0 0; }
+100% { background-position: -1200px 0; }
 `
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
@@ -349,16 +364,6 @@ export const changeNthChild = css`
       border-right: none;
     }
   }
-`
-
-export const increaseHeightKeyFrames = keyframes`
-    0% {
-      max-height: 0;
-    }
-
-    100% {
-      max-height: 1000px;
-    }
 `
 
 export const mobile = props => {
