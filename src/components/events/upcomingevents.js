@@ -19,6 +19,8 @@ import "moment/locale/de"
 import { getVenue } from "../../store/selector"
 import striptags from "striptags"
 import PropTypes from "prop-types"
+import * as actionTypes from '../../store/action';
+
 
 let calendar_items = []
 const UpcomingEvents = props => {
@@ -59,7 +61,7 @@ const UpcomingEvents = props => {
       </p>
       {filteredItems.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>
-          <EventLink fade to={createPath(language, `${item.slug}`)}>
+          <EventLink onClick={() => props.startTransition()} to={createPath(language, `${item.slug}`)}>
             {/* <EventLink
             cover
             direction="down"
@@ -145,4 +147,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(UpcomingEvents)
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UpcomingEvents)
