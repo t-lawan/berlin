@@ -11,7 +11,8 @@ const Ticker = props => {
   let exhibition = props.exhibitions.filter(ex => {
     return ex.experience == experience
   })[0]
-  let image = getDocument(props.documents, exhibition.animation)
+  let image = getDocument(props.documents, exhibition[language].promotional_sticker_for_homepage)
+  
   return (
     <TickerWrapper
     show={exhibition[language].promotional_sticker_for_homepage && exhibition[language].promotional_sticker_for_homepage.length > 0}
@@ -19,11 +20,12 @@ const Ticker = props => {
       {exhibition[language].promotional_sticker_for_homepage ? 
           createComp(
             exhibition,
-            (<div>
-              <span>
-                {exhibition[language].promotional_sticker_for_homepage}
-              </span>
-            </div>),
+            (
+             
+              <div style={{ backgroundImage:`url(${image.url})`,backgroundSize: '2400px 40px', height:'40px',backgroundPosition:'center' }}></div>
+                
+              
+            ),
             exhibition[language].external_link_url,
             language
           )

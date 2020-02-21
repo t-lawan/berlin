@@ -15,10 +15,14 @@ const ResourcesListWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em 0.7em;
   }
+  @media (min-width: ${size.laptop}) {
+    padding-bottom: 120px;
+  }
 `
 
 const ResourceTitle = styled.p`
   font-size: 1rem;
+  transition:all 0.2s ease-in-out;
   :last-child {
     margin-bottom:0;
   }
