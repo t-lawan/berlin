@@ -20,7 +20,7 @@ export class DateManager {
   }
 
   static getDaysFromCurrentDate = (date) => {
-    return moment().diff(moment(date), 'days');
+    return moment().diff(moment(date), 'day');
   }
 
   static getNumberOfDaysInMonth = (monthNum, year) => {
