@@ -6,20 +6,19 @@ import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
 
-export const GalleryImage = styled.img`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center center;
-  opacity: 0;
-  transition: opacity 200ms ease 0s;
+export const GalleryImage = styled(Img)`
+  picture img {
+    object-fit: contain;
+  }
 `
-
 export const Image = styled(Img)`
   max-height: 650px;
+  > picture > img {
+    object-fit: contain !important;
+    max-height: 650px !important;
+    display: block;
+    margin: 0 auto;
+  }
 `
 
 export const Caption = styled.section`
@@ -67,7 +66,7 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Img
+        <Image
           fadeIn={true}
           onLoad={this.props.onLoad}
           fluid={this.state.image ? this.state.image.fluid : null}
