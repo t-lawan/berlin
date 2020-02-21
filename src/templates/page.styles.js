@@ -11,6 +11,9 @@ export const TwoColumnPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
   }
+  :nth-child(2){
+    padding-top:0;
+  }
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
     background:#FFF;
@@ -243,9 +246,13 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 
 export const ResourcePublisherLink = styled.a`
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
   border-bottom: solid thin;
   border-color: ${Color.red};
   /* font-size: 1.15em; */
+  :hover {
+    color:${Color.red};
+  }
 `
 
 export const TextBlock = styled.div`
@@ -266,7 +273,7 @@ export const TextBlock = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     font-size:1rem;
-    line-height:1.4;
+    line-height:1.3;
   }
   }
   > h1,h2,h3,h4,h5,h6 {

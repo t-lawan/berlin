@@ -35,6 +35,7 @@ export const EventCardWrapper = styled.div`
   }
   @media (min-width: ${size.tablet}) {
    padding: 0.5em 0.7em;
+   width: 100%;
   }
   @media (min-width: ${size.laptop}) {
    padding: 0.5em 1em;
@@ -45,6 +46,9 @@ export const EventCardWrapper = styled.div`
 
 export const EventCardLink = styled(AniLink)`
   text-decoration: none;
+  > p {
+    margin-bottom: 0;
+  }
 `
 
 export const EventHeading = styled.p`

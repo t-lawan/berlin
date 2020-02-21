@@ -19,8 +19,9 @@ const DocumentationText = props => {
       <TwoColumnPageWrapper>
         <div>
           <p> {documentationContent[language].documentation}</p>
-          <p>
+          <p><em>
             {exhibitions[0][language].title}
+            </em>
           </p>
         </div>
         <div>

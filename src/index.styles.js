@@ -361,12 +361,8 @@ export const keyFrameExperienceImage = keyframes`
   }
 `
 export const TickerAnim = keyframes`
-  0% {
-    right: 0%;
-}
-100% {
-    right: -50%;
-}
+  0% { background-position: 0 0; }
+100% { background-position: -1200px 0; }
 `
 export const changeGridToThreeEqualRows = css`
   @media (max-width: ${size.tablet}) {
@@ -439,7 +435,14 @@ export const UnderlineSectionLink = styled(AniLink)`
 
 export const ExternalLink = styled.a`
   :hover {
-    color: ${props => props.colour};
+    color: ${Color.red};
+  }
+  transition: all 0.2s ease-in-out;
+  > span {
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
   }
 `
 
@@ -453,6 +456,9 @@ export const LargeButton = styled.button`
   padding: 8px 16px;
   :hover {
     cursor: pointer;
+  }
+  :focus {
+    outline: none;
   }
   @media (max-width: ${size.mobileM}) {
     margin: 0.2em 0 0 0px;
