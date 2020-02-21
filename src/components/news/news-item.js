@@ -10,6 +10,7 @@ import { getCurrentLanguageString, createPath, truncateText } from "../../utilit
 import { connect } from "react-redux"
 import striptags from "striptags"
 
+
 const NewsItem = props => {
   let renderComponent
   let news = props.newsItem
@@ -22,9 +23,9 @@ const NewsItem = props => {
           <p> {news[language].news_title}</p>
           <p> {news[language].news_subtitle}</p>
           <NewsText
-            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat(' ... more') }}
+            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat('<span> ... more</span>') }}
           />
-          {/* <span hidden={news[language].news_text.length === 0}> ... more </span> */}
+          
         </NewsItemLink>
       </NewsItemContainer>
     )

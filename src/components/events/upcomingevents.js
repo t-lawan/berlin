@@ -18,6 +18,7 @@ import "moment/locale/en-gb"
 import "moment/locale/de"
 import { getVenue } from "../../store/selector"
 import striptags from "striptags"
+import PropTypes from "prop-types";
 
 let calendar_items = []
 const UpcomingEvents = props => {
@@ -34,7 +35,7 @@ const UpcomingEvents = props => {
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
           (props.experience >= props.active_experience
-            ? moment(item.start_date).diff(moment()) >= 0
+            ? moment(item.start_date).diff(moment(), 'day') >= 0
             : true)
         )
       } else {
@@ -50,7 +51,7 @@ const UpcomingEvents = props => {
 
 
   return (
-    <EventsWrapper>
+    <EventsWrapper isHome={props.isHome}>
       <p hidden={filteredItems.length !== 0}>
         {" "}
         {language === "EN"
@@ -119,6 +120,13 @@ export const freeAdmision = {
   },
 }
 
+UpcomingEvents.propTypes = {
+isHome: PropTypes.boolean,
+}
+
+UpcomingEvents.defaultProps = {
+isHome: false
+};
 const mapStateToProps = state => {
   return {
     languages: state.languages,

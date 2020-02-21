@@ -21,7 +21,7 @@ export const DateCardWrapper = styled.div`
     padding-top:55px;
     margin-top:-55px;
     :last-child {
-      padding-bottom:115px;
+      padding-bottom:45px;
       border-bottom:none;
     }
   }
@@ -55,7 +55,7 @@ export const EventCardsWrapper = styled.div`
   display: ${props => props.hideInMobile ? 'flex' : 'none'};
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: flex-start;
   /* width: 70%; */
   
