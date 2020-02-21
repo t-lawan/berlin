@@ -13,18 +13,17 @@ import {
 } from "../../index.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { CSSTransition } from "react-transition-group"
-
+import * as actionTypes from '../../store/action';
 let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
-  max-height: 0;
-  transition: max-height 1.5s cubic-bezier(0, 1, 0, 1);
+  /* max-height: 0; */
+  /* transition: max-height 5s cubic-bezier(0, 1, 0, 1); */
+  transition: max-height 5s ease;
   overflow: hidden;
   z-index: 0;
   /* padding: 0 0.7em; */
   /* padding-top: 0.7em; */
-  /* transition: max-height 3s ease-in-out;
-  transition-delay: 4s; */
 
   @media (min-width: ${size.laptop}) {
     padding: 0 1em;
@@ -32,25 +31,20 @@ const ImageContainerWrapper = styled.section`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em;
   }
+
   &.${transitionName}-enter {
     max-height: 0 !important;
   }
 
   &.${transitionName}-enter-active {
-  -webkit-animation: ${increaseHeightKeyFrames} 3s forwards;
-  animation: ${increaseHeightKeyFrames} 3s forwards;
+    max-height: 1000px !important;
   }
 
   &.${transitionName}-exit {
-    /* max-height: 1000px !important; */
+    max-height: 1000px !important;
   }
 
   &.${transitionName}-exit-active {
-    animation-name: ${decreaseHeightKeyFrames};
-    animation-duration: 3s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-    /* animation-delay: 1.5s; */
   }
 
   /* > img {
@@ -65,11 +59,10 @@ const ImageContainerWrapper = styled.section`
   position: relative;
   ${hideDisplayForMobile};
   display: ${props => (props.hideOnHomePage ? "none" : "block")};
-  animation-name: ${increaseHeightKeyFrames};
+  /* animation-name: ${increaseHeightKeyFrames};
   animation-duration: 3s;
-  /* animation-timing-function: ease; */
   animation-fill-mode: forwards;
-  animation-delay: 1.5s;
+  animation-delay: 3s; */
 `
 
 export const Animation = styled(CSSTransition)``
@@ -106,6 +99,9 @@ class ImageContainer extends React.Component {
     this.setState({
       experience_changed: false,
     })
+    if(this.props.isViewing) {
+      this.props.setIsViewingToFalse()
+    }
   }
 
   render() {
@@ -115,11 +111,14 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0]
     return (
       <Animation
-        in={this.props.show_overlay || this.state.experience_changed}
+        in={this.props.isViewing || this.state.experience_changed}
         onEntered={() => this.setExperienceChangeToFalse()}
-        // mountOnEnter
-        // unMountOnExit
-        timeout={2000}
+        mountOnEnter
+        // unmountOnExit
+        timeout={{
+          enter: 3000,
+          exit: 2000,
+        }}
         classNames={{
           enter: `${transitionName}-enter`,
           enterActive: `${transitionName}-active-enter`,
@@ -168,14 +167,20 @@ ImageContainer.defaultProps = {
   hideOnHomePage: false,
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    setIsViewingToFalse: () => 
+      dispatch({type: actionTypes.SET_IS_VIEWING_TO_FALSE})
+  }
+}
 const mapStateToProps = state => {
   return {
     experience: state.experience,
     languages: state.languages,
     exhibitions: state.exhibitions,
     show_overlay: state.show_overlay,
-    isLoaded: state.isLoaded,
+    isViewing: state.isViewing
   }
 }
 
-export default connect(mapStateToProps, null)(ImageContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ImageContainer)
