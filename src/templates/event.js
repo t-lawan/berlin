@@ -29,11 +29,13 @@ const EventColumn = styled.div`
 :first-child {
   border-bottom: solid 1px #000;
   margin-bottom: 1.3em;
+  margin-top:1em;
 }
 @media (min-width: ${size.tablet}) {
     :first-child {
     border-bottom: none;
     margin-bottom: 0;
+    margin-top:0em;
     }
   }
 `
