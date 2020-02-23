@@ -20,7 +20,6 @@ const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
   const funding = props.funding;
   const generateSection = (fundingItem, index) => {
-  console.log('FUNDU+ING', funding);
 
     let renderComponent
     switch (fundingItem.funding_type) {
