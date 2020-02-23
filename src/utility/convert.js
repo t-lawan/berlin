@@ -276,7 +276,7 @@ export class Convert {
 
       let start_date = moment(exhibition.start_date, "YYYYMMDD")
       let end_date = moment(exhibition.end_date, "YYYYMMDD")
-      let diff = end_date.diff(start_date, "d")
+      let diff = end_date.diff(start_date, "d") + 1;
       for (let i = 0; i < diff; i++) {
         let start = start_date.clone()
         start.add(i, "days")

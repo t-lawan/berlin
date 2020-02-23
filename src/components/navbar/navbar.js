@@ -40,7 +40,7 @@ const Navbar = props => {
           to={createPath(language, item.slug)}
           key={item.slug}
           onClick={() => props.startTransition()}
-          // fade
+          fade
           // cover direction="down"
           // bg={transitionBackground}
         >
