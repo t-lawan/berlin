@@ -83,7 +83,7 @@ const DateCard = props => {
             ))}
           </EventCardsWrapper>
           <ExhibitionCardsWrapper hideInMobile={true}>
-            {exhibitions.length === 0 ? <ClosedText> Closed</ClosedText> : null} 
+            {exhibitions.length === 0 ? <ClosedText> {language === "EN" ? "Closed" : "Geschlossen"}</ClosedText> : null} 
             {exhibitions.map((exhibition, index) => (
               <EventCard key={index} event={exhibition} />
             ))}

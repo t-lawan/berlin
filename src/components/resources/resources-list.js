@@ -76,6 +76,9 @@ const ResourceItem = styled.div`
   > img {
     margin-bottom:0.3em;
   }
+ > div > picture > img {
+   margin-bottom:0.3em !important;
+ }
 `
 
 const TextBox = styled.div`
