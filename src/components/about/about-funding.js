@@ -8,6 +8,7 @@ import {
   AboutImageBlock,
   AboutPartnerImage,
   AboutCorporateImageItem,
+  AboutPrimaryImageContainer,
 } from "./about.styles"
 import { GalleryImage } from "../../partials/ImageGalleryResource"
 import ImageResource from "../../partials/ImageResource"
@@ -19,6 +20,8 @@ const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
   const funding = props.funding;
   const generateSection = (fundingItem, index) => {
+  console.log('FUNDU+ING', funding);
+
     let renderComponent
     switch (fundingItem.funding_type) {
       case "primary":
@@ -32,6 +35,12 @@ const AboutFunding = props => {
                 __html: fundingItem[createProperty("notice", language)],
               }}
             />
+            {fundingItem.logo_upload ? (
+              <AboutPrimaryImageContainer>
+                <AboutPartnerImage id={fundingItem.logo_upload} withCaption={false} />
+              </AboutPrimaryImageContainer> 
+              ) : null}
+
           </AboutFundingBlock>
         )
         break
