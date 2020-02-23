@@ -15,7 +15,7 @@ const Ticker = props => {
   
   return (
     <TickerWrapper
-    show={exhibition[language].promotional_sticker_for_homepage && exhibition[language].promotional_sticker_for_homepage.length > 0}
+    show={exhibition[language].promotional_sticker_for_homepage}
     >
       {exhibition[language].promotional_sticker_for_homepage ? 
           createComp(
