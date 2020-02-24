@@ -300,7 +300,7 @@ export const FixedNavbar = styled.div`
 `
 export const FixedTicker = styled.div`
   z-index: 5;
-  bottom: 60px;
+  bottom: 70px;
   height:42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
