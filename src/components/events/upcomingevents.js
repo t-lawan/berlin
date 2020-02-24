@@ -61,7 +61,7 @@ const UpcomingEvents = props => {
       </p>
       {filteredItems.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>
-          <EventLink fade onClick={() => props.startTransition()} to={createPath(language, `${item.slug}`)}>
+          <EventLink onClick={() => props.startTransition()} to={createPath(language, `${item.slug}`)}>
             {/* <EventLink
             cover
             direction="down"
