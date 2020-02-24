@@ -44,7 +44,7 @@ const ExhibitionPageWrapper = styled.div`
 
 const ExhibitionPageImage = styled.img`
   width: 30% !important;
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.mobileL}) {
     width:100% !important;
   }
   @media (max-width: ${size.tablet}) {

@@ -76,7 +76,7 @@ class Calendar extends React.Component{
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "center",
         inline: "nearest",
       })
     }
