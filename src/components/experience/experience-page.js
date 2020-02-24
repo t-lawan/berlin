@@ -204,7 +204,7 @@ class ExperiencePage extends React.Component {
 
   closeExperiencePage = () => {
     
-    if(!this.props.is_viewing && !this.props.show_overlay) {
+    if(!this.props.is_viewing && this.props.show_overlay) {
       this.props.isViewing();
     }
     this.props.hideOverlay();
