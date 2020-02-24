@@ -17,7 +17,7 @@ import * as actionTypes from '../../store/action';
 let transitionName = "image-contain"
 
 const ImageContainerWrapper = styled.section`
-  transition: max-height 5s ease;
+  transition: max-height 1.5s ease;
   overflow: hidden;
   z-index: 0;
 
@@ -90,7 +90,7 @@ class ImageContainer extends React.Component {
     this.exhibitions = this.props.exhibitions.filter((item, index) => {
       return item.experience === this.props.experience.toString()
     })
-    this.exhibition = this.exhibitions[0]
+    this.exhibition = this.exhibitions[0];
     return (
       <Animation
         in={this.props.isViewing || this.state.experience_changed}
