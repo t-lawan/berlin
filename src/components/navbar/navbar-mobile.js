@@ -110,6 +110,7 @@ class NavbarMobile extends React.Component {
               // bg={transitionBackground}
               fade
               to={createPath(this.language, `current`)}
+              onClick={() => this.toggleContent()}
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
@@ -127,6 +128,8 @@ class NavbarMobile extends React.Component {
                 // bg={transitionBackground}
                 key={index}
                 to={createPath(this.language, `about/${navLink.path}`)}
+                onClick={() => this.toggleContent()}
+
               >
                 {navLink[this.language]}
               </NavMobileLink>
@@ -156,6 +159,8 @@ class NavbarMobile extends React.Component {
                 // direction="down"
                 // bg={transitionBackground}
                 to={createPath(this.language, "imprint")}
+                onClick={() => this.toggleContent()}
+
               >
                 {content[this.language]['imprint']}
 
@@ -166,6 +171,7 @@ class NavbarMobile extends React.Component {
                 // direction="down"
                 // bg={transitionBackground}
                 to={createPath(this.language, "data-privacy")}
+                onClick={() => this.toggleContent()}
               >
                 {content[this.language]['data-privacy']}
               </NavMobileLinkSmall>
