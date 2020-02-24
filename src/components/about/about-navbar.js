@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { AboutSideNavbar, AboutNavItem, AboutNavItemLink } from "./about.styles"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
-
+import * as actionTypes from '../../store/action'
 const AboutNavbar = props => {
 
   let items = [
@@ -69,7 +69,7 @@ const AboutNavbar = props => {
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (
-        <AboutNavItemLink fade to={createPath(language, item['EN'].slug)} key={index}>
+        <AboutNavItemLink to={createPath(language, item['EN'].slug)} key={index} onClick={() => props.startTransition()}>
         {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
             {item[language].title.toLowerCase()}
@@ -86,11 +86,18 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 AboutNavbar.propTypes = {
   currentPage: PropTypes.string,
 }
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(AboutNavbar)
