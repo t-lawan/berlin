@@ -12,6 +12,7 @@ const TransitionPageWrapper = styled.div`
   background: white;
   position: absolute;
   text-align: center;
+  padding: 5rem;
   display: ${props => (props.show ? "block" : "none")};
   transition: opacity 500ms ease-out;
   &.${transitionName}-enter {
