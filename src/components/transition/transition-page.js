@@ -3,6 +3,7 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
+import TransitionLogo from '../../images/transition.gif';
 let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
@@ -59,7 +60,7 @@ class TransitionPage extends React.Component {
       >
         <TransitionPageWrapper show={this.props.isInTransition}>
           {/* <TransitionImageContainer> */}
-          <TransitionImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif" />
+          <TransitionImage src={TransitionLogo} />
           {/* </TransitionImageContainer> */}
         </TransitionPageWrapper>
       </CSSTransition>
