@@ -168,6 +168,8 @@ class ExperienceController extends React.Component {
             bold
             hover={experience.isReady}
             show={experience.isReady}
+            left={this.props.left}
+            isExperience4={this.props.experience === 4}
             onClick={() => this.changeExperience(experience)}
           >
             {experience.display}

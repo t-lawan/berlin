@@ -29,10 +29,6 @@ export const ColumnLayout = styled.div`
   }
   :last-child{
     border-left: solid 1px black;
-    ${ExperienceButton}:last-child {
-    border-top: solid thin #000;
-    margin-top:0.4em;
-    }
   }
   :nth-child(4){
     border-right: none;
