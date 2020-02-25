@@ -42,6 +42,10 @@ export const ExperienceButton = styled.div`
   }
   -webkit-animation: fadeIn 1.5s ease-in-out;
     animation: fadeIn 1.5s ease-in-out;
+  :last-of-type {
+    margin-top: ${props => props.left ? '' : props.isExperience4 ? '' : '0.4em'};
+    border-top: ${props => props.left ? '' : props.isExperience4 ? '' : 'solid thin #000'};
+  }
     /* :nth-of-type(2) {
       -webkit-animation: fadeIn 5s ease-in-out;
     animation: fadeIn 5s ease-in-out;
