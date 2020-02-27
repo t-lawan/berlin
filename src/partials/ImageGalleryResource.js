@@ -2,6 +2,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
+import {
+  Caption,
+} from "./ImageResource"
 import { getDocuments } from "../store/selector"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
@@ -46,6 +49,9 @@ export const NavigationButtons = styled.div`
 
 export const AnimatedSpace = styled(Animated)`
   z-index: 100;
+  > ${Caption} {
+    margin-bottom:0.7em;
+  }
 `
 
 export const GalleryImage = styled.img``
