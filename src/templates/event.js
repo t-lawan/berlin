@@ -41,18 +41,21 @@ const EventColumn = styled.div`
 `
 
 const EventTextBlock = styled(TextBlock)`
-  a,
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1em;
+    line-height: 1.3;
+    > a {
+      font-size: 1em;
+    }
   }
-  margin: 0 0 0.7em 0;
+  margin: 0 0 0em 0;
   padding: 0;
 `
 const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 1.7em;
   line-height: 1.2;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
@@ -60,12 +63,12 @@ const EventTitle = styled.h1`
   }
 `
 const EventSubTitle = styled.h2`
-  padding-top: 1rem;
+  padding-top: 0rem;
   padding-bottom: 0.5rem;
-  margin-top:-1.5em;
-  margin-bottom:0;
-  font-size: 1.1rem;
-  line-height: 1.2;
+  margin-top:-1.2em;
+  margin-bottom:0.5em;
+  font-size: 1.1em;
+  line-height: 1.4;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
     display: none;
@@ -102,15 +105,20 @@ const EventSubTitleMob = styled.h2`
 
 const EventDescription = styled.div`
   p {
-    font-size: 1rem;
+    font-size: 1.1em;
     line-height: 1.4;
+    > a {
+      font-size:1em;
+    }
   }
 `
 
 const EventRsvpText = styled.div`
-  p,
-  a {
-    font-size: 1rem;
+  p {
+    font-size: 1.1em;
+    > a {
+      font-size:1em;
+    }
   }
 `
 

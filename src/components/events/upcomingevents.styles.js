@@ -42,7 +42,7 @@ export const EventItem = styled.div`
   @media (max-width: ${size.mobileM}) {
     padding: 1em 1em;
     p{
-    font-size: 1.1rem;
+    font-size: 1em;
     }
   }
   @media (min-width: ${size.mobileL}) {
@@ -51,13 +51,13 @@ export const EventItem = styled.div`
   @media (min-width: ${size.tablet}) {
     padding: 1em 1em;
     p{
-    font-size: 1.1rem;
+    font-size: 1em;
     }
   }
   @media (min-width: ${size.laptop}) {
-    padding: 1em 2em;
+    padding: 1em 2.2em;
     p{
-    font-size: 1.03rem;
+    font-size: 1em;
     line-height: 1.3;
     }
   }

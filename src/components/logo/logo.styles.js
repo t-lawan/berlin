@@ -28,7 +28,7 @@ animation-delay: 1.4s;
     width: 100%;
   	margin-left: auto;
     margin-right: auto;
-    display: block;
+    display: block !important;
   }
   @media (max-width: ${size.tablet}) {
   >img {
@@ -38,5 +38,8 @@ animation-delay: 1.4s;
   }
   @media (min-width: ${size.laptop}) {
     padding-top: 1em;
+    >img {
+      margin-bottom: 1rem;
+    }
   }
 `

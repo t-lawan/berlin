@@ -35,7 +35,7 @@ const ResourceTitle = styled.p`
     font-size:0.95rem;
   }
   @media (min-width: ${size.laptop}) {
-    font-size:1rem;
+    font-size:1.03rem;
   }
 `
 

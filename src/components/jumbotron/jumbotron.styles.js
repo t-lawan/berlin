@@ -24,7 +24,7 @@ export const JumbotronWrapper = styled.div`
     display: none;
   }
   @media (min-width: ${size.laptop}) {
-    padding: 1.35em 2rem 0.8em;
+    padding: 1.55em 2.1em 1.05em;
   }
 `
 
