@@ -23,20 +23,32 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.05rem;
-    line-height: 1.3;
+    font-size: 1.1em;
+    line-height: 1.4;
     margin: 0em 0 0.5em;
   }
 `
 const Author = styled.p`
   margin-bottom:0;
   @media (min-width: ${size.laptop}) {
-    font-size: 1.05rem;
-    line-height: 1.3;
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin-top: -0.5em;
+    margin-bottom:0.9em;
   }
 `
+const Year = styled.p`
+  margin-bottom:0;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+    line-height: 1.4;
+    margin-top: 0em;
+  }
+`
+
 const ResLink = styled.div`
   > a {
+    font-size: 1em;
     transition: all 0.2s ease-in-out;
     border-bottom: solid thin;
     border-color: ${Color.red};
@@ -64,7 +76,7 @@ const ResourceImageGallery = props => {
               }}
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <Author> {r[language].year}</Author>
+          <Year> {r[language].year}</Year>
           {r.external_url.length > 0 ? <ResLink> <a target="_blank" href={r.external_url}> {r.external_url_label}</a> </ResLink> : ""}
           
         </div>

@@ -22,8 +22,9 @@ export const TwoColumnPageWrapper = styled.div`
     grid-template-columns: 33fr 66fr;
   } 
   @media (min-width: ${size.laptop}) {
-    grid-template-columns: 3fr 7fr;
-  } 
+    grid-template-columns: 2.9fr 7.2fr;
+    padding: 2.5em 1em 2em;
+    } 
   @media (min-width: ${size.laptopL}) {
     grid-template-columns: 1fr 4fr;
   }  
@@ -101,6 +102,7 @@ export const TwoColumnPageWrapperNoPad = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
   }
+  
   ${changeGridToOneRow}
 `
 
@@ -119,18 +121,22 @@ export const PressWrapper = styled.div`
     border-top:none;
     background:#FFF;
   }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 2.9fr 7.2fr;
+    grid-column-gap: 2em;
+  }
   div > p {
   margin-bottom: 0.5em;
   }
-  div > div > p {
-  margin-bottom: 0.0em;
+  > div:nth-child(2) > div > p {
+  margin-bottom: 1em;
   }
   div > div{
   margin-bottom: 0.5em;
   }
   ul {
     list-style:none;
-    font-size: 1rem;
+    font-size: 1.03rem;
     margin:0.5rem 0;
     padding:0;
     li {
@@ -285,24 +291,86 @@ export const TextBlock = styled.div`
     line-height:1.4;
     margin: 0;
   }
-  p {
-    font-size:1rem;
+  > p {
+    font-size:1em;
     @media (max-width: ${size.mobileM}) {
-    font-size:1.1rem;
+    font-size:1.1em;
     line-height:1.4;
-  }
-  @media (min-width: ${size.mobileL}) {
-    font-size:0.95rem;
-    line-height:1.3;
-  }
-  @media (min-width: ${size.laptop}) {
-    font-size:1rem;
-    line-height:1.3;
-  }
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.3;
+    }
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;
 
   }
   padding: 0 0 1em 0em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.7em 0em;
+  }
+`
+export const TextBlockTwoColumnPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1.1em;
+      line-height:1.4;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.9em 0em;
+  }
+`
+export const TextBlockSideBarPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1.1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1.1em;
+      line-height:1.3;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  padding: 0 0 1em 0em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.7em 0em;
+  }
 `

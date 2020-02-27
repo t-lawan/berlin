@@ -74,7 +74,7 @@ const FooterText = styled.p`
     font-size: 0.95em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1rem;
+    font-size: 1.1em;
   }
 `
 

@@ -10,6 +10,7 @@ export const NavWrapper = styled.nav`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background: white;
+  position: relative;
 `
 
 export const NavMobileWrapper = styled.nav`
@@ -61,7 +62,7 @@ export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
   line-height:1.2;
-  padding: 1.2em 0.7em 0.5em;
+  padding: 1.25em 0.75em 0.55em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;
@@ -77,7 +78,7 @@ export const NavItem = styled(AniLink)`
 export const NavLink = styled.a`
   display: block;
   line-height:1.2;
-  padding: 1.2em 0.5em 0.5em;
+  padding: 1.25em 0.5em 0.55em;
   transition: all 0.2s ease-in-out;
   margin-bottom:0;
   text-decoration: none;

@@ -21,7 +21,7 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
+    font-size: 1.03em;
     margin: 0em;
   }
 `

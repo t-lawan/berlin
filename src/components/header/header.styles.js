@@ -21,7 +21,11 @@ export const HeaderWrapper = styled.header`
   
   }
   @media (min-width: ${size.laptop}) {
-  padding: 1.4em 2em 0.7em !important;
+  padding: 1.55em 2.2em 1.05em !important;
+  }
+  > img {
+    max-width:100%;
+    width:auto !important;
   }
 `
 
@@ -44,7 +48,7 @@ export const HeaderLink = styled(AniLink)`
   grid-template-columns:1fr 1fr;
   }
   @media (min-width: ${size.laptop}) {
-  grid-column-gap: 4em;
+  grid-column-gap: 4.1em;
   }
 
 `
