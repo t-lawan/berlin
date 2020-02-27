@@ -53,7 +53,7 @@ export class DateManager {
   }
 
   static createShortDayString = (day, month, year, language) => {
-    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("ddd");
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format(language == "DE" ? "dd" : "ddd");
   }
 
   static createDatetring = (day, month, year) => {
