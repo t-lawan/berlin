@@ -182,6 +182,9 @@ a, span {
     font-size: 1.1em;
   }
 }
+::selection {
+    background: #ededed;
+}
 p {
   margin-left: 0;
   margin-right: 0;
