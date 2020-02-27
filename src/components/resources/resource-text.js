@@ -54,6 +54,12 @@ const Dthide = styled.div`
 `
 const Author = styled.p`
   margin-bottom: 0;
+  > em > a {
+    font-size: 1em;
+  }
+  > a {
+    font-size: 1em;
+  }
 `
 const ArrowDown = styled.span`
 background-image: url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg);
