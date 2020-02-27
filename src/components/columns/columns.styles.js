@@ -11,6 +11,9 @@ import {
 import {
   ColumnLayout,
 } from "./column.styles"
+import {
+  Caption,
+} from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -27,7 +30,7 @@ export const ExperienceContainer = styled.div`
   display: grid;
   height: 100%;
   height: 100vh;
-  grid-template-columns: 66fr 33fr;
+  grid-template-columns: 2.01fr 1fr;
   grid-template-rows: auto;
   overflow-y: auto;
   overflow-x: hidden;
@@ -95,7 +98,7 @@ export const ColumnsWrapper = styled.div`
   }
 
   display: grid;
-  grid-template-columns: 1fr 18fr 1fr;
+  grid-template-columns: 1fr 17.85fr 1fr;
   ${changeGridToOneRow}
 `
 
@@ -218,6 +221,9 @@ export const StickyHeader = styled.div`
 export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
+  > section > ${Caption} {
+      margin-bottom: 0.7em;
+    }
 `
 
 export const StickyFooter = styled.div`
