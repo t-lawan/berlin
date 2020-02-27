@@ -10,6 +10,7 @@ export const NavWrapper = styled.nav`
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background: white;
+  position: relative;
 `
 
 export const NavMobileWrapper = styled.nav`
