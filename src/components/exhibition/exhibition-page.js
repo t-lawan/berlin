@@ -34,7 +34,7 @@ const ExhibitionPageWrapper = styled.div`
     height: calc(100vh - 40px);
   }
   @media (min-width: ${size.laptop}) {
-    padding: 0.7em 1em;
+    padding: 1em 1em;
     /* width: calc(100% - 10%); */
     width: 100%;
     height: 100vh;
@@ -44,7 +44,7 @@ const ExhibitionPageWrapper = styled.div`
 `
 
 const ExhibitionPageImage = styled.img`
-  width: 30% !important;
+  width: calc(30% - 1.4em) !important;
   @media (max-width: ${size.mobileL}) {
     width:100% !important;
   }
