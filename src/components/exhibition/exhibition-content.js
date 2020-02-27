@@ -17,6 +17,7 @@ const ExhibitionPageWrapper = styled.div`
   > div > p > a {
     border-bottom:solid thin rgb(217,81,92);
     transition:all 0.2s ease-in-out;
+    font-size: 1em;
     :hover {
       color:rgb(217,81,92);
     }
