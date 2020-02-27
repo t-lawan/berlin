@@ -315,3 +315,62 @@ export const TextBlock = styled.div`
     padding: 0 0 0.7em 0em;
   }
 `
+export const TextBlockTwoColumnPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1.1em;
+      line-height:1.4;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.9em 0em;
+  }
+`
+export const TextBlockSideBarPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1.1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1.1em;
+      line-height:1.3;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  padding: 0 0 1em 0em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.7em 0em;
+  }
+`
