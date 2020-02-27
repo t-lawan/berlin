@@ -48,7 +48,7 @@ const PracticalInformation = props => {
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink hidden={content[language].directions} target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlock>
         <TextBlock>
           {pageInfo.acf[language].access_block.map((item, index) => (
