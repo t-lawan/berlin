@@ -42,7 +42,7 @@ const RelatedNavigatorWrapper = styled.div`
 `
 
 const RelatedNavigatorButton = styled(AniLink)`
-  font-size: 1.1rem;
+  font-size: 1.1em;
   padding: 0.0em 1em 0 0em;
   text-decoration: none;
   @media (max-width: ${size.mobileM}) {

@@ -21,6 +21,7 @@ import { getDocument } from "../../store/selector"
 const ResourceTextDiv = styled.div`
   a {
     border-bottom: solid thin;
+    font-size: 1em;
     border-color: ${Color.red};
     transition: all 0.2s ease-in-out;
     :hover {

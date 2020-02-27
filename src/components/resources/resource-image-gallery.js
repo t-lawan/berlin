@@ -23,7 +23,7 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.03rem;
+    font-size: 1.1em;
     line-height: 1.3;
     margin: 0em 0 0.5em;
   }
@@ -31,12 +31,13 @@ const ResourceTitle = styled.h1`
 const Author = styled.p`
   margin-bottom:0;
   @media (min-width: ${size.laptop}) {
-    font-size: 1.03rem;
+    font-size: 1.1em;
     line-height: 1.3;
   }
 `
 const ResLink = styled.div`
   > a {
+    font-size: 1em;
     transition: all 0.2s ease-in-out;
     border-bottom: solid thin;
     border-color: ${Color.red};
