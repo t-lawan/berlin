@@ -52,7 +52,9 @@ body {
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
   font-style: normal;
-  font-size: calc(1em + 0.1vw);
+  font-size: 100%;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
   }
   a {
     text-decoration: none;
@@ -177,7 +179,7 @@ a, span {
   padding: 0;
   transition: all 0.2s ease-in-out;
   @media (min-width: ${size.laptop}) {
-    font-size: 1.03rem;
+    font-size: 1.1em;
   }
 }
 p {
@@ -193,24 +195,24 @@ p {
   padding-top: 0;
   font-size: 1rem;
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     line-height:1.4;
     > a {
       font-size:1em;
     }
   }
   @media (min-width: ${size.tablet}) {
-    font-size: 0.95rem;
+    font-size: 0.95em;
     line-height:1.3;
     > a {
-      font-size:0.95rem;
+      font-size:0.95em;
     }
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.03rem;
+    font-size: 1.1em;
     line-height:1.4;
     > a {
-      font-size:1.03rem;
+      font-size:1.1em;
     }
   }
 }
