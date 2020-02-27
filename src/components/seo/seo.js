@@ -12,14 +12,14 @@ import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
 
-  const metaDescription = description;
+  const metaDescription = 'The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From June 13 to September 13, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city.	';
   let titleHeading = lang === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title + ' | ' + titleHeading}
+      title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
       meta={[
         {
           name: `description`,
