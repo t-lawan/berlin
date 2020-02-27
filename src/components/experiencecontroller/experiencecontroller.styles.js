@@ -59,6 +59,7 @@ export const ExperienceButtonImage = styled.img`
     cursor: pointer;
     color: ${Color.red};
   }
+  visibility: ${props => props.show ? 'visible' : 'hidden'};
 `
 
 export const ExperienceControllerMobileWrapper = styled.div`

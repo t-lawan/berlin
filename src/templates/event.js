@@ -24,6 +24,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { EventsModel } from "../models/EventsModel"
+import * as actionTypes from '../store/action';
 
 const EventColumn = styled.div`
 :first-child {
@@ -244,7 +245,8 @@ const Event = props => {
                 language,
                 documentation[0] ? `documentation/${documentation[0].slug}` : ``
               )}
-              fade
+              // fade
+              onClick={() => props.startTransition()}
               // bg={transitionBackground}
               // cover
               // direction="down"
@@ -350,7 +352,13 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Event)

@@ -135,6 +135,7 @@ class MainSection extends React.Component {
           </MobAnimCard>
           <RelativeHeader>
             <ImageContainer
+              isHome={this.props.isHome}
               hideOnHomePage={!this.props.isHome}
               hideInMobile={true}
             />

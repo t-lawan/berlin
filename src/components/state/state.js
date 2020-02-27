@@ -8,7 +8,7 @@ import { generateExhibitions } from "../../models/ExhibitionModel"
 import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
-
+import moment from 'moment';
 const State = props => {
   if (!props.isLoaded) {
     const data = useStaticQuery(
@@ -401,6 +401,10 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
+      // Sort dates
+    events = events.sort((a, b) => {
+      return moment(a.dates[0].start_date).diff(moment(b.dates[0].start_date))
+    })
 
     let news = Convert.toModelArray(
       data.allWordpressWpNews,

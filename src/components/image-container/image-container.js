@@ -93,7 +93,7 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0];
     return (
       <Animation
-        in={this.props.isViewing || this.state.experience_changed}
+        in={this.props.isViewing || this.state.experience_changed || this.props.isHome}
         onEntered={() => this.setExperienceChangeToFalse()}
         mountOnEnter
         // unmountOnExit
