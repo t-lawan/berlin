@@ -48,14 +48,16 @@ export const EventCardLink = styled(AniLink)`
   text-decoration: none;
   > p {
     margin-bottom: 0;
+    font-size:1em;
+    line-height: 1.3;
     @media (max-width: ${size.mobileM}) {
-      font-size: 1rem;
+      font-size: 1em;
     }
   }
 `
 
 export const EventHeading = styled.p`
-  font-size: 1rem;
+  font-size: 1.1em;
   margin: 0;
   @media (min-width: ${size.tablet}) {
    font-size: 0.95rem; 
