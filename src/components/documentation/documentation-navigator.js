@@ -1,39 +1,43 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import {
+  getCurrentLanguageString,
+  createPath,
+  transitionBackground,
+} from "../../utility/helper"
 import { size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+import * as actionTypes from "../../store/action"
 
 const DocumentationNavigatorWrapper = styled.div`
   display: flex;
   flex-direction: row;
   background: white;
   @media (max-width: ${size.mobileM}) {
-    display:block;
-    margin-top:-0.5em;
-    padding: 0.0em 0 0 0.0em;
-    width:100%;
+    display: block;
+    margin-top: -0.5em;
+    padding: 0em 0 0 0em;
+    width: 100%;
     :after {
-      content:"";
-      clear:both;
-      display:table;
+      content: "";
+      clear: both;
+      display: table;
     }
   }
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0 0 0.7em;
   }
   @media (min-width: ${size.laptop}) {
-    margin:-2em 0 0 0;
-    padding:0;
+    margin: -2em 0 0 0;
+    padding: 0;
   }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
   font-size: 1.1rem;
-  line-height:1;
+  line-height: 1;
   padding: 0.5em 0 0 1em;
   text-decoration: none;
   @media (max-width: ${size.mobileM}) {
@@ -50,11 +54,10 @@ const DocumentationNavigatorButton = styled(AniLink)`
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1rem;
-  line-height:1;
-  padding: 0.5em 1em 0 0em;
+    line-height: 1;
+    padding: 0.5em 1em 0 0em;
   }
 `
-
 
 class DocumentationNavigator extends React.Component {
   language
@@ -65,47 +68,55 @@ class DocumentationNavigator extends React.Component {
       return `documentation/${this.props.documentation[0].slug}`
     }
 
-    return `documentation/${this.props.documentation[this.currentIndex + 1].slug}`
+    return `documentation/${
+      this.props.documentation[this.currentIndex + 1].slug
+    }`
   }
 
   previousPage = () => {
     if (this.currentIndex === 0) {
-      return `documentation/${this.props.documentation[this.props.documentation.length - 1].slug}`
+      return `documentation/${
+        this.props.documentation[this.props.documentation.length - 1].slug
+      }`
     }
-    return `documentation/${this.props.documentation[this.currentIndex - 1].slug}`
+    return `documentation/${
+      this.props.documentation[this.currentIndex - 1].slug
+    }`
   }
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     this.currentIndex = this.props.documentation.findIndex(documentation => {
-        return documentation.id === this.props.id
-      })
+      return documentation.id === this.props.id
+    })
 
     return (
-        <DocumentationNavigatorWrapper>
-          <DocumentationNavigatorButton
-            fade
-            to={createPath(this.language, this.previousPage())}
-          >
+      <DocumentationNavigatorWrapper>
+        <DocumentationNavigatorButton
+          fade
+          onClick={() => this.props.startTransition()}
+          to={createPath(this.language, this.previousPage())}
+        >
           {/* <DocumentationNavigatorButton
             bg={transitionBackground}
             cover direction="down"
             to={createPath(this.language, this.previousPage())}
           > */}
-            {`<`}
-          </DocumentationNavigatorButton>
-          <DocumentationNavigatorButton
-            fade
-            to={createPath(this.language, this.nextPage())}
-          >
+          {`<`}
+        </DocumentationNavigatorButton>
+        <DocumentationNavigatorButton
+          fade
+          onClick={() => this.props.startTransition()}
+          to={createPath(this.language, this.nextPage())}
+        >
           {/* <DocumentationNavigatorButton
             bg={transitionBackground}
             to={createPath(this.language, this.nextPage())}
           > */}
-            {`>`}
-          </DocumentationNavigatorButton>
-        </DocumentationNavigatorWrapper>
-      )
+          {`>`}
+        </DocumentationNavigatorButton>
+      </DocumentationNavigatorWrapper>
+    )
   }
 }
 
@@ -119,8 +130,12 @@ const mapStateToProps = state => {
     documentation: state.documentation,
   }
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
+  }
+}
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(DocumentationNavigator)
