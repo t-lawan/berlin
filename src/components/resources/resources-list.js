@@ -97,6 +97,15 @@ const TextBox = styled.div`
     margin-top: 0.2em;
   }
 `
+const Author = styled.p`
+  margin-bottom:0;
+  @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.8em;
+    margin-bottom:0em;
+  }
+`
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
   let resources = shuffle(props.resources).slice(0, 6);
@@ -118,6 +127,7 @@ const ResourcesList = props => {
                 withCaption={false}
               />
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
             </ResourceItem>
           </ResourceItemLink>
         )
