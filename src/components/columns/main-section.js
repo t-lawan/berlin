@@ -31,6 +31,8 @@ import ResourcesList from "../resources/resources-list"
 import ExhibitionPage from "../exhibition/exhibition-page"
 import { transitionTimes } from "../../utility/helper"
 import { connect } from "react-redux"
+import TransitionPage from "../transition/transition-page";
+import * as actionTypes from '../../store/action';
 
 class MainSection extends React.Component {
   renderedComponents
@@ -71,10 +73,19 @@ class MainSection extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.firstColumn !==  this.props.firstColumn) {
+      setTimeout(() => {
+        this.props.stopTransition();
+      }, 200)
+    }
+  }
+
   render() {
     if (this.numberOfColumnsIsTwo) {
       this.renderedComponents = (
         <FirstColumnWrapper twoColumns>
+          <TransitionPage />
           <Column hideInMobile rightBorder={true}>
             {this.props.firstColumn}{" "}
           </Column>
@@ -84,6 +95,7 @@ class MainSection extends React.Component {
     } else {
       this.renderedComponents = (
         <FirstColumnWrapper twoColumns={false}>
+          <TransitionPage />
           <Column>{this.props.firstColumn} </Column>
         </FirstColumnWrapper>
       )
@@ -181,6 +193,13 @@ MainSection.propTypes = {
   isHome: PropTypes.bool,
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    stopTransition: experience =>
+      dispatch({ type: actionTypes.STOP_TRANSITION}),
+  }
+}
+
 const mapStateToProps = state => {
   return {
     agreed_to_terms: state.agreed_to_terms,
@@ -192,5 +211,5 @@ const mapStateToProps = state => {
 }
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(MainSection)

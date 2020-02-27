@@ -5,6 +5,7 @@ import { getCurrentLanguageString, createPath, shuffle } from "../../utility/hel
 import ImageResource from "../../partials/ImageResource"
 import { Color, size } from "../../index.styles"
 import { Link } from "gatsby"
+import * as actionTypes from '../../store/action';
 const ResourcesListWrapper = styled.div`
   padding: 0.7em 1em;
   @media (max-width: ${size.mobileM}) {
@@ -76,6 +77,9 @@ const ResourceItem = styled.div`
   > img {
     margin-bottom:0.3em;
   }
+ > div > picture > img {
+   margin-bottom:0.3em !important;
+ }
 `
 
 const TextBox = styled.div`
@@ -92,7 +96,7 @@ const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
   let resources = shuffle(props.resources).slice(0, 6);
 
-  const createComponent = index => {
+  const createComponent = (index) => {
     const resource = resources[index]
     let renderComponent
     switch (resource.type) {
@@ -101,6 +105,7 @@ const ResourcesList = props => {
           <ResourceItemLink
             to={createPath(language, `resource/${resource.slug}`)}
             key={index}
+            onClick={() => props.startTransition()}
           >
             <ResourceItem>
               <ImageResource
@@ -117,6 +122,7 @@ const ResourcesList = props => {
           <ResourceItemLink
             to={createPath(language, `resource/${resource.slug}`)}
             key={index}
+            onClick={() => props.startTransition()}
           >
             <ResourceItem>
               <TextBox>
@@ -134,6 +140,7 @@ const ResourcesList = props => {
           <ResourceItemLink
             to={createPath(language, `resource/${resource.slug}`)}
             key={index}
+            onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
@@ -147,6 +154,7 @@ const ResourcesList = props => {
           <ResourceItemLink
             to={createPath(language, `resource/${resource.slug}`)}
             key={index}
+            onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
               <TextBox>
@@ -163,6 +171,7 @@ const ResourcesList = props => {
           <ResourceItemLink
             to={createPath(language, `resource/${resource.slug}`)}
             key={index}
+            onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
               <ResourceTitle> {resource.title} </ResourceTitle>
@@ -188,7 +197,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ResourcesList)

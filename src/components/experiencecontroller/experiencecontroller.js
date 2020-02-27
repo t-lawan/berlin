@@ -47,10 +47,9 @@ class ExperienceController extends React.Component {
 
   incrementExperience = () => {
     if (
-      this.props.experience < this.state.experiences.length &&
-      !this.props.experience_transition.isTransitioning
+      this.props.experience < this.state.experiences.length
     ) {
-      this.props.experienceIncreased()
+      // this.props.experienceIncreased()
       this.props.experience + 1
       setTimeout(() => {
         this.props.changeExperience(this.props.experience + 1)
@@ -65,10 +64,9 @@ class ExperienceController extends React.Component {
 
   decrementExperience = () => {
     if (
-      this.props.experience > 0 &&
-      !this.props.experience_transition.isTransitioning
+      this.props.experience > 0
     ) {
-      this.props.experienceDecreased()
+      // this.props.experienceDecreased()
       this.props.experience + 1
       setTimeout(() => {
         this.props.changeExperience(this.props.experience - 1)
@@ -110,9 +108,9 @@ class ExperienceController extends React.Component {
     if (chosenExperience.isReady) {
       let currentExperience = this.props.experience
       if (currentExperience < chosenExperience.id) {
-        this.props.experienceIncreased()
+        // this.props.experienceIncreased()
       } else {
-        this.props.experienceDecreased()
+        // this.props.experienceDecreased()
       }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
@@ -170,6 +168,8 @@ class ExperienceController extends React.Component {
             bold
             hover={experience.isReady}
             show={experience.isReady}
+            left={this.props.left}
+            isExperience4={this.props.experience === 4}
             onClick={() => this.changeExperience(experience)}
           >
             {experience.display}
@@ -185,7 +185,6 @@ const mapStateToProps = state => {
     experience: state.experience,
     exhibitions: state.exhibitions,
     languages: state.languages,
-    experience_transition: state.experience_transition,
   }
 }
 
@@ -193,10 +192,6 @@ const mapDispatchToProps = dispatch => {
   return {
     changeExperience: experience =>
       dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
-    experienceIncreased: () =>
-      dispatch({ type: actionTypes.INCREASE_EXPERIENCE_TRANSITION }),
-    experienceDecreased: () =>
-      dispatch({ type: actionTypes.DECREASE_EXPERIENCE_TRANSITION }),
     setIsVisibleToTrue: () =>
       dispatch({ type: actionTypes.SET_IS_VISIBLE_TO_TRUE }),
   }

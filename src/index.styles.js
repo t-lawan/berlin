@@ -24,6 +24,7 @@ export const increaseHeightKeyFrames = keyframes`
       max-height: 1000px;
     }
 `
+
 export const decreaseHeightKeyFrames = keyframes`
     0% {
       max-height: 1000px;
@@ -247,6 +248,27 @@ h1, h2, h3, h4, h5, h6, p, a, em {
     animation: fadeOut 4s linear forwards;
 }
 
+
+${'' /* .image-contain-enter {
+  max-height: 0;
+}
+
+.image-contain-active-enter {
+  animation-name: ${increaseHeightKeyFrames};
+    animation-duration: 3s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+}
+
+.image-contain-exit {
+  
+}
+
+.image-contain-active-exit {
+  
+} */}
+
 .remove-animation {
   max-height: inherit;
   animation: 0;
@@ -254,7 +276,7 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 }
 
 .increase-height {
-  animation: increaseHeight 3s forwards;
+  animation: ${increaseHeightKeyFrames} 3s forwards;
   -webkit-animation: increaseHeight 3s forwards;
   animation-delay: 1.5s;
 }
@@ -365,6 +387,7 @@ export const changeNthChild = css`
     }
   }
 `
+
 
 export const mobile = props => {
   return css`

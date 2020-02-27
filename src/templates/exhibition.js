@@ -42,6 +42,7 @@ const Exhibition = props => {
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
       thirdColumn={thirdColumn}
+      isHome={true}
     />
   )
 }

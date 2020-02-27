@@ -99,5 +99,9 @@ export const AboutTeamSectionHeader = styled.p`
 
 export const AboutCorporateImageItem = styled.section`
   /* padding: 1em; */
-  width: 25%;
+  width: 15%;
+`
+
+export const AboutPrimaryImageContainer = styled(AboutCorporateImageItem)`
+  width: 40%;
 `
