@@ -22,7 +22,7 @@ class LanguageController extends React.Component {
     this.languages.reverse();
     return (
       <LanguageControllerWrapper>
-         {this.languages.map(language => (
+        {this.languages.map(language => (
           <LanguageButton
             fade
             key={language}

@@ -358,6 +358,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: actionTypes.START_TRANSITION}),
   }
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
