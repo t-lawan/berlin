@@ -446,6 +446,7 @@ export const ExternalLink = styled.a`
   transition: all 0.2s ease-in-out;
   > span {
     transition: all 0.2s ease-in-out;
+    font-size: 1em;
     :hover {
       color: ${Color.red};
     }
