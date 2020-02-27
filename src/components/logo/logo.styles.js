@@ -8,6 +8,9 @@ export const LogoWrapper = styled.div`
   top: 0;
   max-height:0;
   z-index: 0;
+  @media (min-width: ${size.laptop}) {
+    z-index: -1;
+  }
   padding: 0em 1em;
   background: white;
   @keyframes increaseHeight {
