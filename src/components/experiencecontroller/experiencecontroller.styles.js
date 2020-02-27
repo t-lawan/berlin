@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { showDisplayForTablet, showDisplayForTabletFunc, size, Color } from "../../index.styles";
 
 export const ExperienceControllerWrapper = styled.div`
-  margin-top: ${props => (props.left ? "6.9em" : "3.4em")};
+  margin-top: ${props => (props.left ? "6.9em" : "3.2em")};
   align-items: center;
   justify-content: center;
   display: grid;

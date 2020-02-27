@@ -36,4 +36,7 @@ animation-delay: 1.4s;
     margin-bottom:0.7em;
   }
   }
+  @media (min-width: ${size.laptop}) {
+    padding-top: 1em;
+  }
 `

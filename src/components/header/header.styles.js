@@ -21,7 +21,7 @@ export const HeaderWrapper = styled.header`
   
   }
   @media (min-width: ${size.laptop}) {
-  padding: 1.4em 2em 0.7em !important;
+  padding: 1.35em 2.05em 0.8em !important;
   }
   > img {
     max-width:100%;

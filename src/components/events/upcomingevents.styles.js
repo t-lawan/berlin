@@ -15,7 +15,6 @@ export const EventsWrapper = styled.div`
 `
 
 export const EventItem = styled.div`
-  padding: 1em 1.7em;
   color: black;
   background-color:#FFF;
   position:relative;
@@ -46,14 +45,21 @@ export const EventItem = styled.div`
     font-size: 1.1rem;
     }
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileL}) {
+    padding: 1em 1.7em;
+  }
+  @media (min-width: ${size.tablet}) {
     padding: 1em 1em;
     p{
     font-size: 1.1rem;
     }
   }
-  @media (max-width: ${size.mobileL}) {
-    padding: 1em 1.7em;
+  @media (min-width: ${size.laptop}) {
+    padding: 1em 2em;
+    p{
+    font-size: 1.03rem;
+    line-height: 1.3;
+    }
   }
 `
 
