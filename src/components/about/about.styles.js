@@ -35,6 +35,9 @@ export const AboutNavItem = styled.p`
 
 export const AboutNavItemLink = styled(AniLink)`
     text-decoration: none;
+    > p {
+      font-size:1em;
+    }
 `
 
 export const AboutPageContent = styled.div`
@@ -47,6 +50,7 @@ export const AboutPageContent = styled.div`
       }
     p > a {
         border-bottom: solid 1px ${Color.red};
+        font-size: 1em;
           :hover {
           color: ${Color.red};
           }

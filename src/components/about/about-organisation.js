@@ -7,12 +7,18 @@ import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding: 0;
-padding-left: 1em;
+> p {
+  padding-left: 1em;
+  font-size:1.1em;
+}
 `
 
 const TitleTextBlock = styled(TextBlock)`
 padding: 0;
 padding-top: 1em;
+> p {
+  font-size:1.1em;
+}
 `
 
 const AboutOrganisation = props => {

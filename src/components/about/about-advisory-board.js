@@ -7,15 +7,24 @@ import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding-top: 0;
-padding-left: 1em;
-p{
+> p {
   line-height: 1.3;
-  @media (max-width: ${size.mobileM}) {
-    line-height:1.4 !important;
-  }
+  padding-left: 1em;
+    @media (max-width: ${size.mobileM}) {
+      line-height:1.4 !important;
+    }
+    @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+    }
 }
 `
-
+const TitleTextBlock = styled(TextBlock)`
+padding: 0;
+padding-top: 0em;
+> p {
+  font-size:1.1em;
+}
+`
 const AboutAdvisoryBoard = props => {
   const language = getCurrentLanguageString(props.languages)
   const teamBlock = props.team_block;
@@ -29,9 +38,9 @@ const AboutAdvisoryBoard = props => {
     switch (teamBlockItem.team_block_type) {
       case "section":
         renderComponent = (
-          <TextBlock key={index}>
+          <TitleTextBlock key={index}>
             <p> {teamBlockItem[createProperty("section_title", language)]}</p>
-          </TextBlock>
+          </TitleTextBlock>
         )
         break
       case "section_content":
