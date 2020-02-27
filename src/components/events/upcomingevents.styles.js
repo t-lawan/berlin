@@ -40,6 +40,12 @@ export const EventItem = styled.div`
     margin-bottom:0;
   }
   border-bottom: 1px solid black;
+  @media (max-width: ${size.mobileM}) {
+    padding: 1em 1em;
+    p{
+    font-size: 1.1rem;
+    }
+  }
   @media (max-width: ${size.tablet}) {
     padding: 1em 1em;
     p{

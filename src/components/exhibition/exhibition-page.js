@@ -19,6 +19,7 @@ const ExhibitionPageWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     width: 100%;
     left: 0;
+    top:0;
     padding: 1em 0.7em;
     bottom: 45px;
     height: calc(100vh - 87px);

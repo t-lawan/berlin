@@ -59,8 +59,8 @@ class ImageGalleryResource extends React.Component {
   }
   state = {
     index: 0,
-    animationIn: "slideInLeft",
-    animationOut: "slideOutRight",
+    animationIn: "slideInRight",
+    animationOut: "slideOutLeft",
     isVisible: true,
     isTransitioning: false,
   }

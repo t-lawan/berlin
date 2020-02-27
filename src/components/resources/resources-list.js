@@ -74,7 +74,7 @@ const ResourceItem = styled.div`
   :first-child {
     padding-top:0;
   }
-  > img {
+  > div > picture > img {
     margin-bottom:0.3em;
   }
  > div > picture > img {

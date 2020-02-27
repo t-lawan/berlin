@@ -23,6 +23,10 @@ export const HeaderWrapper = styled.header`
   @media (min-width: ${size.laptop}) {
   padding: 1.4em 2em 0.7em !important;
   }
+  > img {
+    max-width:100%;
+    width:auto !important;
+  }
 `
 
 export const HeaderLink = styled(AniLink)`
