@@ -8,6 +8,7 @@ import {
   EventNavigatorIcon,
 } from "./event-navigator.styles"
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+import * as actionTypes from '../../store/action'
 
 class EventNavigator extends React.Component {
   language
@@ -35,12 +36,14 @@ class EventNavigator extends React.Component {
       <EventNavigatorWrapper>
         <EventNavigatorButton
           to={createPath(this.language, this.previousPage())}
+          onClick={() => this.props.startTransition()}
           fade
         >
           {`<`}
         </EventNavigatorButton>
         <EventNavigatorButton
           to={createPath(this.language, this.nextPage())}
+          onClick={() => this.props.startTransition()}
           fade
         >
           {`>`}
@@ -61,7 +64,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(EventNavigator)
