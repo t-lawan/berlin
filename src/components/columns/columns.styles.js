@@ -309,6 +309,7 @@ export const FixedNavbar = styled.div`
   @media (max-width: ${size.mobileM}) {
     position: fixed;
     width: 100%;
+    border-left: solid 0px #000;
     bottom: 0;
     top:auto;
   }

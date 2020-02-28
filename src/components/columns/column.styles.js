@@ -10,7 +10,10 @@ export const ColumnLayout = styled.div`
   border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
   height: 100%;
   background: white;
-  padding-bottom: 2rem;  
+  padding-bottom: 2rem; 
+  @media (max-width: ${size.mobileM}) {
+        padding-bottom: 0rem; 
+      } 
   position:relative;
   width:auto;
   grid-area: 'column';

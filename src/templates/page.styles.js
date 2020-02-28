@@ -303,13 +303,15 @@ export const PageTitleCalendar = styled.h1`
     position:sticky;
     margin-bottom:1.0rem;
   }
+  @media (max-width: ${size.mobileL}) {
+    border-top: solid 0px #000;
+  }
   @media (max-width: ${size.tablet}) {
     display:block;
     position:sticky;
     top:0;
     background:#FFF;
     z-index:3;
-    border-top: solid 1px #000;
     padding:0.3em 0.4em;
     border-bottom:solid 1px #000;
     width:100%;

@@ -17,7 +17,7 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
-  height: calc(40px - 1px);
+  height: calc(46px - 1px);
   max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;

@@ -131,6 +131,9 @@ const EventSubTitleMob = styled.h2`
 const EventDescription = styled.div`
   p {
     font-size: 1em;
+    @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
     @media (min-width: ${size.laptopM}) {
       font-size: 1.1em;
     }
@@ -141,9 +144,7 @@ const EventDescription = styled.div`
     > a {
       font-size:1em;
     }
-    @media (max-width: ${size.tablet}) {
-    font-size: 0.95em;
-    }
+    
   }
 `
 

@@ -42,15 +42,18 @@ export const JumbotronHeader = styled(AniLink)`
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.0em 0.0rem 0px;
   margin: 0em;
   position:relative;
+  @media (min-width: ${size.mobileS}) {
+    padding-bottom: 120px;
+  }
+  @media (min-width: ${size.mobileM}) {
+    padding-bottom: 130px;
+  }
   width:100%;
   z-index:2;
   display:block;
-  /* @media (min-width: ${size.mobileL}) {
-    display:none;
-  } */
+  
   img {
     margin-bottom:0;
     position:relative;
@@ -69,6 +72,7 @@ export const JumbotronWrapperMob = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+  
   ${showDisplayForMobile};
 
 `

@@ -10,7 +10,8 @@ export const EventsWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     width: calc(100% + 1.4em);
     margin-left: -0.7em;
-    margin-top:-1.5em;
+    margin-top:-1.7em;
+    padding-bottom:0px;
   }
 `
 
@@ -37,6 +38,7 @@ export const EventItem = styled.div`
   }
   p{
     margin-bottom:0;
+    line-height: 1.3;
   }
   border-bottom: 1px solid black;
   @media (max-width: ${size.mobileM}) {
@@ -74,6 +76,10 @@ export const EventLink = styled(UnderlineSectionLink)`
   :hover > div {
     color: ${Color.red}
   }
+  @media (max-width: ${size.mobileL}) {
+    font-size: 1.1em;
+    line-height: 1.3;
+  }
   /* padding: 1rem; */
   /* div:first-child {
   background: white;
@@ -82,4 +88,7 @@ export const EventLink = styled(UnderlineSectionLink)`
 
 export const EventTitle = styled.div`
 transition:all 0.2s ease-in-out;
+> p {
+  line-height: 1.3;
+  }
 `

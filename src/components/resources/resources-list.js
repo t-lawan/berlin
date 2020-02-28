@@ -31,7 +31,7 @@ const ResourceTitle = styled.p`
     margin-bottom:0;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size:1em;
+    font-size:1.1em;
     margin-bottom:0.3em;
   }
   @media (min-width: ${size.mobileL}) {
@@ -47,7 +47,7 @@ const ResourceLabel = styled.p`
   font-size: 1em;
   margin: 0.5em 0 0;
   @media (max-width: ${size.mobileM}) {
-    font-size:1.0em;
+    font-size:1.1em;
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95em;
@@ -106,7 +106,12 @@ const TextBox = styled.div`
 `
 const Author = styled.p`
   margin-bottom:0;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+    margin-top: -0.3em;
+    line-height: 1.4;
+  }
+  @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
     line-height: 1.4;
     margin-top: 0em;
