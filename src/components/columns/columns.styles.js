@@ -128,6 +128,9 @@ export const FirstColumnWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     border-top: solid 0px #000;
   }
+  @media (min-width: ${size.tablet}) {
+    border-top: solid 1px #000;
+  }
   @media (min-width: ${size.laptop}) {
     border-top: none;
   }
