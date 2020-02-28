@@ -6,12 +6,12 @@ export const LogoWrapper = styled.div`
   margin: auto;
   position: sticky;
   top: 0;
+  padding-bottom: 105.4%;
   max-height:0;
   z-index: 0;
   @media (min-width: ${size.laptop}) {
     z-index: -1;
   }
-  padding: 0em 1em;
   background: white;
   @keyframes increaseHeight {
   0% {
@@ -40,7 +40,6 @@ animation-delay: 1.4s;
   }
   }
   @media (min-width: ${size.laptop}) {
-    padding-top: 1em;
     >img {
       margin-bottom: 1rem;
     }
