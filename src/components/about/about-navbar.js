@@ -54,7 +54,7 @@ const AboutNavbar = props => {
         slug: "about/support"
       },
       DE: {
-        title: "support",
+        title: "unterstützung",
         slug: "de/uber/support"
       },
     },
