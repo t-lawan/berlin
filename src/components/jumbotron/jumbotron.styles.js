@@ -29,7 +29,7 @@ export const JumbotronWrapper = styled.div`
   @media (min-width: ${size.laptopM}) {
     padding: 1.55em 2.1em 1.5em;
     > a > img {
-      margin-bottom: -0.3em;
+      margin-bottom: -0.5em;
     }
   }
 `
