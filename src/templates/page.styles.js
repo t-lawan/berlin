@@ -115,7 +115,8 @@ export const PressWrapper = styled.div`
     grid-template-columns: 1fr;
   }
   @media (min-width: ${size.tablet}) {
-    border-top:solid 1px #000;
+    
+    padding-bottom: 4rem;
   }
   @media (max-width: ${size.mobileM}) {
     border-top:none;
@@ -123,7 +124,9 @@ export const PressWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 2.9fr 7.2fr;
+    border-top:solid 1px #000;
     grid-column-gap: 2em;
+    padding-bottom: 1em;
   }
   div > p {
   margin-bottom: 0.5em;
