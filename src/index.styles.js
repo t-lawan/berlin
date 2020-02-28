@@ -40,15 +40,19 @@ export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   ::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
+
 }
 html,
 body {
   width: 100vw;
   width: 100%;
+  position: relative;
+  overflow: hidden !important;
   height: 100%;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
@@ -258,7 +262,9 @@ h1, h2, h3, h4, h5, h6, p, a, em {
   }
 
 }
-
+.carousel .slide {
+  display: block;
+}
 .show-footer {
   @media (min-width: ${size.tablet}) {
     bottom: 0 !important;
