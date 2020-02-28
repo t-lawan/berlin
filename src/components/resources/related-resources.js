@@ -38,7 +38,7 @@ const ResourceLink = styled(AniLink)`
   @media (min-width: ${size.mobileL}) {
   width:33.33%;
   }
-  @media (min-width: ${size.laptop}) {
+  @media (min-width: ${size.laptopM}) {
   width:25%;
   }
 `

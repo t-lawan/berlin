@@ -111,6 +111,9 @@ export const DateText = styled.strong`
    font-size: 1.5em; 
   }
   @media (min-width: ${size.laptop}) {
+   font-size: 1.8em;
+  }
+  @media (min-width: ${size.laptopM}) {
    font-size: xx-large;
   }
 `
@@ -142,8 +145,11 @@ export const MonthHeading = styled.p`
     padding: 0.3em 0.4em;
   }
   @media (min-width: ${size.laptop}) {
+   font-size: 1.8em;
+   padding: 0.25em 0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 2em;
-    padding: 0.25em 0.5em;
   }
 `
 export const ClosedText = styled.p`

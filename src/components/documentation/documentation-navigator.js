@@ -53,9 +53,17 @@ const DocumentationNavigatorButton = styled(AniLink)`
     padding: 0 1em 0 0;
   }
   @media (min-width: ${size.laptop}) {
+    font-size: 1.0rem;
+    line-height: 1;
+    padding: 0.5em 1em 0 0em;
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 1.1rem;
     line-height: 1;
     padding: 0.5em 1em 0 0em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.2rem;
   }
 `
 

@@ -98,7 +98,12 @@ export const ColumnsWrapper = styled.div`
   }
 
   display: grid;
+  @media (min-width: ${size.laptop}) {
+  grid-template-columns: 1.15fr 17.85fr 1.15fr;
+  }
+  @media (min-width: ${size.laptopM}) {
   grid-template-columns: 1fr 17.85fr 1fr;
+  }
   ${changeGridToOneRow}
 `
 

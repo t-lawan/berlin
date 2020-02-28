@@ -55,6 +55,13 @@ export const EventItem = styled.div`
     }
   }
   @media (min-width: ${size.laptop}) {
+    padding: 1em 1.2em;
+    p{
+    font-size: 0.9em;
+    line-height: 1.3;
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
     padding: 1em 2.2em;
     p{
     font-size: 1em;

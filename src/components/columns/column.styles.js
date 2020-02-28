@@ -20,7 +20,13 @@ export const ColumnLayout = styled.div`
   :first-child {
     ${ExperienceControllerWrapper} {
       @media (min-width: ${size.laptop}) {
+        margin-top: 9.7em;
+      }
+      @media (min-width: ${size.laptopM}) {
         margin-top: 11em;
+      }
+      @media (min-width: ${size.laptopL}) {
+        margin-top: 11.8em;
       }
     }
   }

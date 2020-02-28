@@ -74,6 +74,9 @@ export const NavItem = styled(AniLink)`
   :first-child {
     padding-left:1em;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.15em 0.6em 0.50em;
+  }
 `
 
 export const NavLink = styled.a`
@@ -86,6 +89,9 @@ export const NavLink = styled.a`
   color: black;
   :hover {
     color: ${Color.red};
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.15em 0.6em 0.50em;
   }
 `
 

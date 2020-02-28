@@ -23,6 +23,9 @@ export const EventNavigatorWrapper = styled.section`
   @media (min-width: ${size.laptop}) {
     padding: 0.15em 0.7em 0.4em 1em;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.25em 0.7em 0.9em 1em;
+  }
 `
 
 export const EventNavigatorButton = styled(AniLink)`
@@ -49,9 +52,12 @@ export const EventNavigatorButton = styled(AniLink)`
     padding: 0 1em 1em 0;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
+  font-size: 1.1em;
   line-height:1;
   padding: 0.5em 1em 0 0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 

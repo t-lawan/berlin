@@ -11,7 +11,8 @@ export const size = {
   mobileL: "500px",
   tablet: "768px",
   laptop: "1024px",
-  laptopL: "1440px",
+  laptopM: "1124px",
+  laptopL: "1400px",
   desktop: "2560px",
 }
 
@@ -179,7 +180,13 @@ a, span {
   padding: 0;
   transition: all 0.2s ease-in-out;
   @media (min-width: ${size.laptop}) {
+    font-size: 1.0em;
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 }
 ::selection {
@@ -212,10 +219,24 @@ p {
     }
   }
   @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    line-height:1.4;
+    > a {
+      font-size:1em;
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
     line-height:1.4;
     > a {
       font-size:1.1em;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    line-height:1.4;
+    > a {
+      font-size:1.2em;
     }
   }
 }

@@ -2,7 +2,15 @@ import styled from "styled-components"
 import { showDisplayForTablet, showDisplayForTabletFunc, size, Color } from "../../index.styles";
 
 export const ExperienceControllerWrapper = styled.div`
-  margin-top: ${props => (props.left ? "6.9em" : "3.7em")};
+  @media (min-width: ${size.laptop}) {
+    margin-top: ${props => (props.left ? "6.9em" : "3em")};
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-top: ${props => (props.left ? "6.9em" : "3.7em")};
+  }
+  @media (min-width: ${size.laptopL}) {
+    margin-top: ${props => (props.left ? "6.9em" : "4.5em")};
+  }
   align-items: center;
   justify-content: center;
   display: grid;
@@ -18,7 +26,12 @@ export const ExperienceButton = styled.div`
   transition: all 0.2s ease-in-out;
   color: black;
   opacity: ${props => props.show ? '1' : '0.5'};
-  font-size: xx-large;
+    @media (min-width: ${size.laptop}) {
+      font-size: 1.8em;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size: xx-large;
+    }
   /* transition-timing-function: ease-in;
   transition: 1s; */
   :hover {
@@ -33,12 +46,20 @@ export const ExperienceButton = styled.div`
     margin-top:-0.5em;
   }
   :last-child img {
-    max-width:37px;
+    @media (min-width: ${size.laptop}) {
+     max-width:32px;
+    }
+    @media (min-width: ${size.laptopM}) {
+     max-width:37px;
+    }
     margin-top:0.5em;
     margin-bottom: 0;
   }
   span {
+    font-size: 0.55em;
+    @media (min-width: ${size.laptopM}) {
     font-size: 0.6em;
+    }
   }
   -webkit-animation: fadeIn 1.5s ease-in-out;
     animation: fadeIn 1.5s ease-in-out;

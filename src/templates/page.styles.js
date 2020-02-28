@@ -22,11 +22,15 @@ export const TwoColumnPageWrapper = styled.div`
     grid-template-columns: 33fr 66fr;
   } 
   @media (min-width: ${size.laptop}) {
+    grid-template-columns: 3fr 7fr;
+    padding: 2.5em 1em 2em;
+    } 
+  @media (min-width: ${size.laptopM}) {
     grid-template-columns: 2.9fr 7.2fr;
     padding: 2.5em 1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
   }  
   ${changeGridToOneRow}
 `
@@ -132,14 +136,23 @@ export const PressWrapper = styled.div`
   }
   div > p {
   margin-bottom: 0.5em;
+  @media (min-width: ${size.laptopL}) {
+    margin-bottom: 0.7em;
+  }
   }
   > div:nth-child(2) > div > p {
   margin-bottom: 1em;
   }
   div > div {
   margin-bottom: 0.5em;
+  >p > a {
+    font-size: 1em;
+  }
   > p:first-child {
     @media (max-width: ${size.tablet}) {
+      margin-bottom: 0;
+    }
+    @media (min-width: ${size.laptop}) {
       margin-bottom: 0;
     }
   }
@@ -151,10 +164,22 @@ export const PressWrapper = styled.div`
       font-size: 0.95em;
       margin-bottom:0em;
     }
+    @media (min-width: ${size.laptop}) {
+      font-size: 1.0em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
     margin:0.5rem 0;
     padding:0;
     li {
       list-style-type:none;
+      font-size: 1.0em;
+      > a {
+        @media (min-width: ${size.laptop}) {
+        font-size: 1.0em;
+       }
+      }
     }
   }
   ${changeGridToOneRow};
@@ -205,6 +230,9 @@ export const PressReleaseParagraphBlock = styled.div`
   p {
     margin: inherit;
     padding: inherit;
+    @media (min-width: ${size.laptopL}) {
+    font-size: 1em;
+  }
   }
 `
 
@@ -232,6 +260,10 @@ export const PressArrowContainer = styled.div`
   }
   @media (max-width: ${size.tablet}) {
     width: 11px;
+  }
+  @media (min-width: ${size.laptopL}) {
+    width: 17px;
+    padding-top: 0.3em;
   }
 `
 export const PressForm = styled.div`
@@ -299,6 +331,10 @@ export const PageSubTitle = styled.h3`
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
    }
+  @media (min-width: ${size.laptopL}) {
+font-size: 1.2em;
+margin-top: 1.5em;
+  }
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`
@@ -366,6 +402,10 @@ export const TextBlockTwoColumnPage = styled.div`
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.4;
+    }
+    @media (min-width: ${size.laptopM}) {
       font-size:1.1em;
       line-height:1.4;
     }
@@ -395,6 +435,10 @@ export const TextBlockSideBarPage = styled.div`
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptopM}) {
       font-size:1.1em;
       line-height:1.3;
     }

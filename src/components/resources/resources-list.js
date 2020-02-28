@@ -19,6 +19,9 @@ const ResourcesListWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
     padding-bottom: 120px;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.9em 1.2em;
+  }
 `
 
 const ResourceTitle = styled.p`
@@ -63,6 +66,9 @@ const ResourceItemLink = styled(Link)`
   }
   :last-child div {
       border-bottom:none;
+  }
+  > p {
+    font-size: 1em;
   }
 `
 
@@ -109,7 +115,19 @@ const Author = styled.p`
   @media (min-width: ${size.laptop}) {
     font-size: 1em;
     line-height: 1.4;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1em;
+    line-height: 1.4;
     margin-top: -0.8em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
     margin-bottom:0em;
   }
 `

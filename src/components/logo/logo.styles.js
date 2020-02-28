@@ -45,4 +45,9 @@ animation-delay: 1.4s;
       margin-bottom: 1rem;
     }
   }
+  @media (min-width: ${size.laptopL}) {
+    >img {
+      max-width: 330px;
+    }
+  }
 `

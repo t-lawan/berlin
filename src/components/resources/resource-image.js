@@ -17,7 +17,13 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
+    font-size: 1.0em;
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 const Author = styled.p`

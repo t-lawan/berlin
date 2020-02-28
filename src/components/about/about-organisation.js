@@ -2,14 +2,17 @@ import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { UnderlinedText } from "../../index.styles";
+import { UnderlinedText, size } from "../../index.styles";
 import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding: 0;
 > p {
   padding-left: 1em;
-  font-size:1.1em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+  font-size: 1.1em;
+  }
 }
 `
 
@@ -17,7 +20,10 @@ const TitleTextBlock = styled(TextBlock)`
 padding: 0;
 padding-top: 1em;
 > p {
-  font-size:1.1em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+  font-size: 1.1em;
+  }
 }
 `
 

@@ -21,6 +21,9 @@ export const HeaderWrapper = styled.header`
   
   }
   @media (min-width: ${size.laptop}) {
+  padding: 1.5em 1.5em 1em !important;
+  }
+  @media (min-width: ${size.laptopM}) {
   padding: 1.55em 2.2em 1.05em !important;
   }
   > img {
@@ -48,6 +51,9 @@ export const HeaderLink = styled(AniLink)`
   grid-template-columns:1fr 1fr;
   }
   @media (min-width: ${size.laptop}) {
+  grid-column-gap: 2.25em;
+  }
+  @media (min-width: ${size.laptopM}) {
   grid-column-gap: 4.1em;
   }
 
