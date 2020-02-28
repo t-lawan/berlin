@@ -127,6 +127,7 @@ class MainSection extends React.Component {
         </StickyTopHeader>
         {/* Second Column */}
         <Column ref={this.columnOneRef} rightBorder={true}>
+          <div>
           <MobTitleCard showInMobile={this.props.isHome}>
             <JumbotronMob showInMobile={true} />
           </MobTitleCard>
@@ -157,6 +158,7 @@ class MainSection extends React.Component {
             <FooterComponent />
           </FixedFooter>
           {/* Only In Mobile */}
+          </div>
         </Column>
         {/* Third Column */}
         {/* Only In Desktop */}

@@ -11,14 +11,19 @@ export const ColumnLayout = styled.div`
   height: auto;
   background: white;
   position: relative;
+  overflow-y: scroll;
+  height: auto;
   padding-bottom: 2rem; 
   @media (max-width: ${size.mobileM}) {
         padding-bottom: 0rem; 
       } 
-  position:relative;
+  display: block;
   width:auto;
   grid-area: 'column';
-  overflow-y: scroll;
+  > div {
+    position: relative;
+    display: block;
+  }
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {

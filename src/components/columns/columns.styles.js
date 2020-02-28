@@ -30,7 +30,7 @@ export const ExperienceContainer = styled.div`
   display: grid;
   height: 100%;
   height: 100vh;
-  grid-template-columns: 2.01fr 1fr;
+  grid-template-columns: 66.66% 33.33%;
   grid-template-rows: auto;
   overflow-y: hidden;
   width: inherit;
@@ -143,8 +143,7 @@ export const FirstColumnWrapper = styled.div`
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
-  position: sticky;
-  position: -webkit-sticky;
+  position: relative;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
     /*grid-column-start: span 2;*/
