@@ -109,13 +109,15 @@ export const TwoColumnPageWrapperNoPad = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
   }
-  
+  @media (min-width: ${size.laptopM}) {
+  padding-top: 2.4em;
+  }
   ${changeGridToOneRow}
 `
 
 export const PressWrapper = styled.div`
   padding: 2.5em 1em 2em;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
@@ -129,10 +131,18 @@ export const PressWrapper = styled.div`
     background:#FFF;
   }
   @media (min-width: ${size.laptop}) {
-    grid-template-columns: 2.9fr 7.2fr;
+    grid-template-columns: 2.95fr 7.15fr;
     border-top:solid 1px #000;
     grid-column-gap: 2em;
     padding-bottom: 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+  padding-top: 3em;
+  }
+  > div:first-child {
+    > p {
+      line-height:1.3;
+    }
   }
   div > p {
   margin-bottom: 0.5em;
@@ -141,12 +151,19 @@ export const PressWrapper = styled.div`
   }
   }
   > div:nth-child(2) > div > p {
-  margin-bottom: 1em;
+  margin-bottom: 1em !important;
   }
   div > div {
   margin-bottom: 0.5em;
-  >p > a {
+  > p > a {
     font-size: 1em;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+
   }
   > p:first-child {
     @media (max-width: ${size.tablet}) {
@@ -176,8 +193,18 @@ export const PressWrapper = styled.div`
       list-style-type:none;
       font-size: 1.0em;
       > a {
+        transition: all 0.2s ease-in-out;
         @media (min-width: ${size.laptop}) {
         font-size: 1.0em;
+       }
+       @media (min-width: ${size.laptopM}) {
+        font-size: 1.1em;
+       }
+       @media (min-width: ${size.laptopL}) {
+        font-size: 1.2em;
+       }
+       :hover {
+        color: ${Color.red};
        }
       }
     }
@@ -226,13 +253,13 @@ export const PressReleaseText = styled.span`
 export const PressReleaseParagraphBlock = styled.div`
   margin: 0;
   padding: 0;
-  
   p {
     margin: inherit;
     padding: inherit;
-    @media (min-width: ${size.laptopL}) {
+    @media (min-width: ${size.laptop}) {
     font-size: 1em;
-  }
+    }
+    
   }
 `
 
@@ -332,6 +359,7 @@ export const PageSubTitle = styled.h3`
    }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
+    margin-top: 1.8em;
    }
   @media (min-width: ${size.laptopL}) {
 font-size: 1.2em;
