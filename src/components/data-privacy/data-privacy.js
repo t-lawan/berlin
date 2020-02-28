@@ -23,10 +23,10 @@ export const DataPrivacyBlock = styled.div`
       @media (max-width: ${size.mobileM}) {
       font-size: 0.9rem;
       margin-bottom:0;
+      }
       > a {
         font-size: 1em;
       }
-    }
 
   }
 `
