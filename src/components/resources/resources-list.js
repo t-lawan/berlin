@@ -126,7 +126,7 @@ const Author = styled.p`
   @media (min-width: ${size.laptopM}) {
     font-size: 1em;
     line-height: 1.4;
-    margin-top: -0.8em;
+    margin-top: -0.3em;
     margin-bottom:0em;
   }
   @media (min-width: ${size.laptopL}) {
