@@ -171,7 +171,7 @@ export const FixedTopExpMob = styled.div`
   @media (min-width: ${size.mobileL}) {
     z-index: 300;
     top: 0;
-    border-right:solid 1px #000;
+    border-right:solid 0px #000;
     width: 66.66%;
     position: fixed;
     height: 40px;
@@ -293,6 +293,7 @@ export const FixedNavbar = styled.div`
     grid-area: unset;
     position: fixed;
     bottom:auto;
+    border-left: solid 1px #000;
     top:0;
     right:0;
     width:33.33%;

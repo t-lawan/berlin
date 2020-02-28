@@ -42,7 +42,6 @@ export const ColumnLayout = styled.div`
   @media (min-width: ${size.mobileL}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
     background: white;
-
   }
   @media (min-width: ${size.mobileL}) {
     :nth-child(4){

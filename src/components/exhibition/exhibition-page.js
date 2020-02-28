@@ -49,7 +49,7 @@ const ExhibitionPageImage = styled.img`
     width:100% !important;
   }
   @media (max-width: ${size.tablet}) {
-    width:50% !important;
+    width:calc(50% - 1em) !important;
   }
 `
 class ExhibitionPage extends React.Component {

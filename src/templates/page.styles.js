@@ -67,6 +67,9 @@ export const PageWrapper = styled.div`
       display: inline-block;
       width: 10px;
     }
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
+    }
   }
 `
 export const PageWrapperRes = styled.div`
@@ -115,7 +118,6 @@ export const PressWrapper = styled.div`
     grid-template-columns: 1fr;
   }
   @media (min-width: ${size.tablet}) {
-    
     padding-bottom: 4rem;
   }
   @media (max-width: ${size.mobileM}) {
@@ -134,12 +136,21 @@ export const PressWrapper = styled.div`
   > div:nth-child(2) > div > p {
   margin-bottom: 1em;
   }
-  div > div{
+  div > div {
   margin-bottom: 0.5em;
+  > p:first-child {
+    @media (max-width: ${size.tablet}) {
+      margin-bottom: 0;
+    }
+  }
   }
   ul {
     list-style:none;
-    font-size: 1.03rem;
+    font-size: 1.1em;
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
+      margin-bottom:0em;
+    }
     margin:0.5rem 0;
     padding:0;
     li {
@@ -181,6 +192,10 @@ export const PressReleaseWrapper = styled.div`
 export const PressReleaseText = styled.span`
   margin-right: 0em;
   /* font-size: 1.1em; */
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
+
 `
 
 export const PressReleaseParagraphBlock = styled.div`
@@ -212,6 +227,12 @@ export const PressReleaseLink = styled.a`
 export const PressArrowContainer = styled.div`
   width: 13px;
   padding-top: 0.3em;
+  > img {
+    margin-bottom: 0;
+  }
+  @media (max-width: ${size.tablet}) {
+    width: 11px;
+  }
 `
 export const PressForm = styled.div`
   padding: 1em 0em;
@@ -263,11 +284,21 @@ export const PageTitleCalendar = styled.h1`
   }
 `
 export const PageSubTitle = styled.h3`
-  font-size: 1rem;
+  font-size: 1em;
   margin: 1em 0 0.5em;
   :first-child {
-    margin-top:0;
+    margin-top: 0;
   }
+   @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    margin-top:2em;
+    :first-child {
+    margin-top: 2em;
+  }
+   }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+   }
 `
 
 export const PressArrowDown = styled(FontAwesomeIcon)`
