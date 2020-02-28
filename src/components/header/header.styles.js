@@ -12,19 +12,18 @@ export const HeaderWrapper = styled.header`
     /* opacity: 0.01; */
   }
   @media (max-width: ${size.mobileM}) {
-  padding: 0.6em 0.7em !important;
-  border-bottom:solid 1px #000 !important;
-  display: ${props => props.showOnHomePage ? 'inherit': 'none'};
+    padding: 0.6em 0.7em !important;
+    border-bottom:solid 1px #000 !important;
+    display: ${props => props.showOnHomePage ? 'inherit': 'none'};
   }
   @media (min-width: ${size.mobileL}) {
-  padding: 0.7em 0.1em 0.7em !important;
-  
+    padding: 0.7em 0.1em 0.7em !important;
   }
   @media (min-width: ${size.laptop}) {
-  padding: 1.5em 1.5em 1em !important;
+    padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-  padding: 1.55em 2.2em 1.05em !important;
+    padding: 1.55em 2.2em 1.5em !important;
   }
   > img {
     max-width:100%;
@@ -66,6 +65,9 @@ export const HeaderImage = styled.img`
   }
   @media (max-width: ${size.mobileM}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")} !important;
+  }
+  @media (min-width: ${size.laptopM}) {
+      margin-bottom: -0.3em !important;
   }
 `
 export const HeaderImageMob = styled.img`
