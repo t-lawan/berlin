@@ -32,10 +32,10 @@ export const ExperienceContainer = styled.div`
   height: 100vh;
   grid-template-columns: 2.01fr 1fr;
   grid-template-rows: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
   width: inherit;
   background: white;
+  position: relative;
   grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
     /* width: 100%; */
@@ -61,7 +61,6 @@ export const AnimatedColumn = styled(Animated)`
   height: 100vh;
   width: inherit;
   overflow-y: auto;
-  overflow-x: hidden;
   display: grid;
   grid-template-columns: 66fr 33fr;
   grid-template-rows: auto;
@@ -99,10 +98,10 @@ export const ColumnsWrapper = styled.div`
 
   display: grid;
   @media (min-width: ${size.laptop}) {
-  grid-template-columns: 1.15fr 17.85fr 1.15fr;
+  grid-template-columns: 6% 88% 6%;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-template-columns: 1fr 17.85fr 1fr;
+  grid-template-columns: 5% 90% 5%;
   }
   ${changeGridToOneRow}
 `
@@ -145,6 +144,7 @@ export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
   position: sticky;
+  position: -webkit-sticky;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
     /*grid-column-start: span 2;*/
@@ -192,6 +192,7 @@ export const FixedTopExpMob = styled.div`
 export const MobTitleCard = styled.div`
   @media (max-width: ${size.tablet}) {
     position: sticky;
+    position: -webkit-sticky;
     top:0;
     z-index: 3;
     width: 100%;
@@ -223,6 +224,7 @@ export const FixedHeader = styled.div`
 export const StickyHeader = styled.div`
   z-index: 250;
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
 `
 
@@ -238,6 +240,7 @@ export const StickyFooter = styled.div`
   z-index: 500;
   bottom: 0;
   position: sticky;
+  position: -webkit-sticky;
   grid-area: footer;
   width: 100%;
   @media (max-width: ${size.tablet}) {
@@ -257,6 +260,7 @@ export const StickyFooter = styled.div`
   }
    @media (min-width: ${size.laptop}) {
     position: sticky;
+    position: -webkit-sticky;
     z-index: 500;
    }
   ${showDisplayForTablet};
@@ -296,6 +300,7 @@ export const FixedNavbar = styled.div`
   z-index: 600;
   bottom: 0;
   position: sticky;
+  position: -webkit-sticky;
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;

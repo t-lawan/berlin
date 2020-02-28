@@ -8,8 +8,9 @@ import {
 
 export const ColumnLayout = styled.div`
   border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
-  height: 100%;
+  height: auto;
   background: white;
+  position: relative;
   padding-bottom: 2rem; 
   @media (max-width: ${size.mobileM}) {
         padding-bottom: 0rem; 
@@ -17,7 +18,7 @@ export const ColumnLayout = styled.div`
   position:relative;
   width:auto;
   grid-area: 'column';
-  overflow-y: inherit;
+  overflow-y: scroll;
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {
