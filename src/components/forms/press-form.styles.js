@@ -14,6 +14,10 @@ export const PressFormInput = styled.input`
   font-size: 1em;
   border-radius: 0;
   border: 1px solid black;
-   padding: 0.5em 0.5em;
-   width: 19rem;
+  padding: 0.5em 0.5em;
+  width: 19rem;
+  :focus {
+  	border-color: ${Color.red};
+  	outline: none;
+  }
 `
