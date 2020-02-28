@@ -53,6 +53,7 @@ const PracticalInformation = props => {
           <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlockSideBarPage>
         <TextBlockSideBarPage>
+
           {pageInfo.acf[language].access_block.map((item, index) => (
             <p key={index}> {item.access_line} </p>
           ))}

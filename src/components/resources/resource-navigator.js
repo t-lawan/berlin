@@ -6,7 +6,7 @@ import { size, Color } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
+import * as actionTypes from '../../store/action'
 const RelatedNavigatorWrapper = styled.div`
   display: flex;
   margin-top:-2em;
@@ -81,12 +81,14 @@ class ResourceNavigator extends React.Component {
       <RelatedNavigatorWrapper>
         <RelatedNavigatorButton
           fade
+          onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.previousPage())}
         >
           {`<`}
         </RelatedNavigatorButton>
         <RelatedNavigatorButton
           fade
+          onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.nextPage())}
         >
           {`>`}
@@ -106,8 +108,13 @@ const mapStateToProps = state => {
     resources: state.resources,
   }
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(ResourceNavigator)
