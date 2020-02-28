@@ -56,6 +56,7 @@ export const HeaderLink = styled(AniLink)`
 export const HeaderImage = styled.img`
   @media (max-width: ${size.tablet}) {
   margin: 0 0.7em !important;
+  width: calc(100% - 1.4em) !important;
   }
   @media (max-width: ${size.mobileM}) {
     display: ${props => (props.hideInMobile ? "none" : "inherit")} !important;

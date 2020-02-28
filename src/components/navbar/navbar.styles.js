@@ -17,6 +17,7 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
+  height: calc(40px - 1px);
   max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;
@@ -219,26 +220,26 @@ export const NavMobileModal = styled.p`
   margin: 0;
   display: block;
   @media (min-width: ${size.mobileL}) {
-    font-size:0.80em;
-    margin-bottom:0.1em;
+    font-size: 0.80em;
+    margin-bottom: 0.1em;
   }
   @media (min-width: ${size.tablet}) {
-    font-size:1.0em;
-    margin-bottom:0.2em;
+    font-size: 1.0em;
+    margin-bottom: 0.2em;
   }
 `
 
 export const NavMobileContent = styled.div`
   max-height: ${props => (props.show ? "1200px" : "0")};
   transition: all 0.3s ease-in-out;
-  padding-bottom:0.0em;
+  padding-bottom: 0.0em;
   @media (min-width: ${size.mobileL}) {
     max-height: calc(100vh - 40px);
-    position:fixed;
-    background:#FFF;
-    width:33.33%;
-    top:40px;
-    height:calc(100vh - 40px);
+    position: fixed;
+    background: #FFF;
+    width: calc(33.33% - 1px);
+    top: 40px;
+    height: calc(100vh - 40px);
     margin-top: 0em;
     right:${props => (props.show ? "0px" : "-100%")};
   }

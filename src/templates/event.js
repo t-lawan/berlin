@@ -49,9 +49,15 @@ const EventTextBlock = styled(TextBlock)`
     > a {
       font-size: 1em;
     }
+    @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
   }
   margin: 0 0 0em 0;
   padding: 0;
+  @media (max-width: ${size.tablet}) {
+    margin: 0 0 0.7em 0;
+  }
 `
 const EventTitle = styled.h1`
   padding-top: 1rem;
@@ -110,6 +116,9 @@ const EventDescription = styled.div`
     line-height: 1.4;
     > a {
       font-size:1em;
+    }
+    @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
     }
   }
 `

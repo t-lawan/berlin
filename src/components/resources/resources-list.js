@@ -33,6 +33,7 @@ const ResourceTitle = styled.p`
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95em;
+    margin-bottom:0.3em;
   }
   @media (min-width: ${size.laptop}) {
     font-size:1em;
@@ -99,6 +100,12 @@ const TextBox = styled.div`
 `
 const Author = styled.p`
   margin-bottom:0;
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-top: 0em;
+    margin-bottom:0em;
+  }
   @media (min-width: ${size.laptop}) {
     font-size: 1em;
     line-height: 1.4;

@@ -51,7 +51,7 @@ export const EventItem = styled.div`
   @media (min-width: ${size.tablet}) {
     padding: 1em 1em;
     p{
-    font-size: 1em;
+    font-size: 0.95em;
     }
   }
   @media (min-width: ${size.laptop}) {
