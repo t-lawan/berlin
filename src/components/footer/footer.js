@@ -19,7 +19,7 @@ const FooterWrapper = styled.footer`
   @media (max-width: ${size.tablet}) {
     border-right: 0px solid black;
     padding: 0.7em 0.7em;
-    padding-bottom: 60px;
+    padding-bottom: 1em;
     > div:nth-child(3) {
       margin-top: 0.8rem;
     }

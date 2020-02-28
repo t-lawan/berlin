@@ -9,11 +9,12 @@ const AboutTextBlock = styled(TextBlock)`
 padding-top: 0;
 > p {
   line-height: 1.3;
+  font-size: 1em;
   padding-left: 1em;
     @media (max-width: ${size.mobileM}) {
       line-height:1.4 !important;
     }
-    @media (min-width: ${size.laptop}) {
+    @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
     }
 }
@@ -22,7 +23,10 @@ const TitleTextBlock = styled(TextBlock)`
 padding: 0;
 padding-top: 0em;
 > p {
-  font-size:1.1em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    }
 }
 `
 const AboutAdvisoryBoard = props => {

@@ -38,7 +38,7 @@ const ResourceLink = styled(AniLink)`
   @media (min-width: ${size.mobileL}) {
   width:33.33%;
   }
-  @media (min-width: ${size.laptop}) {
+  @media (min-width: ${size.laptopM}) {
   width:25%;
   }
 `
@@ -72,7 +72,10 @@ const ResourceText = styled.p`
     position:absolute;
     bottom:0.7em;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.1em !important;
+  }
+  @media (min-width: ${size.tablet}) {
     font-size: 0.9em !important;
   }
   @media (min-width: ${size.laptop}) {

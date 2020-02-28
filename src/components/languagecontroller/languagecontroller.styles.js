@@ -49,8 +49,11 @@ export const LanguageButton = styled(AniLink)`
     margin-right:0;
     padding-top:0;
     margin-bottom: 0.0em;
-  line-height:1.1;
-  font-size: 1.33em;
+    line-height: 1.1;
+    font-size: 1.2em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.33em;
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 1.65em;

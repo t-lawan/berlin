@@ -25,7 +25,7 @@ const ImageContainerWrapper = styled.section`
     padding: 0 1em;
   }
   @media (max-width: ${size.tablet}) {
-    padding: 0.7em;
+    padding: 0.7em 0.7em 0;
   }
 
   &.${transitionName}-enter {

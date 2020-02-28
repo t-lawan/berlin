@@ -23,9 +23,14 @@ const ResourceTitle = styled.h1`
     margin: 0.3em 0 1.0em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
-    line-height: 1.4;
+    font-size: 1.0em;
     margin: 0em 0 0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 const Author = styled.p`
@@ -40,9 +45,15 @@ const Author = styled.p`
 const Year = styled.p`
   margin-bottom:0;
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
+    font-size: 1.0em;
     line-height: 1.4;
     margin-top: 0em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 

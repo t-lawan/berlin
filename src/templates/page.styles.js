@@ -22,11 +22,15 @@ export const TwoColumnPageWrapper = styled.div`
     grid-template-columns: 33fr 66fr;
   } 
   @media (min-width: ${size.laptop}) {
+    grid-template-columns: 3fr 7fr;
+    padding: 2.5em 1em 2em;
+    } 
+  @media (min-width: ${size.laptopM}) {
     grid-template-columns: 2.9fr 7.2fr;
     padding: 2.5em 1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
   }  
   ${changeGridToOneRow}
 `
@@ -66,6 +70,9 @@ export const PageWrapper = styled.div`
       content: "–";
       display: inline-block;
       width: 10px;
+    }
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
     }
   }
 `
@@ -115,7 +122,7 @@ export const PressWrapper = styled.div`
     grid-template-columns: 1fr;
   }
   @media (min-width: ${size.tablet}) {
-    border-top:solid 1px #000;
+    padding-bottom: 4rem;
   }
   @media (max-width: ${size.mobileM}) {
     border-top:none;
@@ -123,24 +130,56 @@ export const PressWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 2.9fr 7.2fr;
+    border-top:solid 1px #000;
     grid-column-gap: 2em;
+    padding-bottom: 1em;
   }
   div > p {
   margin-bottom: 0.5em;
+  @media (min-width: ${size.laptopL}) {
+    margin-bottom: 0.7em;
+  }
   }
   > div:nth-child(2) > div > p {
   margin-bottom: 1em;
   }
-  div > div{
+  div > div {
   margin-bottom: 0.5em;
+  >p > a {
+    font-size: 1em;
+  }
+  > p:first-child {
+    @media (max-width: ${size.tablet}) {
+      margin-bottom: 0;
+    }
+    @media (min-width: ${size.laptop}) {
+      margin-bottom: 0;
+    }
+  }
   }
   ul {
     list-style:none;
-    font-size: 1.03rem;
+    font-size: 1.1em;
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
+      margin-bottom:0em;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size: 1.0em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
     margin:0.5rem 0;
     padding:0;
     li {
       list-style-type:none;
+      font-size: 1.0em;
+      > a {
+        @media (min-width: ${size.laptop}) {
+        font-size: 1.0em;
+       }
+      }
     }
   }
   ${changeGridToOneRow};
@@ -178,6 +217,10 @@ export const PressReleaseWrapper = styled.div`
 export const PressReleaseText = styled.span`
   margin-right: 0em;
   /* font-size: 1.1em; */
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
+
 `
 
 export const PressReleaseParagraphBlock = styled.div`
@@ -187,6 +230,9 @@ export const PressReleaseParagraphBlock = styled.div`
   p {
     margin: inherit;
     padding: inherit;
+    @media (min-width: ${size.laptopL}) {
+    font-size: 1em;
+  }
   }
 `
 
@@ -209,6 +255,16 @@ export const PressReleaseLink = styled.a`
 export const PressArrowContainer = styled.div`
   width: 13px;
   padding-top: 0.3em;
+  > img {
+    margin-bottom: 0;
+  }
+  @media (max-width: ${size.tablet}) {
+    width: 11px;
+  }
+  @media (min-width: ${size.laptopL}) {
+    width: 17px;
+    padding-top: 0.3em;
+  }
 `
 export const PressForm = styled.div`
   padding: 1em 0em;
@@ -247,23 +303,39 @@ export const PageTitleCalendar = styled.h1`
     position:sticky;
     margin-bottom:1.0rem;
   }
+  @media (max-width: ${size.mobileL}) {
+    border-top: solid 0px #000;
+  }
   @media (max-width: ${size.tablet}) {
     display:block;
     position:sticky;
     top:0;
     background:#FFF;
     z-index:3;
-    border-top: solid 1px #000;
     padding:0.3em 0.4em;
     border-bottom:solid 1px #000;
     width:100%;
   }
 `
 export const PageSubTitle = styled.h3`
-  font-size: 1rem;
+  font-size: 1em;
   margin: 1em 0 0.5em;
   :first-child {
-    margin-top:0;
+    margin-top: 0;
+  }
+   @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    margin-top:2em;
+    :first-child {
+    margin-top: 2em;
+  }
+   }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+   }
+  @media (min-width: ${size.laptopL}) {
+font-size: 1.2em;
+margin-top: 1.5em;
   }
 `
 
@@ -332,6 +404,10 @@ export const TextBlockTwoColumnPage = styled.div`
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.4;
+    }
+    @media (min-width: ${size.laptopM}) {
       font-size:1.1em;
       line-height:1.4;
     }
@@ -361,6 +437,10 @@ export const TextBlockSideBarPage = styled.div`
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptopM}) {
       font-size:1.1em;
       line-height:1.3;
     }

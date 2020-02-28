@@ -19,6 +19,9 @@ const ResourcesListWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
     padding-bottom: 120px;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.9em 1.2em;
+  }
 `
 
 const ResourceTitle = styled.p`
@@ -28,11 +31,12 @@ const ResourceTitle = styled.p`
     margin-bottom:0;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size:1em;
+    font-size:1.1em;
     margin-bottom:0.3em;
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95em;
+    margin-bottom:0.3em;
   }
   @media (min-width: ${size.laptop}) {
     font-size:1em;
@@ -43,7 +47,7 @@ const ResourceLabel = styled.p`
   font-size: 1em;
   margin: 0.5em 0 0;
   @media (max-width: ${size.mobileM}) {
-    font-size:1.0em;
+    font-size:1.1em;
   }
   @media (min-width: ${size.mobileL}) {
     font-size:0.95em;
@@ -62,6 +66,9 @@ const ResourceItemLink = styled(Link)`
   }
   :last-child div {
       border-bottom:none;
+  }
+  > p {
+    font-size: 1em;
   }
 `
 
@@ -99,10 +106,33 @@ const TextBox = styled.div`
 `
 const Author = styled.p`
   margin-bottom:0;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+    margin-top: -0.3em;
+    line-height: 1.4;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-top: 0em;
+    margin-bottom:0em;
+  }
   @media (min-width: ${size.laptop}) {
     font-size: 1em;
     line-height: 1.4;
-    margin-top: -0.8em;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
     margin-bottom:0em;
   }
 `

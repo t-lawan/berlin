@@ -49,14 +49,32 @@ const EventTextBlock = styled(TextBlock)`
     > a {
       font-size: 1em;
     }
+    @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
+    @media (max-width: ${size.laptop}) {
+    font-size: 1em;
+    }
+    @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    }
   }
   margin: 0 0 0em 0;
   padding: 0;
+  @media (max-width: ${size.tablet}) {
+    margin: 0 0 0.7em 0;
+  }
 `
 const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  font-size: 1.7em;
+  font-size: 1.6em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.7em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.9em;
+  }
   line-height: 1.2;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
@@ -68,7 +86,13 @@ const EventSubTitle = styled.h2`
   padding-bottom: 0.5rem;
   margin-top:-1.2em;
   margin-bottom:0.5em;
-  font-size: 1.1em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+  }
   line-height: 1.4;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
@@ -106,11 +130,21 @@ const EventSubTitleMob = styled.h2`
 
 const EventDescription = styled.div`
   p {
-    font-size: 1.1em;
+    font-size: 1em;
+    @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size: 1.1em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
     line-height: 1.4;
     > a {
       font-size:1em;
     }
+    
   }
 `
 

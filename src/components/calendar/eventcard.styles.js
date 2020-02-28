@@ -7,6 +7,8 @@ export const EventSection = styled(TextSection)`
   p {
     font-size: inherit;
     margin:0;
+    line-height: 1.3;
+    transition: all 0.2s ease-in-out;
   }
   @media (max-width: ${size.mobileM}) {
     word-break: break-all;
@@ -16,6 +18,9 @@ export const EventSection = styled(TextSection)`
   }
   @media (min-width: ${size.laptop}) {
    font-size: 1rem; 
+  }
+  @media (min-width: ${size.laptopL}) {
+   font-size: 1.2rem; 
   }
 `
 
@@ -46,13 +51,18 @@ export const EventCardWrapper = styled.div`
 
 export const EventCardLink = styled(AniLink)`
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
   > p {
     margin-bottom: 0;
+    transition: all 0.2s ease-in-out;
     font-size:1em;
     line-height: 1.3;
     @media (max-width: ${size.mobileM}) {
       font-size: 1em;
     }
+  }
+  > p:last-child:hover {
+    color: ${Color.red};
   }
 `
 
