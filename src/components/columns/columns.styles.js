@@ -324,7 +324,7 @@ export const FixedTicker = styled.div`
   height:42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
-  position: fixed;
+  position: fixed !important;
   overflow:hidden;
   /* right: 5%; */
   left:auto;
