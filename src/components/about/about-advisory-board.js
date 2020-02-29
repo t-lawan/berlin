@@ -34,6 +34,7 @@ const AboutAdvisoryBoard = props => {
   const teamBlock = props.team_block;
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
+    
     <PageTitle
               dangerouslySetInnerHTML={{
                 __html: advisepage[language].title,
@@ -69,7 +70,12 @@ const AboutAdvisoryBoard = props => {
     return renderComponent
   }
 
-  return <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+  return (
+    <>
+    <PageTitle> {advisepage[language].title}</PageTitle>
+    <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+    </>
+  )
 }
 
 const mapStateToProps = state => {

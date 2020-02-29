@@ -13,7 +13,7 @@ export const JumbotronWrapper = styled.div`
   margin: 0em;
   ${showDisplayForTablet};
   @media (min-width: ${size.mobileL}) {
-    padding: 0.7em 0.7em;
+    padding: 0.65em 0.8em;
     display: inherit;
   }
   border-top: 0;
@@ -29,7 +29,7 @@ export const JumbotronWrapper = styled.div`
   @media (min-width: ${size.laptopM}) {
     padding: 1.55em 2.1em 1.5em;
     > a > img {
-      margin-bottom: -0.3em;
+      margin-bottom: -0.5em;
     }
   }
 `

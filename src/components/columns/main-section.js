@@ -19,6 +19,7 @@ import {
   FixedTicker,
   ResourcesOnlyInMobile,
   ExperienceContainer,
+  ScrollNavContainer,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -127,7 +128,7 @@ class MainSection extends React.Component {
         </StickyTopHeader>
         {/* Second Column */}
         <Column ref={this.columnOneRef} rightBorder={true}>
-          <div>
+          <ScrollNavContainer>
           <MobTitleCard showInMobile={this.props.isHome}>
             <JumbotronMob showInMobile={true} />
           </MobTitleCard>
@@ -158,7 +159,7 @@ class MainSection extends React.Component {
             <FooterComponent />
           </FixedFooter>
           {/* Only In Mobile */}
-          </div>
+          </ScrollNavContainer>
         </Column>
         {/* Third Column */}
         {/* Only In Desktop */}

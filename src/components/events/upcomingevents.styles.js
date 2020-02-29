@@ -20,17 +20,26 @@ export const EventItem = styled.div`
   background-color:#FFF;
   position:relative;
   &:first-of-type {
-    border: ${props => props.isActive ? `6px solid ${Color.yellow}` : ''}; 
+    border: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''}; 
+    @media (min-width: ${size.tablet}) {
+    padding: ${props => props.isActive ? `1em 0.7em` : ''};
+    }
+    @media (min-width: ${size.laptop}) {
+      padding: ${props => props.isActive ? `1em 0.9em` : ''};
+    }
+    @media (min-width: ${size.laptopM}) {
+      padding: ${props => props.isActive ? `1em 1.9em` : ''};
+    }
   };
   
   &:first-of-type:after {
     content:" ";
     position:absolute;
     display:block;
-    bottom:-6px;
+    bottom:-4px;
     height:1px;
-    left:-6px;
-    width:calc(100% + 12px);
+    left:-4px;
+    width:calc(100% + 8px);
     background:#000;
   };
   :last-child {

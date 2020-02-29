@@ -11,8 +11,8 @@ const Logo = props => {
   let image = getDocument(props.documents, exhibition.animation);
 
   return (
-    <LogoWrapper>
-      <img src={image.url} alt="11th Berlin Biennale Logo" />
+    <LogoWrapper style={{ backgroundImage:`url(${image.url})`,backgroundSize: 'contain', backgroundPosition:'center', backgroundRepeat:'no-repeat'}}>
+      
     </LogoWrapper>
   )
 }

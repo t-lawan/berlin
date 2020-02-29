@@ -67,7 +67,7 @@ export const HeaderImage = styled.img`
     display: ${props => (props.hideInMobile ? "none" : "inherit")} !important;
   }
   @media (min-width: ${size.laptopM}) {
-      margin-bottom: -0.3em !important;
+      margin-bottom: -0.4em !important;
   }
 `
 export const HeaderImageMob = styled.img`

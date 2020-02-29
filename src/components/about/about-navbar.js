@@ -35,7 +35,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "verein",
-        slug: "de/uber/organization-2"
+        slug: "de/uber/verein"
       },
     },
     {
@@ -45,7 +45,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "beirat",
-        slug: "de/uber/advisory-board"
+        slug: "de/uber/beirat"
       },
     },
     {
@@ -55,7 +55,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "unterstützung",
-        slug: "de/uber/support"
+        slug: "de/uber/unterstutzung"
       },
     },
   ]

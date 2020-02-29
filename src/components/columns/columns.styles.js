@@ -178,7 +178,7 @@ export const FixedTopExpMob = styled.div`
   @media (min-width: ${size.mobileL}) {
     z-index: 300;
     top: 0;
-    border-right:solid 0px #000;
+    border-right:solid 1px #000;
     width: 66.66%;
     position: fixed;
     height: 40px;
@@ -197,6 +197,11 @@ export const MobTitleCard = styled.div`
     width: 100%;
   }
   ${showDisplayForMobile};
+`
+
+export const ScrollNavContainer = styled.div `
+display: block;
+position: relative;
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -305,7 +310,7 @@ export const FixedNavbar = styled.div`
     grid-area: unset;
     position: fixed;
     bottom:auto;
-    border-left: solid 1px #000;
+    border-left: solid 0px #000;
     top:0;
     right:0;
     width:33.33%;
@@ -320,18 +325,23 @@ export const FixedNavbar = styled.div`
 `
 export const FixedTicker = styled.div`
   z-index: 5;
-  bottom: 70px;
+  
   height:42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
-  position: fixed;
+  position: fixed !important;
   overflow:hidden;
   /* right: 5%; */
   left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
-    
+  }
+  @media (min-width: ${size.laptop}) {
+    bottom: 60px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    bottom: 70px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
