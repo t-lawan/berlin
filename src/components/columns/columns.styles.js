@@ -325,7 +325,7 @@ export const FixedNavbar = styled.div`
 `
 export const FixedTicker = styled.div`
   z-index: 5;
-  bottom: 70px;
+  
   height:42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
@@ -336,7 +336,12 @@ export const FixedTicker = styled.div`
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
-    
+  }
+  @media (min-width: ${size.laptop}) {
+    bottom: 60px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    bottom: 70px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
