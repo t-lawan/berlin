@@ -14,8 +14,9 @@ export const ColumnLayout = styled.div`
   overflow-y: scroll;
   height: auto;
   padding-bottom: 2rem; 
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.mobileL}) {
         padding-bottom: 0rem; 
+        height: 100%;
       } 
   display: block;
   width:auto;
