@@ -139,9 +139,9 @@ export const PressWrapper = styled.div`
   @media (min-width: ${size.laptopM}) {
   padding-top: 3em;
   }
-  > div:first-child {
+  > div:first-child > div {
     > p {
-      line-height:1.3;
+      line-height: 1.3;
     }
   }
   div > p {
