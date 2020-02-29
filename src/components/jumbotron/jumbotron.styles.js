@@ -16,6 +16,10 @@ export const JumbotronWrapper = styled.div`
     padding: 0.65em 0.8em;
     display: inherit;
   }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.75em 0.8em;
+    display: inherit;
+  }
   border-top: 0;
   img {
     margin-bottom: 0;
