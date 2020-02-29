@@ -2,13 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
-import {
-  Caption,
-} from "./ImageResource"
+import { Caption } from "./ImageResource"
 import { getDocuments } from "../store/selector"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import { Carousel } from "react-responsive-carousel"
 
 const leftArrow =
   "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
@@ -50,7 +50,14 @@ export const NavigationButtons = styled.div`
 export const AnimatedSpace = styled(Animated)`
   z-index: 100;
   > ${Caption} {
-    margin-bottom:0.7em;
+    margin-bottom: 0.7em;
+  }
+`
+
+export const AnimatedCarousel = styled(Carousel)`
+  .carousel .slide {
+    background: transparent;
+    list-style-type: none;
   }
 `
 
@@ -65,31 +72,22 @@ class ImageGalleryResource extends React.Component {
   }
   state = {
     index: 0,
-    animationIn: "slideInRight",
-    animationOut: "slideOutLeft",
-    isVisible: true,
-    isTransitioning: false,
   }
   imageResources
   language
   previousImage = () => {
-    if (this.state.index !== 0 && !this.state.isTransitioning) {
+    if (this.state.index !== 0) {
       this.setState({
         isVisible: false,
       })
       this.setState({
         index: this.state.index - 1,
-        animationIn: "slideInLeft",
-        animationOut: "slideOutRight",
-        isTransitioning: true,
-
       })
     }
   }
   nextImage = () => {
     if (
-      this.state.index + 1 < this.props.ids.length &&
-      !this.state.isTransitioning
+      this.state.index + 1 < this.props.ids.length 
     ) {
       this.setState({
         isVisible: false,
@@ -97,9 +95,6 @@ class ImageGalleryResource extends React.Component {
 
       this.setState({
         index: this.state.index + 1,
-        animationIn: "slideInRight",
-        animationOut: "slideOutLeft",
-        isTransitioning: true,
       })
     }
   }
@@ -134,18 +129,26 @@ class ImageGalleryResource extends React.Component {
             />
           </NavigationButtons>
 
-          <AnimatedSpace
-            animationIn={this.state.animationIn}
-            animationOut={this.state.animationOut}
-            isVisible={this.state.isVisible}
-            animateOnMount={false}
+          <AnimatedCarousel
+            selectedItem={this.state.index}
+            showThumbs={false}
+            showArrows={false}
+            showIndicators={false}
+            showStatus={false}
+            centerMode={false}
+            swipeable={false}
+            dynamicHeight={true}
           >
-            <ImageResource
-              onLoad={() => this.setVisibleToTrue()}
-              id={this.props.ids[this.state.index]}
-              withCaption={true}
-            />
-          </AnimatedSpace>
+            {this.props.ids.map((id, index) => (
+              <div key={index}>
+                <ImageResource
+                  onLoad={() => this.setVisibleToTrue()}
+                  id={id}
+                  withCaption={false}
+                />
+              </div>
+            ))}
+          </AnimatedCarousel>
         </NavigationSpace>
       </>
     )
@@ -158,7 +161,4 @@ const mapStateToProps = state => {
     documents: state.documents,
   }
 }
-export default connect(
-  mapStateToProps,
-  null
-)(ImageGalleryResource)
+export default connect(mapStateToProps, null)(ImageGalleryResource)
