@@ -5,8 +5,8 @@ export const SocialMediaWrapper = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
-  padding:1em 2em 1em;
-  height:70px;
+  
+  
   flex-direction: row;
   background: white;
   width: 100%;
@@ -23,6 +23,14 @@ export const SocialMediaWrapper = styled.div`
     height:65px;
     padding: 0.7em;
     margin: 0;
+  }
+  @media (min-width: ${size.laptop}) {
+    height:60px;
+    padding:0.8em 1.2em 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    height:70px;
+    padding:1em 2em 1em;
   }
 `
 

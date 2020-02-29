@@ -13,7 +13,7 @@ export const JumbotronWrapper = styled.div`
   margin: 0em;
   ${showDisplayForTablet};
   @media (min-width: ${size.mobileL}) {
-    padding: 0.7em 0.7em;
+    padding: 0.65em 0.8em;
     display: inherit;
   }
   border-top: 0;
