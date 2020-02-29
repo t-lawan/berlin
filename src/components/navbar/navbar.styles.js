@@ -17,7 +17,6 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
-  height: calc(40px - 1px);
   max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;
@@ -25,6 +24,7 @@ export const NavMobileWrapper = styled.nav`
   @media (min-width: ${size.mobileL}) {
     border-top: 0px solid black;
     padding: 0.4em 0.7em;
+    height: calc(40px - 1px);
   }
 `
 
@@ -143,6 +143,7 @@ export const NavMobileLinks = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1em;
+  line-height: 1.3;
   padding: 0.5em 1.5em;
   > a {
     font-size:1.1em;
@@ -162,6 +163,7 @@ export const NavMobileLinks = styled.div`
   grid-column-gap: 0.7em;
   > a {
     font-size:1.0em;
+    line-height: 1.3;
   }
   }
 `
@@ -169,6 +171,7 @@ export const NavMobileLinks = styled.div`
 export const NavMobileLink = styled(AniLink)`
   text-decoration: none;
   font-size: 1.55em;
+  line-height: 1.3;
   padding-bottom: 0.0rem;
   display: block;
   @media (min-width: ${size.mobileL}) {
