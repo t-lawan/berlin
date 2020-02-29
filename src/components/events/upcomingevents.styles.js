@@ -22,13 +22,13 @@ export const EventItem = styled.div`
   &:first-of-type {
     border: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''}; 
     @media (min-width: ${size.tablet}) {
-    padding: 1em 0.7em;
+    padding: ${props => props.isActive ? `1em 0.7em` : ''};
     }
     @media (min-width: ${size.laptop}) {
-      padding: 1em 0.9em;
+      padding: ${props => props.isActive ? `1em 0.9em` : ''};
     }
     @media (min-width: ${size.laptopM}) {
-      padding: 1em 1.9em;
+      padding: ${props => props.isActive ? `1em 1.9em` : ''};
     }
   };
   
