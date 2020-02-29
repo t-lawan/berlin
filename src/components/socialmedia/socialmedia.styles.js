@@ -5,8 +5,6 @@ export const SocialMediaWrapper = styled.div`
   display: flex;
   position: fixed;
   bottom: 0;
-  
-  
   flex-direction: row;
   background: white;
   width: 100%;
@@ -14,7 +12,7 @@ export const SocialMediaWrapper = styled.div`
   font-size: 1rem;
   /* z-index: 5000 !important; */
 
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     flex-direction: row;
     width: calc(33.33% - 0px);
     background: white;
@@ -39,7 +37,7 @@ export const SocialMediaText = styled.span`
   :hover {
     cursor: pointer;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: inline-block;
   }
 `

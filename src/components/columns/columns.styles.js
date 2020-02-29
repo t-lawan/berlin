@@ -46,7 +46,7 @@ export const ExperienceContainer = styled.div`
     height: calc(100vh - 90px);
   }
 
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-areas:"column" "column column" "footer" !important;
     margin:40px auto 0;
     height: calc(100vh - 40px);
@@ -86,22 +86,19 @@ export const AnimatedColumn = styled(Animated)`
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
-  @media (max-width: ${size.tablet}) {
-    /* width: 100%; */
+  @media (min-width: ${size.mobileM}) {
     width: 100vw;
   }
-
-  @media (max-width: ${size.mobileM}) {
-    /* width: 100%; */
+  @media (min-width: ${size.tablet}) {
     width: 100vw;
   }
-
   display: grid;
   @media (min-width: ${size.laptop}) {
   grid-template-columns: 6% 88% 6%;
+  width: 100%;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-template-columns: 5% 90% 5%;
+  grid-template-columns: 5.05% 89.9% 5.05%;
   }
   ${changeGridToOneRow}
 `
@@ -306,7 +303,7 @@ export const FixedNavbar = styled.div`
   position: sticky;
   position: -webkit-sticky;
   grid-area: footer;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-area: unset;
     position: fixed;
     bottom:auto;
@@ -337,7 +334,7 @@ export const FixedTicker = styled.div`
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
   }
-  @media (min-width: ${size.laptop}) {
+  @media (min-width: ${size.tablet}) {
     bottom: 60px;
   }
   @media (min-width: ${size.laptopM}) {

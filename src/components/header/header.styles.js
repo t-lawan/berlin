@@ -19,11 +19,14 @@ export const HeaderWrapper = styled.header`
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.1em 0.7em !important;
   }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.75em 0.1em 0.7em !important;
+  }
   @media (min-width: ${size.laptop}) {
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.2em 1.5em !important;
+    padding: 1.7em 2.45em 1.7em !important;
   }
   > img {
     max-width:100%;
@@ -49,6 +52,9 @@ export const HeaderLink = styled(AniLink)`
   grid-column-gap: 0.5em;
   grid-template-columns:1fr 1fr;
   }
+  @media (min-width: ${size.tablet}) {
+  grid-column-gap: 0em;
+  }
   @media (min-width: ${size.laptop}) {
   grid-column-gap: 2.25em;
   }
@@ -59,7 +65,7 @@ export const HeaderLink = styled(AniLink)`
 `
 
 export const HeaderImage = styled.img`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
   margin: 0 0.7em !important;
   width: calc(100% - 1.4em) !important;
   }

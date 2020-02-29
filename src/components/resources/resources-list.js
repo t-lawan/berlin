@@ -13,7 +13,7 @@ const ResourcesListWrapper = styled.div`
     background-color: #fff;
     border-top:1px solid #000;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 0.7em 0.7em;
   }
   @media (min-width: ${size.laptop}) {

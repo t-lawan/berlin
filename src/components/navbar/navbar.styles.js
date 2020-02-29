@@ -17,7 +17,6 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
-  height: calc(46px - 1px);
   max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;
@@ -25,6 +24,7 @@ export const NavMobileWrapper = styled.nav`
   @media (min-width: ${size.mobileL}) {
     border-top: 0px solid black;
     padding: 0.4em 0.7em;
+    height: calc(40px - 1px);
   }
 `
 
@@ -74,8 +74,11 @@ export const NavItem = styled(AniLink)`
   :first-child {
     padding-left:1em;
   }
-  @media (min-width: ${size.laptopL}) {
+  @media (min-width: ${size.laptopM}) {
     padding: 1.15em 0.6em 0.50em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.25em 0.7em 0.6em;
   }
 `
 
@@ -90,8 +93,11 @@ export const NavLink = styled.a`
   :hover {
     color: ${Color.red};
   }
-  @media (min-width: ${size.laptopL}) {
+  @media (min-width: ${size.laptopM}) {
     padding: 1.15em 0.6em 0.50em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.25em 0.6em 0.6em;
   }
 `
 
@@ -137,6 +143,7 @@ export const NavMobileLinks = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1em;
+  line-height: 1.3;
   padding: 0.5em 1.5em;
   > a {
     font-size:1.1em;
@@ -156,6 +163,7 @@ export const NavMobileLinks = styled.div`
   grid-column-gap: 0.7em;
   > a {
     font-size:1.0em;
+    line-height: 1.3;
   }
   }
 `
@@ -163,6 +171,7 @@ export const NavMobileLinks = styled.div`
 export const NavMobileLink = styled(AniLink)`
   text-decoration: none;
   font-size: 1.55em;
+  line-height: 1.3;
   padding-bottom: 0.0rem;
   display: block;
   @media (min-width: ${size.mobileL}) {
@@ -171,6 +180,7 @@ export const NavMobileLink = styled(AniLink)`
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.2em;
+    line-height: 1.3;
   }
 `
 export const NavMobileLinkSmall = styled(AniLink)`
@@ -183,6 +193,7 @@ export const NavMobileLinkSmall = styled(AniLink)`
   }
   @media (min-width: ${size.tablet}) {
     font-size:1.0em;
+    line-height: 1.3;
   }
 `
 
@@ -196,6 +207,7 @@ export const NavMobileOuterLinkSmall = styled.a`
   }
   @media (min-width: ${size.tablet}) {
     font-size:1.0em;
+    line-height: 1.3;
     margin-bottom:0.2em;
   }
 `
