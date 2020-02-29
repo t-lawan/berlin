@@ -24,7 +24,8 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {this.languages.map(language => (
           <LanguageButton
-            fade
+            cover direction="down"
+            bg={transitionBackground}
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
