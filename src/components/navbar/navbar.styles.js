@@ -17,7 +17,7 @@ export const NavMobileWrapper = styled.nav`
   background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
-  height: calc(46px - 1px);
+  height: calc(40px - 1px);
   max-height: calc(100vh - 45px);
   margin: 0;
   width: auto;
@@ -74,8 +74,11 @@ export const NavItem = styled(AniLink)`
   :first-child {
     padding-left:1em;
   }
-  @media (min-width: ${size.laptopL}) {
+  @media (min-width: ${size.laptopM}) {
     padding: 1.15em 0.6em 0.50em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.25em 0.6em 0.50em;
   }
 `
 
@@ -90,8 +93,11 @@ export const NavLink = styled.a`
   :hover {
     color: ${Color.red};
   }
-  @media (min-width: ${size.laptopL}) {
+  @media (min-width: ${size.laptopM}) {
     padding: 1.15em 0.6em 0.50em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.25em 0.6em 0.50em;
   }
 `
 

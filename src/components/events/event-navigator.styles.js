@@ -54,10 +54,11 @@ export const EventNavigatorButton = styled(AniLink)`
   @media (min-width: ${size.laptop}) {
   font-size: 1.1em;
   line-height:1;
-  padding: 0.5em 1em 0 0em;
+  padding: 0.4em 1em 0 0em;
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
+    padding: 0.2em 1em 0 0em;
   }
 `
 

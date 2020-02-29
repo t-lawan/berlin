@@ -24,8 +24,7 @@ export const TickerWrapper = styled.div`
     animation-play-state:paused;
     -webkit-animation-play-state:paused;
     }
-    
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
     
     }
     display: ${props => props.show ? 'inherit': 'none'};

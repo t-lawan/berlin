@@ -24,7 +24,7 @@ const ImageContainerWrapper = styled.section`
   @media (min-width: ${size.laptop}) {
     padding: 0 1em;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 0.7em 0.7em 0;
   }
 
@@ -93,7 +93,7 @@ class ImageContainer extends React.Component {
     this.exhibition = this.exhibitions[0];
     return (
       <Animation
-        in={this.props.isViewing || this.state.experience_changed || this.props.isHome}
+        in={this.props.isViewing || this.state.experience_changed}
         onEntered={() => this.setExperienceChangeToFalse()}
         mountOnEnter
         // unmountOnExit

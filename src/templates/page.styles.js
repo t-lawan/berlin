@@ -8,7 +8,7 @@ export const TwoColumnPageWrapper = styled.div`
   display: grid;
   grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 1em 0.7em;
   }
   :nth-child(2){
@@ -38,7 +38,7 @@ export const TwoColumnPageWrapper = styled.div`
 export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 1em 0.7em;
     background:#FFF;
   }
@@ -71,7 +71,7 @@ export const PageWrapper = styled.div`
       display: inline-block;
       width: 10px;
     }
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
       font-size: 0.95em;
     }
   }
@@ -79,7 +79,7 @@ export const PageWrapper = styled.div`
 export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     /* padding: 0em; */
     padding: 0.5em;
   }
@@ -106,7 +106,7 @@ export const TwoColumnPageWrapperNoPad = styled.div`
   display: grid;
   grid-template-columns: 3fr 6fr;
   grid-column-gap: 2em;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 1em 0.2em;
   }
   @media (min-width: ${size.laptopM}) {
@@ -119,7 +119,7 @@ export const PressWrapper = styled.div`
   padding: 2.5em 1em 2em;
   display: grid !important;
   grid-template-columns: 3fr 6fr;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 1em 0.7em;
     grid-template-columns: 1fr;
   }
@@ -166,7 +166,7 @@ export const PressWrapper = styled.div`
 
   }
   > p:first-child {
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
       margin-bottom: 0;
     }
     @media (min-width: ${size.laptop}) {
@@ -177,7 +177,7 @@ export const PressWrapper = styled.div`
   ul {
     list-style:none;
     font-size: 1.1em;
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
       font-size: 0.95em;
       margin-bottom:0em;
     }
@@ -198,10 +198,10 @@ export const PressWrapper = styled.div`
         font-size: 1.0em;
        }
        @media (min-width: ${size.laptopM}) {
-        font-size: 1.1em;
+        font-size: 1.0em;
        }
        @media (min-width: ${size.laptopL}) {
-        font-size: 1.2em;
+        font-size: 1.0em;
        }
        :hover {
         color: ${Color.red};
@@ -236,15 +236,18 @@ export const CenterColumn = styled.div`
 export const PressReleaseWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 7fr;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-columns: 1fr 3fr;
     column-gap: 0.7em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 3fr 10fr;
   }
 `
 export const PressReleaseText = styled.span`
   margin-right: 0em;
   /* font-size: 1.1em; */
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.95em;
   }
 
@@ -285,7 +288,7 @@ export const PressArrowContainer = styled.div`
   > img {
     margin-bottom: 0;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     width: 11px;
   }
   @media (min-width: ${size.laptopL}) {
@@ -306,7 +309,7 @@ export const PageTitle = styled.h1`
   margin: -0.3em 0 1em;
   text-transform:lowercase;
   display:none;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display:block;
   }
   @media (min-width: ${size.mobileL}) {
@@ -333,7 +336,7 @@ export const PageTitleCalendar = styled.h1`
   @media (max-width: ${size.mobileL}) {
     border-top: solid 0px #000;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display:block;
     position:sticky;
     top:0;
@@ -350,7 +353,7 @@ export const PageSubTitle = styled.h3`
   :first-child {
     margin-top: 0;
   }
-   @media (max-width: ${size.tablet}) {
+   @media (max-width: ${size.tabletL}) {
     font-size: 0.95em;
     margin-top:2em;
     :first-child {

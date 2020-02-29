@@ -23,7 +23,7 @@ export const HeaderWrapper = styled.header`
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.2em 1.5em !important;
+    padding: 1.7em 2.45em 1.7em !important;
   }
   > img {
     max-width:100%;
@@ -59,7 +59,7 @@ export const HeaderLink = styled(AniLink)`
 `
 
 export const HeaderImage = styled.img`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
   margin: 0 0.7em !important;
   width: calc(100% - 1.4em) !important;
   }

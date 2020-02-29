@@ -49,7 +49,7 @@ const EventTextBlock = styled(TextBlock)`
     > a {
       font-size: 1em;
     }
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
     font-size: 0.95em;
     }
     @media (max-width: ${size.laptop}) {
@@ -61,7 +61,7 @@ const EventTextBlock = styled(TextBlock)`
   }
   margin: 0 0 0em 0;
   padding: 0;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     margin: 0 0 0.7em 0;
   }
 `

@@ -32,7 +32,7 @@ const ResourceTextDiv = styled.div`
 
 const ResourceTitle = styled.h1`
   line-height: 1.2;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.2em;
     margin: 0.3em 0 1em;
   }

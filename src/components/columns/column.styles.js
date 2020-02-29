@@ -20,7 +20,7 @@ export const ColumnLayout = styled.div`
   display: block;
   width:auto;
   grid-area: 'column';
-  
+
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {
@@ -32,7 +32,7 @@ export const ColumnLayout = styled.div`
         margin-top: 11em;
       }
       @media (min-width: ${size.laptopL}) {
-        margin-top: 11.8em;
+        margin-top: 12.1em;
       }
     }
   }

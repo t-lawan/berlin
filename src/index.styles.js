@@ -10,6 +10,7 @@ export const size = {
   mobileM: "420px",
   mobileL: "500px",
   tablet: "768px",
+  tabletL: "1023px",
   laptop: "1024px",
   laptopM: "1124px",
   laptopL: "1400px",
@@ -54,11 +55,14 @@ body {
   position: relative;
   overflow: hidden !important;
   height: 100%;
+  line-height: 1;
+  font-weight: 300 !important;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
-  font-style: normal;
   font-size: 100%;
   font-variant-numeric: tabular-nums;
+  -moz-font-feature-settings: "tnum";
+  -webkit-font-feature-settings: "tnum";
   font-feature-settings: "tnum";
   }
   a {
@@ -66,6 +70,11 @@ body {
     color: black;
     transition: all 0.2s ease-in-out;
   }
+  em {
+font-family: 'ag-book-pro', sans-serif;
+font-weight: 300 !important;
+font-style: italic !important;
+}
   h1 {
   margin-left: 0;
   margin-right: 0;
@@ -79,7 +88,7 @@ body {
   color: inherit;
   font-size: 1.8rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.6rem;
   }
 }
@@ -96,7 +105,7 @@ h2 {
   color: inherit;
   font-size: 1.62671rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.5rem;
   }
 }
@@ -113,7 +122,7 @@ h3 {
   color: inherit;
   font-size: 1.38316rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.2rem;
   }
 }
@@ -130,7 +139,7 @@ h4 {
   color: inherit;
   font-size: 1rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.85rem;
   }
 }
@@ -147,7 +156,7 @@ h5 {
   color: inherit;
   font-size: 0.85028rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.7rem;
   }
 }
@@ -163,7 +172,7 @@ h6 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-size: 0.78405rem;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.65rem;
   }
 }
@@ -347,7 +356,7 @@ ${'' /* .image-contain-enter {
 
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
@@ -361,7 +370,7 @@ export const hideDisplayForMobile = css`
 
 export const showDisplayForTablet = css`
   display: ${props => (props.showInTablet ? "none" : "inherit")};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.showInTablet ? "inherit" : "none")};
   }
 `
@@ -375,13 +384,13 @@ export const showDisplayForMobile = css`
 
 export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInTablet ? "none" : `${variable}`)};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
 `
 
 export const changeGridToOneRow = css`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-columns: 1fr;
   }
 `
@@ -398,7 +407,7 @@ export const TickerAnim = keyframes`
 100% { background-position: -1200px 0; }
 `
 export const changeGridToThreeEqualRows = css`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-columns: repeat(3, 1fr);
   }
 `
@@ -414,7 +423,7 @@ export const changeNthChild = css`
       border-right: none;
     }
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     &:nth-child(3n) {
       border-right: none;
     }
@@ -432,7 +441,7 @@ export const mobile = props => {
 
 export const tablet = props => {
   return `
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
       ${props};
     }
   `
