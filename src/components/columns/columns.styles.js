@@ -198,6 +198,11 @@ export const MobTitleCard = styled.div`
   }
   ${showDisplayForMobile};
 `
+
+export const ScrollNavContainer = styled.div `
+display: block;
+position: relative;
+`
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
     position: absolute;

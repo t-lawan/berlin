@@ -20,10 +20,7 @@ export const ColumnLayout = styled.div`
   display: block;
   width:auto;
   grid-area: 'column';
-  > div {
-    position: relative;
-    display: block;
-  }
+  
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {
