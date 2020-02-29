@@ -10,27 +10,36 @@ export const EventsWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     width: calc(100% + 1.4em);
     margin-left: -0.7em;
-    margin-top:-1.5em;
+    margin-top:-1.7em;
+    padding-bottom:0px;
   }
 `
 
 export const EventItem = styled.div`
-  padding: 1em 1.7em;
   color: black;
   background-color:#FFF;
   position:relative;
   &:first-of-type {
-    border: ${props => props.isActive ? `6px solid ${Color.yellow}` : ''}; 
+    border: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''}; 
+    @media (min-width: ${size.tablet}) {
+    padding: ${props => props.isActive ? `1em 0.7em` : ''};
+    }
+    @media (min-width: ${size.laptop}) {
+      padding: ${props => props.isActive ? `1em 0.9em` : ''};
+    }
+    @media (min-width: ${size.laptopM}) {
+      padding: ${props => props.isActive ? `1em 1.9em` : ''};
+    }
   };
   
   &:first-of-type:after {
     content:" ";
     position:absolute;
     display:block;
-    bottom:-6px;
+    bottom:-4px;
     height:1px;
-    left:-6px;
-    width:calc(100% + 12px);
+    left:-4px;
+    width:calc(100% + 8px);
     background:#000;
   };
   :last-child {
@@ -38,22 +47,47 @@ export const EventItem = styled.div`
   }
   p{
     margin-bottom:0;
+    line-height: 1.3;
   }
   border-bottom: 1px solid black;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.mobileM}) {
     padding: 1em 1em;
     p{
-    font-size: 1.1rem;
+    font-size: 1em;
     }
   }
-  @media (max-width: ${size.mobileL}) {
+  @media (min-width: ${size.mobileL}) {
     padding: 1em 1.7em;
+  }
+  @media (min-width: ${size.tablet}) {
+    padding: 1em 1em;
+    p{
+    font-size: 0.95em;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 1em 1.2em;
+    p{
+    font-size: 0.9em;
+    line-height: 1.3;
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding: 1em 2.2em;
+    p{
+    font-size: 1em;
+    line-height: 1.3;
+    }
   }
 `
 
 export const EventLink = styled(UnderlineSectionLink)`
   :hover > div {
     color: ${Color.red}
+  }
+  @media (max-width: ${size.mobileL}) {
+    font-size: 1.1em;
+    line-height: 1.3;
   }
   /* padding: 1rem; */
   /* div:first-child {
@@ -63,4 +97,7 @@ export const EventLink = styled(UnderlineSectionLink)`
 
 export const EventTitle = styled.div`
 transition:all 0.2s ease-in-out;
+> p {
+  line-height: 1.3;
+  }
 `

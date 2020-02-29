@@ -15,7 +15,14 @@ class MonthCards extends React.Component {
       this.days = this.days.filter((day) => {
         return day >= this.props.startDate.day
       })
+
+      if(this.props.experience === this.props.active_experience) {
+        this.days =  this.days.filter((day) => {
+          return day >= new Date().getDate()
+        })
+      }
     }
+
 
     if(this.props.isEnd) {
       this.days = this.days.filter((day) => {
@@ -58,6 +65,8 @@ MonthCards.propTypes = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    active_experience: state.active_experience,
+    experience: state.experience
   }
 }
 

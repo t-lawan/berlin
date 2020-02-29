@@ -13,7 +13,7 @@ export const JumbotronWrapper = styled.div`
   margin: 0em;
   ${showDisplayForTablet};
   @media (min-width: ${size.mobileL}) {
-    padding: 0.7em 0.7em;
+    padding: 0.65em 0.8em;
     display: inherit;
   }
   border-top: 0;
@@ -24,7 +24,13 @@ export const JumbotronWrapper = styled.div`
     display: none;
   }
   @media (min-width: ${size.laptop}) {
-    padding: 1.4em 1.95rem 0.7em;
+    padding: 1.5em 1.5em 1.05em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding: 1.55em 2.1em 1.5em;
+    > a > img {
+      margin-bottom: -0.5em;
+    }
   }
 `
 
@@ -39,15 +45,18 @@ export const JumbotronHeader = styled(AniLink)`
 `
 export const JumbotronWrapperMob = styled.div`
   background: transparent;
-  padding: 0.0em 0.0rem 0px;
   margin: 0em;
   position:relative;
+  @media (min-width: ${size.mobileS}) {
+    padding-bottom: 120px;
+  }
+  @media (min-width: ${size.mobileM}) {
+    padding-bottom: 130px;
+  }
   width:100%;
   z-index:2;
   display:block;
-  /* @media (min-width: ${size.mobileL}) {
-    display:none;
-  } */
+  
   img {
     margin-bottom:0;
     position:relative;
@@ -66,6 +75,7 @@ export const JumbotronWrapperMob = styled.div`
     left: 50%;
     transform: translateX(-50%);
   }
+  
   ${showDisplayForMobile};
 
 `

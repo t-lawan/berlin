@@ -20,6 +20,10 @@ export const TickerWrapper = styled.div`
       line-height: 40px;
       animation: ${TickerAnim} infinite 30s linear;
     }
+     > a:hover > div {
+    animation-play-state:paused;
+    -webkit-animation-play-state:paused;
+    }
     
     @media (max-width: ${size.tablet}) {
     

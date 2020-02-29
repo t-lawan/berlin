@@ -19,6 +19,7 @@ export const AboutNavItem = styled.p`
   color: ${props => (props.current ? Color.red : "inherit")};
   padding: 0em;
   margin:0 0 0.5em;
+  line-height: 1.2;
   transition: all 0.2s ease-in-out;
   :hover {
       cursor: pointer;
@@ -34,6 +35,9 @@ export const AboutNavItem = styled.p`
 
 export const AboutNavItemLink = styled(AniLink)`
     text-decoration: none;
+    > p {
+      font-size:1em;
+    }
 `
 
 export const AboutPageContent = styled.div`
@@ -46,6 +50,7 @@ export const AboutPageContent = styled.div`
       }
     p > a {
         border-bottom: solid 1px ${Color.red};
+        font-size: 1em;
           :hover {
           color: ${Color.red};
           }

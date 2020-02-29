@@ -19,6 +19,7 @@ import {
   FixedTicker,
   ResourcesOnlyInMobile,
   ExperienceContainer,
+  ScrollNavContainer,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
@@ -61,7 +62,7 @@ class MainSection extends React.Component {
         (columnTwo.scrollTop + columnTwo.clientHeight) / columnTwo.scrollHeight
 
       if (
-        columnOnePercent > 0.95 ||
+        (columnOnePercent > 0.95 && columnOne.scrollTopMax !== 0) ||
         (columnTwoPercent > 0.99 && columnTwo.scrollTopMax !== 0)
       ) {
         footer.classList.remove("hide-footer")
@@ -127,6 +128,7 @@ class MainSection extends React.Component {
         </StickyTopHeader>
         {/* Second Column */}
         <Column ref={this.columnOneRef} rightBorder={true}>
+          <ScrollNavContainer>
           <MobTitleCard showInMobile={this.props.isHome}>
             <JumbotronMob showInMobile={true} />
           </MobTitleCard>
@@ -135,6 +137,7 @@ class MainSection extends React.Component {
           </MobAnimCard>
           <RelativeHeader>
             <ImageContainer
+              isHome={this.props.isHome}
               hideOnHomePage={!this.props.isHome}
               hideInMobile={true}
             />
@@ -156,6 +159,7 @@ class MainSection extends React.Component {
             <FooterComponent />
           </FixedFooter>
           {/* Only In Mobile */}
+          </ScrollNavContainer>
         </Column>
         {/* Third Column */}
         {/* Only In Desktop */}

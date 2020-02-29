@@ -7,20 +7,34 @@ import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding-top: 0;
-padding-left: 1em;
-p{
+> p {
   line-height: 1.3;
-  @media (max-width: ${size.mobileM}) {
-    line-height:1.4 !important;
-  }
+  font-size: 1em;
+  padding-left: 1em;
+    @media (max-width: ${size.mobileM}) {
+      line-height:1.4 !important;
+    }
+    @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    }
 }
 `
-
+const TitleTextBlock = styled(TextBlock)`
+padding: 0;
+padding-top: 0em;
+> p {
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    }
+}
+`
 const AboutAdvisoryBoard = props => {
   const language = getCurrentLanguageString(props.languages)
   const teamBlock = props.team_block;
   const generateSection = (teamBlockItem, index) => {
     let renderComponent;
+    
     <PageTitle
               dangerouslySetInnerHTML={{
                 __html: advisepage[language].title,
@@ -29,9 +43,9 @@ const AboutAdvisoryBoard = props => {
     switch (teamBlockItem.team_block_type) {
       case "section":
         renderComponent = (
-          <TextBlock key={index}>
+          <TitleTextBlock key={index}>
             <p> {teamBlockItem[createProperty("section_title", language)]}</p>
-          </TextBlock>
+          </TitleTextBlock>
         )
         break
       case "section_content":
@@ -56,7 +70,12 @@ const AboutAdvisoryBoard = props => {
     return renderComponent
   }
 
-  return <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+  return (
+    <>
+    <PageTitle> {advisepage[language].title}</PageTitle>
+    <div>{teamBlock.map((item, index) => generateSection(item, index))}</div>
+    </>
+  )
 }
 
 const mapStateToProps = state => {

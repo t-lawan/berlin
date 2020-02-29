@@ -14,9 +14,13 @@ const ExhibitionPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
   padding: 0.7em 0.7em;
   }
+  @media (min-width: ${size.laptopL}) {
+  padding: 0.9em 1.2em 160px;
+  }
   > div > p > a {
     border-bottom:solid thin rgb(217,81,92);
     transition:all 0.2s ease-in-out;
+    font-size: 1em;
     :hover {
       color:rgb(217,81,92);
     }

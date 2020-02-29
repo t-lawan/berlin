@@ -16,8 +16,11 @@ const PaddedSection = styled(Section)`
     > li {
       list-style:none;
       padding-left:1.2em;
-      font-size:1.1rem;
-      line-height:1.4;
+      font-size: 1.0rem;
+      @media (min-width: ${size.laptopM}) {
+        font-size: 1.1rem;
+      }
+      line-height: 1.4;
     }
   }
 `

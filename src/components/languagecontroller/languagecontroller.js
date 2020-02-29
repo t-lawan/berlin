@@ -15,11 +15,14 @@ class LanguageController extends React.Component {
   componentDidMount() {
     this.changeLanguageFromPath()
   }
+  languages;
 
   render() {
+    this.languages = Object.keys(this.props.languages);
+    this.languages.reverse();
     return (
       <LanguageControllerWrapper>
-        {Object.keys(this.props.languages).map(language => (
+        {this.languages.map(language => (
           <LanguageButton
             fade
             key={language}

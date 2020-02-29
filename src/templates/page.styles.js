@@ -23,9 +23,14 @@ export const TwoColumnPageWrapper = styled.div`
   } 
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 3fr 7fr;
-  } 
+    padding: 2.5em 1em 2em;
+    } 
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 2.9fr 7.2fr;
+    padding: 2.5em 1em 2em;
+    } 
   @media (min-width: ${size.laptopL}) {
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 3fr;
   }  
   ${changeGridToOneRow}
 `
@@ -66,6 +71,9 @@ export const PageWrapper = styled.div`
       display: inline-block;
       width: 10px;
     }
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
+    }
   }
 `
 export const PageWrapperRes = styled.div`
@@ -101,40 +109,104 @@ export const TwoColumnPageWrapperNoPad = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.2em;
   }
+  @media (min-width: ${size.laptopM}) {
+  padding-top: 2.4em;
+  }
   ${changeGridToOneRow}
 `
 
 export const PressWrapper = styled.div`
   padding: 2.5em 1em 2em;
-  display: grid;
+  display: grid !important;
   grid-template-columns: 3fr 6fr;
   @media (max-width: ${size.tablet}) {
     padding: 1em 0.7em;
     grid-template-columns: 1fr;
   }
   @media (min-width: ${size.tablet}) {
-    border-top:solid 1px #000;
+    padding-bottom: 4rem;
   }
   @media (max-width: ${size.mobileM}) {
     border-top:none;
     background:#FFF;
   }
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 2.95fr 7.15fr;
+    border-top:solid 1px #000;
+    grid-column-gap: 2em;
+    padding-bottom: 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+  padding-top: 3em;
+  }
+  > div:first-child > div {
+    > p {
+      line-height: 1.3;
+    }
+  }
   div > p {
   margin-bottom: 0.5em;
+  @media (min-width: ${size.laptopL}) {
+    margin-bottom: 0.7em;
   }
-  div > div > p {
-  margin-bottom: 0.0em;
   }
-  div > div{
+  > div:nth-child(2) > div > p {
+  margin-bottom: 1em !important;
+  }
+  div > div {
   margin-bottom: 0.5em;
+  > p > a {
+    font-size: 1em;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+
+  }
+  > p:first-child {
+    @media (max-width: ${size.tablet}) {
+      margin-bottom: 0;
+    }
+    @media (min-width: ${size.laptop}) {
+      margin-bottom: 0;
+    }
+  }
   }
   ul {
     list-style:none;
-    font-size: 1rem;
+    font-size: 1.1em;
+    @media (max-width: ${size.tablet}) {
+      font-size: 0.95em;
+      margin-bottom:0em;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size: 1.0em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
     margin:0.5rem 0;
     padding:0;
     li {
       list-style-type:none;
+      font-size: 1.0em;
+      > a {
+        transition: all 0.2s ease-in-out;
+        @media (min-width: ${size.laptop}) {
+        font-size: 1.0em;
+       }
+       @media (min-width: ${size.laptopM}) {
+        font-size: 1.1em;
+       }
+       @media (min-width: ${size.laptopL}) {
+        font-size: 1.2em;
+       }
+       :hover {
+        color: ${Color.red};
+       }
+      }
     }
   }
   ${changeGridToOneRow};
@@ -172,15 +244,22 @@ export const PressReleaseWrapper = styled.div`
 export const PressReleaseText = styled.span`
   margin-right: 0em;
   /* font-size: 1.1em; */
+  @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
+
 `
 
 export const PressReleaseParagraphBlock = styled.div`
   margin: 0;
   padding: 0;
-  
   p {
     margin: inherit;
     padding: inherit;
+    @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    }
+    
   }
 `
 
@@ -203,6 +282,16 @@ export const PressReleaseLink = styled.a`
 export const PressArrowContainer = styled.div`
   width: 13px;
   padding-top: 0.3em;
+  > img {
+    margin-bottom: 0;
+  }
+  @media (max-width: ${size.tablet}) {
+    width: 11px;
+  }
+  @media (min-width: ${size.laptopL}) {
+    width: 17px;
+    padding-top: 0.3em;
+  }
 `
 export const PressForm = styled.div`
   padding: 1em 0em;
@@ -241,23 +330,40 @@ export const PageTitleCalendar = styled.h1`
     position:sticky;
     margin-bottom:1.0rem;
   }
+  @media (max-width: ${size.mobileL}) {
+    border-top: solid 0px #000;
+  }
   @media (max-width: ${size.tablet}) {
     display:block;
     position:sticky;
     top:0;
     background:#FFF;
     z-index:3;
-    border-top: solid 1px #000;
     padding:0.3em 0.4em;
     border-bottom:solid 1px #000;
     width:100%;
   }
 `
 export const PageSubTitle = styled.h3`
-  font-size: 1rem;
+  font-size: 1em;
   margin: 1em 0 0.5em;
   :first-child {
-    margin-top:0;
+    margin-top: 0;
+  }
+   @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    margin-top:2em;
+    :first-child {
+    margin-top: 2em;
+  }
+   }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+    margin-top: 1.8em;
+   }
+  @media (min-width: ${size.laptopL}) {
+font-size: 1.2em;
+margin-top: 1.5em;
   }
 `
 
@@ -285,24 +391,94 @@ export const TextBlock = styled.div`
     line-height:1.4;
     margin: 0;
   }
-  p {
-    font-size:1rem;
+  > p {
+    font-size:1em;
     @media (max-width: ${size.mobileM}) {
-    font-size:1.1rem;
+    font-size:1.1em;
     line-height:1.4;
-  }
-  @media (min-width: ${size.mobileL}) {
-    font-size:0.95rem;
-    line-height:1.3;
-  }
-  @media (min-width: ${size.laptop}) {
-    font-size:1rem;
-    line-height:1.3;
-  }
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.3;
+    }
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;
 
   }
   padding: 0 0 1em 0em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.7em 0em;
+  }
+`
+export const TextBlockTwoColumnPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.4;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size:1.1em;
+      line-height:1.4;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.9em 0em;
+  }
+`
+export const TextBlockSideBarPage = styled.div`
+  > p {
+    padding: 0;
+    line-height:1.4;
+    margin: 0;
+  }
+  > p {
+    font-size:1.1em;
+    @media (max-width: ${size.mobileM}) {
+    font-size:1.1em;
+    line-height:1.4;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size:0.95em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptop}) {
+      font-size:1em;
+      line-height:1.3;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size:1.1em;
+      line-height:1.3;
+    }
+  }
+  > h1,h2,h3,h4,h5,h6 {
+    padding-bottom: 0.1rem;
+
+  }
+  padding: 0 0 1em 0em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0 0 0.7em 0em;
+  }
 `
