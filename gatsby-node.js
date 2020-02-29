@@ -511,6 +511,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "calendar", DE: "kalender" },
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
+    { EN: "practical-information", DE: "praktische-information" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
