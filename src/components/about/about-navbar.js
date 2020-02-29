@@ -66,7 +66,6 @@ const AboutNavbar = props => {
     return `/${items[index][language].slug}` === props.currentPage
   }
 
-  console.log('ITEMS', items)
 
   return (
     <AboutSideNavbar>
