@@ -24,6 +24,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { EventsModel } from "../models/EventsModel"
+import * as actionTypes from '../store/action';
 
 const EventColumn = styled.div`
 :first-child {
@@ -41,18 +42,39 @@ const EventColumn = styled.div`
 `
 
 const EventTextBlock = styled(TextBlock)`
-  a,
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1em;
+    line-height: 1.3;
+    > a {
+      font-size: 1em;
+    }
+    @media (max-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
+    @media (max-width: ${size.laptop}) {
+    font-size: 1em;
+    }
+    @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    }
   }
-  margin: 0 0 0.7em 0;
+  margin: 0 0 0em 0;
   padding: 0;
+  @media (max-width: ${size.tablet}) {
+    margin: 0 0 0.7em 0;
+  }
 `
 const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 1.6em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.7em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.9em;
+  }
   line-height: 1.2;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
@@ -60,12 +82,18 @@ const EventTitle = styled.h1`
   }
 `
 const EventSubTitle = styled.h2`
-  padding-top: 1rem;
+  padding-top: 0rem;
   padding-bottom: 0.5rem;
-  margin-top:-1.5em;
-  margin-bottom:0;
-  font-size: 1.1rem;
-  line-height: 1.2;
+  margin-top:-1.2em;
+  margin-bottom:0.5em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+  }
+  line-height: 1.4;
   ${hideDisplayForMobile};
   @media (max-width: 1023px) {
     display: none;
@@ -102,15 +130,30 @@ const EventSubTitleMob = styled.h2`
 
 const EventDescription = styled.div`
   p {
-    font-size: 1rem;
+    font-size: 1em;
+    @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size: 1.1em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
     line-height: 1.4;
+    > a {
+      font-size:1em;
+    }
+    
   }
 `
 
 const EventRsvpText = styled.div`
-  p,
-  a {
-    font-size: 1rem;
+  p {
+    font-size: 1.1em;
+    > a {
+      font-size:1em;
+    }
   }
 `
 
@@ -236,7 +279,8 @@ const Event = props => {
                 language,
                 documentation[0] ? `documentation/${documentation[0].slug}` : ``
               )}
-              fade
+              // fade
+              onClick={() => props.startTransition()}
               // bg={transitionBackground}
               // cover
               // direction="down"
@@ -342,7 +386,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Event)

@@ -28,9 +28,8 @@ export class DateManager {
     return calendar[year][monthNum].numberOfDays
   }
 
-  static getMonthText = (monthNum, year) => {
-    const calendar = this.getCalendar();
-    return calendar[year][monthNum].text;
+  static getMonthText = (monthNum, lang) => {
+    return moment().locale(lang).month(monthNum - 1).format('MMMM')
   }
 
   static createDateClass = (day, month, year) => {
@@ -50,7 +49,7 @@ export class DateManager {
   }
 
   static createShortDayString = (day, month, year, language) => {
-    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("ddd");
+    return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format(language == "DE" ? "dd" : "ddd");
   }
 
   static createDatetring = (day, month, year) => {

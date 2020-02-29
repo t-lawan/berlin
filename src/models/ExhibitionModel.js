@@ -25,11 +25,11 @@ export class ExhibitionModel {
     this.experience = experience
     this.EN = {
       ...EN,
-      start_time: '2–7pm'
+      start_time: '2–7 pm'
     }
     this.DE = {
       ...DE,
-      start_time: '14–19Uhr'
+      start_time: '14–19 Uhr'
     }
     this.start_date = start_date
     this.end_date = end_date

@@ -15,7 +15,7 @@ export const LanguageControllerWrapper = styled.div`
   border-bottom: 1px solid black;
   align-items: center;
   justify-content: center;
-  padding: 0.4em;
+  padding: 0.5em 0;
   background: white;
   }
   @media (max-width: ${size.mobileM}) {
@@ -46,11 +46,15 @@ export const LanguageButton = styled(AniLink)`
     margin-right: 0.7em;
   }
   @media (min-width: ${size.laptop}) {
-    margin-right:0;
-    padding-top:0;
-    margin-bottom: 0.0em;
-  line-height:1.1;
-  font-size: 1.25rem;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    line-height: 1.1;
+    font-size: 1.2em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.33em;
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 1.65em;
