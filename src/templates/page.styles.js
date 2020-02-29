@@ -27,16 +27,20 @@ export const TwoColumnPageWrapper = styled.div`
     } 
   @media (min-width: ${size.laptopM}) {
     grid-template-columns: 2.9fr 7.2fr;
-    padding: 2.5em 1em 2em;
+    padding: 3em 1.1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 2.9fr 7.0fr;
+    grid-column-gap: 2.3em;
   }  
   ${changeGridToOneRow}
 `
 
 export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
+  > div > p {
+    max-width: 700px;
+  }
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
   @media (max-width: ${size.tabletL}) {
     padding: 1em 0.7em;
@@ -51,6 +55,7 @@ export const PageWrapper = styled.div`
   > div > p > a {
     transition: all 0.2s ease-in-out;
     border-bottom: solid thin;
+    font-size: 1em;
     border-color:${Color.red};
     :hover {
       color:${Color.red} 
@@ -75,6 +80,12 @@ export const PageWrapper = styled.div`
       font-size: 0.95em;
     }
   }
+  @media (min-width: ${size.laptop}) {
+      padding: 2.5em 1em 2em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      padding: 3em 1.1em 2em;
+    }
 `
 export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
@@ -179,13 +190,16 @@ export const PressWrapper = styled.div`
     font-size: 1.1em;
     @media (max-width: ${size.tabletL}) {
       font-size: 0.95em;
+      line-height: 1.3;
       margin-bottom:0em;
     }
     @media (min-width: ${size.laptop}) {
       font-size: 1.0em;
+       line-height: 1.3;
     }
     @media (min-width: ${size.laptopL}) {
       font-size: 1.2em;
+       line-height: 1.35;
     }
     margin:0.5rem 0;
     padding:0;
@@ -440,7 +454,10 @@ export const TextBlockTwoColumnPage = styled.div`
     }
     @media (min-width: ${size.laptopM}) {
       font-size:1.1em;
-      line-height:1.4;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size:1.2em;
+      line-height:1.45;
     }
   }
   > h1,h2,h3,h4,h5,h6 {
@@ -457,6 +474,9 @@ export const TextBlockSideBarPage = styled.div`
     line-height:1.4;
     margin: 0;
   }
+  > a {
+      line-height:1.3;
+    }
   > p {
     font-size:1.1em;
     @media (max-width: ${size.mobileM}) {
@@ -475,6 +495,10 @@ export const TextBlockSideBarPage = styled.div`
       font-size:1.1em;
       line-height:1.3;
     }
+    @media (min-width: ${size.laptopL}) {
+      font-size:1.2em;
+      line-height:1.35;
+    }
   }
   > h1,h2,h3,h4,h5,h6 {
     padding-bottom: 0.1rem;
@@ -483,5 +507,8 @@ export const TextBlockSideBarPage = styled.div`
   padding: 0 0 1em 0em;
   @media (min-width: ${size.laptop}) {
     padding: 0 0 0.7em 0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0 0 1em 0em;
   }
 `

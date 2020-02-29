@@ -43,9 +43,12 @@ export const AboutNavItemLink = styled(AniLink)`
 export const AboutPageContent = styled.div`
     p {
         margin-bottom: 1em;
-        line-height:1.4;
+        line-height: 1.4;
         :first-child {
-          margin-top:0em;
+          margin-top: 0em;
+        }
+        @media (max-width: ${size.laptopL}) {
+          line-height: 1.45;
         }
       }
     p > a {

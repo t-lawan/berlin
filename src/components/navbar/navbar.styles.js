@@ -78,7 +78,7 @@ export const NavItem = styled(AniLink)`
     padding: 1.15em 0.6em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.25em 0.6em 0.50em;
+    padding: 1.25em 0.7em 0.6em;
   }
 `
 
@@ -97,7 +97,7 @@ export const NavLink = styled.a`
     padding: 1.15em 0.6em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.25em 0.6em 0.50em;
+    padding: 1.25em 0.6em 0.6em;
   }
 `
 
@@ -177,6 +177,7 @@ export const NavMobileLink = styled(AniLink)`
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.2em;
+    line-height: 1.3;
   }
 `
 export const NavMobileLinkSmall = styled(AniLink)`
@@ -189,6 +190,7 @@ export const NavMobileLinkSmall = styled(AniLink)`
   }
   @media (min-width: ${size.tablet}) {
     font-size:1.0em;
+    line-height: 1.3;
   }
 `
 
@@ -202,6 +204,7 @@ export const NavMobileOuterLinkSmall = styled.a`
   }
   @media (min-width: ${size.tablet}) {
     font-size:1.0em;
+    line-height: 1.3;
     margin-bottom:0.2em;
   }
 `

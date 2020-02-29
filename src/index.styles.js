@@ -189,6 +189,7 @@ img {
 }
 a, span {
   margin:0;
+  letter-spacing: 0.008rem;
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
@@ -207,6 +208,7 @@ a, span {
 }
 p {
   margin-left: 0;
+  letter-spacing: 0.008rem;
   margin-right: 0;
   font-weight:normal;
   line-height: 1.3;
@@ -247,7 +249,7 @@ p {
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
-    line-height:1.4;
+    line-height:1.45;
     > a {
       font-size:1.2em;
     }
