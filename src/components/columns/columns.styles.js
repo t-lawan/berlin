@@ -11,6 +11,9 @@ import {
 import {
   ColumnLayout,
 } from "./column.styles"
+import {
+  Caption,
+} from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -27,12 +30,12 @@ export const ExperienceContainer = styled.div`
   display: grid;
   height: 100%;
   height: 100vh;
-  grid-template-columns: 66fr 33fr;
+  grid-template-columns: 66.66% 33.33%;
   grid-template-rows: auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow-y: hidden;
   width: inherit;
   background: white;
+  position: relative;
   grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
     /* width: 100%; */
@@ -58,7 +61,6 @@ export const AnimatedColumn = styled(Animated)`
   height: 100vh;
   width: inherit;
   overflow-y: auto;
-  overflow-x: hidden;
   display: grid;
   grid-template-columns: 66fr 33fr;
   grid-template-rows: auto;
@@ -95,7 +97,12 @@ export const ColumnsWrapper = styled.div`
   }
 
   display: grid;
-  grid-template-columns: 1fr 18fr 1fr;
+  @media (min-width: ${size.laptop}) {
+  grid-template-columns: 6% 88% 6%;
+  }
+  @media (min-width: ${size.laptopM}) {
+  grid-template-columns: 5% 90% 5%;
+  }
   ${changeGridToOneRow}
 `
 
@@ -125,6 +132,9 @@ export const FirstColumnWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     border-top: solid 0px #000;
   }
+  @media (min-width: ${size.tablet}) {
+    border-top: solid 1px #000;
+  }
   @media (min-width: ${size.laptop}) {
     border-top: none;
   }
@@ -133,7 +143,7 @@ export const FirstColumnWrapper = styled.div`
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
-  position: sticky;
+  position: relative;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
     /*grid-column-start: span 2;*/
@@ -181,11 +191,17 @@ export const FixedTopExpMob = styled.div`
 export const MobTitleCard = styled.div`
   @media (max-width: ${size.tablet}) {
     position: sticky;
+    position: -webkit-sticky;
     top:0;
     z-index: 3;
     width: 100%;
   }
   ${showDisplayForMobile};
+`
+
+export const ScrollNavContainer = styled.div `
+display: block;
+position: relative;
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -212,18 +228,23 @@ export const FixedHeader = styled.div`
 export const StickyHeader = styled.div`
   z-index: 250;
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
 `
 
 export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
+  > section > ${Caption} {
+      margin-bottom: 0.7em;
+    }
 `
 
 export const StickyFooter = styled.div`
   z-index: 500;
   bottom: 0;
   position: sticky;
+  position: -webkit-sticky;
   grid-area: footer;
   width: 100%;
   @media (max-width: ${size.tablet}) {
@@ -243,6 +264,7 @@ export const StickyFooter = styled.div`
   }
    @media (min-width: ${size.laptop}) {
     position: sticky;
+    position: -webkit-sticky;
     z-index: 500;
    }
   ${showDisplayForTablet};
@@ -282,11 +304,13 @@ export const FixedNavbar = styled.div`
   z-index: 600;
   bottom: 0;
   position: sticky;
+  position: -webkit-sticky;
   grid-area: footer;
   @media (max-width: ${size.tablet}) {
     grid-area: unset;
     position: fixed;
     bottom:auto;
+    border-left: solid 0px #000;
     top:0;
     right:0;
     width:33.33%;
@@ -294,24 +318,30 @@ export const FixedNavbar = styled.div`
   @media (max-width: ${size.mobileM}) {
     position: fixed;
     width: 100%;
+    border-left: solid 0px #000;
     bottom: 0;
     top:auto;
   }
 `
 export const FixedTicker = styled.div`
   z-index: 5;
-  bottom: 70px;
+  
   height:42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
-  position: fixed;
+  position: fixed !important;
   overflow:hidden;
   /* right: 5%; */
   left:auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
-    
+  }
+  @media (min-width: ${size.laptop}) {
+    bottom: 60px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    bottom: 70px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};

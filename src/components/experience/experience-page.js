@@ -28,6 +28,12 @@ const ExperiencePageWrapper = styled.div`
     top:40px;
   }
   @media (min-width: ${size.laptop}) {
+    left: 5.7%;
+    top:0;
+    width: calc(100% - 11.4%);
+    height: 100vh;
+  }
+  @media (min-width: ${size.laptopM}) {
     left: 5%;
     top:0;
     width: calc(100% - 10%);
@@ -93,7 +99,12 @@ const TopRow = styled.div`
   }
 `
 const ExperienceImage = styled.img`
-  width: 35%;
+  @media (min-width: ${size.laptop}) {
+    width: 40%;
+  }
+  @media (min-width: ${size.laptopM}) {
+    width: 35%;
+  }
   align-self: center;
   margin-bottom:0;
   :nth-child(3) {

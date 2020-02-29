@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `11th Berlin Biennale for Contemporary Art`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: ``,
+    author: `Berlin Biennale`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -21,7 +21,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `11th Berlin Biennale for Contemporary Art`,
-        short_name: `starter`,
+        short_name: `Berlin Biennale`,
         start_url: `/`,
         background_color: `white`,
         theme_color: `white`,

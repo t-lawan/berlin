@@ -161,9 +161,9 @@ class PressForm extends React.Component {
 
 const formText = {
   EN: {
-    email: "Email",
-    name: "First and Last Name",
-    media_affliation: "Media affliation",
+    email: "E-mail",
+    name: "First and last name",
+    media_affliation: "Media affiliation",
     button: "Submit",
     thank_you:
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
@@ -174,12 +174,12 @@ const formText = {
       }
   },
   DE: {
-    email: "Email",
+    email: "E-Mail",
     name: "Vor- und Nachname",
     media_affliation: "Medium",
     thank_you:
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
-    button: "Anmeldung",
+    button: "Senden",
     errors : {
         name: 'This field requires at least 3 characters',
         email: 'This field requires a valid email',

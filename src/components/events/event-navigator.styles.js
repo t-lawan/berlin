@@ -20,13 +20,16 @@ export const EventNavigatorWrapper = styled.section`
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0 0 0.7em;
   }
-  @media (min-width: ${size.tablet}) {
-    padding: 0.5em 0.7em 0 0.9em;
+  @media (min-width: ${size.laptop}) {
+    padding: 0.15em 0.7em 0.4em 1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.25em 0.7em 0.9em 1em;
   }
 `
 
 export const EventNavigatorButton = styled(AniLink)`
-  font-size: 1.1rem;
+  font-size: 1em;
   line-height:1;
   padding: 0.5em 0 0 1em;
   text-decoration: none;
@@ -42,10 +45,19 @@ export const EventNavigatorButton = styled(AniLink)`
     font-size: 1.35em;
     padding: 0 1em 0 0;
   }
+  @media (min-width: ${size.tablet}) {
+    margin-bottom: 0.6em;
+    margin-top: 0em;
+    font-size: 1.25em;
+    padding: 0 1em 1em 0;
+  }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1rem;
+  font-size: 1.1em;
   line-height:1;
   padding: 0.5em 1em 0 0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 

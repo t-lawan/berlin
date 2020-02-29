@@ -83,9 +83,9 @@ class Calendar extends React.Component{
   }
 
   componentDidMount() {
-    setTimeout(()=> {
-      this.getElement();
-    }, 500)
+    // setTimeout(()=> {
+    //   this.getElement();
+    // }, 500)
   }
 
 

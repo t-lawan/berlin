@@ -9,6 +9,8 @@ import {
   TextBlock,
   ResourcePublisherLink,
   PageTitle,
+  TextBlockTwoColumnPage,
+  TextBlockSideBarPage,
 } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
@@ -32,34 +34,35 @@ const PracticalInformation = props => {
                 __html: content[language].title,
               }}
             />
-        <TextBlock>
+        <TextBlockSideBarPage>
           {pageInfo.acf[language].address_info.map((address, index) => (
             <p key={index}> {address.address_line} </p>
           ))}
-        </TextBlock>
-        <TextBlock>
+        </TextBlockSideBarPage>
+        <TextBlockSideBarPage>
           <p>{content[language].opening_hours}</p>
           {pageInfo.acf[language].opening_times.map((time, index) => (
             <p key={index}> {time.opening_time_line} </p>
           ))}
-        </TextBlock>
-        <TextBlock>
+        </TextBlockSideBarPage>
+        <TextBlockSideBarPage>
           <p>{content[language].access}</p>
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink hidden={content[language].directions} target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
-        </TextBlock>
-        <TextBlock>
+          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+        </TextBlockSideBarPage>
+        <TextBlockSideBarPage>
+
           {pageInfo.acf[language].access_block.map((item, index) => (
             <p key={index}> {item.access_line} </p>
           ))}
-        </TextBlock>
+        </TextBlockSideBarPage>
       </div>
 
       <div>
         <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
-        <TextBlock
+        <TextBlockTwoColumnPage
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
           }}

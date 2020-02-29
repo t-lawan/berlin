@@ -22,9 +22,13 @@ export const transitionTimes = {
   timeOutForEachExperiences: 10
 }
 
-export const pageMap = [
+export  const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "about", DE: "uber" },
+  { EN: "about/team", DE: "uber/team" },
+  { EN: "about/organization-2", DE: "uber/verein" },
+  { EN: "about/advisory-board", DE: "uber/beirat" },
+  { EN: "about/support", DE: "uber/unterstutzung" },
   { EN: "resource", DE: "resource" },
   { EN: "exhibition", DE: "austellung" },
   { EN: "venue", DE: "ort" },
@@ -52,14 +56,29 @@ export const capitalise = (s) => {
 }
  export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {
-    let type = path.split('/')[0].toLowerCase();
+    let type;
+    if(path.includes('about') || path.includes('uber')) {
+      type = path.toLowerCase();
+    } else {
+      type = path.split('/')[0].toLowerCase();
+    }
+
+
     return pageType.EN == type || pageType.DE == type;
   });
 
+
   let newPath;
   if(prePath && prePath.length !== 0) {
-    newPath =
-    language === "EN" ? `/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}` : `/${language.toLowerCase()}/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}`
+    if(path.includes('about') || path.includes('uber')) {
+      newPath =
+      language === "EN" ? `/${prePath[language]}` : `/${language.toLowerCase()}/${prePath[language]}`
+    } else {
+      newPath =
+      language === "EN" ? `/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}` : `/${language.toLowerCase()}/${prePath[language]}${path.split('/')[1] ? '/' + path.split('/')[1] : ''}`
+    }
+
+
   } else {
     newPath = language === "EN" ? `/${path}` : `/${language.toLowerCase()}/${path}`;
   }

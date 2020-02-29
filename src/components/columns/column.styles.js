@@ -8,19 +8,31 @@ import {
 
 export const ColumnLayout = styled.div`
   border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
-  height: 100%;
+  height: auto;
   background: white;
-  padding-bottom: 2rem;  
-  position:relative;
+  position: relative;
+  overflow-y: scroll;
+  height: auto;
+  padding-bottom: 2rem; 
+  @media (max-width: ${size.mobileM}) {
+        padding-bottom: 0rem; 
+      } 
+  display: block;
   width:auto;
   grid-area: 'column';
-  overflow-y: inherit;
+  
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {
     ${ExperienceControllerWrapper} {
       @media (min-width: ${size.laptop}) {
-        margin-top: 9.6em;
+        margin-top: 9.7em;
+      }
+      @media (min-width: ${size.laptopM}) {
+        margin-top: 11em;
+      }
+      @media (min-width: ${size.laptopL}) {
+        margin-top: 11.8em;
       }
     }
   }
@@ -42,7 +54,6 @@ export const ColumnLayout = styled.div`
   @media (min-width: ${size.mobileL}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
     background: white;
-
   }
   @media (min-width: ${size.mobileL}) {
     :nth-child(4){

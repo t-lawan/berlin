@@ -19,37 +19,41 @@ const ResourcesListWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
     padding-bottom: 120px;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.9em 1.2em;
+  }
 `
 
 const ResourceTitle = styled.p`
-  font-size: 1rem;
+  font-size: 1em;
   transition:all 0.2s ease-in-out;
   :last-child {
     margin-bottom:0;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size:1.0rem;
+    font-size:1.1em;
     margin-bottom:0.3em;
   }
   @media (min-width: ${size.mobileL}) {
-    font-size:0.95rem;
+    font-size:0.95em;
+    margin-bottom:0.3em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size:1rem;
+    font-size:1em;
   }
 `
 
 const ResourceLabel = styled.p`
-  font-size: 1rem;
+  font-size: 1em;
   margin: 0.5em 0 0;
   @media (max-width: ${size.mobileM}) {
-    font-size:1.0rem;
+    font-size:1.1em;
   }
   @media (min-width: ${size.mobileL}) {
-    font-size:0.95rem;
+    font-size:0.95em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size:1rem;
+    font-size:1em;
   }
 `
 
@@ -63,6 +67,9 @@ const ResourceItemLink = styled(Link)`
   :last-child div {
       border-bottom:none;
   }
+  > p {
+    font-size: 1em;
+  }
 `
 
 const ResourceItem = styled.div`
@@ -74,7 +81,7 @@ const ResourceItem = styled.div`
   :first-child {
     padding-top:0;
   }
-  > img {
+  > div > picture > img {
     margin-bottom:0.3em;
   }
  > div > picture > img {
@@ -90,7 +97,44 @@ const TextBox = styled.div`
   @media (max-width: ${size.tablet}) {
     padding: 0.7em 0.7em;
   }
-  
+  > p:first-child {
+    margin-bottom: 0;
+  }
+  > p:nth-child(2) {
+    margin-top: 0.2em;
+  }
+`
+const Author = styled.p`
+  margin-bottom:0;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+    margin-top: -0.3em;
+    line-height: 1.4;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-top: 0em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-top: -0.3em;
+    margin-bottom:0em;
+  }
 `
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -113,6 +157,7 @@ const ResourcesList = props => {
                 withCaption={false}
               />
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
             </ResourceItem>
           </ResourceItemLink>
         )

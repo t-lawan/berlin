@@ -111,6 +111,9 @@ export const DateText = styled.strong`
    font-size: 1.5em; 
   }
   @media (min-width: ${size.laptop}) {
+   font-size: 1.8em;
+  }
+  @media (min-width: ${size.laptopM}) {
    font-size: xx-large;
   }
 `
@@ -142,20 +145,33 @@ export const MonthHeading = styled.p`
     padding: 0.3em 0.4em;
   }
   @media (min-width: ${size.laptop}) {
+   font-size: 1.8em;
+   padding: 0.25em 0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
     font-size: 2em;
-    padding: 0.25em 0.5em;
   }
 `
 export const ClosedText = styled.p`
   margin: 0.5em 1em;
   text-transform:lowercase;
   opacity: 0.5;
-  @media (max-width: ${size.mobileM}) {
+  @media (min-width: ${size.mobileS}) {
     margin: 0.3em 0.5em;
     font-size: 1rem;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.tablet}) {
     margin: 0.5em 0.7em;
     font-size: 0.95rem;
+  }
+  @media (min-width: ${size.laptop}) {
+    margin: 0.5em 1em;
+    font-size: 1rem;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1rem;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2rem;
   }
 `

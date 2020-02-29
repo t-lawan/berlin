@@ -11,7 +11,8 @@ export const size = {
   mobileL: "500px",
   tablet: "768px",
   laptop: "1024px",
-  laptopL: "1440px",
+  laptopM: "1124px",
+  laptopL: "1400px",
   desktop: "2560px",
 }
 
@@ -39,20 +40,26 @@ export const GlobalStyle = createGlobalStyle`
 @import url('https://use.typekit.net/xcm3ryn.css');
 * {
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   ::-webkit-scrollbar {
     display: none;
   }
   scrollbar-width: none;
+
 }
 html,
 body {
   width: 100vw;
   width: 100%;
+  position: relative;
+  overflow: hidden !important;
   height: 100%;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
   font-style: normal;
-  font-size: calc(1em + 0.1vw);
+  font-size: 100%;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
   }
   a {
     text-decoration: none;
@@ -177,8 +184,17 @@ a, span {
   padding: 0;
   transition: all 0.2s ease-in-out;
   @media (min-width: ${size.laptop}) {
-    font-size: 1.05rem;
+    font-size: 1.0em;
   }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+  }
+}
+::selection {
+    background: #ededed;
 }
 p {
   margin-left: 0;
@@ -193,23 +209,38 @@ p {
   padding-top: 0;
   font-size: 1rem;
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     line-height:1.4;
     > a {
       font-size:1em;
     }
   }
   @media (min-width: ${size.tablet}) {
-    font-size: 0.95rem;
+    font-size: 0.95em;
     line-height:1.3;
     > a {
-      font-size:0.95rem;
+      font-size:0.95em;
     }
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.05rem;
+    font-size: 1em;
+    line-height:1.4;
     > a {
-      font-size:1.05rem;
+      font-size:1em;
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    line-height:1.4;
+    > a {
+      font-size:1.1em;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    line-height:1.4;
+    > a {
+      font-size:1.2em;
     }
   }
 }
@@ -231,7 +262,9 @@ h1, h2, h3, h4, h5, h6, p, a, em {
   }
 
 }
-
+.carousel .slide {
+  display: block;
+}
 .show-footer {
   @media (min-width: ${size.tablet}) {
     bottom: 0 !important;
@@ -440,6 +473,7 @@ export const ExternalLink = styled.a`
   transition: all 0.2s ease-in-out;
   > span {
     transition: all 0.2s ease-in-out;
+    font-size: 1em;
     :hover {
       color: ${Color.red};
     }
