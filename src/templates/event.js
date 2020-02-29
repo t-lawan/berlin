@@ -52,7 +52,7 @@ const EventTextBlock = styled(TextBlock)`
     @media (max-width: ${size.tabletL}) {
     font-size: 0.95em;
     }
-    @media (max-width: ${size.laptop}) {
+    @media (min-width: ${size.laptop}) {
     font-size: 1em;
     }
     @media (min-width: ${size.laptopL}) {
@@ -63,6 +63,17 @@ const EventTextBlock = styled(TextBlock)`
   padding: 0;
   @media (max-width: ${size.tabletL}) {
     margin: 0 0 0.7em 0;
+  }
+  @media (max-width: ${size.tabletL}) {
+    width:70%;
+    > div:first-child > p:first-child {
+        width: 65%;
+        display: inline-block;
+    } 
+    > div:first-child > p:last-child {
+        width: 35%;
+        display: inline-block;
+    }
   }
 `
 const EventTitle = styled.h1`
@@ -112,6 +123,11 @@ const EventTitleMob = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
   line-height: 1.2;
+  @media (min-width: ${size.tablet}) {
+    font-size: 1.1em;
+    max-width: 70%;
+    margin-bottom: 1.5em;
+  }
   @media (min-width: ${size.laptop}) {
     display: none;
   }
@@ -234,11 +250,14 @@ const Event = props => {
               __html: striptags(event[language].event_title, ["em"]),
             }}
           />
-          <EventSubTitleMob
-            dangerouslySetInnerHTML={{
-              __html: striptags(event[language].event_subtitle, ["em"]),
-            }}
-          />
+          {event[language].subtitle ? (
+              <EventSubTitleMob
+                dangerouslySetInnerHTML={{
+                  __html: striptags(event[language].event_subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+          
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
@@ -317,11 +336,14 @@ const Event = props => {
                 __html: striptags(event[language].event_title, ["em"]),
               }}
             />
-            <EventSubTitle
-              dangerouslySetInnerHTML={{
-                __html: striptags(event[language].event_subtitle, ["em"]),
-              }}
-            />
+            {event[language].subtitle ? (
+              <EventSubTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(event[language].event_subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+            
             
           </TextBlock>
 
