@@ -96,7 +96,7 @@ export const ExperienceControllerMobileButton = styled.div`
   height:40px;
   border-right: 1px solid black;
   border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
-  opacity: ${props => props.show ? '1' : '0.5'};
+  opacity: ${props => props.isSelected ? '1' : '0.5'};
   :last-child {
     border-right: 0;
   }
@@ -110,6 +110,9 @@ export const ExperienceControllerMobileButton = styled.div`
     text-align:center;
     @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
+    }
+    @media (min-width: ${size.tablet}) {
+    font-size: 1.1em;
     }
   }
   img {
