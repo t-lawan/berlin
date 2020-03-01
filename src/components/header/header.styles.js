@@ -29,7 +29,7 @@ export const HeaderWrapper = styled.header`
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.25em 1.5em !important;
+    padding: 1.55em 2.25em 1.55em !important;
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.45em 1.7em !important;
