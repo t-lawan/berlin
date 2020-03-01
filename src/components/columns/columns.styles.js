@@ -21,8 +21,19 @@ import { Carousel } from 'react-responsive-carousel';
 export const ExperienceCarousel = styled(Carousel)`
   text-align: left !important;
   width: inherit;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
+  height: 100vh;
+
+  .carousel .slider-wrapper {
+    overflow: hidden !important;
+    /* overflow-y: auto !important;
+    overflow-x: hidden !important; */
+  }
+
+  .carousel.carousel-slider {
+    overflow: hidden !important;
+
 `
 
 export const ExperienceContainer = styled.div`
@@ -33,8 +44,8 @@ export const ExperienceContainer = styled.div`
   grid-template-columns: 66.66% 33.33%;
   grid-template-rows: auto;
   overflow-y: hidden;
-  width: inherit;
-  background: white;
+  width: 100%;
+  /*background: white;*/
   position: relative;
   grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
@@ -130,7 +141,7 @@ export const FirstColumnWrapper = styled.div`
     border-top: solid 0px #000;
   }
   @media (min-width: ${size.tablet}) {
-    border-top: solid 1px #000;
+    border-top: solid 0px #000;
   }
   @media (min-width: ${size.laptop}) {
     border-top: none;
@@ -140,6 +151,7 @@ export const FirstColumnWrapper = styled.div`
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
+  background: white;
   position: relative;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
@@ -147,6 +159,7 @@ export const StickyTopHeader = styled.div`
   }
   :first-child {
     border-right: solid 1px #000;
+    z-index: 301;
   }
   @media (max-width: ${size.mobileM}) {
     :first-child {

@@ -9,6 +9,7 @@ import {
 
 export const JumbotronWrapper = styled.div`
   background: white;
+  backface-visibility: hidden; 
   padding: 1.4em 1.95rem 0.7em;
   margin: 0em;
   ${showDisplayForTablet};
@@ -31,6 +32,12 @@ export const JumbotronWrapper = styled.div`
     padding: 1.5em 1.5em 1.05em;
   }
   @media (min-width: ${size.laptopM}) {
+    padding: 1.55em 2.25em 1.6em;
+    > a > img {
+      margin-bottom: -0.5em;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.4em 1.5em;
     > a > img {
       margin-bottom: -0.5em;

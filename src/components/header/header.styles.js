@@ -5,6 +5,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
+  backface-visibility: hidden; 
   /* border-bottom: 1px solid black; */
   padding: 1.4em 2em 0.7em !important;
   background: white;
@@ -26,6 +27,9 @@ export const HeaderWrapper = styled.header`
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
+    padding: 1.55em 2.25em 1.6em !important;
+  }
+  @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.45em 1.7em !important;
   }
   > img {
@@ -59,7 +63,7 @@ export const HeaderLink = styled(AniLink)`
   grid-column-gap: 2.25em;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-column-gap: 4.1em;
+  grid-column-gap: 4.2em;
   }
 
 `
