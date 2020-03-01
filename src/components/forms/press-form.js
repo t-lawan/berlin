@@ -88,7 +88,7 @@ class PressForm extends React.Component {
     switch (name) {
       case "name":
         errors.name =
-          !validator.isAlpha(value) || value.length < 3
+          value.length < 3
             ? formText[this.language].errors.name
             : ""
         break
@@ -99,7 +99,7 @@ class PressForm extends React.Component {
         break
       case "media_affliation":
         errors.media_affliation =
-          !validator.isAlphanumeric(value) || value.length < 3
+          value.length < 3
             ? formText[this.language].errors.media_affliation
             : ""
         break
