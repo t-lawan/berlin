@@ -190,6 +190,7 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -204,8 +205,9 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
+                {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
               </TextBox>
-              <ResourceLabel> {resource.label} </ResourceLabel>
+              <ResourceLabel> {resource[language].label} </ResourceLabel>
 
             </ResourceItem>
           </ResourceItemLink>
