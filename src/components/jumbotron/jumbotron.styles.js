@@ -24,6 +24,7 @@ export const JumbotronWrapper = styled.div`
   border-top: 0;
   img {
     margin-bottom: 0;
+    filter: blur(0px);
   }
   @media (max-width: ${size.mobileM}) {
     display: none;
@@ -70,6 +71,7 @@ export const JumbotronWrapperMob = styled.div`
   
   img {
     margin-bottom:0;
+    filter: blur(0px);
     position:relative;
     z-index:2;
     padding:0.7em 0.7em;

@@ -6,6 +6,8 @@ export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
   backface-visibility: hidden; 
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  transform: translateZ(0);
   /* border-bottom: 1px solid black; */
   padding: 1.4em 2em 0.7em !important;
   background: white;
@@ -27,7 +29,7 @@ export const HeaderWrapper = styled.header`
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.25em 1.6em !important;
+    padding: 1.55em 2.25em 1.5em !important;
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.45em 1.7em !important;
@@ -42,11 +44,14 @@ export const HeaderLink = styled(AniLink)`
   text-decoration: none;
   margin-bottom:0;
   display: grid;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
   grid-template-columns:1fr 1fr;
   grid-column-gap: 4em;
   ${changeGridToOneRow};
   img {
     margin-bottom: 0.0rem;
+    filter: blur(0px);
   }
   @media (max-width: ${size.mobileM}) {
   grid-column-gap: 0.0em;
