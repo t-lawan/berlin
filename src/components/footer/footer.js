@@ -6,7 +6,7 @@ import { getCurrentLanguageString, createPath, transitionBackground } from "../.
 import { changeGridToOneRow, size } from "../../index.styles"
 import ImageResource from "../../partials/ImageResource"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
-
+import * as actionTypes from '../../store/action';
 const FooterWrapper = styled.footer`
   display: grid;
   grid-template-columns: 1fr 3.8fr 7.5fr 2fr;
@@ -102,9 +102,9 @@ const FooterComponent = props => {
       <DoubleDecker>
         <FooterText>{content[language].description}</FooterText>
         <BottomRow>
-          <FooterLink fade to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
+          <FooterLink onClick={() => props.startTransition()} fade to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
           {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink> */}
-          <FooterLink fade to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
+          <FooterLink onClick={() => props.startTransition()} fade to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
           {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink> */}
         </BottomRow>
       </DoubleDecker>
@@ -141,7 +141,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch({ type: actionTypes.START_TRANSITION}),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(FooterComponent)

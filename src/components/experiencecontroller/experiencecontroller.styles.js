@@ -9,7 +9,7 @@ export const ExperienceControllerWrapper = styled.div`
     margin-top: ${props => (props.left ? "6.9em" : "3.7em")};
   }
   @media (min-width: ${size.laptopL}) {
-    margin-top: ${props => (props.left ? "6.9em" : "4.5em")};
+    margin-top: ${props => (props.left ? "6.9em" : "4.3em")};
   }
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@ export const ExperienceControllerWrapper = styled.div`
 `
 
 export const ExperienceButton = styled.div`
-  margin-bottom: 0.0em;
+  line-height: 1.3;
   text-decoration:none;
   transition: all 0.2s ease-in-out;
   color: black;
@@ -96,9 +96,12 @@ export const ExperienceControllerMobileButton = styled.div`
   height:40px;
   border-right: 1px solid black;
   border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
-  opacity: ${props => props.show ? '1' : '0.5'};
+  opacity: ${props => props.isSelected ? '1' : '0.5'};
   :last-child {
     border-right: 0;
+  }
+  :hover {
+    cursor: pointer;
   }
   > p {
     margin: 0;
@@ -107,6 +110,9 @@ export const ExperienceControllerMobileButton = styled.div`
     text-align:center;
     @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
+    }
+    @media (min-width: ${size.tablet}) {
+    font-size: 1.1em;
     }
   }
   img {

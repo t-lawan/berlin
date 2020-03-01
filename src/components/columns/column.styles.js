@@ -14,13 +14,14 @@ export const ColumnLayout = styled.div`
   overflow-y: scroll;
   height: auto;
   padding-bottom: 2rem; 
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.mobileL}) {
         padding-bottom: 0rem; 
+        height: 100%;
       } 
   display: block;
   width:auto;
   grid-area: 'column';
-  
+
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
   :first-child {
@@ -32,7 +33,7 @@ export const ColumnLayout = styled.div`
         margin-top: 11em;
       }
       @media (min-width: ${size.laptopL}) {
-        margin-top: 11.8em;
+        margin-top: 12.1em;
       }
     }
   }

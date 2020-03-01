@@ -6,7 +6,7 @@ import {
   createPath,
   transitionBackground,
 } from "../../utility/helper"
-import { size } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import * as actionTypes from "../../store/action"
@@ -33,13 +33,21 @@ const DocumentationNavigatorWrapper = styled.div`
     margin: -2em 0 0 0;
     padding: 0;
   }
+  @media (min-width: ${size.laptopM}) {
+    margin: -2.5em 0 0 0;
+    padding: 0;
+  }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
-  font-size: 1.1rem;
+  font-size: 1em;
   line-height: 1;
   padding: 0.5em 0 0 1em;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+  }
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;
@@ -53,17 +61,17 @@ const DocumentationNavigatorButton = styled(AniLink)`
     padding: 0 1em 0 0;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.0rem;
+    font-size: 1.0em;
     line-height: 1;
     padding: 0.5em 1em 0 0em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1rem;
+    font-size: 1.1em;
     line-height: 1;
     padding: 0.5em 1em 0 0em;
   }
-  @media (min-width: ${size.laptopM}) {
-    font-size: 1.2rem;
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
   }
 `
 

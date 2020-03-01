@@ -5,6 +5,9 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 export const HeaderWrapper = styled.header`
   /* opacity: 1; */
   transition: opacity 0.5s;
+  backface-visibility: hidden; 
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  transform: translateZ(0);
   /* border-bottom: 1px solid black; */
   padding: 1.4em 2em 0.7em !important;
   background: white;
@@ -19,11 +22,17 @@ export const HeaderWrapper = styled.header`
   @media (min-width: ${size.mobileL}) {
     padding: 0.7em 0.1em 0.7em !important;
   }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.75em 0.1em 0.7em !important;
+  }
   @media (min-width: ${size.laptop}) {
     padding: 1.5em 1.5em 1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.2em 1.5em !important;
+    padding: 1.55em 2.25em 1.55em !important;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.7em 2.45em 1.7em !important;
   }
   > img {
     max-width:100%;
@@ -35,11 +44,14 @@ export const HeaderLink = styled(AniLink)`
   text-decoration: none;
   margin-bottom:0;
   display: grid;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
   grid-template-columns:1fr 1fr;
   grid-column-gap: 4em;
   ${changeGridToOneRow};
   img {
     margin-bottom: 0.0rem;
+    filter: blur(0px);
   }
   @media (max-width: ${size.mobileM}) {
   grid-column-gap: 0.0em;
@@ -49,17 +61,20 @@ export const HeaderLink = styled(AniLink)`
   grid-column-gap: 0.5em;
   grid-template-columns:1fr 1fr;
   }
+  @media (min-width: ${size.tablet}) {
+  grid-column-gap: 0em;
+  }
   @media (min-width: ${size.laptop}) {
   grid-column-gap: 2.25em;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-column-gap: 4.1em;
+  grid-column-gap: 4.2em;
   }
 
 `
 
 export const HeaderImage = styled.img`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
   margin: 0 0.7em !important;
   width: calc(100% - 1.4em) !important;
   }

@@ -16,11 +16,11 @@ class MonthCards extends React.Component {
         return day >= this.props.startDate.day
       })
 
-      if(this.props.experience === this.props.active_experience) {
-        this.days =  this.days.filter((day) => {
-          return day >= new Date().getDate()
-        })
-      }
+      // if(this.props.experience === this.props.active_experience) {
+      //   this.days =  this.days.filter((day) => {
+      //     return day >= new Date().getDate()
+      //   })
+      // }
     }
 
 

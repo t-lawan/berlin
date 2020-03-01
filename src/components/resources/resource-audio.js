@@ -15,7 +15,7 @@ import AudioResource from "../../partials/AudioResource";
 import striptags from "striptags";
 
 const ResourceTitle = styled.h1`
-  line-height: 1.2;
+  line-height: 1.4;
   @media (max-width: ${size.tablet}) {
     font-size: 1.2em;
     margin: 0.3em 0 1.0em;
@@ -32,7 +32,11 @@ const ResourceTitle = styled.h1`
   }
 `
 const Author = styled.p`
-  margin-bottom:0;
+  margin-bottom: 0;
+`
+const Year = styled.p`
+  margin-bottom: 0;
+  margin-top: 1em;
 `
 
 const ResourceAudio = props => {
@@ -51,9 +55,13 @@ const ResourceAudio = props => {
                 __html: striptags(r.title, ['em']),
               }}
             />
-          
-          {r[language].label ? <Author> {r[language].label} </Author> : ""} 
           {r.author ? <Author> {r.author} </Author> : ""} 
+          
+          <Year> {r[language].year}</Year>
+          <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
+            {" "}
+            {r.external_url_label}
+          </ResourcePublisherLink>
         </div>
         <div>
           <div

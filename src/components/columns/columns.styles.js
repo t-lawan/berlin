@@ -23,6 +23,17 @@ export const ExperienceCarousel = styled(Carousel)`
   width: inherit;
   overflow-y: auto;
   overflow-x: hidden;
+  height: 100vh;
+
+  .carousel .slider-wrapper {
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+  }
+
+  .carousel.carousel-slider {
+    overflow: hidden !important;
+  }
 `
 
 export const ExperienceContainer = styled.div`
@@ -33,8 +44,8 @@ export const ExperienceContainer = styled.div`
   grid-template-columns: 66.66% 33.33%;
   grid-template-rows: auto;
   overflow-y: hidden;
-  width: inherit;
-  background: white;
+  width: 100%;
+  /*background: white;*/
   position: relative;
   grid-template-areas: "column column" "column column" "footer footer";
   @media (max-width: ${size.mobileM}) {
@@ -46,7 +57,7 @@ export const ExperienceContainer = styled.div`
     height: calc(100vh - 90px);
   }
 
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-areas:"column" "column column" "footer" !important;
     margin:40px auto 0;
     height: calc(100vh - 40px);
@@ -86,22 +97,19 @@ export const AnimatedColumn = styled(Animated)`
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
-  @media (max-width: ${size.tablet}) {
-    /* width: 100%; */
+  @media (min-width: ${size.mobileM}) {
     width: 100vw;
   }
-
-  @media (max-width: ${size.mobileM}) {
-    /* width: 100%; */
+  @media (min-width: ${size.tablet}) {
     width: 100vw;
   }
-
   display: grid;
   @media (min-width: ${size.laptop}) {
   grid-template-columns: 6% 88% 6%;
+  width: 100%;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-template-columns: 5% 90% 5%;
+  grid-template-columns: 5.05% 89.9% 5.05%;
   }
   ${changeGridToOneRow}
 `
@@ -133,7 +141,7 @@ export const FirstColumnWrapper = styled.div`
     border-top: solid 0px #000;
   }
   @media (min-width: ${size.tablet}) {
-    border-top: solid 1px #000;
+    border-top: solid 0px #000;
   }
   @media (min-width: ${size.laptop}) {
     border-top: none;
@@ -143,6 +151,7 @@ export const FirstColumnWrapper = styled.div`
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
+  background: white;
   position: relative;
   grid-area: "column";
   @media (max-width: ${size.tablet}) {
@@ -150,6 +159,7 @@ export const StickyTopHeader = styled.div`
   }
   :first-child {
     border-right: solid 1px #000;
+    z-index: 301;
   }
   @media (max-width: ${size.mobileM}) {
     :first-child {
@@ -306,7 +316,7 @@ export const FixedNavbar = styled.div`
   position: sticky;
   position: -webkit-sticky;
   grid-area: footer;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-area: unset;
     position: fixed;
     bottom:auto;
@@ -337,7 +347,7 @@ export const FixedTicker = styled.div`
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
   }
-  @media (min-width: ${size.laptop}) {
+  @media (min-width: ${size.tablet}) {
     bottom: 60px;
   }
   @media (min-width: ${size.laptopM}) {

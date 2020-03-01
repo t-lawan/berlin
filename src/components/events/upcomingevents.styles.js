@@ -25,10 +25,10 @@ export const EventItem = styled.div`
     padding: ${props => props.isActive ? `1em 0.7em` : ''};
     }
     @media (min-width: ${size.laptop}) {
-      padding: ${props => props.isActive ? `1em 0.9em` : ''};
+      padding: ${props => props.isActive ? `1.1em 1em` : ''};
     }
     @media (min-width: ${size.laptopM}) {
-      padding: ${props => props.isActive ? `1em 1.9em` : ''};
+      padding: ${props => props.isActive ? `1.3em 2em` : ''};
     }
   };
   
@@ -66,17 +66,17 @@ export const EventItem = styled.div`
     }
   }
   @media (min-width: ${size.laptop}) {
-    padding: 1em 1.2em;
+    padding: 1.2em 1.3em;
     p{
     font-size: 0.9em;
     line-height: 1.3;
     }
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1em 2.2em;
+    padding: 1.3em 2.3em;
     p{
     font-size: 1em;
-    line-height: 1.3;
+    line-height: 1.35;
     }
   }
 `
