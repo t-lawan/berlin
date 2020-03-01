@@ -56,7 +56,6 @@ body {
   overflow: hidden !important;
   height: 100%;
   line-height: 1;
-  font-weight: 300 !important;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
   font-size: 100%;
@@ -74,11 +73,13 @@ body {
 font-family: 'ag-book-pro', sans-serif;
 font-weight: 300 !important;
 font-style: italic !important;
+backface-visibility: hidden;
 }
   h1 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -95,6 +96,7 @@ font-style: italic !important;
 h2 {
   margin-left: 0;
   margin-right: 0;
+  backface-visibility: hidden;
   font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
@@ -112,6 +114,7 @@ h2 {
 h3 {
   margin-left: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
@@ -130,6 +133,7 @@ h4 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -148,6 +152,7 @@ h5 {
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
+  backface-visibility: hidden;
   font-weight:normal;
   padding-left: 0;
   padding-right: 0;
@@ -164,6 +169,7 @@ h6 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -189,6 +195,7 @@ img {
 }
 a, span {
   margin:0;
+  backface-visibility: hidden;
   letter-spacing: 0.008rem;
   margin-bottom: 0rem;
   padding: 0;
@@ -207,6 +214,7 @@ a, span {
     background: #ededed;
 }
 p {
+  backface-visibility: hidden;
   margin-left: 0;
   letter-spacing: 0.008rem;
   margin-right: 0;
