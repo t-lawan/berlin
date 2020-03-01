@@ -35,6 +35,10 @@ const RelatedNavigatorWrapper = styled.div`
       display:table;
     }
   }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.2em 0 0 0em;
+    margin-bottom: 0.5em;
+  }
   @media (min-width: ${size.laptop}) {
     margin-top:-2em;
     padding-left: 0;

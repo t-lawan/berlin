@@ -52,6 +52,10 @@ const Dthide = styled.div`
   @media (min-width: ${size.laptop}) {
     display: none;
   }
+  line-height: 1.5;
+  > a > span {
+    font-size: 0.95em;
+  }
   border-bottom: 1px solid black;
   margin-bottom: 1rem;
 `
