@@ -26,7 +26,7 @@ export const TwoColumnPageWrapper = styled.div`
     padding: 2.5em 1em 2em;
     } 
   @media (min-width: ${size.laptopM}) {
-    grid-template-columns: 2.9fr 7.2fr;
+    grid-template-columns: 3fr 7.2fr;
     padding: 3em 1.1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
@@ -50,7 +50,12 @@ export const PageWrapper = styled.div`
     padding-bottom:115px;
   }
   > ${TwoColumnPageWrapper} {
+    @media (min-width: ${size.tablet}) {
+      padding: 1.0em 0 0 0;
+    }
+    @media (min-width: ${size.laptop}) {
     padding: 1.5em 0 0 0;
+    }
   }
   > div > p > a {
     transition: all 0.2s ease-in-out;
@@ -90,9 +95,14 @@ export const PageWrapper = styled.div`
 export const PageWrapperRes = styled.div`
   padding: 2.0em 1em 2em;
   background: ${props => props.colour !== 0 ? props.colour : 'inherit'};
-  @media (max-width: ${size.tabletL}) {
-    /* padding: 0em; */
+  @media (max-width: ${size.mobileL}) {
     padding: 0.5em;
+  }
+  @media (min-width: ${size.tablet}) {
+    padding: 0.5em 0.7em;
+  }
+  @media (min-width: ${size.laptop}) {
+    padding: 2.0em 1em 2em;
   }
   @media (max-width: ${size.mobileM}) {
     > div {
@@ -231,7 +241,7 @@ export const PressWrapper = styled.div`
 `
 
 export const ResourceImageWrapper = styled.div`
-  padding: 1em;
+  padding: 0em;
 `
 
 export const PressFormInput = styled.input`

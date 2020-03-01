@@ -55,6 +55,9 @@ const EventTextBlock = styled(TextBlock)`
     @media (min-width: ${size.laptop}) {
     font-size: 1em;
     }
+    @media (min-width: ${size.laptopM}) {
+      font-size:1.1em;
+    }
     @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
     }
@@ -250,7 +253,7 @@ const Event = props => {
               __html: striptags(event[language].event_title, ["em"]),
             }}
           />
-          {event[language].subtitle ? (
+          {event[language].event_subtitle ? (
               <EventSubTitleMob
                 dangerouslySetInnerHTML={{
                   __html: striptags(event[language].event_subtitle, ["em"]),
@@ -336,7 +339,8 @@ const Event = props => {
                 __html: striptags(event[language].event_title, ["em"]),
               }}
             />
-            {event[language].subtitle ? (
+            
+            {event[language].event_subtitle ? (
               <EventSubTitle
                 dangerouslySetInnerHTML={{
                   __html: striptags(event[language].event_subtitle, ["em"]),

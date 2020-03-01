@@ -9,6 +9,7 @@ import {
 
 export const JumbotronWrapper = styled.div`
   background: white;
+  backface-visibility: hidden; 
   padding: 1.4em 1.95rem 0.7em;
   margin: 0em;
   ${showDisplayForTablet};
@@ -23,6 +24,7 @@ export const JumbotronWrapper = styled.div`
   border-top: 0;
   img {
     margin-bottom: 0;
+    filter: blur(0px);
   }
   @media (max-width: ${size.mobileM}) {
     display: none;
@@ -31,6 +33,12 @@ export const JumbotronWrapper = styled.div`
     padding: 1.5em 1.5em 1.05em;
   }
   @media (min-width: ${size.laptopM}) {
+    padding: 1.55em 2.25em 1.6em;
+    > a > img {
+      margin-bottom: -0.5em;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.4em 1.5em;
     > a > img {
       margin-bottom: -0.5em;
@@ -63,6 +71,7 @@ export const JumbotronWrapperMob = styled.div`
   
   img {
     margin-bottom:0;
+    filter: blur(0px);
     position:relative;
     z-index:2;
     padding:0.7em 0.7em;

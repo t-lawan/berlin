@@ -28,15 +28,15 @@ const ExperiencePageWrapper = styled.div`
     top:40px;
   }
   @media (min-width: ${size.laptop}) {
-    left: 5.7%;
+    left: calc(6% + 1px);
     top:0;
-    width: calc(100% - 11.4%);
+    width: calc(100% - 12% - 2px);
     height: 100vh;
   }
   @media (min-width: ${size.laptopM}) {
-    left: 5%;
+    left: calc(5% + 1px);
     top:0;
-    width: calc(100% - 10%);
+    width: calc(100% - 10% - 2px);
     height: 100vh;
   }
 `

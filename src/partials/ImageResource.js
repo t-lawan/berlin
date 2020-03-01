@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import styled from "styled-components"
+import { size } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
 
@@ -22,10 +23,20 @@ export const Image = styled(Img)`
 `
 
 export const Caption = styled.section`
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   p {
     font-size: 0.65rem;
     margin: 0.7em 0;
+    @media (min-width: ${size.laptopL}) {
+    font-size: 0.72rem;
+    margin: 0.9em 0;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    margin-bottom: 2em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    margin-bottom: 3em;
   }
 `
 
@@ -66,11 +77,7 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Image
-          fadeIn={true}
-          onLoad={this.props.onLoad}
-          fluid={this.state.image ? this.state.image.fluid : null}
-        />
+        
         <Caption
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
