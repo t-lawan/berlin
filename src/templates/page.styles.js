@@ -26,7 +26,7 @@ export const TwoColumnPageWrapper = styled.div`
     padding: 2.5em 1em 2em;
     } 
   @media (min-width: ${size.laptopM}) {
-    grid-template-columns: 2.9fr 7.2fr;
+    grid-template-columns: 3fr 7.2fr;
     padding: 3em 1.1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
