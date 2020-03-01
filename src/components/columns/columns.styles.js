@@ -21,14 +21,14 @@ import { Carousel } from 'react-responsive-carousel';
 export const ExperienceCarousel = styled(Carousel)`
   text-align: left !important;
   width: inherit;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
 
   .carousel .slider-wrapper {
     overflow: hidden !important;
-    /* overflow-y: auto !important;
-    overflow-x: hidden !important; */
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
   }
 
   .carousel.carousel-slider {
