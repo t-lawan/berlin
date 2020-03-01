@@ -197,6 +197,7 @@ img {
 a, span {
   margin:0;
   backface-visibility: hidden;
+  transform: translate3d (0, 0, 0);
   letter-spacing: 0.008rem;
   margin-bottom: 0rem;
   padding: 0;
@@ -216,7 +217,8 @@ a, span {
 }
 p {
   backface-visibility: hidden;
-  max-width: 750px;
+  transform: translate3d (0, 0, 0);
+  max-width: 730px;
   margin-left: 0;
   letter-spacing: 0.008rem;
   margin-right: 0;
