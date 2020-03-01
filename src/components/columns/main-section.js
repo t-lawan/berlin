@@ -62,7 +62,7 @@ class MainSection extends React.Component {
         (columnTwo.scrollTop + columnTwo.clientHeight) / columnTwo.scrollHeight
 
       if (
-        columnOnePercent > 0.95 ||
+        (columnOnePercent > 0.95 && columnOne.scrollTopMax !== 0) ||
         (columnTwoPercent > 0.99 && columnTwo.scrollTopMax !== 0)
       ) {
         footer.classList.remove("hide-footer")

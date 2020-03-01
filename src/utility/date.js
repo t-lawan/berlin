@@ -29,11 +29,7 @@ export class DateManager {
   }
 
   static getMonthText = (monthNum, lang) => {
-    // console.log('MONTH LOG', monthNum)
-    // console.log('YEAR LOG', year)
     return moment().locale(lang).month(monthNum - 1).format('MMMM')
-    // const calendar = this.getCalendar();
-    // return calendar[year][monthNum].text;
   }
 
   static createDateClass = (day, month, year) => {

@@ -33,7 +33,7 @@ export const ExperienceCarousel = styled(Carousel)`
 
   .carousel.carousel-slider {
     overflow: hidden !important;
-
+  }
 `
 
 export const ExperienceContainer = styled.div`
