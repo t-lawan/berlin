@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { size } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 
 export const EventNavigatorWrapper = styled.section`
   display: flex;
