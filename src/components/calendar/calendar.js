@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import MonthCards from "./monthcards"
 import { CalendarWrapper } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
+import scrollIntoView from "scroll-into-view-if-needed"
 
 let events = []
 let exhibitions = []
@@ -13,7 +14,6 @@ class Calendar extends React.Component {
   currentDate
   startDate
   endDate
-  hasScrolled = false;
 
   constructor(props) {
     super(props)
@@ -79,21 +79,31 @@ class Calendar extends React.Component {
   getElement = () => {
     this.currentDate = DateManager.currentDate()
     const element = document.getElementById(`date-${this.currentDate}`)
-    if (element && !this.hasScrolled) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+    if (element) {
+      scrollIntoView(element, {
+        scrollMode: "if-needed",
+        block: "nearest",
         inline: "nearest",
+        behavior: 'smooth'
       })
-      this.hasScrolled = true;
-      console.log('CALLED')
+      // element.scrollIntoView({
+      //   behavior: "smooth",
+      //   block: "nearest",
+      //   inline: "start",
+      // })
     }
   }
 
   componentDidMount() {
     setTimeout(() => {
       this.getElement()
-    }, 500)
+    }, 200)
+  }
+
+  componentDidUpdate() {
+    setTimeout(() => {
+      this.getElement()
+    }, 200)
   }
 
   render() {

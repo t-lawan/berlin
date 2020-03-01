@@ -11,11 +11,11 @@ const CalendarTemplate = props => {
   const language = getCurrentLanguageString(props.languages)
   let title = props.pageContext.language === "en" ? "Calendar" : "Kalender"
   const renderComponent = (
-    <div>
+    <>
       <SEO title={title} description={title} />
       <PageTitleCalendar> {content[language].title} </PageTitleCalendar>
       <Calendar />
-    </div>
+    </>
   )
   let thirdColumn = (
     <>
