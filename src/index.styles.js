@@ -187,6 +187,7 @@ img {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
+  backface-visibility: hidden;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -215,6 +216,7 @@ a, span {
 }
 p {
   backface-visibility: hidden;
+  max-width: 750px;
   margin-left: 0;
   letter-spacing: 0.008rem;
   margin-right: 0;
@@ -283,13 +285,24 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 }
 .carousel .slide {
   display: block;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 .show-footer {
   @media (min-width: ${size.tablet}) {
     bottom: 0 !important;
   }
 }
-
+ul.slider {
+  backface-visibility: hidden;
+  will-change: transform;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.carousel .slider-wrapper {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  }
 .fade-in {
   -webkit-animation: fadeIn 2s linear forwards;
     animation: fadeIn 2s linear forwards;
