@@ -32,8 +32,8 @@ import ResourcesList from "../resources/resources-list"
 import ExhibitionPage from "../exhibition/exhibition-page"
 import { transitionTimes } from "../../utility/helper"
 import { connect } from "react-redux"
-import TransitionPage from "../transition/transition-page";
-import * as actionTypes from '../../store/action';
+import TransitionPage from "../transition/transition-page"
+import * as actionTypes from "../../store/action"
 
 class MainSection extends React.Component {
   renderedComponents
@@ -75,9 +75,9 @@ class MainSection extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.firstColumn !==  this.props.firstColumn) {
+    if (prevProps.firstColumn !== this.props.firstColumn) {
       setTimeout(() => {
-        this.props.stopTransition();
+        this.props.stopTransition()
       }, 200)
     }
   }
@@ -109,7 +109,7 @@ class MainSection extends React.Component {
     let image = getDocument(this.props.documents, exhibition.animation)
 
     return (
-      <ExperienceContainer onScroll={(x) => this.scroll(x)}>
+      <ExperienceContainer onScroll={x => this.scroll(x)}>
         {exhibition.temporary_uploaded ? <ExhibitionPage /> : null}
 
         <StickyTopHeader
@@ -129,36 +129,36 @@ class MainSection extends React.Component {
         {/* Second Column */}
         <Column ref={this.columnOneRef} rightBorder={true}>
           <ScrollNavContainer>
-          <MobTitleCard showInMobile={this.props.isHome}>
-            <JumbotronMob showInMobile={true} />
-          </MobTitleCard>
-          <MobAnimCard showInMobile={this.props.isHome}>
-            <img className="bg_anim" src={image.url} />
-          </MobAnimCard>
-          <RelativeHeader>
-            <ImageContainer
-              isHome={this.props.isHome}
-              hideOnHomePage={!this.props.isHome}
-              hideInMobile={true}
-            />
-          </RelativeHeader>
-          <StickyHeader hideInTablet={true}>
-            <Navbar hideInTablet={true} />
-          </StickyHeader>
+            <MobTitleCard showInMobile={this.props.isHome}>
+              <JumbotronMob showInMobile={true} />
+            </MobTitleCard>
+            <MobAnimCard showInMobile={this.props.isHome}>
+              <img className="bg_anim" src={image.url} />
+            </MobAnimCard>
+            <RelativeHeader>
+              <ImageContainer
+                isHome={this.props.isHome}
+                hideOnHomePage={!this.props.isHome}
+                hideInMobile={true}
+              />
+            </RelativeHeader>
+            <StickyHeader hideInTablet={true}>
+              <Navbar hideInTablet={true} />
+            </StickyHeader>
 
-          {this.renderedComponents}
-          <ResourcesOnlyInMobile hide={!this.props.isHome}>
-            <ResourcesList />
-          </ResourcesOnlyInMobile>
-          {/* Only In Mobile */}
-          <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
-            <DataPrivacy show={!this.props.agreed_to_terms} />
-          </StickyFooter>
-          {/* Only In Mobile */}
-          <FixedFooter showInTablet>
-            <FooterComponent />
-          </FixedFooter>
-          {/* Only In Mobile */}
+            {this.renderedComponents}
+            <ResourcesOnlyInMobile hide={!this.props.isHome}>
+              <ResourcesList />
+            </ResourcesOnlyInMobile>
+            {/* Only In Mobile */}
+            <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
+              <DataPrivacy show={!this.props.agreed_to_terms} />
+            </StickyFooter>
+            {/* Only In Mobile */}
+            <FixedFooter showInTablet>
+              <FooterComponent />
+            </FixedFooter>
+            {/* Only In Mobile */}
           </ScrollNavContainer>
         </Column>
         {/* Third Column */}
@@ -200,7 +200,7 @@ MainSection.propTypes = {
 const mapDispatchToProps = dispatch => {
   return {
     stopTransition: experience =>
-      dispatch({ type: actionTypes.STOP_TRANSITION}),
+      dispatch({ type: actionTypes.STOP_TRANSITION }),
   }
 }
 
@@ -213,7 +213,4 @@ const mapStateToProps = state => {
     documents: state.documents,
   }
 }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MainSection)
+export default connect(mapStateToProps, mapDispatchToProps)(MainSection)
