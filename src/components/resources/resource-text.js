@@ -32,7 +32,7 @@ const ResourceTextDiv = styled.div`
 
 const ResourceTitle = styled.h1`
   line-height: 1.2;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.2em;
     margin: 0.3em 0 1em;
   }
@@ -51,6 +51,10 @@ const Mobhide = styled.div`
 const Dthide = styled.div`
   @media (min-width: ${size.laptop}) {
     display: none;
+  }
+  line-height: 1.5;
+  > a > span {
+    font-size: 0.95em;
   }
   border-bottom: 1px solid black;
   margin-bottom: 1rem;

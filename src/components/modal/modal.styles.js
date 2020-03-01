@@ -66,9 +66,18 @@ export const FormButton = styled.button`
   margin-top: 1em;
   padding: 0.5em 2.5em;
   /* margin-left: 0.25em; */
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+  }
 `
 
 export const FormLabel = styled.label`
   display: block;
   margin-top: 1em;
+  > p {
+    margin-bottom: 0.3em;
+  }
 `

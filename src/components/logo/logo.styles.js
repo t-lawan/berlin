@@ -3,13 +3,12 @@ import { size } from "../../index.styles"
 
 export const LogoWrapper = styled.div`
   display: block;
-  margin: auto;
   position: sticky;
   top: 0;
   padding-bottom: 105.4%;
   max-height:0;
   z-index: 0;
-  @media (min-width: ${size.laptop}) {
+  @media (min-width: ${size.tablet}) {
     z-index: -1;
   }
   background: white;

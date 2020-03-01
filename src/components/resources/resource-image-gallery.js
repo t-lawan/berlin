@@ -17,7 +17,7 @@ import styled from 'styled-components';
 import striptags from 'striptags';
 
 const ResourceTitle = styled.h1`
-  line-height: 1.2;
+ line-height: 1.4;
   @media (max-width: ${size.tablet}) {
     font-size: 1.2em;
     margin: 0.3em 0 1.0em;

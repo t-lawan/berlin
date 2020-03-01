@@ -13,6 +13,17 @@ const AudioResourceWrapper = styled.section`
   /* display: flex;
   flex-direction: row; */
   padding: 1em 0;
+  @media (min-width: ${size.laptopM}) {
+    padding: 0.7em 0 0.3em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding: 0.6em 0 0.2em;
+  }
+  > span {
+    @media (min-width: ${size.laptopM}) {
+    font-size: 1.2em;
+    }
+  }
 `
 
 const PlayIcon = styled.div`
@@ -154,10 +165,8 @@ const TimeProgressBar = styled.progress`
     /* height: 5px; */
   }
   &[value]::-webkit-progress-bar {
-    background-color: #CCC;
+    background-color: rgba(0, 0, 0, 0.2);
     border: 0;
-    /* border-radius: 2px; */
-    /* border: 1px solid lighten(#acacac, 20%); */
     color: black;
   }
 
