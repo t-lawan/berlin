@@ -39,6 +39,10 @@ export const EventNavigatorButton = styled(AniLink)`
   line-height:1;
   padding: 0.5em 0 0 1em;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+  }
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;

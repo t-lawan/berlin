@@ -53,6 +53,10 @@ const RelatedNavigatorButton = styled(AniLink)`
   font-size: 1.0em;
   padding: 0.0em 1em 0 0em;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+  }
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;

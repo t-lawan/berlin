@@ -6,7 +6,7 @@ import {
   createPath,
   transitionBackground,
 } from "../../utility/helper"
-import { size } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import * as actionTypes from "../../store/action"
@@ -33,6 +33,10 @@ const DocumentationNavigatorWrapper = styled.div`
     margin: -2em 0 0 0;
     padding: 0;
   }
+  @media (min-width: ${size.laptopM}) {
+    margin: -2.5em 0 0 0;
+    padding: 0;
+  }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
@@ -40,6 +44,10 @@ const DocumentationNavigatorButton = styled(AniLink)`
   line-height: 1;
   padding: 0.5em 0 0 1em;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+  }
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;
