@@ -75,7 +75,7 @@ export const NavItem = styled(AniLink)`
     padding-left:1em;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.15em 0.6em 0.50em;
+    padding: 1.3em 0.6em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.25em 0.7em 0.6em;
@@ -94,7 +94,7 @@ export const NavLink = styled.a`
     color: ${Color.red};
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.15em 0.6em 0.50em;
+    padding: 1.3em 0.6em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.25em 0.6em 0.6em;
