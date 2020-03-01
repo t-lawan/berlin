@@ -7,7 +7,7 @@ export const AboutSideNavbar = styled.nav`
   display: flex;
   flex-direction: column;
   line-height: 1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display:none;
   }
   @media (max-width: ${size.mobileM}) {
@@ -25,7 +25,7 @@ export const AboutNavItem = styled.p`
       cursor: pointer;
       color: ${Color.red};
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
   padding: 0.5em 0.5em;
   }
   @media (max-width: ${size.mobileL}) {
@@ -43,9 +43,12 @@ export const AboutNavItemLink = styled(AniLink)`
 export const AboutPageContent = styled.div`
     p {
         margin-bottom: 1em;
-        line-height:1.4;
+        line-height: 1.4;
         :first-child {
-          margin-top:0em;
+          margin-top: 0em;
+        }
+        @media (max-width: ${size.laptopL}) {
+          line-height: 1.45;
         }
       }
     p > a {

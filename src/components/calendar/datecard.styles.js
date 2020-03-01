@@ -104,7 +104,7 @@ export const DateText = styled.strong`
   line-height: 1;
   padding-right: 0.3em;
   @media (max-width: ${size.mobileM}) {
-    width:60%;
+    width:50%;
     padding-right: 0.2em;
   }
   @media (max-width: ${size.tablet}) {

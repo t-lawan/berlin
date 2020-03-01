@@ -10,6 +10,7 @@ export const size = {
   mobileM: "420px",
   mobileL: "500px",
   tablet: "768px",
+  tabletL: "1023px",
   laptop: "1024px",
   laptopM: "1124px",
   laptopL: "1400px",
@@ -54,11 +55,13 @@ body {
   position: relative;
   overflow: hidden !important;
   height: 100%;
+  line-height: 1;
   margin: 0 auto;
   font-family: 'ag-book-pro', sans-serif;
-  font-style: normal;
   font-size: 100%;
   font-variant-numeric: tabular-nums;
+  -moz-font-feature-settings: "tnum";
+  -webkit-font-feature-settings: "tnum";
   font-feature-settings: "tnum";
   }
   a {
@@ -66,10 +69,17 @@ body {
     color: black;
     transition: all 0.2s ease-in-out;
   }
+  em {
+font-family: 'ag-book-pro', sans-serif;
+font-weight: 300 !important;
+font-style: italic !important;
+backface-visibility: hidden;
+}
   h1 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -79,13 +89,14 @@ body {
   color: inherit;
   font-size: 1.8rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.6rem;
   }
 }
 h2 {
   margin-left: 0;
   margin-right: 0;
+  backface-visibility: hidden;
   font-weight:normal;
   margin-top: 0;
   padding-bottom: 0;
@@ -96,13 +107,14 @@ h2 {
   color: inherit;
   font-size: 1.62671rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.5rem;
   }
 }
 h3 {
   margin-left: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
@@ -113,7 +125,7 @@ h3 {
   color: inherit;
   font-size: 1.38316rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 1.2rem;
   }
 }
@@ -121,6 +133,7 @@ h4 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -130,7 +143,7 @@ h4 {
   color: inherit;
   font-size: 1rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.85rem;
   }
 }
@@ -139,6 +152,7 @@ h5 {
   margin-right: 0;
   margin-top: 0;
   padding-bottom: 0;
+  backface-visibility: hidden;
   font-weight:normal;
   padding-left: 0;
   padding-right: 0;
@@ -147,7 +161,7 @@ h5 {
   color: inherit;
   font-size: 0.85028rem;
   line-height: 1.1;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.7rem;
   }
 }
@@ -155,6 +169,7 @@ h6 {
   margin-left: 0;
   margin-right: 0;
   font-weight:normal;
+  backface-visibility: hidden;
   margin-top: 0;
   padding-bottom: 0;
   padding-left: 0;
@@ -163,7 +178,7 @@ h6 {
   margin-bottom: 1.45rem;
   color: inherit;
   font-size: 0.78405rem;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     font-size: 0.65rem;
   }
 }
@@ -172,6 +187,7 @@ img {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
+  backface-visibility: hidden;
   padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
@@ -180,6 +196,9 @@ img {
 }
 a, span {
   margin:0;
+  backface-visibility: hidden;
+  transform: translate3d (0, 0, 0);
+  letter-spacing: 0.008rem;
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
@@ -197,7 +216,11 @@ a, span {
     background: #ededed;
 }
 p {
+  backface-visibility: hidden;
+  transform: translate3d (0, 0, 0);
+  max-width: 730px;
   margin-left: 0;
+  letter-spacing: 0.008rem;
   margin-right: 0;
   font-weight:normal;
   line-height: 1.3;
@@ -238,7 +261,7 @@ p {
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
-    line-height:1.4;
+    line-height:1.45;
     > a {
       font-size:1.2em;
     }
@@ -264,13 +287,24 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 }
 .carousel .slide {
   display: block;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 .show-footer {
   @media (min-width: ${size.tablet}) {
     bottom: 0 !important;
   }
 }
-
+ul.slider {
+  backface-visibility: hidden;
+  will-change: transform;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.carousel .slider-wrapper {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  }
 .fade-in {
   -webkit-animation: fadeIn 2s linear forwards;
     animation: fadeIn 2s linear forwards;
@@ -347,7 +381,7 @@ ${'' /* .image-contain-enter {
 
 export const hideDisplayForTablet = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.hideInTablet ? "none" : "inherit")};
   }
 `
@@ -361,7 +395,7 @@ export const hideDisplayForMobile = css`
 
 export const showDisplayForTablet = css`
   display: ${props => (props.showInTablet ? "none" : "inherit")};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.showInTablet ? "inherit" : "none")};
   }
 `
@@ -375,13 +409,13 @@ export const showDisplayForMobile = css`
 
 export const showDisplayForTabletFunc = variable => css`
   display: ${props => (props.showInTablet ? "none" : `${variable}`)};
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     display: ${props => (props.showInTablet ? `${variable}` : "none")};
   }
 `
 
 export const changeGridToOneRow = css`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-columns: 1fr;
   }
 `
@@ -398,7 +432,7 @@ export const TickerAnim = keyframes`
 100% { background-position: -1200px 0; }
 `
 export const changeGridToThreeEqualRows = css`
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     grid-template-columns: repeat(3, 1fr);
   }
 `
@@ -414,7 +448,7 @@ export const changeNthChild = css`
       border-right: none;
     }
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     &:nth-child(3n) {
       border-right: none;
     }
@@ -432,7 +466,7 @@ export const mobile = props => {
 
 export const tablet = props => {
   return `
-    @media (max-width: ${size.tablet}) {
+    @media (max-width: ${size.tabletL}) {
       ${props};
     }
   `

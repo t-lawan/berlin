@@ -13,7 +13,7 @@ const ResourcesListWrapper = styled.div`
     background-color: #fff;
     border-top:1px solid #000;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     padding: 0.7em 0.7em;
   }
   @media (min-width: ${size.laptop}) {
@@ -190,6 +190,7 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -204,8 +205,9 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
+                {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
               </TextBox>
-              <ResourceLabel> {resource.label} </ResourceLabel>
+              <ResourceLabel> {resource[language].label} </ResourceLabel>
 
             </ResourceItem>
           </ResourceItemLink>
