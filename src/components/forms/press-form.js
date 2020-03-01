@@ -9,7 +9,7 @@ import { FormButton, FormLabel } from "../modal/modal.styles"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import validator from "validator"
 import { navigate } from 'gatsby';
-
+import axios from 'axios'
 class PressForm extends React.Component {
   language
 
@@ -31,28 +31,42 @@ class PressForm extends React.Component {
 
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    // this.sendPostRequest().then(() => {
-    //   this.setState({
-    //     hasSubmitted: true,
-    //   })
-    // })
+    this.sendPostRequest().then(() => {
+      this.setState({
+        hasSubmitted: true,
+      })
+    })
     navigate(createPath(this.language, '/press-images'))
   }
 
   sendPostRequest = async () => {
     const url =
-      "https://11.berlinbiennale.de/wp-json/contact-form-7/v1/444"
-    let data = {
-      recipient: {
-        email: this.state.email,
-        name: this.state.name,
-        media_affliation: this.state.media_affliation,
-      },
-    }
-    data = JSON.stringify(data)
-    await axios.post(url, data)
+      "https://11.berlinbiennale.de/wp-json/contact-form-7/v1/contact-forms/444/feedback"
+
+    let formData = new FormData();
+    formData.set('address-email', this.state.email);
+    formData.set('full-name', this.state.name);
+    formData.set('media-outlet', this.state.media_affliation);
+    formData.set('honeypot-179', "")
+    formData.set('_wpcf7', 444);
+    formData.set('_wpcf7_version', "5.1.4");
+    formData.set('_wpcf7_locale', "en_US");
+    formData.set('_wpcf7_unit_tag', "wpcf7-f444-o1");
+    formData.set('_wpcf7_container_post', "0");
+
+    axios({
+      method: 'post',
+      url: url,
+      data: formData,
+      headers: {'Content-Type': 'multipart/form-data' }
+    }).then((response) => {
+      console.log('Response', response)
+    }).catch((e) => {
+      console.log('Error', e)
+    })
+    // await axios.post(url, data)
   }
 
   clearState = () => {
@@ -74,7 +88,7 @@ class PressForm extends React.Component {
     switch (name) {
       case "name":
         errors.name =
-          !validator.isAlpha(value) || value.length < 3
+          value.length < 3
             ? formText[this.language].errors.name
             : ""
         break
@@ -85,7 +99,7 @@ class PressForm extends React.Component {
         break
       case "media_affliation":
         errors.media_affliation =
-          !validator.isAlphanumeric(value) || value.length < 3
+          value.length < 3
             ? formText[this.language].errors.media_affliation
             : ""
         break

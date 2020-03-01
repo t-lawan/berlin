@@ -25,7 +25,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "team",
-        slug: "de/uber/team"
+        slug: "uber/team"
       },
     },
     {
@@ -35,7 +35,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "verein",
-        slug: "de/uber/verein"
+        slug: "uber/verein"
       },
     },
     {
@@ -45,7 +45,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "beirat",
-        slug: "de/uber/beirat"
+        slug: "uber/beirat"
       },
     },
     {
@@ -55,7 +55,7 @@ const AboutNavbar = props => {
       },
       DE: {
         title: "unterstützung",
-        slug: "de/uber/unterstutzung"
+        slug: "uber/unterstutzung"
       },
     },
   ]
@@ -66,10 +66,11 @@ const AboutNavbar = props => {
     return `/${items[index][language].slug}` === props.currentPage
   }
 
+
   return (
     <AboutSideNavbar>
       {items.map((item, index) => (
-        <AboutNavItemLink to={createPath(language, item['EN'].slug)} key={index} onClick={() => props.startTransition()}>
+        <AboutNavItemLink to={createPath(language, item[language].slug)} key={index} onClick={() => props.startTransition()}>
         {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
             {item[language].title.toLowerCase()}

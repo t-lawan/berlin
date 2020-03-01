@@ -43,7 +43,7 @@ const AboutComponents = props => {
         <AboutAdvisoryBoard team_block={content.acf.team_block} />
       )
       break
-    case "/de/uber/advisory-board":
+    case "/de/uber/beirat":
       renderComponent = (
         <AboutAdvisoryBoard team_block={content.acf.team_block} />
       )
@@ -51,7 +51,7 @@ const AboutComponents = props => {
     case "/about/support":
       renderComponent = <AboutFunding funding={content.acf.funding} />
       break
-    case "/de/uber/support":
+    case "/de/uber/unterstutzung":
       renderComponent = <AboutFunding funding={content.acf.funding} />
       break
     case "/about/team":
@@ -65,7 +65,7 @@ const AboutComponents = props => {
         <AboutOrganisation team_block={content.acf.team_block} />
       )
       break
-    case "/de/uber/organization-2":
+    case "/de/uber/verein":
       renderComponent = (
         <AboutOrganisation team_block={content.acf.team_block} />
       )

@@ -497,6 +497,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
     { EN: "about", DE: "uber" },
+    { EN: "team", DE: "team" },
+    { EN: "organization-2", DE: "verein" },
+    { EN: "advisory-board", DE: "beirat" },
+    { EN: "support", DE: "unterstutzung" },
     { EN: "resource", DE: "resource" },
     { EN: "exhibition", DE: "austellung" },
     { EN: "venue", DE: "ort" },
@@ -507,6 +511,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "calendar", DE: "kalender" },
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
+    { EN: "practical-information", DE: "praktische-information" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -555,14 +560,19 @@ exports.createPages = async ({ graphql, actions }) => {
         let prePath = pageMap.find(pageType => {
           return pageType.EN === "about"
         })
+
+        let endPath = pageMap.find(pageType => {
+          return pageType.EN === slug;
+        })
         path =
           language === "en"
-            ? `/${prePath.EN}/${slug}`
-            : `/${language}/${prePath.DE}/${slug}`
+            ? `/${prePath.EN}/${endPath.EN}`
+            : `/${language}/${prePath.DE}/${endPath.DE}`
+
         edge.node.slug =
           language === "en"
-            ? `/${prePath.EN}/${slug}`
-            : `/${language}/${prePath.DE}/${slug}`
+            ? `/${prePath.EN}/${endPath.EN}`
+            : `/${language}/${prePath.DE}/${endPath.DE}`
       } else {
         if (edge.node.acf.template === "calendar") {
           path = language === "en" ? "/calendar" : "/de/kalender"

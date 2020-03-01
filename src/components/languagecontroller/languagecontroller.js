@@ -8,9 +8,18 @@ import {
 } from "./languagecontroller.styles"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 class LanguageController extends React.Component {
+  delay = 200;
   languageToFunctionWrapper = {
-    EN: () => this.props.setLanguageToEN(),
-    DE: () => this.props.setLanguageToDE(),
+    EN: () => {
+      setTimeout(() => {
+        this.props.setLanguageToEN()
+      }, this.delay)
+    },
+    DE: () => {
+      setTimeout(() => {
+        this.props.setLanguageToDE()
+      }, this.delay)
+    },
   }
   componentDidMount() {
     this.changeLanguageFromPath()
@@ -24,7 +33,8 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {this.languages.map(language => (
           <LanguageButton
-            fade
+            cover direction="down"
+            bg={transitionBackground}
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
