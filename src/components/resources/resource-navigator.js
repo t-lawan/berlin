@@ -43,6 +43,10 @@ const RelatedNavigatorWrapper = styled.div`
     margin-top:-2em;
     padding-left: 0;
   }
+  @media (min-width: ${size.laptopM}) {
+    margin-top:-1.5em;
+    padding-left: 0;
+  }
 `
 
 const RelatedNavigatorButton = styled(AniLink)`

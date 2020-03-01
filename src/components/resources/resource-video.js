@@ -1,5 +1,5 @@
 import React from "react"
-import { PageWrapperRes, TwoColumnPageWrapper } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink} from "../../templates/page.styles"
 import { Color, size } from "../../index.styles"
 import { getCurrentLanguageString } from "../../utility/helper";
 import ResourceNavigator from "./resource-navigator";
@@ -23,7 +23,7 @@ const VideoContainer = styled.div`
     }
 `
 const ResourceTitle = styled.h1`
-  line-height: 1.2;
+  line-height: 1.4;
   @media (max-width: ${size.tabletL}) {
     font-size: 1.2em;
     margin: 0.3em 0 1.0em;
@@ -41,6 +41,10 @@ const ResourceTitle = styled.h1`
 `
 const Author = styled.p`
   margin-bottom:0;
+`
+const Year = styled.p`
+  margin-bottom: 0;
+  margin-top: 1em;
 `
 const ResourceVideo = props => {
     let language = getCurrentLanguageString(props.languages);
@@ -61,8 +65,13 @@ const ResourceVideo = props => {
                     __html: striptags(r.title, ['em']),
                   }}
                 />
-                {r.label.length > 0 ? <Author> {r[language].label} </Author> : ""} 
+                
                 {r.author.length > 0 ? <Author> {r.author} </Author> : ""} 
+                <Year> {r[language].year}</Year>
+                <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
+                  {" "}
+                  {r.external_url_label}
+                </ResourcePublisherLink>
             </div>
 
             <div>
