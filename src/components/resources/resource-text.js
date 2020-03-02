@@ -71,9 +71,9 @@ const Author = styled.p`
 const ArrowDown = styled.span`
 background-image: url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg);
     background-repeat: no-repeat;
-    background-position: 0px 6px;
+    background-position: -3px 6px;
     background-size: 18px 13px;
-    padding-left: 21px;
+    padding-left: 17px;
 `
 
 

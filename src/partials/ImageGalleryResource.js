@@ -55,6 +55,10 @@ export const AnimatedSpace = styled(Animated)`
 `
 
 export const AnimatedCarousel = styled(Carousel)`
+  z-index: 100;
+  > ${Caption} {
+    margin-bottom: 0.7em;
+  }
   .carousel .slide {
     background: transparent;
     list-style-type: none;
@@ -144,7 +148,7 @@ class ImageGalleryResource extends React.Component {
                 <ImageResource
                   onLoad={() => this.setVisibleToTrue()}
                   id={id}
-                  withCaption={false}
+                  withCaption={true}
                 />
               </div>
             ))}
