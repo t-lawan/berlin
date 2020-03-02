@@ -88,7 +88,13 @@ const ResourceText = styled.p`
 
 const RelatedResources = props => {
   const language = getCurrentLanguageString(props.languages)
-  let resources = getItems(props.resources, props.ids)
+  let resources = [];
+  props.ids.forEach((id) => {
+    let r = props.resources.find((res) => {
+      return res.id == id;
+    })
+    resources.push(r);
+  })
 
   // Get genres from resources
   let genres = [];
@@ -100,6 +106,8 @@ const RelatedResources = props => {
     })
   })
 
+
+
   if(genres.length > 0) {
 
   // Get all resources belonging to genres
@@ -110,6 +118,7 @@ const RelatedResources = props => {
     })
     resourceGenres.push(...rs);
   });
+
 
   // Filter duplicates
   resourceGenres = resourceGenres.filter((r, i) => resourceGenres.map((rm) => rm.id).indexOf(r.id) === i );
