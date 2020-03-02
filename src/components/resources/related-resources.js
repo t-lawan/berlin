@@ -8,6 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import striptags from "striptags"
 import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import { get } from "http";
+import { startTransition } from "../../store/action";
 
 export const RelatedResourcesWrapper = styled.div`
   display: flex;
@@ -134,6 +135,7 @@ const RelatedResources = props => {
       {resources.map((resource, index) => (
         <ResourceLink
           key={index}
+          onClick={() => props.startTransition()}
           to={createPath(language, `resource/${resource.slug}`)}
           fade
           // cover direction="down"
@@ -161,7 +163,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch(startTransition()),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(RelatedResources)

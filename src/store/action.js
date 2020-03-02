@@ -31,3 +31,9 @@ export const HIDE_EVENTS_DISPLAY_IN_MOBILE = "TOGGLE_EVENTS_DISPLAY_IN_MOBILE";
 
 export const START_TRANSITION = "START_TRANSITION"
 export const STOP_TRANSITION = "STOP_TRANSITION"
+
+export const startTransition = () => {
+    return {
+        type: START_TRANSITION
+    }
+}
