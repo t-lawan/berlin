@@ -3,19 +3,19 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
-import TransitionLogo from '../../images/transition.gif';
+import TransitionLogo from '../../images/bb1_loader_white.gif';
 let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
   z-index: 4500;
-  width: 100%;
+  width: calc(66.66% - 1px);
   height: 100%;
   background: white;
-  position: absolute;
+  position: fixed;
   text-align: center;
   padding: 5rem;
   display: ${props => (props.show ? "block" : "none")};
-  transition: opacity 500ms ease-out;
+  transition: opacity 500ms ease-in-out;
   &.${transitionName}-enter {
     opacity: 0 !important;
   }
@@ -36,15 +36,14 @@ const TransitionPageWrapper = styled.div`
 const TransitionImageContainer = styled.div`
   position: fixed;
   top: 50%;
-  left: 50%;
+ left: 50%; 
   z-index: inherit;
 `
 
 const TransitionImage = styled.img`
   /* bring your own prefixes */
   /* transform: translate(-50%, -50%); */
-  width: 120px !important;
-
+  width: 150px !important;
   z-index: inherit;
 `
 
