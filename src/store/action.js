@@ -31,3 +31,17 @@ export const HIDE_EVENTS_DISPLAY_IN_MOBILE = "TOGGLE_EVENTS_DISPLAY_IN_MOBILE";
 
 export const START_TRANSITION = "START_TRANSITION"
 export const STOP_TRANSITION = "STOP_TRANSITION"
+
+export const SET_FRESH_TO_LOAD_TO_FALSE = "SET_FRESH_TO_LOAD_TO_FALSE"
+
+export const setFreshLoadToFalse = () => {
+    return {
+        type: SET_FRESH_TO_LOAD_TO_FALSE
+    }
+}
+
+export const startTransition = () => {
+    return {
+        type: START_TRANSITION
+    }
+}
