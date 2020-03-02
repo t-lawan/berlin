@@ -47,7 +47,7 @@ export const PageWrapper = styled.div`
     background:#FFF;
   }
   @media (min-width: ${size.laptop}) {
-    padding-bottom:115px;
+    padding-bottom:115px !important;
   }
   > ${TwoColumnPageWrapper} {
     @media (min-width: ${size.tablet}) {
