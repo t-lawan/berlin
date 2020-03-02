@@ -70,14 +70,14 @@ export const JumbotronWrapperMob = styled.div`
   display:block;
   
   img {
-    margin-bottom:0;
+    margin-bottom: 0.3em;
     filter: blur(0px);
-    position:relative;
-    z-index:2;
-    padding:0.7em 0.7em;
+    position: relative;
+    z-index: 2;
+    padding: 0.7em 0.7em 0;
     :nth-child(2){
-      padding-top:0em;
-      margin-top:-0.7em;
+      padding-top: 0em;
+      margin-top: 0em;
     }
   }
   img.bg_anim {
