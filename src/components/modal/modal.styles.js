@@ -61,11 +61,21 @@ export const FormButton = styled.button`
   color: white;
   display: block;
   border-radius: 0;
+  :hover {
+    cursor: pointer;
+  }
+  :focus {
+    outline: none;
+  }
   background: black;
   border: 1px solid black;
   margin-top: 1em;
   padding: 0.5em 2.5em;
   /* margin-left: 0.25em; */
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.1em;
+    margin-left: 0em !important;
+  }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
   }

@@ -4,6 +4,7 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, truncateText } from "../utility/helper"
 import SEO from "../components/seo/seo"
+import { size } from "../index.styles"
 import {
   TwoColumnPageWrapper,
   TextBlock,
@@ -11,10 +12,12 @@ import {
   PageTitle,
   TextBlockTwoColumnPage,
   TextBlockSideBarPage,
+  PaddingDiv,
 } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
+
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -68,6 +71,7 @@ const PracticalInformation = props => {
           }}
         />
         <ImageResource id={pageInfo.acf.venue_map_graphic} withCaption={false} />
+        <PaddingDiv></PaddingDiv>
       </div>
     </TwoColumnPageWrapper>
   )

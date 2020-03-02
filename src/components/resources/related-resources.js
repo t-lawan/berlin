@@ -64,7 +64,7 @@ const ResourceText = styled.p`
   margin-top:0;
   :first-child {
     font-size:1em !important;
-    line-height:1.3;
+    line-height:1.2;
     margin-bottom:0.5em;
   }
   :last-child {

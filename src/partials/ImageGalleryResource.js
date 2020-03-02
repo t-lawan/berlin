@@ -140,7 +140,7 @@ class ImageGalleryResource extends React.Component {
             showIndicators={false}
             showStatus={false}
             centerMode={false}
-            swipeable={false}
+            swipeable={true}
             dynamicHeight={true}
           >
             {this.props.ids.map((id, index) => (

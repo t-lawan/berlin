@@ -20,7 +20,7 @@ const Ticker = props => {
           createComp(
             exhibition,
             (
-              <div style={{ backgroundImage:`url(${image.url})`,backgroundSize: '2400px 40px', height:'40px',backgroundPosition:'center' }}></div>
+              <div style={{ backgroundImage:`url(${image.url})`,backgroundPosition:'center' }}></div>
               
             ),
             exhibition[language].external_link_url,
