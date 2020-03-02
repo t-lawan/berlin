@@ -75,6 +75,7 @@ export const PageWrapper = styled.div`
     margin-bottom: 1em;
     list-style-type: none;
     text-indent: -10px;
+    line-height: 1.4;
     padding-left: 25px;
     :before {
       content: "–";
@@ -84,9 +85,20 @@ export const PageWrapper = styled.div`
     @media (max-width: ${size.tabletL}) {
       font-size: 0.95em;
     }
+    @media (min-width: ${size.laptop}) {
+      font-size: 1em;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size: 1.1em;
+    }
+    @media (min-width: ${size.laptopL}) {
+      font-size: 1.2em;
+    }
   }
   @media (min-width: ${size.laptop}) {
       padding: 2.5em 1em 2em;
+    }
+  @media (min-width: ${size.laptopM}) {
     }
     @media (min-width: ${size.laptopL}) {
       padding: 3em 1.1em 2em;
