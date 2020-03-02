@@ -8,10 +8,10 @@ let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
   z-index: 4500;
-  width: 100%;
+  width: 66.65%;
   height: 100%;
   background: white;
-  position: absolute;
+  position: fixed;
   text-align: center;
   padding: 5rem;
   display: ${props => (props.show ? "block" : "none")};
@@ -36,7 +36,7 @@ const TransitionPageWrapper = styled.div`
 const TransitionImageContainer = styled.div`
   position: fixed;
   top: 50%;
-  left: 50%;
+  /* left: 50%; */
   z-index: inherit;
 `
 
