@@ -12,16 +12,12 @@ import {
   PageTitle,
   TextBlockTwoColumnPage,
   TextBlockSideBarPage,
+  PaddingDiv,
 } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 
-const PaddingDiv = styled.div`
-@media (min-width: ${size.laptop}) {
-      margin-bottom: 4em;
-    }
-`
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)

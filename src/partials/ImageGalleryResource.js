@@ -55,6 +55,10 @@ export const AnimatedSpace = styled(Animated)`
 `
 
 export const AnimatedCarousel = styled(Carousel)`
+  z-index: 100;
+  > ${Caption} {
+    margin-bottom: 0.7em;
+  }
   .carousel .slide {
     background: transparent;
     list-style-type: none;
@@ -136,7 +140,7 @@ class ImageGalleryResource extends React.Component {
             showIndicators={false}
             showStatus={false}
             centerMode={false}
-            swipeable={false}
+            swipeable={true}
             dynamicHeight={true}
           >
             {this.props.ids.map((id, index) => (
@@ -144,7 +148,7 @@ class ImageGalleryResource extends React.Component {
                 <ImageResource
                   onLoad={() => this.setVisibleToTrue()}
                   id={id}
-                  withCaption={false}
+                  withCaption={true}
                 />
               </div>
             ))}

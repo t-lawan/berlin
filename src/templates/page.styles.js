@@ -534,3 +534,9 @@ export const TextBlockSideBarPage = styled.div`
     padding: 0 0 1em 0em;
   }
 `
+export const PaddingDiv = styled.div`
+  display: block;
+  @media (min-width: ${size.laptop}) {
+      margin-bottom: 4em;
+    }
+`
