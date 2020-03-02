@@ -92,7 +92,7 @@ class Calendar extends React.Component {
         block: "start",
         inline: "nearest",
         behavior: 'smooth',
-        boundary: CalendarScrollArea
+        boundary: document.getElementById('calendar-wrapper')
       })
 
       console.log('SCROLL CALLED')
