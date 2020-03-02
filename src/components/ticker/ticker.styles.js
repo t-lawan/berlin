@@ -6,6 +6,9 @@ export const TickerWrapper = styled.div`
     bottom: 0px;
     height: 42px;
     line-height:40px;
+    @media (max-width: ${size.tabletL}) {
+      height: 32px;
+    }
     overflow: hidden;
     display: flex;
     background-color:#FFF;
@@ -17,8 +20,14 @@ export const TickerWrapper = styled.div`
     > a > div {
       white-space: nowrap;
       overflow: visible;
+      background-size: 2400px 40px;
+      height: 40px;
       line-height: 40px;
       animation: ${TickerAnim} infinite 30s linear;
+      @media (max-width: ${size.tabletL}) {
+      background-size: 2200px 30px;
+      height: 30px;
+      }
     }
      > a:hover > div {
     animation-play-state:paused;
