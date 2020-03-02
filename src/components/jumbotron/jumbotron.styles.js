@@ -60,10 +60,10 @@ export const JumbotronWrapperMob = styled.div`
   margin: 0em;
   position:relative;
   @media (min-width: ${size.mobileS}) {
-    padding-bottom: 120px;
+    padding-bottom: 130px;
   }
   @media (min-width: ${size.mobileM}) {
-    padding-bottom: 130px;
+    padding-bottom: 145px;
   }
   width:100%;
   z-index:2;

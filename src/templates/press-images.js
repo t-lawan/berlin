@@ -144,6 +144,7 @@ const PressImages = props => {
 
     return renderSection
   }
+  console.log("IMAGE LOG", pageInfo.acf.press_images)
 
   const renderComponent = (
     <PageWrapper>

@@ -169,7 +169,7 @@ export const StickyTopHeader = styled.div`
     /*grid-column-start: span 2;*/
   }
   :first-child {
-    border-right: solid 1.5px #000;
+    border-right: solid 1px #000;
     z-index: 301;
   }
   @media (max-width: ${size.mobileM}) {
