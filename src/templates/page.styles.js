@@ -431,17 +431,13 @@ export const TextBlock = styled.div`
     margin: 0;
   }
   > p {
-    font-size:1em;
     @media (max-width: ${size.mobileM}) {
-    font-size:1.1em;
     line-height:1.4;
     }
     @media (min-width: ${size.mobileL}) {
-      font-size:0.95em;
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
-      font-size:1em;
       line-height:1.3;
     }
   }
@@ -461,24 +457,18 @@ export const TextBlockTwoColumnPage = styled.div`
     margin: 0;
   }
   > p {
-    font-size:1em;
     @media (max-width: ${size.mobileM}) {
-    font-size:1.1em;
     line-height:1.4;
     }
     @media (min-width: ${size.mobileL}) {
-      font-size:0.95em;
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
-      font-size:1em;
       line-height:1.4;
     }
     @media (min-width: ${size.laptopM}) {
-      font-size:1.1em;
     }
     @media (min-width: ${size.laptopL}) {
-      font-size:1.2em;
       line-height:1.45;
     }
   }
@@ -500,25 +490,19 @@ export const TextBlockSideBarPage = styled.div`
       line-height:1.3;
     }
   > p {
-    font-size:1.1em;
     @media (max-width: ${size.mobileM}) {
-    font-size:1.1em;
     line-height:1.4;
     }
     @media (min-width: ${size.mobileL}) {
-      font-size:0.95em;
       line-height:1.3;
     }
     @media (min-width: ${size.laptop}) {
-      font-size:1em;
       line-height:1.3;
     }
     @media (min-width: ${size.laptopM}) {
-      font-size:1.1em;
       line-height:1.3;
     }
     @media (min-width: ${size.laptopL}) {
-      font-size:1.2em;
       line-height:1.35;
     }
   }
