@@ -122,6 +122,17 @@ export const ResourcesOnlyInMobile = styled.div`
     display: ${props => props.hide ? 'none' : 'inherit'};
   }
 `
+export const FixedTickerOnlyInMobile = styled.div`
+  display: none;
+  z-index: 9;
+  position: fixed;
+  bottom: 44px;
+  height: 40px;
+  width: 100%;
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => props.hide ? 'none' : 'inherit'};
+  }
+`
 
 export const FirstColumnWrapper = styled.div`
   background-color: #fff;
@@ -264,7 +275,7 @@ export const StickyFooter = styled.div`
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
     position: fixed;
-    bottom: 45px;
+    bottom: 44px;
     z-index: 999999;
   }
   @media (min-width: ${size.tablet}) {
