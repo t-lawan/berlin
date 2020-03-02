@@ -93,7 +93,7 @@ const RelatedResources = props => {
     let r = props.resources.find((res) => {
       return res.id == id;
     })
-    resources.push(r);
+    resources.push({...r, directlyRelated: true});
   })
 
   // Get genres from resources
@@ -129,6 +129,15 @@ const RelatedResources = props => {
   // Shuffle array
   resourceGenres = resourceGenres.sort(() => Math.random() - 0.5);
 
+  // add class to resource genres
+
+  resourceGenres = resourceGenres.map((rg) => {
+    return {
+      ...rg,
+      directlyRelated: false
+    }
+  })
+
   // Add to resources function
   resources.push(...resourceGenres)
 
@@ -136,6 +145,7 @@ const RelatedResources = props => {
   if(resources.length > 9) {
     resources = resources.slice(0, 9);
   }
+
 
   }
 
@@ -150,7 +160,7 @@ const RelatedResources = props => {
           // cover direction="down"
           // bg={transitionBackground}
         >
-          <RelatedResource>
+          <RelatedResource directlyRelated={resource.directlyRelated}>
             <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
