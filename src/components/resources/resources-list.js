@@ -212,7 +212,7 @@ const ResourcesList = props => {
             <ResourceItem key={index}>
               <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
-              {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
+              {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
             </ResourceItem>
           </ResourceItemLink>
         )
