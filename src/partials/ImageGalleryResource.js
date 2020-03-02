@@ -59,6 +59,9 @@ export const AnimatedCarousel = styled(Carousel)`
   > ${Caption} {
     margin-bottom: 0.7em;
   }
+  > div > div > ul > li > div > ${Caption} {
+    margin-bottom: 0.7em;
+  }
   .carousel .slide {
     background: transparent;
     list-style-type: none;

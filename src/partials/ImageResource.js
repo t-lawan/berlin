@@ -24,6 +24,7 @@ export const Image = styled(Img)`
 
 export const Caption = styled.section`
   font-size: 0.65rem;
+  text-align: left;
   p {
     font-size: 0.65rem;
     margin: 0.7em 0;
