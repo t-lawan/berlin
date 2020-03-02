@@ -123,6 +123,9 @@ export const DateString = styled.p`
   text-transform:lowercase;
   margin:0;
   line-height:1.2;
+  @media (max-width: ${size.mobileL}) {
+    line-height:1.15;
+  }
 `
 
 export const DateTextWrapper = styled.div`
