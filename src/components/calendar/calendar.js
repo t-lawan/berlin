@@ -89,10 +89,10 @@ class Calendar extends React.Component {
       // element.parentNode.scrollTop = element.offsetTop;
       scrollIntoView(element, {
         scrollMode: 'if-needed',
-        block: "start",
+        block: "center",
         inline: "nearest",
         behavior: 'smooth',
-        boundary: document.getElementById('calendar-wrapper')
+        boundary: CalendarWrapper
       })
 
       console.log('SCROLL CALLED')

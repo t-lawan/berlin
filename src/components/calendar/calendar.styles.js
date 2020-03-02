@@ -12,6 +12,7 @@ grid-template-columns: 1fr;
 @media (max-width: ${size.mobileM}) {
     background:#FFF;
     }
+    transform: translate3d(0px, 0px,0px);
 /* grid-template-columns: 1fr 1fr 1fr 1fr;
 ${changeGridToThreeEqualRows};
 ${changeGridToTwoEqualColumns}; */
