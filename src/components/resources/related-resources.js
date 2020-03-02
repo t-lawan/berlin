@@ -8,6 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import striptags from "striptags"
 import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
 import { get } from "http";
+import { startTransition } from "../../store/action";
 
 export const RelatedResourcesWrapper = styled.div`
   display: flex;
@@ -87,7 +88,13 @@ const ResourceText = styled.p`
 
 const RelatedResources = props => {
   const language = getCurrentLanguageString(props.languages)
-  let resources = getItems(props.resources, props.ids)
+  let resources = [];
+  props.ids.forEach((id) => {
+    let r = props.resources.find((res) => {
+      return res.id == id;
+    })
+    resources.push({...r, directlyRelated: true});
+  })
 
   // Get genres from resources
   let genres = [];
@@ -98,6 +105,8 @@ const RelatedResources = props => {
       }
     })
   })
+
+
 
   if(genres.length > 0) {
 
@@ -110,6 +119,7 @@ const RelatedResources = props => {
     resourceGenres.push(...rs);
   });
 
+
   // Filter duplicates
   resourceGenres = resourceGenres.filter((r, i) => resourceGenres.map((rm) => rm.id).indexOf(r.id) === i );
   // Filter resources passed in
@@ -119,6 +129,15 @@ const RelatedResources = props => {
   // Shuffle array
   resourceGenres = resourceGenres.sort(() => Math.random() - 0.5);
 
+  // add class to resource genres
+
+  resourceGenres = resourceGenres.map((rg) => {
+    return {
+      ...rg,
+      directlyRelated: false
+    }
+  })
+
   // Add to resources function
   resources.push(...resourceGenres)
 
@@ -127,6 +146,7 @@ const RelatedResources = props => {
     resources = resources.slice(0, 9);
   }
 
+
   }
 
   return (
@@ -134,12 +154,13 @@ const RelatedResources = props => {
       {resources.map((resource, index) => (
         <ResourceLink
           key={index}
+          onClick={() => props.startTransition()}
           to={createPath(language, `resource/${resource.slug}`)}
           fade
           // cover direction="down"
           // bg={transitionBackground}
         >
-          <RelatedResource>
+          <RelatedResource directlyRelated={resource.directlyRelated}>
             <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
@@ -161,7 +182,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch(startTransition()),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(RelatedResources)

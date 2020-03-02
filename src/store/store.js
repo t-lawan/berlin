@@ -30,6 +30,7 @@ const intitalState = {
   show_events_in_mobile: false,
   isViewing: false,
   isInTransition: false,
+  freshLoad: true
 }
 
 const reducer = (state = intitalState, action) => {
@@ -83,6 +84,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.HIDE_OVERLAY:
       return Object.assign({}, state, {
         show_overlay: false,
+      })
+    case actionTypes.SET_FRESH_TO_LOAD_TO_FALSE:
+      return Object.assign({}, state, {
+        freshLoad: false
       })
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
