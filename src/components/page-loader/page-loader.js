@@ -15,18 +15,20 @@ const PageLoaderWrapper = styled.div`
 `
 
 const PageLoaderImage = styled.img`
+  display: block;
   width: 120px !important;
+  margin: auto;
 `
 
 class PageLoader extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.setFreshLoadToFalse();
-        }, 1500)
+        }, 2000)
     }
   render() {
     return (
-      <PageLoaderWrapper show={this.props.freshLoad && this.props.isHome}>
+      <PageLoaderWrapper show={this.props.freshLoad && !this.props.isHome}>
         <PageLoaderImage src={PageLoaderLogo} />
       </PageLoaderWrapper>
     )
