@@ -15,7 +15,8 @@ import {
   Caption,
 } from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import '../../assets/carousel.css'
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 export const ExperienceCarousel = styled(Carousel)`
@@ -26,13 +27,17 @@ export const ExperienceCarousel = styled(Carousel)`
   height: 100vh;
 
   .carousel .slider-wrapper {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
     overflow-y: hidden !important;
     overflow-x: hidden !important;
   }
 
   .carousel.carousel-slider {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
+  }
+
+  .carousel * {
+    /* overflow-y: auto !important; */
   }
 `
 
