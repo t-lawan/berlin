@@ -59,7 +59,6 @@ const Year = styled.p`
 
 const ResLink = styled.div`
   > a {
-    font-size: 1em;
     transition: all 0.2s ease-in-out;
     border-bottom: solid thin;
     border-color: ${Color.red};
