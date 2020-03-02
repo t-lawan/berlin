@@ -16,7 +16,7 @@ const PressImagesGrid = styled.section`
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1em;
   grid-column-gap: 1em;
-  padding: 1em;
+  padding: 1em 0em;
   border-bottom: ${props =>
     props.borderBottom ? "1px solid rgba(0,0,0,0.1)" : "none"};
   a {
@@ -59,6 +59,7 @@ const PressImages = props => {
           </div>
         )
         break
+      
       case "images":
         renderSection = <p key={index}> images</p>
         break
