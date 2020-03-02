@@ -79,7 +79,10 @@ const ResourceLabel = styled.p`
 const ResourceItemLink = styled(Link)`
   text-decoration: none;
   :hover {
-    ${ResourceTitle} {
+    ${ResourceTitle}:first-child {
+      color: ${Color.red};
+    }
+    ${ResourceTitleImage} {
       color: ${Color.red};
     }
   }
