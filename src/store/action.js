@@ -52,3 +52,9 @@ export const changeExperience = (experience) => {
         experience: experience
     }
 }
+
+export const isViewing = () => {
+    return {
+        type: IS_VIEWING
+    }
+}
