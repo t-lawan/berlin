@@ -13,9 +13,15 @@ import {
 } from "../../index.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { CSSTransition } from "react-transition-group"
-import * as actionTypes from '../../store/action';
+import * as actionTypes from "../../store/action"
 let transitionName = "image-contain"
 
+const ImageGalleryWrapper = styled.div`
+  display: ${props => (props.hideInTablet ? "inherit" : "none")};
+  @media (max-width: ${size.tabletL}) {
+    display: ${props => (props.hideInTablet ? "none" : "inherit")};
+  }
+`
 const ImageContainerWrapper = styled.section`
   transition: max-height 1.5s ease;
   overflow: hidden;
@@ -81,7 +87,7 @@ class ImageContainer extends React.Component {
     this.setState({
       experience_changed: false,
     })
-    if(this.props.isViewing) {
+    if (this.props.isViewing) {
       this.props.setIsViewingToFalse()
     }
   }
@@ -90,7 +96,7 @@ class ImageContainer extends React.Component {
     this.exhibitions = this.props.exhibitions.filter((item, index) => {
       return item.experience === this.props.experience.toString()
     })
-    this.exhibition = this.exhibitions[0];
+    this.exhibition = this.exhibitions[0]
     return (
       <Animation
         in={this.props.isViewing || this.state.experience_changed}
@@ -114,13 +120,28 @@ class ImageContainer extends React.Component {
           hideInTablet={this.props.hideInTablet}
         >
           {this.exhibition && this.exhibition.has_gallery_images ? (
-            <ImageGalleryResource
-              ids={
-                this.exhibition.has_gallery_images
-                  ? this.exhibition.gallery_images
-                  : []
-              }
-            />
+            <>
+              <ImageGalleryWrapper hideInTablet={true}>
+                <ImageGalleryResource
+                  ids={
+                    this.exhibition.has_gallery_images
+                      ? this.exhibition.gallery_images
+                      : []
+                  }
+                />
+              </ImageGalleryWrapper>
+
+              <ImageGalleryWrapper hideInTablet={false}>
+                <ImageResource
+                  id={
+                    this.exhibition && this.exhibition.floor_plan
+                      ? this.exhibition.gallery_images[0]
+                      : 411
+                  }
+                  withCaption={true}
+                />
+              </ImageGalleryWrapper>
+            </>
           ) : null}
           {this.exhibition && !this.exhibition.has_gallery_images ? (
             <ImageResource
@@ -151,8 +172,8 @@ ImageContainer.defaultProps = {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setIsViewingToFalse: () => 
-      dispatch({type: actionTypes.SET_IS_VIEWING_TO_FALSE})
+    setIsViewingToFalse: () =>
+      dispatch({ type: actionTypes.SET_IS_VIEWING_TO_FALSE }),
   }
 }
 const mapStateToProps = state => {
@@ -161,7 +182,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     exhibitions: state.exhibitions,
     show_overlay: state.show_overlay,
-    isViewing: state.isViewing
+    isViewing: state.isViewing,
   }
 }
 
