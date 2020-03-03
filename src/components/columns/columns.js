@@ -78,6 +78,7 @@ class Columns extends React.Component {
           showStatus={false}
           centerMode={false}
           swipeable={false}
+          transitionTime={900}
         >
           <div>
             <MainSection
