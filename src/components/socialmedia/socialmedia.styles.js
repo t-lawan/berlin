@@ -14,11 +14,11 @@ export const SocialMediaWrapper = styled.div`
 
   @media (max-width: ${size.tabletL}) {
     flex-direction: row;
+    border-top: 1px solid black;
     width: calc(33.33% - 0px);
     background: white;
     position:fixed;
-    right:0;
-    height:65px;
+    height:50px;
     padding: 0.7em;
     margin: 0;
   }

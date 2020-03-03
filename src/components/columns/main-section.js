@@ -18,6 +18,7 @@ import {
   MobAnimCard,
   FixedTicker,
   ResourcesOnlyInMobile,
+  FixedTickerOnlyInMobile,
   ExperienceContainer,
   ScrollNavContainer,
 } from "./columns.styles"
@@ -127,7 +128,7 @@ class MainSection extends React.Component {
           <Jumbotron hideInTablet={true} />
         </StickyTopHeader>
         {/* Second Column */}
-        <Column ref={this.columnOneRef} rightBorder={true}>
+        <Column id="column-one" ref={this.columnOneRef} rightBorder={true}>
           <ScrollNavContainer>
             <MobTitleCard showInMobile={this.props.isHome}>
               <JumbotronMob showInMobile={true} />
@@ -150,6 +151,9 @@ class MainSection extends React.Component {
             <ResourcesOnlyInMobile hide={!this.props.isHome}>
               <ResourcesList />
             </ResourcesOnlyInMobile>
+            <FixedTickerOnlyInMobile hide={!this.props.isHome}>
+              <Ticker />
+            </FixedTickerOnlyInMobile>
             {/* Only In Mobile */}
             <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
               <DataPrivacy show={!this.props.agreed_to_terms} />
@@ -160,6 +164,7 @@ class MainSection extends React.Component {
             </FixedFooter>
             {/* Only In Mobile */}
           </ScrollNavContainer>
+          
         </Column>
         {/* Third Column */}
         {/* Only In Desktop */}

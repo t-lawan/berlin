@@ -91,6 +91,7 @@ class NavbarMobile extends React.Component {
               // cover
               // direction="down"
               // bg={transitionBackground}
+              onClick={() => this.props.changeExperience(this.props.active_experience)}
               fade
               to={createPath(this.language, "")}
             >
@@ -222,12 +223,14 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     navbar: state.navbar,
+    active_experience: state.active_experience
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
+    changeExperience: (experience) => dispatch(actionTypes.changeExperience(experience))
   }
 }
 

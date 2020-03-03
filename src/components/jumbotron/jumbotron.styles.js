@@ -60,24 +60,24 @@ export const JumbotronWrapperMob = styled.div`
   margin: 0em;
   position:relative;
   @media (min-width: ${size.mobileS}) {
-    padding-bottom: 120px;
+    padding-bottom: 130px;
   }
   @media (min-width: ${size.mobileM}) {
-    padding-bottom: 130px;
+    padding-bottom: 145px;
   }
   width:100%;
   z-index:2;
   display:block;
   
   img {
-    margin-bottom:0;
+    margin-bottom: 0.3em;
     filter: blur(0px);
-    position:relative;
-    z-index:2;
-    padding:0.7em 0.7em;
+    position: relative;
+    z-index: 2;
+    padding: 0.7em 0.7em 0;
     :nth-child(2){
-      padding-top:0em;
-      margin-top:-0.7em;
+      padding-top: 0em;
+      margin-top: 0em;
     }
   }
   img.bg_anim {

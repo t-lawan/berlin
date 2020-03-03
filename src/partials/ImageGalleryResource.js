@@ -28,6 +28,14 @@ export const NavigatingButton = styled.div`
   }
 `
 
+
+const ImageGalleryWrapper = styled.div`
+`
+const ImageWrapper = styled.div`
+  height: 100%;
+  margin: 0.5rem auto;
+`
+
 export const NavigationSpace = styled.div`
   position: relative;
   height: 100%;
@@ -57,6 +65,9 @@ export const AnimatedSpace = styled(Animated)`
 export const AnimatedCarousel = styled(Carousel)`
   z-index: 100;
   > ${Caption} {
+    margin-bottom: 0.7em;
+  }
+  > div > div > ul > li > div > ${Caption} {
     margin-bottom: 0.7em;
   }
   .carousel .slide {
@@ -118,7 +129,7 @@ class ImageGalleryResource extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
 
     return (
-      <>
+      <ImageGalleryWrapper>
         <NavigationSpace>
           <NavigationButtons>
             <NavigatingButton
@@ -140,21 +151,21 @@ class ImageGalleryResource extends React.Component {
             showIndicators={false}
             showStatus={false}
             centerMode={false}
-            swipeable={false}
+            swipeable={true}
             dynamicHeight={true}
           >
             {this.props.ids.map((id, index) => (
-              <div key={index}>
+              <ImageWrapper key={index}>
                 <ImageResource
                   onLoad={() => this.setVisibleToTrue()}
                   id={id}
                   withCaption={true}
                 />
-              </div>
+              </ImageWrapper>
             ))}
           </AnimatedCarousel>
         </NavigationSpace>
-      </>
+      </ImageGalleryWrapper>
     )
   }
 }
