@@ -128,7 +128,7 @@ class MainSection extends React.Component {
           <Jumbotron hideInTablet={true} />
         </StickyTopHeader>
         {/* Second Column */}
-        <Column ref={this.columnOneRef} rightBorder={true}>
+        <Column id="column-one" ref={this.columnOneRef} rightBorder={true}>
           <ScrollNavContainer>
             <MobTitleCard showInMobile={this.props.isHome}>
               <JumbotronMob showInMobile={true} />
