@@ -15,7 +15,8 @@ import {
   Caption,
 } from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import '../../assets/carousel.css'
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 export const ExperienceCarousel = styled(Carousel)`
@@ -26,13 +27,17 @@ export const ExperienceCarousel = styled(Carousel)`
   height: 100vh;
 
   .carousel .slider-wrapper {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
     overflow-y: hidden !important;
     overflow-x: hidden !important;
   }
 
   .carousel.carousel-slider {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
+  }
+
+  .carousel * {
+    /* overflow-y: auto !important; */
   }
 `
 
@@ -122,6 +127,17 @@ export const ResourcesOnlyInMobile = styled.div`
     display: ${props => props.hide ? 'none' : 'inherit'};
   }
 `
+export const FixedTickerOnlyInMobile = styled.div`
+  display: none;
+  z-index: 9;
+  position: fixed;
+  bottom: 44px;
+  height: 40px;
+  width: 100%;
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => props.hide ? 'none' : 'inherit'};
+  }
+`
 
 export const FirstColumnWrapper = styled.div`
   background-color: #fff;
@@ -158,7 +174,7 @@ export const StickyTopHeader = styled.div`
     /*grid-column-start: span 2;*/
   }
   :first-child {
-    border-right: solid 1.5px #000;
+    border-right: solid 1px #000;
     z-index: 301;
   }
   @media (max-width: ${size.mobileM}) {
@@ -257,14 +273,14 @@ export const StickyFooter = styled.div`
   position: -webkit-sticky;
   grid-area: footer;
   width: 100%;
-  @media (max-width: ${size.tablet}) {
+  @media (max-width: ${size.tabletL}) {
     /* width: 100%; */
     grid-area: unset;
   }
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
     position: fixed;
-    bottom: 45px;
+    bottom: 44px;
     z-index: 999999;
   }
   @media (min-width: ${size.tablet}) {
@@ -285,6 +301,12 @@ export const StickyFooter = styled.div`
 
 export const StickyFooterWithHighZIndex = styled(StickyFooter)`
   z-index: 400;
+  @media (max-width: ${size.tabletL}) {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 33.33%;
+  }
 `
 
 export const FixedFooter = styled.div`
@@ -311,7 +333,7 @@ export const FixedFooter = styled.div`
 `
 
 export const FixedNavbar = styled.div`
-  z-index: 600;
+  z-index: 9999;
   bottom: 0;
   position: sticky;
   position: -webkit-sticky;
@@ -348,7 +370,12 @@ export const FixedTicker = styled.div`
     grid-area: unset;
   }
   @media (min-width: ${size.tablet}) {
+    bottom: 50px;
+    height:32px;
+  }
+  @media (min-width: ${size.laptop}) {
     bottom: 60px;
+    height:42px;
   }
   @media (min-width: ${size.laptopM}) {
     bottom: 70px;

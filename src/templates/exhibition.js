@@ -9,6 +9,7 @@ import SEO from "../components/seo/seo"
 import ExhibitionContent from "../components/exhibition/exhibition-content"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
+import { isViewing } from "../store/action";
 
 const ExhibitionPageWrapper = styled.div`
   padding: 2em 1em;
@@ -27,7 +28,7 @@ const Exhibition = props => {
         description={description}
         lang={props.pageContext.language}
       />
-      <ExhibitionContent exhibition={exhibition} />
+      <ExhibitionContent  exhibition={exhibition} />
     </>
   )
 
@@ -37,6 +38,7 @@ const Exhibition = props => {
       <UpcomingEvents />
     </>
   )
+  props.isViewing()
   return (
     <Layout
       firstColumn={renderComponent}
@@ -62,7 +64,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    isViewing: () =>
+      dispatch(isViewing()),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Exhibition)

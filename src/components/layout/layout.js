@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import ExperiencePage from "../experience/experience-page"
 import ExhibitionPage from "../exhibition/exhibition-page";
+import PageLoader from "../page-loader/page-loader";
 const LayoutWrapper = styled.div`
   width: 100vw;
   width: 100%;
@@ -30,6 +31,7 @@ const Layout = props => {
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
         />
       </Helmet>
+      <PageLoader isHome={props.isHome} />
       <Modal show={props.modal.show} />
       <ExperiencePage showOnHomePage={props.isHome} />
       {/* <ExhibitionPage /> */}

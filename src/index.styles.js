@@ -202,6 +202,12 @@ a, span {
   margin-bottom: 0rem;
   padding: 0;
   transition: all 0.2s ease-in-out;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
   @media (min-width: ${size.laptop}) {
     font-size: 1.0em;
   }
@@ -288,6 +294,9 @@ h1, h2, h3, h4, h5, h6, p, a, em {
 .carousel .slide {
   display: block;
   -webkit-font-smoothing: subpixel-antialiased;
+  @media (max-width: ${size.mobileM}) {
+    background-color: #FFF !important; 
+  }
 }
 .show-footer {
   @media (min-width: ${size.tablet}) {
@@ -530,6 +539,7 @@ export const LargeButton = styled.button`
   }
   @media (max-width: ${size.mobileM}) {
     margin: 0.2em 0 0 0px;
+    font-size: 1.1em;
   }
 `
 

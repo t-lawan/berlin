@@ -8,20 +8,25 @@ import { PageWrapper, TextBlock } from "./page.styles"
 import Layout from "../components/layout/layout"
 import ImageGalleryResource from "../partials/ImageGalleryResource"
 import ImageResource from "../partials/ImageResource"
-import { Color } from "../index.styles";
-import NewsList from "../components/news/newslist";
+import { Color } from "../index.styles"
+import NewsList from "../components/news/newslist"
+import { getDocument } from "../store/selector"
 
 const PressImagesGrid = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1em;
   grid-column-gap: 1em;
-  padding: 1em;
+  padding: 1em 0em;
   border-bottom: ${props =>
     props.borderBottom ? "1px solid rgba(0,0,0,0.1)" : "none"};
   a {
     text-decoration-color: ${Color.red};
   }
+`
+
+const PressImageTitle = styled.p`
+margin-top: 0.5rem;
 `
 const PressImages = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -30,45 +35,116 @@ const PressImages = props => {
     let renderSection
     switch (item.press_row_type) {
       case "section":
-        renderSection = (
-          <TextBlock key={index}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: item[createProperty("section_header", language)],
-              }}
-            />
-          </TextBlock>
-        )
+      renderSection = (
+        <div key={index}>
+          <PressImageTitle> {item[createProperty("photo_group_title", language)]}</PressImageTitle>
+          {item.images
+            ? item.images.map((i, id) => (
+                <PressImagesGrid key={id} borderBottom>
+                  {getDocument(props.documents, i.wordpress_id) ? (
+                    <a
+                      href={getDocument(props.documents, i.wordpress_id).url}
+                      target="__blank"
+                    >
+                      <ImageResource
+                        id={i.wordpress_id}
+                        withCaption={false}
+                      />
+                    </a>
+                  ) : null}
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        i.acf[
+                          createProperty("caption", language)
+                        ],
+                    }}
+                  />
+                </PressImagesGrid>
+              ))
+            : null}
+        </div>
+      )
         break
       case "grouptitle":
         renderSection = (
-          <p key={index}>
-            {" "}
-            {item[createProperty("photo_group_title", language)]}
-          </p>
-        )
-        break
-      case "groupdownload":
-        renderSection = (
           <div key={index}>
-            <p key={index}>
-              {" "}
-              {item[createProperty("image_group_download_label", language)]}
-            </p>
-            <ImageGalleryResource ids={ids} />
+            <PressImageTitle> {item[createProperty("photo_group_title", language)]}</PressImageTitle>
+            {item.images
+              ? item.images.map((i, id) => (
+                  <PressImagesGrid key={id} borderBottom>
+                    {getDocument(props.documents, i.wordpress_id) ? (
+                      <a
+                        href={getDocument(props.documents, i.wordpress_id).url}
+                        target="__blank"
+                      >
+                        <ImageResource
+                          id={i.wordpress_id}
+                          withCaption={false}
+                        />
+                      </a>
+                    ) : null}
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          i.acf[
+                            createProperty("caption", language)
+                          ],
+                      }}
+                    />
+                  </PressImagesGrid>
+                ))
+              : null}
           </div>
         )
         break
       case "images":
-        renderSection = <p key={index}> images</p>
+        renderSection = (
+          <div key={index}>
+            {item.images
+              ? item.images.map((i, id) => (
+                  <PressImagesGrid key={id} borderBottom>
+                    {getDocument(props.documents, i.wordpress_id) ? (
+                      <a
+                        href={getDocument(props.documents, i.wordpress_id).url}
+                        target="__blank"
+                      >
+                        <ImageResource
+                          id={i.wordpress_id}
+                          withCaption={false}
+                        />
+                      </a>
+                    ) : null}
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          i.acf[
+                            createProperty("caption", language)
+                          ],
+                      }}
+                    />
+                  </PressImagesGrid>
+                ))
+              : null}
+          </div>
+
+        )
         break
       default:
-        renderSection = <p key={index}> def</p>
+        renderSection = (
+          <div key={index}>
+
+          </div>
+        )
         break
     }
 
     return renderSection
   }
+  console.log("IMAGE LOG", pageInfo.acf.press_images)
 
   const renderComponent = (
     <PageWrapper>
@@ -78,46 +154,9 @@ const PressImages = props => {
         lang={pageInfo.language}
       />
       <p>Press images</p>
-      <TextBlock>
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              pageInfo.acf.press_images[0][
-                createProperty("section_header", language)
-              ],
-          }}
-        />
-      </TextBlock>
-      <PressImagesGrid>
-        <p>
-          {" "}
-          {
-            pageInfo.acf.press_images[1][
-              createProperty("photo_group_title", language)
-            ]
-          }
-        </p>
-        <a href="" target="_blank">
-          {" "}
-          {
-            pageInfo.acf.press_images[2][
-              createProperty("image_group_download_label", language)
-            ]
-          }
-        </a>
-      </PressImagesGrid>
-      <div>
-        {pageInfo.acf.press_images[3].images.map((item, index) => (
-          <PressImagesGrid key={index} borderBottom>
-            <ImageResource id={item.wordpress_id} withCaption={false} />
-            <div
-              dangerouslySetInnerHTML={{
-                __html: item.acf[createProperty("caption", language)],
-              }}
-            />
-          </PressImagesGrid>
-        ))}
-      </div>
+      {pageInfo.acf.press_images.map((section, index) =>
+        generateSection(section, index)
+      )}
     </PageWrapper>
   )
 
@@ -140,10 +179,8 @@ const PressImages = props => {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    documents: state.documents,
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(PressImages)
+export default connect(mapStateToProps, null)(PressImages)

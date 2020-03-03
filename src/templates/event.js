@@ -44,22 +44,9 @@ const EventColumn = styled.div`
 const EventTextBlock = styled(TextBlock)`
   p {
     margin: 0;
-    font-size: 1.1em;
     line-height: 1.3;
     > a {
       font-size: 1em;
-    }
-    @media (max-width: ${size.tabletL}) {
-    font-size: 0.95em;
-    }
-    @media (min-width: ${size.laptop}) {
-    font-size: 1em;
-    }
-    @media (min-width: ${size.laptopM}) {
-      font-size:1.1em;
-    }
-    @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
     }
   }
   margin: 0 0 0em 0;
@@ -68,13 +55,13 @@ const EventTextBlock = styled(TextBlock)`
     margin: 0 0 0.7em 0;
   }
   @media (max-width: ${size.tabletL}) {
-    width:70%;
+    width:90%;
     > div:first-child > p:first-child {
-        width: 65%;
+        width: 60%;
         display: inline-block;
     } 
     > div:first-child > p:last-child {
-        width: 35%;
+        width: 40%;
         display: inline-block;
     }
   }
@@ -136,11 +123,13 @@ const EventTitleMob = styled.h1`
   }
 `
 const EventSubTitleMob = styled.h2`
-  font-size: 1.0em;
   margin: -1em 0 1em;
-  line-height: 1.2;
+  line-height: 1.3;
   @media (min-width: ${size.laptop}) {
     display: none;
+  }
+  @media (min-width: ${size.mobileS}) {
+    font-size: 1.1em;
   }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
@@ -149,16 +138,6 @@ const EventSubTitleMob = styled.h2`
 
 const EventDescription = styled.div`
   p {
-    font-size: 1em;
-    @media (min-width: ${size.tablet}) {
-    font-size: 0.95em;
-    }
-    @media (min-width: ${size.laptopM}) {
-      font-size: 1.1em;
-    }
-    @media (min-width: ${size.laptopL}) {
-      font-size: 1.2em;
-    }
     line-height: 1.4;
     > a {
       font-size:1em;
@@ -169,15 +148,21 @@ const EventDescription = styled.div`
 
 const EventRsvpText = styled.div`
   p {
-    font-size: 1.1em;
     > a {
       font-size:1em;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      }
     }
   }
 `
 
 const VenueLink = styled(AniLink)`
   text-decoration: none;
+  border-bottom: solid thin;
+  border-color: ${Color.red};
   :hover {
     color: ${Color.red};
   }
