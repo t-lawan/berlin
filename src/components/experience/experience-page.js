@@ -17,7 +17,7 @@ const ExperiencePageWrapper = styled.div`
     width:100%;
     left: 0;
     bottom:45px;
-    height:calc(100vh - 87px);
+    height:calc(100vh - 84px);
     top:40px;
   }
   @media (min-width: ${size.mobileL}) {
