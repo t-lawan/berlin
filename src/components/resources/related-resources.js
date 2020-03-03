@@ -161,7 +161,7 @@ const RelatedResources = props => {
           // bg={transitionBackground}
         >
           <RelatedResource directlyRelated={resource.directlyRelated}>
-            <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 10)} ...` : resource.title}</ResourceText>
+            <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 9)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>
