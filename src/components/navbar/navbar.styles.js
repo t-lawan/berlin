@@ -266,6 +266,6 @@ export const NavMobileContent = styled.div`
 export const NavImage = styled.img`
   height: 28px;
     margin-top: 3px !important;
-    margin-left:1.6em !important;
+    margin-left:1.2em !important;
     width: auto;
 `
