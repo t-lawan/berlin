@@ -42,7 +42,7 @@ export const LanguageButton = styled(AniLink)`
     color: ${Color.red};
   }
   @media (min-width: ${size.mobileL}) {
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     margin: 0;
     padding-top:0.2em;
     margin-left: 0.0em;
@@ -54,20 +54,20 @@ export const LanguageButton = styled(AniLink)`
     padding: 0;
     text-align: center;
     line-height: 1.0;
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.4em;
+    font-size: 1.2em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.65em;
-    margin-top:0.3em;
+    font-size: 1.85em;
+    margin-top:0.0em;
     margin-bottom:0;
     line-height: 1;
-    margin-left: 0.5em;
+    margin-left: 0.4em;
   }
 
 `
