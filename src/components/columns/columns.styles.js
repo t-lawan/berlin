@@ -15,29 +15,35 @@ import {
   Caption,
 } from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import '../../assets/carousel.css'
+// import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 export const ExperienceCarousel = styled(Carousel)`
   text-align: left !important;
   width: inherit;
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   height: 100vh;
 
   .carousel .slider-wrapper {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
     overflow-y: hidden !important;
     overflow-x: hidden !important;
   }
 
   .carousel.carousel-slider {
-    overflow: hidden !important;
+    /* overflow: hidden !important; */
+  }
+
+  .carousel * {
+    /* overflow-y: auto !important; */
   }
 `
 
 export const ExperienceContainer = styled.div`
   text-align: left !important;
+  /* transform: translate3d(0px, 0px, 0px);*/
   display: grid;
   height: 100%;
   height: 100vh;
@@ -72,6 +78,7 @@ export const AnimatedColumn = styled(Animated)`
   height: 100vh;
   width: inherit;
   overflow-y: auto;
+  -webkit-overflow-scrolling:touch;
   display: grid;
   grid-template-columns: 66fr 33fr;
   grid-template-rows: auto;
@@ -127,7 +134,7 @@ export const FixedTickerOnlyInMobile = styled.div`
   z-index: 9;
   position: fixed;
   bottom: 44px;
-  height: 40px;
+  height: 45px;
   width: 100%;
   @media (max-width: ${size.mobileM}) {
     display: ${props => props.hide ? 'none' : 'inherit'};
@@ -328,7 +335,7 @@ export const FixedFooter = styled.div`
 `
 
 export const FixedNavbar = styled.div`
-  z-index: 9999;
+  z-index: 600;
   bottom: 0;
   position: sticky;
   position: -webkit-sticky;
@@ -366,14 +373,14 @@ export const FixedTicker = styled.div`
   }
   @media (min-width: ${size.tablet}) {
     bottom: 50px;
-    height:32px;
+    height:50px;
   }
   @media (min-width: ${size.laptop}) {
-    bottom: 60px;
-    height:42px;
+    bottom: 55px;
   }
   @media (min-width: ${size.laptopM}) {
-    bottom: 70px;
+    bottom: 55px;
+    height: 55px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};

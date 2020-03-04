@@ -10,7 +10,9 @@ export const TickerWrapper = styled.div`
       height: 44px;
     }
     @media (min-width: ${size.tablet}) {
-      height: 32px;
+      padding-top: 0.6em;
+      height: 50px;
+      line-height: 50px;
     }
     @media (min-width: ${size.laptop}) {
       padding-top: 0.75em;
@@ -41,9 +43,9 @@ export const TickerWrapper = styled.div`
       height: 44px;
       line-height: 44px
       }
-      @media (min-width: ${size.tabletL}) {
+      @media (min-width: ${size.tablet}) {
       background-size: 2200px 30px;
-      height: 30px;
+      height: 50px;
       }
       @media (min-width: ${size.laptop}) {
       background-size: 2300px 31px;
