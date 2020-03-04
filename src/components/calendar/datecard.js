@@ -19,93 +19,104 @@ import {
 } from "./datecard.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 
-const DateCard = props => {
-  const language = getCurrentLanguageString(props.languages)
-  let renderComponents
-  if (props.containsEvents) {
-    const monthDay = DateManager.createMonthDayString(
-      props.day,
-      props.month,
-      props.year,
-      language
-    )
-    const date = DateManager.createDatetring(props.day, props.month, props.year)
-    let events = props.events
-      .filter(ev => {
-        return ev.item === "event"
-      })
-      .sort((a, b) => {
-        return (
-          a[language].display_time.charAt(0) -
-          b[language].display_time.charAt(0)
-        )
-      })
-    let exhibitions = props.events.filter(ex => {
-      return ex.item === "exhibition"
-    })
+class DateCard extends React.Component {
+  language; 
+  ref;
 
-    renderComponents = (
-      <DateCardWrapper
-        id={`date-${DateManager.createDateClass(
-          props.day,
-          props.month,
-          props.year
-        )}`}
-      >
-        <CurrentDate>
-          <DateText>{date}</DateText>
-          <DateTextWrapper>
-            <DateString>
-              {" "}
-              {DateManager.createShortMonthString(
-                props.day,
-                props.month,
-                props.year,
-                language
-              )}
-            </DateString>
-            <DateString>
-              {" "}
-              {DateManager.createShortDayString(
-                props.day,
-                props.month,
-                props.year,
-                language
-              )}
-            </DateString>
-          </DateTextWrapper>
-          {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
-        </CurrentDate>
-        <EventsGrid>
-        <EventCardsWrapper hideInMobile={false}>
-            {events.map((event, index) => (
-              <EventCard key={index} event={event} />
-            ))}
-          </EventCardsWrapper>
-          <ExhibitionCardsWrapper hideInMobile={true}>
-            {exhibitions.length === 0 ? <ClosedText> {language === "EN" ? "Closed" : "Geschlossen"}</ClosedText> : null} 
-            {exhibitions.map((exhibition, index) => (
-              <EventCard key={index} event={exhibition} />
-            ))}
-          </ExhibitionCardsWrapper>
-          <EventCardsWrapper hideInMobile={true}>
-            {events.map((event, index) => (
-              <EventCard key={index} event={event} />
-            ))}
-          </EventCardsWrapper>
-        </EventsGrid>
-      </DateCardWrapper>
-    )
-  } else {
-    renderComponents = (
-      <MonthCardWrapper addColour>
-        <MonthHeading>
-          {DateManager.getMonthText(props.month, language.toLowerCase()).toLowerCase()}
-        </MonthHeading>
-      </MonthCardWrapper>
-    )
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
   }
-  return renderComponents
+
+  render() {
+    let renderComponents;
+    this.language = getCurrentLanguageString(this.props.languages)
+    if (this.props.containsEvents) {
+      const monthDay = DateManager.createMonthDayString(
+        this.props.day,
+        this.props.month,
+        this.props.year,
+        this.language
+      )
+      const date = DateManager.createDatetring(this.props.day, this.props.month, this.props.year)
+      let events = this.props.events
+        .filter(ev => {
+          return ev.item === "event"
+        })
+        .sort((a, b) => {
+          return (
+            a[this.language].display_time.charAt(0) -
+            b[this.language].display_time.charAt(0)
+          )
+        })
+      let exhibitions = this.props.events.filter(ex => {
+        return ex.item === "exhibition"
+      })
+  
+      renderComponents = (
+        <DateCardWrapper
+          ref={this.ref}
+          id={`date-${DateManager.createDateClass(
+            this.props.day,
+            this.props.month,
+            this.props.year
+          )}`}
+        >
+          <CurrentDate>
+            <DateText>{date}</DateText>
+            <DateTextWrapper>
+              <DateString>
+                {" "}
+                {DateManager.createShortMonthString(
+                  this.props.day,
+                  this.props.month,
+                  this.props.year,
+                  this.language
+                )}
+              </DateString>
+              <DateString>
+                {" "}
+                {DateManager.createShortDayString(
+                  this.props.day,
+                  this.props.month,
+                  this.props.year,
+                  this.language
+                )}
+              </DateString>
+            </DateTextWrapper>
+            {/* <DayMonthText> {monthDay.toLowerCase()} </DayMonthText> */}
+          </CurrentDate>
+          <EventsGrid>
+          <EventCardsWrapper hideInMobile={false}>
+              {events.map((event, index) => (
+                <EventCard key={index} event={event} />
+              ))}
+            </EventCardsWrapper>
+            <ExhibitionCardsWrapper hideInMobile={true}>
+              {exhibitions.length === 0 ? <ClosedText> {this.language === "EN" ? "Closed" : "Geschlossen"}</ClosedText> : null} 
+              {exhibitions.map((exhibition, index) => (
+                <EventCard key={index} event={exhibition} />
+              ))}
+            </ExhibitionCardsWrapper>
+            <EventCardsWrapper hideInMobile={true}>
+              {events.map((event, index) => (
+                <EventCard key={index} event={event} />
+              ))}
+            </EventCardsWrapper>
+          </EventsGrid>
+        </DateCardWrapper>
+      )
+    } else {
+      renderComponents = (
+        <MonthCardWrapper addColour>
+          <MonthHeading>
+            {DateManager.getMonthText(this.props.month, this.language.toLowerCase()).toLowerCase()}
+          </MonthHeading>
+        </MonthCardWrapper>
+      )
+    }
+    return renderComponents
+  }
 }
 
 DateCard.propTypes = {

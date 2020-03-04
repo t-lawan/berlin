@@ -84,24 +84,13 @@ class Calendar extends React.Component {
     this.currentDate = DateManager.currentDate()
     const element = document.getElementById(`date-${this.currentDate}`)
     if (element) {
-      // console.log('PARENT LOG', element.parent.scrollTop)
-      // this.calendarRef.current.scrollTop = element.offsetTop;
-      // element.parentNode.scrollTop = element.offsetTop;
+
       scrollIntoView(element, {
         scrollMode: 'if-needed',
-        block: "center",
+        block: "start",
         inline: "nearest",
         behavior: 'smooth',
-        boundary: CalendarWrapper
       })
-
-      console.log('SCROLL CALLED')
-      // element.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "center",
-      //   inline: "nearest",
-      // })
-      // element.scrollIntoView({behavior: 'smooth'});
 
     }
   }
@@ -114,9 +103,9 @@ class Calendar extends React.Component {
   }
 
   componentDidUpdate() {
-    setTimeout(() => {
-      this.getElement()
-    }, 200)
+    // setTimeout(() => {
+    //   this.getElement()
+    // }, 200)
   }
 
   render() {
