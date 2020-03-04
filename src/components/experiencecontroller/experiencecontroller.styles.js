@@ -94,9 +94,12 @@ export const ExperienceControllerMobileWrapper = styled.div`
 export const ExperienceControllerMobileButton = styled.div`
   padding: 0em;
   height:40px;
+
   border-right: 1px solid black;
   border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
-  opacity: ${props => props.isSelected ? '1' : '0.5'};
+  > p {
+  opacity: ${props => props.isSelected ? '1' : '0.4'};
+  }
   :last-child {
     border-right: 0;
   }
@@ -119,7 +122,7 @@ export const ExperienceControllerMobileButton = styled.div`
    padding: 0;
     height: 20px;
     width: auto;
-    margin-top: 0.5em;
+    margin-top: 0.6em;
     margin-bottom:0;
     @media (min-width: ${size.mobileL}) {
       height: 18px;
