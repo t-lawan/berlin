@@ -15,7 +15,7 @@ export const TickerWrapper = styled.div`
       line-height: 50px;
     }
     @media (min-width: ${size.laptop}) {
-      padding-top: 0.75em;
+      padding-top: 0.65em;
       height: 55px;
     }
     @media (min-width: ${size.laptopM}) {
