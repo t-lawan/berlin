@@ -58,6 +58,7 @@ export const LanguageButton = styled(AniLink)`
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.2em;
+    line-height: 1.1;
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.3em;

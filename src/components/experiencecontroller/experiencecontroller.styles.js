@@ -3,13 +3,13 @@ import { showDisplayForTablet, showDisplayForTabletFunc, size, Color } from "../
 
 export const ExperienceControllerWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
-    margin-top: ${props => (props.left ? "6.9em" : "3em")};
+    margin-top: ${props => (props.left ? "6.9em" : "3.9em")};
   }
   @media (min-width: ${size.laptopM}) {
-    margin-top: ${props => (props.left ? "6.9em" : "3.7em")};
+    margin-top: ${props => (props.left ? "6.9em" : "3.95em")};
   }
   @media (min-width: ${size.laptopL}) {
-    margin-top: ${props => (props.left ? "6.9em" : "4.3em")};
+    margin-top: ${props => (props.left ? "6.9em" : "4.75em")};
   }
   align-items: center;
   justify-content: center;
@@ -57,6 +57,9 @@ export const ExperienceButton = styled.div`
   }
   span {
     font-size: 0.55em;
+    @media (min-width: ${size.laptop}) {
+    font-size: 0.6em;
+    }
     @media (min-width: ${size.laptopM}) {
     font-size: 0.6em;
     }
