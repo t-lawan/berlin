@@ -33,7 +33,7 @@ export const ExperienceCarousel = styled(Carousel)`
   }
 
   .carousel.carousel-slider {
-    /* overflow: hidden !important; */
+    overflow: hidden !important;
   }
 
   .carousel * {
@@ -169,9 +169,11 @@ export const FirstColumnWrapper = styled.div`
 export const StickyTopHeader = styled.div`
   z-index: 300;
   top: 0;
-  background: white;
   position: relative;
   grid-area: "column";
+  :nth-child(2) {
+      background: white;
+    }
   @media (max-width: ${size.tablet}) {
     /*grid-column-start: span 2;*/
   }
@@ -180,6 +182,7 @@ export const StickyTopHeader = styled.div`
     z-index: 301;
   }
   @media (max-width: ${size.mobileM}) {
+    background: white;
     :first-child {
       border-right: solid 0px #000;
     }
