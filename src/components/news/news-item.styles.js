@@ -9,6 +9,7 @@ export const NewsItemWrapper = styled.div`
 export const NewsText = styled.p`
   > span {
     transition: all 0.2s ease-in-out;
+    font-size: 1em;
   }
    /* > p {
     display: none;
@@ -45,7 +46,6 @@ export const NewsItemLink = styled(Link)`
 export const NewsItemContainer = styled.div`
   transition: all 0.2s ease-in-out;
   cursor:pointer;
-
   p {
     margin:0;
   }
