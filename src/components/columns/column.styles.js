@@ -12,6 +12,7 @@ export const ColumnLayout = styled.div`
   background: white;
   position: relative;
   overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
   height: auto;
   padding-bottom: 2rem; 
   @media (max-width: ${size.mobileL}) {
@@ -27,13 +28,13 @@ export const ColumnLayout = styled.div`
   :first-child {
     ${ExperienceControllerWrapper} {
       @media (min-width: ${size.laptop}) {
-        margin-top: 9.7em;
+        margin-top: 7.05em;
       }
       @media (min-width: ${size.laptopM}) {
-        margin-top: 11em;
+        margin-top: 7.8em;
       }
       @media (min-width: ${size.laptopL}) {
-        margin-top: 12.1em;
+        margin-top: 8.6em;
       }
     }
   }

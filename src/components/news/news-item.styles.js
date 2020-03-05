@@ -6,9 +6,10 @@ export const NewsItemWrapper = styled.div`
   padding: 0.7em 2em;
   border-bottom: 1px solid black;
 `
-export const NewsText = styled.div`
+export const NewsText = styled.p`
   > span {
     transition: all 0.2s ease-in-out;
+    font-size: 1em;
   }
    /* > p {
     display: none;
@@ -27,6 +28,8 @@ export const NewsText = styled.div`
 
 export const NewsItemLink = styled(Link)`
   > p {
+  font-size: 1.0em;
+  line-height: 1.3;
    transition: all 0.2s ease-in-out; 
   }
   :hover > p {
@@ -43,7 +46,6 @@ export const NewsItemLink = styled(Link)`
 export const NewsItemContainer = styled.div`
   transition: all 0.2s ease-in-out;
   cursor:pointer;
-
   p {
     margin:0;
   }
