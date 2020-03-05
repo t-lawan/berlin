@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import MonthCards from "./monthcards"
-import { CalendarWrapper } from "./calendar.styles"
+import { CalendarWrapper, CalendarScrollArea } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 
@@ -14,9 +14,11 @@ class Calendar extends React.Component {
   currentDate
   startDate
   endDate
+  calendarRef;
 
   constructor(props) {
     super(props)
+    this.calendarRef = React.createRef();
     this.calendar = this.props.calendar
     this.months = Object.keys(this.calendar)
     this.exhibition = this.props.exhibitions.find(
@@ -72,6 +74,8 @@ class Calendar extends React.Component {
         // );
       })
     }
+
+
   }
   // const calendar = props.calendar
   // let months = Object.keys(calendar)
@@ -80,19 +84,17 @@ class Calendar extends React.Component {
     this.currentDate = DateManager.currentDate()
     const element = document.getElementById(`date-${this.currentDate}`)
     if (element) {
+
       scrollIntoView(element, {
-        scrollMode: "if-needed",
-        block: "nearest",
+        scrollMode: 'if-needed',
+        block: "start",
         inline: "nearest",
-        behavior: 'smooth'
+        behavior: 'smooth',
       })
-      // element.scrollIntoView({
-      //   behavior: "smooth",
-      //   block: "nearest",
-      //   inline: "start",
-      // })
+
     }
   }
+
 
   componentDidMount() {
     setTimeout(() => {
@@ -101,14 +103,14 @@ class Calendar extends React.Component {
   }
 
   componentDidUpdate() {
-    setTimeout(() => {
-      this.getElement()
-    }, 200)
+    // setTimeout(() => {
+    //   this.getElement()
+    // }, 200)
   }
 
   render() {
     return (
-      <CalendarWrapper>
+      <CalendarWrapper id="calendar-wrapper">
         {this.months.map((month, index) => (
           <MonthCards
             isStart={index === 0}
