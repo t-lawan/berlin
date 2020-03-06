@@ -748,7 +748,7 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: path,
       component: slash(currentTemplate),
-      content: { language: language },
+      context: { language: language, slug: prePath[language.toUpperCase()] },
     })
   })
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
@@ -20,6 +20,10 @@ const Resource = props => {
   const r = Convert.toResourceModel(resourceInfo);
 
   let renderComponent
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "resource"
+  })
+
 
   switch (r.type) {
     case "image":
@@ -64,6 +68,8 @@ const Resource = props => {
         title={`${resourceInfo.acf.title}`}
         description={`${resourceInfo.acf.title}`}
         lang={resourceInfo.language}
+        pathname={`${path[resourceInfo.language.toUpperCase()]}/${r.slug}`}
+
       />
       <Layout
         firstColumn={renderComponent}

@@ -6,6 +6,7 @@ import {
   createPath,
   truncateText,
   transitionBackground,
+  pageMap,
 } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
@@ -14,7 +15,7 @@ import UpcomingEvents, {
 } from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import ImageResource from "../partials/ImageResource"
-import { getVenue } from "../store/selector"
+import { getVenue, getDocument } from "../store/selector"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
@@ -218,19 +219,31 @@ const Event = props => {
   let title = truncateText(
     striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
   )
+  let titleHeading = language === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
+
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "event"
+  })
+
+
   let description = truncateText(
     striptags(
       event[`${props.pageContext.language.toUpperCase()}`].full_description
     )
   )
+
+  let image = getDocument(props.documents, event.thumbnail_image);
+
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
-          title={title}
+          title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
+          image={image? image.url: null}
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
         />
         <EventColumn>
           <EventTitleMob
@@ -394,6 +407,7 @@ const mapStateToProps = state => {
     genres: state.resource_genres,
     experience: state.experience,
     documentation: state.documentation,
+    documents: state.documents
   }
 }
 
