@@ -44,7 +44,6 @@ const Documentation = props => {
       renderComponent = <p></p>
   }
 
-  console.log('CONTENT ', documentationObject)
   return (
     <>
       <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} />
