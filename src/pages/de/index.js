@@ -29,7 +29,7 @@ const IndexPage = props => {
   const language = getCurrentLanguageString(props.languages)
   const renderComponent = (
     <IndexPageWrapper>
-      <SEO title={`Home`} description={`Home`} lang={'de'} />
+      <SEO lang={'de'} />
       {exhibitions.length !== 0 ? (
         <ExhibitionContent exhibition={exhibitions[0]} />
       ) : (

@@ -5,7 +5,7 @@ export const LogoWrapper = styled.div`
   display: block;
   position: sticky;
   top: 0;
-  padding-bottom: 105.4%;
+  padding-bottom: 100%;
   max-height:0;
   z-index: 0;
   @media (min-width: ${size.tablet}) {

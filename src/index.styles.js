@@ -2,7 +2,7 @@ import styled, { css, createGlobalStyle, keyframes } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const Color = {
-  yellow: "#F9EF84",
+  yellow: "#fbf95d",
   red: "#D9515C",
 }
 export const size = {
@@ -72,11 +72,13 @@ body {
   em {
 font-family: 'ag-book-pro', sans-serif;
 font-weight: 300 !important;
+text-rendering: optimizeLegibility;
 font-style: italic !important;
 backface-visibility: hidden;
 }
   h1 {
   margin-left: 0;
+  text-rendering: optimizeLegibility;
   margin-right: 0;
   font-weight:normal;
   backface-visibility: hidden;
@@ -196,6 +198,7 @@ img {
 }
 a, span {
   margin:0;
+  text-rendering: optimizeLegibility;
   backface-visibility: hidden;
   transform: translate3d (0, 0, 0);
   letter-spacing: 0.008rem;
@@ -222,6 +225,7 @@ a, span {
     background: #ededed;
 }
 p {
+  text-rendering: optimizeLegibility;
   backface-visibility: hidden;
   transform: translate3d (0, 0, 0);
   max-width: 730px;
@@ -308,6 +312,13 @@ ul.slider {
   will-change: transform;
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  position: relative;
+  top: 0;
+}
+
+.carousel .slider-wrapper.axis-horizontal .slider {
+  flex-wrap: nowrap;
 }
 .carousel .slider-wrapper {
   -webkit-font-smoothing: subpixel-antialiased;

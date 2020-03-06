@@ -24,7 +24,7 @@ export const EventNavigatorWrapper = styled.section`
     padding: 0.7em 0 0 0.7em;
   }
   @media (min-width: ${size.laptop}) {
-    padding: 0.15em 0.7em 0.4em 1em;
+    padding: 0.15em 0.7em 1em 1em;
   }
   @media (min-width: ${size.laptopM}) {
     padding: 0.25em 0.7em 1.1em 1em;

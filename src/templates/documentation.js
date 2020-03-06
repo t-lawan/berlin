@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert";
@@ -18,6 +18,9 @@ const Documentation = props => {
   let renderComponent;
   let title = documentationObject[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].title)) : ""
   let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].description)) : "";
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "documentation"
+  })  
   let thirdColumn = (
     <>
       <NewsList />
@@ -40,9 +43,10 @@ const Documentation = props => {
     default: 
       renderComponent = <p></p>
   }
+
   return (
     <>
-      <SEO title={title} description={description} lang={props.pageContext.lang} />
+      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}
