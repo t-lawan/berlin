@@ -6,6 +6,7 @@ import {
   createPath,
   truncateText,
   transitionBackground,
+  pageMap,
 } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
@@ -220,6 +221,10 @@ const Event = props => {
   )
   let titleHeading = language === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
 
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "event"
+  })
+
 
   let description = truncateText(
     striptags(
@@ -238,6 +243,7 @@ const Event = props => {
           description={description}
           lang={props.pageContext.language}
           image={image? image.url: null}
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
         />
         <EventColumn>
           <EventTitleMob
