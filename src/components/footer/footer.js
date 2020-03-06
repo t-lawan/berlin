@@ -62,28 +62,12 @@ const ImageWrapper = styled.div`
 `
 
 const FooterText = styled.p`
-  /* font-size: 1rem; */
   margin: 0;
-  @media (max-width: ${size.mobileM}) {
-    font-size: 0.9rem;
-  }
-  @media (min-width: ${size.mobileL}) {
-    font-size: 0.80rem;
-  }
-  @media (min-width: ${size.tablet}) {
-    font-size: 0.95em;
-  }
-  @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
-  }
 `
 
 const FooterLink = styled(AniLink)`
   margin: 0;
   padding-right: 1rem;
-  @media (max-width: ${size.mobileM}) {
-    font-size: 0.9rem;
-  }
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)

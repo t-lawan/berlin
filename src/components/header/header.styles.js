@@ -3,16 +3,12 @@ import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet, hideDis
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const HeaderWrapper = styled.header`
-  /* opacity: 1; */
-  transition: opacity 0.5s;
+  opacity: 1;
   backface-visibility: hidden; 
-  -webkit-transform: translateZ(0) scale(1.0, 1.0);
-  transform: translateZ(0);
-  /* border-bottom: 1px solid black; */
   padding: 1.4em 2em 0.7em !important;
   background: white;
   :hover {
-    /* opacity: 0.01; */
+    cursor: pointer;
   }
   @media (max-width: ${size.mobileM}) {
     padding: 0.6em 0.7em !important;
@@ -26,10 +22,10 @@ export const HeaderWrapper = styled.header`
     padding: 0.75em 0.1em 0.7em !important;
   }
   @media (min-width: ${size.laptop}) {
-    padding: 1.5em 1.5em 1em !important;
+    padding: 1.5em 1.5em 1.1em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.55em 2.25em 1.55em !important;
+    padding: 1.55em 2.25em 1.7em !important;
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.7em 2.45em 1.7em !important;
@@ -44,8 +40,6 @@ export const HeaderLink = styled(AniLink)`
   text-decoration: none;
   margin-bottom:0;
   display: grid;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -webkit-transform: translateZ(0) scale(1.0, 1.0);
   grid-template-columns:1fr 1fr;
   grid-column-gap: 4em;
   ${changeGridToOneRow};
@@ -74,6 +68,8 @@ export const HeaderLink = styled(AniLink)`
 `
 
 export const HeaderImage = styled.img`
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
   @media (max-width: ${size.tabletL}) {
   margin: 0 0.7em !important;
   width: calc(100% - 1.4em) !important;

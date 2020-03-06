@@ -218,6 +218,9 @@ const Event = props => {
   let title = truncateText(
     striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
   )
+  let titleHeading = language === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
+
+
   let description = truncateText(
     striptags(
       event[`${props.pageContext.language.toUpperCase()}`].full_description
@@ -228,7 +231,7 @@ const Event = props => {
       <EventNavigator id={event.id} />
       <TwoColumnPageWrapper>
         <SEO
-          title={title}
+          title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
         />

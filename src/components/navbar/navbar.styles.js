@@ -1,16 +1,24 @@
 import styled from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { hideDisplayForTablet, showDisplayForTablet, Color, size } from "../../index.styles"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
-  display: flex;
+  display: block;
   z-index: 300;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   background: white;
   position: relative;
+  @media (min-width: ${size.laptop}) {
+    height: 50px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    height: 55px;
+  }
+  @media (min-width: ${size.laptopL}) {
+    height: 58px;
+  }
 `
 
 export const NavMobileWrapper = styled.nav`
@@ -30,7 +38,7 @@ export const NavMobileWrapper = styled.nav`
 
 export const NavInner = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
 `
 
 export const NavMobileInner = styled.div`
@@ -116,13 +124,6 @@ export const NavMobileHeader = styled.div`
   }
 `
 
-export const NavIcon = styled(FontAwesomeIcon)`
-  font-size: 1.5rem;
-  display: ${props => props.show ? 'inherit': 'none'};
-  :hover {
-    cursor: pointer;
-  }
-`
 export const NavIconSVG = styled.img`
   height: 28px;
     margin-top: 3px;
@@ -266,6 +267,6 @@ export const NavMobileContent = styled.div`
 export const NavImage = styled.img`
   height: 28px;
     margin-top: 3px !important;
-    margin-left:1.6em !important;
+    margin-left:1.2em !important;
     width: auto;
 `

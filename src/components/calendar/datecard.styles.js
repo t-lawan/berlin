@@ -122,7 +122,7 @@ export const DateString = styled.p`
   font-size: 0.85em;
   text-transform:lowercase;
   margin:0;
-  line-height:1.2;
+  line-height:1.10;
   @media (max-width: ${size.mobileL}) {
     line-height:1.15;
   }
@@ -158,7 +158,6 @@ export const MonthHeading = styled.p`
 export const ClosedText = styled.p`
   margin: 0.5em 1em;
   text-transform:lowercase;
-  opacity: 0.5;
   @media (min-width: ${size.mobileS}) {
     margin: 0.3em 0.5em;
     font-size: 1rem;
