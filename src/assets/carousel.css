@@ -17,10 +17,10 @@
 }
 
 ul {
-  transform: rotateY(1deg)  translateZ(0) !important; 
--webkit-transform: rotateY(1deg)  translateZ(0) !important;
--moz-transform: rotateY(1deg)  translateZ(0) !important;
--o-transform: rotateY(1deg)  translateZ(0px) !important;
+  transform: rotateY(1deg)  translateZ(1px) !important; 
+-webkit-transform: rotateY(1deg)  translateZ(1px) !important;
+-moz-transform: rotateY(1deg)  translateZ(1px) !important;
+-o-transform: rotateY(1deg)  translateZ(1px) !important;
 }
 .carousel .control-arrow:hover {
   opacity: 1;
