@@ -42,7 +42,7 @@ function SEO({ description, lang, meta, title, image, pathname }) {
         },
         {
           property: `og:url`,
-          content: `${siteUrl}${pathname || '/'}`,
+          content: `${siteUrl}/${pathname || ''}`,
         },
         {
           name: `twitter:card`,
