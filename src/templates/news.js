@@ -5,6 +5,7 @@ import {
   getCurrentLanguageString,
   createPath,
   truncateText,
+  pageMap,
 } from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
@@ -23,7 +24,10 @@ const News = props => {
         striptags(item[props.pageContext.language.toUpperCase()].news_subtitle)
       )
     : ""
-  let title = item[props.pageContext.language.toUpperCase()].news_title
+  let title = item[props.pageContext.language.toUpperCase()].news_title;
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "news"
+  })
   let renderComponent = (
     <>
       <TwoColumnPageWrapper>
@@ -31,6 +35,8 @@ const News = props => {
           title={title}
           description={description}
           lang={props.pageContext.language}
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${item.slug}`}
+
         />
         <div>
           {item.dates.map((date, index) => (

@@ -51,7 +51,6 @@ const RelatedResource = styled.div`
   position:relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em 0.35em 0 0.35em;
-  border: 1px solid black !important;
   :hover{
     >p{
       color: ${Color.red}

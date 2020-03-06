@@ -126,6 +126,7 @@ class Press extends React.Component {
           title={`${this.pressInfo.title}`}
           description={description}
           lang={this.pressInfo.language}
+          pathname={this.pressInfo.slug}
         />
         <div>
           

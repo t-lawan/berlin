@@ -3,6 +3,7 @@ module.exports = {
     title: `11th Berlin Biennale for Contemporary Art`,
     description: ``,
     author: `Berlin Biennale`,
+    image: "/images/bb11_og.jpg",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
