@@ -2,7 +2,7 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import { size } from "../index.styles"
 import {
@@ -24,12 +24,16 @@ const PracticalInformation = props => {
   const pageInfo = props.pageContext;
   // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
   let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "practical-information"
+  })
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
         title={`${pageInfo.title}`}
         description={description}
         lang={pageInfo.language}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}`}
       />
       <div>
       <PageTitle

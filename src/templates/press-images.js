@@ -144,7 +144,7 @@ const PressImages = props => {
 
     return renderSection
   }
-  console.log("IMAGE LOG", pageInfo.acf.press_images)
+
 
   const renderComponent = (
     <PageWrapper>
@@ -152,6 +152,7 @@ const PressImages = props => {
         title={`${pageInfo.title}`}
         description={`${pageInfo.slug}`}
         lang={pageInfo.language}
+        pathname={pageInfo.slug}
       />
       <p>Press images</p>
       {pageInfo.acf.press_images.map((section, index) =>

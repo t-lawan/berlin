@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import Layout from "../components/layout/layout"
 import { Convert } from "../utility/convert"
-import { getCurrentLanguageString, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
 import UpcomingEvents from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import ExhibitionContent from "../components/exhibition/exhibition-content"
@@ -22,6 +22,9 @@ const Exhibition = props => {
   let description = exhibition[props.pageContext.language.toUpperCase()] ? truncateText(striptags(exhibition[props.pageContext.language.toUpperCase()].description)) : '';
   let title = exhibition[props.pageContext.language.toUpperCase()] ? truncateText(striptags(exhibition[props.pageContext.language.toUpperCase()].title)) : '';
   let image = getDocument(props.documents, exhibition.floor_plan);
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "exhibition"
+  })
 
   const renderComponent = (
     <>
@@ -30,6 +33,7 @@ const Exhibition = props => {
         description={description}
         lang={props.pageContext.language}
         image={image ? image.url: null}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}/${exhibition.slug}`}
       />
       <ExhibitionContent  exhibition={exhibition} />
     </>
