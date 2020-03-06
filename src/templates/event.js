@@ -14,7 +14,7 @@ import UpcomingEvents, {
 } from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import ImageResource from "../partials/ImageResource"
-import { getVenue } from "../store/selector"
+import { getVenue, getDocument } from "../store/selector"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
@@ -226,6 +226,9 @@ const Event = props => {
       event[`${props.pageContext.language.toUpperCase()}`].full_description
     )
   )
+
+  let image = getDocument(props.documents, event.thumbnail_image);
+
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -234,6 +237,7 @@ const Event = props => {
           title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
+          image={image? image.url: null}
         />
         <EventColumn>
           <EventTitleMob
@@ -397,6 +401,7 @@ const mapStateToProps = state => {
     genres: state.resource_genres,
     experience: state.experience,
     documentation: state.documentation,
+    documents: state.documents
   }
 }
 
