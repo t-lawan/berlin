@@ -9,14 +9,23 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import OGImage from '../../images/bb11_og.jpg';
+import OGImage from "../../images/bb11_og.jpg"
 
 function SEO({ description, lang, meta, title, image, pathname }) {
 
-  const metaDescription = description || lang === 'en' ? "The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From June 13 to September 13, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city." : "Die 11. Berlin Biennale für zeitgenössische Kunst wird von María Berríos, Renata Cervetto, Lisette Lagnado und Agustín Pérez Rubio kuratiert. Sie stellen sich die kommende Ausgabe als eine Folge gelebter Erfahrungen vor. Vom 13. Juni bis zum 13. September 2020 bringt die 11. Berlin Biennale diese Erfahrungen an mehreren Ausstellungsorten in der Stadt zusammen.";
+  const metaDescription =
+    description ||
+    (lang === "en"
+      ? "The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From June 13 to September 13, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city."
+      : "Die 11. Berlin Biennale für zeitgenössische Kunst wird von María Berríos, Renata Cervetto, Lisette Lagnado und Agustín Pérez Rubio kuratiert. Sie stellen sich die kommende Ausgabe als eine Folge gelebter Erfahrungen vor. Vom 13. Juni bis zum 13. September 2020 bringt die 11. Berlin Biennale diese Erfahrungen an mehreren Ausstellungsorten in der Stadt zusammen.")
   const siteUrl = "https://11.berlinbiennale.de"
-  let defaultImage = image || "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg";
-  let titleHeading = lang === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
+  let defaultImage =
+    image ||
+    "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg"
+  let titleHeading =
+    lang === "en"
+      ? "11th Berlin Biennale for Contemporary Art"
+      : "11. Berlin Biennale für zeitgenössische Kunst"
   return (
     <Helmet
       htmlAttributes={{
@@ -42,7 +51,7 @@ function SEO({ description, lang, meta, title, image, pathname }) {
         },
         {
           property: `og:url`,
-          content: `${siteUrl}/${lang === "en" ? '' : 'de/' }${pathname || ''}`,
+          content: `${siteUrl}/${lang === "en" ? "" : "de/"}${pathname || ""}`,
         },
         {
           name: `twitter:card`,
