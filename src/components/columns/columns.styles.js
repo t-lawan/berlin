@@ -33,7 +33,7 @@ export const ExperienceCarousel = styled(Carousel)`
   }
 
   /* > .carousel { */
-    ul {
+    > div > div> ul {
       transform: rotateY(1deg) translateZ(1px) !important;
       -webkit-transform: rotateY(1deg) translateZ(1px) !important;
       -moz-transform: rotateY(1deg) translateZ(1px) !important;
