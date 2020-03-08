@@ -1,5 +1,10 @@
 import styled from "styled-components"
-import { showDisplayForTablet, showDisplayForTabletFunc, size, Color } from "../../index.styles";
+import {
+  showDisplayForTablet,
+  showDisplayForTabletFunc,
+  size,
+  Color,
+} from "../../index.styles"
 
 export const ExperienceControllerWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
@@ -22,16 +27,16 @@ export const ExperienceControllerWrapper = styled.div`
 
 export const ExperienceButton = styled.div`
   line-height: 1.3;
-  text-decoration:none;
+  text-decoration: none;
   transition: all 0.2s ease-in-out;
   color: black;
-  opacity: ${props => props.show ? '1' : '0.5'};
-    @media (min-width: ${size.laptop}) {
-      font-size: 1.8em;
-    }
-    @media (min-width: ${size.laptopM}) {
-      font-size: xx-large;
-    }
+  /* opacity: ${props => (props.show ? "1" : "0.5")}; */
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.8em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: xx-large;
+  }
   /* transition-timing-function: ease-in;
   transition: 1s; */
   :hover {
@@ -43,65 +48,73 @@ export const ExperienceButton = styled.div`
     margin-bottom: 0;
   }
   :nth-child(2) {
-    margin-top:-0.5em;
+    margin-top: -0.5em;
   }
   :last-child img {
     @media (min-width: ${size.laptop}) {
-     max-width:32px;
+      max-width: 32px;
     }
     @media (min-width: ${size.laptopM}) {
-     max-width:37px;
+      max-width: 37px;
     }
-    margin-top:0.5em;
+    margin-top: 0.5em;
     margin-bottom: 0;
   }
   span {
     font-size: 0.55em;
     @media (min-width: ${size.laptop}) {
-    font-size: 0.6em;
+      font-size: 0.6em;
     }
     @media (min-width: ${size.laptopM}) {
-    font-size: 0.6em;
+      font-size: 0.6em;
     }
   }
   -webkit-animation: fadeIn 1.5s ease-in-out;
-    animation: fadeIn 1.5s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
   :last-of-type {
-    margin-top: ${props => props.left ? '' : props.isExperience4 ? '' : '0.4em'};
-    border-top: ${props => props.left ? '' : props.isExperience4 ? '' : 'solid thin #000'};
+    margin-top: ${props =>
+      props.left ? "" : props.isExperience4 ? "" : "0.4em"};
+    border-top: ${props =>
+      props.left ? "" : props.isExperience4 ? "" : "solid thin #000"};
   }
-    /* :nth-of-type(2) {
+  /* :nth-of-type(2) {
       -webkit-animation: fadeIn 5s ease-in-out;
     animation: fadeIn 5s ease-in-out;
     } */
   /* transition: opacity 2s;
   transition-timing-function: ease-in-out */
 `
-
 export const ExperienceButtonImage = styled.img`
   :hover {
     cursor: pointer;
     color: ${Color.red};
   }
-  visibility: ${props => props.show ? 'visible' : 'hidden'};
+  visibility: ${props => (props.show ? "visible" : "hidden")};
+`
+
+
+export const ExperienceButtonTitle = styled(ExperienceButton)`
+  transition: none;
+  animation: none;
+  -webkit-animation: none;
 `
 
 export const ExperienceControllerMobileWrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  height:40px;
+  height: 40px;
   background: white;
   border-bottom: 0px solid black;
-  ${showDisplayForTabletFunc('grid')};
+  ${showDisplayForTabletFunc("grid")};
 `
 
 export const ExperienceControllerMobileButton = styled.div`
   padding: 0em;
-  height:40px;
+  height: 40px;
 
   border-right: 1px solid black;
-  border-bottom: ${props => props.isSelected ? 'none': 'solid 1px #000'} ;
+  border-bottom: ${props => (props.isSelected ? "none" : "solid 1px #000")};
   > p {
-  opacity: ${props => props.isSelected ? '1' : '0.4'};
+    opacity: ${props => (props.isSelected ? "1" : "0.4")};
   }
   :last-child {
     border-right: 0;
@@ -112,21 +125,21 @@ export const ExperienceControllerMobileButton = styled.div`
   > p {
     margin: 0;
     font-size: 1.1em;
-    line-height:40px;
-    text-align:center;
+    line-height: 40px;
+    text-align: center;
     @media (min-width: ${size.mobileL}) {
-    font-size: 1.0em;
+      font-size: 1em;
     }
     @media (min-width: ${size.tablet}) {
-    font-size: 1.1em;
+      font-size: 1.1em;
     }
   }
   img {
-   padding: 0;
+    padding: 0;
     height: 20px;
     width: auto;
     margin-top: 0.6em;
-    margin-bottom:0;
+    margin-bottom: 0;
     @media (min-width: ${size.mobileL}) {
       height: 18px;
       margin-top: 0.65em;

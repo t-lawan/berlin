@@ -16,12 +16,12 @@
   
 }
 
-ul {
+/* ul {
   transform: rotateY(1deg)  translateZ(1px) !important; 
 -webkit-transform: rotateY(1deg)  translateZ(1px) !important;
 -moz-transform: rotateY(1deg)  translateZ(1px) !important;
 -o-transform: rotateY(1deg)  translateZ(1px) !important;
-}
+} */
 .carousel .control-arrow:hover {
   opacity: 1;
 }
@@ -214,7 +214,7 @@ ul {
   left: 50%;
   margin-left: -45%;
   width: 90%;
-  border-radius: 10px;
+  border-radius: 0px !important;
   background: #000;
   color: #fff;
   padding: 10px;
