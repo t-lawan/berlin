@@ -43,7 +43,6 @@ const Exhibition = props => {
     return pg["EN"] == "exhibition"
   })
 
-  console.log("EXHIBITION", exhibition)
   const renderComponent = (
     <>
       <SEO
