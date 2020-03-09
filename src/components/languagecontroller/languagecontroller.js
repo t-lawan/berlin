@@ -11,11 +11,13 @@ class LanguageController extends React.Component {
   delay = 200;
   languageToFunctionWrapper = {
     EN: () => {
+      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToEN()
       }, this.delay)
     },
     DE: () => {
+      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToDE()
       }, this.delay)
@@ -33,8 +35,9 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {this.languages.map(language => (
           <LanguageButton
-            cover direction="down"
-            bg={transitionBackground}
+            // cover direction="down"
+            // bg={transitionBackground}
+
             key={language}
             to={this.createPath(language)}
             onClick={this.languageToFunctionWrapper[language]}
@@ -89,6 +92,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setLanguageToEN: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_EN }),
     setLanguageToDE: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_DE }),
+    setFreshLoadToTrue: () => dispatch(actionTypes.setFreshLoadToTrue())
   }
 }
 export default connect(

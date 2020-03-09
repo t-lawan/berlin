@@ -30,7 +30,7 @@ const intitalState = {
   show_events_in_mobile: false,
   isViewing: false,
   isInTransition: false,
-  freshLoad: true
+  freshLoad: true,
 }
 
 const reducer = (state = intitalState, action) => {
@@ -87,7 +87,11 @@ const reducer = (state = intitalState, action) => {
       })
     case actionTypes.SET_FRESH_TO_LOAD_TO_FALSE:
       return Object.assign({}, state, {
-        freshLoad: false
+        freshLoad: false,
+      })
+    case actionTypes.SET_FRESH_TO_LOAD_TO_TRUE:
+      return Object.assign({}, state, {
+        freshLoad: true,
       })
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
