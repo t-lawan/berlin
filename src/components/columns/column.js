@@ -9,7 +9,7 @@ class Column extends React.Component {
     this.columnRef = React.createRef();
   }
   render() {
-    return <ColumnLayout ref={this.columnRef} rightBorder={this.props.rightBorder} hideInMobile={this.props.hideInMobile} hideInTablet={this.props.hideInTablet}>{this.props.children}</ColumnLayout>
+    return <ColumnLayout id={this.props.id ? this.props.id : ''} ref={this.columnRef} rightBorder={this.props.rightBorder} hideInMobile={this.props.hideInMobile} hideInTablet={this.props.hideInTablet}>{this.props.children}</ColumnLayout>
 
   }
 }
@@ -20,7 +20,8 @@ Column.propTypes = {
   className: PropTypes.string,
   rightBorder: PropTypes.bool,
   hideInMobile: PropTypes.bool,
-  hideInTablet: PropTypes.bool
+  hideInTablet: PropTypes.bool,
+  id: PropTypes.string
 }
 
 export default Column

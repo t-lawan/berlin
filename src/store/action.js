@@ -45,3 +45,16 @@ export const startTransition = () => {
         type: START_TRANSITION
     }
 }
+
+export const changeExperience = (experience) => {
+    return {
+        type: CHANGE_EXPERIENCE,
+        experience: experience
+    }
+}
+
+export const isViewing = () => {
+    return {
+        type: IS_VIEWING
+    }
+}

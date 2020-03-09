@@ -16,7 +16,12 @@
   
 }
 
-
+ul {
+  transform: rotateY(1deg)  translateZ(0) !important; 
+-webkit-transform: rotateY(1deg)  translateZ(0) !important;
+-moz-transform: rotateY(1deg)  translateZ(0) !important;
+-o-transform: rotateY(1deg)  translateZ(0px) !important;
+}
 .carousel .control-arrow:hover {
   opacity: 1;
 }
