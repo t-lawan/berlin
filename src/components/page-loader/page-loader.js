@@ -27,7 +27,7 @@ class PageLoader extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             this.props.setFreshLoadToFalse();
-        }, 2000)
+        }, 1500)
     }
   render() {
     return (

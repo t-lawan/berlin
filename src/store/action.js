@@ -33,10 +33,17 @@ export const START_TRANSITION = "START_TRANSITION"
 export const STOP_TRANSITION = "STOP_TRANSITION"
 
 export const SET_FRESH_TO_LOAD_TO_FALSE = "SET_FRESH_TO_LOAD_TO_FALSE"
+export const SET_FRESH_TO_LOAD_TO_TRUE = "SET_FRESH_TO_LOAD_TO_TRUE"
 
 export const setFreshLoadToFalse = () => {
     return {
         type: SET_FRESH_TO_LOAD_TO_FALSE
+    }
+}
+
+export const setFreshLoadToTrue = () => {
+    return {
+        type: SET_FRESH_TO_LOAD_TO_TRUE
     }
 }
 
