@@ -32,7 +32,7 @@ export const NewsItemLink = styled(Link)`
   line-height: 1.3;
    transition: all 0.2s ease-in-out; 
   }
-  :hover > p {
+  :hover > p:first-child {
     color: ${Color.red}
   };
   :hover > ${NewsText} > span {
