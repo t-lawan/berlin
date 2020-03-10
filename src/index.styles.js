@@ -336,7 +336,8 @@ ul.slider {
 }
 
 
-${'' /* .image-contain-enter {
+${
+  "" /* .image-contain-enter {
   max-height: 0;
 }
 
@@ -354,7 +355,8 @@ ${'' /* .image-contain-enter {
 
 .image-contain-active-exit {
   
-} */}
+} */
+}
 
 .remove-animation {
   max-height: inherit;
@@ -396,6 +398,15 @@ ${'' /* .image-contain-enter {
 @keyframes fadeOut {
   0% { opacity: 1 }
   100% { opacity: 0 }
+}
+
+.remove-z {
+      > div > div> ul {
+      transform: rotateY(1deg) translateZ(1px) !important;
+      -webkit-transform: rotateY(1deg) translateZ(1px) !important;
+      -moz-transform: rotateY(1deg) translateZ(1px) !important;
+      -o-transform: rotateY(1deg) translateZ(1px) !important;
+    }
 }
 `
 
@@ -474,7 +485,6 @@ export const changeNthChild = css`
     }
   }
 `
-
 
 export const mobile = props => {
   return css`
