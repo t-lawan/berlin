@@ -80,7 +80,6 @@ class ImageResource extends React.Component {
       <>
         <Image fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
-        className={this.props.isGallery ? 'legend' : ''}
           hidden={!this.props.withCaption}
           dangerouslySetInnerHTML={{
             __html: this.state.image
