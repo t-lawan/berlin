@@ -11,13 +11,11 @@ class LanguageController extends React.Component {
   delay = 200;
   languageToFunctionWrapper = {
     EN: () => {
-      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToEN()
       }, this.delay)
     },
     DE: () => {
-      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToDE()
       }, this.delay)
@@ -25,6 +23,11 @@ class LanguageController extends React.Component {
   }
   componentDidMount() {
     this.changeLanguageFromPath()
+  }
+
+  changeLanguage = (language) => {
+    this.props.setFreshLoadToTrue();
+    this.languageToFunctionWrapper[language]
   }
   languages;
 
@@ -40,7 +43,7 @@ class LanguageController extends React.Component {
 
             key={language}
             to={this.createPath(language)}
-            onClick={this.languageToFunctionWrapper[language]}
+            onClick={() => this.changeLanguage(language)}
             selected={this.props.languages[language] ? 1 : 0}
           >
           {/* <LanguageButton
