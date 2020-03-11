@@ -13,18 +13,23 @@ export const GalleryImage = styled(Img)`
   }
 `
 export const Image = styled(Img)`
-  max-height: 650px;
+  max-height: 650px !important;
+  /* padding-bottom: 5rem !important; */
+
   > picture > img {
     object-fit: contain !important;
     max-height: 650px !important;
     display: block;
     margin: 0 auto;
+    padding-bottom: 4rem !important;
   }
 `
+
 
 export const Caption = styled.section`
   font-size: 0.65rem;
   text-align: left;
+  margin-top: -4rem;
   p {
     font-size: 0.65rem;
     margin: 0.7em 0;
