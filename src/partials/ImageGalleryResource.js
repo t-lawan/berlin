@@ -151,7 +151,7 @@ class ImageGalleryResource extends React.Component {
             showStatus={false}
             centerMode={false}
             swipeable={true}
-            // dynamicHeight={true}
+            dynamicHeight={true}
           >
             {this.props.ids.map((id, index) => (
               <ImageWrapper key={index}>
