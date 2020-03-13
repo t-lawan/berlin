@@ -158,7 +158,7 @@ class ImageGalleryResource extends React.Component {
                 <ImageResource
                   onLoad={() => this.setVisibleToTrue()}
                   id={id}
-                  // isGallery={false}
+                  isGallery={true}
                   withCaption={true}
                 />
               </ImageWrapper>
