@@ -13,7 +13,7 @@ import {
   transitionBackground,
 } from "../../utility/helper"
 import { getDocument } from "../../store/selector"
-import * as actionTypes from '../../store/action';
+import * as actionTypes from "../../store/action"
 
 const Header = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -38,6 +38,11 @@ const Header = props => {
     exhibitions[0][language].exp_title_header_mobile
   )
 
+  const click = () => {
+    props.startTransition();
+    // props.isViewing();
+  }
+
   return (
     <HeaderWrapper
       showOnHomePage={props.showOnHomePage}
@@ -45,10 +50,10 @@ const Header = props => {
     >
       <HeaderLink
         // fade
-        onClick={() => props.startTransition()}
+        onClick={() => click()}
         to={createPath(language, "")}
       >
-      {/* <HeaderLink
+        {/* <HeaderLink
         cover
         direction="down"
         bg={transitionBackground}
@@ -85,11 +90,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    startTransition: () =>
-      dispatch({ type: actionTypes.START_TRANSITION}),
+    startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
+    isViewing: () => dispatch(actionTypes.isViewing()),
   }
 }
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
