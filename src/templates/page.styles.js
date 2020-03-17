@@ -217,11 +217,14 @@ export const PressWrapper = styled.div`
     }
     @media (min-width: ${size.laptop}) {
       font-size: 1.0em;
-       line-height: 1.3;
+      line-height: 1.3;
+    }
+    @media (min-width: ${size.laptopM}) {
+      font-size: 1.1em;
     }
     @media (min-width: ${size.laptopL}) {
       font-size: 1.2em;
-       line-height: 1.35;
+      line-height: 1.35;
     }
     margin:0.5rem 0;
     padding:0;
