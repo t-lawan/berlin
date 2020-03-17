@@ -104,8 +104,8 @@ class ImageContainer extends React.Component {
         mountOnEnter
         // unmountOnExit
         timeout={{
-          enter: 3000,
-          exit: 2000,
+          enter: 1000,
+          exit: 500,
         }}
         classNames={{
           enter: `${transitionName}-enter`,
