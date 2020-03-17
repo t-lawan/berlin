@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
-import { changeGridToOneRow, size } from "../../index.styles"
+import { changeGridToOneRow, size, Color } from "../../index.styles"
 import ImageResource from "../../partials/ImageResource"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import * as actionTypes from '../../store/action';
@@ -68,6 +68,11 @@ const FooterText = styled.p`
 const FooterLink = styled(AniLink)`
   margin: 0;
   padding-right: 1rem;
+  transition: all 0.2 ease-in-out;
+  :hover {
+    cursor: pointer;
+    color: ${Color.red};
+  }
 `
 const FooterComponent = props => {
   const language = getCurrentLanguageString(props.languages)
