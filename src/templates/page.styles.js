@@ -187,7 +187,7 @@ export const PressWrapper = styled.div`
   margin-bottom: 1em !important;
   }
   div > div {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.2em;
   > p > a {
     font-size: 1em;
     border-bottom: solid thin;
