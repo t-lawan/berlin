@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { size } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 
 export const SocialMediaWrapper = styled.div`
   display: flex;
@@ -34,8 +34,10 @@ export const SocialMediaWrapper = styled.div`
 
 export const SocialMediaText = styled.span`
   padding: 0em 0.6em 0.5em 0em;
+  transition: all 0.2s ease-in-out;
   :hover {
     cursor: pointer;
+    color: ${Color.red}
   }
   @media (max-width: ${size.tabletL}) {
     display: inline-block;
@@ -45,8 +47,10 @@ export const SocialMediaText = styled.span`
 export const SocialMediaLink = styled.a`
   padding: 0em 0.6em 0.5em 0em;
   display:inline-block;
+  transition: all 0.2s ease-in-out;
   :hover {
     cursor: pointer;
+    color: ${Color.red}
   }
   :last-child {
     padding-right:0;
