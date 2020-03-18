@@ -3,7 +3,7 @@ import { Color, size, TextSection } from "../../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const EventSection = styled(TextSection)`
-    font-size: 1rem;
+    font-size: 1em;
   p {
     font-size: inherit;
     margin:0;
@@ -14,13 +14,16 @@ export const EventSection = styled(TextSection)`
     word-break: break-all;
   }
   @media (min-width: ${size.tablet}) {
-   font-size: 0.95rem; 
+   font-size: 0.95em; 
   }
   @media (min-width: ${size.laptop}) {
-   font-size: 1rem; 
+   font-size: 1em; 
+  }
+  @media (min-width: ${size.laptopM}) {
+   font-size: 1.1em; 
   }
   @media (min-width: ${size.laptopL}) {
-   font-size: 1.2rem; 
+   font-size: 1.2em; 
   }
 `
 
@@ -73,6 +76,6 @@ export const EventHeading = styled.p`
    font-size: 0.95rem; 
   }
   @media (min-width: ${size.laptop}) {
-   font-size: 1rem; 
+   font-size: 1em; 
   }
 `
