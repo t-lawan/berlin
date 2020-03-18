@@ -148,7 +148,7 @@ const ResourcesList = props => {
           >
             <ResourceItem>
               <ImageResource
-                id={resource.image_gallery[0].wordpress_id}
+                id={resource.thumbnail_image}
                 withCaption={false}
               />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
@@ -183,7 +183,7 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
-              <ImageResource id={resource.image} withCaption={false} />
+              <ImageResource id={resource.thumbnail_image} withCaption={false} />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
             </ResourceItem>
