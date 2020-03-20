@@ -24,6 +24,7 @@ const intitalState = {
     show: false,
   },
   documentation: [],
+  publications: [],
   navbar: [],
   show_overlay: true,
   agreed_to_terms: false,
@@ -96,6 +97,10 @@ const reducer = (state = intitalState, action) => {
     case actionTypes.SET_RESOURCES:
       return Object.assign({}, state, {
         resources: action.resources,
+      })
+    case actionTypes.SET_PUBLICATIONS: 
+      return Object.assign({}, state, {
+        publications: action.publications
       })
     case actionTypes.SET_DOCUMENTATION:
       return Object.assign({}, state, {
