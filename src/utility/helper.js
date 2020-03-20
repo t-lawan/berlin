@@ -41,7 +41,7 @@ export  const pageMap = [
   { EN: "imprint", DE: "impressum" },
   { EN: "practical-information", DE: "praktische-information" },
   { EN: "media", DE: "mediathek" },
-
+  { EN: "publication", DE: "publikation" },
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
