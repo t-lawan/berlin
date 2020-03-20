@@ -52,7 +52,7 @@ const Publications = props => {
         }`}
       />
       <div>
-        <PublicationNavbar />
+        <PublicationNavbar currentSlug={publication.slug} />
       </div>
 
       <div>
