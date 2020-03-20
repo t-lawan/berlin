@@ -1,7 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { Color } from "../../index.styles"
+import { Link } from "gatsby"
 
 const DocumentationListWrapper = styled.div`
   padding: 0.5rem;
@@ -12,7 +14,12 @@ const DocumentationItem = styled.div`
   padding: 0.5rem 0;
 `
 
-const DocumentationTextBox = styled.div``
+const DocumentationLink = styled(Link)``
+const DocumentationTextBox = styled.div`
+  :hover {
+    color: ${Color.red};
+  }
+`
 
 let content = {
   EN: {
@@ -34,97 +41,52 @@ const DocumentationList = props => {
   let documentation = props.documentation
 
   const createComponent = (doc, index) => {
-    console.log("DOC LOG", doc)
     let renderComponent
-    switch (doc.type) {
-      case "video":
+    let hasEventRelation = doc.related_events.length > 0;
+    if(hasEventRelation) {
         renderComponent = (
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
-            <DocumentationTextBox>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].title,
-                }}
-              />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
-            </DocumentationTextBox>
-          </DocumentationItem>
-        )
-        break
-      case "mp3":
+            <DocumentationLink to={createPath(language, `documentation/${doc.slug}`)}>
+                <DocumentationItem key={index}>
+                  <p> {content[language][doc.type]} </p>
+                  <DocumentationTextBox>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: doc[language].title,
+                      }}
+                    />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: doc[language].doc_credits,
+                      }}
+                    />
+                  </DocumentationTextBox>
+                </DocumentationItem>
+              </DocumentationLink>
+      )
+    } else {
         renderComponent = (
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
-            <DocumentationTextBox>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].title,
-                }}
-              />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
-            </DocumentationTextBox>
-          </DocumentationItem>
-        )
-        break
-      case "imagegallery":
-        renderComponent = (
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
-            <DocumentationTextBox>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].title,
-                }}
-              />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
-            </DocumentationTextBox>
-          </DocumentationItem>
-        )
-        break
-      case "text":
-        renderComponent = (
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
-            <DocumentationTextBox>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].title,
-                }}
-              />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
-            </DocumentationTextBox>
-          </DocumentationItem>
-        )
-        break
-      default:
-        renderComponent = (
-          <DocumentationItem key={index}>
-            <p> Default </p>
-          </DocumentationItem>
-        )
-        break
+            <DocumentationLink to={createPath(language, `documentation/${doc.slug}`)}>
+                <DocumentationItem key={index}>
+                  <p> {content[language][doc.type]} </p>
+                  <DocumentationTextBox>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: doc[language].title,
+                      }}
+                    />
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: doc[language].doc_credits,
+                      }}
+                    />
+                  </DocumentationTextBox>
+                </DocumentationItem>
+              </DocumentationLink>
+      )
     }
 
-    return renderComponent
+    return renderComponent;
   }
-
   return (
     <DocumentationListWrapper>
       {documentation.map((doc, index) => createComponent(doc, index))}
