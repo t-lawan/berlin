@@ -36,8 +36,8 @@ export class Convert {
     return new PublicationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
-      wordpressModel.EN,
-      wordpressModel.DE,
+      wordpressModel.acf.EN,
+      wordpressModel.acf.DE,
       wordpressModel.acf.dimensions,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,

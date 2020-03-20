@@ -1,30 +1,83 @@
 import React from "react"
+import striptags from "striptags"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { PageWrapper,PageTitle,PageSubTitle } from "./page.styles"
+import { TwoColumnPageWrapper } from "./page.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, pageMap } from "../utility/helper"
+import {
+  getCurrentLanguageString,
+  pageMap,
+  truncateText,
+} from "../utility/helper"
 import SEO from "../components/seo/seo"
-import NewsList from "../components/news/newslist";
-import { Convert } from "../utility/convert";
+import NewsList from "../components/news/newslist"
+import { Convert } from "../utility/convert"
+import ImageResource from "../partials/ImageResource"
+import { ExternalLink, Color } from "../index.styles";
+import styled from 'styled-components';
 
+const PublicationExternalLink = styled(ExternalLink)`
+    text-decoration: underline;
+    text-decoration-color: ${Color.red};
+`
 const Publications = props => {
   const language = getCurrentLanguageString(props.languages)
-  let publication = Convert.toPublicationModel(props.pageContext);
-  let title = publication[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(publication[props.pageContext.lang.toUpperCase()].title)) : ""
-  let description = publication[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(publication[props.pageContext.lang.toUpperCase()].description)) : "";
-  let path = pageMap.find((pg) => {
+  let publication = Convert.toPublicationModel(props.pageContext)
+  let title = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(publication[props.pageContext.language.toUpperCase()].title)
+      )
+    : ""
+  let description = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(
+          publication[props.pageContext.language.toUpperCase()].description
+        )
+      )
+    : ""
+  let path = pageMap.find(pg => {
     return pg["EN"] == "publication"
-  })  
+  })
+
+  console.log("PUBLICATION LOG", publication)
   const renderComponent = (
-    <PageWrapper>
-      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${publication.slug}`} />      
-      <div
-        dangerouslySetInnerHTML={{
-          __html: publication[language].title,
-        }}
+    <TwoColumnPageWrapper>
+      <SEO
+        title={title}
+        description={description}
+        lang={props.pageContext.language}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+          publication.slug
+        }`}
       />
-    </PageWrapper>
+      <div></div>
+
+      <div>
+        {publication[language].publication_thumbnail ? (
+          <ImageResource id={publication[language].publication_thumbnail} />
+        ) : null}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: publication[language].title,
+          }}
+        />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: publication[language].description,
+          }}
+        />
+        <p> {publication[language].publisher} </p>
+        <p>
+          {" "}
+          {publication[language].language} / {publication.dimensions} /{" "}
+          {publication.pageCount} pages / {publication[language].format}
+        </p>
+        <PublicationExternalLink href={`${publication[language].order_link}`} target="__blank">
+          {" "}
+          buy in shop{" "}
+        </PublicationExternalLink>
+      </div>
+    </TwoColumnPageWrapper>
   )
 
   let thirdColumn = (
@@ -49,7 +102,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Publications)
+export default connect(mapStateToProps, null)(Publications)
