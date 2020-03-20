@@ -375,6 +375,7 @@ const Event = props => {
         </EventColumn>
       </TwoColumnPageWrapper>
       <RelatedResources
+        border={false}
         ids={
           event.related_resource && event.related_resource.length > 0
             ? event.related_resource

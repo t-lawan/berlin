@@ -56,6 +56,8 @@ const RelatedResource = styled.div`
       color: ${Color.red}
     }
   }
+  border: ${props => props.border ? '1px solid black' :  ''} !important;
+
 `
 
 const ResourceText = styled.p`
@@ -159,7 +161,7 @@ const RelatedResources = props => {
           // cover direction="down"
           // bg={transitionBackground}
         >
-          <RelatedResource directlyRelated={resource.directlyRelated}>
+          <RelatedResource border={props.border} directlyRelated={resource.directlyRelated}>
             <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 9)} ...` : resource.title}</ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
@@ -171,7 +173,8 @@ const RelatedResources = props => {
 }
 
 RelatedResources.propTypes = {
-  ids: PropTypes.array
+  ids: PropTypes.array,
+  border: PropTypes.bool
 }
 
 const mapStateToProps = state => {
