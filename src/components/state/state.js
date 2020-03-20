@@ -8,7 +8,7 @@ import { generateExhibitions } from "../../models/ExhibitionModel"
 import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
-import moment from 'moment';
+import moment from "moment"
 const State = props => {
   if (!props.isLoaded) {
     const data = useStaticQuery(
@@ -335,6 +335,50 @@ const State = props => {
               }
             }
           }
+          allWordpressWpPublications {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    biennale_context_note
+                    description
+                    contributors
+                    design
+                    editor
+                    format
+                    language
+                    order_link
+                    price
+                    publication_thumbnail
+                    publisher
+                    subtitle
+                    title
+                  }
+                  EN {
+                    biennale_context_note
+                    contributors
+                    description
+                    design
+                    editor
+                    format
+                    language
+                    order_link
+                    price
+                    publication_thumbnail
+                    publisher
+                    subtitle
+                    title
+                  }
+                  dimensions
+                  exp_number
+                  isbn
+                  page_count
+                }
+              }
+            }
+          }
           allWordpressWpVenue {
             edges {
               node {
@@ -401,7 +445,7 @@ const State = props => {
       data.allWordpressWpEvents,
       Convert.toEventModel
     )
-      // Sort dates
+    // Sort dates
     events = events.sort((a, b) => {
       return moment(a.dates[0].start_date).diff(moment(b.dates[0].start_date))
     })
@@ -421,6 +465,12 @@ const State = props => {
       data.allWordpressWpResourceGenre,
       Convert.toResourceGenreModel
     )
+
+    let publications = Convert.toModelArray(
+      data.allWordpressWpPublications,
+      Convert.toPublicationModel
+    )
+    
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -488,10 +538,13 @@ const State = props => {
       props.setActiveExperience(parseInt(experience))
     }
 
+    console.log('PUBLICATIONS LOG', publications)
+
     props.setNavbar(navbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
     props.setPages(pages)
+    props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)
@@ -543,6 +596,11 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_RESOURCES,
         resources: resources,
       }),
+    setPublications: publications =>
+      dispatch({
+        type: actionTypes.SET_PUBLICATIONS,
+        publications: publications,
+      }),
     setDocumentation: documentation =>
       dispatch({
         type: actionTypes.SET_DOCUMENTATION,
@@ -586,7 +644,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(State)
+export default connect(mapStateToProps, mapDispatchToProps)(State)
