@@ -11,6 +11,7 @@ import { Link } from "gatsby"
 import { getItem } from "../../store/selector"
 import { DateManager } from "../../utility/date"
 import { UpcomingEventsContent } from "../events/upcomingevents";
+import { startTransition } from "../../store/action";
 
 const DocumentationListWrapper = styled.div`
   padding: 0.5rem;
@@ -59,6 +60,7 @@ const DocumentationList = props => {
       renderComponent = (
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}
+          onClick={() => props.startTransition()}
         >
           <DocumentationItem key={index}>
             <p> {content[language][doc.type]} </p>
@@ -88,6 +90,7 @@ const DocumentationList = props => {
       renderComponent = (
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}
+          onClick={() => props.startTransition()}
         >
           <DocumentationItem key={index}>
             <p> {content[language][doc.type]} </p>
@@ -126,4 +129,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(DocumentationList)
+const mapDispatchToProps = dispatch => {
+    return {
+      startTransition: () =>
+        dispatch(startTransition()),
+    }
+  }
+
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentationList)
