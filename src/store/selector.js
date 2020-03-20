@@ -23,3 +23,9 @@ export const getItems = (items, ids) => {
         return ids.includes(item.id);
     })
 }
+
+export const getItem = (items, id) => {
+    return items.find((item) => {
+        return item.id === id;
+    })
+}

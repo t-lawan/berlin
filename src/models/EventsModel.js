@@ -24,8 +24,14 @@ export class EventsModel {
     this.id = id
     this.slug = slug
     this.experience = experience
-    this.EN = EN
-    this.DE = DE
+    this.EN = {
+      ...EN,
+      other_language: other_event_language
+    }
+    this.DE = {
+      ...DE,
+      other_language: other_event_language_de
+    }
     this.dates = dates
     this.venue = venue
     this.documentation = event_documentation

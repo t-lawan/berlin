@@ -1,9 +1,16 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import {
+  getCurrentLanguageString,
+  createPath,
+  createProperty,
+} from "../../utility/helper"
 import { Color } from "../../index.styles"
 import { Link } from "gatsby"
+import { getItem } from "../../store/selector"
+import { DateManager } from "../../utility/date"
+import { UpcomingEventsContent } from "../events/upcomingevents";
 
 const DocumentationListWrapper = styled.div`
   padding: 0.5rem;
@@ -16,6 +23,9 @@ const DocumentationItem = styled.div`
 
 const DocumentationLink = styled(Link)``
 const DocumentationTextBox = styled.div`
+  p {
+      margin: 0;
+  }
   :hover {
     color: ${Color.red};
   }
@@ -42,50 +52,63 @@ const DocumentationList = props => {
 
   const createComponent = (doc, index) => {
     let renderComponent
-    let hasEventRelation = doc.related_events.length > 0;
-    if(hasEventRelation) {
-        renderComponent = (
-            <DocumentationLink to={createPath(language, `documentation/${doc.slug}`)}>
-                <DocumentationItem key={index}>
-                  <p> {content[language][doc.type]} </p>
-                  <DocumentationTextBox>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: doc[language].title,
-                      }}
-                    />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: doc[language].doc_credits,
-                      }}
-                    />
-                  </DocumentationTextBox>
-                </DocumentationItem>
-              </DocumentationLink>
+    let hasEventRelation = doc.related_events.length > 0
+    if (hasEventRelation) {
+      let event = getItem(props.events, doc.related_events[0])
+      console.log("EVENT", event)
+      renderComponent = (
+        <DocumentationLink
+          to={createPath(language, `documentation/${doc.slug}`)}
+        >
+          <DocumentationItem key={index}>
+            <p> {content[language][doc.type]} </p>
+            <DocumentationTextBox>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: event[language].event_title,
+                }}
+              />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: event[language].event_subtitle,
+                }}
+              />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: doc[language].doc_credits,
+                }}
+              />
+              <p> {DateManager.toDatetring(event.dates[0].start_date)} </p>
+              <p>{event.language == "other" ? event[language].other_language : UpcomingEventsContent[language][event.language]} </p>
+            </DocumentationTextBox>
+          </DocumentationItem>
+        </DocumentationLink>
       )
     } else {
-        renderComponent = (
-            <DocumentationLink to={createPath(language, `documentation/${doc.slug}`)}>
-                <DocumentationItem key={index}>
-                  <p> {content[language][doc.type]} </p>
-                  <DocumentationTextBox>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: doc[language].title,
-                      }}
-                    />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: doc[language].doc_credits,
-                      }}
-                    />
-                  </DocumentationTextBox>
-                </DocumentationItem>
-              </DocumentationLink>
+      renderComponent = (
+        <DocumentationLink
+          to={createPath(language, `documentation/${doc.slug}`)}
+        >
+          <DocumentationItem key={index}>
+            <p> {content[language][doc.type]} </p>
+            <DocumentationTextBox>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: doc[language].title,
+                }}
+              />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: doc[language].doc_credits,
+                }}
+              />
+            </DocumentationTextBox>
+          </DocumentationItem>
+        </DocumentationLink>
       )
     }
 
-    return renderComponent;
+    return renderComponent
   }
   return (
     <DocumentationListWrapper>
@@ -99,6 +122,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     resources: state.resources,
     documentation: state.documentation,
+    events: state.events,
   }
 }
 
