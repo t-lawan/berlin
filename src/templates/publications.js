@@ -15,6 +15,7 @@ import { Convert } from "../utility/convert"
 import ImageResource from "../partials/ImageResource"
 import { ExternalLink, Color } from "../index.styles";
 import styled from 'styled-components';
+import PublicationNavbar from "../components/publications/publication-navbar";
 
 const PublicationExternalLink = styled(ExternalLink)`
     text-decoration: underline;
@@ -50,11 +51,13 @@ const Publications = props => {
           publication.slug
         }`}
       />
-      <div></div>
+      <div>
+        <PublicationNavbar />
+      </div>
 
       <div>
         {publication[language].publication_thumbnail ? (
-          <ImageResource id={publication[language].publication_thumbnail} />
+          <ImageResource withCaption={false} id={publication[language].publication_thumbnail} />
         ) : null}
         <div
           dangerouslySetInnerHTML={{
