@@ -40,6 +40,8 @@ export  const pageMap = [
   { EN: "data-privacy", DE: "datenschutz" },
   { EN: "imprint", DE: "impressum" },
   { EN: "practical-information", DE: "praktische-information" },
+  { EN: "media", DE: "mediathek" },
+
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"

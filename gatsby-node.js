@@ -512,6 +512,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
     { EN: "practical-information", DE: "praktische-information" },
+    { EN: "media", DE: "mediathek" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -737,7 +738,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const currentTemplate = path.resolve("./src/templates/current.js")
+  const currentTemplate = path.resolve("./src/templates/current.js");
   languages.forEach(language => {
     let prePath = pageMap.find(pageType => {
       return pageType.EN === "current"
@@ -748,6 +749,21 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: path,
       component: slash(currentTemplate),
+      context: { language: language, slug: prePath[language.toUpperCase()] },
+    })
+  })
+
+  const mediaTemplate = path.resolve("./src/templates/media.js");
+  languages.forEach(language => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "media"
+    })
+    let path =
+      language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+
+    createPage({
+      path: path,
+      component: slash(mediaTemplate),
       context: { language: language, slug: prePath[language.toUpperCase()] },
     })
   })
