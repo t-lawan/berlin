@@ -122,7 +122,8 @@ module.exports = {
           "**/resources",
           "**/documentation",
           "**/news",
-          "**/resource-genre"
+          "**/resource-genre",
+          "**/publication",
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: [],
