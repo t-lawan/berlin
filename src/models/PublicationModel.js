@@ -1,13 +1,15 @@
 export default class PublicationModel {
     id;
+    slug;
     EN;
     DE;
     dimensions;
     experience;
     isbn;
     pageCount;
-    constructor(id, EN, DE, dimensions, experience, isbn, page_count) {
+    constructor(id, slug, EN, DE, dimensions, experience, isbn, page_count) {
         this.id = id;
+        this.slug = slug;
         this.EN = EN;
         this.DE = DE;
         this.dimensions = dimensions;

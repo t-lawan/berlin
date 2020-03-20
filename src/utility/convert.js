@@ -12,6 +12,7 @@ import { PageModel } from "../models/PageModel"
 import moment from "moment"
 import { DocumentationModel } from "../models/DocumentationModel"
 import { capitalise } from "./helper"
+import PublicationModel from "../models/PublicationModel";
 export class Convert {
   static toNewsModel = wordpressModel => {
     let dates = wordpressModel.acf.dates.map(item => {
@@ -27,6 +28,20 @@ export class Convert {
       !wordpressModel.acf.news_item_is_unlinked,
       wordpressModel.acf.thumbnail_image,
       dates
+    )
+  }
+
+  static toPublicationModel = wordpressModel => {
+
+    return new PublicationModel(
+      wordpressModel.wordpress_id,
+      wordpressModel.slug,
+      wordpressModel.EN,
+      wordpressModel.DE,
+      wordpressModel.acf.dimensions,
+      wordpressModel.acf.exp_number,
+      wordpressModel.acf.isbn,
+      wordpressModel.acf.page_count,
     )
   }
 
