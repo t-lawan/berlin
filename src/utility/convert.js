@@ -12,6 +12,7 @@ import { PageModel } from "../models/PageModel"
 import moment from "moment"
 import { DocumentationModel } from "../models/DocumentationModel"
 import { capitalise } from "./helper"
+import PublicationModel from "../models/PublicationModel";
 export class Convert {
   static toNewsModel = wordpressModel => {
     let dates = wordpressModel.acf.dates.map(item => {
@@ -30,14 +31,31 @@ export class Convert {
     )
   }
 
+  static toPublicationModel = wordpressModel => {
+
+    return new PublicationModel(
+      wordpressModel.wordpress_id,
+      wordpressModel.slug,
+      wordpressModel.acf.EN,
+      wordpressModel.acf.DE,
+      wordpressModel.acf.dimensions,
+      wordpressModel.acf.exp_number,
+      wordpressModel.acf.isbn,
+      wordpressModel.acf.page_count,
+    )
+  }
+
   static toDocumentationModel = wordpressModel => {
+    let event_relation = wordpressModel.acf.event_relation ? wordpressModel.acf.event_relation.map((relation) => {
+      return relation.wordpress_id
+    }) : null;
     return new DocumentationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
       wordpressModel.acf.documentation_type,
-      wordpressModel.acf.event_relation,
+      event_relation,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.language,
       wordpressModel.acf.mp3_upload,

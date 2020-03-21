@@ -11,7 +11,7 @@ import {
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
-  freeAdmision,
+  UpcomingEventsContent,
 } from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import ImageResource from "../partials/ImageResource"
@@ -271,7 +271,7 @@ const Event = props => {
               </div>
             ))}
             <p hidden={!event[language].rsvp_required}>
-              {freeAdmision[language].rsvp}
+              {UpcomingEventsContent[language].rsvp}
             </p>
           </EventTextBlock>
           <EventTextBlock>
@@ -314,9 +314,9 @@ const Event = props => {
             <p>
               {event.language == "other"
                 ? event[`other_language${language == "EN" ? "" : "_de"}`]
-                : freeAdmision[language][event.language]}
+                : UpcomingEventsContent[language][event.language]}
             </p>
-            <p hidden={!event.is_free}> {`${freeAdmision[language].free_admission}${event.limited_capacity ? `, ${freeAdmision[language].limited_capacity}` : ''}`}</p>
+            <p hidden={!event.is_free}> {`${UpcomingEventsContent[language].free_admission}${event.limited_capacity ? `, ${UpcomingEventsContent[language].limited_capacity}` : ''}`}</p>
           </EventTextBlock>
           <EventTextBlock>
             <ShareLink>
@@ -375,6 +375,7 @@ const Event = props => {
         </EventColumn>
       </TwoColumnPageWrapper>
       <RelatedResources
+        border={false}
         ids={
           event.related_resource && event.related_resource.length > 0
             ? event.related_resource

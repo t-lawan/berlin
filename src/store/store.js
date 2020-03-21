@@ -24,7 +24,10 @@ const intitalState = {
     show: false,
   },
   documentation: [],
+  publications: [],
   navbar: [],
+  navbar_top: [],
+  navbar_bottom: [],
   show_overlay: true,
   agreed_to_terms: false,
   show_events_in_mobile: false,
@@ -97,6 +100,10 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         resources: action.resources,
       })
+    case actionTypes.SET_PUBLICATIONS:
+      return Object.assign({}, state, {
+        publications: action.publications,
+      })
     case actionTypes.SET_DOCUMENTATION:
       return Object.assign({}, state, {
         documentation: action.documentation,
@@ -109,9 +116,13 @@ const reducer = (state = intitalState, action) => {
       return Object.assign({}, state, {
         calendar: action.calendar,
       })
-    case actionTypes.SET_NAVBAR_ITEMS:
+    case actionTypes.SET_TOP_NAVBAR:
       return Object.assign({}, state, {
-        navbar: action.navbar,
+        navbar_top: action.navbar_top,
+      })
+    case actionTypes.SET_BOTTOM_NAVBAR:
+      return Object.assign({}, state, {
+        navbar_bottom: action.navbar_bottom,
       })
     case actionTypes.SET_PAGES:
       return Object.assign({}, state, {

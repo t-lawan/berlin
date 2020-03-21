@@ -54,7 +54,7 @@ const Navbar = props => {
   return (
     <NavWrapper hideInTablet={props.hideInTablet}>
       <NavInner>
-        {props.navbar.map(item => generateLink(item, language))}
+        {props.navbar_top.map(item => generateLink(item, language))}
       </NavInner>
     </NavWrapper>
   )
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
-    navbar: state.navbar,
+    navbar_top: state.navbar_top,
   }
 }
 
