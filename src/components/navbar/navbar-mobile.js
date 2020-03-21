@@ -22,8 +22,6 @@ import {
   NavMobileOuterLink,
   NavMobileModal,
   NavImageLink,
-  NavLink,
-  NavMobileLinkParagraph,
   NavMobileOuterLinkSmall,
 } from "./navbar.styles"
 import LanguageController from "../languagecontroller/languagecontroller"
@@ -72,7 +70,6 @@ class NavbarMobile extends React.Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-
     return (
       <NavMobileWrapper showInTablet={this.props.showInTablet} showInMobile={this.props.showInMobile}>
         <NavMobileHeader>
@@ -115,7 +112,7 @@ class NavbarMobile extends React.Component {
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
-            {this.props.navbar.map((item, index) =>
+            {this.props.navbar_top.map((item, index) =>
               generateLink(item, this.language)
             )}
           </NavMobileInner>
@@ -222,7 +219,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
-    navbar: state.navbar,
+    navbar_top: state.navbar_top,
     active_experience: state.active_experience
   }
 }
