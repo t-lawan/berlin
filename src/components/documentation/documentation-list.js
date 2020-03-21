@@ -56,7 +56,6 @@ const DocumentationList = props => {
     let hasEventRelation = doc.related_events.length > 0
     if (hasEventRelation) {
       let event = getItem(props.events, doc.related_events[0])
-      console.log("EVENT", event)
       renderComponent = (
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}

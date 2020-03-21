@@ -39,8 +39,6 @@ const Publications = props => {
   let path = pageMap.find(pg => {
     return pg["EN"] == "publication"
   })
-
-  console.log("PUBLICATION LOG", publication)
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
