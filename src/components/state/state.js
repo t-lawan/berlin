@@ -538,9 +538,8 @@ const State = props => {
       props.setActiveExperience(parseInt(experience))
     }
 
-    console.log('PUBLICATIONS LOG', publications)
 
-    props.setNavbar(navbarItems)
+    props.setTopNavbar(navbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
     props.setPages(pages)
@@ -616,10 +615,10 @@ const mapDispatchToProps = dispatch => {
         type: actionTypes.SET_CALENDAR,
         calendar: calendar,
       }),
-    setNavbar: navbar =>
+    setTopNavbar: navbar =>
       dispatch({
-        type: actionTypes.SET_NAVBAR_ITEMS,
-        navbar: navbar,
+        type: actionTypes.SET_TOP_NAVBAR,
+        navbar_top: navbar,
       }),
     setResourceGenres: resourceGenres =>
       dispatch({
