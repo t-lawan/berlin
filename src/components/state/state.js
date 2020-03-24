@@ -470,7 +470,6 @@ const State = props => {
       data.allWordpressWpPublications,
       Convert.toPublicationModel
     )
-    
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -527,6 +526,22 @@ const State = props => {
         true
       )
     )
+
+    let bottomNavbarItems = [
+      new NavbarModel(
+        "participant/dodie-bellamy/",
+        "participants",
+        "participants",
+        false
+      ),
+      new NavbarModel(
+        "publication/im-urwald-gibt-es-viel-zu-tun/",
+        "publications",
+        "publikation",
+        false
+      ),
+      new NavbarModel("media", "media", "mediathek", false),
+    ]
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
       return item.active
@@ -538,8 +553,8 @@ const State = props => {
       props.setActiveExperience(parseInt(experience))
     }
 
-
-    props.setTopNavbar(navbarItems)
+    props.setTopNavbar(bottomNavbarItems)
+    props.setBottomNavbar(navbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
     props.setPages(pages)
@@ -619,6 +634,11 @@ const mapDispatchToProps = dispatch => {
       dispatch({
         type: actionTypes.SET_TOP_NAVBAR,
         navbar_top: navbar,
+      }),
+    setBottomNavbar: navbar =>
+      dispatch({
+        type: actionTypes.SET_BOTTOM_NAVBAR,
+        navbar_bottom: navbar,
       }),
     setResourceGenres: resourceGenres =>
       dispatch({
