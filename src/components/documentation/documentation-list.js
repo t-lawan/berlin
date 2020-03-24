@@ -36,13 +36,13 @@ let content = {
   EN: {
     video: "Video",
     mp3: "Audio",
-    imagegallery: "Image",
+    imagegallery: "Images",
     text: "Text",
   },
   DE: {
     video: "Video",
     mp3: "Audio",
-    imagegallery: "Image",
+    imagegallery: "Images",
     text: "Text",
   },
 }

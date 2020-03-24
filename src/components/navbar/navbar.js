@@ -50,11 +50,15 @@ const Navbar = props => {
     }
   }
 
+
   const language = getCurrentLanguageString(props.languages)
   return (
     <NavWrapper hideInTablet={props.hideInTablet}>
       <NavInner>
         {props.navbar_top.map(item => generateLink(item, language))}
+      </NavInner>
+      <NavInner>
+        {props.navbar_bottom.map(item => generateLink(item, language))}
       </NavInner>
     </NavWrapper>
   )
@@ -65,6 +69,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     navbar_top: state.navbar_top,
+    navbar_bottom: state.navbar_bottom
   }
 }
 
