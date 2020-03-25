@@ -7,7 +7,7 @@ import { getDocuments } from "../store/selector"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
+import "../assets/carousel.css"
 import { Carousel } from "react-responsive-carousel"
 
 const leftArrow =
@@ -57,23 +57,22 @@ export const NavigationButtons = styled.div`
 
 export const AnimatedSpace = styled(Animated)`
   z-index: 100;
-  > ${Caption} {
+  /* > ${Caption} {
     margin-bottom: 0.7em;
-  }
+  } */
 `
 
 export const AnimatedCarousel = styled(Carousel)`
   z-index: 100;
   > ${Caption} {
-    margin-bottom: 0.7em;
-  }
-  > div > div > ul > li > div > ${Caption} {
-    margin-bottom: 0.7em;
+    margin-bottom: 0.7em !important;
+    color: black !important;
   }
   .carousel .slide {
     background: transparent;
     list-style-type: none;
   }
+
 `
 
 export const GalleryImage = styled.img``
@@ -159,6 +158,7 @@ class ImageGalleryResource extends React.Component {
                 <ImageResource
                   onLoad={() => this.setVisibleToTrue()}
                   id={id}
+                  isGallery={true}
                   withCaption={true}
                 />
               </ImageWrapper>

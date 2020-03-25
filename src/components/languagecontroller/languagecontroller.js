@@ -24,6 +24,11 @@ class LanguageController extends React.Component {
   componentDidMount() {
     this.changeLanguageFromPath()
   }
+
+  changeLanguage = (language) => {
+    this.props.setFreshLoadToTrue();
+    this.languageToFunctionWrapper[language]
+  }
   languages;
 
   render() {
@@ -33,11 +38,12 @@ class LanguageController extends React.Component {
       <LanguageControllerWrapper>
         {this.languages.map(language => (
           <LanguageButton
-            cover direction="down"
-            bg={transitionBackground}
+            // cover direction="down"
+            // bg={transitionBackground}
+
             key={language}
             to={this.createPath(language)}
-            onClick={this.languageToFunctionWrapper[language]}
+            onClick={() => this.changeLanguage(language)}
             selected={this.props.languages[language] ? 1 : 0}
           >
           {/* <LanguageButton
@@ -89,6 +95,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setLanguageToEN: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_EN }),
     setLanguageToDE: () => dispatch({ type: actionTypes.SET_LANGUAGE_TO_DE }),
+    setFreshLoadToTrue: () => dispatch(actionTypes.setFreshLoadToTrue())
   }
 }
 export default connect(

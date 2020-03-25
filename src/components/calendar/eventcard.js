@@ -10,13 +10,14 @@ import {
   EventSection,
 } from "./eventcard.styles"
 import { TextSection } from "../../index.styles"
+import { startTransition } from "../../store/action";
 
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event
   return (
     <EventCardWrapper>
-      <EventCardLink fade to={createPath(language, event.slug)}>
+      <EventCardLink onClick={() => props.startTransition()} to={createPath(language, event.slug)}>
         <EventHeading>{event[language].display_time}</EventHeading>
         {event.item === "exhibition" ? (
           <p> <em> {event[language].title} </em></p>
@@ -39,7 +40,14 @@ const mapStateToProps = state => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () =>
+      dispatch(startTransition()),
+  }
+}
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(EventCard)

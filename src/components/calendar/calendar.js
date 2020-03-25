@@ -4,6 +4,7 @@ import MonthCards from "./monthcards"
 import { CalendarWrapper, CalendarScrollArea } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
+import { startTransition, setFreshLoadToTrue } from "../../store/action"
 
 let events = []
 let exhibitions = []
@@ -14,11 +15,11 @@ class Calendar extends React.Component {
   currentDate
   startDate
   endDate
-  calendarRef;
+  calendarRef
 
   constructor(props) {
     super(props)
-    this.calendarRef = React.createRef();
+    this.calendarRef = React.createRef()
     this.calendar = this.props.calendar
     this.months = Object.keys(this.calendar)
     this.exhibition = this.props.exhibitions.find(
@@ -74,8 +75,6 @@ class Calendar extends React.Component {
         // );
       })
     }
-
-
   }
   // const calendar = props.calendar
   // let months = Object.keys(calendar)
@@ -84,17 +83,23 @@ class Calendar extends React.Component {
     this.currentDate = DateManager.currentDate()
     const element = document.getElementById(`date-${this.currentDate}`)
     if (element) {
-
+      this.props.setFreshLoadToTrue();
+      let carousel = document.getElementsByClassName("animated")
+      
+      if (carousel) {
+        carousel[0].classList.add("remove-z")
+      }
+      let parent = document.getElementById(`column-one`)
       scrollIntoView(element, {
-        scrollMode: 'if-needed',
+        scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
-        behavior: 'smooth',
+        behavior: "smooth",
+        boundary: parent,
+        skipOverflowHiddenElements: true,
       })
-
     }
   }
-
 
   componentDidMount() {
     setTimeout(() => {
@@ -106,6 +111,13 @@ class Calendar extends React.Component {
     // setTimeout(() => {
     //   this.getElement()
     // }, 200)
+  }
+
+  componentWillUnmount() {
+    let carousel = document.getElementsByClassName("animated")
+    if (carousel) {
+      carousel[0].classList.remove("remove-z")
+    }
   }
 
   render() {
@@ -137,4 +149,11 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Calendar)
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () => dispatch(startTransition()),
+    setFreshLoadToTrue: () => dispatch(setFreshLoadToTrue()),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

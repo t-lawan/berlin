@@ -16,7 +16,7 @@ import { CSSTransition } from "react-transition-group"
 import * as actionTypes from "../../store/action"
 let transitionName = "image-contain"
 
-const ImageGalleryWrapper = styled.div`
+export const ImageGalleryWrapper = styled.div`
   display: ${props => (props.hideInTablet ? "inherit" : "none")};
   @media (max-width: ${size.tabletL}) {
     display: ${props => (props.hideInTablet ? "none" : "inherit")};
@@ -104,8 +104,8 @@ class ImageContainer extends React.Component {
         mountOnEnter
         // unmountOnExit
         timeout={{
-          enter: 3000,
-          exit: 2000,
+          enter: 1000,
+          exit: 500,
         }}
         classNames={{
           enter: `${transitionName}-enter`,

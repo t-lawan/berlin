@@ -6,23 +6,22 @@ export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
   display: block;
   z-index: 300;
+  background: white;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
   background: white;
   position: relative;
   @media (min-width: ${size.laptop}) {
-    height: 50px;
+    height: 100px;
   }
   @media (min-width: ${size.laptopM}) {
-    height: 55px;
+    height:  110px;
   }
   @media (min-width: ${size.laptopL}) {
-    height: 58px;
+    height: 116px;
   }
 `
 
 export const NavMobileWrapper = styled.nav`
-  background: white;
   border-top: 1px solid black;
   padding: 0.3em 0.7em;
   max-height: calc(100vh - 45px);
@@ -39,6 +38,8 @@ export const NavMobileWrapper = styled.nav`
 export const NavInner = styled.div`
   display: flex;
   width: 100%;
+  background: white;
+  border-bottom: 1px solid black;
 `
 
 export const NavMobileInner = styled.div`

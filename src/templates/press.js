@@ -126,6 +126,7 @@ class Press extends React.Component {
           title={`${this.pressInfo.title}`}
           description={description}
           lang={this.pressInfo.language}
+          pathname={this.pressInfo.slug}
         />
         <div>
           
@@ -145,7 +146,7 @@ class Press extends React.Component {
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
               <li key={index}> {contact_data.contact_data_line}</li>
           ))}
-          <li><a target="__blank" href="mailto:{this.pressInfo.acf.press_email}">{this.pressInfo.acf.press_email}</a></li>
+          <li><a target="__blank" href={`mailto:${this.pressInfo.acf.press_email}`}>{this.pressInfo.acf.press_email}</a></li>
           </ul>
         </div>
 

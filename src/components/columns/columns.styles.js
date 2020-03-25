@@ -8,16 +8,12 @@ import {
   hideDisplayForMobile,
   showDisplayForMobile,
 } from "../../index.styles"
-import {
-  ColumnLayout,
-} from "./column.styles"
-import {
-  Caption,
-} from "../../partials/ImageResource"
+import { ColumnLayout } from "./column.styles"
+import { Caption } from "../../partials/ImageResource"
 import { Animated } from "react-animated-css"
-import '../../assets/carousel.css'
+import "../../assets/carousel.css"
 // import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from "react-responsive-carousel"
 
 export const ExperienceCarousel = styled(Carousel)`
   text-align: left !important;
@@ -34,10 +30,6 @@ export const ExperienceCarousel = styled(Carousel)`
 
   .carousel.carousel-slider {
     overflow: hidden !important;
-  }
-
-  .carousel * {
-    /* overflow-y: auto !important; */
   }
 `
 
@@ -64,11 +56,11 @@ export const ExperienceContainer = styled.div`
   }
 
   @media (max-width: ${size.tabletL}) {
-    grid-template-areas:"column" "column column" "footer" !important;
-    margin:40px auto 0;
+    grid-template-areas: "column" "column column" "footer" !important;
+    margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child(3) {
-      z-index:10;
+    ${ColumnLayout}:nth-child (3) {
+      z-index: 10;
     }
   }
 `
@@ -78,7 +70,7 @@ export const AnimatedColumn = styled(Animated)`
   height: 100vh;
   width: inherit;
   overflow-y: auto;
-  -webkit-overflow-scrolling:touch;
+  -webkit-overflow-scrolling: touch;
   display: grid;
   grid-template-columns: 66fr 33fr;
   grid-template-rows: auto;
@@ -93,14 +85,13 @@ export const AnimatedColumn = styled(Animated)`
   }
 
   @media (max-width: ${size.tablet}) {
-    grid-template-areas:"column" "column column" "footer" !important;
-    margin:40px auto 0;
+    grid-template-areas: "column" "column column" "footer" !important;
+    margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child(3) {
-      z-index:10;
+    ${ColumnLayout}:nth-child (3) {
+      z-index: 10;
     }
   }
-
 `
 export const ColumnsWrapper = styled.div`
   background-color: #fff;
@@ -112,11 +103,11 @@ export const ColumnsWrapper = styled.div`
   }
   display: grid;
   @media (min-width: ${size.laptop}) {
-  grid-template-columns: 6% 88% 6%;
-  width: 100%;
+    grid-template-columns: 6% 88% 6%;
+    width: 100%;
   }
   @media (min-width: ${size.laptopM}) {
-  grid-template-columns: 5.05% 89.9% 5.05%;
+    grid-template-columns: 5.05% 89.9% 5.05%;
   }
   ${changeGridToOneRow}
 `
@@ -126,7 +117,7 @@ export const ResourcesOnlyInMobile = styled.div`
   z-index: 9;
   position: relative;
   @media (max-width: ${size.mobileM}) {
-    display: ${props => props.hide ? 'none' : 'inherit'};
+    display: ${props => (props.hide ? "none" : "inherit")};
   }
 `
 export const FixedTickerOnlyInMobile = styled.div`
@@ -137,7 +128,7 @@ export const FixedTickerOnlyInMobile = styled.div`
   height: 45px;
   width: 100%;
   @media (max-width: ${size.mobileM}) {
-    display: ${props => props.hide ? 'none' : 'inherit'};
+    display: ${props => (props.hide ? "none" : "inherit")};
   }
 `
 
@@ -172,8 +163,8 @@ export const StickyTopHeader = styled.div`
   position: relative;
   grid-area: "column";
   :nth-child(2) {
-      background: white;
-    }
+    background: white;
+  }
   @media (max-width: ${size.tablet}) {
     /*grid-column-start: span 2;*/
   }
@@ -188,11 +179,11 @@ export const StickyTopHeader = styled.div`
     }
   }
   @media (min-width: ${size.mobileL}) {
-    border-bottom:solid 1px #000;
+    border-bottom: solid 1px #000;
   }
   @media (min-width: ${size.laptop}) {
-    border-bottom:none;
-    }
+    border-bottom: none;
+  }
   ${hideDisplayForMobile};
   ${hideDisplayForTablet};
 `
@@ -202,14 +193,14 @@ export const FixedTopExpMob = styled.div`
     width: 100%;
     z-index: 300;
     top: 0;
-    bottom:auto;
+    bottom: auto;
     position: fixed;
     height: 40px;
   }
   @media (min-width: ${size.mobileL}) {
     z-index: 300;
     top: 0;
-    border-right:solid 1px #000;
+    border-right: solid 1px #000;
     width: 66.66%;
     position: fixed;
     height: 40px;
@@ -223,16 +214,16 @@ export const MobTitleCard = styled.div`
   @media (max-width: ${size.tablet}) {
     position: sticky;
     position: -webkit-sticky;
-    top:0;
+    top: 0;
     z-index: 3;
     width: 100%;
   }
   ${showDisplayForMobile};
 `
 
-export const ScrollNavContainer = styled.div `
-display: block;
-position: relative;
+export const ScrollNavContainer = styled.div`
+  display: block;
+  position: relative;
 `
 export const MobAnimCard = styled.div`
   @media (max-width: ${size.mobileM}) {
@@ -267,8 +258,8 @@ export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
   > section > ${Caption} {
-      margin-bottom: 0.7em;
-    }
+    margin-bottom: 0.7em;
+  }
 `
 
 export const StickyFooter = styled.div`
@@ -327,9 +318,9 @@ export const FixedFooter = styled.div`
   }
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
-    position:relative;
-    bottom:0px;
-    padding-bottom:60px;
+    position: relative;
+    bottom: 0px;
+    padding-bottom: 60px;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
@@ -346,37 +337,37 @@ export const FixedNavbar = styled.div`
   @media (max-width: ${size.tabletL}) {
     grid-area: unset;
     position: fixed;
-    bottom:auto;
+    bottom: auto;
     border-left: solid 0px #000;
-    top:0;
-    right:0;
-    width:33.33%;
+    top: 0;
+    right: 0;
+    width: 33.33%;
   }
   @media (max-width: ${size.mobileM}) {
     position: fixed;
     width: 100%;
     border-left: solid 0px #000;
     bottom: 0;
-    top:auto;
+    top: auto;
   }
 `
 export const FixedTicker = styled.div`
   z-index: 5;
-  
-  height:42px;
+
+  height: 42px;
   /* width: calc(33.33% - 3.3%); */
   width: 40%;
   position: fixed !important;
-  overflow:hidden;
+  overflow: hidden;
   /* right: 5%; */
-  left:auto;
+  left: auto;
   /*grid-area: footer;*/
   @media (max-width: ${size.mobileL}) {
     grid-area: unset;
   }
   @media (min-width: ${size.tablet}) {
     bottom: 50px;
-    height:50px;
+    height: 50px;
   }
   @media (min-width: ${size.laptop}) {
     bottom: 55px;

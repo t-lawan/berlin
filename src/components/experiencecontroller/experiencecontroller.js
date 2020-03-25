@@ -6,6 +6,7 @@ import {
   ExperienceControllerWrapper,
   ExperienceButton,
   ExperienceButtonImage,
+  ExperienceButtonTitle,
 } from "./experiencecontroller.styles"
 import { navigate } from "gatsby"
 import { createPath, getCurrentLanguageString, transitionTimes } from "../../utility/helper"
@@ -147,7 +148,7 @@ class ExperienceController extends React.Component {
     )
     return (
       <ExperienceControllerWrapper left={this.props.left}>
-        <ExperienceButton hidden={this.experiences.length === 0} show>
+        <ExperienceButtonTitle hidden={this.experiences.length === 0} show>
           <ExperienceButtonImage
             hidden={!this.props.left}
             show={this.props.experience !== 1}
@@ -160,10 +161,10 @@ class ExperienceController extends React.Component {
             onClick={() => this.incrementExperience()}
             src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_next.svg"
           />
-        </ExperienceButton>
-        <ExperienceButton bold hidden={this.experiences.length === 0} show>
+        </ExperienceButtonTitle>
+        <ExperienceButtonTitle bold hidden={this.experiences.length === 0} show>
           <span> exp. </span>
-        </ExperienceButton>
+        </ExperienceButtonTitle>
         {this.experiences.map(experience => (
           <ExperienceButton
             key={experience.id}

@@ -117,12 +117,13 @@ module.exports = {
           "**/events",
           "**/venue",
           "**/participants",
+          "**/publications",
           "**/exhibitions",
           "**/menus",
           "**/resources",
           "**/documentation",
           "**/news",
-          "**/resource-genre"
+          "**/resource-genre",
         ],
         // Blacklisted routes using glob patterns
         excludedRoutes: [],

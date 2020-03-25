@@ -65,6 +65,10 @@ const FooterText = styled.p`
   margin: 0;
 `
 
+const FooterOuterLink = styled.a`
+  margin: 0;
+`
+
 const FooterLink = styled(AniLink)`
   margin: 0;
   padding-right: 1rem;
@@ -84,7 +88,7 @@ const FooterComponent = props => {
       </div>
       <div>
         <FooterText> {content.address_line}</FooterText>
-        <FooterText>{content.email}</FooterText>
+        <FooterOuterLink target="__blank" href={`mailto:${content.email}`}>{content.email}</FooterOuterLink>
         <FooterText> {content.tel_phone_number}</FooterText>
         <FooterText> {content.fax_phone_number}</FooterText>
       </div>

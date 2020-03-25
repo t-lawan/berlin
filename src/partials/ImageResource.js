@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { size } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
+import striptags from "striptags"
 
 export const GalleryImage = styled(Img)`
   picture img {
@@ -13,18 +14,31 @@ export const GalleryImage = styled(Img)`
   }
 `
 export const Image = styled(Img)`
-  max-height: 650px;
-  > picture > img {
+  max-height: 650px !important;
+  /* padding-bottom: 5rem !important; */
+  > picture > img{
     object-fit: contain !important;
     max-height: 650px !important;
     display: block;
     margin: 0 auto;
+    position: relative;
+    padding-bottom: ${props => props.withCaption ? (props.isGallery ? '4rem !important' : '0') : '0'};
+  }
+
+  > img {
+
+    padding-bottom: ${props => props.withCaption ? (props.isGallery ? '4rem !important' : '0') : '0'};
+    /* position: relative !important; */
   }
 `
+
 
 export const Caption = styled.section`
   font-size: 0.65rem;
   text-align: left;
+  /* margin-top: -4rem; */
+
+  margin-top: ${props => props.isGallery ? "-4rem" : "0" };
   p {
     font-size: 0.65rem;
     margin: 0.7em 0;
@@ -75,12 +89,12 @@ class ImageResource extends React.Component {
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-
     return (
       <>
-        <Image fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+        <Image alt={this.state.image && this.state.image.EN.caption ? striptags(this.state.image[this.language].caption) : ''} isGallery={this.props.isGallery} withCaption={this.props.withCaption} fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
+          isGallery={this.props.isGallery}
           dangerouslySetInnerHTML={{
             __html: this.state.image
               ? this.state.image[this.language].caption

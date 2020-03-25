@@ -6,15 +6,16 @@ import {
   createPath,
   truncateText,
   transitionBackground,
+  pageMap,
 } from "../utility/helper"
 import { Convert } from "../utility/convert"
 import styled from "styled-components"
 import UpcomingEvents, {
-  freeAdmision,
+  UpcomingEventsContent,
 } from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
 import ImageResource from "../partials/ImageResource"
-import { getVenue } from "../store/selector"
+import { getVenue, getDocument } from "../store/selector"
 import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import moment from "moment"
@@ -220,12 +221,19 @@ const Event = props => {
   )
   let titleHeading = language === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
 
+  let path = pageMap.find((pg) => {
+    return pg["EN"] == "event"
+  })
+
 
   let description = truncateText(
     striptags(
       event[`${props.pageContext.language.toUpperCase()}`].full_description
     )
   )
+
+  let image = getDocument(props.documents, event.thumbnail_image);
+
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -234,6 +242,8 @@ const Event = props => {
           title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
+          image={image? image.url: null}
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
         />
         <EventColumn>
           <EventTitleMob
@@ -261,7 +271,7 @@ const Event = props => {
               </div>
             ))}
             <p hidden={!event[language].rsvp_required}>
-              {freeAdmision[language].rsvp}
+              {UpcomingEventsContent[language].rsvp}
             </p>
           </EventTextBlock>
           <EventTextBlock>
@@ -304,9 +314,9 @@ const Event = props => {
             <p>
               {event.language == "other"
                 ? event[`other_language${language == "EN" ? "" : "_de"}`]
-                : freeAdmision[language][event.language]}
+                : UpcomingEventsContent[language][event.language]}
             </p>
-            <p hidden={!event.is_free}> {`${freeAdmision[language].free_admission}${event.limited_capacity ? `, ${freeAdmision[language].limited_capacity}` : ''}`}</p>
+            <p hidden={!event.is_free}> {`${UpcomingEventsContent[language].free_admission}${event.limited_capacity ? `, ${UpcomingEventsContent[language].limited_capacity}` : ''}`}</p>
           </EventTextBlock>
           <EventTextBlock>
             <ShareLink>
@@ -365,6 +375,7 @@ const Event = props => {
         </EventColumn>
       </TwoColumnPageWrapper>
       <RelatedResources
+        border={false}
         ids={
           event.related_resource && event.related_resource.length > 0
             ? event.related_resource
@@ -397,6 +408,7 @@ const mapStateToProps = state => {
     genres: state.resource_genres,
     experience: state.experience,
     documentation: state.documentation,
+    documents: state.documents
   }
 }
 

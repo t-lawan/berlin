@@ -437,6 +437,50 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpPublications {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                biennale_context_note
+                description
+                contributors
+                design
+                editor
+                format
+                language
+                order_link
+                price
+                publication_thumbnail
+                publisher
+                subtitle
+                title
+              }
+              EN {
+                biennale_context_note
+                contributors
+                description
+                design
+                editor
+                format
+                language
+                order_link
+                price
+                publication_thumbnail
+                publisher
+                subtitle
+                title
+              }
+              dimensions
+              exp_number
+              isbn
+              page_count
+            }
+          }
+        }
+      }
       allWordpressWpVenue {
         edges {
           node {
@@ -483,6 +527,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpResources,
     allWordpressWpDocumentation,
     allWordpressWpNews,
+    allWordpressWpPublications
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -512,6 +557,8 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
     { EN: "practical-information", DE: "praktische-information" },
+    { EN: "media", DE: "mediathek" },
+    { EN: "publication", DE: "publikation" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -737,7 +784,26 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const currentTemplate = path.resolve("./src/templates/current.js")
+  const publicationsTemplate = path.resolve("./src/templates/publications.js")
+
+  allWordpressWpPublications.edges.forEach(edge => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "publication"
+    })
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(publicationsTemplate),
+        context: { ...edge.node, language: language },
+      })
+    })
+  })
+
+  const currentTemplate = path.resolve("./src/templates/current.js");
   languages.forEach(language => {
     let prePath = pageMap.find(pageType => {
       return pageType.EN === "current"
@@ -748,7 +814,22 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: path,
       component: slash(currentTemplate),
-      content: { language: language },
+      context: { language: language, slug: prePath[language.toUpperCase()] },
+    })
+  })
+
+  const mediaTemplate = path.resolve("./src/templates/media.js");
+  languages.forEach(language => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "media"
+    })
+    let path =
+      language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+
+    createPage({
+      path: path,
+      component: slash(mediaTemplate),
+      context: { language: language, slug: prePath[language.toUpperCase()] },
     })
   })
 }

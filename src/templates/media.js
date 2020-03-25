@@ -1,14 +1,13 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import NewsList from "../components/news/newslist"
-import UpcomingEvents from "../components/events/upcomingevents"
 import ResourcesList from "../components/resources/resources-list"
 import { getCurrentLanguageString, pageMap } from "../utility/helper"
 import { PageTitle, TextBlock, PageWrapper } from "./page.styles"
 import SEO from "../components/seo/seo";
+import DocumentationList from "../components/documentation/documentation-list";
 
-const Current = props => {
+const Media = props => {
   let language = getCurrentLanguageString(props.languages)
   let path = pageMap.find((pg) => {
     return pg[props.pageContext.language.toUpperCase()] == props.pageContext.slug
@@ -20,8 +19,7 @@ const Current = props => {
       <TextBlock>
         <PageTitle> {content[language].title} </PageTitle>
       </TextBlock>
-      <NewsList />
-      <UpcomingEvents />
+      <DocumentationList />
     </PageWrapper>
   )
   let thirdColumn = (
@@ -56,4 +54,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   null
-)(Current)
+)(Media)
