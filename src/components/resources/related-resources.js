@@ -45,7 +45,7 @@ const ResourceLink = styled(AniLink)`
 `
 
 const RelatedResource = styled.div`
-  background: ${Color.yellow};
+  background: ${props => props.directlyRelated ? '#fbf95d' :  '#fcfaba'};
   min-height: 9em;
   height:100%;
   position:relative;

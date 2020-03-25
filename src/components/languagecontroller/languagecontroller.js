@@ -11,11 +11,13 @@ class LanguageController extends React.Component {
   delay = 200;
   languageToFunctionWrapper = {
     EN: () => {
+      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToEN()
       }, this.delay)
     },
     DE: () => {
+      this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToDE()
       }, this.delay)
