@@ -502,45 +502,62 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
-    let navbarItems = []
-    let navbarItemsWP = data.allWordpressWpApiMenusMenusItems.edges
+    let topNavbarItems = [
+      new NavbarModel("calendar", "calendar", "kalender", false, true),
+      new NavbarModel(
+        "participants",
+        "participants",
+        "beteiligte",
+        false,
+        false
+      ),
+      new NavbarModel("exchange", "exchange", "austausch", false, false),
+      new NavbarModel(
+        "publications",
+        "publications",
+        "publikationen",
+        false,
+        false
+      ),
+      new NavbarModel("media", "media", "mediathek", false, true),
+    ]
 
-    navbarItemsWP.forEach(item => {
-      item.node.items.forEach(i => {
-        navbarItems.push(
-          new NavbarModel(
-            i.object_slug,
-            i.title,
-            NavbarTitleConfig[i.object_slug].DE,
-            false
-          )
-        )
-      })
-    })
-
-    navbarItems.push(
+    let bottomNavbarItems = [
+      new NavbarModel(
+        "practical-information",
+        "practical information",
+        "praktische information ",
+        false,
+        true
+      ),
+      new NavbarModel(
+        "venues",
+        "venues",
+        "orte",
+        false,
+        false
+      ),
+      new NavbarModel(
+        "about",
+        "about",
+        "über",
+        false,
+        true
+      ),
+      new NavbarModel(
+        "press",
+        "press",
+        "presse",
+        false,
+        true
+      ),
       new NavbarModel(
         "https://bb-shop.visitate.net/en/",
         "shop",
         NavbarTitleConfig["shop"].DE,
+        true,
         true
       )
-    )
-
-    let bottomNavbarItems = [
-      new NavbarModel(
-        "participant/dodie-bellamy/",
-        "participants",
-        "participants",
-        false
-      ),
-      new NavbarModel(
-        "publication/im-urwald-gibt-es-viel-zu-tun/",
-        "publications",
-        "publikation",
-        false
-      ),
-      new NavbarModel("media", "media", "mediathek", false),
     ]
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
@@ -553,8 +570,8 @@ const State = props => {
       props.setActiveExperience(parseInt(experience))
     }
 
-    props.setTopNavbar(bottomNavbarItems)
-    props.setBottomNavbar(navbarItems)
+    props.setTopNavbar(topNavbarItems)
+    props.setBottomNavbar(bottomNavbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
     props.setPages(pages)
