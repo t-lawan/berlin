@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
-import { NavWrapper, NavInner, NavItem, NavLink } from "./navbar.styles"
+import { NavWrapper, NavInner, NavItem, NavLink, InactiveLink } from "./navbar.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
 import * as actionTypes from '../../store/action';
@@ -27,14 +27,15 @@ const Navbar = props => {
   )
 
    const generateLink = (item, language) => {
+     let comp;
     if (item.isExternal) {
-      return (
+      comp =  (
         <NavLink key={item.slug} href={item.slug} target="__blank">
           {item[language].title.toLowerCase()}
         </NavLink>
       )
     } else {
-      return (
+      comp = (
         <NavItem
           activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
@@ -48,6 +49,12 @@ const Navbar = props => {
         </NavItem>
       )
     }
+
+    if(!item.isActive) {
+      comp = (<InactiveLink> {item[language].title.toLowerCase()} </InactiveLink>)
+    }
+
+    return comp
   }
 
 
