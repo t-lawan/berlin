@@ -18,8 +18,8 @@ export const DateCardWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 5fr;
-    padding-top:55px;
-    margin-top:-55px;
+    padding-top:110px;
+    margin-top:-110px;
     :last-child {
       padding-bottom:45px;
       border-bottom:none;
