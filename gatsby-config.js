@@ -3,7 +3,6 @@ module.exports = {
     title: `11th Berlin Biennale for Contemporary Art`,
     description: ``,
     author: `Berlin Biennale`,
-    image: "/images/bb11_og.jpg",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -27,7 +26,7 @@ module.exports = {
         background_color: `white`,
         theme_color: `white`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/bb11-icon.png`, // This path is relative to the root of the site.
       },
     },
     {
