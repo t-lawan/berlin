@@ -41,6 +41,7 @@ const Layout = props => {
         thirdColumn={props.thirdColumn}
         numberOfColumnsIsTwo={props.numberOfColumnsIsTwo}
         isHome={props.isHome}
+        exhibitionExperience={props.experience}
       />
     </LayoutWrapper>
   )

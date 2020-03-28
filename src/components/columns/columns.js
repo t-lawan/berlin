@@ -87,6 +87,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
 
@@ -97,6 +98,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
           <div>
@@ -106,6 +108,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
           <div>
@@ -115,6 +118,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
         </ExperienceCarousel>

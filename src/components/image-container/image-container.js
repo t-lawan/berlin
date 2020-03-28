@@ -94,7 +94,8 @@ class ImageContainer extends React.Component {
 
   render() {
     this.exhibitions = this.props.exhibitions.filter((item, index) => {
-      return item.experience === this.props.experience.toString()
+      let exp = this.props.exhibitionExperience ? this.props.exhibitionExperience : this.props.experience.toString();
+      return item.experience === exp
     })
     this.exhibition = this.exhibitions[0]
     return (
