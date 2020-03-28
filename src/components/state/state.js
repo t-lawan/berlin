@@ -160,12 +160,14 @@ const State = props => {
                     doc_credits
                     subtitle
                     title
+                    social_media_description
                   }
                   EN {
                     description
                     doc_credits
                     subtitle
                     title
+                    social_media_description
                   }
                   documentation_type
                   event_relation {
@@ -185,6 +187,7 @@ const State = props => {
                     wordpress_id
                     media_type
                   }
+                  thumbnail_image
                 }
               }
             }
@@ -530,34 +533,16 @@ const State = props => {
         false,
         true
       ),
-      new NavbarModel(
-        "venues",
-        "venues",
-        "orte",
-        false,
-        false
-      ),
-      new NavbarModel(
-        "about",
-        "about",
-        "über",
-        false,
-        true
-      ),
-      new NavbarModel(
-        "press",
-        "press",
-        "presse",
-        false,
-        true
-      ),
+      new NavbarModel("venues", "venues", "orte", false, false),
+      new NavbarModel("about", "about", "über", false, true),
+      new NavbarModel("press", "press", "presse", false, true),
       new NavbarModel(
         "https://bb-shop.visitate.net/en/",
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,
         true
-      )
+      ),
     ]
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {

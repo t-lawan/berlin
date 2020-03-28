@@ -54,40 +54,6 @@ const Exhibition = props => {
           exhibition.slug
         }`}
       />
-      {exhibition && exhibition.has_gallery_images ? (
-        <>
-          <ImageGalleryWrapper hideInTablet={true}>
-            <ImageGalleryResource
-              ids={
-                exhibition.has_gallery_images
-                  ? exhibition.gallery_images
-                  : []
-              }
-            />
-          </ImageGalleryWrapper>
-
-          <ImageGalleryWrapper hideInTablet={false}>
-            <ImageResource
-              id={
-                exhibition && exhibition.floor_plan
-                  ? exhibition.gallery_images[0]
-                  : 411
-              }
-              withCaption={true}
-            />
-          </ImageGalleryWrapper>
-        </>
-      ) : null}
-      {exhibition && !exhibition.has_gallery_images ? (
-        <ImageResource
-          id={
-            exhibition && exhibition.floor_plan
-              ? exhibition.floor_plan
-              : 411
-          }
-          withCaption={true}
-        />
-      ) : null}
       <ExhibitionContent exhibition={exhibition} />
     </>
   )
@@ -98,13 +64,15 @@ const Exhibition = props => {
       <UpcomingEvents />
     </>
   )
+
   props.isViewing()
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
       thirdColumn={thirdColumn}
-      isHome={false}
+      isHome={true}
+      experience={exhibition.experience}
     />
   )
 }
