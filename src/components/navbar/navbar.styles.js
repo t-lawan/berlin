@@ -68,6 +68,8 @@ export const NavImageLink = styled(AniLink)`
   }
 `
 
+
+
 export const NavItem = styled(AniLink)`
   /* color: white; */
   display: block;
@@ -88,6 +90,26 @@ export const NavItem = styled(AniLink)`
   }
   @media (min-width: ${size.laptopL}) {
     padding: 1.25em 0.7em 0.6em;
+  }
+`
+
+export const InactiveLink = styled.p`
+  display: block;
+  line-height:1.2;
+  padding: 1.25em 0.5em 0.55em;
+  transition: all 0.2s ease-in-out;
+  margin-bottom:0;
+  text-decoration: none;
+  color: black;
+  opacity: 0.6;
+  /* :hover {
+    color: ${Color.red};
+  } */
+  @media (min-width: ${size.laptopM}) {
+    padding: 1.3em 0.6em 0.50em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding: 1.25em 0.6em 0.6em;
   }
 `
 

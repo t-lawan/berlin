@@ -31,6 +31,16 @@ export const ExperienceCarousel = styled(Carousel)`
   .carousel.carousel-slider {
     overflow: hidden !important;
   }
+
+  /* > .carousel { */
+    > div > div> ul {
+      transform: rotateY(1deg) translateZ(1px) !important;
+      -webkit-transform: rotateY(1deg) translateZ(1px) !important;
+      -moz-transform: rotateY(1deg) translateZ(1px) !important;
+      -o-transform: rotateY(1deg) translateZ(1px) !important;
+    }
+    /* overflow-y: auto !important; */
+  /* } */
 `
 
 export const ExperienceContainer = styled.div`
