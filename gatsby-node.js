@@ -283,12 +283,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 doc_credits
                 subtitle
                 title
+                social_media_description
               }
               EN {
                 description
                 doc_credits
                 subtitle
                 title
+                social_media_description
               }
               documentation_type
               event_relation {
@@ -308,32 +310,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 wordpress_id
                 media_type
               }
-            }
-          }
-        }
-      }
-      allWordpressWpNews {
-        edges {
-          node {
-            wordpress_id
-            slug
-            acf {
-              DE {
-                news_subtitle
-                news_title
-                news_text
-              }
-              EN {
-                news_subtitle
-                news_text
-                news_title
-              }
-              dates {
-                start_date
-              }
-              exp_number
-              news_item_is_unlinked
-              show_in_news_feed
               thumbnail_image
             }
           }

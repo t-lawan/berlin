@@ -179,7 +179,7 @@ class ExperiencePage extends React.Component {
     setTimeout(() => {
       this.closeExperiencePage();
       // this.props.hideOverlay();
-    }, 10000);
+    }, 1000);
   }
 
   experiences = [
@@ -224,7 +224,7 @@ class ExperiencePage extends React.Component {
     return (
       <ExperiencePageWrapper
         onClick={this.closeExperiencePage}
-        show={this.props.showOnHomePage && this.props.show_overlay}
+        show={false}
       >
         <TopRow>
           <CloseImage

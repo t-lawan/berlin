@@ -10,7 +10,8 @@ export class DocumentationModel {
     audio;
     video;
     image_gallery;
-    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery) {
+    thumbnail;
+    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery, thumbnail) {
         this.id = id;
         this.slug = slug;
         this.DE = DE;
@@ -22,5 +23,6 @@ export class DocumentationModel {
         this.audio = audio;
         this.video =video;
         this.image_gallery = image_gallery;
+        this.thumbnail = thumbnail;
     }
 }

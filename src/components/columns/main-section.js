@@ -141,6 +141,8 @@ class MainSection extends React.Component {
                 isHome={this.props.isHome}
                 hideOnHomePage={!this.props.isHome}
                 hideInMobile={true}
+                exhibitionExperience={this.props.exhibitionExperience}
+                
               />
             </RelativeHeader>
             <StickyHeader hideInTablet={true}>
