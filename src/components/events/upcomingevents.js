@@ -56,8 +56,8 @@ const UpcomingEvents = props => {
       <p hidden={filteredItems.length !== 0}>
         {" "}
         {language === "EN"
-          ? "There are no upcoming events for this experience"
-          : "Es gibt keine bevorstehenden Veranstaltungen für diese Erfahrung"}{" "}
+          ? ""
+          : ""}{" "}
       </p>
       {filteredItems.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>

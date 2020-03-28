@@ -3,7 +3,7 @@ import { UnderlineSectionLink, Color } from '../../index.styles';
 import { Link } from 'gatsby';
 
 export const NewsItemWrapper = styled.div`
-  padding: 0.7em 2em;
+  padding: 1.2em 2em;
   border-bottom: 1px solid black;
 `
 export const NewsText = styled.p`

@@ -10,26 +10,42 @@ import { Color } from "../../index.styles"
 import { Link } from "gatsby"
 import { getItem } from "../../store/selector"
 import { DateManager } from "../../utility/date"
+import striptags from "striptags"
 import { UpcomingEventsContent } from "../events/upcomingevents";
 import { startTransition } from "../../store/action";
 
 const DocumentationListWrapper = styled.div`
-  padding: 0.5rem;
+  padding: 0;
 `
 const DocumentationItem = styled.div`
   display: grid;
-  grid-template-columns: 4fr 5fr;
-  padding: 0.5rem 0;
+  grid-template-columns: 2fr 6fr;
+  padding: 0em 0 2em;
+  > p {
+    font-size: 1em;
+  }
 `
 
-const DocumentationLink = styled(Link)``
+const DocumentationLink = styled(Link)`
+> p {
+  font-size: 1em;
+}
+`
 const DocumentationTextBox = styled.div`
   p {
       margin: 0;
+      font-size: 1em;
+      transition: all 0.2s ease-in-out;
   }
   :hover {
     color: ${Color.red};
   }
+`
+const DocTitle = styled.div`
+  font-size: 1em;
+  margin: 0em;
+  line-height: 1.2;
+  transition: all 0.2s ease-in-out;
 `
 
 let content = {
@@ -42,7 +58,7 @@ let content = {
   DE: {
     video: "Video",
     mp3: "Audio",
-    imagegallery: "Images",
+    imagegallery: "Bilder",
     text: "Text",
   },
 }
@@ -64,21 +80,18 @@ const DocumentationList = props => {
           <DocumentationItem key={index}>
             <p> {content[language][doc.type]} </p>
             <DocumentationTextBox>
-              <div
+              <DocTitle
                 dangerouslySetInnerHTML={{
-                  __html: event[language].event_title,
+                  __html: striptags(event[language].event_title, ["em"]),
                 }}
               />
+              
               <div
                 dangerouslySetInnerHTML={{
                   __html: event[language].event_subtitle,
                 }}
               />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
+              
               <p> {DateManager.toDatetring(event.dates[0].start_date)} </p>
               <p>{event.language == "other" ? event[language].other_language : UpcomingEventsContent[language][event.language]} </p>
             </DocumentationTextBox>
@@ -99,11 +112,7 @@ const DocumentationList = props => {
                   __html: doc[language].title,
                 }}
               />
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: doc[language].doc_credits,
-                }}
-              />
+              
             </DocumentationTextBox>
           </DocumentationItem>
         </DocumentationLink>
