@@ -93,7 +93,6 @@ class ImageResource extends React.Component {
       <>
         <Image alt={this.state.image && this.state.image.EN.caption ? striptags(this.state.image[this.language].caption) : ''} isGallery={this.props.isGallery} withCaption={this.props.withCaption} fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
-        className={this.props.isGallery ? 'legend' : ''}
           hidden={!this.props.withCaption}
           isGallery={this.props.isGallery}
           dangerouslySetInnerHTML={{

@@ -60,7 +60,9 @@ export class Convert {
       wordpressModel.acf.language,
       wordpressModel.acf.mp3_upload,
       wordpressModel.acf.video,
-      wordpressModel.acf.image_gallery
+      wordpressModel.acf.image_gallery,
+      wordpressModel.acf.thumbnail_image,
+
     )
   }
 

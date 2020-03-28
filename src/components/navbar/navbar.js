@@ -51,7 +51,7 @@ const Navbar = props => {
     }
 
     if(!item.isActive) {
-      comp = (<InactiveLink> {item[language].title.toLowerCase()} </InactiveLink>)
+      comp = (<InactiveLink key={item.slug}> {item[language].title.toLowerCase()} </InactiveLink>)
     }
 
     return comp
