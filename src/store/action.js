@@ -56,6 +56,12 @@ export const startTransition = () => {
     }
 }
 
+export const stopTransition = () => {
+    return {
+        type: STOP_TRANSITION
+    }
+}
+
 export const changeExperience = (experience) => {
     return {
         type: CHANGE_EXPERIENCE,

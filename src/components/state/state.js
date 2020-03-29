@@ -442,7 +442,7 @@ const State = props => {
       `
     )
 
-    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel)
+    // let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel)
 
     let events = Convert.toModelArray(
       data.allWordpressWpEvents,
@@ -559,7 +559,7 @@ const State = props => {
     props.setBottomNavbar(bottomNavbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
-    props.setPages(pages)
+    // props.setPages(pages)
     props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
