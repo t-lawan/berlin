@@ -315,6 +315,33 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpNews {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                news_subtitle
+                news_title
+                news_text
+              }
+              EN {
+                news_subtitle
+                news_text
+                news_title
+              }
+              dates {
+                start_date
+              }
+              exp_number
+              news_item_is_unlinked
+              show_in_news_feed
+              thumbnail_image
+            }
+          }
+        }
+      }
       allWordpressWpExhibitions {
         edges {
           node {
