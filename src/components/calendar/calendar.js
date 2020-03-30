@@ -83,7 +83,12 @@ class Calendar extends React.Component {
     this.currentDate = DateManager.currentDate()
     const element = document.getElementById(`date-${this.currentDate}`)
     if (element) {
-      let parent = document.getElementById(`column-one`)
+      this.props.setFreshLoadToTrue();
+      let carousel = document.getElementsByClassName('animated');
+
+      if(carousel) {
+        carousel[0].classList.add('remove-z')
+      }
       scrollIntoView(element, {
         scrollMode: "if-needed",
         block: "start",

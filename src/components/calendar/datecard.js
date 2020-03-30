@@ -110,7 +110,7 @@ class DateCard extends React.Component {
       renderComponents = (
         <MonthCardWrapper addColour>
           <MonthHeading>
-            {DateManager.getMonthText(this.props.month, this.language.toLowerCase()).toLowerCase()}
+            {DateManager.getMonthText(this.props.month, this.language.toLowerCase()).toLowerCase().concat(` ${this.props.year}`)}
           </MonthHeading>
         </MonthCardWrapper>
       )
