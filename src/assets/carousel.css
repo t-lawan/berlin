@@ -127,7 +127,7 @@
   padding: 5px;
 }
 .carousel.carousel-slider .control-arrow:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: white;
 }
 .carousel .slider-wrapper {
   overflow: hidden;
@@ -184,7 +184,6 @@
   margin: 0;
   position: relative;
   text-align: center;
-  background: #000;
 }
 .carousel .slide img {
   width: 100%;
@@ -209,7 +208,6 @@
   margin-left: -45%;
   width: 90%;
   border-radius: 0px !important;
-  background: #000;
   color: #fff;
   padding: 10px;
   font-size: 12px;
