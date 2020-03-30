@@ -5,7 +5,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 export const EventSection = styled(TextSection)`
     font-size: 1em;
   p {
-    font-size: inherit;
+    font-size: 1em;
     margin:0;
     line-height: 1.3;
     transition: all 0.2s ease-in-out;
