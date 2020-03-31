@@ -6,7 +6,7 @@ import ResourceNavigator from "./resource-navigator";
 import PropTypes from "prop-types"
 import { connect } from "react-redux";
 import striptags from "striptags";
-
+import styled from 'styled-components'
 const VideoContainer = styled.div`
   position: relative;
     padding-bottom: 56.25%;
@@ -68,7 +68,7 @@ const ResourceVideo = props => {
                 
                 {r.author.length > 0 ? <Author> {r.author} </Author> : ""} 
                 <Year> {r[language].year}</Year>
-                <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
+                <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" rel="noopener noreferrer" href={r.external_url}>
                   {" "}
                   {r.external_url_label}
                 </ResourcePublisherLink>
@@ -85,14 +85,6 @@ const ResourceVideo = props => {
     </PageWrapperRes>
     )
 }
-
-const getRandomIds = (resources, numberOfIds) => {
-    let ints = []
-    for (let i = 0; i < numberOfIds; i++) {
-      ints.push(resources[Math.floor(Math.random() * resources.length)].id)
-    }
-    return ints
-  }
 
 ResourceVideo.propTypes = {
   resource: PropTypes.object,

@@ -5,8 +5,7 @@ import Layout from "../../components/layout/layout"
 import UpcomingEvents from "../../components/events/upcomingevents"
 import ResourcesList from "../../components/resources/resources-list"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../../utility/helper"
-import { Section, size } from "../../index.styles"
+import { size } from "../../index.styles"
 import ExhibitionContent from "../../components/exhibition/exhibition-content"
 import SEO from "../../components/seo/seo";
 import Logo from "../../components/logo/logo";
@@ -26,7 +25,6 @@ const IndexPage = props => {
   const exhibitions = props.exhibitions.filter(exhibition => {
     return exhibition.experience === props.experience.toString()
   })
-  const language = getCurrentLanguageString(props.languages)
   const renderComponent = (
     <IndexPageWrapper>
       <SEO lang={'de'} />

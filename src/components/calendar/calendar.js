@@ -1,13 +1,11 @@
 import React from "react"
 import { connect } from "react-redux"
 import MonthCards from "./monthcards"
-import { CalendarWrapper, CalendarScrollArea } from "./calendar.styles"
+import { CalendarWrapper } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { startTransition, setFreshLoadToTrue } from "../../store/action"
 
-let events = []
-let exhibitions = []
 class Calendar extends React.Component {
   calendar
   months
