@@ -91,7 +91,7 @@ const DocumentationList = props => {
                 }}
               />
               
-              <p> {DateManager.toDatetring(event.dates[0].start_date)} </p>
+              <p> {DateManager.toDateString(event.dates[0].start_date)} </p>
               <p>{event.language == "other" ? event[language].other_language : UpcomingEventsContent[language][event.language]} </p>
             </DocumentationTextBox>
           </DocumentationItem>
