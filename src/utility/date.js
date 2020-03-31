@@ -20,7 +20,7 @@ export class DateManager {
   }
 
   static getDaysFromCurrentDate = (date) => {
-    return moment().diff(moment(date), 'day');
+    return moment(date).diff(moment(), 'day');
   }
 
   static getNumberOfDaysInMonth = (monthNum, year) => {
@@ -37,7 +37,7 @@ export class DateManager {
   }
 
   static createLongDateString = (date, language) => {
-    return moment(date).locale(language).format('dddd, DD.MM.YYYY');
+    return moment(date).locale(language).format('dddd, D.MM.YYYY');
   }
 
   static createMonthDayString = (day, month, year, language) => {
@@ -56,8 +56,8 @@ export class DateManager {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').format("D");
   }
 
-  static toDatetring = (date) => {
-    return moment(date, 'YYYYMMDD').format("DD.MM.YYYY");
+  static toDateString = (date) => {
+    return moment(date, 'YYYYMMDD').format("D.MM.YYYY");
   }
 
   static currentDate = () => {
@@ -87,6 +87,10 @@ export class DateManager {
         text: "December",
       },
     }
+  }
+
+  static daysBetween = (start, end) => {
+    return moment(end).diff(moment(start), "d")
   }
 
   static getCalendar = () => {

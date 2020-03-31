@@ -11,13 +11,10 @@ import {
   createPath,
   truncateText,
 } from "../../utility/helper"
-import moment from "moment"
-import "moment/locale/en-gb"
-import "moment/locale/de"
 import { getVenue } from "../../store/selector"
 import striptags from "striptags"
-import * as actionTypes from '../../store/action';
-
+import * as actionTypes from "../../store/action"
+import { DateManager } from "../../utility/date"
 
 let calendar_items = []
 const UpcomingEvents = props => {
@@ -26,15 +23,14 @@ const UpcomingEvents = props => {
   let currentExhibition = props.exhibitions.find(exhibition => {
     return exhibition.experience == props.experience
   })
-
   const filteredItems = calendar_items
     .filter(item => {
-      if (moment().diff(moment(currentExhibition.end_date)) <= 0) {
+      if (DateManager.getDaysFromCurrentDate(currentExhibition.end_date) >= 0) {
         return (
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
           (props.experience >= props.active_experience
-            ? moment(item.start_date).diff(moment(), "day") >= 0
+            ? DateManager.getDaysFromCurrentDate(item.start_date) >= 0
             : true)
         )
       } else {
@@ -50,15 +46,13 @@ const UpcomingEvents = props => {
 
   return (
     <EventsWrapper isHome={props.isHome}>
-      <p hidden={filteredItems.length !== 0}>
-        {" "}
-        {language === "EN"
-          ? ""
-          : ""}{" "}
-      </p>
+      <p hidden={filteredItems.length !== 0}> {language === "EN" ? "" : ""} </p>
       {filteredItems.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>
-          <EventLink onClick={() => props.startTransition()} to={createPath(language, `${item.slug}`)}>
+          <EventLink
+            onClick={() => props.startTransition()}
+            to={createPath(language, `${item.slug}`)}
+          >
             {/* <EventLink
             cover
             direction="down"
@@ -68,9 +62,10 @@ const UpcomingEvents = props => {
           > */}
             <p>
               {" "}
-              {moment(item.start_date)
-                .locale(language.toLowerCase())
-                .format("dddd, D.M.YYYY")}
+              {DateManager.createLongDateString(
+                item.start_date,
+                language.toLowerCase()
+              )}
             </p>
             <p> {item[language].display_time}</p>
             <EventTitle
@@ -146,8 +141,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startTransition: () =>
-      dispatch({ type: actionTypes.START_TRANSITION}),
+    startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
   }
 }
 

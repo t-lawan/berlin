@@ -15,10 +15,10 @@ import {
   PageSubTitle,
 } from "./page.styles"
 import { getDocument } from "../store/selector"
-import moment from "moment"
 import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
+import { DateManager } from "../utility/date";
 
 class Press extends React.Component {
   language
@@ -79,8 +79,7 @@ class Press extends React.Component {
           {this.pressInfo.acf.press_releases.map((press_release, index) => (
             <PressReleaseWrapper key={index}>
               <PressReleaseText>
-                {" "}
-                {moment(press_release.date).format("D.M.YYYY")}
+                {DateManager.toDateString(press_release.date)}
               </PressReleaseText>
               {/* <PressReleaseText> */}
                 <PressReleaseLink
