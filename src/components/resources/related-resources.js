@@ -1,13 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { changeGridToOneRow, Color, size } from "../../index.styles"
-import { getItems } from "../../store/selector"
+import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import striptags from "striptags"
-import { createPath, getCurrentLanguageString, transitionBackground, truncateText, getNumberOfWords } from "../../utility/helper"
-import { get } from "http";
+import { createPath, getCurrentLanguageString, truncateText, getNumberOfWords } from "../../utility/helper"
 import { startTransition } from "../../store/action";
 
 export const RelatedResourcesWrapper = styled.div`

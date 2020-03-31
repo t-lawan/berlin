@@ -4,12 +4,10 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import {
   EventHeading,
-  EventText,
   EventCardWrapper,
   EventCardLink,
   EventSection,
 } from "./eventcard.styles"
-import { TextSection } from "../../index.styles"
 import { startTransition } from "../../store/action";
 
 const EventCard = props => {

@@ -4,9 +4,8 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
-import { PageWrapper, TextBlock } from "./page.styles"
+import { PageWrapper } from "./page.styles"
 import Layout from "../components/layout/layout"
-import ImageGalleryResource from "../partials/ImageGalleryResource"
 import ImageResource from "../partials/ImageResource"
 import { Color } from "../index.styles"
 import NewsList from "../components/news/newslist"
@@ -45,6 +44,7 @@ const PressImages = props => {
                     <a
                       href={getDocument(props.documents, i.wordpress_id).url}
                       target="__blank"
+                      rel="noopener noreferrer"
                     >
                       <ImageResource
                         id={i.wordpress_id}
@@ -78,6 +78,7 @@ const PressImages = props => {
                       <a
                         href={getDocument(props.documents, i.wordpress_id).url}
                         target="__blank"
+                        rel="noopener noreferrer"
                       >
                         <ImageResource
                           id={i.wordpress_id}
@@ -110,6 +111,7 @@ const PressImages = props => {
                       <a
                         href={getDocument(props.documents, i.wordpress_id).url}
                         target="__blank"
+                        rel="noopener noreferrer"
                       >
                         <ImageResource
                           id={i.wordpress_id}

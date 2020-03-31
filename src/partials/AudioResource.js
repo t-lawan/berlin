@@ -7,7 +7,6 @@ import {
 import styled from "styled-components"
 import { getDocument } from "../store/selector"
 import { getCurrentLanguageString } from "../utility/helper"
-import { TextBlock } from "../templates/page.styles"
 
 const AudioResourceWrapper = styled.section`
   /* display: flex;
@@ -370,7 +369,7 @@ class AudioResource extends React.Component {
   //   this.audio = getDocument(this.props.documents, this.props.id)
   // }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.audio = getDocument(this.props.documents, this.props.id)
   }
 

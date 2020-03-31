@@ -23,18 +23,14 @@ import {
   ScrollNavContainer,
 } from "./columns.styles"
 import SocialMedia from "../socialmedia/socialmedia"
-import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import DataPrivacy from "../data-privacy/data-privacy"
 import FooterComponent from "../footer/footer"
-import NavbarMobile from "../navbar/navbar-mobile"
 import ImageContainer from "../image-container/image-container"
 import { getDocument } from "../../store/selector"
 import ResourcesList from "../resources/resources-list"
 import ExhibitionPage from "../exhibition/exhibition-page"
-import { transitionTimes } from "../../utility/helper"
 import { connect } from "react-redux"
 import TransitionPage from "../transition/transition-page"
-import * as actionTypes from "../../store/action"
 
 class MainSection extends React.Component {
   renderedComponents
@@ -49,7 +45,7 @@ class MainSection extends React.Component {
     this.columnTwoRef = React.createRef()
   }
 
-  scroll = e => {
+  scroll = () => {
     let columnOne = this.columnOneRef.current.columnRef.current
     let columnTwo = this.columnTwoRef.current.columnRef.current
     let footer = this.footerRef.current
@@ -73,14 +69,6 @@ class MainSection extends React.Component {
         footer.classList.add("hide-footer")
       }
     }
-  }
-
-  componentDidUpdate(prevProps) {
-    // if (prevProps.firstColumn !== this.props.firstColumn) {
-    //   setTimeout(() => {
-    //     this.props.stopTransition()
-    //   }, 200)
-    // }
   }
 
   render() {
@@ -204,12 +192,6 @@ MainSection.propTypes = {
   isHome: PropTypes.bool,
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    stopTransition: experience =>
-      dispatch({ type: actionTypes.STOP_TRANSITION }),
-  }
-}
 
 const mapStateToProps = state => {
   return {
@@ -220,4 +202,4 @@ const mapStateToProps = state => {
     documents: state.documents,
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MainSection)
+export default connect(mapStateToProps, null)(MainSection)

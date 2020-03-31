@@ -4,8 +4,6 @@ import {
   PageWrapperRes,
   TwoColumnPageWrapper,
   ResourcePublisherLink,
-  TextBlock,
-  PressArrowDown,
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color, size, ExternalLink } from "../../index.styles"
@@ -15,7 +13,6 @@ import RelatedResources from "./related-resources"
 import styled from "styled-components"
 import striptags from "striptags"
 import ImageResource from "../../partials/ImageResource"
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
 import { getDocument } from "../../store/selector"
 
 const ResourceTextDiv = styled.div`
@@ -126,7 +123,7 @@ const ResourceText = props => {
           <p> {r[language].year}</p>
           <Dthide>
             {doc ? (
-              <ExternalLink href={doc.url} target="__blank">
+              <ExternalLink href={doc.url} target="__blank" rel="noopener noreferrer">
                 <ArrowDown />
                 <span>
                   {" "}
@@ -163,13 +160,6 @@ const ResourceText = props => {
   )
 }
 
-const getRandomIds = (resources, numberOfIds) => {
-  let ints = []
-  for (let i = 0; i < numberOfIds; i++) {
-    ints.push(resources[Math.floor(Math.random() * resources.length)].id)
-  }
-  return ints
-}
 
 ResourceText.propTypes = {
   resource: PropTypes.object,

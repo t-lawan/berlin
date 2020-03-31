@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import {
   changeGridToOneRow,
   size,
-  Color,
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
@@ -60,7 +59,7 @@ export const ExperienceContainer = styled.div`
     grid-template-areas: "column" "column column" "footer" !important;
     margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child (3) {
+    ${ColumnLayout}:nth-child(3) {
       z-index: 10;
     }
   }
@@ -89,7 +88,7 @@ export const AnimatedColumn = styled(Animated)`
     grid-template-areas: "column" "column column" "footer" !important;
     margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child (3) {
+    ${ColumnLayout}:nth-child(3) {
       z-index: 10;
     }
   }

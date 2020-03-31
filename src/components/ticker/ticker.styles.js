@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Color, size, TickerAnim } from "../../index.styles"
+import { size, TickerAnim } from "../../index.styles"
 
 export const TickerWrapper = styled.div`
   z-index: 5;

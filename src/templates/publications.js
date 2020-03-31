@@ -73,7 +73,7 @@ const Publications = props => {
           {publication[language].language} / {publication.dimensions} /{" "}
           {publication.pageCount} pages / {publication[language].format}
         </p>
-        <PublicationExternalLink href={`${publication[language].order_link}`} target="__blank">
+        <PublicationExternalLink href={`${publication[language].order_link}`} target="__blank" rel="noopener noreferrer">
           {" "}
           buy in shop{" "}
         </PublicationExternalLink>

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Color, size, keyFrameExperienceImage, showDisplayForTablet, hideDisplayForTablet } from "../../index.styles"
+import { size, keyFrameExperienceImage, showDisplayForTablet, hideDisplayForTablet } from "../../index.styles"
 import * as actionTypes from "../../store/action"
 
 const ExperiencePageWrapper = styled.div`

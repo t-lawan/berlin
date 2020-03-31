@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText } from "../utility/helper"
+import { getCurrentLanguageString } from "../utility/helper"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
@@ -10,7 +10,6 @@ import { PageWrapper, TextBlock } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
 import { Color, ExternalLink } from "../index.styles"
 import NewsList from "../components/news/newslist";
-import striptags from 'striptags';
 
 const VenueLink = styled(ExternalLink)`
   padding-bottom: 1em;
@@ -59,7 +58,7 @@ const Venue = props => {
         <p hidden={!venue.wheelchair_access}> Wheelchair access</p>
       </TextBlock>
       <TextBlock>
-        <VenueLink colour={Color.red} href={venue.google_map_link} target="_blank">Link to map </VenueLink>
+        <VenueLink colour={Color.red} href={venue.google_map_link} target="_blank" rel="noopener noreferrer">Link to map </VenueLink>
       </TextBlock>
     </PageWrapper>
   )
