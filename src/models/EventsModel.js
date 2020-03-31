@@ -1,6 +1,3 @@
-const faker = require("faker");
-const moment = require("moment");
-
 export class EventsModel {
   constructor(
     id,
@@ -45,66 +42,4 @@ export class EventsModel {
     this.other_language_de = other_event_language_de,
     this.video = video;
   }
-}
-
-export const generateEvents = numberOfEvents => {
-  const eventsArray = []
-  for (let i = 0; i < numberOfEvents; i++) {
-    const language = {
-      display_time: `${Math.floor(Math.random() * 4) + 1} pm`,
-      title: faker.random.word(),
-      subtitle: faker.random.words(),
-      time: `${faker.random.number(1, 2)} pm`,
-      short_calendar_description: faker.random.words(10),
-      full_description: faker.random.words(80),
-      other_venue: faker.random.word(),
-      rsvp_required: faker.random.boolean,
-      rsvp_note: faker.random.words(10),
-      special_info_notice: faker.random.words(20),
-    }
-    const dates = createDates(Math.floor(Math.random() * 4) + 1);
-    const event = new EventsModel(
-      i + 1,
-      faker.random.word(),
-      Math.floor(Math.random() * 4) + 1,
-      language,
-      language,
-      dates,
-      faker.random.word(2),
-      "",
-      faker.random.boolean,
-      "en",
-      faker.random.boolean,
-      false,
-      "",
-      "",
-      null
-    );
-    eventsArray.push(event)
-  }
-  return eventsArray
-}
-
-const createDates = numberOfDates => {
-  let dates = []
-  for (let i = 0; i < numberOfDates; i++) {
-    const date = {
-      start_date: moment(
-        faker.date.between("2019-08-01", "2019-12-31"),
-        "YYYY-MM-DD HH:mm Z"
-      ).format("YYYYMMDD"),
-      end_date: moment(
-        faker.date.between("2019-08-01", "2019-12-31"),
-        "YYYY-MM-DD HH:mm Z"
-      ).format("YYYYMMDD"),
-      display_time: {
-        EN: `${Math.floor(Math.random() * 12) + 1} pm`,
-        DE: `${Math.floor(Math.random() * 12) + 1} PM`,
-      },
-    }
-
-    dates.push(date);
-  }
-
-  return dates;
 }

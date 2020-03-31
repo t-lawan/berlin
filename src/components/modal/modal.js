@@ -9,12 +9,10 @@ import {
   FormInput,
   FormButton,
   FormLabel,
-  ModalCloseIcon,
   ModalHeader,
   CloseImage,
 } from "./modal.styles"
 import axios from "axios"
-import { faTimes } from "@fortawesome/free-solid-svg-icons"
 
 class Modal extends React.Component {
   language;

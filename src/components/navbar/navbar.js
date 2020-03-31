@@ -1,36 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql, useStaticQuery } from "gatsby"
 import { NavWrapper, NavInner, NavItem, NavLink, InactiveLink } from "./navbar.styles"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import * as actionTypes from '../../store/action';
 const Navbar = props => {
-  const data = useStaticQuery(
-    graphql`
-      {
-        allWordpressWpApiMenusMenusItems(
-          filter: { slug: { eq: "navbar-menu" } }
-        ) {
-          edges {
-            node {
-              items {
-                object_slug
-                title
-              }
-              slug
-            }
-          }
-        }
-      }
-    `
-  )
 
    const generateLink = (item, language) => {
      let comp;
     if (item.isExternal) {
       comp =  (
-        <NavLink key={item.slug} href={item.slug} target="__blank">
+        <NavLink key={item.slug} href={item.slug} target="__blank" rel="noopener noreferrer">
           {item[language].title.toLowerCase()}
         </NavLink>
       )

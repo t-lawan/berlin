@@ -1,5 +1,5 @@
 import React from "react"
-import { getCurrentLanguageString, createProperty } from "../../utility/helper"
+import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { AboutComponentWrapper, AboutPageContent } from "./about.styles"

@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
@@ -32,13 +31,6 @@ const TransitionPageWrapper = styled.div`
   &.${transitionName}-exit-active {
     opacity: 0 !important;
   }
-`
-
-const TransitionImageContainer = styled.div`
-  position: fixed;
-  top: 50%;
- left: 50%; 
-  z-index: inherit;
 `
 
 const TransitionImage = styled.img`

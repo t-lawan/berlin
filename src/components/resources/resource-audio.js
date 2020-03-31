@@ -58,7 +58,7 @@ const ResourceAudio = props => {
           {r.author ? <Author> {r.author} </Author> : ""} 
           
           <Year> {r[language].year}</Year>
-          <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" href={r.external_url}>
+          <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" rel="noopener noreferrer" href={r.external_url}>
             {" "}
             {r.external_url_label}
           </ResourcePublisherLink>

@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 import { getCurrentLanguageString } from "../../utility/helper";
-import { Section, size } from "../../index.styles";
+import { size } from "../../index.styles";
 const ExhibitionPageWrapper = styled.div`
   padding: 0.7em 1em 140px;
   @media (max-width: ${size.mobileM}) {

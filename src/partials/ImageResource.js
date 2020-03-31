@@ -17,10 +17,11 @@ export const Image = styled(Img)`
   max-height: 650px !important;
   /* padding-bottom: 5rem !important; */
   > picture > img{
-    object-fit: contain !important;
+    object-fit: ${props => props.isLandscape ? 'cover !important' : 'contain !important' }  ;
     max-height: 650px !important;
     display: block;
     margin: 0 auto;
+    /* width: auto !important; */
     position: relative;
     padding-bottom: ${props => props.withCaption ? (props.isGallery ? '4rem !important' : '0') : '0'};
   }
@@ -70,7 +71,7 @@ class ImageResource extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.setState({
       image: getDocument(this.props.documents, this.props.id),
     })
@@ -89,9 +90,13 @@ class ImageResource extends React.Component {
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
+    let isLandscape = true;
+    if(this.state.image) {
+      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true;
+    }
     return (
       <>
-        <Image alt={this.state.image && this.state.image.EN.caption ? striptags(this.state.image[this.language].caption) : ''} isGallery={this.props.isGallery} withCaption={this.props.withCaption} fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+        <Image isLandscape={isLandscape} alt={this.state.image && this.state.image.EN.caption ? striptags(this.state.image[this.language].caption) : ''} isGallery={this.props.isGallery} withCaption={this.props.withCaption} fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
         <Caption
           hidden={!this.props.withCaption}
           isGallery={this.props.isGallery}

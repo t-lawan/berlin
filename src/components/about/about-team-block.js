@@ -2,7 +2,6 @@ import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { AboutTeamSectionHeader } from "./about.styles"
 import { PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 import { Section, size } from "../../index.styles";

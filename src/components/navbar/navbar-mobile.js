@@ -4,17 +4,14 @@ import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
   createPath,
-  createProperty,
   transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
   NavMobileHeader,
-  NavIcon,
   NavIconSVG,
   NavImage,
   NavMobileContent,
-  NavInner,
   NavMobileInner,
   NavMobileLinks,
   NavMobileLink,
@@ -25,9 +22,8 @@ import {
   NavMobileOuterLinkSmall,
 } from "./navbar.styles"
 import LanguageController from "../languagecontroller/languagecontroller"
-import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
+import { socialMediaLinks } from "../socialmedia/socialmedia"
 import * as actionTypes from "../../store/action"
-import { navigate } from "gatsby"
 class NavbarMobile extends React.Component {
   language
   navLinks = [
@@ -112,7 +108,7 @@ class NavbarMobile extends React.Component {
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
-            {this.props.navbar_top.map((item, index) =>
+            {this.props.navbar_top.map((item) =>
               generateLink(item, this.language)
             )}
           </NavMobileInner>
@@ -144,6 +140,7 @@ class NavbarMobile extends React.Component {
                 <NavMobileOuterLinkSmall
                   key={link.name}
                   target="_blank"
+                  rel="noopener noreferrer"
                   href={link.url}
                 >
                   {link.name}

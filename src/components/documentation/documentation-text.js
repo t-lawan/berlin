@@ -46,22 +46,6 @@ DocumentationText.propTypes = {
   documentation: PropTypes.object,
 }
 
-let content = {
-  EN: {
-    language: "Language",
-    documentation: "Documentation",
-    en: "English",
-    de: "German",
-    other: "Other",
-  },
-  DE: {
-    language: "Language",
-    documentation: "Dokumentation",
-    en: "English",
-    de: "Deutsch",
-    other: "Other",
-  },
-}
 const mapStateToProps = state => {
   return {
     languages: state.languages,

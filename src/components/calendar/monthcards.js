@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import DateCard from "./datecard"
-import { DateManager } from "../../utility/date"
 import { connect } from "react-redux"
 
 class MonthCards extends React.Component {

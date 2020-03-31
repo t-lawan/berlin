@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import {hideDisplayForTablet, size, hideDisplayForMobile } from "../../index.styles";
 import {
-  ExperienceButton,
   ExperienceControllerWrapper,
 } from "../experiencecontroller/experiencecontroller.styles"
 

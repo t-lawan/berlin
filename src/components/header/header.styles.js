@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { hideDisplayForTablet, changeGridToOneRow, showDisplayForTablet, hideDisplayForMobile, size } from "../../index.styles"
+import { changeGridToOneRow, size } from "../../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 export const HeaderWrapper = styled.header`

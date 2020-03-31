@@ -48,10 +48,6 @@ class ExperienceControllerMobile extends  React.Component {
 
   changeExperience = chosenExperience => {
     if (chosenExperience.isReady) {
-      let currentExperience = this.props.experience
-      if (currentExperience < chosenExperience.id) {
-      } else {
-      }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id);
       }, transitionTimes.changeExperienceDelayTime)

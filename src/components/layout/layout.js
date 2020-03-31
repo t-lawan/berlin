@@ -9,7 +9,6 @@ import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import ExperiencePage from "../experience/experience-page"
-import ExhibitionPage from "../exhibition/exhibition-page";
 import PageLoader from "../page-loader/page-loader";
 const LayoutWrapper = styled.div`
   width: 100vw;
