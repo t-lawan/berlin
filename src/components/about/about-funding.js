@@ -10,8 +10,6 @@ import {
   AboutCorporateImageItem,
   AboutPrimaryImageContainer,
 } from "./about.styles"
-import { GalleryImage } from "../../partials/ImageGalleryResource"
-import ImageResource from "../../partials/ImageResource"
 import { Section } from "../../index.styles";
 import { PageTitle } from "../../templates/page.styles";
 

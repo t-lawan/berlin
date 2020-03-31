@@ -71,7 +71,7 @@ class ImageResource extends React.Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.setState({
       image: getDocument(this.props.documents, this.props.id),
     })

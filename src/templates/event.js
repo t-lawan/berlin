@@ -5,7 +5,6 @@ import {
   getCurrentLanguageString,
   createPath,
   truncateText,
-  transitionBackground,
   pageMap,
 } from "../utility/helper"
 import { Convert } from "../utility/convert"
@@ -24,7 +23,6 @@ import { Color, size, hideDisplayForMobile, LargeButton } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
-import { EventsModel } from "../models/EventsModel"
 import * as actionTypes from '../store/action';
 
 const EventColumn = styled.div`
@@ -322,7 +320,7 @@ const Event = props => {
             <ShareLink>
               {" "}
               {eventContent[language].share}:{" "}
-              <a target="__blank" href={facebookLink}>
+              <a target="__blank" rel="noopener noreferrer" href={facebookLink}>
                 {" "}
                 Facebook{" "}
               </a>

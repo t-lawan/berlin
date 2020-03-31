@@ -3,7 +3,6 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
-  createPath,
   truncateText,
   pageMap,
 } from "../utility/helper"

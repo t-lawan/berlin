@@ -14,18 +14,8 @@ import {
   PageTitle,
   PageSubTitle,
 } from "./page.styles"
-import styled from "styled-components"
 import { getDocument } from "../store/selector"
-import { changeGridToOneRow, Color } from "../index.styles"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons"
-import {
-  FormLabel,
-  FormInput,
-  FormButton,
-} from "../components/modal/modal.styles"
 import moment from "moment"
-import axios from "axios"
 import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
@@ -34,87 +24,6 @@ class Press extends React.Component {
   language
   pressInfo
   renderComponent
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      email: "",
-      name: "",
-      media_affliation: "",
-      hasSubmitted: false,
-      errors: {
-        name: "",
-        email: "",
-        media_affliation: "",
-      },
-    }
-  }
-
-  handleSubmit = event => {
-    event.preventDefault()
-    this.sendPostRequest().then(() => {
-      this.setState({
-        hasSubmitted: true,
-      })
-    })
-  }
-
-  sendPostRequest = async () => {
-    const url =
-      "https://api.newsletter2go.com/forms/submit/rimnoamr-wo3ma3nb-18l9?type=subscribe"
-    let data = {
-      recipient: {
-        email: this.state.email,
-        name: this.state.name,
-        media_affliation: this.state.media_affliation,
-      },
-    }
-    data = JSON.stringify(data)
-    await axios.post(url, data)
-  }
-
-  clearState = () => {
-    this.setState({
-      email: "",
-      name: "",
-      media_affliation: "",
-    })
-  }
-
-  handleInputChange = event => {
-    const target = event.target
-    const value = target.type === "checkbox" ? target.checked : target.value
-    const name = target.name
-    let errors = this.state.errors
-    switch (name) {
-      case "name":
-        errors.name =
-          !validator.isAlpha(value) || value.length < 3
-            ? "This field requires at least 3 characters"
-            : ""
-        break
-      case "email":
-        errors.email = !validator.isEmail(value)
-          ? "This field requires a valid email"
-          : ""
-        break
-      case "media_affliation":
-        errors.media_affliation =
-          !validator.isAlphanumeric(value) || value.length < 3
-            ? "This field requires at least 3 characters"
-            : ""
-        break
-      default:
-        break
-    }
-    this.setState(
-      {
-        errors,
-        [name]: value,
-      },
-      () => {}
-    )
-  }
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
@@ -146,7 +55,7 @@ class Press extends React.Component {
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
               <li key={index}> {contact_data.contact_data_line}</li>
           ))}
-          <li><a target="__blank" href={`mailto:${this.pressInfo.acf.press_email}`}>{this.pressInfo.acf.press_email}</a></li>
+          <li><a target="__blank" rel="noopener noreferrer" href={`mailto:${this.pressInfo.acf.press_email}`}>{this.pressInfo.acf.press_email}</a></li>
           </ul>
         </div>
 
@@ -176,6 +85,7 @@ class Press extends React.Component {
               {/* <PressReleaseText> */}
                 <PressReleaseLink
                   target="_blank"
+                  rel="noopener noreferrer"
                   href={getPdf(
                     this.props.documents,
                     press_release,

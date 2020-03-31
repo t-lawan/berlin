@@ -4,10 +4,8 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { size } from "../index.styles"
 import {
   TwoColumnPageWrapper,
-  TextBlock,
   ResourcePublisherLink,
   PageTitle,
   TextBlockTwoColumnPage,
@@ -57,7 +55,7 @@ const PracticalInformation = props => {
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink target="_blank" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+          <ResourcePublisherLink target="_blank" rel="noopener noreferrer" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
         </TextBlockSideBarPage>
         <TextBlockSideBarPage>
 

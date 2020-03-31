@@ -4,7 +4,6 @@ import styled from "styled-components"
 import {
   getCurrentLanguageString,
   createPath,
-  createProperty,
 } from "../../utility/helper"
 import { Color } from "../../index.styles"
 import { Link } from "gatsby"

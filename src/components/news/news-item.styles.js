@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { UnderlineSectionLink, Color } from '../../index.styles';
+import { Color } from '../../index.styles';
 import { Link } from 'gatsby';
 
 export const NewsItemWrapper = styled.div`

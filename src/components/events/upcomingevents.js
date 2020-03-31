@@ -9,16 +9,13 @@ import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
   createPath,
-  transitionBackground,
   truncateText,
-  getNumberOfWords,
 } from "../../utility/helper"
 import moment from "moment"
 import "moment/locale/en-gb"
 import "moment/locale/de"
 import { getVenue } from "../../store/selector"
 import striptags from "striptags"
-import PropTypes from "prop-types"
 import * as actionTypes from '../../store/action';
 
 

@@ -1,10 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import { connect } from "react-redux"
 import Layout from "../components/layout/layout"
 import { Convert } from "../utility/convert"
 import {
-  getCurrentLanguageString,
   truncateText,
   pageMap,
 } from "../utility/helper"
@@ -15,16 +13,8 @@ import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { isViewing } from "../store/action"
 import { getDocument } from "../store/selector"
-import { ImageGalleryWrapper } from "../components/image-container/image-container";
-import ImageGalleryResource from "../partials/ImageGalleryResource";
-import ImageResource from "../partials/ImageResource";
-
-const ExhibitionPageWrapper = styled.div`
-  padding: 2em 1em;
-`
 
 const Exhibition = props => {
-  const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext)
   let description = exhibition[props.pageContext.language.toUpperCase()]
     ? truncateText(
@@ -75,15 +65,6 @@ const Exhibition = props => {
       experience={exhibition.experience}
     />
   )
-}
-
-const content = {
-  EN: {
-    works_and_contributions: "With works and contributions by:",
-  },
-  DE: {
-    works_and_contributions: "Mit Arbeiten und Beiträgen von:",
-  },
 }
 
 const mapStateToProps = state => {

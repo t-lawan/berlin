@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
+import { truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert";
@@ -14,7 +14,6 @@ import striptags from 'striptags';
 import { getDocument } from "../store/selector";
 
 const Documentation = props => {
-  const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
   let title = documentationObject[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].title)) : ""

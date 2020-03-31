@@ -1,9 +1,8 @@
 import React from "react"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { connect } from "react-redux"
 import { AboutSideNavbar, AboutNavItem, AboutNavItemLink } from "./about.styles"
 import PropTypes from "prop-types"
-import { graphql, useStaticQuery } from "gatsby"
 import * as actionTypes from '../../store/action'
 const AboutNavbar = props => {
 

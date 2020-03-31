@@ -8,7 +8,6 @@ import {
   MonthCardWrapper,
   CurrentDate,
   DateText,
-  DayMonthText,
   MonthHeading,
   EventCardsWrapper,
   ClosedText,
@@ -32,12 +31,6 @@ class DateCard extends React.Component {
     let renderComponents;
     this.language = getCurrentLanguageString(this.props.languages)
     if (this.props.containsEvents) {
-      const monthDay = DateManager.createMonthDayString(
-        this.props.day,
-        this.props.month,
-        this.props.year,
-        this.language
-      )
       const date = DateManager.createDatetring(this.props.day, this.props.month, this.props.year)
       let events = this.props.events
         .filter(ev => {
