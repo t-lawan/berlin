@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-irregular-whitespace": "warn"
   },
   "extends": [
     "eslint:recommended",
