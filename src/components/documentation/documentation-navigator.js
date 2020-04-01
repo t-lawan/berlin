@@ -108,7 +108,6 @@ class DocumentationNavigator extends React.Component {
     return (
       <DocumentationNavigatorWrapper>
         <DocumentationNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.previousPage())}
         >
@@ -120,7 +119,6 @@ class DocumentationNavigator extends React.Component {
           {`<`}
         </DocumentationNavigatorButton>
         <DocumentationNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.nextPage())}
         >

@@ -6,6 +6,7 @@ import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.sty
 import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
 import { size } from "../../index.styles"
+import { NoMarginText, MarginBottomText } from "./documentation.styles";
 
 
 const VideoContainer = styled.div`
@@ -24,13 +25,6 @@ const VideoContainer = styled.div`
     height: 100%;
     }
 `
-const NoMarg = {
-margin:"0",
-}
-
-const MargBottom = {
-margin:"0 0 0.7em"
-}
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
@@ -52,12 +46,12 @@ const DocumentationVideo = props => {
       />
       <TwoColumnPageWrapperNoPad>
         <div>
-          <p style={MargBottom}> {documentationContent[language].documentation} </p>
-          <p style={NoMarg}> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p>
-          <p style={NoMarg}><em>
+          <MarginBottomText> {documentationContent[language].documentation} </MarginBottomText>
+          {/* <p style={NoMarg}> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p> */}
+          <NoMarginText><em>
             {exhibitions[0][language].title}
             </em>
-          </p>
+          </NoMarginText>
         </div>
         <MargTop>
           <div

@@ -8,6 +8,7 @@ import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
 import { size } from "../../index.styles"
 import styled from 'styled-components';
+import { MarginBottomText, NoMarginText } from "./documentation.styles";
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
@@ -34,11 +35,11 @@ const DocumentationImageGallery = props => {
       {image_gallery ? <ImageGalleryResource ids={image_gallery} /> : null }
       <TwoColumnPageWrapper>
         <div>
-          <p> {documentationContent[language].documentation}</p>
-          <p><em>
+          <MarginBottomText> {documentationContent[language].documentation}</MarginBottomText>
+          <NoMarginText><em>
             {exhibitions[0][language].title}
             </em>
-          </p>
+          </NoMarginText>
         </div>
         <MargTop>
           <div
