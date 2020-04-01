@@ -4,11 +4,15 @@ import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
 import TransitionLogo from '../../images/bb1_loader_white.gif';
 import { stopTransition } from "../../store/action";
+import { size } from "../../index.styles";
 let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
   z-index: 4500;
   width: calc(66.66% - 1px);
+  @media (max-width: ${size.mobileL}) {
+    width: 100%;
+  }
   height: 100%;
   background: white;
   position: fixed;
