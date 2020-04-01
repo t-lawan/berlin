@@ -20,6 +20,7 @@ import {
   NavMobileModal,
   NavImageLink,
   NavMobileOuterLinkSmall,
+  NavMobileInactiveLink,
 } from "./navbar.styles"
 import LanguageController from "../languagecontroller/languagecontroller"
 import { socialMediaLinks } from "../socialmedia/socialmedia"
@@ -192,14 +193,15 @@ const content = {
 }
 
 const generateLink = (item, language) => {
+  let comp;
   if (item.isExternal) {
-    return (
+    comp = (
       <NavMobileOuterLink key={item.slug} href={item.slug} target="__blank">
         {item[language].title.toLowerCase()}
       </NavMobileOuterLink>
     )
   } else {
-    return (
+    comp =  (
       <NavMobileLink
         activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
@@ -210,6 +212,12 @@ const generateLink = (item, language) => {
       </NavMobileLink>
     )
   }
+
+  if(!item.isActive) {
+    comp = (<NavMobileInactiveLink key={item.slug}> {item[language].title.toLowerCase()} </NavMobileInactiveLink>)
+  }
+
+  return comp;
 }
 
 const mapStateToProps = state => {
