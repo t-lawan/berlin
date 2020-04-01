@@ -338,6 +338,7 @@ exports.createPages = async ({ graphql, actions }) => {
               news_item_is_unlinked
               show_in_news_feed
               thumbnail_image
+              display_date
             }
           }
         }

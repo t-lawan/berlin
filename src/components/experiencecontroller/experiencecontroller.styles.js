@@ -29,7 +29,7 @@ export const ExperienceButton = styled.div`
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   color: black;
-  /* opacity: ${props => (props.show ? "1" : "0.5")}; */
+  opacity: ${props => (props.show ? "1" : "0.5")};
   @media (min-width: ${size.laptop}) {
     font-size: 1.8em;
   }

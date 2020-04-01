@@ -143,14 +143,14 @@ const content = {
   EN: {
     contact: "Press contact",
     title: "press",
-    previewtitle: "Preview",
+    previewtitle: "Current information",
     press_release: "Downloads",
     images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
     title: "presse",
-    previewtitle: "Vorbesichtigung",
+    previewtitle: "Aktuelle Information",
     press_release: "Downloads",
     images: "Pressebilder",
   },

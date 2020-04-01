@@ -8,22 +8,17 @@ import { size } from "../../index.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import styled from 'styled-components'
 import { documentationContent } from "./documentation-video";
+import { MarginBottomText, NoMarginText } from "./documentation.styles";
 
 const AudioBlock = styled.div`
   padding: 0em !important;
 `
-const NoMarg = {
-margin:"0",
-}
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
     margin:1em 0 0em;
   }
 `
-const MargBottom = {
-margin:"0 0 0.7em"
-}
 const DocumentationAudio = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -38,15 +33,15 @@ const DocumentationAudio = props => {
       </AudioBlock>  
       <TwoColumnPageWrapperNoPad>
         <div>
-          <p style={MargBottom}> {documentationContent[language].documentation}</p>
-          <p style={NoMarg}>
+          <MarginBottomText> {documentationContent[language].documentation}</MarginBottomText>
+          {/* <p style={NoMarg}>
             {" "}
             {documentationContent[language].language}:{" "}
             {documentationContent[language][props.documentation.language]}{" "}
-          </p>
-          <p style={NoMarg}><em>
+          </p> */}
+          <NoMarginText><em>
             {exhibitions[0][language].title}</em>
-          </p>
+          </NoMarginText>
         </div>
         <MargTop>
           <div
