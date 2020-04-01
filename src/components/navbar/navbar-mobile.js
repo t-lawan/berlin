@@ -68,7 +68,8 @@ class NavbarMobile extends React.Component {
     this.props.showModal()
   }
   render() {
-    this.language = getCurrentLanguageString(this.props.languages)
+    this.language = getCurrentLanguageString(this.props.languages);
+    let navbarItems = [...this.props.navbar_top, ...this.props.navbar_bottom]
     return (
       <NavMobileWrapper
         showInTablet={this.props.showInTablet}
@@ -112,7 +113,7 @@ class NavbarMobile extends React.Component {
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
-            {this.props.navbar_top.map(item =>
+            {navbarItems.map(item =>
               generateLink(item, this.language, this.props)
             )}
           </NavMobileInner>
@@ -217,6 +218,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     navbar_top: state.navbar_top,
+    navbar_bottom: state.navbar_bottom,
     active_experience: state.active_experience,
   }
 }
