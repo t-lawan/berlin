@@ -330,6 +330,7 @@ export const FixedFooter = styled.div`
 
 export const FixedNavbar = styled.div`
   z-index: 600;
+  background-color: #FFF;
   bottom: 0;
   position: sticky;
   position: -webkit-sticky;
