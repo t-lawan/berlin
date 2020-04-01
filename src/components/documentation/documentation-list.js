@@ -67,8 +67,8 @@ const DocumentationList = props => {
   let documentation = props.documentation
 
   const createComponent = (doc, index) => {
-    let renderComponent
-    let hasEventRelation = doc.related_events.length > 0
+    let renderComponent;
+    let hasEventRelation =  doc.related_events && doc.related_events.length > 0
     if (hasEventRelation) {
       let event = getItem(props.events, doc.related_events[0])
       renderComponent = (

@@ -5,6 +5,7 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
+import { MarginBottomText, NoMarginText } from "./documentation.styles";
 
 const DocumentationText = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -18,11 +19,11 @@ const DocumentationText = props => {
       <DocumentationNavigator id={props.documentation.id} />
       <TwoColumnPageWrapper>
         <div>
-          <p> {documentationContent[language].documentation}</p>
-          <p><em>
+          <MarginBottomText> {documentationContent[language].documentation}</MarginBottomText>
+          <NoMarginText><em>
             {exhibitions[0][language].title}
             </em>
-          </p>
+          </NoMarginText>
         </div>
         <div>
           <div
