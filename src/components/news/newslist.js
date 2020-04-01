@@ -10,10 +10,12 @@ const NewsList = props => {
       return (
         news.experience.includes(props.experience.toString()) &&
         news.show_in_feed &&
-        DateManager.getDaysFromCurrentDate(news.dates[0]) <= 0
+        DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0 &&
+        props.experience === props.active_experience
       )
     })
     .reverse()
+
   return (
     <NewsListWrapper show={filteredNews.length > 0} isHome={props.isHome}>
       {filteredNews.map(news => (
@@ -36,6 +38,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     news: state.news,
+    active_experience: state.active_experience
   }
 }
 
