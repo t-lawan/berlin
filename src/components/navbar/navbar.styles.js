@@ -191,6 +191,23 @@ export const NavMobileLinks = styled.div`
   }
   }
 `
+export const NavMobileInactiveLink = styled.p`
+  text-decoration: none;
+  font-size: 1.55em;
+  line-height: 1.3;
+  padding-bottom: 0.0rem;
+  display: block;
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.0em;
+    margin-bottom:0.1em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 1.2em;
+    line-height: 1.3;
+  }
+  margin-bottom: 0;
+  opacity: 0.6;
+`
 
 export const NavMobileLink = styled(AniLink)`
   text-decoration: none;

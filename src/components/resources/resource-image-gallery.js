@@ -3,13 +3,11 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import {
   PageWrapperRes,
   TwoColumnPageWrapper,
-  ResourcePublisherLink,
   ResourceImageWrapper
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
-import ImageResource from "../../partials/ImageResource"
 import { connect } from "react-redux"
 import RelatedResources from "./related-resources"
 import ImageGalleryResource from "../../partials/ImageGalleryResource";
@@ -71,7 +69,6 @@ const ResLink = styled.div`
 const ResourceImageGallery = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
-  let resourceIds = []
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
@@ -87,7 +84,7 @@ const ResourceImageGallery = props => {
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
           <Year> {r[language].year}</Year>
-          {r.external_url.length > 0 ? <ResLink> <a target="_blank" href={r.external_url}> {r.external_url_label}</a> </ResLink> : ""}
+          {r.external_url.length > 0 ? <ResLink> <a target="_blank" rel="noopener noreferrer" href={r.external_url}> {r.external_url_label}</a> </ResLink> : ""}
           
         </div>
         <div>

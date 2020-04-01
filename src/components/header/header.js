@@ -10,7 +10,6 @@ import {
 import {
   getCurrentLanguageString,
   createPath,
-  transitionBackground,
 } from "../../utility/helper"
 import { getDocument } from "../../store/selector"
 import * as actionTypes from "../../store/action"

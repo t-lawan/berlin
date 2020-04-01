@@ -13,7 +13,6 @@ import {
 } from "./columns.styles"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import NavbarMobile from "../navbar/navbar-mobile"
-import { getDocument } from "../../store/selector"
 import { transitionTimes } from "../../utility/helper"
 import MainSection from "./main-section"
 class Columns extends React.Component {
@@ -54,11 +53,6 @@ class Columns extends React.Component {
       )
     }
 
-    let exhibition = this.props.exhibitions.find(exh => {
-      return exh.experience == this.props.experience
-    })
-
-    let image = getDocument(this.props.documents, exhibition.animation)
     return (
       <ColumnsWrapper>
         {/* First Column */}
@@ -87,6 +81,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
 
@@ -97,6 +92,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
           <div>
@@ -106,6 +102,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
           <div>
@@ -115,6 +112,7 @@ class Columns extends React.Component {
               thirdColumn={this.props.thirdColumn}
               numberOfColumnsIsTwo={this.props.numberOfColumnsIsTwo}
               isHome={this.props.isHome}
+              exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
         </ExperienceCarousel>

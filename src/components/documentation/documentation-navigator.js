@@ -4,7 +4,6 @@ import styled from "styled-components"
 import {
   getCurrentLanguageString,
   createPath,
-  transitionBackground,
 } from "../../utility/helper"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"

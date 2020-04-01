@@ -4,7 +4,6 @@ import {
   showDisplayForTablet,
   size,
   showDisplayForMobile,
-  hideDisplayForMobile,
 } from "../../index.styles"
 
 export const JumbotronWrapper = styled.div`

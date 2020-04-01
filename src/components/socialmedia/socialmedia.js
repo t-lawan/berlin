@@ -3,7 +3,6 @@ import {
   SocialMediaWrapper,
   SocialMediaText,
   SocialMediaLink,
-  NewsletterForm,
 } from "./socialmedia.styles"
 import * as actionTypes from "../../store/action"
 import { connect } from "react-redux"
@@ -14,7 +13,6 @@ export const socialMediaLinks = [
 ]
 
 const SocialMedia = props => {
-  let showNewsletterInput = false
   const toggleNewsletterInput = () => {
     props.showModal()
   }
@@ -25,7 +23,7 @@ const SocialMedia = props => {
           newsletter
         </SocialMediaText>
         {socialMediaLinks.map(link => (
-          <SocialMediaLink key={link.name} target="_blank" href={link.url}>
+          <SocialMediaLink key={link.name} target="_blank" rel="noopener noreferrer" href={link.url}>
             {link.name}
           </SocialMediaLink>
         ))}

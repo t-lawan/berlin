@@ -1,23 +1,22 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import * as actionTypes from "../../store/action"
 import {
   LanguageControllerWrapper,
   LanguageButton,
 } from "./languagecontroller.styles"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 class LanguageController extends React.Component {
   delay = 200;
   languageToFunctionWrapper = {
     EN: () => {
-      this.props.setFreshLoadToTrue();
+      // this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToEN()
       }, this.delay)
     },
     DE: () => {
-      this.props.setFreshLoadToTrue();
+      // this.props.setFreshLoadToTrue();
       setTimeout(() => {
         this.props.setLanguageToDE()
       }, this.delay)

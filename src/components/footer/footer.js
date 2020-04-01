@@ -1,8 +1,7 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { changeGridToOneRow, size, Color } from "../../index.styles"
 import ImageResource from "../../partials/ImageResource"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
@@ -93,7 +92,7 @@ const FooterComponent = props => {
       </div>
       <div>
         <FooterText> {content.address_line}</FooterText>
-        <FooterOuterLink target="__blank" href={`mailto:${content.email}`}>{content.email}</FooterOuterLink>
+        <FooterOuterLink target="__blank" rel="noopener noreferrer" href={`mailto:${content.email}`}>{content.email}</FooterOuterLink>
         <FooterText> {content.tel_phone_number}</FooterText>
         <FooterText> {content.fax_phone_number}</FooterText>
       </div>

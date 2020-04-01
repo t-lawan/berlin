@@ -8,7 +8,8 @@ export class NewsModel {
     show_in_feed,
     has_link,
     thumbnail_image,
-    dates
+    dates,
+    display_date
   ) {
     this.id = id
     this.slug = slug
@@ -18,6 +19,7 @@ export class NewsModel {
     this.show_in_feed = show_in_feed
     this.has_link = has_link
     this.thumbnail_image = thumbnail_image;
-    this.dates = dates
+    this.dates = dates;
+    this.display_date = display_date;
   }
 }

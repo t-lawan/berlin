@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, pageMap } from "../utility/helper"
+import { pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
@@ -13,9 +13,9 @@ import ResourceImageGallery from "../components/resources/resource-image-gallery
 import ResourceText from "../components/resources/resource-text"
 import ResourceAudio from "../components/resources/resource-audio";
 import NewsList from "../components/news/newslist";
+import ResourceVideo from "../components/resources/resource-video";
 
 const Resource = props => {
-  const language = getCurrentLanguageString(props.languages)
   const resourceInfo = props.pageContext
   const r = Convert.toResourceModel(resourceInfo);
 
@@ -81,7 +81,6 @@ const Resource = props => {
 }
 const mapStateToProps = state => {
   return {
-    languages: state.languages,
     documents: state.documents,
   }
 }

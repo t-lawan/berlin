@@ -1,15 +1,12 @@
 import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createPath } from "../../utility/helper"
+import { getCurrentLanguageString } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
 import styled from "styled-components"
 import {
-  hideDisplayForTablet,
   hideDisplayForMobile,
   size,
-  increaseHeightKeyFrames,
-  decreaseHeightKeyFrames,
 } from "../../index.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { CSSTransition } from "react-transition-group"
@@ -93,8 +90,9 @@ class ImageContainer extends React.Component {
   }
 
   render() {
-    this.exhibitions = this.props.exhibitions.filter((item, index) => {
-      return item.experience === this.props.experience.toString()
+    this.exhibitions = this.props.exhibitions.filter((item) => {
+      let exp = this.props.exhibitionExperience ? this.props.exhibitionExperience : this.props.experience.toString();
+      return item.experience === exp
     })
     this.exhibition = this.exhibitions[0]
     return (

@@ -5,9 +5,7 @@ import PropTypes from "prop-types"
 import {
   EventNavigatorWrapper,
   EventNavigatorButton,
-  EventNavigatorIcon,
 } from "./event-navigator.styles"
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import * as actionTypes from '../../store/action'
 
 class EventNavigator extends React.Component {

@@ -4,17 +4,14 @@ import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
   createPath,
-  createProperty,
   transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
   NavMobileHeader,
-  NavIcon,
   NavIconSVG,
   NavImage,
   NavMobileContent,
-  NavInner,
   NavMobileInner,
   NavMobileLinks,
   NavMobileLink,
@@ -23,11 +20,11 @@ import {
   NavMobileModal,
   NavImageLink,
   NavMobileOuterLinkSmall,
+  NavMobileInactiveLink,
 } from "./navbar.styles"
 import LanguageController from "../languagecontroller/languagecontroller"
-import SocialMedia, { socialMediaLinks } from "../socialmedia/socialmedia"
+import { socialMediaLinks } from "../socialmedia/socialmedia"
 import * as actionTypes from "../../store/action"
-import { navigate } from "gatsby"
 class NavbarMobile extends React.Component {
   language
   navLinks = [
@@ -112,7 +109,7 @@ class NavbarMobile extends React.Component {
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
-            {this.props.navbar_top.map((item, index) =>
+            {this.props.navbar_top.map((item) =>
               generateLink(item, this.language)
             )}
           </NavMobileInner>
@@ -144,6 +141,7 @@ class NavbarMobile extends React.Component {
                 <NavMobileOuterLinkSmall
                   key={link.name}
                   target="_blank"
+                  rel="noopener noreferrer"
                   href={link.url}
                 >
                   {link.name}
@@ -195,14 +193,15 @@ const content = {
 }
 
 const generateLink = (item, language) => {
+  let comp;
   if (item.isExternal) {
-    return (
+    comp = (
       <NavMobileOuterLink key={item.slug} href={item.slug} target="__blank">
         {item[language].title.toLowerCase()}
       </NavMobileOuterLink>
     )
   } else {
-    return (
+    comp =  (
       <NavMobileLink
         activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
@@ -213,6 +212,12 @@ const generateLink = (item, language) => {
       </NavMobileLink>
     )
   }
+
+  if(!item.isActive) {
+    comp = (<NavMobileInactiveLink key={item.slug}> {item[language].title.toLowerCase()} </NavMobileInactiveLink>)
+  }
+
+  return comp;
 }
 
 const mapStateToProps = state => {

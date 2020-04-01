@@ -3,7 +3,6 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
-  createPath,
   truncateText,
   pageMap,
 } from "../utility/helper"
@@ -16,7 +15,7 @@ import { DateManager } from "../utility/date"
 import { size, } from "../index.styles"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags";
-
+import styled from 'styled-components';
 const NewsTitle = styled.h1`
   padding-top: 0rem;
   padding-bottom: 0.5rem;

@@ -283,12 +283,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 doc_credits
                 subtitle
                 title
+                social_media_description
               }
               EN {
                 description
                 doc_credits
                 subtitle
                 title
+                social_media_description
               }
               documentation_type
               event_relation {
@@ -308,6 +310,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 wordpress_id
                 media_type
               }
+              thumbnail_image
             }
           }
         }
@@ -335,6 +338,7 @@ exports.createPages = async ({ graphql, actions }) => {
               news_item_is_unlinked
               show_in_news_feed
               thumbnail_image
+              display_date
             }
           }
         }

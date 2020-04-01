@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import {
   changeGridToOneRow,
   size,
-  Color,
   hideDisplayForTablet,
   showDisplayForTablet,
   hideDisplayForMobile,
@@ -32,15 +31,6 @@ export const ExperienceCarousel = styled(Carousel)`
     overflow: hidden !important;
   }
 
-  /* > .carousel { */
-    > div > div> ul {
-      transform: rotateY(1deg) translateZ(1px) !important;
-      -webkit-transform: rotateY(1deg) translateZ(1px) !important;
-      -moz-transform: rotateY(1deg) translateZ(1px) !important;
-      -o-transform: rotateY(1deg) translateZ(1px) !important;
-    }
-    /* overflow-y: auto !important; */
-  /* } */
 `
 
 export const ExperienceContainer = styled.div`
@@ -69,7 +59,7 @@ export const ExperienceContainer = styled.div`
     grid-template-areas: "column" "column column" "footer" !important;
     margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child (3) {
+    ${ColumnLayout}:nth-child(3) {
       z-index: 10;
     }
   }
@@ -98,7 +88,7 @@ export const AnimatedColumn = styled(Animated)`
     grid-template-areas: "column" "column column" "footer" !important;
     margin: 40px auto 0;
     height: calc(100vh - 40px);
-    ${ColumnLayout}:nth-child (3) {
+    ${ColumnLayout}:nth-child(3) {
       z-index: 10;
     }
   }

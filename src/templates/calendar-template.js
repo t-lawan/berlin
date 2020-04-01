@@ -5,7 +5,7 @@ import { getCurrentLanguageString, pageMap } from "../utility/helper"
 import Calendar from "../components/calendar/calendar"
 import ResourcesList from "../components/resources/resources-list"
 import SEO from "../components/seo/seo"
-import { PageTitle, PageTitleCalendar } from "./page.styles";
+import { PageTitleCalendar } from "./page.styles";
 
 const CalendarTemplate = props => {
   const language = getCurrentLanguageString(props.languages)

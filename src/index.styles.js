@@ -70,12 +70,12 @@ body {
     transition: all 0.2s ease-in-out;
   }
   em {
-font-family: 'ag-book-pro', sans-serif;
-font-weight: 300 !important;
-text-rendering: optimizeLegibility;
-font-style: italic !important;
-backface-visibility: hidden;
-}
+    font-family: 'ag-book-pro', sans-serif;
+    font-weight: 300 !important;
+    text-rendering: optimizeLegibility;
+    font-style: italic !important;
+    backface-visibility: hidden;
+  }
   h1 {
   margin-left: 0;
   text-rendering: optimizeLegibility;

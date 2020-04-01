@@ -2,7 +2,7 @@ import React from "react"
 import { getCurrentLanguageString, createProperty } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { UnderlinedText, size } from "../../index.styles";
+import { size } from "../../index.styles";
 import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`

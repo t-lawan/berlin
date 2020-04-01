@@ -1,10 +1,8 @@
 import React from "react"
-import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import { NewsListWrapper } from "./newslist.styles"
 import NewsItem from "./news-item"
 import { DateManager } from "../../utility/date"
-import PropTypes from "prop-types"
 
 const NewsList = props => {
   const filteredNews = props.news
