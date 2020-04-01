@@ -12,8 +12,36 @@ import SEO from "../components/seo/seo"
 import { Convert } from "../utility/convert"
 import ImageResource from "../partials/ImageResource"
 import { DateManager } from "../utility/date"
+import { size, } from "../index.styles"
 import NewsList from "../components/news/newslist"
-import striptags from "striptags"
+import striptags from "striptags";
+
+const NewsTitle = styled.h1`
+  padding-top: 0rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.6em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.7em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.9em;
+  }
+  line-height: 1.2;
+`
+const NewsSubTitle = styled.h2`
+  padding-top: 0rem;
+  padding-bottom: 0.5rem;
+  margin-top:-1.2em;
+  margin-bottom:0.5em;
+  font-size: 1em;
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+  }
+  line-height: 1.4;
+`
 
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -54,8 +82,21 @@ const News = props => {
             <ImageResource id={item.thumbnail_image} withCaption={false} />
           ) : null}
           <TextBlock>
-            <h1> {item[language].news_title}</h1>
-            <h2> {item[language].news_subtitle}</h2>
+            <NewsTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(item[language].news_title, ["em"]),
+              }}
+            />
+            
+            {item[language].news_subtitle ? (
+              <NewsSubTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(item[language].news_subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+
+            
           </TextBlock>
           <TextBlock>
             <div
