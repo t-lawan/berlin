@@ -27,7 +27,8 @@ export class Convert {
       wordpressModel.acf.show_in_news_feed,
       !wordpressModel.acf.news_item_is_unlinked,
       wordpressModel.acf.thumbnail_image,
-      dates
+      dates,
+      wordpressModel.acf.display_date
     )
   }
 

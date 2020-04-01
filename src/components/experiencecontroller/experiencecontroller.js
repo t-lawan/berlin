@@ -47,8 +47,9 @@ class ExperienceController extends React.Component {
   }
 
   incrementExperience = () => {
+    // temporarily disable experience 4 by checking before incrementing
     if (
-      this.props.experience < this.state.experiences.length
+      this.props.experience < this.state.experiences.length && this.props.experience + 1 !== 4
     ) {
       // this.props.experienceIncreased()
       this.props.experience + 1
@@ -80,30 +81,30 @@ class ExperienceController extends React.Component {
     }
   }
 
-  runThroughAllExperiences = chosenExperience => {
-    let index = this.state.experiences.findIndex(exp => {
-      return exp.id === chosenExperience.id
-    })
-    let currentExperience = this.props.experience;
-    let experiences;
-    // If moving from 3 -> 1
-    if(currentExperience > index + 1) {
-      experiences = this.state.experiences.filter((xp) => {
-        return xp.id >= index + 1 && xp.id < currentExperience ;
-      });
-      experiences = experiences.reverse();
-    // If moving from 1 -> 3
-    } else if(currentExperience < index  + 1)  {
-      experiences = this.state.experiences.filter((xp) => {
-        return xp.id <= index + 1 && xp.id > currentExperience;
-      });
-    }
-    experiences.forEach((xp, ind) => {
-      setTimeout(() => {
-        this.changeExperience(xp)
-      }, transitionTimes.timeOutForEachExperiences * (ind + 1));
-    })
-  }
+  // runThroughAllExperiences = chosenExperience => {
+  //   let index = this.state.experiences.findIndex(exp => {
+  //     return exp.id === chosenExperience.id
+  //   })
+  //   let currentExperience = this.props.experience;
+  //   let experiences;
+  //   // If moving from 3 -> 1
+  //   if(currentExperience > index + 1) {
+  //     experiences = this.state.experiences.filter((xp) => {
+  //       return xp.id >= index + 1 && xp.id < currentExperience ;
+  //     });
+  //     experiences = experiences.reverse();
+  //   // If moving from 1 -> 3
+  //   } else if(currentExperience < index  + 1)  {
+  //     experiences = this.state.experiences.filter((xp) => {
+  //       return xp.id <= index + 1 && xp.id > currentExperience;
+  //     });
+  //   }
+  //   experiences.forEach((xp, ind) => {
+  //     setTimeout(() => {
+  //       this.changeExperience(xp)
+  //     }, transitionTimes.timeOutForEachExperiences * (ind + 1));
+  //   })
+  // }
 
   changeExperience = chosenExperience => {
     if (chosenExperience.isReady) {
@@ -131,17 +132,22 @@ class ExperienceController extends React.Component {
     }
   }
   render() {
-    this.experiences = this.state.experiences.map(item => {
+    this.experiences = this.state.experiences.map((item, index) => {
       let exhibition = this.props.exhibitions.find(exhibition => {
         return item.id === parseInt(exhibition.experience)
       })
-      let isReady = exhibition ? true : false
+      let isReady = exhibition ? true : false;
+      // Temporarily disable for the last exhibition
+      if(index === 3) {
+        isReady = false;
+      }
       return {
         id: item.id,
         isReady: isReady,
         display: item.display,
       }
     })
+
 
     this.experiences = this.experiences.filter(experience =>
       this.filterBasedOnPosition(experience)

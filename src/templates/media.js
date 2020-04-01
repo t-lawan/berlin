@@ -38,10 +38,10 @@ const Media = props => {
 
 let content = {
   EN: {
-    title: "current",
+    title: "media",
   },
   DE: {
-    title: "aktuell",
+    title: "mediathek",
   },
 }
 

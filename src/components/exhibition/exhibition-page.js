@@ -21,7 +21,7 @@ const ExhibitionPageWrapper = styled.div`
     top:0;
     padding: 0.7em 0.7em;
     bottom: 45px;
-    height: calc(100vh - 87px);
+    height: calc(100vh - 84px);
     /* top: 40px; */
   }
   @media (min-width: ${size.mobileL}) {
