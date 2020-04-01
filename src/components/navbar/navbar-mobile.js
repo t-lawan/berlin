@@ -4,7 +4,6 @@ import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
   createPath,
-  transitionBackground,
 } from "../../utility/helper"
 import {
   NavMobileWrapper,
@@ -56,10 +55,13 @@ class NavbarMobile extends React.Component {
     }
   }
 
-  toggleContent = () => {
+  toggleContent = (withTransition = false) => {
     this.setState({
       showContent: this.state.showContent ? false : true,
     })
+    if(withTransition) {
+      this.props.startTransition();
+    }
   }
 
   showModal = () => {
@@ -68,9 +70,12 @@ class NavbarMobile extends React.Component {
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
-      <NavMobileWrapper showInTablet={this.props.showInTablet} showInMobile={this.props.showInMobile}>
+      <NavMobileWrapper
+        showInTablet={this.props.showInTablet}
+        showInMobile={this.props.showInMobile}
+      >
         <NavMobileHeader>
-          <div onClick={() => this.toggleContent()}>
+          <div onClick={() => this.toggleContent(false)}>
             <NavIconSVG
               src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk.svg"
               show={this.state.showContent ? 0 : 1}
@@ -85,7 +90,9 @@ class NavbarMobile extends React.Component {
               // cover
               // direction="down"
               // bg={transitionBackground}
-              onClick={() => this.props.changeExperience(this.props.active_experience)}
+              onClick={() =>
+                this.props.changeExperience(this.props.active_experience)
+              }
               fade
               to={createPath(this.language, "")}
             >
@@ -100,31 +107,22 @@ class NavbarMobile extends React.Component {
         <NavMobileContent show={this.state.showContent}>
           <NavMobileInner>
             <NavMobileLink
-              // cover
-              // direction="down"
-              // bg={transitionBackground}
-              fade
               to={createPath(this.language, `current`)}
-              onClick={() => this.toggleContent()}
+              onClick={() => this.toggleContent(true)}
             >
               {this.language === "EN" ? "current" : "aktuell"}
             </NavMobileLink>
-            {this.props.navbar_top.map((item) =>
-              generateLink(item, this.language)
+            {this.props.navbar_top.map(item =>
+              generateLink(item, this.language, this.props)
             )}
           </NavMobileInner>
 
           <NavMobileLinks>
             {this.navLinks.map((navLink, index) => (
               <NavMobileLink
-                fade
-                // cover
-                // direction="down"
-                // bg={transitionBackground}
                 key={index}
                 to={createPath(this.language, `about/${navLink.path}`)}
-                onClick={() => this.toggleContent()}
-
+                onClick={() => this.toggleContent(true)}
               >
                 {navLink[this.language]}
               </NavMobileLink>
@@ -134,8 +132,7 @@ class NavbarMobile extends React.Component {
           <NavMobileLinks>
             <div>
               <NavMobileModal onClick={() => this.showModal()}>
-                {content[this.language]['newsletter']}
-
+                {content[this.language]["newsletter"]}
               </NavMobileModal>
               {socialMediaLinks.map(link => (
                 <NavMobileOuterLinkSmall
@@ -150,26 +147,16 @@ class NavbarMobile extends React.Component {
             </div>
             <div>
               <NavMobileLinkSmall
-                fade
-                // cover
-                // direction="down"
-                // bg={transitionBackground}
                 to={createPath(this.language, "imprint")}
-                onClick={() => this.toggleContent()}
-
+                onClick={() => this.toggleContent(true)}
               >
-                {content[this.language]['imprint']}
-
+                {content[this.language]["imprint"]}
               </NavMobileLinkSmall>
               <NavMobileLinkSmall
-                fade
-                // cover
-                // direction="down"
-                // bg={transitionBackground}
                 to={createPath(this.language, "data-privacy")}
-                onClick={() => this.toggleContent()}
+                onClick={() => this.toggleContent(true)}
               >
-                {content[this.language]['data-privacy']}
+                {content[this.language]["data-privacy"]}
               </NavMobileLinkSmall>
             </div>
           </NavMobileLinks>
@@ -183,17 +170,17 @@ const content = {
   EN: {
     imprint: "imprint",
     "data-privacy": "data privacy",
-    newsletter: 'newsletter'
+    newsletter: "newsletter",
   },
   DE: {
     imprint: "impressum",
     "data-privacy": "datenschutz",
-    newsletter: 'newsletter'
+    newsletter: "newsletter",
   },
 }
 
-const generateLink = (item, language) => {
-  let comp;
+const generateLink = (item, language, props) => {
+  let comp
   if (item.isExternal) {
     comp = (
       <NavMobileOuterLink key={item.slug} href={item.slug} target="__blank">
@@ -201,23 +188,28 @@ const generateLink = (item, language) => {
       </NavMobileOuterLink>
     )
   } else {
-    comp =  (
+    comp = (
       <NavMobileLink
         activeStyle={{ color: "#D9515C" }}
         to={createPath(language, item.slug)}
         key={item.slug}
-        bg={transitionBackground}
+        onClick={() => props.startTransition()}
       >
         {item[language].title.toLowerCase()}
       </NavMobileLink>
     )
   }
 
-  if(!item.isActive) {
-    comp = (<NavMobileInactiveLink key={item.slug}> {item[language].title.toLowerCase()} </NavMobileInactiveLink>)
+  if (!item.isActive) {
+    comp = (
+      <NavMobileInactiveLink key={item.slug}>
+        {" "}
+        {item[language].title.toLowerCase()}{" "}
+      </NavMobileInactiveLink>
+    )
   }
 
-  return comp;
+  return comp
 }
 
 const mapStateToProps = state => {
@@ -225,14 +217,16 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     navbar_top: state.navbar_top,
-    active_experience: state.active_experience
+    active_experience: state.active_experience,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     showModal: () => dispatch({ type: actionTypes.SHOW_MODAL }),
-    changeExperience: (experience) => dispatch(actionTypes.changeExperience(experience))
+    changeExperience: experience =>
+      dispatch(actionTypes.changeExperience(experience)),
+    startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
   }
 }
 
@@ -242,7 +236,4 @@ NavbarMobile.propTypes = {
   showContent: PropTypes.bool,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NavbarMobile)
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarMobile)
