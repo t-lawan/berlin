@@ -67,6 +67,7 @@ const FooterText = styled.p`
 
 const FooterOuterLink = styled.a`
   margin: 0;
+  line-height: 1.4;
 `
 
 const FooterLink = styled(AniLink)`
