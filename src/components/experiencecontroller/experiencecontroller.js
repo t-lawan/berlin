@@ -131,17 +131,22 @@ class ExperienceController extends React.Component {
     }
   }
   render() {
-    this.experiences = this.state.experiences.map(item => {
+    this.experiences = this.state.experiences.map((item, index) => {
       let exhibition = this.props.exhibitions.find(exhibition => {
         return item.id === parseInt(exhibition.experience)
       })
-      let isReady = exhibition ? true : false
+      let isReady = exhibition ? true : false;
+      // Temporarily disable for the last exhibition
+      if(index === 3) {
+        isReady = false;
+      }
       return {
         id: item.id,
         isReady: isReady,
         display: item.display,
       }
     })
+
 
     this.experiences = this.experiences.filter(experience =>
       this.filterBasedOnPosition(experience)
