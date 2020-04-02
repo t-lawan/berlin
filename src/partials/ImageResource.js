@@ -16,36 +16,38 @@ export const GalleryImage = styled(Img)`
 export const Image = styled(Img)`
   max-height: 650px !important;
   /* padding-bottom: 5rem !important; */
-  > picture > img{
-    object-fit: ${props => props.isLandscape ? 'cover !important' : 'contain !important' }  ;
+  > picture > img {
+    object-fit: ${props =>
+      props.isLandscape ? "cover !important" : "contain !important"};
     max-height: 650px !important;
     display: block;
     margin: 0 auto;
     /* width: auto !important; */
     position: relative;
-    padding-bottom: ${props => props.withCaption ? (props.isGallery ? '4rem !important' : '0') : '0'};
+    padding-bottom: ${props =>
+      props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
   }
 
   > img {
-
-    padding-bottom: ${props => props.withCaption ? (props.isGallery ? '4rem !important' : '0') : '0'};
+    padding-bottom: ${props =>
+      props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
     /* position: relative !important; */
   }
 `
-
 
 export const Caption = styled.section`
   font-size: 0.65rem;
   text-align: left;
   /* margin-top: -4rem; */
 
-  margin-top: ${props => props.isGallery ? "-4rem" : "0" };
+  margin-top: ${props => (props.isGallery ? "-4rem" : "0")};
   p {
     font-size: 0.65rem;
+    max-width: 100%;
     margin: 0.7em 0;
     @media (min-width: ${size.laptopL}) {
-    font-size: 0.72rem;
-    margin: 0.9em 0;
+      font-size: 0.72rem;
+      margin: 0.9em 0;
     }
   }
   @media (min-width: ${size.laptop}) {
@@ -90,13 +92,23 @@ class ImageResource extends React.Component {
 
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    let isLandscape = true;
-    if(this.state.image) {
-      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true;
-    }
+    let isLandscape = true
+
     return (
       <>
-        <Image isLandscape={isLandscape} alt={this.state.image && this.state.image.EN.caption ? striptags(this.state.image[this.language].caption) : ''} isGallery={this.props.isGallery} withCaption={this.props.withCaption} fadeIn={true} onLoad={this.props.onLoad} fluid={this.state.image ? this.state.image.fluid: null} /> 
+        <Image
+          isLandscape={isLandscape}
+          alt={
+            this.state.image && this.state.image.EN.caption
+              ? striptags(this.state.image[this.language].caption)
+              : ""
+          }
+          isGallery={this.props.isGallery}
+          withCaption={this.props.withCaption}
+          fadeIn={true}
+          onLoad={this.props.onLoad}
+          fluid={this.state.image ? this.state.image.fluid : null}
+        />
         <Caption
           hidden={!this.props.withCaption}
           isGallery={this.props.isGallery}

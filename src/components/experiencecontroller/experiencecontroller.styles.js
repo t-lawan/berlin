@@ -15,6 +15,12 @@ export const ExperienceControllerWrapper = styled.div`
   @media (min-width: ${size.laptopL}) {
     margin-top: ${props => (props.left ? "6.9em" : "4.75em")};
   }
+  @media (min-width: ${size.desktopS}) {
+    margin-top: ${props => (props.left ? "6.9em" : "5.85em")};
+  }
+  @media (min-width: ${size.desktopM}) {
+    margin-top: ${props => (props.left ? "6.9em" : "7.85em")};
+  }
   align-items: center;
   justify-content: center;
   display: grid;
@@ -29,7 +35,7 @@ export const ExperienceButton = styled.div`
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   color: black;
-  opacity: ${props => (props.show ? "1" : "0.5")};
+  opacity: ${props => (props.show ? "1" : "1")};
   @media (min-width: ${size.laptop}) {
     font-size: 1.8em;
   }
@@ -40,7 +46,6 @@ export const ExperienceButton = styled.div`
   transition: 1s; */
   :hover {
     cursor: ${props => (props.hover ? "pointer" : "inherit")};
-    color: ${Color.red};
   }
   img {
     width: 65%;
@@ -52,6 +57,7 @@ export const ExperienceButton = styled.div`
   :last-child img {
     @media (min-width: ${size.laptop}) {
       max-width: 32px;
+      opacity: 0.3;
     }
     @media (min-width: ${size.laptopM}) {
       max-width: 37px;

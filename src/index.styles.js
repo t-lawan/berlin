@@ -14,7 +14,9 @@ export const size = {
   laptop: "1024px",
   laptopM: "1124px",
   laptopL: "1400px",
-  desktop: "2560px",
+  desktopS: "1600px",
+  desktopM: "1900px",
+  desktop: "2260px",
 }
 
 export const increaseHeightKeyFrames = keyframes`
@@ -286,7 +288,7 @@ a {
   text-decoration-color: ${Color.red};
 }
 h1, h2, h3, h4, h5, h6, p, a, em {
-  word-wrap: break-word;
+  
 }
 
 .hide-footer {

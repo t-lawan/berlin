@@ -12,7 +12,7 @@ const FooterWrapper = styled.footer`
   grid-column-gap: 0.5rem;
   color: black;
   background: white;
-  padding: 0.7em 1em;
+  padding: 0.7em 1em 1.5em;
   border-top: 1px solid black;
   ${changeGridToOneRow};
   @media (max-width: ${size.tablet}) {
@@ -33,6 +33,9 @@ const FooterWrapper = styled.footer`
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 3.8fr 7.5fr 2fr;
     grid-column-gap: 0.5rem;
+  }
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 1fr 3.8fr 7.7fr 1.8fr;
   }
 `
 
@@ -66,20 +69,31 @@ const ImageWrapper = styled.div`
 
 const FooterText = styled.p`
   margin: 0;
+  -webkit-font-smoothing: antialiased;
 `
 
 const FooterOuterLink = styled.a`
   margin: 0;
   line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  transition: all 0.2 ease-in-out;
+  :hover {
+    cursor: pointer;
+    color: ${Color.red};
+  }
 `
 
 const FooterLink = styled(AniLink)`
   margin: 0;
   padding-right: 1rem;
+  -webkit-font-smoothing: antialiased;
   transition: all 0.2 ease-in-out;
   :hover {
     cursor: pointer;
     color: ${Color.red};
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding-right: 1.5em;
   }
 `
 const FooterComponent = props => {
