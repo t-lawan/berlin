@@ -57,7 +57,7 @@ export class DateManager {
   }
 
   static toDateString = (date) => {
-    return moment(date, 'YYYYMMDD').format("D.MM.YYYY");
+    return moment(date, 'YYYYMMDD').format("D.M.YYYY");
   }
 
   static currentDate = () => {
