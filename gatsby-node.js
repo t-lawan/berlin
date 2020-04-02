@@ -561,6 +561,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
     { EN: "practical-information", DE: "praktische-information" },
+    { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "publication", DE: "publikation" },
   ]
