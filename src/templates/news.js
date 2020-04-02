@@ -12,7 +12,7 @@ import SEO from "../components/seo/seo"
 import { Convert } from "../utility/convert"
 import ImageResource from "../partials/ImageResource"
 import { DateManager } from "../utility/date"
-import { size } from "../index.styles"
+import { Color, size } from "../index.styles"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import styled from "styled-components"
@@ -41,6 +41,21 @@ const NewsSubTitle = styled.h2`
     font-size: 1.2em;
   }
   line-height: 1.4;
+`
+const NewsText = styled.div`
+> p > a {
+  font-size: 1em;
+  border-bottom: solid 1px;
+  border-color: ${Color.red};
+  transition: all 0.2s ease-in-out; 
+  :hover {
+    color: ${Color.red};
+  }
+}
+> p > span {
+  font-size: 1.0em;
+}
+margin-bottom: 4rem;
 `
 
 const News = props => {
@@ -96,9 +111,8 @@ const News = props => {
                 }}
               />
             ) : null}
-          </TextBlock>
-          <TextBlock>
-            <div
+          
+            <NewsText
               dangerouslySetInnerHTML={{
                 __html: item[language].news_text,
               }}

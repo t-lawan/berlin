@@ -9,8 +9,9 @@ const Navbar = props => {
    const generateLink = (item, language) => {
      let comp;
     if (item.isExternal) {
+      let slug = language === "EN" ? item.slug : item.slug.replace('en', 'de');
       comp =  (
-        <NavLink key={item.slug} href={item.slug} target="__blank" rel="noopener noreferrer">
+        <NavLink key={item.slug} href={slug} target="__blank" rel="noopener noreferrer">
           {item[language].title.toLowerCase()}
         </NavLink>
       )

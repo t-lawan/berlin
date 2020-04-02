@@ -10,7 +10,7 @@ import { startTransition } from "../../store/action";
 export const RelatedResourcesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   width:calc(100% - 1em);
   margin-left:0.5em;
   margin-bottom:2em;
@@ -39,10 +39,13 @@ const ResourceLink = styled(AniLink)`
   @media (min-width: ${size.laptopM}) {
   width:25%;
   }
+  @media (min-width: ${size.laptopL}) {
+  width:20%;
+  }
 `
 
 const RelatedResource = styled.div`
-  background: ${props => props.directlyRelated ? '#fbf95d' :  '#fcfaba'};
+  background: ${props => props.directlyRelated ? '#fbf95d' :  '#fbf95d'};
   min-height: 9em;
   height:100%;
   position:relative;
