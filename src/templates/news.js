@@ -3,7 +3,6 @@ import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
-  createPath,
   truncateText,
   pageMap,
 } from "../utility/helper"
@@ -13,10 +12,10 @@ import SEO from "../components/seo/seo"
 import { Convert } from "../utility/convert"
 import ImageResource from "../partials/ImageResource"
 import { DateManager } from "../utility/date"
-import { size, } from "../index.styles"
+import { size } from "../index.styles"
 import NewsList from "../components/news/newslist"
-import striptags from "striptags";
-
+import striptags from "striptags"
+import styled from "styled-components"
 const NewsTitle = styled.h1`
   padding-top: 0rem;
   padding-bottom: 0.5rem;
@@ -32,8 +31,8 @@ const NewsTitle = styled.h1`
 const NewsSubTitle = styled.h2`
   padding-top: 0rem;
   padding-bottom: 0.5rem;
-  margin-top:-1.2em;
-  margin-bottom:0.5em;
+  margin-top: -1.2em;
+  margin-bottom: 0.5em;
   font-size: 1em;
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
@@ -52,8 +51,8 @@ const News = props => {
         striptags(item[props.pageContext.language.toUpperCase()].news_subtitle)
       )
     : ""
-  let title = item[props.pageContext.language.toUpperCase()].news_title;
-  let path = pageMap.find((pg) => {
+  let title = item[props.pageContext.language.toUpperCase()].news_title
+  let path = pageMap.find(pg => {
     return pg["EN"] == "news"
   })
   let renderComponent = (
@@ -63,19 +62,20 @@ const News = props => {
           title={title}
           description={description}
           lang={props.pageContext.language}
-          pathname={`${path[props.pageContext.language.toUpperCase()]}/${item.slug}`}
-
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+            item.slug
+          }`}
         />
         <div>
-          {item.dates.map((date, index) => (
-            <p key={index}>
+          {item.display_date ? (
+            <p>
               {" "}
               {DateManager.createLongDateString(
-                date,
+                item.display_date,
                 language.toLowerCase()
               )}{" "}
             </p>
-          ))}
+          ) : null}
         </div>
 
         <div>
@@ -88,7 +88,7 @@ const News = props => {
                 __html: striptags(item[language].news_title, ["em"]),
               }}
             />
-            
+
             {item[language].news_subtitle ? (
               <NewsSubTitle
                 dangerouslySetInnerHTML={{
@@ -96,8 +96,6 @@ const News = props => {
                 }}
               />
             ) : null}
-
-            
           </TextBlock>
           <TextBlock>
             <div

@@ -1,14 +1,18 @@
-import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { CSSTransition } from "react-transition-group"
 import TransitionLogo from '../../images/bb1_loader_white.gif';
+import { stopTransition } from "../../store/action";
+import { size } from "../../index.styles";
 let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
   z-index: 4500;
   width: calc(66.66% - 1px);
+  @media (max-width: ${size.mobileL}) {
+    width: 100%;
+  }
   height: 100%;
   background: white;
   position: fixed;
@@ -33,13 +37,6 @@ const TransitionPageWrapper = styled.div`
   }
 `
 
-const TransitionImageContainer = styled.div`
-  position: fixed;
-  top: 50%;
- left: 50%; 
-  z-index: inherit;
-`
-
 const TransitionImage = styled.img`
   /* bring your own prefixes */
   /* transform: translate(-50%, -50%); */
@@ -48,6 +45,12 @@ const TransitionImage = styled.img`
 `
 
 class TransitionPage extends React.Component {
+  
+  hideTransition = () => {
+    setTimeout(() => {
+      this.props.stopTransition();
+    }, 300)
+  }
   render() {
     return (
       <CSSTransition
@@ -59,11 +62,18 @@ class TransitionPage extends React.Component {
       >
         <TransitionPageWrapper show={this.props.isInTransition}>
           {/* <TransitionImageContainer> */}
-          <TransitionImage src={TransitionLogo} />
+          <TransitionImage onLoad={() => this.hideTransition()} src={TransitionLogo} />
           {/* </TransitionImageContainer> */}
         </TransitionPageWrapper>
       </CSSTransition>
     )
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    stopTransition: () =>
+      dispatch(stopTransition()),
   }
 }
 
@@ -75,4 +85,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(TransitionPage)
+export default connect(mapStateToProps, mapDispatchToProps)(TransitionPage)

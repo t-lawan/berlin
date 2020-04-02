@@ -1,13 +1,10 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { JumbotronWrapper, JumbotronHeader } from "./jumbotron.styles"
-import { BerlinJumbotron } from "../../images/berlin-jumbotron"
-import {ReactComponent as Heading} from "../../images/berlin-heading.svg"
-import { createPath, getCurrentLanguageString, transitionBackground } from "../../utility/helper";
+import { createPath, getCurrentLanguageString } from "../../utility/helper";
 import { connect } from "react-redux"
 import { getDocument } from "../../store/selector";
 
-const svg = BerlinJumbotron()
 const Jumbotron = props => {
   const language = getCurrentLanguageString(props.languages)
   let experience = props.experience

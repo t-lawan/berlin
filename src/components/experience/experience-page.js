@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Color, size, keyFrameExperienceImage, showDisplayForTablet, hideDisplayForTablet } from "../../index.styles"
+import { size, keyFrameExperienceImage, showDisplayForTablet, hideDisplayForTablet } from "../../index.styles"
 import * as actionTypes from "../../store/action"
 
 const ExperiencePageWrapper = styled.div`
@@ -179,7 +179,7 @@ class ExperiencePage extends React.Component {
     setTimeout(() => {
       this.closeExperiencePage();
       // this.props.hideOverlay();
-    }, 10000);
+    }, 1000);
   }
 
   experiences = [
@@ -224,7 +224,7 @@ class ExperiencePage extends React.Component {
     return (
       <ExperiencePageWrapper
         onClick={this.closeExperiencePage}
-        show={this.props.showOnHomePage && this.props.show_overlay}
+        show={false}
       >
         <TopRow>
           <CloseImage

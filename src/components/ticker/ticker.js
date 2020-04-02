@@ -34,7 +34,7 @@ const Ticker = props => {
 const createComp = (exhibition, comp, external_link = true, lang) => {
   if (external_link) {
     return (
-      <a href={exhibition[lang].promotional_sticker_url} target="__blank">
+      <a href={exhibition[lang].promotional_sticker_url} target="__blank" rel="noopener noreferrer">
         {comp}
       </a>
     )

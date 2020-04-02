@@ -23,7 +23,7 @@ const NewsItem = props => {
           <p> {news[language].news_title}</p>
           <p> {news[language].news_subtitle}</p>
           <NewsText
-            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat('<span> ... more</span>') }}
+            dangerouslySetInnerHTML={{ __html: truncateText(striptags(news[language].news_text), 20).concat(`<span> ... ${content[language].more}</span>`) }}
           />
           
         </NewsItemLink>
@@ -44,6 +44,15 @@ const NewsItem = props => {
   return <NewsItemWrapper> {renderComponent}</NewsItemWrapper>
 }
 
+const content = {
+  EN: {
+    more: 'more'
+  },
+  DE: {
+    more: 'mehr'
+  },
+}
+
 NewsItem.propTypes = {
   newsItem: PropTypes.object,
 }
@@ -58,6 +67,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
+
   }
 }
 

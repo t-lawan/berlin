@@ -1,7 +1,7 @@
 import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { PageWrapper,PageTitle,PageSubTitle } from "./page.styles"
+import { PageWrapper,PageTitle } from "./page.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"

@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
 import { UnderlineTransitionLink, LargeButton, Section, size } from "../../index.styles";
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
   grid-template-columns: 8fr 1fr;

@@ -1,10 +1,8 @@
 import React from "react"
-import styled from "styled-components"
 import { connect } from "react-redux"
 import Layout from "../components/layout/layout"
 import { Convert } from "../utility/convert"
 import {
-  getCurrentLanguageString,
   truncateText,
   pageMap,
 } from "../utility/helper"
@@ -15,16 +13,8 @@ import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { isViewing } from "../store/action"
 import { getDocument } from "../store/selector"
-import { ImageGalleryWrapper } from "../components/image-container/image-container";
-import ImageGalleryResource from "../partials/ImageGalleryResource";
-import ImageResource from "../partials/ImageResource";
-
-const ExhibitionPageWrapper = styled.div`
-  padding: 2em 1em;
-`
 
 const Exhibition = props => {
-  const language = getCurrentLanguageString(props.languages)
   const exhibition = Convert.toExhibitionModel(props.pageContext)
   let description = exhibition[props.pageContext.language.toUpperCase()]
     ? truncateText(
@@ -54,40 +44,6 @@ const Exhibition = props => {
           exhibition.slug
         }`}
       />
-      {exhibition && exhibition.has_gallery_images ? (
-        <>
-          <ImageGalleryWrapper hideInTablet={true}>
-            <ImageGalleryResource
-              ids={
-                exhibition.has_gallery_images
-                  ? exhibition.gallery_images
-                  : []
-              }
-            />
-          </ImageGalleryWrapper>
-
-          <ImageGalleryWrapper hideInTablet={false}>
-            <ImageResource
-              id={
-                exhibition && exhibition.floor_plan
-                  ? exhibition.gallery_images[0]
-                  : 411
-              }
-              withCaption={true}
-            />
-          </ImageGalleryWrapper>
-        </>
-      ) : null}
-      {exhibition && !exhibition.has_gallery_images ? (
-        <ImageResource
-          id={
-            exhibition && exhibition.floor_plan
-              ? exhibition.floor_plan
-              : 411
-          }
-          withCaption={true}
-        />
-      ) : null}
       <ExhibitionContent exhibition={exhibition} />
     </>
   )
@@ -98,24 +54,17 @@ const Exhibition = props => {
       <UpcomingEvents />
     </>
   )
+
   props.isViewing()
   return (
     <Layout
       firstColumn={renderComponent}
       numberOfColumnsIsTwo={false}
       thirdColumn={thirdColumn}
-      isHome={false}
+      isHome={true}
+      experience={exhibition.experience}
     />
   )
-}
-
-const content = {
-  EN: {
-    works_and_contributions: "With works and contributions by:",
-  },
-  DE: {
-    works_and_contributions: "Mit Arbeiten und Beiträgen von:",
-  },
 }
 
 const mapStateToProps = state => {

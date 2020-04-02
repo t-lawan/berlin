@@ -1,11 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { getCurrentLanguageString, createPath, transitionBackground } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { size, Color } from "../../index.styles";
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import * as actionTypes from '../../store/action'
 const RelatedNavigatorWrapper = styled.div`
   display: flex;
@@ -70,8 +69,6 @@ const RelatedNavigatorButton = styled(AniLink)`
     font-size: 1.2em;
   }
 `
-
-const RelatedNavigatorIcon = styled(FontAwesomeIcon)``
 
 class ResourceNavigator extends React.Component {
   language;

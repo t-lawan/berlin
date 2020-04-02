@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
+import { truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert";
@@ -11,16 +11,19 @@ import DocumentationImageGallery from "../components/documentation/documentation
 import DocumentationText from "../components/documentation/documentation-text";
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
+import { getDocument } from "../store/selector";
 
 const Documentation = props => {
-  const language = getCurrentLanguageString(props.languages)
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
   let title = documentationObject[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].title)) : ""
-  let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].description)) : "";
+  let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].social_media_description)) : "";
   let path = pageMap.find((pg) => {
     return pg["EN"] == "documentation"
   })  
+
+  let image = getDocument(props.documents, documentationObject.thumbnail)
+
   let thirdColumn = (
     <>
       <NewsList />
@@ -46,7 +49,7 @@ const Documentation = props => {
 
   return (
     <>
-      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} />
+      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={image ? image.url : null} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}

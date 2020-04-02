@@ -3,9 +3,6 @@ import { connect } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
 import { Convert } from "../../utility/convert"
 import * as actionTypes from "../../store/action"
-import { generateEvents } from "../../models/EventsModel"
-import { generateExhibitions } from "../../models/ExhibitionModel"
-import { CalendarItemModel } from "../../models/CalendarItemModel"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 import moment from "moment"
@@ -160,12 +157,14 @@ const State = props => {
                     doc_credits
                     subtitle
                     title
+                    social_media_description
                   }
                   EN {
                     description
                     doc_credits
                     subtitle
                     title
+                    social_media_description
                   }
                   documentation_type
                   event_relation {
@@ -185,6 +184,7 @@ const State = props => {
                     wordpress_id
                     media_type
                   }
+                  thumbnail_image
                 }
               }
             }
@@ -212,6 +212,7 @@ const State = props => {
                   news_item_is_unlinked
                   show_in_news_feed
                   thumbnail_image
+                  display_date
                 }
               }
             }
@@ -439,7 +440,7 @@ const State = props => {
       `
     )
 
-    let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel)
+    // let pages = Convert.toModelArray(data.allWordpressPage, Convert.toPageModel)
 
     let events = Convert.toModelArray(
       data.allWordpressWpEvents,
@@ -530,34 +531,16 @@ const State = props => {
         false,
         true
       ),
-      new NavbarModel(
-        "venues",
-        "venues",
-        "orte",
-        false,
-        false
-      ),
-      new NavbarModel(
-        "about",
-        "about",
-        "über",
-        false,
-        true
-      ),
-      new NavbarModel(
-        "press",
-        "press",
-        "presse",
-        false,
-        true
-      ),
+      new NavbarModel("venues", "venues", "orte", false, false),
+      new NavbarModel("about", "about", "über", false, true),
+      new NavbarModel("press", "press", "presse", false, true),
       new NavbarModel(
         "https://bb-shop.visitate.net/en/",
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,
         true
-      )
+      ),
     ]
     // Get active exhbitions
     let filteredExhibitions = exhibitions.filter(item => {
@@ -574,7 +557,7 @@ const State = props => {
     props.setBottomNavbar(bottomNavbarItems)
     props.setResources(resources)
     props.setDocumentation(documentation)
-    props.setPages(pages)
+    // props.setPages(pages)
     props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)

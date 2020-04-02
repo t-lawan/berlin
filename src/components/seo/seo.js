@@ -8,8 +8,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-import OGImage from "../../images/bb11_og.jpg"
 
 function SEO({ description, lang, meta, title, image, pathname }) {
 

@@ -4,7 +4,6 @@ import styled from "styled-components"
 import {
   getCurrentLanguageString,
   createPath,
-  transitionBackground,
 } from "../../utility/helper"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
@@ -109,7 +108,6 @@ class DocumentationNavigator extends React.Component {
     return (
       <DocumentationNavigatorWrapper>
         <DocumentationNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.previousPage())}
         >
@@ -121,7 +119,6 @@ class DocumentationNavigator extends React.Component {
           {`<`}
         </DocumentationNavigatorButton>
         <DocumentationNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.nextPage())}
         >
