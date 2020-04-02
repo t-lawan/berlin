@@ -2,7 +2,11 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, truncateText, pageMap } from "../utility/helper"
+import {
+  getCurrentLanguageString,
+  truncateText,
+  pageMap,
+} from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   TwoColumnPageWrapper,
@@ -13,16 +17,19 @@ import {
   PaddingDiv,
 } from "./page.styles"
 import ImageResource from "../partials/ImageResource"
-import NewsList from "../components/news/newslist";
-import striptags from 'striptags';
-
+import NewsList from "../components/news/newslist"
+import striptags from "striptags"
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
-  const pageInfo = props.pageContext;
+  const pageInfo = props.pageContext
   // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
-  let description = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description));
-  let path = pageMap.find((pg) => {
+  let description = truncateText(
+    striptags(
+      pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description
+    )
+  )
+  let path = pageMap.find(pg => {
     return pg["EN"] == "practical-information"
   })
   const renderComponent = (
@@ -34,11 +41,11 @@ const PracticalInformation = props => {
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
       />
       <div>
-      <PageTitle
-              dangerouslySetInnerHTML={{
-                __html: content[language].title,
-              }}
-            />
+        <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[language].title,
+          }}
+        />
         <TextBlockSideBarPage>
           {pageInfo.acf[language].address_info.map((address, index) => (
             <p key={index}> {address.address_line} </p>
@@ -55,10 +62,16 @@ const PracticalInformation = props => {
           {pageInfo.acf.directions.map((directions, index) => (
             <p key={index}> {directions.directions_line} </p>
           ))}
-          <ResourcePublisherLink target="_blank" rel="noopener noreferrer" href={pageInfo.acf.google_map_venue_link}> {content[language].directions}</ResourcePublisherLink>
+          <ResourcePublisherLink
+            target="_blank"
+            rel="noopener noreferrer"
+            href={pageInfo.acf.google_map_venue_link}
+          >
+            {" "}
+            {content[language].directions}
+          </ResourcePublisherLink>
         </TextBlockSideBarPage>
         <TextBlockSideBarPage>
-
           {pageInfo.acf[language].access_block.map((item, index) => (
             <p key={index}> {item.access_line} </p>
           ))}
@@ -66,13 +79,21 @@ const PracticalInformation = props => {
       </div>
 
       <div>
+        <TextBlockTwoColumnPage
+          dangerouslySetInnerHTML={{
+            __html: pageInfo.acf[language].corona_notice,
+          }}
+        />
         <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
         <TextBlockTwoColumnPage
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
           }}
         />
-        <ImageResource id={pageInfo.acf.venue_map_graphic} withCaption={false} />
+        <ImageResource
+          id={pageInfo.acf.venue_map_graphic}
+          withCaption={false}
+        />
         <PaddingDiv></PaddingDiv>
       </div>
     </TwoColumnPageWrapper>
@@ -95,17 +116,16 @@ const PracticalInformation = props => {
 }
 const content = {
   EN: {
-    opening_hours: 'Opening hours',
-    access: 'Access',
-    title: 'practical information',
-    directions: 'Directions'
+    opening_hours: "Opening hours",
+    access: "Access",
+    title: "practical information",
+    directions: "Directions",
   },
   DE: {
-    opening_hours: 'Öffnungszeiten',
-    title: 'praktische information',
-    access: 'Anfahrt',
-    directions: 'Karte'
-
+    opening_hours: "Öffnungszeiten",
+    title: "praktische information",
+    access: "Anfahrt",
+    directions: "Karte",
   },
 }
 const mapStateToProps = state => {
@@ -115,7 +135,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(PracticalInformation)
+export default connect(mapStateToProps, null)(PracticalInformation)

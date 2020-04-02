@@ -1,8 +1,11 @@
 import styled from 'styled-components';
-import { Color } from '../../index.styles';
+import { Color, size } from '../../index.styles';
 
 export const PressFormWrapper = styled.section`
   padding: 1em 0em;
+   @media (min-width: ${size.laptop}) {
+    padding: 0em 0em 1em;
+  }
 `
 
 export const PressFormError = styled.p`

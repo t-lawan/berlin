@@ -87,10 +87,10 @@ class PressForm extends React.Component {
     let errors = this.state.errors
     switch (name) {
       case "name":
-        errors.name =
-          value.length < 3
-            ? formText[this.language].errors.name
-            : ""
+        // errors.name =
+        //   value.length < 3
+        //     ? formText[this.language].errors.name
+        //     : ""
         break
       case "email":
         errors.email = !validator.isEmail(value)
@@ -98,10 +98,10 @@ class PressForm extends React.Component {
           : ""
         break
       case "media_affliation":
-        errors.media_affliation =
-          value.length < 3
-            ? formText[this.language].errors.media_affliation
-            : ""
+        // errors.media_affliation =
+        //   value.length < 3
+        //     ? formText[this.language].errors.media_affliation
+        //     : ""
         break
       default:
         break
@@ -134,12 +134,7 @@ class PressForm extends React.Component {
               type="text"
               name="name"
               onChange={this.handleInputChange.bind(this)}
-              required
             />
-            <PressFormError hidden={this.state.errors.name === ""}>
-              {" "}
-              {this.state.errors.name}{" "}
-            </PressFormError>
           </FormLabel>
           <FormLabel>
             <p> {formText[this.language].email}</p>
@@ -159,11 +154,7 @@ class PressForm extends React.Component {
               type="text"
               name="media_affliation"
               onChange={this.handleInputChange.bind(this)}
-              required
             />
-            <PressFormError hidden={this.state.errors.media_affliation === ""}>
-              {this.state.errors.name}
-            </PressFormError>
           </FormLabel>
 
           <FormButton disabled={this.state.hasErrors || !this.state.hasTouched}> {formText[this.language].button} </FormButton>
@@ -183,7 +174,7 @@ const formText = {
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
       errors : {
           name: 'This field requires at least 3 characters',
-          email: 'This field requires a valid email',
+          email: 'Valid e-mail address required',
           media_affliation: 'This field requires at least 3 characters'
       }
   },
@@ -196,7 +187,7 @@ const formText = {
     button: "Senden",
     errors : {
         name: 'This field requires at least 3 characters',
-        email: 'This field requires a valid email',
+        email: 'Gültige E-Mail-Adresse erforderlich',
         media_affliation: 'This field requires at least 3 characters'
     }
   },

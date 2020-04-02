@@ -35,6 +35,12 @@ export const ColumnLayout = styled.div`
       @media (min-width: ${size.laptopL}) {
         margin-top: 8.6em;
       }
+      @media (min-width: ${size.desktopS}) {
+        margin-top: 9.9em;
+      }
+      @media (min-width: ${size.desktopM}) {
+        margin-top: 11.8em;
+      }
     }
   }
   &::first-of-type{

@@ -42,6 +42,9 @@ export const SocialMediaText = styled.span`
   @media (max-width: ${size.tabletL}) {
     display: inline-block;
   }
+  @media (min-width: ${size.laptopM}) {
+    padding: 0em 0.75em 0.5em 0em;
+  }
 `
 
 export const SocialMediaLink = styled.a`
@@ -57,6 +60,9 @@ export const SocialMediaLink = styled.a`
   }
   color: inherit;
   text-decoration: none;
+  @media (min-width: ${size.laptopM}) {
+    padding: 0em 0.75em 0.5em 0.75em;
+  }
 `
 
 export const NewsletterForm = styled.div``
