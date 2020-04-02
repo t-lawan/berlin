@@ -24,6 +24,9 @@ const VideoContainer = styled.div`
     margin: 0 !important;
     height: 100%;
     }
+    @media (max-width: ${size.mobileM}) {
+    margin-top: 0.8em;
+  }
 `
 const MargTop = styled.div`
 margin:0em 0 0em;
