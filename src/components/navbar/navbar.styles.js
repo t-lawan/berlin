@@ -11,13 +11,13 @@ export const NavWrapper = styled.nav`
   background: white;
   position: relative;
   @media (min-width: ${size.laptop}) {
-    height: 100px;
+    /* height: 100px; */
   }
   @media (min-width: ${size.laptopM}) {
-    height:  110px;
+    /* height:  110px; */
   }
   @media (min-width: ${size.laptopL}) {
-    height: 116px;
+    /* height: 116px; */
   }
 `
 
@@ -44,7 +44,7 @@ export const NavInner = styled.div`
 
 export const NavMobileInner = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   padding: 0.7em 1.3em;
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0.7em 0.0em;
@@ -86,10 +86,10 @@ export const NavItem = styled(AniLink)`
     padding-left:1em;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.3em 0.6em 0.50em;
+    padding: 1.3em 0.75em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.25em 0.7em 0.6em;
+    padding: 1.25em 0.75em 0.6em;
   }
 `
 
@@ -101,15 +101,15 @@ export const InactiveLink = styled.p`
   margin-bottom:0;
   text-decoration: none;
   color: black;
-  opacity: 0.6;
+  opacity: 0.4;
   /* :hover {
     color: ${Color.red};
   } */
   @media (min-width: ${size.laptopM}) {
-    padding: 1.3em 0.6em 0.50em;
+    padding: 1.3em 0.75em 0.50em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.25em 0.6em 0.6em;
+    padding: 1.25em 0.75em 0.6em;
   }
 `
 
@@ -206,7 +206,7 @@ export const NavMobileInactiveLink = styled.p`
     line-height: 1.3;
   }
   margin-bottom: 0;
-  opacity: 0.6;
+  opacity: 0.3;
 `
 
 export const NavMobileLink = styled(AniLink)`
@@ -264,6 +264,7 @@ export const NavMobileOuterLink = styled.a`
   text-decoration: none;
   font-size: 1.55em;
   padding-bottom: 0.0rem;
+  line-height: 1.3;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1em;

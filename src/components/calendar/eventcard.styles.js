@@ -20,10 +20,10 @@ export const EventSection = styled(TextSection)`
    font-size: 1em; 
   }
   @media (min-width: ${size.laptopM}) {
-   font-size: 1.1em; 
+   font-size: 1em; 
   }
   @media (min-width: ${size.laptopL}) {
-   font-size: 1.2em; 
+   font-size: 1em; 
   }
 `
 

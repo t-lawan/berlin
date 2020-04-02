@@ -17,13 +17,16 @@ export const DateCardWrapper = styled.div`
     grid-template-columns: 1fr 4fr;
   }
   @media (min-width: ${size.laptop}) {
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
     padding-top:110px;
     margin-top:-110px;
     :last-child {
       padding-bottom:45px;
       border-bottom:none;
     }
+  }
+  @media (min-width: ${size.laptopL}) {
+    grid-template-columns: 1fr 5fr;
   }
 `
 export const MonthCardWrapper = styled.div`
@@ -112,17 +115,18 @@ export const DateText = styled.strong`
   }
   @media (min-width: ${size.laptop}) {
    font-size: 1.8em;
+   padding-right: 0.5em;
   }
   @media (min-width: ${size.laptopM}) {
-   font-size: xx-large;
+   font-size: 1.95em;
   }
 `
 
 export const DateString = styled.p`
-  font-size: 0.85em;
+  font-size: 0.95em;
   text-transform:lowercase;
   margin:0;
-  line-height:1.10;
+  line-height:1.2;
   @media (max-width: ${size.mobileL}) {
     line-height:1.15;
   }
@@ -153,6 +157,7 @@ export const MonthHeading = styled.p`
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 2em;
+    padding: 0.35em 0.5em 0.3em;
   }
 `
 export const ClosedText = styled.p`
