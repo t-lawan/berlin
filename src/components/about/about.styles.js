@@ -82,7 +82,7 @@ export const AboutFundingHeader = styled.p`
 `
 
 export const AboutFundingBlock = styled.article`
-    padding-bottom: 1rem;
+    padding-bottom: 1.5em;
 `
 
 export const AboutImageBlock = styled.section`
@@ -107,9 +107,17 @@ export const AboutTeamSectionHeader = styled.p`
 
 export const AboutCorporateImageItem = styled.section`
   /* padding: 1em; */
+  width: 30%;
+  @media (min-width: ${size.laptop}) {
   width: 15%;
+  max-width: 80px;
+  }
 `
 
 export const AboutPrimaryImageContainer = styled(AboutCorporateImageItem)`
+  width: 50%;
+  @media (min-width: ${size.laptop}) {
   width: 40%;
+  max-width: 200px;
+  }
 `
