@@ -37,7 +37,7 @@ const text = {
     link: "data privacy policy"
   },
   DE: {
-    text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer Datenschutzerklärung einverstanden ",
+    text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
     link: "Datenschutzerklärung einverstanden"
   }
 }
