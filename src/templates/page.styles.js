@@ -299,7 +299,8 @@ export const PressReleaseParagraphBlock = styled.div`
   margin: 0;
   padding: 0;
   p {
-    margin: inherit;
+    margin: 0;
+    margin-bottom: 0.2em !important;
     padding: inherit;
     @media (min-width: ${size.laptop}) {
     font-size: 1em;
@@ -397,7 +398,7 @@ export const PageSubTitle = styled.h3`
   }
    @media (max-width: ${size.tabletL}) {
     font-size: 0.95em;
-    margin-top:2em;
+    margin-top: 2em;
     :first-child {
     margin-top: 2em;
   }
@@ -405,6 +406,7 @@ export const PageSubTitle = styled.h3`
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
     margin-top: 1.8em;
+    margin-bottom: 0.7em;
    }
   @media (min-width: ${size.laptopL}) {
 font-size: 1.2em;
