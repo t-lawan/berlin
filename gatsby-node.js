@@ -68,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 preview_information
                 title
                 venue_description
+                corona_notice
               }
               contact_data {
                 contact_data_line
@@ -150,6 +151,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 press_notice
                 title
                 venue_description
+                corona_notice
               }
               EN_row {
                 description
