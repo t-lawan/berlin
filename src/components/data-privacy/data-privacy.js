@@ -14,15 +14,16 @@ export const DataPrivacyWrapper = styled(Section)`
     font-size: 0.8rem;
   }
    > div:last-child {
-    text-align:right;
+    text-align: right;
    } 
 `
 
 export const DataPrivacyBlock = styled.div`
     > p {
+      max-width: 100%;
       @media (max-width: ${size.mobileM}) {
       font-size: 0.9rem;
-      margin-bottom:0;
+      margin-bottom: 0;
       }
       > a {
         font-size: 1em;
