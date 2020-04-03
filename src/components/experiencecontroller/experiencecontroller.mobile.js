@@ -50,6 +50,12 @@ class ExperienceControllerMobile extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.languages !== this.props.languages) {
+      this.language = getCurrentLanguageString(this.props.languages);
+    }
+  }
+
   changeExperience = chosenExperience => {
     if (chosenExperience.isReady) {
       setTimeout(() => {
