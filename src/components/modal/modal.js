@@ -15,7 +15,7 @@ import {
 import axios from "axios"
 
 class Modal extends React.Component {
-  language;
+  language
 
   constructor(props) {
     super(props)
@@ -24,11 +24,12 @@ class Modal extends React.Component {
       berlin_biennalle: false,
       kw_institute: false,
       hasSubmitted: false,
+      agreed: false,
     }
   }
 
   closeModal = () => {
-    this.clearState();
+    this.clearState()
     this.props.hideModal()
   }
 
@@ -39,26 +40,28 @@ class Modal extends React.Component {
       recipient: {
         BB_Subscribe_Website: this.state.berlin_biennalle ? 1 : 0,
         KW_Subscribe_Website: this.state.kw_institute ? 1 : 0,
-        email: this.state.email
-      }
+        email: this.state.email,
+      },
     }
 
-    data = JSON.stringify(data);
-    await axios.post(url, data);
+    data = JSON.stringify(data)
+    await axios.post(url, data)
   }
 
   handleSubmit = event => {
-    event.preventDefault();
-    this.sendPostRequest().then(() => {
-      this.setState({
-        hasSubmitted: true
+    if (this.state.agreed) {
+      event.preventDefault()
+      this.sendPostRequest().then(() => {
+        this.setState({
+          hasSubmitted: true,
+        })
       })
-    })
+    }
   }
 
   clearState = () => {
     this.setState({
-      email: '',
+      email: "",
       berlin_biennalle: false,
       kw_institute: false,
       hasSubmitted: false,
@@ -66,16 +69,16 @@ class Modal extends React.Component {
   }
 
   handleInputChange = event => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
+    const target = event.target
+    const value = target.type === "checkbox" ? target.checked : target.value
+    const name = target.name
 
     this.setState({
       [name]: value,
     })
   }
   render() {
-    this.language = getCurrentLanguageString(this.props.languages);
+    this.language = getCurrentLanguageString(this.props.languages)
     return (
       <>
         <BackDropWrapper
@@ -85,9 +88,9 @@ class Modal extends React.Component {
         <ModalWrapper show={this.props.show}>
           <ModalHeader>
             <CloseImage
-            onClick={this.closeModal}
-            src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
-             />
+              onClick={this.closeModal}
+              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
+            />
           </ModalHeader>
           <div hidden={this.state.hasSubmitted}>
             <p>{modalText[this.language].description}</p>
@@ -119,10 +122,23 @@ class Modal extends React.Component {
               <FormLabel>
                 Email:
                 <FormInput
+                  text={true}
                   type="email"
                   name="email"
                   onChange={this.handleInputChange.bind(this)}
                 />
+              </FormLabel>
+
+              <FormLabel>
+                <FormInput
+                  type="checkbox"
+                  name="agreed"
+                  checked={this.state.agreed}
+                  value={this.state.agreed}
+                  onChange={this.handleInputChange.bind(this)}
+                  required
+                />
+                {modalText[this.language].agreement}
               </FormLabel>
 
               <FormButton> {modalText[this.language].button} </FormButton>
@@ -155,6 +171,8 @@ const modalText = {
     kw_institute: "KW Institute for Contemporary Art",
     thank_you:
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
+    agreement:
+      "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
   },
   DE: {
     description:
@@ -168,6 +186,8 @@ const modalText = {
     kw_institute: "KW Institute for Contemporary Art",
     thank_you:
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
+    agreement:
+      "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
   },
 }
 
@@ -175,7 +195,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
-    modal: state.modal
+    modal: state.modal,
   }
 }
 const mapDispatchToProps = dispatch => {
@@ -184,7 +204,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Modal)
+export default connect(mapStateToProps, mapDispatchToProps)(Modal)
