@@ -46,6 +46,12 @@ class ExperienceController extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.languages !== this.props.languages) {
+      this.language = getCurrentLanguageString(this.props.languages);
+    }
+  }
+
   incrementExperience = () => {
     // temporarily disable experience 4 by checking before incrementing
     if (
@@ -85,7 +91,6 @@ class ExperienceController extends React.Component {
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
       }, this.changeExperienceDelayTime)
-
       navigate(createPath(this.language, "/"))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
