@@ -566,6 +566,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "publication", DE: "publikation" },
+    { EN: "press-images", DE: "pressebilder" },
   ]
 
   allWordpressPage.edges.forEach(edge => {

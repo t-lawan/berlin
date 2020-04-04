@@ -43,6 +43,8 @@ export  const pageMap = [
   { EN: "media", DE: "mediathek" },
   { EN: "publication", DE: "publikation" },
   { EN: "press", DE: "presse" },
+  { EN: "press-images", DE: "pressebilder" },
+
 ]
 
 export const transitionBackground = "url(https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
