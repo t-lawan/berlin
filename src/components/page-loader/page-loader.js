@@ -16,7 +16,7 @@ const PageLoaderWrapper = styled.div`
 
 const PageLoaderImage = styled.img`
   display: block;
-  width: 120px !important;
+  width: 200px !important;
   margin: auto;
   top: 50%; left: 50%;
   transform: translate(-50%,-50%);
