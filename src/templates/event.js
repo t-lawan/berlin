@@ -68,6 +68,7 @@ const EventTextBlock = styled(TextBlock)`
 const EventTitle = styled.h1`
   padding-top: 1rem;
   padding-bottom: 0.5rem;
+  margin-bottom: 0.6em;
   font-size: 1.6em;
   @media (min-width: ${size.laptopM}) {
     font-size: 1.7em;
