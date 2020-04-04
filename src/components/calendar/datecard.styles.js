@@ -25,6 +25,14 @@ export const DateCardWrapper = styled.div`
       border-bottom:none;
     }
   }
+  @media (min-width: ${size.laptopM}) {
+    padding-top:111px;
+    margin-top:-111px;
+    :last-child {
+      padding-bottom:70px;
+      border-bottom:none;
+    }
+  }
   @media (min-width: ${size.laptopL}) {
     grid-template-columns: 1fr 5fr;
   }
