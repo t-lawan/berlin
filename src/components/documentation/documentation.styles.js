@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Color, size } from '../../index.styles';
 
 export const NoMarginText = styled.p`
     margin: 0;

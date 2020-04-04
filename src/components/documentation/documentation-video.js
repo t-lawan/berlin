@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.styles"
 import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
-import { size, Color } from "../../index.styles"
+import { size } from "../../index.styles"
 import striptags from "striptags"
 import { NoMarginText, MarginBottomText, DocDesc, DocTitle, DocSubTitle  } from "./documentation.styles";
 
@@ -65,7 +65,7 @@ const DocumentationVideo = props => {
               }}
             />
             
-            {documentation[language].subtitle ? (
+            {props.documentation[language].subtitle ? (
               <DocSubTitle
                 dangerouslySetInnerHTML={{
                   __html: striptags(props.documentation[language].subtitle, ["em"]),
@@ -73,7 +73,7 @@ const DocumentationVideo = props => {
               />
             ) : null}
 
-            {documentation[language].description ? (
+            {props.documentation[language].description ? (
               <DocDesc
                 dangerouslySetInnerHTML={{
                   __html: props.documentation[language].description,

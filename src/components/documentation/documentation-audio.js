@@ -53,7 +53,7 @@ const DocumentationAudio = props => {
               }}
             />
             
-            {documentation[language].subtitle ? (
+            {props.documentation[language].subtitle ? (
               <DocSubTitle
                 dangerouslySetInnerHTML={{
                   __html: striptags(props.documentation[language].subtitle, ["em"]),
@@ -61,7 +61,7 @@ const DocumentationAudio = props => {
               />
             ) : null}
 
-            {documentation[language].description ? (
+            {props.documentation[language].description ? (
               <DocDesc
                 dangerouslySetInnerHTML={{
                   __html: props.documentation[language].description,
@@ -70,7 +70,7 @@ const DocumentationAudio = props => {
             ) : null}
             <div
             dangerouslySetInnerHTML={{
-              __html: documentation[language].doc_credits,
+              __html: props.documentation[language].doc_credits,
             }}
           />
         </MargTop>
