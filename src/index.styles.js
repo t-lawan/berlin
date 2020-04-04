@@ -78,6 +78,9 @@ body {
     font-style: italic !important;
     backface-visibility: hidden;
   }
+  strong {
+    font-weight: normal;
+  }
   h1 {
   margin-left: 0;
   text-rendering: optimizeLegibility;
@@ -202,7 +205,7 @@ a, span {
   margin:0;
   text-rendering: optimizeLegibility;
   backface-visibility: hidden;
-  transform: translate3d (0, 0, 0);
+  transform: translate3d(0, 0, 0);
   letter-spacing: 0.008rem;
   margin-bottom: 0rem;
   padding: 0;
@@ -229,7 +232,7 @@ a, span {
 p {
   text-rendering: optimizeLegibility;
   backface-visibility: hidden;
-  transform: translate3d (0, 0, 0);
+  transform: translate3d(0, 0, 0);
   max-width: 730px;
   margin-left: 0;
   letter-spacing: 0.008rem;
