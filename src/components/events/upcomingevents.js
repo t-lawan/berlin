@@ -16,14 +16,27 @@ import striptags from "striptags"
 import * as actionTypes from "../../store/action"
 import { DateManager } from "../../utility/date"
 
-let calendar_items = []
 const UpcomingEvents = props => {
   const language = getCurrentLanguageString(props.languages)
-  calendar_items = props.calendar_items
   let currentExhibition = props.exhibitions.find(exhibition => {
     return exhibition.experience == props.experience
   })
-  const filteredItems = calendar_items
+  let filteredItems;
+  if(props.isCurrent) {
+    filteredItems = props.calendar_items
+    .filter(item => {
+        return (
+          item.experience.includes(props.active_experience.toString()) &&
+          item.item === "event" &&
+          DateManager.getDaysFromCurrentDate(item.start_date) >= 0
+        )
+
+    })
+    .sort((a, b) => {
+      return a.start_date - b.start_date
+    })
+  } else {
+    filteredItems = props.calendar_items
     .filter(item => {
       if (DateManager.getDaysFromCurrentDate(currentExhibition.end_date) >= 0) {
         return (
@@ -43,9 +56,11 @@ const UpcomingEvents = props => {
     .sort((a, b) => {
       return a.start_date - b.start_date
     })
+  }
+
 
   return (
-    <EventsWrapper isHome={props.isHome}>
+    <EventsWrapper isCurrent={props.isCurrent} isHome={props.isHome}>
       <p hidden={filteredItems.length !== 0}> {language === "EN" ? "" : ""} </p>
       {filteredItems.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>
@@ -126,6 +141,7 @@ export const UpcomingEventsContent = {
 
 UpcomingEvents.defaultProps = {
   isHome: false,
+  isCurrent: false
 }
 const mapStateToProps = state => {
   return {

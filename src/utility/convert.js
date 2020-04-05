@@ -53,8 +53,8 @@ export class Convert {
     return new DocumentationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
-      wordpressModel.acf.EN,
       wordpressModel.acf.DE,
+      wordpressModel.acf.EN,
       wordpressModel.acf.documentation_type,
       event_relation,
       wordpressModel.acf.exp_number,

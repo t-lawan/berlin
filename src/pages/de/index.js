@@ -41,7 +41,7 @@ const IndexPage = props => {
     <>
       <Logo />
       <NewsList />
-      <UpcomingEvents />
+      <UpcomingEvents isHome={true} />
     </>
   )
   return (

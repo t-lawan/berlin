@@ -78,6 +78,7 @@ const FooterOuterLink = styled.a`
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
   transition: all 0.2 ease-in-out;
+  display: block;
   :hover {
     cursor: pointer;
     color: ${Color.red};
@@ -108,7 +109,7 @@ const FooterComponent = props => {
       <div>
         <FooterText> {content.address_line}</FooterText>
         <FooterOuterLink target="__blank" rel="noopener noreferrer" href={`mailto:${content.email}`}>{content.email}</FooterOuterLink>
-        <FooterText> {content.tel_phone_number}</FooterText>
+        <FooterOuterLink itemprop="telephone" target="__blank" rel="noopener noreferrer" href={`tel:${content.tel_phone_number}`}>{content.tel_phone_number_display}</FooterOuterLink>
         <FooterText> {content.fax_phone_number}</FooterText>
       </div>
       <DoubleDecker>
@@ -130,7 +131,8 @@ const FooterComponent = props => {
 const content = {
   address_line: "Auguststr. 69, 10117 Berlin",
   email: "office@berlinbiennale.de",
-  tel_phone_number: "T +49 (0)30 24 34 59 70",
+  tel_phone_number_display: "T +49 (0)30 24 34 59 70",
+  tel_phone_number: "+493024345970",
   fax_phone_number: "F +49 (0)30 24 34 59 99",
   EN: {
     title: "contact",
