@@ -124,6 +124,9 @@ export const PageWrapperRes = styled.div`
   @media (min-width: ${size.laptop}) {
     padding: 2.0em 1em 2em;
   }
+  @media (min-width: ${size.laptopM}) {
+    padding: 2.5em 1em 2em;
+  }
   @media (max-width: ${size.mobileM}) {
     > div {
       background: ${Color.yellow};
