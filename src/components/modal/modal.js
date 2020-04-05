@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../../utility/helper"
+import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import * as actionTypes from "../../store/action"
 import {
   BackDropWrapper,
@@ -13,6 +13,7 @@ import {
   CloseImage,
 } from "./modal.styles"
 import axios from "axios"
+import { Link } from "gatsby";
 
 class Modal extends React.Component {
   language
@@ -138,7 +139,7 @@ class Modal extends React.Component {
                   onChange={this.handleInputChange.bind(this)}
                   required
                 />
-                {modalText[this.language].agreement}
+                {modalText[this.language].agreement_one} <Link to={createPath(this.language, 'data-privacy')}> {modalText[this.language].agreement_link_word} </Link> {modalText[this.language].agreement_two}
               </FormLabel>
 
               <FormButton> {modalText[this.language].button} </FormButton>
@@ -173,7 +174,10 @@ const modalText = {
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
     agreement:
       "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
-      email: 'E-mail'
+    email: "E-mail",
+    agreement_one: "Ich habe die",
+    agreement_link_word: "Datenschutzbestimmungen",
+    agreement_two: "gelesen und erkenne diese ausdrücklich an.",
   },
   DE: {
     description:
@@ -189,8 +193,10 @@ const modalText = {
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
     agreement:
       "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
-      email: 'E-Mail'
-
+    email: "E-Mail",
+    agreement_one: "Ich habe die",
+    agreement_link_word: "Datenschutzbestimmungen",
+    agreement_two: "gelesen und erkenne diese ausdrücklich an.",
   },
 }
 

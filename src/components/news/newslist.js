@@ -5,19 +5,32 @@ import NewsItem from "./news-item"
 import { DateManager } from "../../utility/date"
 
 const NewsList = props => {
-  const filteredNews = props.news
-    .filter(news => {
-      return (
-        news.experience.includes(props.experience.toString()) &&
-        news.show_in_feed &&
-        DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0 &&
-        props.experience === props.active_experience
-      )
-    })
-    .reverse()
+  let filteredNews
+  if (props.isCurrent) {
+    filteredNews = props.news
+      .filter(news => {
+        return (
+          news.experience.includes(props.active_experience.toString()) &&
+          news.show_in_feed &&
+          DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0
+        )
+      })
+      .reverse()
+  } else {
+    filteredNews = props.news
+      .filter(news => {
+        return (
+          news.experience.includes(props.experience.toString()) &&
+          news.show_in_feed &&
+          DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0 &&
+          props.experience === props.active_experience
+        )
+      })
+      .reverse()
+  }
 
   return (
-    <NewsListWrapper show={filteredNews.length > 0} isHome={props.isHome}>
+    <NewsListWrapper isCurrent={props.isCurrent} show={filteredNews.length > 0} isHome={props.isHome}>
       {filteredNews.map(news => (
         <NewsItem key={news.id} newsItem={news} />
       ))}
@@ -31,6 +44,7 @@ const NewsList = props => {
 
 NewsList.defaultProps = {
   isHome: false,
+  isCurrent: false,
 }
 
 const mapStateToProps = state => {
@@ -38,7 +52,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     news: state.news,
-    active_experience: state.active_experience
+    active_experience: state.active_experience,
   }
 }
 
