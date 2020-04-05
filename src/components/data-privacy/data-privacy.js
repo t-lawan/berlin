@@ -36,10 +36,12 @@ const text = {
   EN: {
     text: "By using this website you agree to the use of cookies in accordance with our ",
     link: "data privacy policy"
+    textnext: " "
   },
   DE: {
     text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
-    link: "Datenschutzerklärung einverstanden"
+    link: "Datenschutzerklärung",
+    textnext: " einverstanden" 
   }
 }
 
@@ -54,6 +56,7 @@ const DataPrivacy = props => {
           {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
             {text[language].link}
           </UnderlineTransitionLink>
+          {textnext[language].textnext}
           .
         </p>
       </DataPrivacyBlock>
