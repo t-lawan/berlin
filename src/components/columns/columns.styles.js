@@ -374,7 +374,7 @@ export const FixedTicker = styled.div`
     bottom: 55px;
   }
   @media (min-width: ${size.laptopM}) {
-    bottom: 55px;
+    bottom: 60px;
     height: 55px;
   }
 

@@ -35,6 +35,11 @@ export const TwoColumnPageWrapper = styled.div`
   }  
   ${changeGridToOneRow}
 `
+export const ImagesCont = styled.div`
+  > p {
+    margin-top: 1em;
+  }
+`
 
 export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
@@ -118,6 +123,9 @@ export const PageWrapperRes = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     padding: 2.0em 1em 2em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding: 2.5em 1em 2em;
   }
   @media (max-width: ${size.mobileM}) {
     > div {
@@ -423,6 +431,7 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 
 export const ResourcePublisherLink = styled.a`
   text-decoration: none;
+  line-height: 1.4;
   transition: all 0.2s ease-in-out;
   border-bottom: solid thin;
   border-color: ${Color.red};
