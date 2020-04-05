@@ -10,7 +10,7 @@ export const EventsWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     width: calc(100% + 1.4em);
     margin-left: -0.7em;
-    margin-top:-1.7em;
+    margin-top: ${props => props.isCurrent ? '0' : '-1.7em'};
     padding-bottom:0px;
   }
 `
