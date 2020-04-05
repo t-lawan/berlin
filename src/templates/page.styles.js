@@ -428,6 +428,7 @@ export const PressArrowDown = styled(FontAwesomeIcon)`
 
 export const ResourcePublisherLink = styled.a`
   text-decoration: none;
+  line-height: 1.4;
   transition: all 0.2s ease-in-out;
   border-bottom: solid thin;
   border-color: ${Color.red};

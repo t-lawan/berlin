@@ -43,7 +43,7 @@ const RelatedNavigatorWrapper = styled.div`
     padding-left: 0;
   }
   @media (min-width: ${size.laptopM}) {
-    margin-top:-1.5em;
+    margin-top:-1.6em;
     padding-left: 0;
   }
 `

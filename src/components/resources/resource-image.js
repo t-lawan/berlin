@@ -18,6 +18,7 @@ const ResourceTitle = styled.h1`
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.0em;
+    margin-bottom: 0.5em;
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
@@ -27,7 +28,12 @@ const ResourceTitle = styled.h1`
   }
 `
 const Author = styled.p`
-  margin-bottom:0;
+  margin-bottom: 1em;
+  margin-top: -0.2em;
+`
+const Year = styled.p`
+  margin-bottom: 0em;
+  margin-top: 0em;
 `
 
 const ResourceImage = props => {
@@ -46,7 +52,7 @@ const ResourceImage = props => {
               }}
             />
           {r.author.length > 0 ? <Author> {r.author} </Author> : ""}
-          <p> {r[language].year}</p>
+          <Year> {r[language].year} </Year>
           <ResourcePublisherLink hidden ={!r.external_url_label} target="_blank" rel="noopener noreferrer" href={r.external_url}>
             {" "}
             {r.external_url_label}
