@@ -18,7 +18,7 @@ export const AboutSideNavbar = styled.nav`
 export const AboutNavItem = styled.p`
   color: ${props => (props.current ? Color.red : "inherit")};
   padding: 0em;
-  margin:0 0 0.5em;
+  margin:0 0 0.6em;
   line-height: 1.2;
   transition: all 0.2s ease-in-out;
   :hover {

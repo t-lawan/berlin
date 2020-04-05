@@ -27,7 +27,7 @@ export const TwoColumnPageWrapper = styled.div`
     } 
   @media (min-width: ${size.laptopM}) {
     grid-template-columns: 3fr 7.2fr;
-    padding: 3em 1.1em 2em;
+    padding: 2.6em 1.1em 2em;
     } 
   @media (min-width: ${size.laptopL}) {
     grid-template-columns: 2.9fr 7.0fr;
@@ -464,20 +464,33 @@ export const TextBlockTwoColumnPage = styled.div`
     line-height:1.4;
     margin: 0;
   }
+  :first-child {
+    > p {
+      margin-bottom: 1em;
+    }
+  }
   > p {
-    @media (max-width: ${size.mobileM}) {
-    line-height:1.4;
-    }
-    @media (min-width: ${size.mobileL}) {
-      line-height:1.3;
-    }
-    @media (min-width: ${size.laptop}) {
+      @media (max-width: ${size.mobileM}) {
       line-height:1.4;
-    }
-    @media (min-width: ${size.laptopM}) {
-    }
-    @media (min-width: ${size.laptopL}) {
-      line-height:1.45;
+      }
+      @media (min-width: ${size.mobileL}) {
+        line-height:1.3;
+      }
+      @media (min-width: ${size.laptop}) {
+        line-height:1.4;
+      }
+      @media (min-width: ${size.laptopM}) {
+      }
+      @media (min-width: ${size.laptopL}) {
+        line-height:1.45;
+      }
+    > a {
+      font-size: 1em;
+      border-bottom: solid thin;
+      border-color:${Color.red};
+      :hover {
+      color:${Color.red} 
+      } 
     }
   }
   > h1,h2,h3,h4,h5,h6 {

@@ -8,7 +8,8 @@ import { size } from "../../index.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import styled from 'styled-components'
 import { documentationContent } from "./documentation-video";
-import { MarginBottomText, NoMarginText } from "./documentation.styles";
+import striptags from "striptags"
+import { MarginBottomText, NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
 
 const AudioBlock = styled.div`
   padding: 0em !important;
@@ -19,6 +20,7 @@ margin:0em 0 0em;
     margin:1em 0 0em;
   }
 `
+
 const DocumentationAudio = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -44,9 +46,31 @@ const DocumentationAudio = props => {
           </NoMarginText>
         </div>
         <MargTop>
-          <div
+
+          <DocTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(props.documentation[language].title, ["em"]),
+              }}
+            />
+            
+            {props.documentation[language].subtitle ? (
+              <DocSubTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(props.documentation[language].subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+
+            {props.documentation[language].description ? (
+              <DocDesc
+                dangerouslySetInnerHTML={{
+                  __html: props.documentation[language].description,
+                }}
+              />
+            ) : null}
+            <div
             dangerouslySetInnerHTML={{
-              __html: props.documentation[language].title,
+              __html: props.documentation[language].doc_credits,
             }}
           />
         </MargTop>

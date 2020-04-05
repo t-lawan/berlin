@@ -6,7 +6,8 @@ import { PageWrapper, TwoColumnPageWrapperNoPad } from "../../templates/page.sty
 import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
 import { size } from "../../index.styles"
-import { NoMarginText, MarginBottomText } from "./documentation.styles";
+import striptags from "striptags"
+import { NoMarginText, MarginBottomText, DocDesc, DocTitle, DocSubTitle  } from "./documentation.styles";
 
 
 const VideoContainer = styled.div`
@@ -34,6 +35,7 @@ margin:0em 0 0em;
     margin:1em 0 0em;
   }
 `
+
 const DocumentationVideo = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -57,17 +59,27 @@ const DocumentationVideo = props => {
           </NoMarginText>
         </div>
         <MargTop>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: props.documentation[language].title,
-            }}
-          />
+          <DocTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(props.documentation[language].title, ["em"]),
+              }}
+            />
+            
+            {props.documentation[language].subtitle ? (
+              <DocSubTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(props.documentation[language].subtitle, ["em"]),
+                }}
+              />
+            ) : null}
 
-          <div
-            dangerouslySetInnerHTML={{
-              __html: props.documentation[language].subtitle,
-            }}
-          />
+            {props.documentation[language].description ? (
+              <DocDesc
+                dangerouslySetInnerHTML={{
+                  __html: props.documentation[language].description,
+                }}
+              />
+            ) : null}
 
           <div
             dangerouslySetInnerHTML={{

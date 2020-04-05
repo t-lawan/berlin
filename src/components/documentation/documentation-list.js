@@ -57,7 +57,7 @@ let content = {
   DE: {
     video: "Video",
     mp3: "Audio",
-    imagegallery: "Bilder",
+    imagegallery: "Fotos",
     text: "Text",
   },
 }

@@ -8,13 +8,15 @@ import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
 import { size } from "../../index.styles"
 import styled from 'styled-components';
-import { MarginBottomText, NoMarginText } from "./documentation.styles";
+import striptags from "striptags"
+import { MarginBottomText, NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
     margin:1em 0 0em;
   }
 `
+
 const DocumentationImageGallery = props => {
   let language = getCurrentLanguageString(props.languages);
   let exhibitions = props.exhibitions.filter((exhibition) => {
@@ -42,11 +44,28 @@ const DocumentationImageGallery = props => {
           </NoMarginText>
         </div>
         <MargTop>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: documentation[language].title,
-            }}
-          />
+          
+          <DocTitle
+              dangerouslySetInnerHTML={{
+                __html: striptags(documentation[language].title, ["em"]),
+              }}
+            />
+            
+            {documentation[language].subtitle ? (
+              <DocSubTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(documentation[language].subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+
+            {documentation[language].description ? (
+              <DocDesc
+                dangerouslySetInnerHTML={{
+                  __html: documentation[language].description,
+                }}
+              />
+            ) : null}
           <div
             dangerouslySetInnerHTML={{
               __html: documentation[language].doc_credits,
