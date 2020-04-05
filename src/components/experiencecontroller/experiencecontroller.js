@@ -46,6 +46,12 @@ class ExperienceController extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.languages !== this.props.languages) {
+      this.language = getCurrentLanguageString(this.props.languages);
+    }
+  }
+
   incrementExperience = () => {
     // temporarily disable experience 4 by checking before incrementing
     if (
@@ -73,7 +79,6 @@ class ExperienceController extends React.Component {
       setTimeout(() => {
         this.props.changeExperience(this.props.experience - 1)
       }, this.changeExperienceDelayTime)
-
       navigate(createPath(this.language, "/"))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
@@ -81,42 +86,11 @@ class ExperienceController extends React.Component {
     }
   }
 
-  // runThroughAllExperiences = chosenExperience => {
-  //   let index = this.state.experiences.findIndex(exp => {
-  //     return exp.id === chosenExperience.id
-  //   })
-  //   let currentExperience = this.props.experience;
-  //   let experiences;
-  //   // If moving from 3 -> 1
-  //   if(currentExperience > index + 1) {
-  //     experiences = this.state.experiences.filter((xp) => {
-  //       return xp.id >= index + 1 && xp.id < currentExperience ;
-  //     });
-  //     experiences = experiences.reverse();
-  //   // If moving from 1 -> 3
-  //   } else if(currentExperience < index  + 1)  {
-  //     experiences = this.state.experiences.filter((xp) => {
-  //       return xp.id <= index + 1 && xp.id > currentExperience;
-  //     });
-  //   }
-  //   experiences.forEach((xp, ind) => {
-  //     setTimeout(() => {
-  //       this.changeExperience(xp)
-  //     }, transitionTimes.timeOutForEachExperiences * (ind + 1));
-  //   })
-  // }
-
   changeExperience = chosenExperience => {
     if (chosenExperience.isReady) {
-      let currentExperience = this.props.experience
-      if (currentExperience < chosenExperience.id) {
-        // this.props.experienceIncreased()
-      } else {
-        // this.props.experienceDecreased()
-      }
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
-      }, transitionTimes.changeExperienceDelayTime)
+      }, this.changeExperienceDelayTime)
       navigate(createPath(this.language, "/"))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()

@@ -25,13 +25,23 @@ const PageLoaderImage = styled.img`
 
 class PageLoader extends React.Component {
     componentDidMount() {
-        setTimeout(() => {
-            this.props.setFreshLoadToFalse();
-        }, 1500)
+      this.hidePageLoader()
+    }
+
+    hidePageLoader = () => {
+      setTimeout(() => {
+        this.props.setFreshLoadToFalse();
+    }, 1500)
+    }
+
+    componentDidUpdate(prevProps) {
+      if(this.props.freshLoad !== prevProps.freshLoad) {
+        this.hidePageLoader();
+      }
     }
   render() {
     return (
-      <PageLoaderWrapper show={this.props.freshLoad && !this.props.isHome}>
+      <PageLoaderWrapper show={this.props.freshLoad}>
         <PageLoaderImage src={PageLoaderLogo} />
       </PageLoaderWrapper>
     )

@@ -20,8 +20,8 @@ const Current = props => {
       <TextBlock>
         <PageTitle> {content[language].title} </PageTitle>
       </TextBlock>
-      <NewsList />
-      <UpcomingEvents />
+      <NewsList isCurrent={true} />
+      <UpcomingEvents isCurrent={true} />
     </PageWrapper>
   )
   let thirdColumn = (

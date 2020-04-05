@@ -35,13 +35,15 @@ export const DataPrivacyBlock = styled.div`
 const text = {
   EN: {
     text: "By using this website you agree to the use of cookies in accordance with our ",
-    link: "data privacy policy"
-    textnext: " "
+    text_one: "By using this website you agree to the use of cookies in accordance with our ",
+    text_two: " policy",
+    link: "data privacy"
   },
   DE: {
     text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
-    link: "Datenschutzerklärung",
-    textnext: " einverstanden" 
+    text_one: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
+    text_two: " einverstanden",
+    link: "Datenschutzerklärung"
   }
 }
 
@@ -51,13 +53,13 @@ const DataPrivacy = props => {
     <DataPrivacyWrapper show={props.show}>
       <DataPrivacyBlock>
         <p>
-          {text[language].text}
-          <UnderlineTransitionLink colour={'white'} fade to={createPath(language, 'data-privacy')}>
+          {text[language].text_one}
+          <UnderlineTransitionLink colour={'white'} to={createPath(language, 'data-privacy')}>
           {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
             {text[language].link}
           </UnderlineTransitionLink>
-          {textnext[language].textnext}
-          .
+           {text[language].text_two}
+        .          
         </p>
       </DataPrivacyBlock>
       <div>
