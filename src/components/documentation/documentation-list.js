@@ -68,36 +68,7 @@ const DocumentationList = props => {
 
   const createComponent = (doc, index) => {
     let renderComponent;
-    let hasEventRelation =  doc.related_events && doc.related_events.length > 0
-    if (hasEventRelation) {
-      let event = getItem(props.events, doc.related_events[0])
-      renderComponent = (
-        <DocumentationLink
-          to={createPath(language, `documentation/${doc.slug}`)}
-          onClick={() => props.startTransition()}
-        >
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
-            <DocumentationTextBox>
-              <DocTitle
-                dangerouslySetInnerHTML={{
-                  __html: striptags(event[language].event_title, ["em"]),
-                }}
-              />
-              
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: event[language].event_subtitle,
-                }}
-              />
-              
-              <p> {DateManager.toDateString(event.dates[0].start_date)} </p>
-              <p>{event.language == "other" ? event[language].other_language : UpcomingEventsContent[language][event.language]} </p>
-            </DocumentationTextBox>
-          </DocumentationItem>
-        </DocumentationLink>
-      )
-    } else {
+    
       renderComponent = (
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}
@@ -111,12 +82,17 @@ const DocumentationList = props => {
                   __html: doc[language].title,
                 }}
               />
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: doc[language].subtitle,
+                }}
+              />
               
             </DocumentationTextBox>
           </DocumentationItem>
         </DocumentationLink>
       )
-    }
+    
 
     return renderComponent
   }
