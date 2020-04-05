@@ -14,12 +14,12 @@ export const GalleryImage = styled(Img)`
   }
 `
 export const Image = styled(Img)`
-  max-height: 650px !important;
+  max-height: ${props => props.isGallery ? "650px !important" : ""};
   /* padding-bottom: 5rem !important; */
   > picture > img {
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
-    max-height: 650px !important;
+    max-height: ${props => props.isGallery ? "650px !important" : ""};
     display: block;
     margin: 0 auto;
     /* width: auto !important; */
@@ -93,6 +93,9 @@ class ImageResource extends React.Component {
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
+    if (this.state.image) {
+      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
+    }
 
     return (
       <>
