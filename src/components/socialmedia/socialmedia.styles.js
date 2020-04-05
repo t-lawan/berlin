@@ -27,7 +27,7 @@ export const SocialMediaWrapper = styled.div`
     padding:0.8em 1.2em 1em;
   }
   @media (min-width: ${size.laptopM}) {
-    height:55px;
+    height:60px;
     padding:1em 2em 1em;
   }
 `
