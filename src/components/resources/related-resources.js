@@ -23,6 +23,9 @@ export const RelatedResourcesWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
     margin-bottom:4em;
   }
+  @media (min-width: ${size.laptopM}) {
+    margin-bottom:6em;
+  }
 `
 
 const ResourceLink = styled(AniLink)`

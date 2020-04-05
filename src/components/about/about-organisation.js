@@ -6,7 +6,7 @@ import { size } from "../../index.styles";
 import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
-padding: 0;
+padding: 0 0 1em !important;
 > p {
   padding-left: 1em;
   font-size: 1em;
@@ -17,14 +17,14 @@ padding: 0;
 `
 
 const TitleTextBlock = styled(TextBlock)`
-padding: 0;
+padding-left: 1em !important;
 padding-top: 1em;
-> p {
-  font-size: 1em;
-  @media (min-width: ${size.laptopM}) {
-  font-size: 1.1em;
+padding-bottom: 0 !important;
+margin-bottom: 0.2em;
+:first-of-type {
+    padding-left: 0em !important;
+    padding-bottom: 1em !important;
   }
-}
 `
 
 const AboutOrganisation = props => {
