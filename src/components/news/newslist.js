@@ -30,7 +30,7 @@ const NewsList = props => {
   }
 
   return (
-    <NewsListWrapper show={filteredNews.length > 0} isHome={props.isHome}>
+    <NewsListWrapper isCurrent={props.isCurrent} show={filteredNews.length > 0} isHome={props.isHome}>
       {filteredNews.map(news => (
         <NewsItem key={news.id} newsItem={news} />
       ))}
