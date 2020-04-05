@@ -6,7 +6,8 @@ import { size } from "../../index.styles";
 import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
-padding-top: 0;
+padding-top: 0px;
+padding-bottom: 0px !important;
 > p {
   line-height: 1.3;
   font-size: 1em;
@@ -18,16 +19,19 @@ padding-top: 0;
     font-size: 1.1em;
     }
 }
+:nth-of-type(2) {
+    padding-bottom: 1em !important;
+  }
 `
 const TitleTextBlock = styled(TextBlock)`
-padding: 0;
-padding-top: 0em;
-> p {
-  font-size: 1em;
-  @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
-    }
-}
+padding-left: 1em !important;
+padding-top: 1em;
+padding-bottom: 0 !important;
+margin-bottom: 0.2em;
+:first-of-type {
+    padding-left: 0em !important;
+    padding-bottom: 1em !important;
+  }
 `
 const AboutAdvisoryBoard = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -59,7 +63,9 @@ const AboutAdvisoryBoard = props => {
         break
       case "position":
         renderComponent = (
-            <p key={index}> {teamBlockItem[createProperty("section_title", language)]}</p>
+            <AboutTextBlock key={index}>
+            <p> {teamBlockItem[createProperty("section_title", language)]}</p>
+          </AboutTextBlock>
         )
         break
       default:
