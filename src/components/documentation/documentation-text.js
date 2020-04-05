@@ -5,7 +5,6 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
-import striptags from "striptags"
 import { MarginBottomText, NoMarginText, DocDesc } from "./documentation.styles";
 
 const DocumentationText = props => {

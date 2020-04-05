@@ -173,7 +173,7 @@ const modalText = {
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
     agreement:
       "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
-      email: 'E-mail'
+    email: "E-mail",
   },
   DE: {
     description:
@@ -189,8 +189,7 @@ const modalText = {
       "Thank you for your subscription. We have sent you an e-mail with a confirmation link.",
     agreement:
       "Ich habe die Datenschutzbestimmungen gelesen und erkenne diese ausdrücklich an.",
-      email: 'E-Mail'
-
+    email: "E-Mail",
   },
 }
 
