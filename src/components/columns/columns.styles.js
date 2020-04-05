@@ -377,7 +377,9 @@ export const FixedTicker = styled.div`
     bottom: 55px;
     height: 55px;
   }
-  ${showDisplayForTablet};
-  ${hideDisplayForTablet};
+
+  ${showDisplayForMobile};
+  ${hideDisplayForMobile};
+  display: ${props => (props.hide ? "none" : "")};
   transition: all 0.3s ease-in-out;
 `

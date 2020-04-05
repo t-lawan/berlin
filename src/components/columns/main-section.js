@@ -161,7 +161,7 @@ class MainSection extends React.Component {
               <Jumbotron />
             </StickyTopHeader> */}
           {this.props.thirdColumn}
-          <FixedTicker>
+          <FixedTicker hide={!this.props.isHome}>
             <Ticker />
           </FixedTicker>
           <StickyFooterWithHighZIndex>
