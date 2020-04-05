@@ -89,6 +89,5 @@ export const FormLabel = styled.label`
   margin-top: 1em;
   > p {
     margin-bottom: 0.3em;
-    font-size: 1em;
   }
 `

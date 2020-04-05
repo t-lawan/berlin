@@ -13,6 +13,7 @@ import {
   PressReleaseParagraphBlock,
   PageTitle,
   PageSubTitle,
+  ImagesCont,
 } from "./page.styles"
 import { getDocument } from "../store/selector"
 import PressForm from "../components/forms/press-form"
@@ -105,7 +106,7 @@ class Press extends React.Component {
             </PressReleaseWrapper>
           ))}
 
-          <p> {content[this.language].images} </p>
+          <ImagesCont><p> {content[this.language].images} </p></ImagesCont>
           <div
             dangerouslySetInnerHTML={{
               __html: this.pressInfo.acf[this.language].images_note,

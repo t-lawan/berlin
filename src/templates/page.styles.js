@@ -35,6 +35,11 @@ export const TwoColumnPageWrapper = styled.div`
   }  
   ${changeGridToOneRow}
 `
+export const ImagesCont = styled.div`
+  > p {
+    margin-top: 1em;
+  }
+`
 
 export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
