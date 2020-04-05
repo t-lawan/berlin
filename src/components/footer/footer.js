@@ -8,6 +8,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink";
 import * as actionTypes from '../../store/action';
 const FooterWrapper = styled.footer`
   display: grid;
+  transform: translateZ(0);
   grid-template-columns: 1fr 3.8fr 7.5fr 2fr;
   grid-column-gap: 0.5rem;
   color: black;

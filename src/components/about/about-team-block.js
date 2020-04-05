@@ -9,18 +9,24 @@ import { Section, size } from "../../index.styles";
 const PaddedSection = styled(Section)`
   padding: 0 !important;
   > ul {
-    list-style:none;
-    margin:0em 0 0 0;
-    padding:0;
+    list-style: none;
+    margin: 0.0em 0 0 0;
+    padding: 0;
     > li {
-      list-style:none;
-      padding-left:1.2em;
+      list-style: none;
+      padding-left: 1.2em;
       font-size: 1.0rem;
       @media (min-width: ${size.laptopM}) {
         font-size: 1.1rem;
       }
       line-height: 1.4;
     }
+  }
+  :first-of-type > ul {
+    margin-top: 0.6em;
+  }
+  :nth-of-type(2) > ul {
+    margin-top: 0.6em;
   }
 `
 

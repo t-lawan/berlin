@@ -156,7 +156,7 @@ const PressImages = props => {
         lang={pageInfo.language}
         pathname={pageInfo.slug}
       />
-      <p>Press images</p>
+      <p>{content[language].press_images}</p>
       {pageInfo.acf.press_images.map((section, index) =>
         generateSection(section, index)
       )}
@@ -177,6 +177,15 @@ const PressImages = props => {
       thirdColumn={thirdColumn}
     />
   )
+}
+
+let content = {
+  EN: {
+    press_images: 'Press images'
+  },
+  DE: {
+    press_images: 'Pressebilder'
+  }
 }
 
 const mapStateToProps = state => {

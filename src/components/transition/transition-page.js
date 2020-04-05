@@ -40,7 +40,7 @@ const TransitionPageWrapper = styled.div`
 const TransitionImage = styled.img`
   /* bring your own prefixes */
   /* transform: translate(-50%, -50%); */
-  width: 150px !important;
+  width: 120px !important;
   z-index: inherit;
 `
 
