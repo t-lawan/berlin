@@ -125,7 +125,7 @@ export const PageWrapperRes = styled.div`
     padding: 2.0em 1em 2em;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 2.5em 1em 2em;
+    padding: 2.6em 1em 2em;
   }
   @media (max-width: ${size.mobileM}) {
     > div {
