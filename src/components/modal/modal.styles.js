@@ -87,6 +87,7 @@ export const FormButton = styled.button`
 export const FormLabel = styled.label`
   display: block;
   margin-top: 1em;
+  font-size: 1em;
   > p {
     margin-bottom: 0.3em;
   }
