@@ -13,8 +13,6 @@ const Media = props => {
     return pg[props.pageContext.language.toUpperCase()] == props.pageContext.slug
   })
 
-  console.log('PATH LOG', path);
-
   let renderComponent = (
     <PageWrapper>
       <SEO title={capitalise(path[props.pageContext.language.toUpperCase()])} lang={props.pageContext.language} pathname={path ? path[props.pageContext.language.toUpperCase()] : null} />
