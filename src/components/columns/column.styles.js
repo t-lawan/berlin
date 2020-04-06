@@ -1,9 +1,10 @@
 import styled from "styled-components"
-import {hideDisplayForTablet, size, hideDisplayForMobile } from "../../index.styles";
 import {
-  ExperienceControllerWrapper,
-} from "../experiencecontroller/experiencecontroller.styles"
-
+  hideDisplayForTablet,
+  size,
+  hideDisplayForMobile,
+} from "../../index.styles"
+import { ExperienceControllerWrapper } from "../experiencecontroller/experiencecontroller.styles"
 
 export const ColumnLayout = styled.div`
   border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};
@@ -14,6 +15,9 @@ export const ColumnLayout = styled.div`
   -webkit-overflow-scrolling:touch;
   height: auto;
   padding-bottom: 2rem; 
+  @media (min-width: ${size.laptopM}) {
+  padding-bottom: 7rem; 
+      }
   @media (max-width: ${size.mobileL}) {
         padding-bottom: 0rem; 
         height: 100%;
