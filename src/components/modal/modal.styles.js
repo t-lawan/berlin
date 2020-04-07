@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { size } from "../../index.styles";
+import { size, Color } from "../../index.styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const ModalWrapper = styled.div`
@@ -11,6 +11,17 @@ export const ModalWrapper = styled.div`
   border: 1px solid black;
   width: 40%;
   display: ${props => (props.show ? "inherit" : "none")};
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.7em 0.7em;
+    > div > p {
+      line-height: 1.3;
+      font-size: 1em;
+    }
+    > div > form > p {
+      line-height: 1.3;
+      font-size: 1em;
+    }
+  }
   @media (max-width: ${size.tablet}) {
     width: 80%;
     margin: 10% 10%;
@@ -18,11 +29,38 @@ export const ModalWrapper = styled.div`
 `
 
 export const FormInput = styled.input`
-  font-size: 1em;
   border-radius: 0;
   border: 1px solid black;
   padding: 0.5em 0.5em;
   margin: 0 0.5em;
+  min-width: ${props => (props.text ? "50%" : "auto")};
+  :focus {
+    border-color: ${Color.red};
+    outline: none;
+  }
+  font-size: 1rem;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.0em;
+    line-height: 1.3;
+    padding: 0.5em 0.5em 0.5em 0;
+    margin-left: 0;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    line-height: 1.3;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    line-height: 1.4;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    line-height: 1.45;
+  }
 `
 
 export const BackDropWrapper = styled.div`
@@ -36,23 +74,28 @@ export const BackDropWrapper = styled.div`
 
 export const ModalHeader = styled.div`
   padding: 0.5em 0;
+  padding-bottom: 0;
   text-align: right;
-`;
+  @media (max-width: ${size.mobileM}) {
+    padding: 0;
+  }
+`
 
 export const ModalCloseIcon = styled(FontAwesomeIcon)`
   width: 0.5em;
-  :hover{
+  :hover {
     cursor: pointer;
   }
 `
 export const CloseImage = styled.img`
-  width: 8%;
+  width: 5%;
   align-self: flex-end;
-  @media (max-width: ${size.tablet}) {
-    width: 5%;
-  }
   @media (max-width: ${size.mobileM}) {
-    width: 7%;
+    width: 10%;
+    margin-bottom: 0.2em;
+  }
+  @media (min-width: ${size.tablet}) {
+    width: 5%;
   }
 `
 export const FormButton = styled.button`
@@ -86,8 +129,58 @@ export const FormButton = styled.button`
 
 export const FormLabel = styled.label`
   display: block;
-  margin-top: 1em;
+  margin-top: 1rem;
   font-size: 1em;
+  > a {
+    font-size: 1em;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.0em;
+    line-height: 1.3;
+    margin-top: 0.7em;
+    > a {
+      font-size: 1.0em;
+    }
+    :nth-of-type(3) > input {
+      padding-right: 0;
+      margin-left: 0.5em;
+      margin-right: 0;
+    }
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    line-height: 1.3;
+    > a {
+      font-size: 0.95em;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    line-height: 1.4;
+    > a {
+      font-size: 1em;
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.1em;
+    line-height: 1.4;
+    > a {
+      font-size: 1.0em;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.2em;
+    line-height: 1.45;
+    > a {
+      font-size: 1.0em;
+    }
+  }
   > p {
     margin-bottom: 0.3em;
   }
