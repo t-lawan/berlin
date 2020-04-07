@@ -71,6 +71,9 @@ const ImageWrapper = styled.div`
 const FooterText = styled.p`
   margin: 0;
   -webkit-font-smoothing: antialiased;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.9rem
+  }
 `
 
 const FooterOuterLink = styled.a`
@@ -82,6 +85,9 @@ const FooterOuterLink = styled.a`
   :hover {
     cursor: pointer;
     color: ${Color.red};
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.9rem
   }
 `
 

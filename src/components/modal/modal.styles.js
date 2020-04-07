@@ -11,6 +11,17 @@ export const ModalWrapper = styled.div`
   border: 1px solid black;
   width: 40%;
   display: ${props => (props.show ? "inherit" : "none")};
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.7em 0.7em;
+    > div > p {
+      line-height: 1.3;
+      font-size: 1em;
+    }
+    > div > form > p {
+      line-height: 1.3;
+      font-size: 1em;
+    }
+  }
   @media (max-width: ${size.tablet}) {
     width: 80%;
     margin: 10% 10%;
@@ -29,8 +40,10 @@ export const FormInput = styled.input`
   }
   font-size: 1rem;
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1em;
-    line-height: 1.4;
+    font-size: 1.0em;
+    line-height: 1.3;
+    padding: 0.5em 0.5em 0.5em 0;
+    margin-left: 0;
   }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
@@ -63,6 +76,9 @@ export const ModalHeader = styled.div`
   padding: 0.5em 0;
   padding-bottom: 0;
   text-align: right;
+  @media (max-width: ${size.mobileM}) {
+    padding: 0;
+  }
 `
 
 export const ModalCloseIcon = styled(FontAwesomeIcon)`
@@ -74,11 +90,12 @@ export const ModalCloseIcon = styled(FontAwesomeIcon)`
 export const CloseImage = styled.img`
   width: 5%;
   align-self: flex-end;
-  @media (max-width: ${size.tablet}) {
-    width: 5%;
-  }
   @media (max-width: ${size.mobileM}) {
-    width: 7%;
+    width: 10%;
+    margin-bottom: 0.2em;
+  }
+  @media (min-width: ${size.tablet}) {
+    width: 5%;
   }
 `
 export const FormButton = styled.button`
@@ -98,6 +115,9 @@ export const FormButton = styled.button`
   margin-top: 1em;
   padding: 0.5em 2.5em;
   /* margin-left: 0.25em; */
+  @media (max-width: ${size.mobileM}) {
+    margin-left: 0 !important;
+  }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
     margin-left: 0em !important;
@@ -116,12 +136,24 @@ export const FormLabel = styled.label`
   font-size: 1em;
   > a {
     font-size: 1em;
+    border-bottom: solid thin;
+    border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
   }
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1em;
-    line-height: 1.4;
+    font-size: 1.0em;
+    line-height: 1.3;
+    margin-top: 0.7em;
     > a {
-      font-size: 1.1em;
+      font-size: 1.0em;
+    }
+    :nth-of-type(3) > input {
+      padding-right: 0;
+      margin-left: 0.5em;
+      margin-right: 0;
     }
   }
   @media (min-width: ${size.tablet}) {
@@ -141,15 +173,18 @@ export const FormLabel = styled.label`
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
     line-height: 1.4;
+    > p {
+      font-size: 1em;
+    }
     > a {
-      font-size: 1.1em;
+      font-size: 1.0em;
     }
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
     line-height: 1.45;
     > a {
-      font-size: 1.2em;
+      font-size: 1.0em;
     }
   }
   > p {

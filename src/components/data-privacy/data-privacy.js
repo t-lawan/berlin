@@ -36,8 +36,8 @@ const text = {
   EN: {
     text: "By using this website you agree to the use of cookies in accordance with our ",
     text_one: "By using this website you agree to the use of cookies in accordance with our ",
-    text_two: " policy",
-    link: "data privacy"
+    text_two: "",
+    link: "data privacy policy"
   },
   DE: {
     text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
