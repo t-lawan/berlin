@@ -124,7 +124,7 @@ export const FixedTickerOnlyInMobile = styled.div`
   display: none;
   z-index: 9;
   position: fixed;
-  bottom: 44px;
+  bottom: 43px;
   height: 45px;
   width: 100%;
   @media (max-width: ${size.mobileM}) {
@@ -275,7 +275,7 @@ export const StickyFooter = styled.div`
   }
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
-    position: sticky;
+    position: fixed;
     bottom: 44px;
     z-index: 999999;
   }
