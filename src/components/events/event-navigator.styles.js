@@ -24,13 +24,13 @@ export const EventNavigatorWrapper = styled.section`
     padding: 0.7em 0 0 0.7em;
   }
   @media (min-width: ${size.laptop}) {
-    padding: 0.15em 0.7em 1em 1em;
+    padding: 0.15em 0.7em 1.5em 1em;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 0.35em 0.7em 1.25em 1em;
+    padding: 0.35em 0.7em 1.8em 1em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 0.5em 0.7em 1.05em 1em;
+    padding: 0.5em 0.7em 1.9em 1em;
   }
 `
 
