@@ -25,7 +25,7 @@ const ImageContainerWrapper = styled.section`
   z-index: 0;
 
   @media (min-width: ${size.laptop}) {
-    padding: 0 1em;
+    padding: 0.2em 1em 0;
   }
   @media (max-width: ${size.tabletL}) {
     padding: 0.7em 0.7em 0;
