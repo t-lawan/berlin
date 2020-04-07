@@ -124,7 +124,7 @@ export const FixedTickerOnlyInMobile = styled.div`
   display: none;
   z-index: 9;
   position: fixed;
-  bottom: 44px;
+  bottom: 43px;
   height: 45px;
   width: 100%;
   @media (max-width: ${size.mobileM}) {
@@ -320,7 +320,7 @@ export const FixedFooter = styled.div`
     grid-area: unset;
     position: relative;
     bottom: 0px;
-    padding-bottom: 60px;
+    padding-bottom: ${props => props.isHome ? '150px' : '60px'} ;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
@@ -374,7 +374,7 @@ export const FixedTicker = styled.div`
     bottom: 55px;
   }
   @media (min-width: ${size.laptopM}) {
-    bottom: 60px;
+    bottom: 55px;
     height: 55px;
   }
 

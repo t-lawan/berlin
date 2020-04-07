@@ -148,7 +148,7 @@ class MainSection extends React.Component {
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
             {/* Only In Mobile */}
-            <FixedFooter showInTablet>
+            <FixedFooter isHome={this.props.isHome} showInTablet>
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}

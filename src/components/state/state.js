@@ -324,12 +324,13 @@ const State = props => {
                 slug
                 localFile {
                   childImageSharp {
-                    fluid {
+                    fluid(quality: 100, maxWidth: 1000) {
                       base64
                       aspectRatio
                       src
                       srcSet
                       sizes
+                      presentationWidth
                     }
                   }
                 }
