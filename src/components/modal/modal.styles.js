@@ -115,6 +115,9 @@ export const FormButton = styled.button`
   margin-top: 1em;
   padding: 0.5em 2.5em;
   /* margin-left: 0.25em; */
+  @media (max-width: ${size.mobileM}) {
+    margin-left: 0 !important;
+  }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
     margin-left: 0em !important;
