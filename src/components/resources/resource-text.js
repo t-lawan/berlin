@@ -35,9 +35,11 @@ const ResourceTitle = styled.h1`
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.6em;
+    margin-top: -0.7em;
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.7em;
+    margin-top: -0.9em;
   }
 `
 const Mobhide = styled.div`
