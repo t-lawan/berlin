@@ -43,6 +43,7 @@ const NewsSubTitle = styled.h2`
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.0em;
+    margin-bottom: 1.5em;
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
