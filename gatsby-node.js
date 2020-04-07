@@ -68,6 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 preview_information
                 title
                 venue_description
+                corona_notice
               }
               contact_data {
                 contact_data_line
@@ -150,6 +151,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 press_notice
                 title
                 venue_description
+                corona_notice
               }
               EN_row {
                 description
@@ -561,8 +563,10 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
     { EN: "practical-information", DE: "praktische-information" },
+    { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "publication", DE: "publikation" },
+    { EN: "press-images", DE: "pressebilder" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
