@@ -320,7 +320,7 @@ export const FixedFooter = styled.div`
     grid-area: unset;
     position: relative;
     bottom: 0px;
-    padding-bottom: 60px;
+    padding-bottom: ${props => props.isHome ? '180px' : '60px'} ;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
