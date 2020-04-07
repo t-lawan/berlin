@@ -566,6 +566,7 @@ export const LargeButton = styled.button`
   @media (max-width: ${size.mobileM}) {
     margin: 0.2em 0 0 0px;
     font-size: 1.1em;
+    padding: 6px 10px;
   }
 `
 
