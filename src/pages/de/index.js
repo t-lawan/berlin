@@ -40,7 +40,7 @@ const IndexPage = props => {
   const thirdColumn = (
     <>
       <Logo />
-      <NewsList />
+      <NewsList isHome={true} />
       <UpcomingEvents isHome={true} />
     </>
   )

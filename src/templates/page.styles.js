@@ -163,6 +163,11 @@ export const PressWrapper = styled.div`
   padding: 2.5em 1em 2em;
   display: grid !important;
   grid-template-columns: 3fr 6fr;
+  @media (max-width: ${size.mobileM}) {
+    > div > div > p > a {
+      word-break: break-all;
+    }
+  }
   @media (max-width: ${size.tabletL}) {
     padding: 1em 0.7em;
     grid-template-columns: 1fr;
@@ -286,7 +291,11 @@ export const CenterColumn = styled.div`
 export const PressReleaseWrapper = styled.div`
   display: grid;
   grid-template-columns: 3fr 7fr;
-  @media (max-width: ${size.tabletL}) {
+  @media (max-width: ${size.mobileM}) {
+    grid-template-columns: 1fr; 
+    margin-bottom: 0.5em !important;
+  }
+  @media (min-width: ${size.tabletL}) {
     grid-template-columns: 1fr 3fr;
     column-gap: 0.7em;
   }
@@ -297,10 +306,9 @@ export const PressReleaseWrapper = styled.div`
 export const PressReleaseText = styled.span`
   margin-right: 0em;
   /* font-size: 1.1em; */
-  @media (max-width: ${size.tabletL}) {
-    font-size: 0.95em;
+  @media (max-width: ${size.mobileM}) {
+    line-height: 1.4;
   }
-
 `
 
 export const PressReleaseParagraphBlock = styled.div`
@@ -323,6 +331,12 @@ export const PressReleaseLink = styled.a`
   /* font-size: 1em; */
   display: grid;
   grid-template-columns: 1fr 17fr;
+  @media (max-width: ${size.mobileM}) {
+    > div > p {
+      font-size: 1em;
+      line-height: 1.3;
+    }
+    }
   &:hover {
     color: ${Color.red};
   }
@@ -339,8 +353,16 @@ export const PressArrowContainer = styled.div`
   > img {
     margin-bottom: 0;
   }
-  @media (max-width: ${size.tabletL}) {
+  @media (max-width: ${size.mobileM}) {
+    width: 12px;
+    padding-top: 0.3em;
+  }
+  @media (min-width: ${size.mobileL}) {
     width: 11px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    width: 13px;
+    padding-top: 0.35em;
   }
   @media (min-width: ${size.laptopL}) {
     width: 17px;
@@ -404,17 +426,27 @@ export const PageSubTitle = styled.h3`
   :first-child {
     margin-top: 0;
   }
-   @media (max-width: ${size.tabletL}) {
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+    margin-top: 2em;
+    :first-child {
+      margin-top: 2em;
+    }
+  }
+   @media (min-width: ${size.mobileL}) {
     font-size: 0.95em;
     margin-top: 2em;
     :first-child {
     margin-top: 2em;
-  }
+    }
    }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
     margin-top: 1.8em;
     margin-bottom: 0.7em;
+    :first-child {
+      margin-top: 0em;
+    }
    }
   @media (min-width: ${size.laptopL}) {
 font-size: 1.2em;

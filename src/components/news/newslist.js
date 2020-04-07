@@ -17,20 +17,39 @@ const NewsList = props => {
       })
       .reverse()
   } else {
-    filteredNews = props.news
-      .filter(news => {
-        return (
-          news.experience.includes(props.experience.toString()) &&
-          news.show_in_feed &&
-          DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0 &&
-          props.experience === props.active_experience
-        )
-      })
-      .reverse()
+    if (props.experience == props.active_experience) {
+      filteredNews = props.news
+        .filter(news => {
+          return (
+            news.experience.includes(props.experience.toString()) &&
+            news.show_in_feed &&
+            DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0
+            // props.experience === props.active_experience
+          )
+        })
+        .sort((a, b) => {
+          return b.dates[0] - a.dates[0];
+        })
+    } else {
+      filteredNews = props.news
+        .filter(news => {
+          return (
+            news.experience.includes(props.experience.toString()) &&
+            news.show_in_feed
+          )
+        })
+        .sort((a, b) => {
+          return b.dates[0] - a.dates[0];
+        })
+    }
   }
 
   return (
-    <NewsListWrapper isCurrent={props.isCurrent} show={filteredNews.length > 0} isHome={props.isHome}>
+    <NewsListWrapper
+      isCurrent={props.isCurrent}
+      show={filteredNews.length > 0}
+      isHome={props.isHome}
+    >
       {filteredNews.map(news => (
         <NewsItem key={news.id} newsItem={news} />
       ))}

@@ -82,6 +82,9 @@ export const ExhibitionCardsWrapper = styled(EventCardsWrapper)`
   flex-direction: row;
 
   /* width: 30%; */
+  @media (max-width: ${size.mobileM}) {
+    opacity: 0.4;
+  }
 `
 
 export const EventsGrid = styled.div`
@@ -135,6 +138,9 @@ export const DateString = styled.p`
   text-transform:lowercase;
   margin:0;
   line-height:1.2;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 0.85em;
+  }
   @media (max-width: ${size.mobileL}) {
     line-height:1.15;
   }
@@ -172,21 +178,12 @@ export const ClosedText = styled.p`
   margin: 0.5em 1em;
   text-transform:lowercase;
   @media (min-width: ${size.mobileS}) {
-    margin: 0.3em 0.5em;
-    font-size: 1rem;
+    margin: -0.3em 0.5em;
   }
   @media (min-width: ${size.tablet}) {
     margin: 0.5em 0.7em;
-    font-size: 0.95rem;
   }
   @media (min-width: ${size.laptop}) {
     margin: 0.5em 1em;
-    font-size: 1rem;
-  }
-  @media (min-width: ${size.laptopM}) {
-    font-size: 1.1rem;
-  }
-  @media (min-width: ${size.laptopL}) {
-    font-size: 1.2rem;
   }
 `
