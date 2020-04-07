@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import { Color } from '../../index.styles';
+import { Color, size } from '../../index.styles';
 import { Link } from 'gatsby';
 
 export const NewsItemWrapper = styled.div`
   padding: 1.2em 2em;
   border-bottom: 1px solid black;
+  @media (max-width: ${size.mobileM}) {
+    padding: 1em 1em;
+  }
 `
 export const NewsText = styled.p`
   > span {

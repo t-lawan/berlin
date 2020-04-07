@@ -12,7 +12,7 @@ export const ColumnLayout = styled.div`
   background: white;
   position: relative;
   overflow-y: scroll;
-  -webkit-overflow-scrolling:touch;
+  -webkit-overflow-scrolling: touch;
   height: auto;
   padding-bottom: 2rem; 
   @media (min-width: ${size.laptopM}) {
@@ -23,7 +23,7 @@ export const ColumnLayout = styled.div`
         height: 100%;
       } 
   display: block;
-  width:auto;
+  width: auto;
   grid-area: 'column';
 
   ${hideDisplayForTablet};
@@ -60,7 +60,7 @@ export const ColumnLayout = styled.div`
   @media (min-width: ${size.mobileS}) {
     border-right:solid 0px #000;
     background: transparent;
-    z-index:9;
+    z-index: 9;
   }
   @media (min-width: ${size.mobileL}) {
     border-right: ${props => (props.rightBorder ? "1px solid black" : 0)};

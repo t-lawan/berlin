@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Color } from "../../index.styles";
+import { Color, size } from "../../index.styles";
 
 export const NewsListWrapper = styled.div`
   /* padding: 0.7em 2em; */
@@ -9,4 +9,9 @@ export const NewsListWrapper = styled.div`
   margin-bottom: ${props => props.isCurrent ? '0' : '-1px'};
   display: ${props => props.show ? 'inherit' : 'none'};
   position: relative;
+  @media (max-width: ${size.mobileM}) {
+    width: calc(100% + 1.4em);
+    margin-left: -0.7em;
+    margin-top: ${props => props.isCurrent ? '-1.7em' : '0'};
+  }
 `

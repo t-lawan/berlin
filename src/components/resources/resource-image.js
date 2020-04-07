@@ -1,6 +1,6 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink, ResourceSingleImageWrapper } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
@@ -29,7 +29,7 @@ const ResourceTitle = styled.h1`
 `
 const Author = styled.p`
   margin-bottom: 1em;
-  margin-top: -0.2em;
+  margin-top: -0.3em;
 `
 const Year = styled.p`
   margin-bottom: 0em;
@@ -43,7 +43,9 @@ const ResourceImage = props => {
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
+      <ResourceSingleImageWrapper>
       <ImageResource id={r.image} withCaption={false} />
+      </ResourceSingleImageWrapper>
       <TwoColumnPageWrapper>
         <div>
           <ResourceTitle
