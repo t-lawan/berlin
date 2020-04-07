@@ -46,7 +46,7 @@ export const NavigationButtons = styled.div`
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   transition: all 0.5s ease-in-out;
   visibility: hidden;
   ${NavigationSpace}:hover & {
