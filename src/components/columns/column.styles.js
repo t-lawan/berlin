@@ -67,7 +67,7 @@ export const ColumnLayout = styled.div`
     background: white;
   }
   @media (min-width: ${size.mobileL}) {
-    :nth-child(4){
+    :nth-child(4) {
     border-right: none;
     border-top: solid 0px #000;
   }
