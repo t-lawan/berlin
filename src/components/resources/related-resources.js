@@ -18,6 +18,9 @@ export const RelatedResourcesWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     /*background-color:#FFF;*/
     margin-bottom:0em;
+    width:calc(100% - 0.7em);
+    margin-left:0.35em;
+    margin-right:0.35em;
     padding-bottom:2em;
   }
   @media (min-width: ${size.laptop}) {
