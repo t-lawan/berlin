@@ -360,6 +360,10 @@ export const PressArrowContainer = styled.div`
   @media (min-width: ${size.mobileL}) {
     width: 11px;
   }
+  @media (min-width: ${size.laptopM}) {
+    width: 13px;
+    padding-top: 0.35em;
+  }
   @media (min-width: ${size.laptopL}) {
     width: 17px;
     padding-top: 0.3em;
@@ -440,6 +444,9 @@ export const PageSubTitle = styled.h3`
     font-size: 1.1em;
     margin-top: 1.8em;
     margin-bottom: 0.7em;
+    :first-child {
+      margin-top: 0em;
+    }
    }
   @media (min-width: ${size.laptopL}) {
 font-size: 1.2em;

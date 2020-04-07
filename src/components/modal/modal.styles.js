@@ -173,6 +173,9 @@ export const FormLabel = styled.label`
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
     line-height: 1.4;
+    > p {
+      font-size: 1em;
+    }
     > a {
       font-size: 1.0em;
     }
