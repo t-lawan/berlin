@@ -324,10 +324,8 @@ export const PressReleaseWrapper = styled.div`
 `
 export const PressReleaseText = styled.span`
   margin-right: 0em;
+  line-height: 1.4;
   /* font-size: 1.1em; */
-  @media (max-width: ${size.mobileM}) {
-    line-height: 1.4;
-  }
 `
 
 export const PressReleaseParagraphBlock = styled.div`
