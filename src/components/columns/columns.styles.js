@@ -275,7 +275,7 @@ export const StickyFooter = styled.div`
   }
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
-    position: fixed;
+    position: sticky;
     bottom: 44px;
     z-index: 999999;
   }
@@ -374,10 +374,12 @@ export const FixedTicker = styled.div`
     bottom: 55px;
   }
   @media (min-width: ${size.laptopM}) {
-    bottom: 60px;
+    bottom: 55px;
     height: 55px;
   }
-  ${showDisplayForTablet};
-  ${hideDisplayForTablet};
+
+  ${showDisplayForMobile};
+  ${hideDisplayForMobile};
+  display: ${props => (props.hide ? "none" : "")};
   transition: all 0.3s ease-in-out;
 `
