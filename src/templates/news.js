@@ -34,6 +34,17 @@ const NewsSubTitle = styled.h2`
   margin-top: -1.2em;
   margin-bottom: 0.5em;
   font-size: 1em;
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
+    margin-bottom: 0.8em;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.95em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.0em;
+    margin-bottom: 1.5em;
+  }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.1em;
   }

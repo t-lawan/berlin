@@ -45,7 +45,8 @@ export const NavInner = styled.div`
 export const NavMobileInner = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0.7em 1.3em;
+  padding: 0.7em 0em 0.7em 1.3em;
+  column-gap: 1em;
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0.7em 0.0em;
     grid-template-columns: 1fr 1fr;
@@ -168,7 +169,7 @@ export const NavMobileLinks = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1em;
   line-height: 1.3;
-  padding: 0.5em 1.5em;
+  padding: 0.5em 0 0.5em 1.3em;
   > a {
     font-size:1.1em;
   }
@@ -194,8 +195,9 @@ export const NavMobileLinks = styled.div`
 export const NavMobileInactiveLink = styled.p`
   text-decoration: none;
   font-size: 1.55em;
-  line-height: 1.3;
+  line-height: 1.2;
   padding-bottom: 0.0rem;
+  margin-bottom:0.1em;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
@@ -212,12 +214,13 @@ export const NavMobileInactiveLink = styled.p`
 export const NavMobileLink = styled(AniLink)`
   text-decoration: none;
   font-size: 1.55em;
-  line-height: 1.3;
+  line-height: 1.2;
   padding-bottom: 0.0rem;
+  margin-bottom:0.1em;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
-    margin-bottom:0.1em;
+    
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.2em;
@@ -264,7 +267,8 @@ export const NavMobileOuterLink = styled.a`
   text-decoration: none;
   font-size: 1.55em;
   padding-bottom: 0.0rem;
-  line-height: 1.3;
+  line-height: 1.2;
+  margin-bottom:0.1em;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1em;

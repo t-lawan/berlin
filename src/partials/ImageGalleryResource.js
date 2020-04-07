@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import { Caption } from "./ImageResource"
+import { Color, size } from "../index.styles"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
@@ -32,7 +33,7 @@ const ImageGalleryWrapper = styled.div`
 `
 const ImageWrapper = styled.div`
   height: 100%;
-  margin: 0.5rem auto;
+  margin: 0rem auto 0.5rem;
 `
 
 export const NavigationSpace = styled.div`
@@ -46,7 +47,7 @@ export const NavigationButtons = styled.div`
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1rem 0 1rem;
   transition: all 0.5s ease-in-out;
   visibility: hidden;
   ${NavigationSpace}:hover & {
@@ -71,7 +72,12 @@ export const AnimatedCarousel = styled(Carousel)`
     background: transparent;
     list-style-type: none;
   }
-
+  @media (min-width: ${size.laptop}) {
+    margin-bottom: -0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-bottom: -0.7em;
+  }
 `
 
 export const GalleryImage = styled.img``
