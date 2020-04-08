@@ -1,6 +1,6 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { PageWrapperRes, TwoColumnPageWrapperInternal, ResourcePublisherLink, ResourceSingleImageWrapper } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapperInternalDoc, ResourcePublisherLink, ResourceSingleImageWrapper } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
@@ -46,7 +46,7 @@ const ResourceImage = props => {
       <ResourceSingleImageWrapper>
         <ImageResource id={r.image} withCaption={false} />
       </ResourceSingleImageWrapper>
-      <TwoColumnPageWrapperInternal>
+      <TwoColumnPageWrapperInternalDoc>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -68,7 +68,7 @@ const ResourceImage = props => {
             }}
           />
         </div>
-      </TwoColumnPageWrapperInternal>
+      </TwoColumnPageWrapperInternalDoc>
       <RelatedResources border={true} ids={[r.id]} />
     </PageWrapperRes>
   )
