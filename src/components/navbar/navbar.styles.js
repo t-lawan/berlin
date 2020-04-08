@@ -87,10 +87,10 @@ export const NavItem = styled(AniLink)`
     padding-left:1em;
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.1em 0.75em 0.4em;
+    padding: 1.2em 0.75em 0.4em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.2em 0.75em 0.45em;
+    padding: 1.3em 0.75em 0.45em;
   }
 `
 
@@ -107,10 +107,10 @@ export const InactiveLink = styled.p`
     color: ${Color.red};
   } */
   @media (min-width: ${size.laptopM}) {
-    padding: 1.1em 0.75em 0.4em;
+    padding: 1.2em 0.75em 0.4em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.2em 0.75em 0.45em;
+    padding: 1.3em 0.75em 0.45em;
   }
 `
 
@@ -126,10 +126,10 @@ export const NavLink = styled.a`
     color: ${Color.red};
   }
   @media (min-width: ${size.laptopM}) {
-    padding: 1.1em 0.75em 0.4em;
+    padding: 1.2em 0.75em 0.4em;
   }
   @media (min-width: ${size.laptopL}) {
-    padding: 1.2em 0.75em 0.45em;
+    padding: 1.3em 0.75em 0.45em;
   }
 `
 
