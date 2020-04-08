@@ -59,8 +59,8 @@ class MainSection extends React.Component {
         (columnTwo.scrollTop + columnTwo.clientHeight) / columnTwo.scrollHeight
 
       if (
-        (columnOnePercent > 0.95 && columnOne.scrollTopMax !== 0) ||
-        (columnTwoPercent > 0.99 && columnTwo.scrollTopMax !== 0)
+        (columnOnePercent > 0.95 && columnOne.scrollTop !== 0) ||
+        (columnTwoPercent > 0.99 && columnTwo.scrollTop !== 0)
       ) {
         footer.classList.remove("hide-footer")
         footer.classList.add("show-footer")
@@ -130,7 +130,6 @@ class MainSection extends React.Component {
                 hideOnHomePage={!this.props.isHome}
                 hideInMobile={true}
                 exhibitionExperience={this.props.exhibitionExperience}
-                
               />
             </RelativeHeader>
             <StickyHeader hideInTablet={true}>
@@ -149,12 +148,11 @@ class MainSection extends React.Component {
               <DataPrivacy show={!this.props.agreed_to_terms} />
             </StickyFooter>
             {/* Only In Mobile */}
-            <FixedFooter showInTablet>
+            <FixedFooter isHome={this.props.isHome} showInTablet>
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}
           </ScrollNavContainer>
-          
         </Column>
         {/* Third Column */}
         {/* Only In Desktop */}
@@ -163,7 +161,7 @@ class MainSection extends React.Component {
               <Jumbotron />
             </StickyTopHeader> */}
           {this.props.thirdColumn}
-          <FixedTicker>
+          <FixedTicker hide={!this.props.isHome}>
             <Ticker />
           </FixedTicker>
           <StickyFooterWithHighZIndex>
@@ -191,7 +189,6 @@ MainSection.propTypes = {
   numberOfColumnsIsTwo: PropTypes.bool,
   isHome: PropTypes.bool,
 }
-
 
 const mapStateToProps = state => {
   return {

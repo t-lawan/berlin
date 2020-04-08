@@ -54,21 +54,24 @@ const NewsSubTitle = styled.h2`
   line-height: 1.4;
 `
 const NewsText = styled.div`
-> p > a {
-  font-size: 1em;
-  border-bottom: solid 1px;
-  border-color: ${Color.red};
-  transition: all 0.2s ease-in-out; 
-  :hover {
-    color: ${Color.red};
+  > p > a {
+    font-size: 1em;
+    border-bottom: solid 1px;
+    border-color: ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
   }
-}
-> p > span {
-  font-size: 1.0em;
-}
-margin-bottom: 4rem;
+  > p > span {
+    font-size: 1em;
+  }
+  margin-bottom: 4rem;
 `
 
+const NewsImageContainer = styled.div`
+  margin-bottom: 2rem;
+`
 const News = props => {
   const language = getCurrentLanguageString(props.languages)
   let item = Convert.toNewsModel(props.pageContext)
@@ -106,7 +109,9 @@ const News = props => {
 
         <div>
           {item.thumbnail_image ? (
-            <ImageResource id={item.thumbnail_image} withCaption={false} />
+            <NewsImageContainer>
+              <ImageResource id={item.thumbnail_image} withCaption={false} />
+            </NewsImageContainer>
           ) : null}
           <TextBlock>
             <NewsTitle
@@ -122,7 +127,7 @@ const News = props => {
                 }}
               />
             ) : null}
-          
+
             <NewsText
               dangerouslySetInnerHTML={{
                 __html: item[language].news_text,
