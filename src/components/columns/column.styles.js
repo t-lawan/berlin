@@ -16,7 +16,7 @@ export const ColumnLayout = styled.div`
   height: auto;
   padding-bottom: 2rem; 
   @media (min-width: ${size.laptopM}) {
-  padding-bottom: 7rem; 
+  padding-bottom: 0rem; 
       }
   @media (max-width: ${size.mobileL}) {
         padding-bottom: 0rem; 
