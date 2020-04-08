@@ -28,28 +28,29 @@ margin:0em 0 0em;
 export const DocTitle = styled.h1`
   padding-top: 0rem;
   margin-top: 0;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0rem;
+  margin-bottom: 1em;
   font-size: 1em;
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   line-height: 1.4;
 `
 export const DocSubTitle = styled.h2`
   padding-top: 0rem;
   padding-bottom: 0.5rem;
-  margin-top:-1.2em;
+  margin-top:-1.0em;
   margin-bottom:0.5em;
   font-size: 1em;
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
-    margin-top:-1.6em;
+    font-size: 1.05em;
+    margin-top:-1.0em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   line-height: 1.4;
 `

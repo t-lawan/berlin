@@ -2,7 +2,7 @@ import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
-import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
+import { PageWrapper, TwoColumnPageWrapperInternalDoc } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
@@ -35,9 +35,9 @@ const DocumentationImageGallery = props => {
     <PageWrapper>
       <DocumentationNavigator id={documentation.id}/>
       {image_gallery ? <ImageGalleryResource ids={image_gallery} /> : null }
-      <TwoColumnPageWrapper>
+      <TwoColumnPageWrapperInternalDoc>
         <div>
-          <MarginBottomText> {documentationContent[language].documentation}</MarginBottomText>
+          <NoMarginText> {documentationContent[language].documentation}</NoMarginText>
           <NoMarginText><em>
             {exhibitions[0][language].title}
             </em>
@@ -72,7 +72,7 @@ const DocumentationImageGallery = props => {
             }}
           />
         </MargTop>
-      </TwoColumnPageWrapper>
+      </TwoColumnPageWrapperInternalDoc>
     </PageWrapper>
   )
 }
