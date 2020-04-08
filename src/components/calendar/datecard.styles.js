@@ -18,19 +18,25 @@ export const DateCardWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 4fr;
-    padding-top:110px;
-    margin-top:-110px;
+    padding-top:92px;
+    margin-top:-92px;
     :last-child {
       padding-bottom:45px;
       border-bottom:none;
     }
   }
   @media (min-width: ${size.laptopM}) {
-    padding-top:111px;
-    margin-top:-111px;
+    padding-top:96px;
+    margin-top:-96px;
     :last-child {
       padding-bottom:70px;
-      border-bottom:none;
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding-top:106px;
+    margin-top:-106px;
+    :last-child {
+      padding-bottom:80px;
     }
   }
   @media (min-width: ${size.laptopL}) {
