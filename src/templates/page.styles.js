@@ -98,16 +98,17 @@ export const PageWrapper = styled.div`
       font-size: 1em;
     }
     @media (min-width: ${size.laptopM}) {
-      font-size: 1.1em;
+      font-size: 1.05em;
     }
     @media (min-width: ${size.laptopL}) {
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
   }
   @media (min-width: ${size.laptop}) {
       padding: 2.5em 1em 2em;
     }
   @media (min-width: ${size.laptopM}) {
+    padding: 2.6em 1em 2em;
     }
     @media (min-width: ${size.laptopL}) {
       padding: 3em 1.1em 2em;
@@ -237,10 +238,10 @@ export const PressWrapper = styled.div`
       line-height: 1.3;
     }
     @media (min-width: ${size.laptopM}) {
-      font-size: 1.1em;
+      font-size: 1.05em;
     }
     @media (min-width: ${size.laptopL}) {
-      font-size: 1.2em;
+      font-size: 1.1em;
       line-height: 1.35;
     }
     margin:0.5rem 0;
@@ -459,15 +460,18 @@ export const PageSubTitle = styled.h3`
     }
    }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
+    font-size: 1.0em;
     margin-top: 1.8em;
     margin-bottom: 0.7em;
     :first-child {
       margin-top: 0em;
     }
    }
+   @media (min-width: ${size.laptopM}) {
+    font-size: 1.05em;
+  }
   @media (min-width: ${size.laptopL}) {
-font-size: 1.2em;
+font-size: 1.1em;
 margin-top: 1.5em;
   }
 `
