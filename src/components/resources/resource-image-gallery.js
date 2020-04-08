@@ -2,7 +2,7 @@ import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
 import {
   PageWrapperRes,
-  TwoColumnPageWrapperInternal,
+  TwoColumnPageWrapperInternalDoc,
   ResourceImageWrapper
 } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
@@ -67,7 +67,7 @@ const ResourceImageGallery = props => {
       <ResourceImageWrapper>
         <ImageGalleryResource ids={r.image_gallery} />
       </ResourceImageWrapper>
-      <TwoColumnPageWrapperInternal>
+      <TwoColumnPageWrapperInternalDoc>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -86,7 +86,7 @@ const ResourceImageGallery = props => {
             }}
           />
         </div>
-      </TwoColumnPageWrapperInternal>
+      </TwoColumnPageWrapperInternalDoc>
       <RelatedResources border={true} ids={[r.id]} />
     </PageWrapperRes>
   )

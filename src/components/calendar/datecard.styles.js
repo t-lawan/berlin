@@ -29,14 +29,14 @@ export const DateCardWrapper = styled.div`
     padding-top:96px;
     margin-top:-96px;
     :last-child {
-      padding-bottom:70px;
+      padding-bottom:130px;
     }
   }
   @media (min-width: ${size.laptopL}) {
     padding-top:106px;
     margin-top:-106px;
     :last-child {
-      padding-bottom:80px;
+      padding-bottom:140px;
     }
   }
   @media (min-width: ${size.laptopL}) {
@@ -115,6 +115,9 @@ export const CurrentDate = styled.div`
   @media (max-width: ${size.mobileM}) {
     padding: 0.3em 0.5em;
   }
+  @media (min-width: ${size.laptopM}) {
+    padding: 0.45em 0.5em;
+  }
 `
 export const DateText = styled.strong`
   font-size: xx-large;
@@ -178,7 +181,7 @@ export const MonthHeading = styled.p`
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.85em;
-    padding: 0.3em 0.5em 0.3em;
+    padding: 0.33em 0.5em 0.33em;
   }
 `
 export const ClosedText = styled.p`
