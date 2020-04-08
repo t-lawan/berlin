@@ -65,6 +65,29 @@ export const TwoColumnPageWrapperInternal = styled.div`
   }  
   ${changeGridToOneRow}
 `
+export const TwoColumnPageWrapperInternalDoc = styled.div` 
+  padding: 0em 1em 2em;
+  display: grid;
+  grid-template-columns: 33fr 66fr;
+  grid-column-gap: 2em;
+  @media (min-width: ${size.mobileL}) {
+    grid-template-columns: 33fr 66fr;
+  } 
+  @media (min-width: ${size.laptop}) {
+    grid-template-columns: 3fr 7fr;
+    padding: 0em;
+    } 
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 3fr 7.2fr;
+    padding: 0em;
+    } 
+  @media (min-width: ${size.laptopL}) {
+    padding: 0em;
+    grid-template-columns: 2.9fr 7.0fr;
+    grid-column-gap: 2.3em;
+  }  
+  ${changeGridToOneRow}
+`
 export const PageWrapper = styled.div`
   padding: 2.0em 1em 2em;
   > div > p {

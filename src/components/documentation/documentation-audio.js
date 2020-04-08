@@ -9,7 +9,7 @@ import DocumentationNavigator from "./documentation-navigator";
 import styled from 'styled-components'
 import { documentationContent } from "./documentation-video";
 import striptags from "striptags"
-import { MarginBottomText, NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
+import { NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
 
 const AudioBlock = styled.div`
   padding: 0em !important;
@@ -35,7 +35,7 @@ const DocumentationAudio = props => {
       </AudioBlock>  
       <TwoColumnPageWrapperNoPad>
         <div>
-          <MarginBottomText> {documentationContent[language].documentation}</MarginBottomText>
+          <NoMarginText> {documentationContent[language].documentation}</NoMarginText>
           {/* <p style={NoMarg}>
             {" "}
             {documentationContent[language].language}:{" "}
