@@ -276,7 +276,7 @@ export const StickyFooter = styled.div`
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
     position: fixed;
-    bottom: 88px;
+    bottom: 95px;
     z-index: 999999;
   }
   @media (min-width: ${size.tablet}) {
@@ -320,7 +320,7 @@ export const FixedFooter = styled.div`
     grid-area: unset;
     position: relative;
     bottom: 0px;
-    padding-bottom: ${props => props.isHome ? '210px' : '60px'} ;
+    padding-bottom: ${props => props.isHome ? '210px' : '80px'} ;
   }
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
