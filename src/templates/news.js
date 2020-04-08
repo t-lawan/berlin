@@ -53,6 +53,9 @@ const NewsSubTitle = styled.h2`
   }
   line-height: 1.4;
 `
+const NewsDate = styled.p`
+line-height: 1;
+`
 const NewsText = styled.div`
   > p > a {
     font-size: 1em;
@@ -97,13 +100,13 @@ const News = props => {
         />
         <div>
           {item.display_date ? (
-            <p>
+            <NewsDate>
               {" "}
               {DateManager.createLongDateString(
                 item.display_date,
                 language.toLowerCase()
               )}{" "}
-            </p>
+            </NewsDate>
           ) : null}
         </div>
 

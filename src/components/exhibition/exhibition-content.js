@@ -14,8 +14,11 @@ const ExhibitionPageWrapper = styled.div`
   @media (max-width: ${size.tablet}) {
   padding: 0.7em 0.7em;
   }
+  @media (min-width: ${size.laptopM}) {
+  padding: 0.7em 1em 160px;
+  }
   @media (min-width: ${size.laptopL}) {
-  padding: 0.9em 1.2em 160px;
+  padding: 0.9em 1.2em 180px;
   }
   > div > p > a {
     border-bottom:solid thin rgb(217,81,92);
