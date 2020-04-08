@@ -211,7 +211,7 @@ a, span {
   padding: 0;
   transition: all 0.2s ease-in-out;
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
@@ -220,10 +220,10 @@ a, span {
     font-size: 1.0em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 }
 ::selection {
@@ -247,7 +247,7 @@ p {
   padding-top: 0;
   font-size: 1rem;
   @media (max-width: ${size.mobileM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height:1.4;
     > a {
       font-size:1em;
@@ -268,17 +268,17 @@ p {
     }
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height:1.4;
     > a {
-      font-size:1.1em;
+      font-size:1.05em;
     }
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height:1.45;
     > a {
-      font-size:1.2em;
+      font-size:1.1em;
     }
   }
 }
