@@ -13,6 +13,8 @@ export const ModalWrapper = styled.div`
   display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
     padding: 0.7em 0.7em;
+    width: 90%;
+    margin: 39px 5% 0px;
     > div > p {
       line-height: 1.3;
       font-size: 1em;
@@ -171,7 +173,7 @@ export const FormLabel = styled.label`
     }
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.4;
     > p {
       font-size: 1em;
@@ -181,7 +183,7 @@ export const FormLabel = styled.label`
     }
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.45;
     > a {
       font-size: 1.0em;

@@ -44,7 +44,7 @@ class NavbarMobile extends React.Component {
     },
     {
       EN: "support",
-      DE: "unterstutzung",
+      DE: "unterstützung",
       path: "support",
     },
   ]

@@ -46,10 +46,10 @@ const NewsItem = props => {
 
 const content = {
   EN: {
-    more: 'more'
+    more: 'More'
   },
   DE: {
-    more: 'mehr'
+    more: 'Mehr'
   },
 }
 
