@@ -1,6 +1,6 @@
 import React from "react"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { PageWrapperRes, TwoColumnPageWrapper, ResourcePublisherLink, ResourceSingleImageWrapper } from "../../templates/page.styles"
+import { PageWrapperRes, TwoColumnPageWrapperInternal, ResourcePublisherLink, ResourceSingleImageWrapper } from "../../templates/page.styles"
 import ResourceNavigator from "./resource-navigator"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
@@ -21,15 +21,15 @@ const ResourceTitle = styled.h1`
     margin-bottom: 0.5em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `
 const Author = styled.p`
-  margin-bottom: 1em;
-  margin-top: -0.3em;
+  margin-bottom: 0.9em;
+  margin-top: -0.5em;
 `
 const Year = styled.p`
   margin-bottom: 0em;
@@ -44,9 +44,9 @@ const ResourceImage = props => {
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
       <ResourceSingleImageWrapper>
-      <ImageResource id={r.image} withCaption={false} />
+        <ImageResource id={r.image} withCaption={false} />
       </ResourceSingleImageWrapper>
-      <TwoColumnPageWrapper>
+      <TwoColumnPageWrapperInternal>
         <div>
           <ResourceTitle
               dangerouslySetInnerHTML={{
@@ -68,7 +68,7 @@ const ResourceImage = props => {
             }}
           />
         </div>
-      </TwoColumnPageWrapper>
+      </TwoColumnPageWrapperInternal>
       <RelatedResources border={true} ids={[r.id]} />
     </PageWrapperRes>
   )
