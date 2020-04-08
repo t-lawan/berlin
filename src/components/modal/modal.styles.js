@@ -13,6 +13,8 @@ export const ModalWrapper = styled.div`
   display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
     padding: 0.7em 0.7em;
+    width: 90%;
+    margin: 39px 5% 0px;
     > div > p {
       line-height: 1.3;
       font-size: 1em;
