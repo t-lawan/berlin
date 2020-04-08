@@ -69,7 +69,7 @@ const NewsText = styled.div`
   > p > span {
     font-size: 1em;
   }
-  margin-bottom: 4rem;
+  margin-bottom: 8em;
 `
 
 const NewsImageContainer = styled.div`

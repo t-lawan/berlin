@@ -11,30 +11,30 @@ export const RelatedResourcesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  width:calc(100% - 1em);
-  margin-left:0.5em;
-  margin-bottom:2em;
-  margin-right:0.5em;
+  width: calc(100% - 1em);
+  margin-left: 0.5em;
+  margin-bottom: 2em;
+  margin-right: 0.5em;
   @media (max-width: ${size.mobileM}) {
-    /*background-color:#FFF;*/
-    margin-bottom:0em;
-    width:calc(100% - 0.7em);
-    margin-left:0.35em;
-    margin-right:0.35em;
-    padding-bottom:2em;
+    /*background-color: #FFF;*/
+    margin-bottom: 0em;
+    width: calc(100% - 0.7em);
+    margin-left: 0.35em;
+    margin-right: 0.35em;
+    padding-bottom: 2em;
   }
   @media (min-width: ${size.laptop}) {
-    margin-bottom:4em;
+    margin-bottom: 7em;
   }
   @media (min-width: ${size.laptopM}) {
-    margin-bottom:6em;
+    margin-bottom: 10em;
   }
 `
 
 const ResourceLink = styled(AniLink)`
   text-decoration: none;
   color: black;
-  margin-bottom:0.7em;
+  margin-bottom: 0.7em;
   position: relative;
   @media (max-width: ${size.mobileM}) {
   width:50%;
@@ -53,8 +53,8 @@ const ResourceLink = styled(AniLink)`
 const RelatedResource = styled.div`
   background: ${props => props.directlyRelated ? '#fbf95d' :  '#fbf95d'};
   min-height: 9em;
-  height:100%;
-  position:relative;
+  height: 100%;
+  position: relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em 0.35em 0 0.35em;
   :hover{
