@@ -134,12 +134,13 @@ export const DateText = styled.strong`
 `
 
 export const DateString = styled.p`
-  font-size: 0.95em;
+  font-size: 0.93em;
   text-transform:lowercase;
   margin:0;
-  line-height:1.2;
+  line-height:1.15;
   @media (max-width: ${size.mobileM}) {
     font-size: 0.85em;
+    line-height:1.2;
   }
   @media (max-width: ${size.mobileL}) {
     line-height:1.15;
@@ -170,8 +171,8 @@ export const MonthHeading = styled.p`
    padding: 0.25em 0.5em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 2em;
-    padding: 0.35em 0.5em 0.3em;
+    font-size: 1.85em;
+    padding: 0.3em 0.5em 0.3em;
   }
 `
 export const ClosedText = styled.p`
@@ -184,6 +185,6 @@ export const ClosedText = styled.p`
     margin: 0.5em 0.7em;
   }
   @media (min-width: ${size.laptop}) {
-    margin: 0.5em 1em;
+    margin: 0.35em 1em;
   }
 `
