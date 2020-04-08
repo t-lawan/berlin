@@ -450,44 +450,44 @@ export const PressReleaseFormError = styled.p`
 export const PageTitle = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
-  text-transform:lowercase;
-  display:none;
+  text-transform: lowercase;
+  display: none;
   @media (max-width: ${size.tabletL}) {
-    display:block;
+    display: block;
   }
   @media (min-width: ${size.mobileL}) {
-    font-size:1.2rem;
-    margin-bottom:1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 `
 export const PageTitleCalendar = styled.h1`
   font-size: 1.55em;
   margin: 0;
-  display:none;
+  display: none;
   @media (max-width: ${size.mobileL}) {
-    font-size:1.55rem;
-    margin-bottom:0 !important;
-    background:#FFF;
-    padding:0.3em 0.4em;
-    border-bottom:solid 1px #000;
-    width:100%;
-    top:0;
-    z-index:3;
-    position:sticky;
-    margin-bottom:1.0rem;
+    font-size: 1.55rem;
+    margin-bottom: 0 !important;
+    background: #FFF;
+    padding: 0.3em 0.4em;
+    border-bottom: solid 1px #000;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+    position: sticky;
+    margin-bottom: 1.0rem;
   }
   @media (max-width: ${size.mobileL}) {
     border-top: solid 0px #000;
   }
   @media (max-width: ${size.tabletL}) {
-    display:block;
-    position:sticky;
-    top:0;
-    background:#FFF;
-    z-index:3;
-    padding:0.3em 0.4em;
-    border-bottom:solid 1px #000;
-    width:100%;
+    display: block;
+    position: sticky;
+    top: 0;
+    background: #FFF;
+    z-index: 3;
+    padding: 0.3em 0.4em;
+    border-bottom: solid 1px #000;
+    width: 100%;
   }
 `
 export const PageSubTitle = styled.h3`
@@ -522,8 +522,8 @@ export const PageSubTitle = styled.h3`
     font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-font-size: 1.1em;
-margin-top: 1.5em;
+  font-size: 1.1em;
+  margin-top: 1.5em;
   }
 `
 
@@ -549,15 +549,15 @@ export const ResourcePublisherLink = styled.a`
 export const TextBlock = styled.div`
   > p {
     padding: 0;
-    line-height:1.4;
+    line-height: 1.4;
     margin: 0;
   }
   > p {
     @media (max-width: ${size.mobileM}) {
-    line-height:1.4;
+    line-height: 1.4;
     }
     @media (min-width: ${size.mobileL}) {
-      line-height:1.3;
+      line-height: 1.3;
     }
     @media (min-width: ${size.laptop}) {
       line-height:1.3;
@@ -586,24 +586,25 @@ export const TextBlockTwoColumnPage = styled.div`
   > p {
       @media (max-width: ${size.mobileM}) {
       line-height:1.4;
+      margin-top: 1em;
       }
       @media (min-width: ${size.mobileL}) {
-        line-height:1.3;
+        line-height: 1.3;
       }
       @media (min-width: ${size.laptop}) {
-        line-height:1.4;
+        line-height: 1.4;
       }
       @media (min-width: ${size.laptopM}) {
       }
       @media (min-width: ${size.laptopL}) {
-        line-height:1.45;
+        line-height: 1.45;
       }
     > a {
       font-size: 1em;
       border-bottom: solid thin;
-      border-color:${Color.red};
+      border-color: ${Color.red};
       :hover {
-      color:${Color.red} 
+      color: ${Color.red} 
       } 
     }
   }
@@ -618,27 +619,27 @@ export const TextBlockTwoColumnPage = styled.div`
 export const TextBlockSideBarPage = styled.div`
   > p {
     padding: 0;
-    line-height:1.4;
+    line-height: 1.4;
     margin: 0;
   }
   > a {
-      line-height:1.3;
+      line-height: 1.3;
     }
   > p {
     @media (max-width: ${size.mobileM}) {
-    line-height:1.4;
+    line-height: 1.4;
     }
     @media (min-width: ${size.mobileL}) {
-      line-height:1.3;
+      line-height: 1.3;
     }
     @media (min-width: ${size.laptop}) {
-      line-height:1.3;
+      line-height: 1.3;
     }
     @media (min-width: ${size.laptopM}) {
-      line-height:1.3;
+      line-height: 1.3;
     }
     @media (min-width: ${size.laptopL}) {
-      line-height:1.35;
+      line-height: 1.35;
     }
   }
   > h1,h2,h3,h4,h5,h6 {
