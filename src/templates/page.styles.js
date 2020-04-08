@@ -42,6 +42,11 @@ export const ImagesCont = styled.div`
     margin-bottom: 0.4em !important;
   }
 `
+export const FormText = styled.div` 
+  @media (min-width: ${size.laptop}) {
+    margin-top: -0.8em;
+  }
+`
 export const TwoColumnPageWrapperInternal = styled.div` 
   padding: 0em 1em 2em;
   display: grid;
