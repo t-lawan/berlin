@@ -25,10 +25,10 @@ const ResourceTitle = styled.h1`
     margin: 0em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `
 const Author = styled.p`
