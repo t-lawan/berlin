@@ -40,6 +40,15 @@ export const NavInner = styled.div`
   width: 100%;
   background: white;
   border-bottom: 1px solid black;
+  @media (min-width: ${size.laptop}) {
+    height: 46px;
+  }
+  @media (min-width: ${size.laptopM}) {
+    height: 48px;
+  }
+  @media (min-width: ${size.laptopL}) {
+    height: 53px;
+  }
 `
 
 export const NavMobileInner = styled.div`

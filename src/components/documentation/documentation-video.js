@@ -7,7 +7,7 @@ import styled from "styled-components"
 import DocumentationNavigator from "./documentation-navigator";
 import { size } from "../../index.styles"
 import striptags from "striptags"
-import { NoMarginText, MarginBottomText, DocDesc, DocTitle, DocSubTitle  } from "./documentation.styles";
+import { NoMarginText, DocDesc, DocTitle, DocSubTitle  } from "./documentation.styles";
 
 
 const VideoContainer = styled.div`
@@ -51,7 +51,7 @@ const DocumentationVideo = props => {
       />
       <TwoColumnPageWrapperNoPad>
         <div>
-          <MarginBottomText> {documentationContent[language].documentation} </MarginBottomText>
+          <NoMarginText> {documentationContent[language].documentation} </NoMarginText>
           {/* <p style={NoMarg}> {documentationContent[language].language}: {documentationContent[language][props.documentation.language]} </p> */}
           <NoMarginText><em>
             {exhibitions[0][language].title}

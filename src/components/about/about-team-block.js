@@ -19,6 +19,9 @@ const PaddedSection = styled(Section)`
       @media (min-width: ${size.laptopM}) {
         font-size: 1.05em;
       }
+      @media (min-width: ${size.laptopL}) {
+        font-size: 1.1em;
+      }
       line-height: 1.4;
     }
   }

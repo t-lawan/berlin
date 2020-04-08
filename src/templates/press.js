@@ -14,6 +14,7 @@ import {
   PageTitle,
   PageSubTitle,
   ImagesCont,
+  FormText,
 } from "./page.styles"
 import { getDocument } from "../store/selector"
 import PressForm from "../components/forms/press-form"
@@ -107,7 +108,7 @@ class Press extends React.Component {
           ))}
 
           <ImagesCont><p> {content[this.language].images} </p></ImagesCont>
-          <div
+          <FormText
             dangerouslySetInnerHTML={{
               __html: this.pressInfo.acf[this.language].images_note,
             }}
