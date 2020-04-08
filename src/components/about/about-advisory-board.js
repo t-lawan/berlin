@@ -16,7 +16,7 @@ padding-bottom: 0px !important;
       line-height:1.4 !important;
     }
     @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     }
 }
 :nth-of-type(2) {
