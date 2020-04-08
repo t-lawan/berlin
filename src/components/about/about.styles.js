@@ -107,7 +107,7 @@ export const AboutTeamSectionHeader = styled.p`
 
 export const AboutCorporateImageItem = styled.section`
   /* padding: 1em; */
-  width: 30%;
+  width: 20%;
   @media (min-width: ${size.laptop}) {
   width: 15%;
   max-width: 80px;
@@ -115,9 +115,10 @@ export const AboutCorporateImageItem = styled.section`
 `
 
 export const AboutPrimaryImageContainer = styled(AboutCorporateImageItem)`
-  width: 50%;
-  @media (min-width: ${size.laptop}) {
   width: 40%;
+  max-width: 130px;
+  @media (min-width: ${size.laptop}) {
+  width: 30%;
   max-width: 200px;
   }
 `
