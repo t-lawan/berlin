@@ -6,20 +6,19 @@ import styled from "styled-components"
 import { size } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
-import striptags from "striptags"
-
+import striptags from 'striptags'
 export const GalleryImage = styled(Img)`
   picture img {
     object-fit: contain;
   }
 `
 export const Image = styled(Img)`
-  max-height: ${props => props.isGallery ? "650px !important" : ""};
+  max-height: ${props => (props.isGallery ? "650px !important" : "")};
   /* padding-bottom: 5rem !important; */
   > picture > img {
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
-    max-height: ${props => props.isGallery ? "650px !important" : ""};
+    max-height: ${props => (props.isGallery ? "650px !important" : "")};
     display: block;
     margin: 0 auto;
     /* width: auto !important; */
@@ -99,28 +98,32 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        <Image
-          isLandscape={isLandscape}
-          alt={
-            this.state.image && this.state.image.EN.caption
-              ? striptags(this.state.image[this.language].caption)
-              : ""
-          }
-          isGallery={this.props.isGallery}
-          withCaption={this.props.withCaption}
-          fadeIn={true}
-          onLoad={this.props.onLoad}
-          fluid={this.state.image ? this.state.image.fluid : null}
-        />
-        <Caption
-          hidden={!this.props.withCaption}
-          isGallery={this.props.isGallery}
-          dangerouslySetInnerHTML={{
-            __html: this.state.image
-              ? this.state.image[this.language].caption
-              : "",
-          }}
-        />
+        {this.state.image ? (
+          <>
+            <Image
+              isLandscape={isLandscape}
+              alt={
+                this.state.image && this.state.image.EN.caption
+                  ? striptags(this.state.image[this.language].caption)
+                  : ""
+              }
+              isGallery={this.props.isGallery}
+              withCaption={this.props.withCaption}
+              fadeIn={true}
+              onLoad={this.props.onLoad}
+              fluid={this.state.image ? this.state.image.fluid : null}
+            />
+            <Caption
+              hidden={!this.props.withCaption}
+              isGallery={this.props.isGallery}
+              dangerouslySetInnerHTML={{
+                __html: this.state.image
+                  ? this.state.image[this.language].caption
+                  : "",
+              }}
+            />{" "}
+          </>
+        ) : null}
       </>
     )
   }
