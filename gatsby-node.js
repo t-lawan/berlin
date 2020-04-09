@@ -502,7 +502,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressWpResources,
     allWordpressWpDocumentation,
     allWordpressWpNews,
-    allWordpressWpPublications
+    // allWordpressWpPublications,
   } = result.data
 
   const pageTemplate = path.resolve(`./src/templates/page.js`)
@@ -586,7 +586,7 @@ exports.createPages = async ({ graphql, actions }) => {
         })
 
         let endPath = pageMap.find(pageType => {
-          return pageType.EN === slug;
+          return pageType.EN === slug
         })
         path =
           language === "en"
@@ -601,23 +601,32 @@ exports.createPages = async ({ graphql, actions }) => {
         if (edge.node.acf.template === "calendar") {
           path = language === "en" ? "/calendar" : "/de/kalender"
         } else {
-
-          if(edge.node.slug === "data-privacy") {
-            path = language === "en" ? "/data-privacy" : "/datenschutz";
-          } else {
-            if(edge.node.slug === "imprint") {
-              path = language === "en" ? "/imprint" : "/impressum";
-            } else {
+          let p
+          switch (edge.node.slug) {
+            case "data-privacy":
+              p = pageMap.find(page => {
+                return page.EN === edge.node.slug
+              })
+              path = language === "en" ? "/data-privacy" : "/datenschutz"
+              break
+            case "imprint":
+              path = language === "en" ? "/imprint" : "/impressum"
+              break
+            case "practical-information":
               path =
-              language === "en"
-                ? `/${edge.node.slug}`
-                : `/${language}/${edge.node.slug}`
-            }
+                language === "en"
+                  ? "/practical-information"
+                  : "/praktische-information"
+              break
+            default:
+              path =
+                language === "en"
+                  ? `/${edge.node.slug}`
+                  : `/${language}/${edge.node.slug}`
+                  break
           }
-
         }
       }
-
 
       createPage({
         path: path,
@@ -780,7 +789,7 @@ exports.createPages = async ({ graphql, actions }) => {
   //   })
   // })
 
-  const currentTemplate = path.resolve("./src/templates/current.js");
+  const currentTemplate = path.resolve("./src/templates/current.js")
   languages.forEach(language => {
     let prePath = pageMap.find(pageType => {
       return pageType.EN === "current"
@@ -795,7 +804,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const mediaTemplate = path.resolve("./src/templates/media.js");
+  const mediaTemplate = path.resolve("./src/templates/media.js")
   languages.forEach(language => {
     let prePath = pageMap.find(pageType => {
       return pageType.EN === "media"
