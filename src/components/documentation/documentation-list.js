@@ -7,10 +7,6 @@ import {
 } from "../../utility/helper"
 import { Color } from "../../index.styles"
 import { Link } from "gatsby"
-import { getItem } from "../../store/selector"
-import { DateManager } from "../../utility/date"
-import striptags from "striptags"
-import { UpcomingEventsContent } from "../events/upcomingevents";
 import { startTransition } from "../../store/action";
 
 const DocumentationListWrapper = styled.div`
