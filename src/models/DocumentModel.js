@@ -24,6 +24,9 @@ const getType = mime_type => {
     case "image/png":
       type = DocumentType.image
       break
+    case "image/svg+xml":
+      type = DocumentType.image
+      break
     case "image/gif":
       type = DocumentType.image
       break
