@@ -29,6 +29,19 @@ const slash = require(`slash`)
 //   `
 //   createTypes(typeDefs)
 // }
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type wordpress__wp_exhibitionsAcfEN {
+      promotional_sticker_for_homepage: Int
+    }
+
+    type wordpress__wp_exhibitionsAcfDE {
+      promotional_sticker_for_homepage: Int
+    }
+  `
+  createTypes(typeDefs)
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -443,50 +456,6 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-      allWordpressWpPublications {
-        edges {
-          node {
-            wordpress_id
-            slug
-            acf {
-              DE {
-                biennale_context_note
-                description
-                contributors
-                design
-                editor
-                format
-                language
-                order_link
-                price
-                publication_thumbnail
-                publisher
-                subtitle
-                title
-              }
-              EN {
-                biennale_context_note
-                contributors
-                description
-                design
-                editor
-                format
-                language
-                order_link
-                price
-                publication_thumbnail
-                publisher
-                subtitle
-                title
-              }
-              dimensions
-              exp_number
-              isbn
-              page_count
-            }
-          }
-        }
-      }
       allWordpressWpVenue {
         edges {
           node {
@@ -794,22 +763,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const publicationsTemplate = path.resolve("./src/templates/publications.js")
 
-  allWordpressWpPublications.edges.forEach(edge => {
-    let prePath = pageMap.find(pageType => {
-      return pageType.EN === "publication"
-    })
-    languages.forEach(language => {
-      let path =
-        language === "en"
-          ? `/${prePath.EN}/${edge.node.slug}`
-          : `/${language}/${prePath.DE}/${edge.node.slug}`
-      createPage({
-        path: path,
-        component: slash(publicationsTemplate),
-        context: { ...edge.node, language: language },
-      })
-    })
-  })
+  // allWordpressWpPublications.edges.forEach(edge => {
+  //   let prePath = pageMap.find(pageType => {
+  //     return pageType.EN === "publication"
+  //   })
+  //   languages.forEach(language => {
+  //     let path =
+  //       language === "en"
+  //         ? `/${prePath.EN}/${edge.node.slug}`
+  //         : `/${language}/${prePath.DE}/${edge.node.slug}`
+  //     createPage({
+  //       path: path,
+  //       component: slash(publicationsTemplate),
+  //       context: { ...edge.node, language: language },
+  //     })
+  //   })
+  // })
 
   const currentTemplate = path.resolve("./src/templates/current.js");
   languages.forEach(language => {

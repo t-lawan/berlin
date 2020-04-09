@@ -72,7 +72,7 @@ class ImageResource extends React.Component {
     }
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     this.setState({
       image: getDocument(this.props.documents, this.props.id),
     })
@@ -95,7 +95,6 @@ class ImageResource extends React.Component {
     if (this.state.image) {
       isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
     }
-
     return (
       <>
         {this.state.image ? (
@@ -111,7 +110,7 @@ class ImageResource extends React.Component {
               withCaption={this.props.withCaption}
               fadeIn={true}
               onLoad={this.props.onLoad}
-              fluid={this.state.image ? this.state.image.fluid : null}
+              fluid={this.state.image.fluid}
             />
             <Caption
               hidden={!this.props.withCaption}
