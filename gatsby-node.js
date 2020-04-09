@@ -607,16 +607,16 @@ exports.createPages = async ({ graphql, actions }) => {
               p = pageMap.find(page => {
                 return page.EN === edge.node.slug
               })
-              path = language === "en" ? "/data-privacy" : "/datenschutz"
+              path = language === "en" ? "/data-privacy" : "/de/datenschutz"
               break
             case "imprint":
-              path = language === "en" ? "/imprint" : "/impressum"
+              path = language === "en" ? "/imprint" : "/de/impressum"
               break
             case "practical-information":
               path =
                 language === "en"
                   ? "/practical-information"
-                  : "/praktische-information"
+                  : "/de/praktische-information"
               break
             default:
               path =
