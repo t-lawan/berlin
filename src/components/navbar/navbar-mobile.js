@@ -78,11 +78,11 @@ class NavbarMobile extends React.Component {
         <NavMobileHeader>
           <div onClick={() => this.toggleContent(false)}>
             <NavIconSVG
-              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk.svg"
+              src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk.svg"
               show={this.state.showContent ? 0 : 1}
             />
             <NavIconSVG
-              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk_close.svg"
+              src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/hamburger_menu_mob_blk_close.svg"
               show={this.state.showContent ? 1 : 0}
             />
           </div>
@@ -97,7 +97,7 @@ class NavbarMobile extends React.Component {
               fade
               to={createPath(this.language, "")}
             >
-              <NavImage src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
+              <NavImage src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
             </NavImageLink>
           </div>
           <div>

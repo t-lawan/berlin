@@ -11,9 +11,9 @@ import "../assets/carousel.css"
 import { Carousel } from "react-responsive-carousel"
 
 const leftArrow =
-  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
+  "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
 const rightArrow =
-  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_next.png"
+  "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_next.png"
 export const NavigatingButton = styled.div`
   opacity: ${props => (props.show ? "1" : "0.2")};
   color: black;
