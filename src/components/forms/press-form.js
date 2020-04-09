@@ -43,7 +43,7 @@ class PressForm extends React.Component {
 
   sendPostRequest = async () => {
     const url =
-      "https://11.berlinbiennale.de/wp-json/contact-form-7/v1/contact-forms/444/feedback"
+      "https://admin11.berlinbiennale.de/wp-json/contact-form-7/v1/contact-forms/444/feedback"
 
     let formData = new FormData();
     formData.set('address-email', this.state.email);
