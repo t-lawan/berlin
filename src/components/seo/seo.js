@@ -60,7 +60,7 @@ function SEO({ description, lang, meta, title, image, pathname }) {
           content: title,
         },
         {
-          name: `og:image`,
+          property: `og:image`,
           content: `${defaultImage}`,
         },
         {
