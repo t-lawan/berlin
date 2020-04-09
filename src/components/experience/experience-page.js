@@ -186,30 +186,30 @@ class ExperiencePage extends React.Component {
     {
       id: 1,
       url:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_2.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_2.svg",
       urlmob:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_2.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_2.svg",
     },
     {
       id: 2,
       url:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_3.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_3.svg",
       urlmob:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_3.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_3.svg",
     },
     {
       id: 3,
       url:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_4.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_4.svg",
       urlmob:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_4.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_4.svg",
     },
     {
       id: 4,
       url:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_5.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_5.svg",
       urlmob:
-        "https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_5.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_5.svg",
     },
   ]
 
@@ -229,13 +229,13 @@ class ExperiencePage extends React.Component {
         <TopRow>
           <CloseImage
             onClick={this.closeExperiencePage}
-            src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
+            src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
           />
         </TopRow>
 
         <ExperienceImagesContainer>
-          <ExperienceImage hideInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
-          <ExperienceImageMob showInTablet={true} src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
+          <ExperienceImage hideInTablet={true} src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/vorschaltseite_animiert_1.svg" />
+          <ExperienceImageMob showInTablet={true} src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/smartphone_en_1.svg" />
           {this.experiences.map((experience, index) => (
             <React.Fragment key={index}>
             <ExperienceImage hideInTablet={true} src={experience.url} />
