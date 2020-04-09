@@ -7,13 +7,21 @@ const Logo = props => {
   let experience = props.experience
   let exhibition = props.exhibitions.filter(ex => {
     return ex.experience == experience
-  })[0];
-  let image = getDocument(props.documents, exhibition.animation);
-
+  })[0]
+  let image = getDocument(props.documents, exhibition.animation)
   return (
-    <LogoWrapper style={{ backgroundImage:`url(${image.url})`,backgroundSize: 'contain', backgroundPosition:'center', backgroundRepeat:'no-repeat'}}>
-      
-    </LogoWrapper>
+    <>
+      {image ? (
+        <LogoWrapper
+          style={{
+            backgroundImage: `url(${image.url})`,
+            backgroundSize: "contain",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        ></LogoWrapper>
+      ) : null}
+    </>
   )
 }
 
@@ -26,7 +34,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Logo)
+export default connect(mapStateToProps, null)(Logo)
