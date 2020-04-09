@@ -24,6 +24,9 @@ const getType = mime_type => {
     case "image/png":
       type = DocumentType.image
       break
+    case "image/gif":
+      type = DocumentType.image
+      break
     case "application/pdf":
       type = DocumentType.pdf
       break
@@ -43,6 +46,6 @@ const DocumentType = {
   image: "image",
   pdf: "pdf",
   audio: "audio",
-  "zip": "zip",
+  zip: "zip",
   unknown: "unknown",
 }
