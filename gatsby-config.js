@@ -117,7 +117,7 @@ module.exports = {
           "**/events",
           "**/venue",
           "**/participants",
-          "**/publications",
+          // "**/publications",
           "**/exhibitions",
           "**/menus",
           "**/resources",
