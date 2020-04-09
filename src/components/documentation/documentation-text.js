@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 import { PageWrapper, TwoColumnPageWrapper } from "../../templates/page.styles"
 import DocumentationNavigator from "./documentation-navigator";
 import { documentationContent } from "./documentation-video";
-import { NoMarginText, DocDesc } from "./documentation.styles";
+import { NoMarginText } from "./documentation.styles";
 
 const DocumentationText = props => {
   let language = getCurrentLanguageString(props.languages)
