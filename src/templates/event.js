@@ -88,10 +88,10 @@ const EventSubTitle = styled.h2`
   margin-bottom:0.5em;
   font-size: 1em;
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
   line-height: 1.4;
   ${hideDisplayForMobile};
