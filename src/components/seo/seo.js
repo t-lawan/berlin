@@ -44,6 +44,10 @@ function SEO({ description, lang, meta, title, image, pathname }) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: `${defaultImage}`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -58,10 +62,6 @@ function SEO({ description, lang, meta, title, image, pathname }) {
         {
           name: `twitter:title`,
           content: title,
-        },
-        {
-          property: `og:image`,
-          content: `${defaultImage}`,
         },
         {
           name: `twitter:description`,
