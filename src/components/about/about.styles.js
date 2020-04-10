@@ -91,6 +91,9 @@ export const AboutImageBlock = styled.section`
     padding: 0;
     margin: 0;
     /* flex-direction: row; */
+    @media (min-width: ${size.laptopM}) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
 `
 
 export const AboutPartnerImage = styled(ImageResource)`
@@ -109,8 +112,8 @@ export const AboutCorporateImageItem = styled.section`
   /* padding: 1em; */
   width: 20%;
   @media (min-width: ${size.laptop}) {
-  width: 15%;
-  max-width: 80px;
+  width: 20%;
+  max-width: 90px;
   }
 `
 
@@ -118,7 +121,7 @@ export const AboutPrimaryImageContainer = styled(AboutCorporateImageItem)`
   width: 40%;
   max-width: 130px;
   @media (min-width: ${size.laptop}) {
-  width: 30%;
-  max-width: 200px;
+  width: 40%;
+  max-width: 235px;
   }
 `
