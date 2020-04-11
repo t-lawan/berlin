@@ -36,12 +36,6 @@ const DocumentationTextBox = styled.div`
     color: ${Color.red};
   }
 `
-const DocTitle = styled.div`
-  font-size: 1em;
-  margin: 0em;
-  line-height: 1.2;
-  transition: all 0.2s ease-in-out;
-`
 
 let content = {
   EN: {

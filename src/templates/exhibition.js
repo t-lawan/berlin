@@ -12,23 +12,21 @@ import ExhibitionContent from "../components/exhibition/exhibition-content"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { isViewing } from "../store/action"
-import { getDocument } from "../store/selector"
 
 const Exhibition = props => {
-  const exhibition = Convert.toExhibitionModel(props.pageContext)
-  let description = exhibition[props.pageContext.language.toUpperCase()]
+  const exhibitionModel = Convert.toExhibitionModel(props.pageContext)
+  let description = exhibitionModel[props.pageContext.language.toUpperCase()]
     ? truncateText(
         striptags(
-          exhibition[props.pageContext.language.toUpperCase()].description
+          exhibitionModel[props.pageContext.language.toUpperCase()].description
         )
       )
     : ""
-  let title = exhibition[props.pageContext.language.toUpperCase()]
+  let title = exhibitionModel[props.pageContext.language.toUpperCase()]
     ? truncateText(
-        striptags(exhibition[props.pageContext.language.toUpperCase()].title)
+        striptags(exhibitionModel[props.pageContext.language.toUpperCase()].title)
       )
     : ""
-  let image = getDocument(props.documents, exhibition.floor_plan)
   let path = pageMap.find(pg => {
     return pg["EN"] == "exhibition"
   })
@@ -39,12 +37,12 @@ const Exhibition = props => {
         title={title}
         description={description}
         lang={props.pageContext.language}
-        image={image ? image.url : null}
+        image={exhibitionModel.floor_plan}
         pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-          exhibition.slug
+          exhibitionModel.slug
         }`}
       />
-      <ExhibitionContent exhibition={exhibition} />
+      <ExhibitionContent exhibition={exhibitionModel} />
     </>
   )
 
@@ -62,7 +60,7 @@ const Exhibition = props => {
       numberOfColumnsIsTwo={false}
       thirdColumn={thirdColumn}
       isHome={true}
-      experience={exhibition.experience}
+      experience={exhibitionModel.experience}
     />
   )
 }
