@@ -14,7 +14,6 @@ import ResourceText from "../components/resources/resource-text"
 import ResourceAudio from "../components/resources/resource-audio";
 import NewsList from "../components/news/newslist";
 import ResourceVideo from "../components/resources/resource-video";
-import { getDocument } from "../store/selector";
 
 const Resource = props => {
   const resourceInfo = props.pageContext
@@ -24,7 +23,6 @@ const Resource = props => {
   let path = pageMap.find((pg) => {
     return pg["EN"] == "resource"
   })
-
 
   switch (r.type) {
     case "image":
@@ -61,12 +59,6 @@ const Resource = props => {
       <UpcomingEvents />
     </>
   )
-
-  let imageUrl;
-  if(r.thumbnail_image) {
-    let image = getDocument(props.documents, r.thumbnail_image)
-    imageUrl = image ? image.url : undefined;
-  }
 
   return (
     <>

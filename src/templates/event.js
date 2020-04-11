@@ -230,8 +230,6 @@ const Event = props => {
     )
   )
 
-  let image = getDocument(props.documents, event.thumbnail_image);
-
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />

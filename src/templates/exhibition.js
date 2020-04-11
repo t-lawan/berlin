@@ -12,7 +12,6 @@ import ExhibitionContent from "../components/exhibition/exhibition-content"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import { isViewing } from "../store/action"
-import { getDocument } from "../store/selector"
 
 const Exhibition = props => {
   const exhibitionModel = Convert.toExhibitionModel(props.pageContext)

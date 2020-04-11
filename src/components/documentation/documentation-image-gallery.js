@@ -9,7 +9,7 @@ import { documentationContent } from "./documentation-video";
 import { size } from "../../index.styles"
 import styled from 'styled-components';
 import striptags from "striptags"
-import { MarginBottomText, NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
+import { NoMarginText, DocDesc, DocTitle, DocSubTitle } from "./documentation.styles";
 const MargTop = styled.div`
 margin:0em 0 0em;
 @media (max-width: ${size.mobileM}) {
