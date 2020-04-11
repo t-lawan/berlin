@@ -240,7 +240,7 @@ const Event = props => {
           title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
-          image={image? image.url: null}
+          image={event.thumbnail_image}
           pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
         />
         <EventColumn>

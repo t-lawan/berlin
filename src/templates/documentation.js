@@ -49,7 +49,7 @@ const Documentation = props => {
 
   return (
     <>
-      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={image ? image.url : null} />
+      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={documentationObject.thumbnail} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}

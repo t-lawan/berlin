@@ -75,7 +75,7 @@ const Resource = props => {
         description={`${resourceInfo.acf.title}`}
         lang={resourceInfo.language}
         pathname={`${path[resourceInfo.language.toUpperCase()]}/${r.slug}`}
-        image={imageUrl}
+        image={r.thumbnail_image}
 
       />
       <Layout
