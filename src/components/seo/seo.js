@@ -23,6 +23,10 @@ function SEO({ description, lang, meta, title, image, pathname }) {
                 wordpress_id
                 media_type
                 source_url
+                media_details {
+                  height
+                  width
+                }
               }
             }
           }
@@ -30,7 +34,7 @@ function SEO({ description, lang, meta, title, image, pathname }) {
       `
     )
     // Find the image that matches the image ID
-    imageData = allWordpressWpMedia.edges.find((media) => {
+    imageData = allWordpressWpMedia.edges.find(media => {
       return media.node.wordpress_id === image
     })
   }
@@ -43,11 +47,16 @@ function SEO({ description, lang, meta, title, image, pathname }) {
   const siteUrl = "https://11.berlinbiennale.de"
 
   // Set default image
-  let defaultImage = "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg"
+  let defaultImage =
+    "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg"
+  let imageHeight = 433
+  let imageWidth = 826
   // If the imageData was found set the correct url
-    if(imageData) {
-      defaultImage = imageData.node.source_url;
-    }
+  if (imageData) {
+    defaultImage = imageData.node.source_url
+    imageHeight = imageData.node.media_details.height;
+    imageWidth = imageData.node.media_details.width;
+  }
   let titleHeading =
     lang === "en"
       ? "11th Berlin Biennale for Contemporary Art"
@@ -77,6 +86,14 @@ function SEO({ description, lang, meta, title, image, pathname }) {
           content: `${defaultImage}`,
         },
         {
+          property: `og:image:width`,
+          content: `${imageWidth}`,
+        },
+        {
+          property: `og:image:height`,
+          content: `${imageHeight}`,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -100,20 +117,6 @@ function SEO({ description, lang, meta, title, image, pathname }) {
     />
   )
 }
-
-// export const query = graphql`
-//   query {
-//     allWordpressWpMedia(filter: { media_type: { eq: "image" } }) {
-//       edges {
-//         node {
-//           wordpress_id
-//           media_type
-//           source_url
-//         }
-//       }
-//     }
-//   }
-// `
 
 SEO.defaultProps = {
   lang: `en`,
