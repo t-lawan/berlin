@@ -20,9 +20,7 @@ const Documentation = props => {
   let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].social_media_description)) : "";
   let path = pageMap.find((pg) => {
     return pg["EN"] == "documentation"
-  })  
-
-  let image = getDocument(props.documents, documentationObject.thumbnail)
+  })
 
   let thirdColumn = (
     <>
@@ -49,7 +47,7 @@ const Documentation = props => {
 
   return (
     <>
-      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={image ? image.url : null} />
+      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={documentationObject.thumbnail} />
       <Layout
         firstColumn={renderComponent}
         numberOfColumnsIsTwo={false}

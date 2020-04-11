@@ -230,8 +230,6 @@ const Event = props => {
     )
   )
 
-  let image = getDocument(props.documents, event.thumbnail_image);
-
   const renderComponent = (
     <>
       <EventNavigator id={event.id} />
@@ -240,7 +238,7 @@ const Event = props => {
           title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
-          image={image? image.url: null}
+          image={event.thumbnail_image}
           pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
         />
         <EventColumn>
