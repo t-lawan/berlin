@@ -63,8 +63,9 @@ const DocumentationList = props => {
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}
           onClick={() => props.startTransition()}
+          key={index}
         >
-          <DocumentationItem key={index}>
+          <DocumentationItem>
             <p> {content[language][doc.type]} </p>
             <DocumentationTextBox>
               <div

@@ -70,6 +70,10 @@ function SEO({ description, lang, meta, title, image, pathname }) {
       title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
       meta={[
         {
+          rel: 'canonical',
+          href: `${siteUrl}/${lang === "en" ? "" : "de/"}${pathname || ""}`
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
