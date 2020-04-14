@@ -612,6 +612,9 @@ exports.createPages = async ({ graphql, actions }) => {
             case "imprint":
               path = language === "en" ? "/imprint" : "/de/impressum"
               break
+            case "press":
+              path = language === "en" ? "/press" : "/de/presse"
+              break
             case "practical-information":
               path =
                 language === "en"
@@ -623,7 +626,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 language === "en"
                   ? `/${edge.node.slug}`
                   : `/${language}/${edge.node.slug}`
-                  break
+              break
           }
         }
       }
