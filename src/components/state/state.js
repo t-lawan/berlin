@@ -158,6 +158,7 @@ const State = props => {
                     subtitle
                     title
                     social_media_description
+                    document_type_label
                   }
                   EN {
                     description
@@ -165,6 +166,7 @@ const State = props => {
                     subtitle
                     title
                     social_media_description
+                    document_type_label
                   }
                   documentation_type
                   event_relation {
@@ -185,6 +187,8 @@ const State = props => {
                     media_type
                   }
                   thumbnail_image
+                  documentation_not_attached_to_event
+                  unlist_document_on_media_overview
                 }
               }
             }
