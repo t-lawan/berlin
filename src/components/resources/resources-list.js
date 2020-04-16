@@ -142,7 +142,7 @@ const ResourcesList = props => {
       case "imagegallery":
         renderComponent = (
           <ResourceItemLink
-            to={createPath(language, `resource/${resource.slug}`)}
+            to={createPath(language, `resources/${resource.slug}`)}
             key={index}
             onClick={() => props.startTransition()}
           >
@@ -160,7 +160,7 @@ const ResourcesList = props => {
       case "text":
         renderComponent = (
           <ResourceItemLink
-            to={createPath(language, `resource/${resource.slug}`)}
+            to={createPath(language, `resources/${resource.slug}`)}
             key={index}
             onClick={() => props.startTransition()}
           >
@@ -178,7 +178,7 @@ const ResourcesList = props => {
       case "image":
         renderComponent = (
           <ResourceItemLink
-            to={createPath(language, `resource/${resource.slug}`)}
+            to={createPath(language, `resources/${resource.slug}`)}
             key={index}
             onClick={() => props.startTransition()}
           >
@@ -193,7 +193,7 @@ const ResourcesList = props => {
       case "mp3":
         renderComponent = (
           <ResourceItemLink
-            to={createPath(language, `resource/${resource.slug}`)}
+            to={createPath(language, `resources/${resource.slug}`)}
             key={index}
             onClick={() => props.startTransition()}
           >
@@ -211,7 +211,7 @@ const ResourcesList = props => {
       default:
         renderComponent = (
           <ResourceItemLink
-            to={createPath(language, `resource/${resource.slug}`)}
+            to={createPath(language, `resources/${resource.slug}`)}
             key={index}
             onClick={() => props.startTransition()}
           >
