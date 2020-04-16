@@ -86,9 +86,14 @@ export class Convert {
     )
   }
   static toEventModel = wordpressModel => {
-    const venue = wordpressModel.acf.event_venue_selection.map(venue => {
-      return venue.wordpress_id
-    })
+    let venue;
+
+    if(wordpressModel.acf.event_venue_selection) {
+      venue = wordpressModel.acf.event_venue_selection.map(venue => {
+        return venue.wordpress_id
+      })
+    }
+
 
     let documentation
 
