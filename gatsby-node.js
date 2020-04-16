@@ -521,7 +521,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "organization-2", DE: "verein" },
     { EN: "advisory-board", DE: "beirat" },
     { EN: "support", DE: "unterstutzung" },
-    { EN: "resource", DE: "resource" },
+    { EN: "resources", DE: "resources" },
     { EN: "exhibition", DE: "austellung" },
     { EN: "venue", DE: "ort" },
     { EN: "documentation", DE: "dokumentation" },
@@ -701,7 +701,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allWordpressWpResources.edges.forEach(edge => {
     let prePath = pageMap.find(pageType => {
-      return pageType.EN === "resource"
+      return pageType.EN === "resources"
     })
     languages.forEach(language => {
       let path =
