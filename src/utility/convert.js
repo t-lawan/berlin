@@ -63,7 +63,8 @@ export class Convert {
       wordpressModel.acf.video,
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.thumbnail_image,
-
+      !wordpressModel.acf.documentation_not_attached_to_event,
+      !wordpressModel.acf.unlist_document_on_media_overview,
     )
   }
 
