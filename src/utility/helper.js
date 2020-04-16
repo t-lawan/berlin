@@ -29,7 +29,7 @@ export  const pageMap = [
   { EN: "about/organization-2", DE: "uber/verein" },
   { EN: "about/advisory-board", DE: "uber/beirat" },
   { EN: "about/support", DE: "uber/unterstutzung" },
-  { EN: "resource", DE: "resource" },
+  { EN: "resources", DE: "resources" },
   { EN: "exhibition", DE: "austellung" },
   { EN: "venue", DE: "ort" },
   { EN: "documentation", DE: "dokumentation" },

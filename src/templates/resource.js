@@ -21,7 +21,7 @@ const Resource = props => {
 
   let renderComponent
   let path = pageMap.find((pg) => {
-    return pg["EN"] == "resource"
+    return pg["EN"] == "resources"
   })
 
   switch (r.type) {
