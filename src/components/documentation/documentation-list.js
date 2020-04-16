@@ -54,7 +54,9 @@ let content = {
 
 const DocumentationList = props => {
   let language = getCurrentLanguageString(props.languages)
-  let documentation = props.documentation
+  let documentation = props.documentation.filter((d) => {
+    return d.list_on_media_overview;
+  })
 
   const createComponent = (doc, index) => {
     let renderComponent;
@@ -83,8 +85,6 @@ const DocumentationList = props => {
           </DocumentationItem>
         </DocumentationLink>
       )
-    
-
     return renderComponent
   }
   return (
