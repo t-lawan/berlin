@@ -11,7 +11,9 @@ export class DocumentationModel {
     video;
     image_gallery;
     thumbnail;
-    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery, thumbnail) {
+    attached_to_event;
+    list_on_media_overview;
+    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery, thumbnail, attached_to_event, list_on_media_overview) {
         this.id = id;
         this.slug = slug;
         this.DE = DE;
@@ -24,5 +26,7 @@ export class DocumentationModel {
         this.video =video;
         this.image_gallery = image_gallery;
         this.thumbnail = thumbnail;
+        this.attached_to_event = attached_to_event;
+        this.list_on_media_overview = list_on_media_overview;
     }
 }

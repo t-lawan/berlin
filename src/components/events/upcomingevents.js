@@ -97,7 +97,7 @@ const UpcomingEvents = props => {
               />
             ) : null}
 
-            <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
+            <p> {item.venue ? getVenue(props.venues, item.venue[0])[language].venue_name : null}</p>
             <p>
               {item.language == "other"
                 ? item[language].other_language
