@@ -299,6 +299,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 subtitle
                 title
                 social_media_description
+                document_type_label
               }
               EN {
                 description
@@ -306,6 +307,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 subtitle
                 title
                 social_media_description
+                document_type_label
               }
               documentation_type
               event_relation {
@@ -326,6 +328,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 media_type
               }
               thumbnail_image
+              documentation_not_attached_to_event
+              unlist_document_on_media_overview
             }
           }
         }
