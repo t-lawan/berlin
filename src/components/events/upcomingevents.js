@@ -43,7 +43,7 @@ const UpcomingEvents = props => {
           item.experience.includes(props.experience.toString()) &&
           item.item === "event" &&
           (props.experience >= props.active_experience
-            ? DateManager.getDaysFromCurrentDate(item.start_date) >= 0
+            ? item.end_date ? DateManager.getDaysFromCurrentDate(item.end_date) >= 0 :  DateManager.getDaysFromCurrentDate(item.start_date) >= 0
             : true)
         )
       } else {
@@ -80,7 +80,10 @@ const UpcomingEvents = props => {
               {DateManager.createLongDateString(
                 item.start_date,
                 language.toLowerCase()
-              )}
+              )} – {item.end_date ? DateManager.createLongDateString(
+                item.end_date,
+                language.toLowerCase()
+              ) : null}
             </p>
             <p> {item[language].display_time}</p>
             <EventTitle
@@ -91,13 +94,13 @@ const UpcomingEvents = props => {
                 dangerouslySetInnerHTML={{
                   __html: `<p>${truncateText(
                     striptags(item[language].subtitle),
-                    16
+                    24
                   )} ...</p>`,
                 }}
               />
             ) : null}
 
-            <p> {getVenue(props.venues, item.venue[0])[language].venue_name}</p>
+            <p> {item.venue ? getVenue(props.venues, item.venue[0])[language].venue_name : null}</p>
             <p>
               {item.language == "other"
                 ? item[language].other_language

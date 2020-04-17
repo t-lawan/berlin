@@ -22,20 +22,20 @@ import { Color, size, hideDisplayForMobile, LargeButton } from "../index.styles"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
-import * as actionTypes from '../store/action';
-import { DateManager } from "../utility/date";
+import * as actionTypes from "../store/action"
+import { DateManager } from "../utility/date"
 
 const EventColumn = styled.div`
-:first-child {
-  border-bottom: solid 1px #000;
-  margin-bottom: 1.3em;
-  margin-top:1em;
-}
-@media (min-width: ${size.tablet}) {
+  :first-child {
+    border-bottom: solid 1px #000;
+    margin-bottom: 1.3em;
+    margin-top: 1em;
+  }
+  @media (min-width: ${size.tablet}) {
     :first-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    margin-top:0em;
+      border-bottom: none;
+      margin-bottom: 0;
+      margin-top: 0em;
     }
   }
 `
@@ -54,14 +54,14 @@ const EventTextBlock = styled(TextBlock)`
     margin: 0 0 0.7em 0;
   }
   @media (max-width: ${size.tabletL}) {
-    width:90%;
+    width: 90%;
     > div:first-child > p:first-child {
-        width: 60%;
-        display: inline-block;
-    } 
+      width: 60%;
+      display: inline-block;
+    }
     > div:first-child > p:last-child {
-        width: 40%;
-        display: inline-block;
+      width: 40%;
+      display: inline-block;
     }
   }
 `
@@ -84,8 +84,8 @@ const EventTitle = styled.h1`
 const EventSubTitle = styled.h2`
   padding-top: 0rem;
   padding-bottom: 0.5rem;
-  margin-top:-1.2em;
-  margin-bottom:0.5em;
+  margin-top: -1.2em;
+  margin-bottom: 0.5em;
   font-size: 1em;
   @media (min-width: ${size.laptopM}) {
     font-size: 1.05em;
@@ -139,16 +139,15 @@ const EventDescription = styled.div`
   p {
     line-height: 1.4;
     > a {
-      font-size:1em;
+      font-size: 1em;
     }
-    
   }
 `
 
 const EventRsvpText = styled.div`
   p {
     > a {
-      font-size:1em;
+      font-size: 1em;
       border-bottom: solid thin;
       border-color: ${Color.red};
       :hover {
@@ -201,7 +200,7 @@ const Event = props => {
   event.dates = event.dates.sort((a, b) => {
     return a.start_date - b.start_date
   })
-  let venue = getVenue(props.venues, event.venue[0])
+  let venue = event.venue ? getVenue(props.venues, event.venue[0]) : null
   let documentation = []
   if (event.documentation) {
     documentation = props.documentation.filter(doc => {
@@ -217,20 +216,20 @@ const Event = props => {
   let title = truncateText(
     striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
   )
-  let titleHeading = language === 'en' ? "11th Berlin Biennale for Contemporary Art" : "11. Berlin Biennale für zeitgenössische Kunst"
+  let titleHeading =
+    language === "en"
+      ? "11th Berlin Biennale for Contemporary Art"
+      : "11. Berlin Biennale für zeitgenössische Kunst"
 
-  let path = pageMap.find((pg) => {
+  let path = pageMap.find(pg => {
     return pg["EN"] == "event"
   })
-
 
   let description = truncateText(
     striptags(
       event[`${props.pageContext.language.toUpperCase()}`].full_description
     )
   )
-
-  let image = getDocument(props.documents, event.thumbnail_image);
 
   const renderComponent = (
     <>
@@ -240,8 +239,10 @@ const Event = props => {
           title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
           description={description}
           lang={props.pageContext.language}
-          image={image? image.url: null}
-          pathname={`${path[props.pageContext.language.toUpperCase()]}/${event.slug}`}
+          image={event.thumbnail_image}
+          pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+            event.slug
+          }`}
         />
         <EventColumn>
           <EventTitleMob
@@ -250,18 +251,21 @@ const Event = props => {
             }}
           />
           {event[language].event_subtitle ? (
-              <EventSubTitleMob
-                dangerouslySetInnerHTML={{
-                  __html: striptags(event[language].event_subtitle, ["em"]),
-                }}
-              />
-            ) : null}
-          
+            <EventSubTitleMob
+              dangerouslySetInnerHTML={{
+                __html: striptags(event[language].event_subtitle, ["em"]),
+              }}
+            />
+          ) : null}
+
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
                 <p>
-                {DateManager.createLongDateString(date.start_date, language.toLowerCase())}
+                  {DateManager.createLongDateString(
+                    date.start_date,
+                    language.toLowerCase()
+                  )}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
@@ -271,7 +275,7 @@ const Event = props => {
             </p>
           </EventTextBlock>
           <EventTextBlock>
-            {props.experience == 4 ? (
+            {/* {props.experience == 4 ? (
               <VenueLink
                 to={createPath(language, venue ? "venue/" + venue.slug : "")}
                 // bg={transitionBackground}
@@ -284,7 +288,16 @@ const Event = props => {
               </VenueLink>
             ) : (
               <p>{venue ? venue[language].venue_name : ""} </p>
-            )}
+            )} */}
+            {venue ? (
+              <p> {venue[language].venue_name} </p>
+            ) : event[language].other_event_venue ? (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: event[language].other_event_venue,
+                }}
+              />
+            ) : null}
 
             <p>{venue ? venue.address[0].address_line : ""}</p>
           </EventTextBlock>
@@ -312,7 +325,14 @@ const Event = props => {
                 ? event[`other_language${language == "EN" ? "" : "_de"}`]
                 : UpcomingEventsContent[language][event.language]}
             </p>
-            <p hidden={!event.is_free}> {`${UpcomingEventsContent[language].free_admission}${event.limited_capacity ? `, ${UpcomingEventsContent[language].limited_capacity}` : ''}`}</p>
+            <p hidden={!event.is_free}>
+              {" "}
+              {`${UpcomingEventsContent[language].free_admission}${
+                event.limited_capacity
+                  ? `, ${UpcomingEventsContent[language].limited_capacity}`
+                  : ""
+              }`}
+            </p>
           </EventTextBlock>
           <EventTextBlock>
             <ShareLink>
@@ -333,7 +353,7 @@ const Event = props => {
                 __html: striptags(event[language].event_title, ["em"]),
               }}
             />
-            
+
             {event[language].event_subtitle ? (
               <EventSubTitle
                 dangerouslySetInnerHTML={{
@@ -341,8 +361,6 @@ const Event = props => {
                 }}
               />
             ) : null}
-            
-            
           </TextBlock>
 
           <EventDescription
@@ -404,18 +422,14 @@ const mapStateToProps = state => {
     genres: state.resource_genres,
     experience: state.experience,
     documentation: state.documentation,
-    documents: state.documents
+    documents: state.documents,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    startTransition: () =>
-      dispatch({ type: actionTypes.START_TRANSITION}),
+    startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Event)
+export default connect(mapStateToProps, mapDispatchToProps)(Event)

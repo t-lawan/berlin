@@ -63,7 +63,8 @@ export class Convert {
       wordpressModel.acf.video,
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.thumbnail_image,
-
+      !wordpressModel.acf.documentation_not_attached_to_event,
+      !wordpressModel.acf.unlist_document_on_media_overview,
     )
   }
 
@@ -86,9 +87,14 @@ export class Convert {
     )
   }
   static toEventModel = wordpressModel => {
-    const venue = wordpressModel.acf.event_venue_selection.map(venue => {
-      return venue.wordpress_id
-    })
+    let venue;
+
+    if(wordpressModel.acf.event_venue_selection) {
+      venue = wordpressModel.acf.event_venue_selection.map(venue => {
+        return venue.wordpress_id
+      })
+    }
+
 
     let documentation
 
@@ -145,7 +151,8 @@ export class Convert {
       wordpressModel.acf.temporary_exp_page,
       wordpressModel.acf.exp_open_days,
       wordpressModel.acf.use_gallery_images,
-      image_gallery
+      image_gallery,
+      wordpressModel.acf.exceptional_exp_closed_dates
     )
   }
 
@@ -272,6 +279,7 @@ export class Convert {
               subtitle: event.DE.event_subtitle,
               other_language: event.other_language_de,
             },
+            null,
             event.language
             // { ...event.EN, ...date.EN },
             // { ...event.DE, ...date.DE },
@@ -334,6 +342,7 @@ export class Convert {
                 subtitle: "",
                 other_language: null,
               },
+              exhibition.closed_dates,
               null
             )
           )

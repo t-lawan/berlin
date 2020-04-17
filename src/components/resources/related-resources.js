@@ -162,7 +162,7 @@ const RelatedResources = props => {
         <ResourceLink
           key={index}
           onClick={() => props.startTransition()}
-          to={createPath(language, `resource/${resource.slug}`)}
+          to={createPath(language, `resources/${resource.slug}`)}
           fade
           // cover direction="down"
           // bg={transitionBackground}

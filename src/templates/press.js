@@ -95,7 +95,7 @@ class Press extends React.Component {
                 >
                   {/* <PressArrowDown icon={faLongArrowAltDown} /> */}
                   <PressArrowContainer>
-                    <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg" alt="arrow_down" />
+                    <img src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/pdf_icon.svg" alt="arrow_down" />
                   </PressArrowContainer>
                   <PressReleaseParagraphBlock
                     dangerouslySetInnerHTML={{

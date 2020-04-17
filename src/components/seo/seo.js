@@ -8,8 +8,36 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title, image, pathname }) {
+  let imageData
+  // If an image ID has been passed query all WordpressWpMedia
+  if (image) {
+    let { allWordpressWpMedia } = useStaticQuery(
+      graphql`
+        query {
+          allWordpressWpMedia(filter: { media_type: { eq: "image" } }) {
+            edges {
+              node {
+                wordpress_id
+                media_type
+                source_url
+                media_details {
+                  height
+                  width
+                }
+              }
+            }
+          }
+        }
+      `
+    )
+    // Find the image that matches the image ID
+    imageData = allWordpressWpMedia.edges.find(media => {
+      return media.node.wordpress_id === image
+    })
+  }
 
   const metaDescription =
     description ||
@@ -17,9 +45,18 @@ function SEO({ description, lang, meta, title, image, pathname }) {
       ? "The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From June 13 to September 13, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city."
       : "Die 11. Berlin Biennale für zeitgenössische Kunst wird von María Berríos, Renata Cervetto, Lisette Lagnado und Agustín Pérez Rubio kuratiert. Sie stellen sich die kommende Ausgabe als eine Folge gelebter Erfahrungen vor. Vom 13. Juni bis zum 13. September 2020 bringt die 11. Berlin Biennale diese Erfahrungen an mehreren Ausstellungsorten in der Stadt zusammen.")
   const siteUrl = "https://11.berlinbiennale.de"
+
+  // Set default image
   let defaultImage =
-    image ||
-    "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg"
+    "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3-full/images/bb11_og.jpg"
+  let imageHeight = 433
+  let imageWidth = 826
+  // If the imageData was found set the correct url
+  if (imageData) {
+    defaultImage = imageData.node.source_url
+    imageHeight = imageData.node.media_details.height;
+    imageWidth = imageData.node.media_details.width;
+  }
   let titleHeading =
     lang === "en"
       ? "11th Berlin Biennale for Contemporary Art"
@@ -29,8 +66,13 @@ function SEO({ description, lang, meta, title, image, pathname }) {
       htmlAttributes={{
         lang,
       }}
+      defer={false}
       title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
       meta={[
+        {
+          rel: 'canonical',
+          href: `${siteUrl}/${lang === "en" ? "" : "de/"}${pathname || ""}`
+        },
         {
           name: `description`,
           content: metaDescription,
@@ -42,6 +84,18 @@ function SEO({ description, lang, meta, title, image, pathname }) {
         {
           property: `og:description`,
           content: metaDescription,
+        },
+        {
+          property: `og:image`,
+          content: `${defaultImage}`,
+        },
+        {
+          property: `og:image:width`,
+          content: `${imageWidth}`,
+        },
+        {
+          property: `og:image:height`,
+          content: `${imageHeight}`,
         },
         {
           property: `og:type`,
@@ -58,10 +112,6 @@ function SEO({ description, lang, meta, title, image, pathname }) {
         {
           name: `twitter:title`,
           content: title,
-        },
-        {
-          name: `og:image`,
-          content: `${defaultImage}`,
         },
         {
           name: `twitter:description`,

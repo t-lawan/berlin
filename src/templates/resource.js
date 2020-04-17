@@ -21,9 +21,8 @@ const Resource = props => {
 
   let renderComponent
   let path = pageMap.find((pg) => {
-    return pg["EN"] == "resource"
+    return pg["EN"] == "resources"
   })
-
 
   switch (r.type) {
     case "image":
@@ -61,7 +60,6 @@ const Resource = props => {
     </>
   )
 
-
   return (
     <>
       <SEO
@@ -69,6 +67,7 @@ const Resource = props => {
         description={`${resourceInfo.acf.title}`}
         lang={resourceInfo.language}
         pathname={`${path[resourceInfo.language.toUpperCase()]}/${r.slug}`}
+        image={r.thumbnail_image}
 
       />
       <Layout

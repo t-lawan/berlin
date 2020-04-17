@@ -79,7 +79,6 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
-                  exhibition_floorplan
                   active_exhibition
                   exp_open_days {
                     friday
@@ -142,6 +141,11 @@ const State = props => {
                   }
                   temp_exp_graphic_de
                   temp_exp_graphic_en
+                  exceptional_exp_closed_dates {
+                    end_close_date
+                    start_close_date
+                  }
+                  exhibition_floorplan
                 }
               }
             }
@@ -158,6 +162,7 @@ const State = props => {
                     subtitle
                     title
                     social_media_description
+                    document_type_label
                   }
                   EN {
                     description
@@ -165,6 +170,7 @@ const State = props => {
                     subtitle
                     title
                     social_media_description
+                    document_type_label
                   }
                   documentation_type
                   event_relation {
@@ -185,6 +191,8 @@ const State = props => {
                     media_type
                   }
                   thumbnail_image
+                  documentation_not_attached_to_event
+                  unlist_document_on_media_overview
                 }
               }
             }
@@ -337,50 +345,50 @@ const State = props => {
               }
             }
           }
-          allWordpressWpPublications {
-            edges {
-              node {
-                wordpress_id
-                slug
-                acf {
-                  DE {
-                    biennale_context_note
-                    description
-                    contributors
-                    design
-                    editor
-                    format
-                    language
-                    order_link
-                    price
-                    publication_thumbnail
-                    publisher
-                    subtitle
-                    title
-                  }
-                  EN {
-                    biennale_context_note
-                    contributors
-                    description
-                    design
-                    editor
-                    format
-                    language
-                    order_link
-                    price
-                    publication_thumbnail
-                    publisher
-                    subtitle
-                    title
-                  }
-                  dimensions
-                  exp_number
-                  isbn
-                  page_count
-                }
-              }
-            }
-          }
+          # allWordpressWpPublications {
+          #   edges {
+          #     node {
+          #       wordpress_id
+          #       slug
+          #       acf {
+          #         DE {
+          #           biennale_context_note
+          #           description
+          #           contributors
+          #           design
+          #           editor
+          #           format
+          #           language
+          #           order_link
+          #           price
+          #           publication_thumbnail
+          #           publisher
+          #           subtitle
+          #           title
+          #         }
+          #         EN {
+          #           biennale_context_note
+          #           contributors
+          #           description
+          #           design
+          #           editor
+          #           format
+          #           language
+          #           order_link
+          #           price
+          #           publication_thumbnail
+          #           publisher
+          #           subtitle
+          #           title
+          #         }
+          #         dimensions
+          #         exp_number
+          #         isbn
+          #         page_count
+          #       }
+          #     }
+          #   }
+          # }
           allWordpressWpVenue {
             edges {
               node {
@@ -468,10 +476,10 @@ const State = props => {
       Convert.toResourceGenreModel
     )
 
-    let publications = Convert.toModelArray(
-      data.allWordpressWpPublications,
-      Convert.toPublicationModel
-    )
+    // let publications = Convert.toModelArray(
+    //   data.allWordpressWpPublications,
+    //   Convert.toPublicationModel
+    // )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -559,7 +567,7 @@ const State = props => {
     props.setResources(resources)
     props.setDocumentation(documentation)
     // props.setPages(pages)
-    props.setPublications(publications)
+    // props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)

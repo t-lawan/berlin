@@ -37,7 +37,7 @@ module.exports = {
          * The base URL of the Wordpress site without the trailingslash and the protocol. This is required.
          * Example : 'gatsbyjsexamplewordpress.wordpress.com' or 'www.example-site.com'
          */
-        baseUrl: "https://11.berlinbiennale.de/",
+        baseUrl: "https://admin11.berlinbiennale.de/",
         // The protocol. This can be http or https.
         protocol: "https",
         // Indicates whether the site is hosted on wordpress.com.
@@ -107,17 +107,17 @@ module.exports = {
         // all routes that begin with `yoast` from fetch.
         // Whitelisted routes using glob patterns
         includedRoutes: [
+          "**/media",
           "**/categories",
           "**/posts",
           "**/pages",
-          "**/media",
           "**/tags",
           "**/taxonomies",
           "**/users",
           "**/events",
           "**/venue",
           "**/participants",
-          "**/publications",
+          // "**/publications",
           "**/exhibitions",
           "**/menus",
           "**/resources",

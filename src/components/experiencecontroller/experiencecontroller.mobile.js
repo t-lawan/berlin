@@ -43,7 +43,7 @@ class ExperienceControllerMobile extends React.Component {
           id: 4,
           isReady: true,
           display: (
-            <img src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
+            <img src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />
           ),
         },
       ],

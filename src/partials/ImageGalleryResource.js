@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import { Caption } from "./ImageResource"
-import { Color, size } from "../index.styles"
+import { size } from "../index.styles"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
@@ -11,9 +11,9 @@ import "../assets/carousel.css"
 import { Carousel } from "react-responsive-carousel"
 
 const leftArrow =
-  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
+  "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_prev.png"
 const rightArrow =
-  "https://11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_next.png"
+  "https://admin11.berlinbiennale.de/wp-content/themes/bb11-exp3/images/img_gallery_next.png"
 export const NavigatingButton = styled.div`
   opacity: ${props => (props.show ? "1" : "0.2")};
   color: black;

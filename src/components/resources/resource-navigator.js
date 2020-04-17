@@ -79,16 +79,16 @@ class ResourceNavigator extends React.Component {
   currentIndex;
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.resources.length) {
-      return `resource/${this.props.resources[0].slug}`
+      return `resources/${this.props.resources[0].slug}`
     }
-    return `resource/${this.props.resources[this.currentIndex + 1].slug}`
+    return `resources/${this.props.resources[this.currentIndex + 1].slug}`
   }
 
   previousPage = () => {
     if (this.currentIndex === 0) {
-      return `resource/${this.props.resources[this.props.resources.length - 1].slug}`
+      return `resources/${this.props.resources[this.props.resources.length - 1].slug}`
     }
-    return `resource/${this.props.resources[this.currentIndex - 1].slug}`
+    return `resources/${this.props.resources[this.currentIndex - 1].slug}`
   }
 
   render() {

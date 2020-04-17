@@ -7,10 +7,6 @@ import {
 } from "../../utility/helper"
 import { Color } from "../../index.styles"
 import { Link } from "gatsby"
-import { getItem } from "../../store/selector"
-import { DateManager } from "../../utility/date"
-import striptags from "striptags"
-import { UpcomingEventsContent } from "../events/upcomingevents";
 import { startTransition } from "../../store/action";
 
 const DocumentationListWrapper = styled.div`
@@ -40,12 +36,6 @@ const DocumentationTextBox = styled.div`
     color: ${Color.red};
   }
 `
-const DocTitle = styled.div`
-  font-size: 1em;
-  margin: 0em;
-  line-height: 1.2;
-  transition: all 0.2s ease-in-out;
-`
 
 let content = {
   EN: {
@@ -64,8 +54,9 @@ let content = {
 
 const DocumentationList = props => {
   let language = getCurrentLanguageString(props.languages)
-  let documentation = props.documentation
-
+  let documentation = props.documentation.filter((d) => {
+    return d.list_on_media_overview;
+  })
   const createComponent = (doc, index) => {
     let renderComponent;
     
@@ -73,9 +64,10 @@ const DocumentationList = props => {
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}
           onClick={() => props.startTransition()}
+          key={index}
         >
-          <DocumentationItem key={index}>
-            <p> {content[language][doc.type]} </p>
+          <DocumentationItem>
+            <p> {doc[language].document_type_label} </p>
             <DocumentationTextBox>
               <div
                 dangerouslySetInnerHTML={{
@@ -92,8 +84,6 @@ const DocumentationList = props => {
           </DocumentationItem>
         </DocumentationLink>
       )
-    
-
     return renderComponent
   }
   return (

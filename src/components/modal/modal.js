@@ -90,7 +90,7 @@ class Modal extends React.Component {
           <ModalHeader>
             <CloseImage
               onClick={this.closeModal}
-              src="https://11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
+              src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/close_overlay.svg"
             />
           </ModalHeader>
           <div hidden={this.state.hasSubmitted}>
