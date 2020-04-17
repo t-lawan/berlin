@@ -368,7 +368,6 @@ exports.createPages = async ({ graphql, actions }) => {
             wordpress_id
             slug
             acf {
-              exhibition_floorplan
               active_exhibition
               exp_open_days {
                 friday
@@ -431,6 +430,11 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               temp_exp_graphic_de
               temp_exp_graphic_en
+              exceptional_exp_closed_dates {
+                end_close_date
+                start_close_date
+              }
+              exhibition_floorplan
             }
           }
         }

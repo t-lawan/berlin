@@ -14,6 +14,7 @@ export class CalendarItemModel {
     experience,
     EN,
     DE,
+    closed_dates,
     language = null
   ) {
     this.id = id
@@ -30,6 +31,7 @@ export class CalendarItemModel {
     this.experience = experience
     this.EN = EN;
     this.DE = DE;
-    this.language = language
+    this.closed_dates = closed_dates;
+    this.language = language;
   }
 }
