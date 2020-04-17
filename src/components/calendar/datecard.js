@@ -63,8 +63,6 @@ class DateCard extends React.Component {
         return isClosed
       })
 
-      console.log("AFTER EXHIBITION MODEL", exhibitions.length)
-
       // Filter exhibitions if exception exists
 
       renderComponents = (

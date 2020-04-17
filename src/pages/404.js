@@ -9,7 +9,7 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper";
 
 const NotFoundPage = (props) => {
-  let language = getCurrentLanguageString(props.language)
+  let language = getCurrentLanguageString(props.languages)
   let renderComponent = (
     <PageWrapper colour={Color.red}>
       <SEO
