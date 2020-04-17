@@ -151,7 +151,8 @@ export class Convert {
       wordpressModel.acf.temporary_exp_page,
       wordpressModel.acf.exp_open_days,
       wordpressModel.acf.use_gallery_images,
-      image_gallery
+      image_gallery,
+      wordpressModel.acf.exceptional_exp_closed_dates
     )
   }
 
@@ -278,6 +279,7 @@ export class Convert {
               subtitle: event.DE.event_subtitle,
               other_language: event.other_language_de,
             },
+            null,
             event.language
             // { ...event.EN, ...date.EN },
             // { ...event.DE, ...date.DE },
@@ -340,6 +342,7 @@ export class Convert {
                 subtitle: "",
                 other_language: null,
               },
+              exhibition.closed_dates,
               null
             )
           )

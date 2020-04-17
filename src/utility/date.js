@@ -19,6 +19,12 @@ export class DateManager {
     return moment(date, "YYYY-MM-DD HH:mm Z").get(type);
   }
 
+  static isInBetween = (date, start_date, end_date)  => {
+    let afterStartDate = DateManager.daysBetween(start_date, date) >= 0 ? true :  false;
+    let beforeEndDate = DateManager.daysBetween(date, end_date) >= 0 ? true :  false;
+    return afterStartDate && beforeEndDate;
+  }
+
   static getDaysFromCurrentDate = (date) => {
     return moment(date).diff(moment(), 'day');
   }
