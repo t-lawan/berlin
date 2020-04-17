@@ -79,7 +79,6 @@ const State = props => {
                 wordpress_id
                 slug
                 acf {
-                  exhibition_floorplan
                   active_exhibition
                   exp_open_days {
                     friday
@@ -142,6 +141,11 @@ const State = props => {
                   }
                   temp_exp_graphic_de
                   temp_exp_graphic_en
+                  exceptional_exp_closed_dates {
+                    end_close_date
+                    start_close_date
+                  }
+                  exhibition_floorplan
                 }
               }
             }

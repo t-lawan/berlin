@@ -5,17 +5,20 @@ import UpcomingEvents from "../components/events/upcomingevents"
 import { PageWrapper } from "../templates/page.styles";
 import { Color } from "../index.styles";
 import NewsList from "../components/news/newslist";
+import { connect } from "react-redux"
+import { getCurrentLanguageString } from "../utility/helper";
 
-const NotFoundPage = () => {
+const NotFoundPage = (props) => {
+  let language = getCurrentLanguageString(props.languages)
   let renderComponent = (
     <PageWrapper colour={Color.red}>
       <SEO
-        title={`404: Not found`}
-        description={`404: Not found`}
+        title={`404: ${content[language].seo_title}`}
+        description={`404: ${content[language].seo_title}`}
         lang={'en'}
       />
-      <p> Page not found.</p>
-      <p>You just hit a route that doesn&#39;t exist...</p>
+      <p> {content[language].title}</p>
+      {/* <p>You just hit a route that doesn&#39;t exist...</p> */}
     </PageWrapper>
   )
 
@@ -35,4 +38,20 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+const content = {
+  EN: {
+    title: 'Page not found',
+    seo_title: 'Not found'
+  },
+  DE: {
+    title: 'Seite nicht gefunden',
+    seo_title: 'Nicht gefunden'
+  }
+}
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+  }
+}
+
+export default connect(mapStateToProps, null)(NotFoundPage)
