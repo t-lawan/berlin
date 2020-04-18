@@ -26,6 +26,8 @@ export const ModalWrapper = styled.div`
   }
   @media (max-width: ${size.tablet}) {
     width: 80%;
+    max-height: 90%;
+    overflow-y: scroll;
     margin: 10% 10%;
   }
 `
