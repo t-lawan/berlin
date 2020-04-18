@@ -16,6 +16,9 @@ export const DateCardWrapper = styled.div`
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 1fr 4fr;
   }
+  @media (min-width: ${size.mobileSL}) {
+    grid-template-columns: 1.3fr 4fr;
+  }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 4fr;
     padding-top:92px;
@@ -128,9 +131,13 @@ export const DateText = styled.strong`
   padding-right: 0.3em;
   @media (max-width: ${size.mobileM}) {
     width:50%;
+    font-size: 1.55em;
     padding-right: 0.2em;
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 1.35em;
+  }
+  @media (min-width: ${size.tablet}) {
    font-size: 1.5em; 
   }
   @media (min-width: ${size.laptop}) {
@@ -148,10 +155,18 @@ export const DateString = styled.p`
   margin:0;
   line-height:1.15;
   @media (max-width: ${size.mobileM}) {
-    font-size: 0.85em;
+    font-size: 0.70em;
     line-height:1.2;
   }
   @media (max-width: ${size.mobileL}) {
+    line-height:1.15;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 0.73em;
+    line-height: 1.0;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.93em;
     line-height:1.15;
   }
 `
@@ -167,13 +182,21 @@ export const MonthHeading = styled.p`
   line-height: 1;
   margin:0;
   font-size: 2em;
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.5em;
+    padding: 0.25em 0.4em;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 1.35em;
+    padding: 0.35em 0.4em;
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 1.5em;
     padding: 0.25em 0.4em;
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 1.55em;
-    padding: 0.3em 0.4em;
+    padding: 0.4em 0.4em;
   }
   @media (min-width: ${size.laptop}) {
    font-size: 1.8em;
@@ -183,17 +206,26 @@ export const MonthHeading = styled.p`
     font-size: 1.85em;
     padding: 0.33em 0.5em 0.33em;
   }
+  @media (min-width: ${size.laptopL}) {
+    padding: 0.4em 0.55em;
+  }
 `
 export const ClosedText = styled.p`
   margin: 0.5em 1em;
   text-transform:lowercase;
   @media (min-width: ${size.mobileS}) {
-    margin: -0.3em 0.5em;
+    margin: 0.2em 0.5em 1.1em;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    margin: 0.5em 0.5em;
   }
   @media (min-width: ${size.tablet}) {
     margin: 0.5em 0.7em;
   }
   @media (min-width: ${size.laptop}) {
     margin: 0.35em 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin: 0.35em 1em 1.25em;
   }
 `

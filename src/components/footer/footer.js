@@ -16,6 +16,9 @@ const FooterWrapper = styled.footer`
   padding: 0.7em 1em 1.5em;
   border-top: 1px solid black;
   ${changeGridToOneRow};
+  @media (max-width: ${size.mobileM}) {
+  padding: 1em !important;
+  }
   @media (max-width: ${size.tablet}) {
     border-right: 0px solid black;
     padding: 0.7em 0.7em;

@@ -15,6 +15,12 @@ export const ColumnLayout = styled.div`
   -webkit-overflow-scrolling: touch;
   height: auto;
   padding-bottom: 2rem; 
+  @media (min-width: ${size.mobileSL}) {
+  padding-bottom: 9rem; 
+      }
+  @media (min-width: ${size.tablet}) {
+  padding-bottom: 0rem; 
+      }
   @media (min-width: ${size.laptop}) {
   padding-bottom: 0rem; 
       }

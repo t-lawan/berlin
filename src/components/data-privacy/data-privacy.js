@@ -25,6 +25,10 @@ export const DataPrivacyBlock = styled.div`
       font-size: 0.9rem;
       margin-bottom: 0;
       }
+      @media (max-width: ${size.mobileXL}) {
+      font-size: 0.85em;
+      margin-bottom: 0;
+      }
       > a {
         font-size: 1em;
       }
