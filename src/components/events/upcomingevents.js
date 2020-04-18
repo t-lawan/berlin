@@ -163,13 +163,11 @@ const UpcomingEvents = props => {
               {DateManager.createLongDateString(
                 item.start_date,
                 language.toLowerCase()
-              )}{" "}
-              –{" "}
+              )}
               {item.end_date
-                ? DateManager.createLongDateString(
-                    item.end_date,
-                    language.toLowerCase()
-                  )
+                ? ` – ${DateManager.createLongDateString(
+                    date.end_date,
+                    language.toLowerCase())}`
                 : null}
             </p>
             <p> {item[language].display_time}</p>
