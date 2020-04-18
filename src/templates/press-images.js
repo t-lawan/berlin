@@ -7,7 +7,7 @@ import UpcomingEvents from "../components/events/upcomingevents"
 import { PageWrapper } from "./page.styles"
 import Layout from "../components/layout/layout"
 import ImageResource from "../partials/ImageResource"
-import { Color } from "../index.styles"
+import { Color, size } from "../index.styles"
 import NewsList from "../components/news/newslist"
 import { getDocument } from "../store/selector"
 
@@ -22,10 +22,16 @@ const PressImagesGrid = styled.section`
   a {
     text-decoration-color: ${Color.red};
   }
+  @media (max-width: ${size.mobileM}) {
+    padding: 0.5rem 0;
+  }
 `
 
 const PressImageTitle = styled.p`
-margin-top: 0.5rem;
+  margin-top: 0.5rem;
+  @media (max-width: ${size.mobileM}) {
+    margin-top: 0.2rem;
+  }
 `
 const PressImages = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -34,43 +40,12 @@ const PressImages = props => {
     let renderSection
     switch (item.press_row_type) {
       case "section":
-      renderSection = (
-        <div key={index}>
-          <PressImageTitle> {item[createProperty("photo_group_title", language)]}</PressImageTitle>
-          {item.images
-            ? item.images.map((i, id) => (
-                <PressImagesGrid key={id} borderBottom>
-                  {getDocument(props.documents, i.wordpress_id) ? (
-                    <a
-                      href={getDocument(props.documents, i.wordpress_id).url}
-                      target="__blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ImageResource
-                        id={i.wordpress_id}
-                        withCaption={false}
-                      />
-                    </a>
-                  ) : null}
-
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        i.acf[
-                          createProperty("caption", language)
-                        ],
-                    }}
-                  />
-                </PressImagesGrid>
-              ))
-            : null}
-        </div>
-      )
-        break
-      case "grouptitle":
         renderSection = (
           <div key={index}>
-            <PressImageTitle> {item[createProperty("photo_group_title", language)]}</PressImageTitle>
+            <PressImageTitle>
+              {" "}
+              {item[createProperty("photo_group_title", language)]}
+            </PressImageTitle>
             {item.images
               ? item.images.map((i, id) => (
                   <PressImagesGrid key={id} borderBottom>
@@ -89,10 +64,41 @@ const PressImages = props => {
 
                     <div
                       dangerouslySetInnerHTML={{
-                        __html:
-                          i.acf[
-                            createProperty("caption", language)
-                          ],
+                        __html: i.acf[createProperty("caption", language)],
+                      }}
+                    />
+                  </PressImagesGrid>
+                ))
+              : null}
+          </div>
+        )
+        break
+      case "grouptitle":
+        renderSection = (
+          <div key={index}>
+            <PressImageTitle>
+              {" "}
+              {item[createProperty("photo_group_title", language)]}
+            </PressImageTitle>
+            {item.images
+              ? item.images.map((i, id) => (
+                  <PressImagesGrid key={id} borderBottom>
+                    {getDocument(props.documents, i.wordpress_id) ? (
+                      <a
+                        href={getDocument(props.documents, i.wordpress_id).url}
+                        target="__blank"
+                        rel="noopener noreferrer"
+                      >
+                        <ImageResource
+                          id={i.wordpress_id}
+                          withCaption={false}
+                        />
+                      </a>
+                    ) : null}
+
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: i.acf[createProperty("caption", language)],
                       }}
                     />
                   </PressImagesGrid>
@@ -122,31 +128,22 @@ const PressImages = props => {
 
                     <div
                       dangerouslySetInnerHTML={{
-                        __html:
-                          i.acf[
-                            createProperty("caption", language)
-                          ],
+                        __html: i.acf[createProperty("caption", language)],
                       }}
                     />
                   </PressImagesGrid>
                 ))
               : null}
           </div>
-
         )
         break
       default:
-        renderSection = (
-          <div key={index}>
-
-          </div>
-        )
+        renderSection = <div key={index}></div>
         break
     }
 
     return renderSection
   }
-
 
   const renderComponent = (
     <PageWrapper>
@@ -181,11 +178,11 @@ const PressImages = props => {
 
 let content = {
   EN: {
-    press_images: 'Press images'
+    press_images: "Press images",
   },
   DE: {
-    press_images: 'Pressebilder'
-  }
+    press_images: "Pressebilder",
+  },
 }
 
 const mapStateToProps = state => {
