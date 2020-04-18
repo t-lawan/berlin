@@ -68,6 +68,11 @@ export const NavMobileInner = styled.div`
       display:none;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    > a:first-child {
+      display:none;
+    }
+  }
 `
 
 export const NavImageLink = styled(AniLink)`

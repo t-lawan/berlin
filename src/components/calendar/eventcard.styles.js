@@ -41,7 +41,7 @@ export const EventCardWrapper = styled.div`
     display:block;
     padding: 0.3em 0.5em;
   }
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: 421px) {
    padding: 0.5em 0.7em;
    width: 100%;
   }

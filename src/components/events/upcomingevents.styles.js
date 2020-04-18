@@ -57,7 +57,10 @@ export const EventItem = styled.div`
     }
   }
   @media (min-width: ${size.mobileL}) {
-    padding: 1em 1.7em;
+    padding: 1em 1em;
+    p {
+    font-size: 0.85em;
+    }
   }
   @media (min-width: ${size.tablet}) {
     padding: 1em 1em;
@@ -85,8 +88,11 @@ export const EventLink = styled(UnderlineSectionLink)`
   :hover > div {
     color: ${Color.red}
   }
-  @media (max-width: ${size.mobileL}) {
-    font-size: 1.1em;
+  > p {
+    font-size: 1em;
+  }
+  @media (max-width: ${size.mobileM}) {
+    
     line-height: 1.3;
   }
   /* padding: 1rem; */
@@ -99,5 +105,6 @@ export const EventTitle = styled.div`
 transition:all 0.2s ease-in-out;
 > p {
   line-height: 1.3;
+  font-size: 1em;
   }
 `

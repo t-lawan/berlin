@@ -71,7 +71,7 @@ export const TwoColumnPageWrapperInternal = styled.div`
   ${changeGridToOneRow}
 `
 export const TwoColumnPageWrapperInternalDoc = styled.div` 
-  padding: 0em 1em 2em;
+  padding: 0em 0em 2em;
   display: grid;
   grid-template-columns: 33fr 66fr;
   grid-column-gap: 2em;
@@ -226,7 +226,7 @@ export const PressWrapper = styled.div`
     grid-template-columns: 1fr;
   }
   @media (min-width: ${size.tablet}) {
-    padding-bottom: 4rem;
+    padding-bottom: 8rem;
   }
   @media (max-width: ${size.mobileM}) {
     border-top:none;
@@ -279,10 +279,16 @@ export const PressWrapper = styled.div`
   ul {
     list-style:none;
     font-size: 1.1em;
-    @media (max-width: ${size.tabletL}) {
+    line-height: 1.3;
+    @media (min-width: ${size.mobileSL}) {
+      font-size: 0.85em;
+      line-height: 1.3;
+      margin-bottom: 0em;
+    }
+    @media (min-width: ${size.tablet}) {
       font-size: 0.95em;
       line-height: 1.3;
-      margin-bottom:0em;
+      margin-bottom: 0em;
     }
     @media (min-width: ${size.laptop}) {
       font-size: 1.0em;
@@ -301,16 +307,8 @@ export const PressWrapper = styled.div`
       list-style-type:none;
       font-size: 1.0em;
       > a {
+        font-size: 1em;
         transition: all 0.2s ease-in-out;
-        @media (min-width: ${size.laptop}) {
-        font-size: 1.0em;
-       }
-       @media (min-width: ${size.laptopM}) {
-        font-size: 1.0em;
-       }
-       @media (min-width: ${size.laptopL}) {
-        font-size: 1.0em;
-       }
        :hover {
         color: ${Color.red};
        }
@@ -407,6 +405,12 @@ export const PressReleaseLink = styled.a`
       line-height: 1.3;
     }
     }
+  @media (max-width: ${size.tablet}) {
+    > div > p {
+      font-size: 1em;
+      line-height: 1.3;
+    }
+    }
   &:hover {
     color: ${Color.red};
   }
@@ -476,10 +480,8 @@ export const PageTitleCalendar = styled.h1`
     position: sticky;
     margin-bottom: 1.0rem;
   }
-  @media (max-width: ${size.mobileL}) {
-    border-top: solid 0px #000;
-  }
-  @media (max-width: ${size.tabletL}) {
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 1.35em;
     display: block;
     position: sticky;
     top: 0;
@@ -488,6 +490,12 @@ export const PageTitleCalendar = styled.h1`
     padding: 0.3em 0.4em;
     border-bottom: solid 1px #000;
     width: 100%;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 1.55em;
+  }
+  @media (min-width: ${size.laptop}) {
+    display: none;
   }
 `
 export const PageSubTitle = styled.h3`
@@ -504,11 +512,14 @@ export const PageSubTitle = styled.h3`
     }
   }
    @media (min-width: ${size.mobileL}) {
-    font-size: 0.95em;
+    font-size: 0.85em;
     margin-top: 2em;
     :first-child {
     margin-top: 2em;
     }
+   }
+   @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;    
    }
   @media (min-width: ${size.laptop}) {
     font-size: 1.0em;

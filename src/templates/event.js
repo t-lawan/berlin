@@ -112,9 +112,13 @@ const EventTitleMob = styled.h1`
   font-size: 1.55em;
   margin: -0.3em 0 1em;
   line-height: 1.2;
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 1.2em;
+    max-width: 70%;
+    margin-bottom: 1.0em;
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 1.1em;
-    max-width: 70%;
     margin-bottom: 1.5em;
   }
   @media (min-width: ${size.laptop}) {
@@ -130,6 +134,9 @@ const EventSubTitleMob = styled.h2`
   @media (min-width: ${size.mobileS}) {
     font-size: 1.1em;
   }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 0.85em;
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
   }
@@ -140,6 +147,11 @@ const EventDescription = styled.div`
     line-height: 1.4;
     > a {
       font-size: 1em;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      } 
     }
   }
 `
