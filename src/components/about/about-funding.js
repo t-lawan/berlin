@@ -12,7 +12,11 @@ import {
 } from "./about.styles"
 import { Section } from "../../index.styles";
 import { PageTitle } from "../../templates/page.styles";
+import styled from 'styled-components'
 
+const ImageSection = styled(Section)`
+  align-self: center;
+`
 
 const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -61,12 +65,12 @@ const AboutFunding = props => {
             </AboutFundingHeader>
             <AboutImageBlock>
               {fundingItem.logo_block.map((item, index) => (
-                <Section key={index}>
+                <ImageSection key={index}>
                   <AboutPartnerImage
                     id={item.wordpress_id}
                     withCaption={false}
                   />
-                </Section>
+                </ImageSection>
               ))}
             </AboutImageBlock>
           </AboutFundingBlock>
