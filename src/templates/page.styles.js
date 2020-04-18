@@ -106,6 +106,9 @@ export const PageWrapper = styled.div`
   @media (min-width: ${size.laptop}) {
     padding-bottom:115px !important;
   }
+  @media (min-width: ${size.laptopM}) {
+    padding-bottom:150px !important;
+  }
   > ${TwoColumnPageWrapper} {
     @media (max-width: ${size.mobileM}) {
       padding: 1.0em 0 0 0;
