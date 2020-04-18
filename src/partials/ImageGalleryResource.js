@@ -34,6 +34,9 @@ const ImageGalleryWrapper = styled.div`
 const ImageWrapper = styled.div`
   height: 100%;
   margin: 0rem auto 0.5rem;
+  @media (max-width: ${size.tablet}) {
+    margin-top: 0.5em;
+  }
 `
 
 export const NavigationSpace = styled.div`

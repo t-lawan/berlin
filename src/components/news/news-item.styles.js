@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 export const NewsItemWrapper = styled.div`
   padding: 1.2em 2em;
   border-bottom: 1px solid black;
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tablet}) {
     padding: 1em 1em;
   }
 `
@@ -31,9 +31,11 @@ export const NewsText = styled.p`
 
 export const NewsItemLink = styled(Link)`
   > p {
-  font-size: 1.0em;
   line-height: 1.3;
    transition: all 0.2s ease-in-out; 
+   @media (min-width: ${size.mobileSL}) {
+    font-size: 1em ;
+    }
   }
   :hover > p:first-child {
     color: ${Color.red}
