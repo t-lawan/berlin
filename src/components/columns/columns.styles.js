@@ -279,6 +279,9 @@ export const StickyFooter = styled.div`
     bottom: 95px;
     z-index: 999999;
   }
+  @media (max-width: ${size.mobileXL}) {
+    position: fixed;
+  }
   @media (min-width: ${size.tablet}) {
     position: fixed;
     bottom: 0px;
@@ -297,8 +300,12 @@ export const StickyFooter = styled.div`
 
 export const StickyFooterWithHighZIndex = styled(StickyFooter)`
   z-index: 400;
+  @media (min-width: ${size.mobileL}) {
+    display: none !important;
+  }
   @media (max-width: ${size.tabletL}) {
     position: fixed;
+    display: inherit;
     bottom: 0;
     height: 50px;
     width: 33.33%;
@@ -310,7 +317,7 @@ export const FixedFooter = styled.div`
   bottom: -150px;
   position: fixed;
   grid-area: footer;
-  @media (min-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileSL}) {
     width: 100%;
   }
   @media (min-width: ${size.laptop}) {
