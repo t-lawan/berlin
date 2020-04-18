@@ -15,8 +15,20 @@ padding-bottom: 0px !important;
     @media (max-width: ${size.mobileM}) {
       line-height:1.4 !important;
     }
+    @media (min-width: ${size.mobileSL}) {
+    font-size: 0.85em;
+    }
+    @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+    }
+    @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+    }
     @media (min-width: ${size.laptopM}) {
     font-size: 1.05em;
+    }
+    @media (min-width: ${size.laptopL}) {
+    font-size: 1.1em;
     }
 }
 :nth-of-type(2) {
@@ -31,6 +43,12 @@ margin-bottom: 0.2em;
 :first-of-type {
     padding-left: 0em !important;
     padding-bottom: 1em !important;
+}
+@media (min-width: ${size.mobileSL}) {
+padding-top: 0em;
+  }
+@media (min-width: ${size.tablet}) {
+padding-top: 1em;
   }
 `
 const AboutAdvisoryBoard = props => {
