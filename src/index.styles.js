@@ -8,7 +8,9 @@ export const Color = {
 export const size = {
   mobileS: "320px",
   mobileM: "420px",
-  mobileL: "500px",
+  mobileL: "520px",
+  mobileSL: "568px",
+  mobileXL: "736px",
   tablet: "768px",
   tabletL: "1023px",
   laptop: "1024px",
@@ -213,6 +215,9 @@ a, span {
   @media (max-width: ${size.mobileM}) {
     font-size: 1.05em;
   }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.85em;
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
   }
@@ -253,11 +258,18 @@ p {
       font-size:1em;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.85em;
+    line-height:1.3;
+    > a {
+      font-size:1em;
+    }
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
     line-height:1.3;
     > a {
-      font-size:0.95em;
+      font-size:1em;
     }
   }
   @media (min-width: ${size.laptop}) {

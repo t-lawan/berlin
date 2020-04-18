@@ -44,6 +44,12 @@ export const Caption = styled.section`
     font-size: 0.65rem;
     max-width: 100%;
     margin: 0.7em 0;
+    @media (min-width: ${size.mobileL}) {
+      font-size: 0.55rem;
+    }
+    @media (min-width: ${size.tablet}) {
+      font-size: 0.65rem;
+    }
     @media (min-width: ${size.laptopL}) {
       font-size: 0.72rem;
       margin: 0.9em 0;
@@ -92,37 +98,20 @@ class ImageResource extends React.Component {
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
-    if (this.state.image) {
-      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
-    }
+    
+
     return (
       <>
-        {this.state.image ? (
-          <>
-            <Image
-              isLandscape={isLandscape}
-              alt={
-                this.state.image && this.state.image.EN.caption
-                  ? striptags(this.state.image[this.language].caption)
-                  : ""
-              }
-              isGallery={this.props.isGallery}
-              withCaption={this.props.withCaption}
-              fadeIn={true}
-              onLoad={this.props.onLoad}
-              fluid={this.state.image.fluid}
-            />
-            <Caption
-              hidden={!this.props.withCaption}
-              isGallery={this.props.isGallery}
-              dangerouslySetInnerHTML={{
-                __html: this.state.image
-                  ? this.state.image[this.language].caption
-                  : "",
-              }}
-            />{" "}
-          </>
-        ) : null}
+        
+        <Caption
+          hidden={!this.props.withCaption}
+          isGallery={this.props.isGallery}
+          dangerouslySetInnerHTML={{
+            __html: this.state.image
+              ? this.state.image[this.language].caption
+              : "",
+          }}
+        />
       </>
     )
   }

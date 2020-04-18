@@ -31,8 +31,19 @@ export const DocTitle = styled.h1`
   padding-bottom: 0rem;
   margin-bottom: 1em;
   font-size: 1em;
+  @media (min-width: ${size.mobileS}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 0.85em;
+    margin-top:1em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.05em;
+    margin-top: 0;
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.1em;
@@ -45,6 +56,15 @@ export const DocSubTitle = styled.h2`
   margin-top:-1.0em;
   margin-bottom:0.5em;
   font-size: 1em;
+  @media (min-width: ${size.mobileS}) {
+    font-size: 1.1em;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 0.85em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;
+  }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.05em;
     margin-top:-1.0em;

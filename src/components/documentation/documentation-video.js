@@ -27,7 +27,10 @@ const VideoContainer = styled.div`
     }
     @media (max-width: ${size.mobileM}) {
     margin-top: 0.8em;
-  }
+    }
+    @media (max-width: ${size.mobileXL}) {
+    margin-top: 0em;
+    }
 `
 const MargTop = styled.div`
 margin:0em 0 0em;

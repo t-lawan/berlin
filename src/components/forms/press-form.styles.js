@@ -3,7 +3,13 @@ import { Color, size } from '../../index.styles';
 
 export const PressFormWrapper = styled.section`
   padding: 1em 0em;
-  @media (max-width: ${size.mobileM}) {
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 1.15em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 1em;
+  }
+  @media (max-width: ${size.tablet}) {
     padding: 0em 0em 1em;
   }
    @media (min-width: ${size.laptop}) {
