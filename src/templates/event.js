@@ -265,10 +265,10 @@ const Event = props => {
                   {DateManager.createLongDateString(
                     date.start_date,
                     language.toLowerCase()
-                  )} – {DateManager.createLongDateString(
+                  )} 
+                  {date.end_date ? ` – ${DateManager.createLongDateString(
                     date.end_date,
-                    language.toLowerCase()
-                  )}
+                    language.toLowerCase())}` : null}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
