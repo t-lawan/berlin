@@ -22,7 +22,6 @@ const UpcomingEvents = props => {
   let currentExhibition = props.exhibitions.find(exhibition => {
     return exhibition.experience == props.experience
   })
-  let filteredItems
   let filteredEvents = []
   if (props.isCurrent) {
     props.events.forEach(event => {
@@ -166,7 +165,7 @@ const UpcomingEvents = props => {
               )}
               {item.end_date
                 ? ` – ${DateManager.createLongDateString(
-                    date.end_date,
+                    item.end_date,
                     language.toLowerCase())}`
                 : null}
             </p>
