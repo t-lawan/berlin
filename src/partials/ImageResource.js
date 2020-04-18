@@ -102,16 +102,32 @@ class ImageResource extends React.Component {
 
     return (
       <>
-        
-        <Caption
-          hidden={!this.props.withCaption}
-          isGallery={this.props.isGallery}
-          dangerouslySetInnerHTML={{
-            __html: this.state.image
-              ? this.state.image[this.language].caption
-              : "",
-          }}
-        />
+        {this.state.image ? (
+          <>
+            <Image
+              isLandscape={isLandscape}
+              alt={
+                this.state.image && this.state.image.EN.caption
+                  ? striptags(this.state.image[this.language].caption)
+                  : ""
+              }
+              isGallery={this.props.isGallery}
+              withCaption={this.props.withCaption}
+              fadeIn={true}
+              onLoad={this.props.onLoad}
+              fluid={this.state.image.fluid}
+            />
+            <Caption
+              hidden={!this.props.withCaption}
+              isGallery={this.props.isGallery}
+              dangerouslySetInnerHTML={{
+                __html: this.state.image
+                  ? this.state.image[this.language].caption
+                  : "",
+              }}
+            />{" "}
+          </>
+        ) : null}
       </>
     )
   }
