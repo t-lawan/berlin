@@ -3,13 +3,10 @@ import { size, Color } from "../../index.styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export const ModalWrapper = styled.div`
-  padding: 1em 2em;
   z-index: 1000;
   background: white;
   position: absolute;
-  margin: 10% 30%;
   border: 1px solid black;
-  width: 40%;
   display: ${props => (props.show ? "inherit" : "none")};
   @media (max-width: ${size.mobileM}) {
     padding: 0.7em 0.7em;
@@ -24,9 +21,46 @@ export const ModalWrapper = styled.div`
       font-size: 1em;
     }
   }
-  @media (max-width: ${size.tablet}) {
+  @media (min-width: ${size.mobileL}) {
+    padding: 0.7em 0.7em;
+    width: 90%;
+    margin: 3% 5% 0;
+    > div > p {
+      line-height: 1.3;
+      font-size: 0.85em;
+      margin-bottom: 0.5em;
+    }
+    > div > form > p {
+      line-height: 1.3;
+      font-size: 0.85em;
+    }
+    > div:nth-child(2) {
+      margin-top: -1.5em;
+      padding-right: 2em;
+    }
+  }
+  @media (min-width: ${size.tablet}) {
     width: 80%;
     margin: 10% 10%;
+    padding: 1em 2em;
+    > div > p {
+      line-height: 1.3;
+      font-size: 1em;
+      margin-bottom: 1em;
+    }
+    > div > form > p {
+      line-height: 1.3;
+      font-size: 1em;
+    }
+    > div:nth-child(2) {
+      margin-top: 0em;
+      padding-right: 0em;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    width: 80%;
+    margin: 10% 30%;
+    width: 40%;
   }
 `
 
@@ -46,6 +80,10 @@ export const FormInput = styled.input`
     line-height: 1.3;
     padding: 0.5em 0.5em 0.5em 0;
     margin-left: 0;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.85em;
+    line-height: 1.3;
   }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
@@ -78,7 +116,7 @@ export const ModalHeader = styled.div`
   padding: 0.5em 0;
   padding-bottom: 0;
   text-align: right;
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.mobileXL}) {
     padding: 0;
   }
 `
@@ -96,8 +134,15 @@ export const CloseImage = styled.img`
     width: 10%;
     margin-bottom: 0.2em;
   }
+  @media (min-width: ${size.mobileL}) {
+    margin-bottom: 0.2em;
+  }
   @media (min-width: ${size.tablet}) {
     width: 5%;
+    margin-bottom: 1em;
+  }
+  @media (min-width: ${size.laptop}) {
+    width: 8%;
   }
 `
 export const FormButton = styled.button`
@@ -119,6 +164,12 @@ export const FormButton = styled.button`
   /* margin-left: 0.25em; */
   @media (max-width: ${size.mobileM}) {
     margin-left: 0 !important;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.85em;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.85em;
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1.1em;
@@ -158,9 +209,18 @@ export const FormLabel = styled.label`
       margin-right: 0;
     }
   }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 0.85em;
+    line-height: 1.3;
+    margin-top: 0.5rem;
+    > a {
+      font-size: 1em;
+    }
+  }
   @media (min-width: ${size.tablet}) {
     font-size: 0.95em;
     line-height: 1.3;
+    margin-top: 1rem;
     > a {
       font-size: 0.95em;
     }
