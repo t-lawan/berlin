@@ -12,7 +12,8 @@ import { PageModel } from "../models/PageModel"
 import moment from "moment"
 import { DocumentationModel } from "../models/DocumentationModel"
 import { capitalise } from "./helper"
-import PublicationModel from "../models/PublicationModel";
+import PublicationModel from "../models/PublicationModel"
+import { DateManager } from "./date"
 export class Convert {
   static toNewsModel = wordpressModel => {
     let dates = wordpressModel.acf.dates.map(item => {
@@ -33,7 +34,6 @@ export class Convert {
   }
 
   static toPublicationModel = wordpressModel => {
-
     return new PublicationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -42,14 +42,16 @@ export class Convert {
       wordpressModel.acf.dimensions,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,
-      wordpressModel.acf.page_count,
+      wordpressModel.acf.page_count
     )
   }
 
   static toDocumentationModel = wordpressModel => {
-    let event_relation = wordpressModel.acf.event_relation ? wordpressModel.acf.event_relation.map((relation) => {
-      return relation.wordpress_id
-    }) : null;
+    let event_relation = wordpressModel.acf.event_relation
+      ? wordpressModel.acf.event_relation.map(relation => {
+          return relation.wordpress_id
+        })
+      : null
     return new DocumentationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -64,7 +66,7 @@ export class Convert {
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.thumbnail_image,
       !wordpressModel.acf.documentation_not_attached_to_event,
-      !wordpressModel.acf.unlist_document_on_media_overview,
+      !wordpressModel.acf.unlist_document_on_media_overview
     )
   }
 
@@ -87,14 +89,13 @@ export class Convert {
     )
   }
   static toEventModel = wordpressModel => {
-    let venue;
+    let venue
 
-    if(wordpressModel.acf.event_venue_selection) {
+    if (wordpressModel.acf.event_venue_selection) {
       venue = wordpressModel.acf.event_venue_selection.map(venue => {
         return venue.wordpress_id
       })
     }
-
 
     let documentation
 
@@ -126,20 +127,22 @@ export class Convert {
   }
 
   static toExhibitionModel = wordpressModel => {
-    let image_gallery = wordpressModel.acf.exhibition_image_gallery ? wordpressModel.acf.exhibition_image_gallery.map((img) => {
-      return img.wordpress_id;
-    }) : null; 
+    let image_gallery = wordpressModel.acf.exhibition_image_gallery
+      ? wordpressModel.acf.exhibition_image_gallery.map(img => {
+          return img.wordpress_id
+        })
+      : null
     return new ExhibitionModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.acf.exp_number,
       {
         ...wordpressModel.acf.EN,
-        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_en
+        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_en,
       },
       {
         ...wordpressModel.acf.DE,
-        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_de
+        temp_exp_graphic: wordpressModel.acf.temp_exp_graphic_de,
       },
       wordpressModel.acf.start_date,
       wordpressModel.acf.end_date,
@@ -251,40 +254,80 @@ export class Convert {
     let calendarItems = []
     eventsArray.forEach(event => {
       event.dates.forEach((date, index) => {
-        calendarItems.push(
-          new CalendarItemModel(
-            `event-${event.id}-${index}`,
-            `event/${event.slug}`,
-            "Talk",
-            "event",
-            date.display_time,
-            date.start_date,
-            date.end_date,
-            event.venue,
-            event.participants,
-            event.is_free,
-            event.limited_capacity,
-            event.experience,
-            {
-              title: event.EN.event_title,
-              description: event.EN.full_description,
-              display_time: date.EN.display_time,
-              subtitle: event.EN.event_subtitle,
-              other_language: event.other_language,
-            },
-            {
-              title: event.DE.event_title,
-              description: event.DE.full_description,
-              display_time: date.DE.display_time,
-              subtitle: event.DE.event_subtitle,
-              other_language: event.other_language_de,
-            },
-            null,
-            event.language
-            // { ...event.EN, ...date.EN },
-            // { ...event.DE, ...date.DE },
+        if (date.end_date) {
+          let d = DateManager.daysBetween(date.start_date, date.end_date) + 1
+          for(let i = 0; i < d; i++) {
+            calendarItems.push(
+              new CalendarItemModel(
+                `event-${event.id}-${index}`,
+                `event/${event.slug}`,
+                "Talk",
+                "event",
+                date.display_time,
+                DateManager.add(i, date.start_date),
+                date.end_date,
+                event.venue,
+                event.participants,
+                event.is_free,
+                event.limited_capacity,
+                event.experience,
+                {
+                  title: event.EN.event_title,
+                  description: event.EN.full_description,
+                  display_time: date.EN.display_time,
+                  subtitle: event.EN.event_subtitle,
+                  other_language: event.other_language,
+                },
+                {
+                  title: event.DE.event_title,
+                  description: event.DE.full_description,
+                  display_time: date.DE.display_time,
+                  subtitle: event.DE.event_subtitle,
+                  other_language: event.other_language_de,
+                },
+                null,
+                event.language
+                // { ...event.EN, ...date.EN },
+                // { ...event.DE, ...date.DE },
+              )
+            )
+          }
+        } else {
+          calendarItems.push(
+            new CalendarItemModel(
+              `event-${event.id}-${index}`,
+              `event/${event.slug}`,
+              "Talk",
+              "event",
+              date.display_time,
+              date.start_date,
+              date.end_date,
+              event.venue,
+              event.participants,
+              event.is_free,
+              event.limited_capacity,
+              event.experience,
+              {
+                title: event.EN.event_title,
+                description: event.EN.full_description,
+                display_time: date.EN.display_time,
+                subtitle: event.EN.event_subtitle,
+                other_language: event.other_language,
+              },
+              {
+                title: event.DE.event_title,
+                description: event.DE.full_description,
+                display_time: date.DE.display_time,
+                subtitle: event.DE.event_subtitle,
+                other_language: event.other_language_de,
+              },
+              null,
+              event.language
+              // { ...event.EN, ...date.EN },
+              // { ...event.DE, ...date.DE },
+            )
           )
-        )
+        }
       })
     })
     return calendarItems
@@ -305,7 +348,7 @@ export class Convert {
 
       let start_date = moment(exhibition.start_date, "YYYYMMDD")
       let end_date = moment(exhibition.end_date, "YYYYMMDD")
-      let diff = end_date.diff(start_date, "d") + 1;
+      let diff = end_date.diff(start_date, "d") + 1
       for (let i = 0; i < diff; i++) {
         let start = start_date.clone()
         start.add(i, "days")
