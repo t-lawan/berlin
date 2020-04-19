@@ -40,6 +40,9 @@ const DocumentationNavigatorWrapper = styled.div`
     margin: -2.5em 0 0.8em 0;
     padding: 0;
   }
+  @media (min-width: ${size.laptopL}) {
+    margin: -2.5em 0 1.1em 0;
+  }
 `
 
 const DocumentationNavigatorButton = styled(AniLink)`
@@ -55,7 +58,7 @@ const DocumentationNavigatorButton = styled(AniLink)`
     margin-bottom: 0.6em;
     margin-top: -0.5em;
     font-size: 1.35em;
-    padding: 0 0.65em 0 0;
+    padding: 0 1.05em 0 0;
   }
   
   @media (min-width: ${size.mobileL}) {
@@ -81,7 +84,7 @@ const DocumentationNavigatorButton = styled(AniLink)`
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.1em;
-    padding: 0.4em 1em 0 0em;
+    padding: 0.0em 1em 0 0em;
   }
 `
 
