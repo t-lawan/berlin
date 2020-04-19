@@ -46,8 +46,8 @@ export const EventNavigatorButton = styled(AniLink)`
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;
-    font-size: 1.45em;
-    padding: 0 1em 0 0;
+    font-size: 1.35em;
+    padding: 0 1.05em 0 0;
   }
   @media (min-width: ${size.mobileL}) {
     margin-bottom: 0.6em;
