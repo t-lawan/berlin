@@ -26,6 +26,9 @@ export const NavigatingButton = styled.div`
   :hover {
     cursor: url(${props => (props.left ? (props.show ? leftArrow : 'none') : (props.show ? rightArrow : 'none'))}) 0 0, none;
   }
+  @media (max-width: ${size.tablet}) {
+    display: none;
+  }
 `
 
 

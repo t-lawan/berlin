@@ -12,7 +12,7 @@ import DocumentationText from "../components/documentation/documentation-text";
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 import { getDocument } from "../store/selector";
-
+import * as actionTypes from '../store/action'
 const Documentation = props => {
   let documentationObject = Convert.toDocumentationModel(props.pageContext)
   let renderComponent;
@@ -21,6 +21,11 @@ const Documentation = props => {
   let path = pageMap.find((pg) => {
     return pg["EN"] == "documentation"
   })
+  let exp = parseInt(documentationObject.experience[0])
+
+  if(exp !== props.experience) {
+    props.changeExperience(exp);
+  }
 
   let thirdColumn = (
     <>
@@ -61,10 +66,18 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
+    experience: state.experience
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeExperience: experience =>
+      dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
   }
 }
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(Documentation)

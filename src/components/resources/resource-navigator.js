@@ -13,25 +13,25 @@ const RelatedNavigatorWrapper = styled.div`
   flex-direction: row;
   background: ${Color.yellow};
   @media (max-width: ${size.mobileM}) {
-    display:block;
-    margin-top:0em;
-    padding: 0.5em 0 0 0.7em;
-    width:100%;
+    display: block;
+    margin-top: 0em;
+    padding: 0.0em 0 0.7 0em;
+    width: 100%;
     :after {
-      content:"";
-      clear:both;
-      display:table;
+      content: "";
+      clear: both;
+      display: table;
     }
   }
   @media (min-width: ${size.mobileL}) {
-    display:block;
-    margin-top:0em;
+    display: block;
+    margin-top: 0em;
     padding: 0.5em 0 0 0.7em;
-    width:100%;
+    width: 100%;
     :after {
-      content:"";
-      clear:both;
-      display:table;
+      content: "";
+      clear: both;
+      display: table;
     }
   }
   @media (min-width: ${size.tablet}) {
@@ -63,8 +63,8 @@ const RelatedNavigatorButton = styled(AniLink)`
   @media (max-width: ${size.mobileM}) {
     margin-bottom: 0.6em;
     margin-top: -0.5em;
-    font-size: 1.55em;
-    padding: 0 1em 0 0;
+    font-size: 1.35em;
+    padding: 0 1.05em 0 0;
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.05em;

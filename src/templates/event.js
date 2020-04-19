@@ -115,7 +115,7 @@ const EventTitleMob = styled.h1`
   @media (min-width: ${size.mobileSL}) {
     font-size: 1.2em;
     max-width: 70%;
-    margin-bottom: 1.0em;
+    margin-bottom: 1em;
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.1em;
@@ -151,8 +151,14 @@ const EventDescription = styled.div`
       border-color: ${Color.red};
       :hover {
         color: ${Color.red};
-      } 
+      }
     }
+  }
+`
+const OtherVenue = styled.div`
+  p {
+    width: 100% !important;
+    display: block;
   }
 `
 
@@ -205,6 +211,10 @@ const eventContent = {
 const Event = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = Convert.toEventModel(props.pageContext)
+  let exp = parseInt(event.experience[0])
+  if (exp !== props.experience) {
+    props.changeExperience(exp);
+  }
   const facebookLink =
     typeof window !== `undefined`
       ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
@@ -277,10 +287,13 @@ const Event = props => {
                   {DateManager.createLongDateString(
                     date.start_date,
                     language.toLowerCase()
-                  )} 
-                  {date.end_date ? ` – ${DateManager.createLongDateString(
-                    date.end_date,
-                    language.toLowerCase())}` : null}
+                  )}
+                  {date.end_date
+                    ? ` – ${DateManager.createLongDateString(
+                        date.end_date,
+                        language.toLowerCase()
+                      )}`
+                    : null}
                 </p>
                 <p>{`${date[language].display_time}`}</p>
               </div>
@@ -307,7 +320,7 @@ const Event = props => {
             {venue ? (
               <p> {venue[language].venue_name} </p>
             ) : event[language].other_event_venue ? (
-              <div
+              <OtherVenue
                 dangerouslySetInnerHTML={{
                   __html: event[language].other_event_venue,
                 }}
@@ -444,6 +457,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     startTransition: () => dispatch({ type: actionTypes.START_TRANSITION }),
+    changeExperience: experience =>
+      dispatch({ type: actionTypes.CHANGE_EXPERIENCE, experience: experience }),
   }
 }
 
