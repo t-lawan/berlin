@@ -32,7 +32,7 @@ export const DocTitle = styled.h1`
   margin-bottom: 1em;
   font-size: 1em;
   @media (min-width: ${size.mobileS}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.mobileSL}) {
     font-size: 0.85em;
@@ -57,7 +57,7 @@ export const DocSubTitle = styled.h2`
   margin-bottom:0.5em;
   font-size: 1em;
   @media (min-width: ${size.mobileS}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.mobileSL}) {
     font-size: 0.85em;
