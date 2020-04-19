@@ -316,7 +316,7 @@ h1, h2, h3, h4, h5, h6, p, a, em {
   display: block;
   -webkit-font-smoothing: subpixel-antialiased;
   @media (max-width: ${size.mobileM}) {
-    background-color: #FFF !important; 
+    
   }
 }
 .show-footer {
