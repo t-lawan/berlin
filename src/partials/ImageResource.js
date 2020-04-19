@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { size } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
-import striptags from 'striptags'
+import striptags from "striptags"
 export const GalleryImage = styled(Img)`
   picture img {
     object-fit: contain;
@@ -24,12 +24,12 @@ export const Image = styled(Img)`
     /* width: auto !important; */
     position: relative;
     padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
+      props.withCaption ? (props.isGallery ? "5rem !important" : "0") : "0"};
   }
 
   > img {
     padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
+      props.withCaption ? (props.isGallery ? "5rem !important" : "0") : "0"};
     /* position: relative !important; */
   }
 `
@@ -39,7 +39,7 @@ export const Caption = styled.section`
   text-align: left;
   /* margin-top: -4rem; */
 
-  margin-top: ${props => (props.isGallery ? "-4rem" : "0")};
+  margin-top: ${props => (props.isGallery ? "-5rem" : "0")};
   p {
     font-size: 0.65rem;
     max-width: 100%;
