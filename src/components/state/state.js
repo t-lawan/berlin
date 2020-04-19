@@ -556,6 +556,10 @@ const State = props => {
       return item.active
     })
 
+    if(localStorage.getItem('agreed')) {
+      props.setAgreedToTrue()
+    }
+
     if (filteredExhibitions.length > 0) {
       let experience = filteredExhibitions[0].experience
       props.changeExperience(parseInt(experience))
@@ -599,6 +603,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
     setNews: news => dispatch({ type: actionTypes.SET_NEWS, news: news }),
+    setAgreedToTrue: () => dispatch({type: actionTypes.HAS_AGREED_TO_TERMS}),
     setParticipants: participants =>
       dispatch({
         type: actionTypes.SET_PARTICIPANTS,
