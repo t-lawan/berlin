@@ -208,239 +208,256 @@ const eventContent = {
   },
 }
 
-const Event = props => {
-  const language = getCurrentLanguageString(props.languages)
-  const event = Convert.toEventModel(props.pageContext)
-  let exp = parseInt(event.experience[0])
-  if (exp !== props.experience) {
-    props.changeExperience(exp);
-  }
-  const facebookLink =
-    typeof window !== `undefined`
-      ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
-      : ""
-  event.dates = event.dates.sort((a, b) => {
-    return a.start_date - b.start_date
-  })
-  let venue = event.venue ? getVenue(props.venues, event.venue[0]) : null
-  let documentation = []
-  if (event.documentation) {
-    documentation = props.documentation.filter(doc => {
-      return doc.id === event.documentation[0]
-    })
+class Event extends React.Component {
+  language
+  event
+  renderComponent
+  componentDidMount() {
+    let exp = parseInt(this.event.experience[0])
+    if (exp !== this.props.experience) {
+      this.props.changeExperience(exp)
+    }
   }
 
-  if (event.related_resource && event.related_resource.length > 0) {
-    event.related_resource = event.related_resource.map(resource => {
-      return resource.wordpress_id
-    })
-  }
-  let title = truncateText(
-    striptags(event[`${props.pageContext.language.toUpperCase()}`].event_title)
-  )
-  let titleHeading =
-    language === "en"
-      ? "11th Berlin Biennale for Contemporary Art"
-      : "11. Berlin Biennale für zeitgenössische Kunst"
-
-  let path = pageMap.find(pg => {
-    return pg["EN"] == "event"
-  })
-
-  let description = truncateText(
-    striptags(
-      event[`${props.pageContext.language.toUpperCase()}`].full_description
-    )
-  )
-
-  const renderComponent = (
-    <>
-      <EventNavigator id={event.id} />
-      <TwoColumnPageWrapper>
-        <SEO
-          title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
-          description={description}
-          lang={props.pageContext.language}
-          image={event.thumbnail_image}
-          pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-            event.slug
-          }`}
-        />
-        <EventColumn>
-          <EventTitleMob
-            dangerouslySetInnerHTML={{
-              __html: striptags(event[language].event_title, ["em"]),
-            }}
-          />
-          {event[language].event_subtitle ? (
-            <EventSubTitleMob
-              dangerouslySetInnerHTML={{
-                __html: striptags(event[language].event_subtitle, ["em"]),
-              }}
-            />
-          ) : null}
-
-          <EventTextBlock>
-            {event.dates.map((date, index) => (
-              <div key={index}>
-                <p>
-                  {DateManager.createLongDateString(
-                    date.start_date,
-                    language.toLowerCase()
-                  )}
-                  {date.end_date
-                    ? ` – ${DateManager.createLongDateString(
-                        date.end_date,
-                        language.toLowerCase()
-                      )}`
-                    : null}
-                </p>
-                <p>{`${date[language].display_time}`}</p>
-              </div>
-            ))}
-            <p hidden={!event[language].rsvp_required}>
-              {UpcomingEventsContent[language].rsvp}
-            </p>
-          </EventTextBlock>
-          <EventTextBlock>
-            {/* {props.experience == 4 ? (
-              <VenueLink
-                to={createPath(language, venue ? "venue/" + venue.slug : "")}
-                // bg={transitionBackground}
-                // cover
-                // direction="down"
-                fade
-              >
-                {" "}
-                {venue ? venue[language].venue_name : ""}
-              </VenueLink>
-            ) : (
-              <p>{venue ? venue[language].venue_name : ""} </p>
-            )} */}
-            {venue ? (
-              <p> {venue[language].venue_name} </p>
-            ) : event[language].other_event_venue ? (
-              <OtherVenue
-                dangerouslySetInnerHTML={{
-                  __html: event[language].other_event_venue,
-                }}
-              />
-            ) : null}
-
-            <p>{venue ? venue.address[0].address_line : ""}</p>
-          </EventTextBlock>
-          <EventTextBlock hidden={documentation.length === 0}>
-            <DocumentationLink
-              hidden={documentation.length === 0}
-              to={createPath(
-                language,
-                documentation[0] ? `documentation/${documentation[0].slug}` : ``
-              )}
-              // fade
-              onClick={() => props.startTransition()}
-              // bg={transitionBackground}
-              // cover
-              // direction="down"
-            >
-              <DocumentationButton bgColour={"black"}>
-                Documentation
-              </DocumentationButton>
-            </DocumentationLink>
-          </EventTextBlock>
-          <EventTextBlock>
-            <p>
-              {event.language == "other"
-                ? event[`other_language${language == "EN" ? "" : "_de"}`]
-                : UpcomingEventsContent[language][event.language]}
-            </p>
-            <p hidden={!event.is_free}>
-              {" "}
-              {`${UpcomingEventsContent[language].free_admission}${
-                event.limited_capacity
-                  ? `, ${UpcomingEventsContent[language].limited_capacity}`
-                  : ""
-              }`}
-            </p>
-          </EventTextBlock>
-          <EventTextBlock>
-            <ShareLink>
-              {" "}
-              {eventContent[language].share}:{" "}
-              <a target="__blank" rel="noopener noreferrer" href={facebookLink}>
-                {" "}
-                Facebook{" "}
-              </a>
-            </ShareLink>
-          </EventTextBlock>
-        </EventColumn>
-        <EventColumn>
-          <ImageResource id={event.thumbnail_image} withCaption={true} />
-          <TextBlock>
-            <EventTitle
-              dangerouslySetInnerHTML={{
-                __html: striptags(event[language].event_title, ["em"]),
-              }}
-            />
-
-            {event[language].event_subtitle ? (
-              <EventSubTitle
-                dangerouslySetInnerHTML={{
-                  __html: striptags(event[language].event_subtitle, ["em"]),
-                }}
-              />
-            ) : null}
-          </TextBlock>
-
-          <EventDescription
-            dangerouslySetInnerHTML={{
-              __html: event[language].full_description,
-            }}
-          />
-
-          <TextBlock hidden={!event.video}>
-            <VideoContainer
-              hidden={!event.video}
-              dangerouslySetInnerHTML={{
-                __html: event.video,
-              }}
-            />
-          </TextBlock>
-
-          <TextBlock hidden={!event[language].rsvp_required}>
-            <EventRsvpText
-              hidden={!event[language].rsvp_required}
-              dangerouslySetInnerHTML={{
-                __html: event[language].rsvp_note,
-              }}
-            />
-          </TextBlock>
-        </EventColumn>
-      </TwoColumnPageWrapper>
-      <RelatedResources
-        border={false}
-        ids={
-          event.related_resource && event.related_resource.length > 0
-            ? event.related_resource
-            : []
-        }
-        hidden={!event.related_resource || event.related_resource.length === 0}
-      />
-    </>
-  )
-
-  let thirdColumn = (
+  thirdColumn = (
     <>
       <NewsList />
       <UpcomingEvents />
     </>
   )
-  return (
-    <Layout
-      firstColumn={renderComponent}
-      numberOfColumnsIsTwo={false}
-      thirdColumn={thirdColumn}
-    />
-  )
+
+  render() {
+    this.language = getCurrentLanguageString(this.props.languages)
+    this.event = Convert.toEventModel(this.props.pageContext)
+    const facebookLink =
+      typeof window !== `undefined`
+        ? `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`
+        : ""
+    this.event.dates = this.event.dates.sort((a, b) => {
+      return a.start_date - b.start_date
+    })
+    let venue = this.event.venue ? getVenue(this.props.venues, this.event.venue[0]) : null
+    let documentation = []
+    if (this.event.documentation) {
+      documentation = this.props.documentation.filter(doc => {
+        return doc.id === this.event.documentation[0]
+      })
+    }
+
+    if (this.event.related_resource && this.event.related_resource.length > 0) {
+      this.event.related_resource = this.event.related_resource.map(resource => {
+        return resource.wordpress_id
+      })
+    }
+    let title = truncateText(
+      striptags(
+        this.event[`${this.props.pageContext.language.toUpperCase()}`].event_title
+      )
+    )
+    let titleHeading =
+      this.language === "en"
+        ? "11th Berlin Biennale for Contemporary Art"
+        : "11. Berlin Biennale für zeitgenössische Kunst"
+
+    let path = pageMap.find(pg => {
+      return pg["EN"] == "event"
+    })
+
+    let description = truncateText(
+      striptags(
+        this.event[`${this.props.pageContext.language.toUpperCase()}`].full_description
+      )
+    )
+    this.renderComponent = (
+      <>
+        <EventNavigator id={this.event.id} />
+        <TwoColumnPageWrapper>
+          <SEO
+            title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
+            description={description}
+            lang={this.props.pageContext.language}
+            image={this.event.thumbnail_image}
+            pathname={`${path[this.props.pageContext.language.toUpperCase()]}/${
+              this.event.slug
+            }`}
+          />
+          <EventColumn>
+            <EventTitleMob
+              dangerouslySetInnerHTML={{
+                __html: striptags(this.event[this.language].event_title, ["em"]),
+              }}
+            />
+            {this.event[this.language].event_subtitle ? (
+              <EventSubTitleMob
+                dangerouslySetInnerHTML={{
+                  __html: striptags(this.event[this.language].event_subtitle, ["em"]),
+                }}
+              />
+            ) : null}
+
+            <EventTextBlock>
+              {this.event.dates.map((date, index) => (
+                <div key={index}>
+                  <p>
+                    {DateManager.createLongDateString(
+                      date.start_date,
+                      this.language.toLowerCase()
+                    )}
+                    {date.end_date
+                      ? ` – ${DateManager.createLongDateString(
+                          date.end_date,
+                          this.language.toLowerCase()
+                        )}`
+                      : null}
+                  </p>
+                  <p>{`${date[this.language].display_time}`}</p>
+                </div>
+              ))}
+              <p hidden={!this.event[this.language].rsvp_required}>
+                {UpcomingEventsContent[this.language].rsvp}
+              </p>
+            </EventTextBlock>
+            <EventTextBlock>
+              {/* {props.experience == 4 ? (
+                <VenueLink
+                  to={createPath(language, venue ? "venue/" + venue.slug : "")}
+                  // bg={transitionBackground}
+                  // cover
+                  // direction="down"
+                  fade
+                >
+                  {" "}
+                  {venue ? venue[language].venue_name : ""}
+                </VenueLink>
+              ) : (
+                <p>{venue ? venue[language].venue_name : ""} </p>
+              )} */}
+              {venue ? (
+                <p> {venue[this.language].venue_name} </p>
+              ) : this.event[this.language].other_event_venue ? (
+                <OtherVenue
+                  dangerouslySetInnerHTML={{
+                    __html: this.event[this.language].other_event_venue,
+                  }}
+                />
+              ) : null}
+
+              <p>{venue ? venue.address[0].address_line : ""}</p>
+            </EventTextBlock>
+            <EventTextBlock hidden={documentation.length === 0}>
+              <DocumentationLink
+                hidden={documentation.length === 0}
+                to={createPath(
+                  this.language,
+                  documentation[0]
+                    ? `documentation/${documentation[0].slug}`
+                    : ``
+                )}
+                // fade
+                onClick={() => this.props.startTransition()}
+                // bg={transitionBackground}
+                // cover
+                // direction="down"
+              >
+                <DocumentationButton bgColour={"black"}>
+                  Documentation
+                </DocumentationButton>
+              </DocumentationLink>
+            </EventTextBlock>
+            <EventTextBlock>
+              <p>
+                {this.event.language == "other"
+                  ? this.event[`other_language${this.language == "EN" ? "" : "_de"}`]
+                  : UpcomingEventsContent[this.language][this.event.language]}
+              </p>
+              <p hidden={!this.event.is_free}>
+                {" "}
+                {`${UpcomingEventsContent[this.language].free_admission}${
+                  this.event.limited_capacity
+                    ? `, ${UpcomingEventsContent[this.language].limited_capacity}`
+                    : ""
+                }`}
+              </p>
+            </EventTextBlock>
+            <EventTextBlock>
+              <ShareLink>
+                {" "}
+                {eventContent[this.language].share}:{" "}
+                <a
+                  target="__blank"
+                  rel="noopener noreferrer"
+                  href={facebookLink}
+                >
+                  {" "}
+                  Facebook{" "}
+                </a>
+              </ShareLink>
+            </EventTextBlock>
+          </EventColumn>
+          <EventColumn>
+            <ImageResource id={this.event.thumbnail_image} withCaption={true} />
+            <TextBlock>
+              <EventTitle
+                dangerouslySetInnerHTML={{
+                  __html: striptags(this.event[this.language].event_title, ["em"]),
+                }}
+              />
+
+              {this.event[this.language].event_subtitle ? (
+                <EventSubTitle
+                  dangerouslySetInnerHTML={{
+                    __html: striptags(this.event[this.language].event_subtitle, ["em"]),
+                  }}
+                />
+              ) : null}
+            </TextBlock>
+
+            <EventDescription
+              dangerouslySetInnerHTML={{
+                __html: this.event[this.language].full_description,
+              }}
+            />
+
+            <TextBlock hidden={!this.event.video}>
+              <VideoContainer
+                hidden={!this.event.video}
+                dangerouslySetInnerHTML={{
+                  __html: this.event.video,
+                }}
+              />
+            </TextBlock>
+
+            <TextBlock hidden={!this.event[this.language].rsvp_required}>
+              <EventRsvpText
+                hidden={!this.event[this.language].rsvp_required}
+                dangerouslySetInnerHTML={{
+                  __html: this.event[this.language].rsvp_note,
+                }}
+              />
+            </TextBlock>
+          </EventColumn>
+        </TwoColumnPageWrapper>
+        <RelatedResources
+          border={false}
+          ids={
+            this.event.related_resource && this.event.related_resource.length > 0
+              ? this.event.related_resource
+              : []
+          }
+          hidden={
+            !this.event.related_resource || this.event.related_resource.length === 0
+          }
+        />
+      </>
+    )
+    return (
+      <Layout
+        firstColumn={this.renderComponent}
+        numberOfColumnsIsTwo={false}
+        thirdColumn={this.thirdColumn}
+      />
+    )
+  }
 }
 
 const mapStateToProps = state => {
