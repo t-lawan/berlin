@@ -155,6 +155,12 @@ const EventDescription = styled.div`
     }
   }
 `
+const OtherVenue = styled.div`
+  p {
+    width: 100% !important;
+    display: block;
+  }
+`
 
 const EventRsvpText = styled.div`
   p {
@@ -307,7 +313,7 @@ const Event = props => {
             {venue ? (
               <p> {venue[language].venue_name} </p>
             ) : event[language].other_event_venue ? (
-              <div
+              <OtherVenue
                 dangerouslySetInnerHTML={{
                   __html: event[language].other_event_venue,
                 }}
