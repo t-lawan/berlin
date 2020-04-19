@@ -53,6 +53,12 @@ const text = {
 
 const DataPrivacy = props => {
   const language = getCurrentLanguageString(props.languages);
+
+  const setAgreedToTrue = () => {
+    localStorage.setItem('agreed', true)
+    props.setAgreedToTrue()
+  }
+
   return (
     <DataPrivacyWrapper show={props.show}>
       <DataPrivacyBlock>
@@ -67,7 +73,7 @@ const DataPrivacy = props => {
         </p>
       </DataPrivacyBlock>
       <div>
-        <LargeButton bgColour="white" onClick={() => props.setAgreedToTrue()}>
+        <LargeButton bgColour="white" onClick={() => setAgreedToTrue()}>
           {" "}
           OK{" "}
         </LargeButton>
