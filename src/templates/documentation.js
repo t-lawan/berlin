@@ -4,69 +4,110 @@ import { connect } from "react-redux"
 import { truncateText, pageMap } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
-import { Convert } from "../utility/convert";
-import DocumentationVideo from "../components/documentation/documentation-video";
-import DocumentationAudio from "../components/documentation/documentation-audio";
-import DocumentationImageGallery from "../components/documentation/documentation-image-gallery";
-import DocumentationText from "../components/documentation/documentation-text";
-import NewsList from "../components/news/newslist";
-import striptags from 'striptags';
-import { getDocument } from "../store/selector";
-import * as actionTypes from '../store/action'
-const Documentation = props => {
-  let documentationObject = Convert.toDocumentationModel(props.pageContext)
-  let renderComponent;
-  let title = documentationObject[props.pageContext.lang.toUpperCase()] ? truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].title)) : ""
-  let description = documentationObject[props.pageContext.lang.toUpperCase()] ?  truncateText(striptags(documentationObject[props.pageContext.lang.toUpperCase()].social_media_description)) : "";
-  let path = pageMap.find((pg) => {
+import { Convert } from "../utility/convert"
+import DocumentationVideo from "../components/documentation/documentation-video"
+import DocumentationAudio from "../components/documentation/documentation-audio"
+import DocumentationImageGallery from "../components/documentation/documentation-image-gallery"
+import DocumentationText from "../components/documentation/documentation-text"
+import NewsList from "../components/news/newslist"
+import striptags from "striptags"
+import * as actionTypes from "../store/action"
+class Documentation extends React.Component {
+  documentationObject
+  renderComponent
+  title
+  description
+  path = pageMap.find(pg => {
     return pg["EN"] == "documentation"
   })
-  let exp = parseInt(documentationObject.experience[0])
-
-  if(exp !== props.experience) {
-    props.changeExperience(exp);
+  exp
+  componentDidMount() {
+    let exp = parseInt(this.documentationObject.experience[0])
+    if (exp !== this.props.experience) {
+      this.props.changeExperience(exp)
+    }
   }
 
-  let thirdColumn = (
+  thirdColumn = (
     <>
       <NewsList />
       <UpcomingEvents />
     </>
   )
-  switch(documentationObject.type) {
-    case 'video': 
-      renderComponent = <DocumentationVideo documentation={documentationObject} />
-      break;
-    case 'mp3': 
-      renderComponent = <DocumentationAudio documentation={documentationObject} />
-      break;
-    case 'imagegallery': 
-      renderComponent = <DocumentationImageGallery documentation={documentationObject} />
-      break; 
-    case 'text': 
-      renderComponent = <DocumentationText documentation={documentationObject} />
-      break;   
-    default: 
-      renderComponent = <p></p>
-  }
 
-  return (
-    <>
-      <SEO title={title} description={description} lang={props.pageContext.lang} pathname={`${path[props.pageContext.lang.toUpperCase()]}/${documentationObject.slug}`} image={documentationObject.thumbnail} />
-      <Layout
-        firstColumn={renderComponent}
-        numberOfColumnsIsTwo={false}
-        thirdColumn={thirdColumn}
-      />
-    </>
-  )
+  render() {
+    this.documentationObject = Convert.toDocumentationModel(
+      this.props.pageContext
+    )
+    this.title = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+      ? truncateText(
+          striptags(
+            this.documentationObject[this.props.pageContext.lang.toUpperCase()].title
+          )
+        )
+      : ""
+    this.description = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+      ? truncateText(
+          striptags(
+            this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+              .social_media_description
+          )
+        )
+      : ""
+
+    if(this.documentationObject) {
+      switch (this.documentationObject.type) {
+        case "video":
+          this.renderComponent = (
+            <DocumentationVideo documentation={this.documentationObject} />
+          )
+          break
+        case "mp3":
+          this.renderComponent = (
+            <DocumentationAudio documentation={this.documentationObject} />
+          )
+          break
+        case "imagegallery":
+          this.renderComponent = (
+            <DocumentationImageGallery documentation={this.documentationObject} />
+          )
+          break
+        case "text":
+          this.renderComponent = (
+            <DocumentationText documentation={this.documentationObject} />
+          )
+          break
+        default:
+          this.renderComponent = <p></p>
+      }
+    }
+
+    return (
+      <>
+        <SEO
+          title={this.title}
+          description={this.description}
+          lang={this.props.pageContext.lang}
+          pathname={`${this.path[this.props.pageContext.lang.toUpperCase()]}/${
+            this.documentationObject.slug
+          }`}
+          image={this.documentationObject.thumbnail}
+        />
+        <Layout
+          firstColumn={this.renderComponent}
+          numberOfColumnsIsTwo={false}
+          thirdColumn={this.thirdColumn}
+        />
+      </>
+    )
+  }
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     documents: state.documents,
-    experience: state.experience
+    experience: state.experience,
   }
 }
 
@@ -77,7 +118,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Documentation)
+export default connect(mapStateToProps, mapDispatchToProps)(Documentation)

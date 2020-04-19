@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { size } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
-import striptags from 'striptags'
+import striptags from "striptags"
 export const GalleryImage = styled(Img)`
   picture img {
     object-fit: contain;
