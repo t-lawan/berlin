@@ -28,8 +28,11 @@ const VideoContainer = styled.div`
     @media (max-width: ${size.mobileM}) {
     margin-top: 0.8em;
     }
-    @media (max-width: ${size.mobileXL}) {
+    @media (min-width: ${size.mobileXL}) {
     margin-top: 0em;
+    }
+    @media (min-width: ${size.laptop}) {
+    margin-top:1em;
     }
 `
 const MargTop = styled.div`
