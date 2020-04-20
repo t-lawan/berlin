@@ -557,7 +557,7 @@ const State = props => {
     })
 
     if(typeof window !== `undefined`) {
-      if(localStorage.getItem('agreed')){
+      if(window.localStorage.getItem('agreed')){
         props.setAgreedToTrue()
       }
     }
