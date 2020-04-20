@@ -55,7 +55,9 @@ const DataPrivacy = props => {
   const language = getCurrentLanguageString(props.languages);
 
   const setAgreedToTrue = () => {
-    localStorage.setItem('agreed', true)
+    if(typeof window !== `undefined`) {
+      window.localStorage.setItem('agreed', true)
+    }
     props.setAgreedToTrue()
   }
 
