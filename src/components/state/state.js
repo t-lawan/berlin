@@ -556,8 +556,10 @@ const State = props => {
       return item.active
     })
 
-    if(localStorage.getItem('agreed')) {
-      props.setAgreedToTrue()
+    if(typeof window !== `undefined`) {
+      if(localStorage.getItem('agreed')){
+        props.setAgreedToTrue()
+      }
     }
 
     if (filteredExhibitions.length > 0) {
