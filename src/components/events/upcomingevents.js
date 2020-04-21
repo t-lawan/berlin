@@ -164,7 +164,7 @@ const UpcomingEvents = props => {
                 language.toLowerCase()
               )}
               {item.end_date
-                ? ` – ${DateManager.createLongDateString(
+                ? `–${DateManager.createLongDateString(
                     item.end_date,
                     language.toLowerCase())}`
                 : null}
@@ -178,7 +178,7 @@ const UpcomingEvents = props => {
                 dangerouslySetInnerHTML={{
                   __html: `<p>${truncateText(
                     striptags(item[language].subtitle),
-                    24
+                    28
                   )} ...</p>`,
                 }}
               />
