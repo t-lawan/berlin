@@ -198,6 +198,9 @@ const ShareLink = styled.p`
     }
   }
 `
+const dateStyle = {
+  whiteSpace: 'pre-line',
+}
 
 const eventContent = {
   EN: {

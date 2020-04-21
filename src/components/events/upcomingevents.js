@@ -164,7 +164,7 @@ const UpcomingEvents = props => {
                 language.toLowerCase()
               )}
               {item.end_date
-                ? ` – ${DateManager.createLongDateString(
+                ? `–${DateManager.createLongDateString(
                     item.end_date,
                     language.toLowerCase())}`
                 : null}
