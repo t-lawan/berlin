@@ -15,54 +15,136 @@ import { getVenue } from "../../store/selector"
 import striptags from "striptags"
 import * as actionTypes from "../../store/action"
 import { DateManager } from "../../utility/date"
+import { CalendarItemModel } from "../../models/CalendarItemModel"
 
 const UpcomingEvents = props => {
   const language = getCurrentLanguageString(props.languages)
   let currentExhibition = props.exhibitions.find(exhibition => {
     return exhibition.experience == props.experience
   })
-  let filteredItems;
-  if(props.isCurrent) {
-    filteredItems = props.calendar_items
-    .filter(item => {
+  let filteredEvents = []
+  if (props.isCurrent) {
+    props.events.forEach(event => {
+      event.dates.forEach((date, index) => {
+        filteredEvents.push(
+          new CalendarItemModel(
+            `event-${event.id}-${index}`,
+            `event/${event.slug}`,
+            "Talk",
+            "event",
+            date.display_time,
+            date.start_date,
+            date.end_date,
+            event.venue,
+            event.participants,
+            event.is_free,
+            event.limited_capacity,
+            event.experience,
+            {
+              title: event.EN.event_title,
+              description: event.EN.full_description,
+              display_time: date.EN.display_time,
+              subtitle: event.EN.event_subtitle,
+              other_language: event.other_language,
+            },
+            {
+              title: event.DE.event_title,
+              description: event.DE.full_description,
+              display_time: date.DE.display_time,
+              subtitle: event.DE.event_subtitle,
+              other_language: event.other_language_de,
+            },
+            null,
+            event.language
+            // { ...event.EN, ...date.EN },
+            // { ...event.DE, ...date.DE },
+          )
+        )
+      })
+    })
+
+
+    filteredEvents = filteredEvents
+      .filter(item => {
         return (
           item.experience.includes(props.active_experience.toString()) &&
           item.item === "event" &&
           DateManager.getDaysFromCurrentDate(item.start_date) >= 0
         )
-
-    })
-    .sort((a, b) => {
-      return a.start_date - b.start_date
-    })
+      })
+      .sort((a, b) => {
+        return a.start_date - b.start_date
+      })
   } else {
-    filteredItems = props.calendar_items
-    .filter(item => {
-      if (DateManager.getDaysFromCurrentDate(currentExhibition.end_date) >= 0) {
-        return (
-          item.experience.includes(props.experience.toString()) &&
-          item.item === "event" &&
-          (props.experience >= props.active_experience
-            ? item.end_date ? DateManager.getDaysFromCurrentDate(item.end_date) >= 0 :  DateManager.getDaysFromCurrentDate(item.start_date) >= 0
-            : true)
+    props.events.forEach(event => {
+      event.dates.forEach((date, index) => {
+        filteredEvents.push(
+          new CalendarItemModel(
+            `event-${event.id}-${index}`,
+            `event/${event.slug}`,
+            "Talk",
+            "event",
+            date.display_time,
+            date.start_date,
+            date.end_date,
+            event.venue,
+            event.participants,
+            event.is_free,
+            event.limited_capacity,
+            event.experience,
+            {
+              title: event.EN.event_title,
+              description: event.EN.full_description,
+              display_time: date.EN.display_time,
+              subtitle: event.EN.event_subtitle,
+              other_language: event.other_language,
+            },
+            {
+              title: event.DE.event_title,
+              description: event.DE.full_description,
+              display_time: date.DE.display_time,
+              subtitle: event.DE.event_subtitle,
+              other_language: event.other_language_de,
+            },
+            null,
+            event.language
+            // { ...event.EN, ...date.EN },
+            // { ...event.DE, ...date.DE },
+          )
         )
-      } else {
-        return (
-          item.item === "event" &&
-          item.experience.includes(props.experience.toString())
-        )
-      }
+      })
     })
-    .sort((a, b) => {
-      return a.start_date - b.start_date
-    })
-  }
 
+    filteredEvents = filteredEvents
+      .filter(item => {
+        if (
+          DateManager.getDaysFromCurrentDate(currentExhibition.end_date) >= 0
+        ) {
+          return (
+            item.experience.includes(props.experience.toString()) &&
+            item.item === "event" &&
+            (props.experience >= props.active_experience
+              ? item.end_date
+                ? DateManager.getDaysFromCurrentDate(item.end_date) >= 0
+                : DateManager.getDaysFromCurrentDate(item.start_date) >= 0
+              : true)
+          )
+        } else {
+          return (
+            item.item === "event" &&
+            item.experience.includes(props.experience.toString())
+          )
+        }
+      })
+      .sort((a, b) => {
+        return a.start_date - b.start_date
+      })
+  }
 
   return (
     <EventsWrapper isCurrent={props.isCurrent} isHome={props.isHome}>
-      <p hidden={filteredItems.length !== 0}> {language === "EN" ? "" : ""} </p>
-      {filteredItems.map(item => (
+      <p hidden={filteredEvents.length !== 0}> {language === "EN" ? "" : ""} </p>
+      {filteredEvents.map(item => (
         <EventItem isActive={currentExhibition.active} key={item.id}>
           <EventLink
             onClick={() => props.startTransition()}
@@ -80,10 +162,12 @@ const UpcomingEvents = props => {
               {DateManager.createLongDateString(
                 item.start_date,
                 language.toLowerCase()
-              )}–{item.end_date ? DateManager.createLongDateString(
-                item.end_date,
-                language.toLowerCase()
-              ) : null}
+              )}
+              {item.end_date
+                ? `–${DateManager.createLongDateString(
+                    item.end_date,
+                    language.toLowerCase())}`
+                : null}
             </p>
             <p> {item[language].display_time}</p>
             <EventTitle
@@ -94,13 +178,18 @@ const UpcomingEvents = props => {
                 dangerouslySetInnerHTML={{
                   __html: `<p>${truncateText(
                     striptags(item[language].subtitle),
-                    28
+                    24
                   )} ...</p>`,
                 }}
               />
             ) : null}
 
-            <p> {item.venue ? getVenue(props.venues, item.venue[0])[language].venue_name : null}</p>
+            <p>
+              {" "}
+              {item.venue
+                ? getVenue(props.venues, item.venue[0])[language].venue_name
+                : null}
+            </p>
             <p>
               {item.language == "other"
                 ? item[language].other_language
@@ -144,13 +233,14 @@ export const UpcomingEventsContent = {
 
 UpcomingEvents.defaultProps = {
   isHome: false,
-  isCurrent: false
+  isCurrent: false,
 }
 const mapStateToProps = state => {
   return {
     languages: state.languages,
     experience: state.experience,
     calendar_items: state.calendar_items,
+    events: state.events,
     venues: state.venues,
     active_experience: state.active_experience,
     exhibitions: state.exhibitions,
