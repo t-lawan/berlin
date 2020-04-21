@@ -198,6 +198,9 @@ const ShareLink = styled.p`
     }
   }
 `
+const dateStyle = {
+  whiteSpace: 'pre-line',
+}
 
 const eventContent = {
   EN: {
@@ -279,12 +282,12 @@ const Event = props => {
           <EventTextBlock>
             {event.dates.map((date, index) => (
               <div key={index}>
-                <p>
+                <p style={dateStyle}>
                   {DateManager.createLongDateString(
                     date.start_date,
                     language.toLowerCase()
                   )} 
-                  {date.end_date ? ` – ${DateManager.createLongDateString(
+                  {date.end_date ? `–\n${DateManager.createLongDateString(
                     date.end_date,
                     language.toLowerCase())}` : null}
                 </p>
