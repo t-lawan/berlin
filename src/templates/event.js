@@ -198,6 +198,9 @@ const ShareLink = styled.p`
     }
   }
 `
+const dateStyle = {
+  whiteSpace: 'pre-line',
+}
 
 const eventContent = {
   EN: {
@@ -298,13 +301,13 @@ class Event extends React.Component {
             <EventTextBlock>
               {this.event.dates.map((date, index) => (
                 <div key={index}>
-                  <p>
+                  <p style={dateStyle}>
                     {DateManager.createLongDateString(
                       date.start_date,
                       this.language.toLowerCase()
                     )}
                     {date.end_date
-                      ? ` – ${DateManager.createLongDateString(
+                      ? ` –\n${DateManager.createLongDateString(
                           date.end_date,
                           this.language.toLowerCase()
                         )}`
