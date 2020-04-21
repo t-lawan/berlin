@@ -178,7 +178,7 @@ const UpcomingEvents = props => {
                 dangerouslySetInnerHTML={{
                   __html: `<p>${truncateText(
                     striptags(item[language].subtitle),
-                    24
+                    28
                   )} ...</p>`,
                 }}
               />

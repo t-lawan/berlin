@@ -301,7 +301,7 @@ class Event extends React.Component {
             <EventTextBlock>
               {this.event.dates.map((date, index) => (
                 <div key={index}>
-                  <p>
+                  <p style={dateStyle}>
                     {DateManager.createLongDateString(
                       date.start_date,
                       this.language.toLowerCase()
