@@ -39,7 +39,7 @@ const Header = props => {
 
   const click = () => {
     props.startTransition();
-    // props.isViewing();
+    props.isViewing();
   }
 
   return (

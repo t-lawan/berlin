@@ -39,14 +39,14 @@ class Documentation extends React.Component {
     this.documentationObject = Convert.toDocumentationModel(
       this.props.pageContext
     )
-    this.title = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+    let title = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
       ? truncateText(
           striptags(
             this.documentationObject[this.props.pageContext.lang.toUpperCase()].title
           )
         )
       : ""
-    this.description = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+    let description = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
       ? truncateText(
           striptags(
             this.documentationObject[this.props.pageContext.lang.toUpperCase()]
@@ -85,8 +85,8 @@ class Documentation extends React.Component {
     return (
       <>
         <SEO
-          title={this.title}
-          description={this.description}
+          title={title}
+          description={description}
           lang={this.props.pageContext.lang}
           pathname={`${this.path[this.props.pageContext.lang.toUpperCase()]}/${
             this.documentationObject.slug
