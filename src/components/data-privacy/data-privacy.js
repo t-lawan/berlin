@@ -3,7 +3,12 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import * as actionTypes from "../../store/action"
-import { UnderlineTransitionLink, LargeButton, Section, size } from "../../index.styles";
+import {
+  UnderlineTransitionLink,
+  LargeButton,
+  Section,
+  size,
+} from "../../index.styles"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 export const DataPrivacyWrapper = styled(Section)`
   display: ${props => (props.show ? "grid" : "none")};
@@ -13,65 +18,80 @@ export const DataPrivacyWrapper = styled(Section)`
   > p > a {
     font-size: 0.8rem;
   }
-   > div:last-child {
+  > div:last-child {
     text-align: right;
-   } 
+  }
 `
 
 export const DataPrivacyBlock = styled.div`
-    > p {
-      max-width: 100%;
-      @media (max-width: ${size.mobileM}) {
+  > p {
+    max-width: 100%;
+    @media (max-width: ${size.mobileM}) {
       font-size: 0.9rem;
       margin-bottom: 0;
-      }
-      @media (max-width: ${size.mobileXL}) {
+    }
+    @media (max-width: ${size.mobileXL}) {
       font-size: 0.85em;
       margin-bottom: 0;
-      }
-      > a {
-        font-size: 1em;
-      }
-
+    }
+    > a {
+      font-size: 1em;
+    }
   }
 `
 
 const text = {
   EN: {
-    text: "By using this website you agree to the use of cookies in accordance with our ",
-    text_one: "By using this website you agree to the use of cookies in accordance with our ",
+    text:
+      "By using this website you agree to the use of cookies in accordance with our ",
+    text_one:
+      "By using this website you agree to the use of cookies in accordance with our ",
     text_two: "",
-    link: "data privacy policy"
+    link: "data privacy policy",
   },
   DE: {
-    text: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
-    text_one: "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
+    text:
+      "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
+    text_one:
+      "Mit der Nutzung dieser Website erklären Sie sich mit der Verwendung von Cookies gemäß unserer ",
     text_two: " einverstanden",
-    link: "Datenschutzerklärung"
-  }
+    link: "Datenschutzerklärung",
+  },
 }
 
 const DataPrivacy = props => {
-  const language = getCurrentLanguageString(props.languages);
+  const language = getCurrentLanguageString(props.languages)
 
   const setAgreedToTrue = () => {
-    if(typeof window !== `undefined`) {
-      window.localStorage.setItem('agreed', true)
+    if (!props.agreed_to_terms) {
+      props.setAgreedToTrue()
+      if (typeof window !== `undefined`) {
+        if (!window.localStorage.getItem("AGREED_TO_PRIVACY")) {
+          window.localStorage.setItem("AGREED_TO_PRIVACY", true)
+        }
+      }
     }
-    props.setAgreedToTrue()
   }
+  // if(typeof window !== `undefined`) {
+  //   if(window.localStorage.getItem('AGREED_TO_PRIVACY')){
+  //     console.log('SET AGREED LOG')
+  //     props.setAgreedToTrue()
+  //   }
+  // }
 
   return (
     <DataPrivacyWrapper show={props.show}>
       <DataPrivacyBlock>
         <p>
           {text[language].text_one}
-          <UnderlineTransitionLink colour={'white'} to={createPath(language, 'data-privacy')}>
-          {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
+          <UnderlineTransitionLink
+            colour={"white"}
+            to={createPath(language, "data-privacy")}
+          >
+            {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
             {text[language].link}
           </UnderlineTransitionLink>
-           {text[language].text_two}
-        .          
+          {text[language].text_two}.
         </p>
       </DataPrivacyBlock>
       <div>
@@ -101,7 +121,4 @@ DataPrivacy.propTypes = {
   show: PropTypes.bool,
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DataPrivacy)
+export default connect(mapStateToProps, mapDispatchToProps)(DataPrivacy)

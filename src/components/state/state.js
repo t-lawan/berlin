@@ -556,11 +556,18 @@ const State = props => {
       return item.active
     })
 
-    if(typeof window !== `undefined`) {
-      if(window.localStorage.getItem('agreed')){
-        props.setAgreedToTrue()
-      }
-    }
+    // if (typeof window !== `undefined`) {
+    //   if (!props.agreed_to_terms && window.localStorage.getItem("AGREED_TO_PRIVACY")) {
+    //     console.log('AGREED_TO_PRIVACY LOG', window.localStorage.getItem("AGREED_TO_PRIVACY"))
+    //     props.setAgreedToTrue()
+    //   }
+    // }
+
+    // if(typeof window !== `undefined`) {
+    //   if(window.localStorage.getItem('AGREED_TO_PRIVACY')){
+    //     props.setAgreedToTrue()
+    //   }
+    // }
 
     if (filteredExhibitions.length > 0) {
       let experience = filteredExhibitions[0].experience
@@ -594,6 +601,7 @@ const mapStateToProps = state => {
     languages: state.languages,
     experience: state.experience,
     isLoaded: state.isLoaded,
+    agreed_to_terms: state.agreed_to_terms,
   }
 }
 
@@ -605,7 +613,7 @@ const mapDispatchToProps = dispatch => {
       dispatch({ type: actionTypes.SET_EXHIBITIONS, exhibitions: exhibitions }),
     loaded: () => dispatch({ type: actionTypes.IS_LOADED }),
     setNews: news => dispatch({ type: actionTypes.SET_NEWS, news: news }),
-    setAgreedToTrue: () => dispatch({type: actionTypes.HAS_AGREED_TO_TERMS}),
+    setAgreedToTrue: () => dispatch({ type: actionTypes.HAS_AGREED_TO_TERMS }),
     setParticipants: participants =>
       dispatch({
         type: actionTypes.SET_PARTICIPANTS,
