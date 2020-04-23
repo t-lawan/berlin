@@ -98,7 +98,9 @@ class ImageResource extends React.Component {
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
-    
+    if (this.state.image) {
+      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
+    }
 
     return (
       <>
