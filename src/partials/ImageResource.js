@@ -30,6 +30,8 @@ export const Image = styled(Img)`
   > img {
     padding-bottom: ${props =>
       props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
+    object-fit: ${props =>
+      props.isLandscape ? "cover !important" : "contain !important"};
     /* position: relative !important; */
   }
 `
