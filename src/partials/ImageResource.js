@@ -30,6 +30,8 @@ export const Image = styled(Img)`
   > img {
     padding-bottom: ${props =>
       props.withCaption ? (props.isGallery ? "4rem !important" : "0") : "0"};
+    object-fit: ${props =>
+      props.isLandscape ? "cover !important" : "contain !important"};
     /* position: relative !important; */
   }
 `
@@ -98,7 +100,9 @@ class ImageResource extends React.Component {
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
-    
+    if (this.state.image) {
+      isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
+    }
 
     return (
       <>
