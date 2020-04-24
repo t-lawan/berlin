@@ -46,6 +46,9 @@ export const FormText = styled.div`
   @media (min-width: ${size.laptop}) {
     margin-top: -0.8em;
   }
+  @media (max-width: ${size.mobileL}) {
+    margin-top: -0.5em;
+  }
 `
 export const TwoColumnPageWrapperInternal = styled.div` 
   padding: 0em 1em 2em;
