@@ -21,10 +21,22 @@ class Documentation extends React.Component {
     return pg["EN"] == "documentation"
   })
   exp
+  hasUpdated = false
+
   componentDidMount() {
     let exp = parseInt(this.documentationObject.experience[0])
     if (exp !== this.props.experience) {
       this.props.changeExperience(exp)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.experience !== this.props.experience) {
+      let exp = parseInt(this.documentationObject.experience[0])
+      if (exp !== this.props.experience && !this.hasUpdated) {
+        this.props.changeExperience(exp)
+        this.hasUpdated = true
+      }
     }
   }
 
@@ -39,14 +51,19 @@ class Documentation extends React.Component {
     this.documentationObject = Convert.toDocumentationModel(
       this.props.pageContext
     )
-    let title = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+    let title = this.documentationObject[
+      this.props.pageContext.lang.toUpperCase()
+    ]
       ? truncateText(
           striptags(
-            this.documentationObject[this.props.pageContext.lang.toUpperCase()].title
+            this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+              .title
           )
         )
       : ""
-    let description = this.documentationObject[this.props.pageContext.lang.toUpperCase()]
+    let description = this.documentationObject[
+      this.props.pageContext.lang.toUpperCase()
+    ]
       ? truncateText(
           striptags(
             this.documentationObject[this.props.pageContext.lang.toUpperCase()]
@@ -55,7 +72,7 @@ class Documentation extends React.Component {
         )
       : ""
 
-    if(this.documentationObject) {
+    if (this.documentationObject) {
       switch (this.documentationObject.type) {
         case "video":
           this.renderComponent = (
@@ -69,7 +86,9 @@ class Documentation extends React.Component {
           break
         case "imagegallery":
           this.renderComponent = (
-            <DocumentationImageGallery documentation={this.documentationObject} />
+            <DocumentationImageGallery
+              documentation={this.documentationObject}
+            />
           )
           break
         case "text":

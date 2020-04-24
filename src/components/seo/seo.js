@@ -126,7 +126,6 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
-  image: ``,
   pathname: ``,
 }
 
@@ -136,7 +135,7 @@ SEO.propTypes = {
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,
   pathname: PropTypes.string,
-  image: PropTypes.string,
+  image: PropTypes.number,
 }
 
 export default SEO
