@@ -24,14 +24,28 @@ export const Image = styled(Img)`
     /* width: auto !important; */
     position: relative;
     padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? props.hasLongCaption ? "7rem !important" : "4rem !important" : "0") : "0"};
+      props.withCaption
+        ? props.isGallery
+          ? props.hasLongCaption
+            ? "7rem !important"
+            : "4rem !important"
+          : "0"
+        : "0"};
   }
 
   > img {
     padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? props.hasLongCaption ?  "7rem !important" : "4rem !important": "0") : "0"};
+      props.withCaption
+        ? props.isGallery
+          ? props.hasLongCaption
+            ? "7rem !important"
+            : "4rem !important"
+          : "0"
+        : "0"};
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
+    display: block;
+    margin: 0 auto;
     /* position: relative !important; */
   }
 `
@@ -45,7 +59,8 @@ export const Caption = styled.section`
   text-align: left;
   /* margin-top: -4rem; */
 
-  margin-top: ${props => (props.isGallery ? props.hasLongCaption ? "-7rem" : "-4rem" : "0")};
+  margin-top: ${props =>
+    props.isGallery ? (props.hasLongCaption ? "-7rem" : "-4rem") : "0"};
   p {
     font-size: 0.65rem;
     /* word-break: break-all; */
@@ -107,9 +122,13 @@ class ImageResource extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
     let hasLongCaption = true
-if (this.state.image) {
+    if (this.state.image) {
       isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
-      hasLongCaption = this.state.image[this.language].caption && striptags(this.state.image[this.language].caption).length > 500 ? true : false;
+      hasLongCaption =
+        this.state.image[this.language].caption &&
+        striptags(this.state.image[this.language].caption).length > 500
+          ? true
+          : false
     }
 
     return (
@@ -129,6 +148,7 @@ if (this.state.image) {
               onLoad={this.props.onLoad}
               fluid={this.state.image.fluid}
               hasLongCaption={hasLongCaption}
+              loading="lazy"
             />
             <Caption
               hidden={!this.props.withCaption}
