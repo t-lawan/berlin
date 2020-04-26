@@ -25,22 +25,22 @@ export const Image = styled(Img)`
     position: relative;
     padding-bottom: ${props =>
       props.withCaption
-        ? props.isGallery
-          ? props.hasLongCaption
-            ? "7rem !important"
-            : "4rem !important"
-          : "0"
+        ? (props.isGallery
+          ? (props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important")
+          : "4rem !important")
         : "0"};
   }
 
   > img {
     padding-bottom: ${props =>
       props.withCaption
-        ? props.isGallery
-          ? props.hasLongCaption
-            ? "7rem !important"
-            : "4rem !important"
-          : "0"
+        ? (props.isGallery
+          ? props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important"
+          : "4rem !important")
         : "0"};
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
@@ -60,7 +60,7 @@ export const Caption = styled.section`
   /* margin-top: -4rem; */
 
   margin-top: ${props =>
-    props.isGallery ? (props.hasLongCaption ? "-7rem" : "-4rem") : "0"};
+    props.isGallery ? (props.captionLength >= 700 ? "-8rem" : props.captionLength >= 400 ? "-7rem" : "-4rem"): "0"};
   p {
     font-size: 0.65rem;
     /* word-break: break-all; */
@@ -117,18 +117,24 @@ class ImageResource extends React.Component {
 
     // this.image = getDocument(this.props.documents, this.props.id)
   }
-
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
     let hasLongCaption = true
+    let captionLength = 0;
     if (this.state.image) {
       isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
-      hasLongCaption =
-        this.state.image[this.language].caption &&
-        striptags(this.state.image[this.language].caption).length > 500
-          ? true
-          : false
+      // hasLongCaption =
+      //   this.state.image[this.language].caption &&
+      //   striptags(this.state.image[this.language].caption).length > 500
+      //     ? true
+      //     : false
+      captionLength = this.state.image[this.language].caption ? striptags(this.state.image[this.language].caption).length : captionLength
+      // hasLongCaption =
+      //   caption &&
+      //   striptags(caption).length > 500
+      //     ? true
+      //     : false
     }
 
     return (
@@ -148,12 +154,14 @@ class ImageResource extends React.Component {
               onLoad={this.props.onLoad}
               fluid={this.state.image.fluid}
               hasLongCaption={hasLongCaption}
+              captionLength={captionLength}
               loading="lazy"
             />
             <Caption
               hidden={!this.props.withCaption}
               isGallery={this.props.isGallery}
               hasLongCaption={hasLongCaption}
+              captionLength={captionLength}
               dangerouslySetInnerHTML={{
                 __html: this.state.image
                   ? this.state.image[this.language].caption
