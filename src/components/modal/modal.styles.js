@@ -41,6 +41,8 @@ export const ModalWrapper = styled.div`
   }
   @media (min-width: ${size.tablet}) {
     width: 80%;
+    max-height: 90%;
+    overflow-y: scroll;
     margin: 10% 10%;
     padding: 1em 2em;
     > div > p {

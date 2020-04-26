@@ -330,14 +330,17 @@ export const PressWrapper = styled.div`
 
 export const ResourceImageWrapper = styled.div`
   padding: 0em;
-  @media (min-width: ${size.laptop}) {
+  /* @media (min-width: ${size.laptop}) {
     margin-top: 1.15em;
     margin-bottom: -1.6em;
   }
   @media (min-width: ${size.laptopM}) {
     margin-top: 1.35em;
     margin-bottom: -2em;
-  }
+  } */
+`
+
+export const DocumentationImageWrapper = styled(ResourceImageWrapper)`
 `
 export const ResourceSingleImageWrapper = styled.div`
   padding: 0em;

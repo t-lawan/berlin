@@ -69,7 +69,7 @@ const UpcomingEvents = props => {
         return (
           item.experience.includes(props.active_experience.toString()) &&
           item.item === "event" &&
-          DateManager.getDaysFromCurrentDate(item.start_date) >= 0
+          item.end_date ? DateManager.getDaysFromCurrentDate(item.end_date) >= 0 : DateManager.getDaysFromCurrentDate(item.start_date) >= 0
         )
       })
       .sort((a, b) => {
@@ -178,7 +178,7 @@ const UpcomingEvents = props => {
                 dangerouslySetInnerHTML={{
                   __html: `<p>${truncateText(
                     striptags(item[language].subtitle),
-                    24
+                    28
                   )} ...</p>`,
                 }}
               />
