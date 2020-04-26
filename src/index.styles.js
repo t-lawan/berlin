@@ -1,6 +1,7 @@
 import styled, { css, createGlobalStyle, keyframes } from "styled-components"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-
+// import "~slick-carousel/slick/slick.css"; 
+// import "~slick-carousel/slick/slick-theme.css";
 export const Color = {
   yellow: "#fbf95d",
   red: "#D9515C",
@@ -434,6 +435,13 @@ export const hideDisplayForTablet = css`
   }
 `
 
+export const hideDisplayForTabletFunc = (variable) => css`
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  @media (max-width: ${size.tabletL}) {
+    display: ${props => (props.hideInTablet ? "none" : `${variable}`)};
+  }
+`
+
 export const hideDisplayForMobile = css`
   ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
   @media (max-width: ${size.mobileM}) {
@@ -441,6 +449,12 @@ export const hideDisplayForMobile = css`
   }
 `
 
+export const hideDisplayForMobileFunc = (variable) => css`
+  ${"" /* display: ${props => (props.hideInMobile ? "inherit" : "inherit")}; */}
+  @media (max-width: ${size.mobileM}) {
+    display: ${props => (props.hideInMobile ? "none" : `${variable}`)};
+  }
+`
 export const showDisplayForTablet = css`
   display: ${props => (props.showInTablet ? "none" : "inherit")};
   @media (max-width: ${size.tabletL}) {
