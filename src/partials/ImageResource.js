@@ -23,21 +23,43 @@ export const Image = styled(Img)`
     margin: 0 auto;
     /* width: auto !important; */
     position: relative;
-    padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? props.hasLongCaption ? "7rem !important" : "4rem !important" : "0") : "0"};
+    /* padding-bottom: ${props =>
+      props.withCaption
+        ? (props.isGallery
+          ? (props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important")
+          : "4rem !important")
+        : "0"}; */
   }
 
   > img {
-    padding-bottom: ${props =>
-      props.withCaption ? (props.isGallery ? props.hasLongCaption ?  "7rem !important" : "4rem !important": "0") : "0"};
+    /* padding-bottom: ${props =>
+      props.withCaption
+        ? (props.isGallery
+          ? props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important"
+          : "4rem !important")
+        : "0"}; */
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
+    display: block;
+    margin: 0 auto;
     /* position: relative !important; */
   }
 `
 
 export const ImageResourceWrapper = styled.div`
   /* position:fixed; */
+  /* padding-bottom: ${props =>
+      props.withCaption
+        ? (props.isGallery
+          ? (props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important")
+          : "4rem !important")
+        : "0"}; */
 `
 
 export const Caption = styled.section`
@@ -45,10 +67,12 @@ export const Caption = styled.section`
   text-align: left;
   /* margin-top: -4rem; */
 
-  margin-top: ${props => (props.isGallery ? props.hasLongCaption ? "-7rem" : "-4rem" : "0")};
-  p {
+  /* margin-top: ${props =>
+    props.isGallery ? (props.captionLength >= 700 ? "-8rem" : props.captionLength >= 400 ? "-7rem" : "-4rem"): "0"}; */
+  p, em {
     font-size: 0.65rem;
-    /* word-break: break-all; */
+    word-break: break-word;
+    hyphens: auto;
     white-space: normal;
     /* max-width: 100%; */
     margin: 0.7em 0;
@@ -102,18 +126,32 @@ class ImageResource extends React.Component {
 
     // this.image = getDocument(this.props.documents, this.props.id)
   }
-
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
     let isLandscape = true
     let hasLongCaption = true
-if (this.state.image) {
+    let captionLength = 0;
+    if (this.state.image) {
       isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
-      hasLongCaption = this.state.image[this.language].caption && striptags(this.state.image[this.language].caption).length > 500 ? true : false;
+      // hasLongCaption =
+      //   this.state.image[this.language].caption &&
+      //   striptags(this.state.image[this.language].caption).length > 500
+      //     ? true
+      //     : false
+      captionLength = this.state.image[this.language].caption ? striptags(this.state.image[this.language].caption).length : captionLength
+      // hasLongCaption =
+      //   caption &&
+      //   striptags(caption).length > 500
+      //     ? true
+      //     : false
     }
 
     return (
-      <ImageResourceWrapper>
+      <ImageResourceWrapper
+        withCaption={this.props.withCaption}
+        isGallery={this.props.isGallery}
+        captionLength={captionLength}
+      >
         {this.state.image ? (
           <>
             <Image
@@ -129,11 +167,14 @@ if (this.state.image) {
               onLoad={this.props.onLoad}
               fluid={this.state.image.fluid}
               hasLongCaption={hasLongCaption}
+              captionLength={captionLength}
+              loading="lazy"
             />
             <Caption
               hidden={!this.props.withCaption}
               isGallery={this.props.isGallery}
               hasLongCaption={hasLongCaption}
+              captionLength={captionLength}
               dangerouslySetInnerHTML={{
                 __html: this.state.image
                   ? this.state.image[this.language].caption

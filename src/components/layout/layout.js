@@ -18,17 +18,17 @@ const LayoutWrapper = styled.div`
 const Layout = props => {
   return (
     <LayoutWrapper>
-      <OutboundLink
+      {/* <OutboundLink
         hidden={!props.agreed_to_terms}
         href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"
-      ></OutboundLink>
+      ></OutboundLink> */}
       <GlobalStyle />
       <State />
       <Helmet>
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-        />
+        /> */}
       </Helmet>
       <PageLoader isHome={props.isHome} />
       <Modal show={props.modal.show} />

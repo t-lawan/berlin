@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
-import { changeGridToOneRow, size, Color } from "../../index.styles"
+import { changeGridToOneRow, size, Color, showDisplayForMobile, hideDisplayForMobile } from "../../index.styles"
 import ImageResource from "../../partials/ImageResource"
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import * as actionTypes from '../../store/action';
@@ -77,6 +77,8 @@ const FooterText = styled.p`
   @media (max-width: ${size.mobileM}) {
     font-size: 0.9rem
   }
+
+  ${hideDisplayForMobile};
 `
 
 const FooterOuterLink = styled.a`
@@ -92,6 +94,8 @@ const FooterOuterLink = styled.a`
   @media (max-width: ${size.mobileM}) {
     font-size: 0.9rem
   }
+
+  ${showDisplayForMobile};
 `
 
 const FooterLink = styled(AniLink)`
@@ -118,7 +122,8 @@ const FooterComponent = props => {
       <div>
         <FooterText> {content.address_line}</FooterText>
         <FooterOuterLink target="__blank" rel="noopener noreferrer" href={`mailto:${content.email}`}>{content.email}</FooterOuterLink>
-        <FooterOuterLink itemprop="telephone" target="__blank" rel="noopener noreferrer" href={`tel:${content.tel_phone_number}`}>{content.tel_phone_number_display}</FooterOuterLink>
+        <FooterOuterLink showInMobile itemprop="telephone" target="__blank" rel="noopener noreferrer" href={`tel:${content.tel_phone_number}`}>{content.tel_phone_number_display}</FooterOuterLink>
+        <FooterText hideInMobile> {content.tel_phone_number_display}</FooterText>
         <FooterText> {content.fax_phone_number}</FooterText>
       </div>
       <DoubleDecker>

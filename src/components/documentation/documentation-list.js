@@ -11,18 +11,26 @@ import { startTransition } from "../../store/action";
 
 const DocumentationListWrapper = styled.div`
   padding: 0;
+   @media (max-width: ${size.tablet}) {
+    margin-top: -1.5em;
+   }
 `
 const DocumentationItem = styled.div`
   display: grid;
   grid-template-columns: 2fr 6fr;
   > p {
     font-size: 1em;
+    @media (max-width: ${size.tablet}) {
+      hyphens: auto;
+    }
   }
   @media (min-width: ${size.mobileS}) {
     padding: 0em 0 1em;
+    column-gap: 0.5em;
   }
   @media (min-width: ${size.laptop}) {
     padding: 0em 0 1.5em;
+    column-gap: 0em;
   }
   @media (min-width: ${size.laptopM}) {
     padding: 0em 0 1.75em;
