@@ -63,36 +63,30 @@ export const ImageResourceWrapper = styled.div`
 `
 
 export const Caption = styled.section`
-  font-size: 0.65rem;
-  text-align: left;
-  /* margin-top: -4rem; */
-
-  /* margin-top: ${props =>
-    props.isGallery ? (props.captionLength >= 700 ? "-8rem" : props.captionLength >= 400 ? "-7rem" : "-4rem"): "0"}; */
-  p, em {
-    font-size: 0.65rem;
-    word-break: break-word;
-    hyphens: auto;
-    white-space: normal;
-    /* max-width: 100%; */
-    margin: 0.7em 0;
-    @media (min-width: ${size.mobileL}) {
-      font-size: 0.55rem;
-    }
-    @media (min-width: ${size.tablet}) {
-      font-size: 0.65rem;
-    }
-    @media (min-width: ${size.laptopL}) {
-      font-size: 0.72rem;
-      margin: 0.9em 0;
-    }
-  }
-  @media (min-width: ${size.laptop}) {
-    margin-bottom: 2em;
-  }
-  @media (min-width: ${size.laptopL}) {
-    margin-bottom: 3em;
-  }
+ font-size: 0.65rem;
+ text-align: left;
+ /* margin-top: -4rem; */
+ p, em {
+   font-size: 0.65rem;
+   /* max-width: 100%; */
+   margin: 0.7em 0;
+   @media (min-width: ${size.mobileL}) {
+     font-size: 0.55rem;
+   }
+   @media (min-width: ${size.tablet}) {
+     font-size: 0.65rem;
+   }
+   @media (min-width: ${size.laptopL}) {
+     font-size: 0.72rem;
+     margin: 0.9em 0;
+   }
+ }
+ @media (min-width: ${size.laptop}) {
+   margin-bottom: 2em;
+ }
+ @media (min-width: ${size.laptopL}) {
+   margin-bottom: 3em;
+ }
 `
 
 class ImageResource extends React.Component {
