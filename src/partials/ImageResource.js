@@ -68,7 +68,7 @@ export const Caption = styled.section`
  /* margin-top: -4rem; */
  p, em {
    font-size: 0.65rem;
-   /* max-width: 100%; */
+   max-width: 100%;
    margin: 0.7em 0;
    @media (min-width: ${size.mobileL}) {
      font-size: 0.55rem;
