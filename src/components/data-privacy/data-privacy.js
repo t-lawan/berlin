@@ -59,12 +59,21 @@ const text = {
   },
 }
 
-const DataPrivacy = props => {
-  const language = getCurrentLanguageString(props.languages)
+class DataPrivacy extends React.Component {
+  language
 
-  const setAgreedToTrue = () => {
-    if (!props.agreed_to_terms) {
-      props.setAgreedToTrue()
+  componentDidMount() {
+    if (typeof window !== `undefined`) {
+      if (window.localStorage.getItem("AGREED_TO_PRIVACY")) {
+        if(!this.props.agreed_to_terms) {
+          this.props.setAgreedToTrue()
+        }
+      }
+    }
+  }
+  setAgreedToTrue = () => {
+    if (!this.props.agreed_to_terms) {
+      this.props.setAgreedToTrue()
       if (typeof window !== `undefined`) {
         if (!window.localStorage.getItem("AGREED_TO_PRIVACY")) {
           window.localStorage.setItem("AGREED_TO_PRIVACY", true)
@@ -72,36 +81,33 @@ const DataPrivacy = props => {
       }
     }
   }
-  // if(typeof window !== `undefined`) {
-  //   if(window.localStorage.getItem('AGREED_TO_PRIVACY')){
-  //     console.log('SET AGREED LOG')
-  //     props.setAgreedToTrue()
-  //   }
-  // }
 
-  return (
-    <DataPrivacyWrapper show={props.show}>
-      <DataPrivacyBlock>
-        <p>
-          {text[language].text_one}
-          <UnderlineTransitionLink
-            colour={"white"}
-            to={createPath(language, "data-privacy")}
-          >
-            {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
-            {text[language].link}
-          </UnderlineTransitionLink>
-          {text[language].text_two}.
-        </p>
-      </DataPrivacyBlock>
-      <div>
-        <LargeButton bgColour="white" onClick={() => setAgreedToTrue()}>
-          {" "}
-          OK{" "}
-        </LargeButton>
-      </div>
-    </DataPrivacyWrapper>
-  )
+  render() {
+    this.language = getCurrentLanguageString(this.props.languages)
+    return (
+      <DataPrivacyWrapper show={this.props.show}>
+        <DataPrivacyBlock>
+          <p>
+            {text[this.language].text_one}
+            <UnderlineTransitionLink
+              colour={"white"}
+              to={createPath(this.language, "data-privacy")}
+            >
+              {/* <UnderlineTransitionLink colour="white" cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')}> */}
+              {text[this.language].link}
+            </UnderlineTransitionLink>
+            {text[this.language].text_two}.
+          </p>
+        </DataPrivacyBlock>
+        <div>
+          <LargeButton bgColour="white" onClick={() => this.setAgreedToTrue()}>
+            {" "}
+            OK{" "}
+          </LargeButton>
+        </div>
+      </DataPrivacyWrapper>
+    )
+  }
 }
 
 const mapStateToProps = state => {
