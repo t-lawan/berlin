@@ -199,7 +199,7 @@ const ShareLink = styled.p`
   }
 `
 const dateStyle = {
-  whiteSpace: 'pre-line',
+  whiteSpace: "pre-line",
 }
 
 const eventContent = {
@@ -215,10 +215,22 @@ class Event extends React.Component {
   language
   event
   renderComponent
+  hasUpdated = false
+
   componentDidMount() {
     let exp = parseInt(this.event.experience[0])
     if (exp !== this.props.experience) {
       this.props.changeExperience(exp)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.experience !== this.props.experience) {
+      let exp = parseInt(this.event.experience[0])
+      if (exp !== this.props.experience && !this.hasUpdated) {
+        this.props.changeExperience(exp)
+        this.hasUpdated = true
+      }
     }
   }
 
@@ -239,7 +251,9 @@ class Event extends React.Component {
     this.event.dates = this.event.dates.sort((a, b) => {
       return a.start_date - b.start_date
     })
-    let venue = this.event.venue ? getVenue(this.props.venues, this.event.venue[0]) : null
+    let venue = this.event.venue
+      ? getVenue(this.props.venues, this.event.venue[0])
+      : null
     let documentation = []
     if (this.event.documentation) {
       documentation = this.props.documentation.filter(doc => {
@@ -248,13 +262,16 @@ class Event extends React.Component {
     }
 
     if (this.event.related_resource && this.event.related_resource.length > 0) {
-      this.event.related_resource = this.event.related_resource.map(resource => {
-        return resource.wordpress_id
-      })
+      this.event.related_resource = this.event.related_resource.map(
+        resource => {
+          return resource.wordpress_id
+        }
+      )
     }
     let title = truncateText(
       striptags(
-        this.event[`${this.props.pageContext.language.toUpperCase()}`].event_title
+        this.event[`${this.props.pageContext.language.toUpperCase()}`]
+          .event_title
       )
     )
     let titleHeading =
@@ -268,7 +285,8 @@ class Event extends React.Component {
 
     let description = truncateText(
       striptags(
-        this.event[`${this.props.pageContext.language.toUpperCase()}`].full_description
+        this.event[`${this.props.pageContext.language.toUpperCase()}`]
+          .full_description
       )
     )
     this.renderComponent = (
@@ -287,13 +305,17 @@ class Event extends React.Component {
           <EventColumn>
             <EventTitleMob
               dangerouslySetInnerHTML={{
-                __html: striptags(this.event[this.language].event_title, ["em"]),
+                __html: striptags(this.event[this.language].event_title, [
+                  "em",
+                ]),
               }}
             />
             {this.event[this.language].event_subtitle ? (
               <EventSubTitleMob
                 dangerouslySetInnerHTML={{
-                  __html: striptags(this.event[this.language].event_subtitle, ["em"]),
+                  __html: striptags(this.event[this.language].event_subtitle, [
+                    "em",
+                  ]),
                 }}
               />
             ) : null}
@@ -370,14 +392,18 @@ class Event extends React.Component {
             <EventTextBlock>
               <p>
                 {this.event.language == "other"
-                  ? this.event[`other_language${this.language == "EN" ? "" : "_de"}`]
+                  ? this.event[
+                      `other_language${this.language == "EN" ? "" : "_de"}`
+                    ]
                   : UpcomingEventsContent[this.language][this.event.language]}
               </p>
               <p hidden={!this.event.is_free}>
                 {" "}
                 {`${UpcomingEventsContent[this.language].free_admission}${
                   this.event.limited_capacity
-                    ? `, ${UpcomingEventsContent[this.language].limited_capacity}`
+                    ? `, ${
+                        UpcomingEventsContent[this.language].limited_capacity
+                      }`
                     : ""
                 }`}
               </p>
@@ -402,14 +428,19 @@ class Event extends React.Component {
             <TextBlock>
               <EventTitle
                 dangerouslySetInnerHTML={{
-                  __html: striptags(this.event[this.language].event_title, ["em"]),
+                  __html: striptags(this.event[this.language].event_title, [
+                    "em",
+                  ]),
                 }}
               />
 
               {this.event[this.language].event_subtitle ? (
                 <EventSubTitle
                   dangerouslySetInnerHTML={{
-                    __html: striptags(this.event[this.language].event_subtitle, ["em"]),
+                    __html: striptags(
+                      this.event[this.language].event_subtitle,
+                      ["em"]
+                    ),
                   }}
                 />
               ) : null}
@@ -443,12 +474,14 @@ class Event extends React.Component {
         <RelatedResources
           border={false}
           ids={
-            this.event.related_resource && this.event.related_resource.length > 0
+            this.event.related_resource &&
+            this.event.related_resource.length > 0
               ? this.event.related_resource
               : []
           }
           hidden={
-            !this.event.related_resource || this.event.related_resource.length === 0
+            !this.event.related_resource ||
+            this.event.related_resource.length === 0
           }
         />
       </>

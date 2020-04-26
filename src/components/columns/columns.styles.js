@@ -140,6 +140,10 @@ export const FirstColumnWrapper = styled.div`
   & div:last-child {
     border-left: none;
   }
+  
+  @media (max-width: ${size.tabletL}) {
+    display: ${props => (props.twoColumns ? 'grid' : 'block')} ;
+  }
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
     /*display: flex;
@@ -255,11 +259,14 @@ export const StickyHeader = styled.div`
 `
 
 export const RelativeHeader = styled.div`
-  z-index: 250;
-  position: relative;
-  > section > ${Caption} {
-    margin-bottom: 0.7em;
-  }
+ z-index: 250;
+ position: relative;
+ > section > div > ${Caption} {
+   margin-bottom: 0.9em !important;
+ }
+ > section > div > div > div > div:nth-child(2) > div > div > div > div > div > div > ${Caption} {
+   margin-bottom: 0.5em !important;
+ }
 `
 
 export const StickyFooter = styled.div`
