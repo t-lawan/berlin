@@ -3,6 +3,7 @@ import {
   hideDisplayForTablet,
   size,
   hideDisplayForMobile,
+  hideDisplayForTabletFunc,
 } from "../../index.styles"
 import { ExperienceControllerWrapper } from "../experiencecontroller/experiencecontroller.styles"
 
@@ -32,7 +33,7 @@ export const ColumnLayout = styled.div`
   width: auto;
   grid-area: 'column';
 
-  ${hideDisplayForTablet};
+  ${hideDisplayForTabletFunc('block')};
   ${hideDisplayForMobile};
   :first-child {
     ${ExperienceControllerWrapper} {

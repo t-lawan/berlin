@@ -140,6 +140,10 @@ export const FirstColumnWrapper = styled.div`
   & div:last-child {
     border-left: none;
   }
+  
+  @media (max-width: ${size.tabletL}) {
+    display: ${props => (props.twoColumns ? 'grid' : 'block')} ;
+  }
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 1fr;
     /*display: flex;
