@@ -23,25 +23,25 @@ export const Image = styled(Img)`
     margin: 0 auto;
     /* width: auto !important; */
     position: relative;
-    padding-bottom: ${props =>
+    /* padding-bottom: ${props =>
       props.withCaption
         ? (props.isGallery
           ? (props.captionLength >= 700
             ? "8rem !important" : props.captionLength >= 400 ?
              "7rem !important": "4rem !important")
           : "4rem !important")
-        : "0"};
+        : "0"}; */
   }
 
   > img {
-    padding-bottom: ${props =>
+    /* padding-bottom: ${props =>
       props.withCaption
         ? (props.isGallery
           ? props.captionLength >= 700
             ? "8rem !important" : props.captionLength >= 400 ?
              "7rem !important": "4rem !important"
           : "4rem !important")
-        : "0"};
+        : "0"}; */
     object-fit: ${props =>
       props.isLandscape ? "cover !important" : "contain !important"};
     display: block;
@@ -52,6 +52,14 @@ export const Image = styled(Img)`
 
 export const ImageResourceWrapper = styled.div`
   /* position:fixed; */
+  /* padding-bottom: ${props =>
+      props.withCaption
+        ? (props.isGallery
+          ? (props.captionLength >= 700
+            ? "8rem !important" : props.captionLength >= 400 ?
+             "7rem !important": "4rem !important")
+          : "4rem !important")
+        : "0"}; */
 `
 
 export const Caption = styled.section`
@@ -59,11 +67,12 @@ export const Caption = styled.section`
   text-align: left;
   /* margin-top: -4rem; */
 
-  margin-top: ${props =>
-    props.isGallery ? (props.captionLength >= 700 ? "-8rem" : props.captionLength >= 400 ? "-7rem" : "-4rem"): "0"};
-  p {
+  /* margin-top: ${props =>
+    props.isGallery ? (props.captionLength >= 700 ? "-8rem" : props.captionLength >= 400 ? "-7rem" : "-4rem"): "0"}; */
+  p, em {
     font-size: 0.65rem;
-    /* word-break: break-all; */
+    word-break: break-word;
+    hyphens: auto;
     white-space: normal;
     /* max-width: 100%; */
     margin: 0.7em 0;
@@ -138,7 +147,11 @@ class ImageResource extends React.Component {
     }
 
     return (
-      <ImageResourceWrapper>
+      <ImageResourceWrapper
+        withCaption={this.props.withCaption}
+        isGallery={this.props.isGallery}
+        captionLength={captionLength}
+      >
         {this.state.image ? (
           <>
             <Image
