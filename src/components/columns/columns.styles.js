@@ -261,8 +261,8 @@ export const StickyHeader = styled.div`
 export const RelativeHeader = styled.div`
   z-index: 250;
   position: relative;
-  > section > ${Caption} {
-    margin-bottom: 0.7em;
+  > section > div > ${Caption} {
+    margin-bottom: 0.9em !important;
   }
 `
 
