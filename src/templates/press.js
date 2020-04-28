@@ -21,7 +21,6 @@ import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 import { DateManager } from "../utility/date";
-capitalise
 class Press extends React.Component {
   language
   pressInfo
