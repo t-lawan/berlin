@@ -623,6 +623,9 @@ exports.createPages = async ({ graphql, actions }) => {
             case "press":
               path = language === "en" ? "/press" : "/de/presse"
               break
+            case "press-images":
+              path = language === "en" ? "/press-images" : "/de/pressebilder"
+              break
             case "practical-information":
               path =
                 language === "en"
