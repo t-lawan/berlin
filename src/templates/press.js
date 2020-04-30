@@ -137,7 +137,7 @@ class Press extends React.Component {
 const getPdf = (documents, press_release, language) => {
   const id = press_release[`${language.toLowerCase()}_press_release_pdf`]
   const pdf = getDocument(documents, id)
-  return pdf ? pdf.url : ""
+  return pdf ? (typeof window !== `undefined` ? window.location.origin + pdf.publicUrl : "" ): ""
 }
 
 const content = {
