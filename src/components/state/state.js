@@ -341,6 +341,7 @@ const State = props => {
                       presentationWidth
                     }
                   }
+                  publicURL
                 }
               }
             }
