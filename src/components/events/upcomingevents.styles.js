@@ -26,6 +26,8 @@ export const EventItem = styled.div`
     border: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''};
     @media (max-width: ${size.mobileL}) {
       border: ${props => props.isCurrent ? `4px solid ${Color.yellow}` : ''};
+      border-bottom: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''} !important;
+      border-left: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''} !important;
     } 
     @media (min-width: ${size.tablet}) {
     padding: ${props => props.isActive ? `1em 0.7em` : ''};
