@@ -238,6 +238,9 @@ export class Convert {
       wordpressModel.acf ? wordpressModel.acf.caption_de : "",
       wordpressModel.localFile && wordpressModel.localFile.childImageSharp
         ? wordpressModel.localFile.childImageSharp.fluid
+        : null,
+      wordpressModel.localFile && wordpressModel.localFile.publicURL
+        ? wordpressModel.localFile.publicURL
         : null
     )
   }
@@ -256,7 +259,7 @@ export class Convert {
       event.dates.forEach((date, index) => {
         if (date.end_date) {
           let d = DateManager.daysBetween(date.start_date, date.end_date) + 1
-          for(let i = 0; i < d; i++) {
+          for (let i = 0; i < d; i++) {
             calendarItems.push(
               new CalendarItemModel(
                 `event-${event.id}-${index}`,

@@ -14,7 +14,7 @@ const Logo = props => {
       {image ? (
         <LogoWrapper
           style={{
-            backgroundImage: `url(${image.url})`,
+            backgroundImage: `url(${image.publicUrl})`,
             backgroundSize: "contain",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

@@ -41,9 +41,9 @@ const DocumentationAudio = props => {
             {documentationContent[language].language}:{" "}
             {documentationContent[language][props.documentation.language]}{" "}
           </p> */}
-          <NoMarginText><em>
+          {exhibitions.length > 0 ?  <NoMarginText><em>
             {exhibitions[0][language].title}</em>
-          </NoMarginText>
+          </NoMarginText> : null}
         </div>
         <MargTop>
 
