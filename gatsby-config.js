@@ -140,6 +140,14 @@ module.exports = {
       },
     },
     // {
+    //   resolve: `gatsby-plugin-netlify`,
+    //   options: {
+    //     headers: {}, // option to add more headers. `Link` headers are transformed by the below criteria
+
+    //   },
+    // },
+    `gatsby-plugin-offline`
+    // {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
     //     trackingId: "UA-77293252-2",
@@ -165,6 +173,5 @@ module.exports = {
     // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`,
   ],
 }

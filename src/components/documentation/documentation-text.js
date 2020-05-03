@@ -20,10 +20,10 @@ const DocumentationText = props => {
       <TwoColumnPageWrapper>
         <div>
           <NoMarginText> {documentationContent[language].documentation}</NoMarginText>
-          <NoMarginText><em>
+          {exhibitions.length > 0  ? <NoMarginText><em>
             {exhibitions[0][language].title}
             </em>
-          </NoMarginText>
+          </NoMarginText> : null}
         </div>
         <div>
           <div

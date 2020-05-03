@@ -54,9 +54,9 @@ const DocumentationImageGallery = props => {
             {" "}
             {documentationContent[language].documentation}
           </NoMarginText>
-          <NoMarginText>
+          {exhibitions.length > 0 ?  <NoMarginText>
             <em>{exhibitions[0][language].title}</em>
-          </NoMarginText>
+          </NoMarginText> : null}
         </div>
         <MargTop>
           <DocTitle

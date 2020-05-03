@@ -15,7 +15,7 @@ const PaddedSection = styled(Section)`
     > li {
       list-style: none;
       padding-left: 1.2em;
-      font-size: 1.0em;
+      font-size: 1.05em;
       @media (min-width: ${size.mobileSL}) {
         font-size: 0.85em;
         padding-left: 1.4em;
