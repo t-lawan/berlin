@@ -284,7 +284,7 @@ export const StickyFooter = styled.div`
   @media (max-width: ${size.mobileM}) {
     position: fixed;
     bottom: 95px;
-    z-index: 999999;
+    z-index: 999900;
   }
   @media (max-width: ${size.mobileXL}) {
     position: fixed;
