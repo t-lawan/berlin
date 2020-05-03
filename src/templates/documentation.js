@@ -27,7 +27,7 @@ class Documentation extends React.Component {
     let exp = this.documentationObject.experience
       ? parseInt(this.documentationObject.experience[0])
       : undefined
-    if (exp && this.documentationObject.attached_to_event && exp !== this.props.experience) {
+    if (exp && exp !== 0 && exp !== this.props.experience) {
       this.props.changeExperience(exp)
     }
   }
@@ -37,7 +37,7 @@ class Documentation extends React.Component {
       let exp = this.documentationObject.experience
         ? parseInt(this.documentationObject.experience[0])
         : undefined
-      if (exp && !this.hasUpdated && this.documentationObject.attached_to_event && exp !== this.props.experience) {
+      if (exp && exp !== 0 && !this.hasUpdated && exp !== this.props.experience) {
         this.props.changeExperience(exp)
         this.hasUpdated = true
       }
