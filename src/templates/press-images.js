@@ -66,10 +66,15 @@ const PressImages = props => {
       case "section":
         renderSection = (
           <div key={index}>
-            <PressImageTitle>
+            {/* <PressImageTitle>
               {" "}
               {item[createProperty("photo_group_title", language)]}
-            </PressImageTitle>
+            </PressImageTitle> */}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: item[createProperty("section_header", language)],
+              }}
+            />
             {item.images
               ? item.images.map((i, id) => (
                   <PressImagesGrid key={id} borderBottom>
@@ -168,12 +173,10 @@ const PressImages = props => {
 
     return renderSection
   }
-
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={`${pageInfo.title}`}
-        description={`${pageInfo.slug}`}
+        title={`${content[pageInfo.language.toUpperCase()].press_images}`}
         lang={pageInfo.language}
         pathname={pageInfo.slug}
       />

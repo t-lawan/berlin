@@ -2,7 +2,7 @@ import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import { getCurrentLanguageString, createProperty, truncateText } from "../utility/helper"
+import { getCurrentLanguageString, createProperty, truncateText, capitalise } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import {
   PressArrowContainer,
@@ -21,7 +21,6 @@ import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 import { DateManager } from "../utility/date";
-
 class Press extends React.Component {
   language
   pressInfo
@@ -34,7 +33,7 @@ class Press extends React.Component {
     this.renderComponent = (
       <PressWrapper>
         <SEO
-          title={`${this.pressInfo.title}`}
+          title={`${capitalise(content[this.pressInfo.language.toUpperCase()].title)}`}
           description={description}
           lang={this.pressInfo.language}
           pathname={this.pressInfo.slug}
@@ -138,7 +137,7 @@ class Press extends React.Component {
 const getPdf = (documents, press_release, language) => {
   const id = press_release[`${language.toLowerCase()}_press_release_pdf`]
   const pdf = getDocument(documents, id)
-  return pdf ? pdf.url : ""
+  return pdf ? (typeof window !== `undefined` ? window.location.origin + pdf.publicUrl : "" ): ""
 }
 
 const content = {

@@ -35,7 +35,7 @@ const PracticalInformation = props => {
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${pageInfo.title}`}
+        title={`${content[pageInfo.language.toUpperCase()].seo_title}`}
         description={description}
         lang={pageInfo.language}
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
@@ -120,12 +120,14 @@ const content = {
     access: "Access",
     title: "practical information",
     directions: "Directions",
+    seo_title: "Practical information"
   },
   DE: {
     opening_hours: "Öffnungszeiten",
     title: "praktische information",
     access: "Anfahrt",
     directions: "Karte",
+    seo_title: "Praktische Information"
   },
 }
 const mapStateToProps = state => {

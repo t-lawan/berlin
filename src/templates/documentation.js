@@ -24,16 +24,20 @@ class Documentation extends React.Component {
   hasUpdated = false
 
   componentDidMount() {
-    let exp = parseInt(this.documentationObject.experience[0])
-    if (exp !== this.props.experience) {
+    let exp = this.documentationObject.experience
+      ? parseInt(this.documentationObject.experience[0])
+      : undefined
+    if (exp && exp !== 0 && exp !== this.props.experience) {
       this.props.changeExperience(exp)
     }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.experience !== this.props.experience) {
-      let exp = parseInt(this.documentationObject.experience[0])
-      if (exp !== this.props.experience && !this.hasUpdated) {
+      let exp = this.documentationObject.experience
+        ? parseInt(this.documentationObject.experience[0])
+        : undefined
+      if (exp && exp !== 0 && !this.hasUpdated && exp !== this.props.experience) {
         this.props.changeExperience(exp)
         this.hasUpdated = true
       }

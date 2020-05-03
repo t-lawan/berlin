@@ -1,5 +1,5 @@
 export class DocumentModel {
-  constructor(id, mime_type, url, slug, caption_en, caption_de, fluid) {
+  constructor(id, mime_type, url, slug, caption_en, caption_de, fluid, publicUrl) {
     this.id = id
     this.type = getType(mime_type)
     this.url = url
@@ -12,6 +12,7 @@ export class DocumentModel {
     this.DE = {
       caption: caption_de,
     }
+    this.publicUrl = publicUrl;
   }
 }
 

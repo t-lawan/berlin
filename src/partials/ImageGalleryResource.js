@@ -44,9 +44,7 @@ export const NavigatingButton = styled.div`
 `
 const ImageGalleryWrapper = styled.div`
 
-width: 100%;
-
-display: block;
+  display: block;
 `
 const ImageWrapper = styled.div`
   height: 100%;
@@ -131,28 +129,20 @@ class ImageGalleryResource extends React.Component {
   imageResources
   language
   previousImage = () => {
-    this.slider.slickPrev()
-
-    // if (this.state.index !== 0) {
-    //   this.setState({
-    //     isVisible: false,
-    //   })
-    //   this.setState({
-    //     index: this.state.index - 1,
-    //   })
-    // }
+    if(this.state.index !== 0) {
+      this.slider.slickPrev();
+      this.setState({
+        index: this.state.index - 1
+      })
+    }
   }
   nextImage = () => {
-    this.slider.slickNext()
-    // if (this.state.index + 1 < this.props.ids.length) {
-    //   this.setState({
-    //     isVisible: false,
-    //   })
-
-    //   this.setState({
-    //     index: this.state.index + 1,
-    //   })
-    // }
+    if(this.state.index + 1 < this.props.ids.length) {
+    this.slider.slickNext();
+      this.setState({
+        index: this.state.index + 1
+      })
+    }
   }
   isLastImage = () => {
     return this.props.ids.length === this.state.index + 1 ? true : false
