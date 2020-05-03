@@ -65,6 +65,7 @@ const ImageWrapper = styled.div`
   @media (max-width: ${size.mobileM}) {
     margin-top: 0.3em;
     width: 40%;
+    margin-bottom: 1.2em;
   }
   @media (max-width: ${size.tablet}) {
     width: 30%;

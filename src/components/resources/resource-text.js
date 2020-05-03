@@ -117,7 +117,7 @@ const ResourceText = props => {
             <ResourcePublisherLink
               hidden={!r.publisher.title}
               target="_blank"
-              href={r.publisher.title}
+              href={r.publisher.external_url}
             >
               {r.publisher.title}
             </ResourcePublisherLink></em>
