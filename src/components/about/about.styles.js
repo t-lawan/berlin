@@ -69,10 +69,13 @@ export const AboutComponentWrapper = styled.section`
     }
   }
   > div:first-child {
-    margin-top:0em;
+    margin-top: 0em;
   }
   @media (min-width: ${size.laptop}) {
-  padding-bottom:115px;
+  padding-bottom: 115px;
+  }
+  @media (min-width: ${size.laptopM}) {
+  padding-bottom: 130px;
   }
 `
 
