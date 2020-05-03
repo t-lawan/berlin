@@ -57,6 +57,12 @@ const PressImageTitle = styled.p`
     margin-top: 0.2rem;
   }
 `
+const SectionTitle = styled.div`
+  margin-top: 0.5rem;
+  @media (max-width: ${size.mobileM}) {
+    margin-top: 0.2rem;
+  }
+`
 const PressImages = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
@@ -70,11 +76,12 @@ const PressImages = props => {
               {" "}
               {item[createProperty("photo_group_title", language)]}
             </PressImageTitle> */}
-            <div
+            <SectionTitle
               dangerouslySetInnerHTML={{
                 __html: item[createProperty("section_header", language)],
               }}
             />
+            
             {item.images
               ? item.images.map((i, id) => (
                   <PressImagesGrid key={id} borderBottom>
