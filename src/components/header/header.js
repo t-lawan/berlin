@@ -59,13 +59,13 @@ const Header = props => {
         to={createPath(language, "")}
       > */}
         {dateHeaderSvg ? (
-          <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.url} />
+          <HeaderImage hideInMobile alt="date" src={dateHeaderSvg.publicUrl} />
         ) : null}
         {titleHeaderSvg ? (
-          <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.url} />
+          <HeaderImage hideInMobile alt="title" src={titleHeaderSvg.publicUrl} />
         ) : null}
         {titleHeaderSvgMob ? (
-          <HeaderImageMob alt="title" src={titleHeaderSvgMob.url} />
+          <HeaderImageMob alt="title" src={titleHeaderSvgMob.publicUrl} />
         ) : null}
       </HeaderLink>
     </HeaderWrapper>

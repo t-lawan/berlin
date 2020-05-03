@@ -10,12 +10,13 @@ import { getCurrentLanguageString } from "../utility/helper";
 
 const NotFoundPage = (props) => {
   let language = getCurrentLanguageString(props.languages)
+  let isGerman = props.location.pathname.split('/').includes('de');
   let renderComponent = (
     <PageWrapper colour={Color.red}>
       <SEO
         title={`404: ${content[language].seo_title}`}
         description={`404: ${content[language].seo_title}`}
-        lang={'en'}
+        lang={isGerman ? 'de' : 'en'}
       />
       <p> {content[language].title}</p>
       {/* <p>You just hit a route that doesn&#39;t exist...</p> */}
