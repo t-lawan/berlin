@@ -259,14 +259,14 @@ export const StickyHeader = styled.div`
 `
 
 export const RelativeHeader = styled.div`
- z-index: 250;
- position: relative;
- > section > div > ${Caption} {
-   margin-bottom: 0.9em !important;
- }
- > section > div > div > div > div:nth-child(2) > div > div > div > div > div > div > ${Caption} {
-   margin-bottom: 0.5em !important;
- }
+  z-index: 250;
+  position: relative;
+  > section > div > ${Caption} {
+    margin-bottom: 0.9em !important;
+  }
+  > section > div > div > div > div:nth-child(2) > div > div > div > div > div > div > ${Caption} {
+    margin-bottom: 0.5em !important;
+  }
 `
 
 export const StickyFooter = styled.div`
@@ -309,6 +309,9 @@ export const StickyFooterWithHighZIndex = styled(StickyFooter)`
   z-index: 400;
   @media (min-width: ${size.mobileL}) {
     display: none !important;
+  }
+  @media (min-width: ${size.tablet}) {
+    display: inherit !important;
   }
   @media (max-width: ${size.tabletL}) {
     position: fixed;

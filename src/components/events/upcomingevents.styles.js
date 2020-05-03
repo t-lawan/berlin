@@ -13,6 +13,9 @@ export const EventsWrapper = styled.div`
     margin-top: ${props => props.isCurrent ? '0' : '-1.7em'};
     padding-bottom:0px;
   }
+  @media (min-width: ${size.laptopM}) {
+    padding-bottom:150px;
+  }
 `
 
 export const EventItem = styled.div`
@@ -26,6 +29,7 @@ export const EventItem = styled.div`
     } 
     @media (min-width: ${size.tablet}) {
     padding: ${props => props.isActive ? `1em 0.7em` : ''};
+    border-bottom: 4px solid ${Color.yellow} !important;
     }
     @media (min-width: ${size.laptop}) {
       padding: ${props => props.isActive ? `1.1em 1em` : ''};

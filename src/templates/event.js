@@ -329,7 +329,7 @@ class Event extends React.Component {
                       this.language.toLowerCase()
                     )}
                     {date.end_date
-                      ? ` –\n${DateManager.createLongDateString(
+                      ? `–\n${DateManager.createLongDateString(
                           date.end_date,
                           this.language.toLowerCase()
                         )}`
