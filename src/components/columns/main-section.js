@@ -165,10 +165,6 @@ class MainSection extends React.Component {
             <SocialMedia />
           </StickyFooterWithHighZIndex>
         </Column>
-        {/* Only In Mobile */}
-        <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
-          <DataPrivacy show={!this.props.agreed_to_terms} />
-        </StickyFooter>
         {/* Only In Desktop */}
         <StickyFooter show={this.props.agreed_to_terms} hideInTablet>
           <DataPrivacy show={!this.props.agreed_to_terms} />
