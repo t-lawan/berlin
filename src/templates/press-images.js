@@ -152,8 +152,7 @@ const PressImages = props => {
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={`${pageInfo.title}`}
-        description={`${pageInfo.slug}`}
+        title={`${content[pageInfo.language.toUpperCase()].press_images}`}
         lang={pageInfo.language}
         pathname={pageInfo.slug}
       />
