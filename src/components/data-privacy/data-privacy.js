@@ -68,7 +68,7 @@ class DataPrivacy extends React.Component {
 
   componentDidMount() {
     if (typeof window !== `undefined`) {
-      if (window.localStorage.getItem("AGREED_TO_PRIVACY")) {
+      if (window.sessionStorage.getItem("AGREED_TO_PRIVACY")) {
         if(!this.props.agreed_to_terms) {
           this.props.setAgreedToTrue()
         }
@@ -79,8 +79,8 @@ class DataPrivacy extends React.Component {
     if (!this.props.agreed_to_terms) {
       this.props.setAgreedToTrue()
       if (typeof window !== `undefined`) {
-        if (!window.localStorage.getItem("AGREED_TO_PRIVACY")) {
-          window.localStorage.setItem("AGREED_TO_PRIVACY", true)
+        if (!window.sessionStorage.getItem("AGREED_TO_PRIVACY")) {
+          window.sessionStorage.setItem("AGREED_TO_PRIVACY", true)
         }
       }
     }
