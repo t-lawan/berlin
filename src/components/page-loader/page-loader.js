@@ -9,7 +9,7 @@ const PageLoaderWrapper = styled.div`
   background: ${Color.yellow};
   width: 100%;
   height: 100%;
-  z-index: 7000;
+  z-index: 999999;
   position: fixed;
   display: ${props => (props.show ? "inherit" : "none")};
 `

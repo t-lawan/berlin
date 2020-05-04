@@ -10,11 +10,13 @@ import {
   FixedNavbar,
   FixedTopExpMob,
   ExperienceCarousel,
+  StickyFooter,
 } from "./columns.styles"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import NavbarMobile from "../navbar/navbar-mobile"
 import { transitionTimes } from "../../utility/helper"
 import MainSection from "./main-section"
+import DataPrivacy from "../data-privacy/data-privacy";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -116,6 +118,9 @@ class Columns extends React.Component {
             />
           </div>
         </ExperienceCarousel>
+        <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
+          <DataPrivacy show={!this.props.agreed_to_terms} />
+        </StickyFooter>
         <FixedNavbar>
           <NavbarMobile showInTablet={true} />
         </FixedNavbar>

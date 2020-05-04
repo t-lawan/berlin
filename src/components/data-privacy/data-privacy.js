@@ -21,14 +21,18 @@ export const DataPrivacyWrapper = styled(Section)`
   > div:last-child {
     text-align: right;
   }
+  @media (max-width: ${size.mobileM}) {
+  padding-bottom: 0.5em;
+  }
 `
 
 export const DataPrivacyBlock = styled.div`
   > p {
     max-width: 100%;
     @media (max-width: ${size.mobileM}) {
-      font-size: 0.9rem;
-      margin-bottom: 0;
+      font-size: 0.9em !important;
+      margin-bottom: 1em !important;
+      padding-right: 0.5em !important;
     }
     @media (max-width: ${size.mobileXL}) {
       font-size: 0.85em;
