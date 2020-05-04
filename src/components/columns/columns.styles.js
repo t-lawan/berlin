@@ -283,8 +283,8 @@ export const StickyFooter = styled.div`
   transition: all 0.3s ease-in-out;
   @media (max-width: ${size.mobileM}) {
     position: fixed;
-    bottom: 95px;
-    z-index: 999900;
+    bottom: 40px;
+    z-index: 599;
   }
   @media (max-width: ${size.mobileXL}) {
     position: fixed;
