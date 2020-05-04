@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createProperty } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import UpcomingEvents from "../components/events/upcomingevents"
-import { PageWrapper } from "./page.styles"
+import { PageWrapper, PageTitle, } from "./page.styles"
 import Layout from "../components/layout/layout"
 import ImageResource from "../partials/ImageResource"
 import { Color, size } from "../index.styles"
@@ -26,8 +26,38 @@ const PressImagesGrid = styled.section`
     padding: 0.5rem 0;
   }
 `
-
+const PressImageTitleHeader = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 1em;
+  text-transform: lowercase;
+  @media (max-width: ${size.tabletL}) {
+    display: block;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1.0em;
+    text-transform: none;
+    margin-bottom: 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.05em;
+    margin-bottom: 1em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+  }
+`
 const PressImageTitle = styled.p`
+  margin-top: 0.5rem;
+  @media (max-width: ${size.mobileM}) {
+    margin-top: 0.2rem;
+  }
+`
+const SectionTitle = styled.div`
   margin-top: 0.5rem;
   @media (max-width: ${size.mobileM}) {
     margin-top: 0.2rem;
@@ -46,11 +76,12 @@ const PressImages = props => {
               {" "}
               {item[createProperty("photo_group_title", language)]}
             </PressImageTitle> */}
-            <div
+            <SectionTitle
               dangerouslySetInnerHTML={{
                 __html: item[createProperty("section_header", language)],
               }}
             />
+            
             {item.images
               ? item.images.map((i, id) => (
                   <PressImagesGrid key={id} borderBottom>
@@ -156,7 +187,13 @@ const PressImages = props => {
         lang={pageInfo.language}
         pathname={pageInfo.slug}
       />
-      <p>{content[language].press_images}</p>
+      
+      <PressImageTitleHeader
+            dangerouslySetInnerHTML={{
+                __html: content[language].press_images,
+              }}
+            />
+      
       {pageInfo.acf.press_images.map((section, index) =>
         generateSection(section, index)
       )}

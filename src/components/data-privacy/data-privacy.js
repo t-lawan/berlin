@@ -21,14 +21,18 @@ export const DataPrivacyWrapper = styled(Section)`
   > div:last-child {
     text-align: right;
   }
+  @media (max-width: ${size.mobileM}) {
+  padding-bottom: 0.5em;
+  }
 `
 
 export const DataPrivacyBlock = styled.div`
   > p {
     max-width: 100%;
     @media (max-width: ${size.mobileM}) {
-      font-size: 0.9rem;
-      margin-bottom: 0;
+      font-size: 0.9em !important;
+      margin-bottom: 1em !important;
+      padding-right: 0.5em !important;
     }
     @media (max-width: ${size.mobileXL}) {
       font-size: 0.85em;
@@ -64,7 +68,7 @@ class DataPrivacy extends React.Component {
 
   componentDidMount() {
     if (typeof window !== `undefined`) {
-      if (window.localStorage.getItem("AGREED_TO_PRIVACY")) {
+      if (window.sessionStorage.getItem("AGREED_TO_PRIVACY")) {
         if(!this.props.agreed_to_terms) {
           this.props.setAgreedToTrue()
         }
@@ -75,8 +79,8 @@ class DataPrivacy extends React.Component {
     if (!this.props.agreed_to_terms) {
       this.props.setAgreedToTrue()
       if (typeof window !== `undefined`) {
-        if (!window.localStorage.getItem("AGREED_TO_PRIVACY")) {
-          window.localStorage.setItem("AGREED_TO_PRIVACY", true)
+        if (!window.sessionStorage.getItem("AGREED_TO_PRIVACY")) {
+          window.sessionStorage.setItem("AGREED_TO_PRIVACY", true)
         }
       }
     }

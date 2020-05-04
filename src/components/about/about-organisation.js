@@ -7,29 +7,22 @@ import { TextBlock, PageTitle } from "../../templates/page.styles";
 import styled from 'styled-components';
 const AboutTextBlock = styled(TextBlock)`
 padding: 0 0 1em !important;
+@media (max-width: ${size.mobileM}) {
+padding-bottom: 0.3em !important;
+}
 > p {
   padding-left: 1em;
-  font-size: 1em;
   @media (max-width: ${size.mobileM}) {
       line-height:1.4 !important;
     }
     @media (min-width: ${size.mobileSL}) {
-    font-size: 0.85em;
     padding-left: 1.2em !important;
     }
     @media (min-width: ${size.tablet}) {
-    font-size: 0.95em;
     padding-left: 1.05em !important;
     }
     @media (min-width: ${size.laptop}) {
-    font-size: 1em;
-    padding-left: 1em;
-    }
-    @media (min-width: ${size.laptopM}) {
-    font-size: 1.05em;
-    }
-    @media (min-width: ${size.laptopL}) {
-    font-size: 1.1em;
+    padding-left: 1em !important;
     }
 }
 `
@@ -42,12 +35,19 @@ margin-bottom: 0.2em;
 :first-of-type {
     padding-left: 0em !important;
     padding-bottom: 1em !important;
+    @media (max-width: ${size.mobileM}) {
+      padding-top: 0em;
+      padding-bottom: 0em !important;
+    }
   }
 @media (min-width: ${size.mobileSL}) {
 padding-top: 0em;
   }
 @media (min-width: ${size.tablet}) {
 padding-top: 1em;
+  }
+@media (min-width: ${size.laptop}) {
+padding-top: 0em;
   }
 `
 

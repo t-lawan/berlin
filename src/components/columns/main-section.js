@@ -143,10 +143,7 @@ class MainSection extends React.Component {
             <FixedTickerOnlyInMobile hide={!this.props.isHome}>
               <Ticker />
             </FixedTickerOnlyInMobile>
-            {/* Only In Mobile */}
-            <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
-              <DataPrivacy show={!this.props.agreed_to_terms} />
-            </StickyFooter>
+
             {/* Only In Mobile */}
             <FixedFooter isHome={this.props.isHome} showInTablet>
               <FooterComponent />
@@ -168,7 +165,6 @@ class MainSection extends React.Component {
             <SocialMedia />
           </StickyFooterWithHighZIndex>
         </Column>
-
         {/* Only In Desktop */}
         <StickyFooter show={this.props.agreed_to_terms} hideInTablet>
           <DataPrivacy show={!this.props.agreed_to_terms} />
