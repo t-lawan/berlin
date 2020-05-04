@@ -8,7 +8,6 @@ import Modal from "../modal/modal"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
-import ExperiencePage from "../experience/experience-page"
 import PageLoader from "../page-loader/page-loader";
 const LayoutWrapper = styled.div`
   width: 100vw;
@@ -32,7 +31,6 @@ const Layout = props => {
       </Helmet>
       <PageLoader isHome={props.isHome} />
       <Modal show={props.modal.show} />
-      <ExperiencePage showOnHomePage={props.isHome} />
       {/* <ExhibitionPage /> */}
       <Columns
         firstColumn={props.firstColumn}
