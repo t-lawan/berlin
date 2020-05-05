@@ -31,7 +31,7 @@ class PageLoader extends React.Component {
     hidePageLoader = () => {
       setTimeout(() => {
         this.props.setFreshLoadToFalse();
-    }, 1500)
+    }, 1000)
     }
 
     componentDidUpdate(prevProps) {
