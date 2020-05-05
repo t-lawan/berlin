@@ -122,7 +122,7 @@ class MainSection extends React.Component {
               <JumbotronMob showInMobile={true} />
             </MobTitleCard>
             <MobAnimCard showInMobile={this.props.isHome}>
-              {image ? <img className="bg_anim" src={image.url} /> : null}
+              {image ? <img className="bg_anim" src={image.publicUrl} /> : null}
             </MobAnimCard>
             <RelativeHeader>
               <ImageContainer
