@@ -39,6 +39,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_exhibitionsAcfDE {
       promotional_sticker_for_homepage: Int
     }
+
+    type SitePage implements Node @dontInfer {
+      path: String!
+    }
   `
   createTypes(typeDefs)
 }
