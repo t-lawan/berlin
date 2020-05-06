@@ -123,10 +123,10 @@ export const AboutCorporateImageItem = styled.section`
 `
 
 export const AboutPrimaryImageContainer = styled(AboutCorporateImageItem)`
-  width: 40%;
-  max-width: 130px;
+  width: 40% !important;
+  max-width: 140px !important;
   @media (min-width: ${size.laptop}) {
-    width: 40%;
-    max-width: 235px;
+    width: 40% !important;
+    max-width: 235px !important;
   }
 `
