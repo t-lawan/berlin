@@ -39,7 +39,7 @@ class ExperienceController extends React.Component {
           id: 4,
           isReady: true,
           display: (
-            <img src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/bb11_logo_nav.svg" />
+            <img src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/bb11_logo_nav.svg" alt="11. Berlin Biennale Link"/>
           ),
         },
       ],
@@ -134,12 +134,14 @@ class ExperienceController extends React.Component {
             show={this.props.experience !== 1}
             onClick={() => this.decrementExperience()}
             src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_prev.svg"
+            alt="Previous Navigation Arrow"
           />
           <ExperienceButtonImage
             hidden={this.props.left}
             show={this.props.experience !== 4}
             onClick={() => this.incrementExperience()}
             src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/expnav_next.svg"
+            alt="Next Navigation Arrow"
           />
         </ExperienceButtonTitle>
         <ExperienceButtonTitle bold hidden={this.experiences.length === 0} show>

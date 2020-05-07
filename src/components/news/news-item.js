@@ -32,11 +32,13 @@ const NewsItem = props => {
   } else {
     renderComponent = (
       <>
+        <NewsItemContainer>
         <p> {news[language].news_title}</p>
         <p> {news[language].news_subtitle}</p>
         <div
           dangerouslySetInnerHTML={{ __html: news[language].news_text }}
         />
+        </NewsItemContainer>
       </>
     )
   }
