@@ -333,7 +333,6 @@ const State = props => {
                 localFile {
                   childImageSharp {
                     fluid(quality: 90, maxWidth: 1000) {
-                      base64
                       aspectRatio
                       src
                       srcSet
