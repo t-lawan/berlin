@@ -38,7 +38,7 @@ class PressForm extends React.Component {
         hasSubmitted: true,
       })
     })
-    navigate(createPath(this.language, '/press-images'))
+    navigate(createPath(this.language, 'press-images'))
   }
 
   sendPostRequest = async () => {
