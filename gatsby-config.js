@@ -9,6 +9,7 @@ module.exports = {
     `gatsby-plugin-transition-link`,
     'gatsby-plugin-eslint',
     'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-optimize-svgs',
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
