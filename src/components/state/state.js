@@ -225,35 +225,35 @@ const State = props => {
               }
             }
           }
-          allWordpressWpParticipants {
-            edges {
-              node {
-                wordpress_id
-                slug
-                acf {
-                  exp_number
-                  firstname
-                  # image_gallery
-                  is_artist_in_exhibition
-                  lastname
-                  participant_group
-                  personal_website
-                  # related_resources
-                  EN {
-                    # group_bios
-                    project_description
-                    # short_bio
-                  }
-                  participant_venue
-                  DE {
-                    # group_bios
-                    project_description
-                    short_bio
-                  }
-                }
-              }
-            }
-          }
+          # allWordpressWpParticipants {
+          #   edges {
+          #     node {
+          #       wordpress_id
+          #       slug
+          #       acf {
+          #         exp_number
+          #         firstname
+          #         # image_gallery
+          #         is_artist_in_exhibition
+          #         lastname
+          #         participant_group
+          #         personal_website
+          #         # related_resources
+          #         EN {
+          #           # group_bios
+          #           project_description
+          #           # short_bio
+          #         }
+          #         participant_venue
+          #         DE {
+          #           # group_bios
+          #           project_description
+          #           short_bio
+          #         }
+          #       }
+          #     }
+          #   }
+          # }
           allWordpressWpResources {
             edges {
               node {
@@ -488,10 +488,10 @@ const State = props => {
     ]
     let calendar = CalendarModel.createCalendar(calendarItems)
 
-    let participants = Convert.toModelArray(
-      data.allWordpressWpParticipants,
-      Convert.toParticipantModel
-    )
+    // let participants = Convert.toModelArray(
+    //   data.allWordpressWpParticipants,
+    //   Convert.toParticipantModel
+    // )
 
     let resources = Convert.toModelArray(
       data.allWordpressWpResources,
@@ -585,7 +585,7 @@ const State = props => {
     props.setCalendar(calendar)
     props.setDocuments(documents)
     props.setVenues(venues)
-    props.setParticipants(participants)
+    // props.setParticipants(participants)
     props.setEvents(events)
     props.setNews(news)
     props.setResourceGenres(resourceGenres)
