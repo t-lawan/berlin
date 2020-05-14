@@ -14,7 +14,7 @@ const AboutComponents = props => {
   let renderComponent
   const language = getCurrentLanguageString(props.languages)
   switch (content.slug) {
-    case "about":
+    case "/about":
       renderComponent = (
         <>
           <PageTitle> {language === "EN" ? "About" : "über"}</PageTitle>
@@ -26,7 +26,7 @@ const AboutComponents = props => {
         </>
       )
       break
-    case "uber":
+    case "/de/uber":
     renderComponent = (
       <>
         <PageTitle> {language === "EN" ? "About" : "über"}</PageTitle>
