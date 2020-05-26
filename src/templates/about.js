@@ -17,10 +17,11 @@ const About = props => {
     return pg[props.pageContext.language.toUpperCase()] == content.slug
   })  
 
+
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={capitalise(props.pageContext.title)}
+        title={AboutTitle[props.pageContext.title][`${props.pageContext.language.toUpperCase()}`]}
         description={`${description}`}
         lang={props.pageContext.language}
         pathname={path ? path[props.pageContext.language.toUpperCase()] : null}
@@ -50,6 +51,29 @@ const mapStateToProps = state => {
     languages: state.languages,
     documents: state.documents,
   }
+}
+const AboutTitle  = {
+  "About": {
+    EN: 'About',
+    DE: 'Über'
+  },
+  "advisory board": {
+    EN: 'Advisory board',
+    DE: 'Beirat'
+  },
+  "team": {
+    EN: 'Team',
+    DE: 'Team'
+  },
+  "organization": {
+    EN: 'Organization',
+    DE: 'Verein'
+  },
+  "support": {
+    EN: 'Support',
+    DE: 'Unterstutzung'
+  },
+
 }
 
 export default connect(
