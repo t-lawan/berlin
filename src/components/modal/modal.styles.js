@@ -186,6 +186,26 @@ export const FormButton = styled.button`
   }
 `
 
+export const FormText = styled.p`
+  font-size: 1em;
+  @media (max-width: ${size.mobileL}) {
+    font-size: 0.85em;
+    line-height: 1.3;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.95em;  
+  }
+  @media (min-width: ${size.laptop}) {
+    font-size: 1em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.05em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.1em;
+  }
+`
+
 export const FormLabel = styled.label`
   display: block;
   margin-top: 1rem;
