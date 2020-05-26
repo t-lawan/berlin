@@ -602,7 +602,6 @@ exports.createPages = async ({ graphql, actions }) => {
             language === "en"
               ? `/${endPath.EN}`
               : `/${language}/${endPath.DE}`
-          console.log('SLUG ENDPATH', edge.node.slug)
 
         }
       } else {
