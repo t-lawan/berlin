@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import PageLoaderLogo from "../../images/transition.gif"
 import { Color } from "../../index.styles"
-import { setFreshLoadToFalse } from "../../store/action"
+import { setFreshLoadToFalse, isViewing } from "../../store/action"
 
 const PageLoaderWrapper = styled.div`
   background: ${Color.yellow};
@@ -26,12 +26,15 @@ const PageLoaderImage = styled.img`
 class PageLoader extends React.Component {
     componentDidMount() {
       this.hidePageLoader()
+      setTimeout(() => {
+        this.props.isViewing()
+      }, 1000)
     }
 
     hidePageLoader = () => {
       setTimeout(() => {
         this.props.setFreshLoadToFalse();
-    }, 1500)
+    }, 1000)
     }
 
     componentDidUpdate(prevProps) {
@@ -51,12 +54,14 @@ class PageLoader extends React.Component {
 const mapStateToProps = state => {
   return {
     freshLoad: state.freshLoad,
+    is_viewing: state.is_viewing
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     setFreshLoadToFalse: () => dispatch(setFreshLoadToFalse()),
+    isViewing: () => dispatch(isViewing())
   }
 }
 

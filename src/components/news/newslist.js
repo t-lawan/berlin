@@ -15,7 +15,9 @@ const NewsList = props => {
           DateManager.getDaysFromCurrentDate(news.dates[0]) >= 0
         )
       })
-      .reverse()
+      .sort((a, b) => {
+        return b.dates[0] - a.dates[0];
+      })
   } else {
     if (props.experience == props.active_experience) {
       filteredNews = props.news

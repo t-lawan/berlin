@@ -6,9 +6,6 @@ import { GlobalStyle } from "../../index.styles"
 import State from "../state/state"
 import Modal from "../modal/modal"
 import { connect } from "react-redux"
-import { Helmet } from "react-helmet"
-import { OutboundLink } from "gatsby-plugin-google-analytics"
-import ExperiencePage from "../experience/experience-page"
 import PageLoader from "../page-loader/page-loader";
 const LayoutWrapper = styled.div`
   width: 100vw;
@@ -18,21 +15,10 @@ const LayoutWrapper = styled.div`
 const Layout = props => {
   return (
     <LayoutWrapper>
-      {/* <OutboundLink
-        hidden={!props.agreed_to_terms}
-        href="https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/"
-      ></OutboundLink> */}
       <GlobalStyle />
       <State />
-      <Helmet>
-        {/* <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-        /> */}
-      </Helmet>
       <PageLoader isHome={props.isHome} />
       <Modal show={props.modal.show} />
-      <ExperiencePage showOnHomePage={props.isHome} />
       {/* <ExhibitionPage /> */}
       <Columns
         firstColumn={props.firstColumn}

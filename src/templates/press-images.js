@@ -81,31 +81,6 @@ const PressImages = props => {
                 __html: item[createProperty("section_header", language)],
               }}
             />
-            
-            {item.images
-              ? item.images.map((i, id) => (
-                  <PressImagesGrid key={id} borderBottom>
-                    {getDocument(props.documents, i.wordpress_id) ? (
-                      <a
-                        href={getDocument(props.documents, i.wordpress_id).url}
-                        target="__blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ImageResource
-                          id={i.wordpress_id}
-                          withCaption={false}
-                        />
-                      </a>
-                    ) : null}
-
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: i.acf[createProperty("caption", language)],
-                      }}
-                    />
-                  </PressImagesGrid>
-                ))
-              : null}
           </div>
         )
         break
@@ -116,30 +91,6 @@ const PressImages = props => {
               {" "}
               {item[createProperty("photo_group_title", language)]}
             </PressImageTitle>
-            {item.images
-              ? item.images.map((i, id) => (
-                  <PressImagesGrid key={id} borderBottom>
-                    {getDocument(props.documents, i.wordpress_id) ? (
-                      <a
-                        href={getDocument(props.documents, i.wordpress_id).url}
-                        target="__blank"
-                        rel="noopener noreferrer"
-                      >
-                        <ImageResource
-                          id={i.wordpress_id}
-                          withCaption={false}
-                        />
-                      </a>
-                    ) : null}
-
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: i.acf[createProperty("caption", language)],
-                      }}
-                    />
-                  </PressImagesGrid>
-                ))
-              : null}
           </div>
         )
         break

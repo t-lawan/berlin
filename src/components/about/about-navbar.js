@@ -62,9 +62,9 @@ const AboutNavbar = props => {
   const language = getCurrentLanguageString(props.languages)
 
   const isCurrentPage = index => {
-    return `/${items[index][language].slug}` === props.currentPage
+    let slug = language === "DE" ? `/de/${items[index][language].slug}` : `/${items[index][language].slug}`
+    return slug === props.currentPage
   }
-
 
   return (
     <AboutSideNavbar>

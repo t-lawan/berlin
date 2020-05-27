@@ -21,7 +21,7 @@ const Jumbotron = props => {
     bg={transitionBackground}
     cover direction="down"
     to={createPath(language, '')}> */}
-      {image ? <img src={image.url} alt={image.slug}/> : null}
+      {image ? <img src={image.publicUrl} alt={image.slug}/> : null}
     </JumbotronHeader>
   </JumbotronWrapper>
 )

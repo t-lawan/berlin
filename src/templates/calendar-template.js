@@ -16,7 +16,7 @@ const CalendarTemplate = props => {
 
   const renderComponent = (
     <>
-      <SEO title={title} description={title} pathname={path ? path[props.pageContext.language.toUpperCase()] : null} />
+      <SEO title={title} description={title} pathname={path ? path[props.pageContext.language.toUpperCase()] : null} lang={props.pageContext.language}/>
       <PageTitleCalendar> {content[language].title} </PageTitleCalendar>
       <Calendar />
     </>

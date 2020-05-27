@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import styled from "styled-components"
-import { size } from "../index.styles"
+import { size, Color } from "../index.styles"
 import { getDocument } from "../store/selector"
 import Img from "gatsby-image"
 import striptags from "striptags"
@@ -163,6 +163,7 @@ class ImageResource extends React.Component {
               hasLongCaption={hasLongCaption}
               captionLength={captionLength}
               loading="lazy"
+              backgroundColor={Color.yellow}
             />
             <Caption
               hidden={!this.props.withCaption}

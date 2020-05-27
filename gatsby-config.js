@@ -8,6 +8,8 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
     'gatsby-plugin-eslint',
+    'gatsby-plugin-netlify-cache',
+    'gatsby-plugin-optimize-svgs',
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -116,7 +118,7 @@ module.exports = {
           "**/users",
           "**/events",
           "**/venue",
-          "**/participants",
+          // "**/participants",
           // "**/publications",
           "**/exhibitions",
           "**/menus",

@@ -11,6 +11,7 @@ import {
   FormLabel,
   ModalHeader,
   CloseImage,
+  FormText,
 } from "./modal.styles"
 import axios from "axios"
 import { Link } from "gatsby";
@@ -94,9 +95,9 @@ class Modal extends React.Component {
             />
           </ModalHeader>
           <div hidden={this.state.hasSubmitted}>
-            <p>{modalText[this.language].description}</p>
+            <FormText>{modalText[this.language].description}</FormText>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <p>{modalText[this.language].checkbox_description}</p>
+              <FormText>{modalText[this.language].checkbox_description}</FormText>
 
               <FormLabel>
                 <FormInput
@@ -146,7 +147,7 @@ class Modal extends React.Component {
             </form>
           </div>
           <div hidden={!this.state.hasSubmitted}>
-            <p>{modalText[this.language].thank_you}</p>
+            <FormText>{modalText[this.language].thank_you}</FormText>
           </div>
         </ModalWrapper>
       </>
