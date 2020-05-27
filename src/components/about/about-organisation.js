@@ -106,7 +106,7 @@ const mapStateToProps = state => {
 
 let content = {
   EN: {
-    title: "organisation"
+    title: "organization"
   },
   DE: {
     title: "verein"
