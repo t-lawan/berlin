@@ -15,11 +15,11 @@ export const ModalWrapper = styled.div`
     margin-top: 1%;
     > div > p {
       line-height: 1.3;
-      font-size: 1em;
+      /* font-size: 1em; */
     }
     > div > form > p {
       line-height: 1.3;
-      font-size: 1em;
+      /* font-size: 1em; */
     }
   }
   @media (min-width: ${size.mobileL}) {
@@ -28,12 +28,12 @@ export const ModalWrapper = styled.div`
     margin: 3% 5% 0;
     > div > p {
       line-height: 1.3;
-      font-size: 0.85em;
+      /* font-size: 0.85em; */
       margin-bottom: 0.5em;
     }
     > div > form > p {
       line-height: 1.3;
-      font-size: 0.85em;
+      /* font-size: 0.85em; */
     }
     > div:nth-child(2) {
       margin-top: -1.5em;
@@ -48,12 +48,12 @@ export const ModalWrapper = styled.div`
     padding: 1em 2em;
     > div > p {
       line-height: 1.3;
-      font-size: 1em;
+      /* font-size: 1em; */
       margin-bottom: 1em;
     }
     > div > form > p {
       line-height: 1.3;
-      font-size: 1em;
+      /* font-size: 1em; */
     }
     > div:nth-child(2) {
       margin-top: 0em;
@@ -77,7 +77,7 @@ export const FormInput = styled.input`
     border-color: ${Color.red};
     outline: none;
   }
-  font-size: 1rem;
+  font-size: 1em;
   @media (max-width: ${size.mobileM}) {
     font-size: 1.0em;
     line-height: 1.3;
@@ -188,7 +188,10 @@ export const FormButton = styled.button`
 
 export const FormText = styled.p`
   font-size: 1em;
-  @media (max-width: ${size.mobileL}) {
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.0em;
+  }
+  @media (min-width: ${size.mobileL}) {
     font-size: 0.85em;
     line-height: 1.3;
   }
@@ -199,10 +202,10 @@ export const FormText = styled.p`
     font-size: 1em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.05em;
+    font-size: 1.1em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
 `
 
@@ -256,20 +259,20 @@ export const FormLabel = styled.label`
     }
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.05em;
+    font-size: 1.1em;
     line-height: 1.4;
     > p {
-      font-size: 1em;
+      /* font-size: 1em; */
     }
     > a {
-      font-size: 1.0em;
+      font-size: 1.1em;
     }
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.1em;
+    font-size: 1.2em;
     line-height: 1.45;
     > a {
-      font-size: 1.0em;
+      font-size: 1.2em;
     }
   }
   > p {
