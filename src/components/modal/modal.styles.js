@@ -214,7 +214,7 @@ export const FormLabel = styled.label`
   margin-top: 1rem;
   font-size: 1em;
   > a {
-    font-size: 1em;
+    /* font-size: 1em; */
     border-bottom: solid thin;
     border-color: ${Color.red};
     transition: all 0.2s ease-in-out;
@@ -227,7 +227,7 @@ export const FormLabel = styled.label`
     line-height: 1.3;
     margin-top: 0.7em;
     > a {
-      font-size: 1.0em;
+      /* font-size: 1.0em; */
     }
     :nth-of-type(3) > input {
       padding-right: 0;
@@ -240,7 +240,7 @@ export const FormLabel = styled.label`
     line-height: 1.3;
     margin-top: 0.5rem;
     > a {
-      font-size: 1em;
+      /* font-size: 1em; */
     }
   }
   @media (min-width: ${size.tablet}) {
@@ -248,14 +248,14 @@ export const FormLabel = styled.label`
     line-height: 1.3;
     margin-top: 1rem;
     > a {
-      font-size: 0.95em;
+      /* font-size: 0.95em; */
     }
   }
   @media (min-width: ${size.laptop}) {
     font-size: 1em;
     line-height: 1.4;
     > a {
-      font-size: 1em;
+      /* font-size: 1em; */
     }
   }
   @media (min-width: ${size.laptopM}) {
@@ -265,14 +265,14 @@ export const FormLabel = styled.label`
       /* font-size: 1em; */
     }
     > a {
-      font-size: 1.1em;
+      /* font-size: 1.1em; */
     }
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.2em;
     line-height: 1.45;
     > a {
-      font-size: 1.2em;
+      /* font-size: 1.2em; */
     }
   }
   > p {
