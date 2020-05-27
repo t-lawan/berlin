@@ -138,7 +138,7 @@ export const PageWrapper = styled.div`
     padding: 0;
   }
   > div > ul > li {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     list-style-type: none;
     text-indent: -10px;
     line-height: 1.4;
