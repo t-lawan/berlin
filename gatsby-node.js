@@ -43,6 +43,16 @@ exports.createSchemaCustomization = ({ actions }) => {
     type SitePage implements Node @dontInfer {
       path: String!
     }
+
+    type wordpress__wp_resourcesAcfText_based_resource implements Node @dontInfer {
+      free_text_entry: String
+      document_language: String
+      document_download_label: String
+    }
+
+    type wordpress__wp_resourcesAcfText_based_resource implements Node @dontInfer {
+      document_upload: Int
+    }
   `
   createTypes(typeDefs)
 }
