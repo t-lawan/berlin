@@ -44,7 +44,10 @@ export const ImagesCont = styled.div`
 `
 export const FormText = styled.div` 
   @media (min-width: ${size.laptop}) {
-    margin-top: -0.8em;
+    margin-top: -0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-top: -0.5em;
   }
   @media (max-width: ${size.mobileL}) {
     margin-top: -0.5em;
@@ -136,9 +139,10 @@ export const PageWrapper = styled.div`
     list-style:none;
     margin: 1em 6em 1em 1em;
     padding: 0;
+    max-width: calc(700px - 1em);
   }
   > div > ul > li {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
     list-style-type: none;
     text-indent: -10px;
     line-height: 1.4;
