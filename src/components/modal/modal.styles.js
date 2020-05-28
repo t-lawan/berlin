@@ -175,14 +175,14 @@ export const FormButton = styled.button`
     font-size: 0.85em;
   }
   @media (min-width: ${size.laptop}) {
-    font-size: 1.1em;
+    font-size: 1em;
     margin-left: 0em !important;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `
 
@@ -213,6 +213,9 @@ export const FormLabel = styled.label`
   display: block;
   margin-top: 1rem;
   font-size: 1em;
+  > p {
+    font-size: 1em;
+  }
   > a {
     /* font-size: 1em; */
     border-bottom: solid thin;
@@ -259,7 +262,7 @@ export const FormLabel = styled.label`
     }
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.4;
     > p {
       /* font-size: 1em; */
@@ -269,7 +272,7 @@ export const FormLabel = styled.label`
     }
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.45;
     > a {
       /* font-size: 1.2em; */

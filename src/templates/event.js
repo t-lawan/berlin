@@ -294,7 +294,7 @@ class Event extends React.Component {
         <EventNavigator id={this.event.id} />
         <TwoColumnPageWrapper>
           <SEO
-            title={title ? `${title}  | ${titleHeading}` : `${titleHeading}`}
+            title={title}
             description={description}
             lang={this.props.pageContext.language}
             image={this.event.thumbnail_image}

@@ -118,7 +118,7 @@ module.exports = {
           "**/users",
           "**/events",
           "**/venue",
-          "**/participants",
+          // "**/participants",
           // "**/publications",
           "**/exhibitions",
           "**/menus",
