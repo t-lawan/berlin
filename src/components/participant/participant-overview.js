@@ -3,9 +3,10 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { TwoColumnPageWrapper } from "../../templates/page.styles"
 import { capitalise } from "../../utility/helper"
+import ScrollableAnchor from "react-scrollable-anchor"
 
 const AlphabetContainer = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 `
 
 const AlphabetLanguageContainer = styled.div`
@@ -31,7 +32,7 @@ const ExperienceState = {
 }
 
 const ParticipantName = styled.p`
-  opacity: ${props => (props.isSelected ? 1 : 0.6)};
+  opacity: ${props => (props.isSelected ? 1 : 0.3)};
 `
 
 const ExperienceText = styled.span`
@@ -137,29 +138,42 @@ class ParticipantOverView extends Component {
   }
 
   changeExperience = experience => {
-    let chosenExperience = experience === this.state.chosenExperience ? ExperienceState.ALL : experience;
-    
+    let chosenExperience =
+      experience === this.state.chosenExperience
+        ? ExperienceState.ALL
+        : experience
+
     this.setState({
-        chosenExperience: chosenExperience
-    });
+      chosenExperience: chosenExperience,
+    })
   }
   render() {
-    console.log("Sorting NAme", this.partipants)
     return (
       <TwoColumnPageWrapper>
         <div>
           <AlphabetContainer>
             {this.alphabet.map((value, index) => (
-              <AlphabetText key={index}> {value.toUpperCase()} </AlphabetText>
+              <a key={index} href={`#${value}`}>
+                <AlphabetText > {value.toUpperCase()} </AlphabetText>
+              </a>
             ))}
           </AlphabetContainer>
           <ExperienceContainer>
             {this.experiences.map((value, index) => (
               <>
                 {value.isText ? (
-                  <ExperienceText onClick={() => this.changeExperience(value.id)} key={index}> {value.display} </ExperienceText>
+                  <ExperienceText
+                    onClick={() => this.changeExperience(value.id)}
+                    key={index}
+                  >
+                    {" "}
+                    {value.display}{" "}
+                  </ExperienceText>
                 ) : (
-                  <ExperienceImage onClick={() => this.changeExperience(value.id)} src={value.display} />
+                  <ExperienceImage
+                    onClick={() => this.changeExperience(value.id)}
+                    src={value.display}
+                  />
                 )}
               </>
             ))}
@@ -167,24 +181,26 @@ class ParticipantOverView extends Component {
         </div>
         <div>
           {this.partipants.map((value, index) => (
-            <AlphabetLanguageContainer key={index}>
-              <div>
-                <p> {value.letter.toUpperCase()}</p>
-              </div>
-              <div>
-                {value.participants.map((participant, i) => (
-                  <ParticipantName
-                    isSelected={this.experienceHasChosen(
-                      participant.experience
-                    )}
-                    key={i}
-                  >
-                    {" "}
-                    {capitalise(participant.name)}{" "}
-                  </ParticipantName>
-                ))}
-              </div>
-            </AlphabetLanguageContainer>
+            <ScrollableAnchor key={index} id={`${value.letter}`}>
+              <AlphabetLanguageContainer>
+                <div>
+                  <p> {value.letter.toUpperCase()}</p>
+                </div>
+                <div>
+                  {value.participants.map((participant, i) => (
+                    <ParticipantName
+                      isSelected={this.experienceHasChosen(
+                        participant.experience
+                      )}
+                      key={i}
+                    >
+                      {" "}
+                      {capitalise(participant.name)}{" "}
+                    </ParticipantName>
+                  ))}
+                </div>
+              </AlphabetLanguageContainer>
+            </ScrollableAnchor>
           ))}
         </div>
       </TwoColumnPageWrapper>
