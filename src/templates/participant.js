@@ -6,35 +6,37 @@ import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
-import NewsList from "../components/news/newslist";
-const ParticipantPageWrapper = styled.div`
-  padding: 2em 1em;
-`
+import NewsList from "../components/news/newslist"
+import { TwoColumnPageWrapper } from "./page.styles"
+
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
   const participant = Convert.toParticipantModel(props.pageContext)
   const renderComponent = (
-    <ParticipantPageWrapper>
+    <TwoColumnPageWrapper>
       <SEO
         title={`${participant.firstname} ${participant.lastname}`}
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
-      <h3>
-        {participant.firstname} {participant.lastname}
-      </h3>
-      <p
-        dangerouslySetInnerHTML={{
-          __html: participant[language].project_description,
-        }}
-      />
+      <div></div>
+      <div>
+        <h3>
+          {participant.firstname} {participant.lastname}
+        </h3>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: participant[language].project_description,
+          }}
+        />
 
-      <p
-        dangerouslySetInnerHTML={{
-          __html: participant[language].short_bio,
-        }}
-      />
-    </ParticipantPageWrapper>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: participant[language].short_bio,
+          }}
+        />
+      </div>
+    </TwoColumnPageWrapper>
   )
 
   let thirdColumn = (
@@ -43,7 +45,7 @@ const Participant = props => {
       <UpcomingEvents />
     </>
   )
-  
+
   return (
     <Layout
       firstColumn={renderComponent}
@@ -59,7 +61,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Participant)
+export default connect(mapStateToProps, null)(Participant)

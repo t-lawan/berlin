@@ -200,11 +200,11 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.firstname,
       wordpressModel.acf.lastname,
+      wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.is_artist_in_exhibition,
-      wordpressModel.acf.participant_group,
-      wordpressModel.acf.participant_venue
+      wordpressModel.acf.participant_group
     )
   }
 
