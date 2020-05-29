@@ -16,7 +16,7 @@ const AlphabetContainer = styled.div`
 `
 
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
-  margin-bottom: 3rem;
+  margin-bottom: 7rem;
 `
 
 const AlphabetLanguageContainer = styled.div`
@@ -44,6 +44,7 @@ const ExperienceState = {
 
 const ParticipantName = styled.p`
   opacity: ${props => (props.isSelected ? 1 : 0.3)};
+  margin: 0;
 `
 
 const ExperienceText = styled.span`
