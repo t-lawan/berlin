@@ -2,10 +2,20 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
 import { TwoColumnPageWrapper } from "../../templates/page.styles"
-import { capitalise } from "../../utility/helper"
-import ScrollableAnchor from "react-scrollable-anchor"
+import {
+  capitalise,
+  createPath,
+  getCurrentLanguageString,
+} from "../../utility/helper"
+import scrollIntoView from "scroll-into-view-if-needed"
+import { Link } from "gatsby"
+import { startTransition } from "../../store/action";
 
 const AlphabetContainer = styled.div`
+  margin-bottom: 3rem;
+`
+
+const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
   margin-bottom: 3rem;
 `
 
@@ -17,7 +27,8 @@ const AlphabetLanguageContainer = styled.div`
 const ExperienceContainer = styled.div``
 
 const AlphabetText = styled.span`
-  padding: 0.4rem 0.2rem;
+  padding: 0.4rem 0.3rem;
+  display: inline-block;
   :hover {
     cursor: pointer;
   }
@@ -51,6 +62,7 @@ const ExperienceImage = styled.img`
   }
 `
 class ParticipantOverView extends Component {
+  language;
   alphabet = [
     "a",
     "b",
@@ -137,6 +149,21 @@ class ParticipantOverView extends Component {
     }
   }
 
+  scrollToAnchor = anchor => {
+    const parent = document.getElementById(`column-one`)
+    const element = document.getElementById(`anchor-${anchor}`)
+    if (element) {
+      scrollIntoView(element, {
+        scrollMode: "if-needed",
+        block: "center",
+        inline: "nearest",
+        behavior: "smooth",
+        boundary: parent,
+        skipOverflowHiddenElements: true,
+      })
+    }
+  }
+
   changeExperience = experience => {
     let chosenExperience =
       experience === this.state.chosenExperience
@@ -148,14 +175,19 @@ class ParticipantOverView extends Component {
     })
   }
   render() {
+    this.language = getCurrentLanguageString(this.props.languages)
     return (
-      <TwoColumnPageWrapper>
+      <ParticipantOverviewWrapper id="anchor-parent">
         <div>
           <AlphabetContainer>
             {this.alphabet.map((value, index) => (
-              <a key={index} href={`#${value}`}>
-                <AlphabetText > {value.toUpperCase()} </AlphabetText>
-              </a>
+              <AlphabetText
+                key={index}
+                onClick={() => this.scrollToAnchor(value)}
+              >
+                {" "}
+                {value.toUpperCase()}{" "}
+              </AlphabetText>
             ))}
           </AlphabetContainer>
           <ExperienceContainer>
@@ -173,6 +205,7 @@ class ParticipantOverView extends Component {
                   <ExperienceImage
                     onClick={() => this.changeExperience(value.id)}
                     src={value.display}
+                    key={index}
                   />
                 )}
               </>
@@ -181,29 +214,35 @@ class ParticipantOverView extends Component {
         </div>
         <div>
           {this.partipants.map((value, index) => (
-            <ScrollableAnchor key={index} id={`${value.letter}`}>
-              <AlphabetLanguageContainer>
-                <div>
-                  <p> {value.letter.toUpperCase()}</p>
-                </div>
-                <div>
-                  {value.participants.map((participant, i) => (
+            <AlphabetLanguageContainer
+              key={index}
+              id={`anchor-${value.letter}`}
+            >
+              <div>
+                <p> {value.letter.toUpperCase()}</p>
+              </div>
+              <div>
+                {value.participants.map((participant, i) => (
+                  <Link
+                    key={i}
+                    onClick={() => this.props.startTransition()}
+                    to={createPath(this.language, "participant/dodie-bellamy")}
+                  >
                     <ParticipantName
                       isSelected={this.experienceHasChosen(
                         participant.experience
                       )}
-                      key={i}
                     >
                       {" "}
                       {capitalise(participant.name)}{" "}
                     </ParticipantName>
-                  ))}
-                </div>
-              </AlphabetLanguageContainer>
-            </ScrollableAnchor>
+                  </Link>
+                ))}
+              </div>
+            </AlphabetLanguageContainer>
           ))}
         </div>
-      </TwoColumnPageWrapper>
+      </ParticipantOverviewWrapper>
     )
   }
 }
@@ -213,5 +252,10 @@ const mapStateToProps = state => {
     languages: state.languages,
   }
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    startTransition: () => dispatch(startTransition()),
+  }
+}
 
-export default connect(mapStateToProps, null)(ParticipantOverView)
+export default connect(mapStateToProps, mapDispatchToProps)(ParticipantOverView)
