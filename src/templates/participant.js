@@ -19,7 +19,10 @@ const Participant = props => {
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
-      <div></div>
+      <div>
+        <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
+        <p> Was also part of: exp. 1 and exp. 2</p>
+      </div>
       <div>
         <h3>
           {participant.firstname} {participant.lastname}
