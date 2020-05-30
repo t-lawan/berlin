@@ -39,10 +39,9 @@ export class Convert {
       wordpressModel.slug,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
-      wordpressModel.acf.dimensions,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,
-      wordpressModel.acf.page_count
+      wordpressModel.acf.image_gallery
     )
   }
 
