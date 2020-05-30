@@ -351,50 +351,31 @@ const State = props => {
               }
             }
           }
-          # allWordpressWpPublications {
-          #   edges {
-          #     node {
-          #       wordpress_id
-          #       slug
-          #       acf {
-          #         DE {
-          #           biennale_context_note
-          #           description
-          #           contributors
-          #           design
-          #           editor
-          #           format
-          #           language
-          #           order_link
-          #           price
-          #           publication_thumbnail
-          #           publisher
-          #           subtitle
-          #           title
-          #         }
-          #         EN {
-          #           biennale_context_note
-          #           contributors
-          #           description
-          #           design
-          #           editor
-          #           format
-          #           language
-          #           order_link
-          #           price
-          #           publication_thumbnail
-          #           publisher
-          #           subtitle
-          #           title
-          #         }
-          #         dimensions
-          #         exp_number
-          #         isbn
-          #         page_count
-          #       }
-          #     }
-          #   }
-          # }
+          allWordpressWpPublications {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    description
+                    publisher
+                    subtitle
+                    title
+                  }
+                  EN {
+                    publisher
+                    subtitle
+                    title
+                    description
+                  }
+                  exp_number
+                  isbn
+                  image_gallery
+                }
+              }
+            }
+          }
           allWordpressWpVenue {
             edges {
               node {
@@ -482,10 +463,10 @@ const State = props => {
       Convert.toResourceGenreModel
     )
 
-    // let publications = Convert.toModelArray(
-    //   data.allWordpressWpPublications,
-    //   Convert.toPublicationModel
-    // )
+    let publications = Convert.toModelArray(
+      data.allWordpressWpPublications,
+      Convert.toPublicationModel
+    )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -533,7 +514,7 @@ const State = props => {
         "publications",
         "publikationen",
         false,
-        false
+        true
       ),
       new NavbarModel("media", "media", "mediathek", false, true),
     ]
@@ -586,7 +567,7 @@ const State = props => {
     props.setResources(resources)
     props.setDocumentation(documentation)
     // props.setPages(pages)
-    // props.setPublications(publications)
+    props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)

@@ -12,10 +12,9 @@ import {
 import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
 import { Convert } from "../utility/convert"
-import ImageResource from "../partials/ImageResource"
 import { ExternalLink, Color } from "../index.styles";
 import styled from 'styled-components';
-import PublicationNavbar from "../components/publications/publication-navbar";
+import PublicationList from "../components/publications/publication-list";
 
 const PublicationExternalLink = styled(ExternalLink)`
     text-decoration: underline;
@@ -23,62 +22,36 @@ const PublicationExternalLink = styled(ExternalLink)`
 `
 const Publications = props => {
   const language = getCurrentLanguageString(props.languages)
-  let publication = Convert.toPublicationModel(props.pageContext)
-  let title = publication[props.pageContext.language.toUpperCase()]
-    ? truncateText(
-        striptags(publication[props.pageContext.language.toUpperCase()].title)
-      )
-    : ""
-  let description = publication[props.pageContext.language.toUpperCase()]
-    ? truncateText(
-        striptags(
-          publication[props.pageContext.language.toUpperCase()].description
-        )
-      )
-    : ""
+  // let publication = Convert.toPublicationModel(props.pageContext)
+  // let title = publication[props.pageContext.language.toUpperCase()]
+  //   ? truncateText(
+  //       striptags(publication[props.pageContext.language.toUpperCase()].title)
+  //     )
+  //   : ""
+  // let description = publication[props.pageContext.language.toUpperCase()]
+  //   ? truncateText(
+  //       striptags(
+  //         publication[props.pageContext.language.toUpperCase()].description
+  //       )
+  //     )
+  //   : ""
+  let title = 'Publications'
+  let description = "Publication"
   let path = pageMap.find(pg => {
-    return pg["EN"] == "publication"
+    return pg["EN"] == "publications"
   })
   const renderComponent = (
-    <TwoColumnPageWrapper>
+    <>
       <SEO
         title={title}
         description={description}
         lang={props.pageContext.language}
-        pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-          publication.slug
-        }`}
+        // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+        //   publication.slug
+        // }`}
       />
-      <div>
-        <PublicationNavbar currentSlug={publication.slug} />
-      </div>
-
-      <div>
-        {publication[language].publication_thumbnail ? (
-          <ImageResource withCaption={false} id={publication[language].publication_thumbnail} />
-        ) : null}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: publication[language].title,
-          }}
-        />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: publication[language].description,
-          }}
-        />
-        <p> {publication[language].publisher} </p>
-        <p>
-          {" "}
-          {publication[language].language} / {publication.dimensions} /{" "}
-          {publication.pageCount} pages / {publication[language].format}
-        </p>
-        <PublicationExternalLink href={`${publication[language].order_link}`} target="__blank" rel="noopener noreferrer">
-          {" "}
-          buy in shop{" "}
-        </PublicationExternalLink>
-      </div>
-    </TwoColumnPageWrapper>
+      <PublicationList />
+    </>
   )
 
   let thirdColumn = (
