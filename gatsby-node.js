@@ -376,6 +376,32 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpPublications {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                description
+                publisher
+                subtitle
+                title
+              }
+              EN {
+                publisher
+                subtitle
+                title
+                description
+              }
+              exp_number
+              isbn
+              image_gallery
+              social_media_image
+            }
+          }
+        }
+      }
       allWordpressWpExhibitions {
         edges {
           node {
@@ -532,8 +558,9 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "practical-information", DE: "praktische-information" },
     { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
-    { EN: "publications", DE: "publikation" },
     { EN: "press-images", DE: "pressebilder" },
+    { EN: "publications", DE: "publikations" },
+    { EN: "publication", DE: "publikation" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -805,22 +832,24 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // allWordpressWpPublications.edges.forEach(edge => {
-  //   let prePath = pageMap.find(pageType => {
-  //     return pageType.EN === "publication"
-  //   })
-  //   languages.forEach(language => {
-  //     let path =
-  //       language === "en"
-  //         ? `/${prePath.EN}/${edge.node.slug}`
-  //         : `/${language}/${prePath.DE}/${edge.node.slug}`
-  //     createPage({
-  //       path: path,
-  //       component: slash(publicationsTemplate),
-  //       context: { ...edge.node, language: language },
-  //     })
-  //   })
-  // })
+  const publicationTemplate = path.resolve("./src/templates/publication.js")
+
+  allWordpressWpPublications.edges.forEach(edge => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "publication"
+    })
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(publicationTemplate),
+        context: { ...edge.node, language: language },
+      })
+    })
+  })
 
   const currentTemplate = path.resolve("./src/templates/current.js")
   languages.forEach(language => {

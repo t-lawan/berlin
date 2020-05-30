@@ -2,7 +2,7 @@ import React from "react"
 import striptags from "striptags"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { TwoColumnPageWrapper } from "./page.styles"
+import { TwoColumnPageWrapper, PageWrapper } from "./page.styles"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
@@ -14,31 +14,43 @@ import NewsList from "../components/news/newslist"
 import { Convert } from "../utility/convert"
 import { ExternalLink, Color } from "../index.styles";
 import styled from 'styled-components';
-import PublicationList from "../components/publications/publication-list";
+import PublicationItem from "../components/publications/publication-item";
 
 const PublicationExternalLink = styled(ExternalLink)`
     text-decoration: underline;
     text-decoration-color: ${Color.red};
 `
-const Publications = props => {
+const Publication = props => {
   const language = getCurrentLanguageString(props.languages)
-  let title = 'Publications'
-  let description = "Publication"
+  let publication = Convert.toPublicationModel(props.pageContext)
+  let title = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(publication[props.pageContext.language.toUpperCase()].title)
+      )
+    : ""
+  let description = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(
+          publication[props.pageContext.language.toUpperCase()].description
+        )
+      )
+    : ""
+
   let path = pageMap.find(pg => {
-    return pg["EN"] == "publications"
+    return pg["EN"] == "publication"
   })
   const renderComponent = (
-    <>
+    <PageWrapper>
       <SEO
         title={title}
         description={description}
         lang={props.pageContext.language}
-        // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-        //   publication.slug
-        // }`}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+          publication.slug
+        }`}
       />
-      <PublicationList />
-    </>
+      <PublicationItem publication={publication} />
+    </PageWrapper>
   )
 
   let thirdColumn = (
@@ -63,4 +75,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Publications)
+export default connect(mapStateToProps, null)(Publication)

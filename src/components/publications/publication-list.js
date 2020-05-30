@@ -6,33 +6,20 @@ import { TwoColumnPageWrapper } from "../../templates/page.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { Color } from "../../index.styles"
 import striptags from "striptags"
-import ImageGalleryResource from "../../partials/ImageGalleryResource"
+import PublicationItem from "./publication-item";
 
 const PublicationListWrapper = styled(TwoColumnPageWrapper)``
 
-const PublicationDescription = styled.div`
-  a {
-    text-decoration: underline;
-    text-decoration-color: ${Color.red};
-  }
-`
+
 
 const PublicationAnchorLink = styled.p`
   color: ${props => (props.inView ? "red" : "black")};
 `
 
 const PublicationAnchorLinkWrapper = styled.div`
-  position: sticky;
-  overflow-y: scroll;
+  overflow-y: hidden;
 `
 
-const PublicationItem = styled.div`
-  margin-bottom: 3rem;
-`
-
-const PublicationImageWrapper = styled.div`
-  /* width: inherit; */
-`
 class PublicationList extends Component {
   language
 
@@ -83,23 +70,7 @@ class PublicationList extends Component {
         </PublicationAnchorLinkWrapper>
         <div>
           {this.props.publications.map((publication, index) => (
-            <PublicationItem key={index}>
-              <PublicationImageWrapper id={`pub-${publication.slug}`}>
-                <p> IMAGE GALLERY </p>
-
-                {/* <ImageGalleryResource ids={publication.image_gallery} /> */}
-              </PublicationImageWrapper>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: publication[this.language].title,
-                }}
-              />
-              <PublicationDescription
-                dangerouslySetInnerHTML={{
-                  __html: publication[this.language].description,
-                }}
-              />
-            </PublicationItem>
+            <PublicationItem key={index} publication={publication}/>
           ))}
         </div>
       </PublicationListWrapper>
