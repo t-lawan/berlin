@@ -40,7 +40,7 @@ const SliderSettings = {
   slidesToScroll: 1,
   adaptiveHeight: false,
   autoplay: false,
-  swipeToSlide: true,
+  swipeToSlide: false,
   variableWidth: false,
 }
 class Columns extends React.Component {
