@@ -6,7 +6,9 @@ import ImageResource from "../../partials/ImageResource"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { getCurrentLanguageString } from "../../utility/helper"
 
-const PublicationItemWrapper = styled.div``
+const PublicationItemWrapper = styled.div`
+    margin-bottom: 3rem;
+`
 
 const PublicationDescription = styled.div`
   a {
