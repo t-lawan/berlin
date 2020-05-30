@@ -559,7 +559,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "press-images", DE: "pressebilder" },
-    { EN: "publications", DE: "publikations" },
+    { EN: "publications", DE: "publikationen" },
     { EN: "publication", DE: "publikation" },
   ]
 

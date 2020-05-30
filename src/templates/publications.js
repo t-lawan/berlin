@@ -27,7 +27,7 @@ const Publications = props => {
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={title}
+        title={content[props.pageContext.language.toUpperCase()]}
         description={description}
         lang={props.pageContext.language}
         // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
@@ -52,6 +52,15 @@ const Publications = props => {
       thirdColumn={thirdColumn}
     />
   )
+}
+
+let content = {
+  EN: {
+    title: "Publications",
+  },
+  DE: {
+    title: "Publikationen",
+  },
 }
 
 const mapStateToProps = state => {

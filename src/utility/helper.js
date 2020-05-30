@@ -43,7 +43,7 @@ export  const pageMap = [
   { EN: "practical-information", DE: "praktische-information" },
   { EN: "media", DE: "mediathek" },
   { EN: "press", DE: "presse" },
-  { EN: "publications", DE: "publikations" },
+  { EN: "publications", DE: "publikationen" },
   { EN: "publication", DE: "publikation" },
   { EN: "press-images", DE: "pressebilder" },
 
