@@ -372,6 +372,7 @@ const State = props => {
                   exp_number
                   isbn
                   image_gallery
+                  social_media_image
                 }
               }
             }

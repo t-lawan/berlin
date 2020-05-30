@@ -48,6 +48,7 @@ const Publication = props => {
         pathname={`${path[props.pageContext.language.toUpperCase()]}/${
           publication.slug
         }`}
+        image={publication.social_media_image}
       />
       <PublicationItem publication={publication} />
     </PageWrapper>

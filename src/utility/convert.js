@@ -41,7 +41,8 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,
-      wordpressModel.acf.image_gallery
+      wordpressModel.acf.image_gallery,
+      wordpressModel.acf.social_media_image,
     )
   }
 

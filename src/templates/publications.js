@@ -1,17 +1,14 @@
 import React from "react"
-import striptags from "striptags"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { TwoColumnPageWrapper } from "./page.styles"
+import { PageWrapper } from "./page.styles"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
-  pageMap,
-  truncateText,
+  pageMap
 } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
-import { Convert } from "../utility/convert"
 import { ExternalLink, Color } from "../index.styles";
 import styled from 'styled-components';
 import PublicationList from "../components/publications/publication-list";
@@ -28,7 +25,7 @@ const Publications = props => {
     return pg["EN"] == "publications"
   })
   const renderComponent = (
-    <>
+    <PageWrapper>
       <SEO
         title={title}
         description={description}
@@ -38,7 +35,7 @@ const Publications = props => {
         // }`}
       />
       <PublicationList />
-    </>
+    </PageWrapper>
   )
 
   let thirdColumn = (
