@@ -13,7 +13,7 @@ const PublicationListWrapper = styled(TwoColumnPageWrapper)``
 
 
 const PublicationAnchorLink = styled.p`
-  color: ${props => (props.inView ? "red" : "black")};
+  color: ${props => (props.inView ? Color.red : "black")};
 `
 
 const PublicationAnchorLinkWrapper = styled.div`
