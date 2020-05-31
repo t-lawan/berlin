@@ -547,7 +547,6 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "resources", DE: "resources" },
     { EN: "exhibition", DE: "austellung" },
     { EN: "venue", DE: "ort" },
-    { EN: "venues", DE: "orts" },
     { EN: "documentation", DE: "dokumentation" },
     { EN: "participant", DE: "beteiligten" },
     { EN: "participants", DE: "beteiligte" },
@@ -562,6 +561,8 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "press-images", DE: "pressebilder" },
     { EN: "publications", DE: "publikationen" },
     { EN: "publication", DE: "publikation" },
+    { EN: "venues", DE: "orte" },
+
   ]
 
   allWordpressPage.edges.forEach(edge => {

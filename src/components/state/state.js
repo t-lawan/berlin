@@ -452,7 +452,6 @@ const State = props => {
       data.allWordpressWpNews,
       Convert.toNewsModel
     )
-    // let news = generateNewsArticles(20)
 
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
@@ -528,7 +527,7 @@ const State = props => {
         false,
         true
       ),
-      new NavbarModel("venues", "venues", "orte", false, false),
+      new NavbarModel("venues", "venues", "orte", false, true),
       new NavbarModel("about", "about", "über", false, true),
       new NavbarModel("press", "press", "presse", false, true),
       new NavbarModel(

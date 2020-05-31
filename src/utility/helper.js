@@ -32,7 +32,7 @@ export  const pageMap = [
   { EN: "resources", DE: "resources" },
   { EN: "exhibition", DE: "austellung" },
   { EN: "venue", DE: "ort" },
-  { EN: "venues", DE: "orts" },
+  { EN: "venues", DE: "orte" },
   { EN: "documentation", DE: "dokumentation" },
   { EN: "participant", DE: "beteiligten" },
   { EN: "participants", DE: "beteiligte" },
