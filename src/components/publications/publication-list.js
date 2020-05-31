@@ -66,7 +66,6 @@ class PublicationList extends Component {
               {striptags(pub[this.language].title)}
             </PublicationAnchorLink>
           ))}
-          <p> </p>
         </PublicationAnchorLinkWrapper>
         <div>
           {this.props.publications.map((publication, index) => (

@@ -547,6 +547,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "resources", DE: "resources" },
     { EN: "exhibition", DE: "austellung" },
     { EN: "venue", DE: "ort" },
+    { EN: "venues", DE: "orts" },
     { EN: "documentation", DE: "dokumentation" },
     { EN: "participant", DE: "beteiligten" },
     { EN: "participants", DE: "beteiligte" },
@@ -779,7 +780,6 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   const venueTemplate = path.resolve(`./src/templates/venue.js`)
-
   allWordpressWpVenue.edges.forEach(edge => {
     let prePath = pageMap.find(pageType => {
       return pageType.EN === "venue"
@@ -794,6 +794,21 @@ exports.createPages = async ({ graphql, actions }) => {
         component: slash(venueTemplate),
         context: { ...edge.node, language: language },
       })
+    })
+  })
+
+  const venuesTemplate = path.resolve("./src/templates/venues.js")
+  languages.forEach(language => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "venues"
+    })
+    let path =
+      language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+
+    createPage({
+      path: path,
+      component: slash(venuesTemplate),
+      context: { language: language, slug: prePath[language.toUpperCase()] },
     })
   })
 

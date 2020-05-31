@@ -19,16 +19,15 @@ const PublicationExternalLink = styled(ExternalLink)`
 `
 const Publications = props => {
   const language = getCurrentLanguageString(props.languages)
-  let title = 'Publications'
-  let description = "Publication"
+
   let path = pageMap.find(pg => {
     return pg["EN"] == "publications"
   })
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={content[props.pageContext.language.toUpperCase()]}
-        description={description}
+        title={content[props.pageContext.language.toUpperCase()].title}
+        description={content[props.pageContext.language.toUpperCase()].title}
         lang={props.pageContext.language}
         // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
         //   publication.slug
