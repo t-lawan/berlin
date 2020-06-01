@@ -555,13 +555,14 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "calendar", DE: "kalender" },
     { EN: "data-privacy", DE: "datenschutz" },
     { EN: "imprint", DE: "impressum" },
-    { EN: "practical-information", DE: "praktische-information" },
     { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "press-images", DE: "pressebilder" },
     { EN: "publications", DE: "publikationen" },
     { EN: "publication", DE: "publikation" },
     { EN: "venues", DE: "orte" },
+    { EN: "practical-information", DE: "praktische-information" },
+    { EN: "admission", DE: "admission" },
 
   ]
 
@@ -593,6 +594,13 @@ exports.createPages = async ({ graphql, actions }) => {
     if (edge.node.parent_element && edge.node.parent_element.slug === "about") {
       template = aboutTemplate
     }
+
+    if (
+      edge.node.parent_element &&
+      edge.node.parent_element.slug === "practical-information"
+    ) {
+      template = practicalInformationTemplate
+    }
     // Create pages for both EN and DE
     let slug = edge.node.slug
 
@@ -604,11 +612,6 @@ exports.createPages = async ({ graphql, actions }) => {
           edge.node.parent_element.slug === "about") ||
         slug === "about"
       ) {
-        // path =
-        // language === "en"
-        //   ? `/about/${edge.node.slug}`
-        //   : `/${language}/about/${edge.node.slug}`;
-        // edge.node.slug = (language === "en") ? `/about/${edge.node.slug}` : `/uber/${edge.node.slug}`;
         if (
           edge.node.parent_element &&
           edge.node.parent_element.slug === "about"
@@ -640,8 +643,47 @@ exports.createPages = async ({ graphql, actions }) => {
             language === "en" ? `/${endPath.EN}` : `/${language}/${endPath.DE}`
         }
       } else {
-        if (edge.node.acf.template === "calendar") {
-          path = language === "en" ? "/calendar" : "/de/kalender"
+        if (
+          (edge.node.parent_element &&
+            edge.node.parent_element.slug === "practical-information") ||
+          slug === "practical-information"
+        ) {
+          if (
+            edge.node.parent_element &&
+            edge.node.parent_element.slug === "practical-information"
+          ) {
+            let prePath = pageMap.find(pageType => {
+              return pageType.EN === "practical-information"
+            }) 
+            console.log('EDGE=====', edge.node)
+
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+
+            path =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+          } else {
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+            path =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+          }
         } else {
           let p
           switch (edge.node.slug) {
@@ -659,6 +701,9 @@ exports.createPages = async ({ graphql, actions }) => {
               break
             case "press-images":
               path = language === "en" ? "/press-images" : "/de/pressebilder"
+              break
+            case "calendar":
+              path = language === "en" ? "/calendar" : "/de/kalender"
               break
             case "practical-information":
               path =

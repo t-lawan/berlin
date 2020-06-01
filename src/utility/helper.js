@@ -41,12 +41,14 @@ export  const pageMap = [
   { EN: "calendar", DE: "kalender" },
   { EN: "data-privacy", DE: "datenschutz" },
   { EN: "imprint", DE: "impressum" },
-  { EN: "practical-information", DE: "praktische-information" },
   { EN: "media", DE: "mediathek" },
   { EN: "press", DE: "presse" },
   { EN: "publications", DE: "publikationen" },
   { EN: "publication", DE: "publikation" },
   { EN: "press-images", DE: "pressebilder" },
+  { EN: "practical-information", DE: "praktische-information" },
+  { EN: "practical-information/admission", DE: "praktische-information/admission" },
+
 
 ]
 
