@@ -755,24 +755,24 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  const venueTemplate = path.resolve(`./src/templates/venue.js`)
+  // const venueTemplate = path.resolve(`./src/templates/venue.js`)
 
-  allWordpressWpVenue.edges.forEach(edge => {
-    let prePath = pageMap.find(pageType => {
-      return pageType.EN === "venue"
-    })
-    languages.forEach(language => {
-      let path =
-        language === "en"
-          ? `/${prePath.EN}/${edge.node.slug}`
-          : `/${language}/${prePath.DE}/${edge.node.slug}`
-      createPage({
-        path: path,
-        component: slash(venueTemplate),
-        context: { ...edge.node, language: language },
-      })
-    })
-  })
+  // allWordpressWpVenue.edges.forEach(edge => {
+  //   let prePath = pageMap.find(pageType => {
+  //     return pageType.EN === "venue"
+  //   })
+  //   languages.forEach(language => {
+  //     let path =
+  //       language === "en"
+  //         ? `/${prePath.EN}/${edge.node.slug}`
+  //         : `/${language}/${prePath.DE}/${edge.node.slug}`
+  //     createPage({
+  //       path: path,
+  //       component: slash(venueTemplate),
+  //       context: { ...edge.node, language: language },
+  //     })
+  //   })
+  // })
 
   const newsTemplate = path.resolve("./src/templates/news.js")
 
