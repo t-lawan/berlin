@@ -35,7 +35,7 @@ class NavbarMobile extends React.Component {
     {
       EN: "organisation",
       DE: "verein",
-      path: "organization-2",
+      path: "organization",
     },
     {
       EN: "advisory board",
