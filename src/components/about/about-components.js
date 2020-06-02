@@ -60,7 +60,7 @@ const AboutComponents = props => {
     case "/de/uber/team":
       renderComponent = <AboutTeamBlock team={content.acf.team_block} />
       break
-    case "/about/organization-2":
+    case "/about/organization":
       renderComponent = (
         <AboutOrganisation team_block={content.acf.team_block} />
       )

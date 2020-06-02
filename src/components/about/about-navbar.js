@@ -30,7 +30,7 @@ const AboutNavbar = props => {
     {
       EN: {
         title: "organization",
-        slug: "about/organization-2"
+        slug: "about/organization"
       },
       DE: {
         title: "verein",
