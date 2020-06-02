@@ -4,20 +4,38 @@ import styled from "styled-components"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { TwoColumnPageWrapper } from "../../templates/page.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { Color } from "../../index.styles"
+import { Color, size } from "../../index.styles"
 import striptags from "striptags"
-import PublicationItem from "./publication-item";
+import PublicationItem from "./publication-item"
 
-const PublicationListWrapper = styled(TwoColumnPageWrapper)``
+const PublicationListWrapper = styled(TwoColumnPageWrapper)`
+  height: 100%;
+`
 
-
+const AnchorDiv = styled.div`
+  position: fixed;
+  overflow-y: scroll;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+  }
+`
 
 const PublicationAnchorLink = styled.p`
   color: ${props => (props.inView ? Color.red : "black")};
+  width: 25%;
+  @media (max-width: ${size.tabletL}) {
+    width: 100%;
+  }
 `
 
 const PublicationAnchorLinkWrapper = styled.div`
-  overflow-y: hidden;
+  overflow-y: scroll;
+  height: 100%;
+`
+
+const PublicationContentWrapper = styled.div`
+  overflow-y: scroll;
+  height: 100%;
 `
 
 class PublicationList extends Component {
@@ -44,11 +62,11 @@ class PublicationList extends Component {
       return false
     }
 
-    let rect = element.getBoundingClientRect();
-    let elemTop = rect.top;
-    let elemBottom = rect.bottom;
+    let rect = element.getBoundingClientRect()
+    let elemTop = rect.top
+    let elemBottom = rect.bottom
     let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
-    return isVisible;
+    return isVisible
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
@@ -56,22 +74,24 @@ class PublicationList extends Component {
     return (
       <PublicationListWrapper>
         <PublicationAnchorLinkWrapper>
-          {this.props.publications.map((pub, i) => (
-            <PublicationAnchorLink
-              inView={this.inView(pub.slug)}
-              key={i}
-              onClick={() => this.scrollToAnchor(pub.slug)}
-            >
-              {" "}
-              {striptags(pub[this.language].title)}
-            </PublicationAnchorLink>
-          ))}
+          <AnchorDiv>
+            {this.props.publications.map((pub, i) => (
+              <PublicationAnchorLink
+                inView={this.inView(pub.slug)}
+                key={i}
+                onClick={() => this.scrollToAnchor(pub.slug)}
+              >
+                {" "}
+                {striptags(pub[this.language].title)}
+              </PublicationAnchorLink>
+            ))}
+          </AnchorDiv>
         </PublicationAnchorLinkWrapper>
-        <div>
+        <PublicationContentWrapper>
           {this.props.publications.map((publication, index) => (
-            <PublicationItem key={index} publication={publication}/>
+            <PublicationItem key={index} publication={publication} />
           ))}
-        </div>
+        </PublicationContentWrapper>
       </PublicationListWrapper>
     )
   }
