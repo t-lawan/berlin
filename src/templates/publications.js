@@ -1,17 +1,21 @@
 import React from "react"
+import striptags from "striptags"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { PageWrapper } from "./page.styles"
+import { TwoColumnPageWrapper } from "./page.styles"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
-  pageMap
+  pageMap,
+  truncateText,
 } from "../utility/helper"
 import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
+import { Convert } from "../utility/convert"
+import ImageResource from "../partials/ImageResource"
 import { ExternalLink, Color } from "../index.styles";
 import styled from 'styled-components';
-import PublicationList from "../components/publications/publication-list";
+import PublicationNavbar from "../components/publications/publication-navbar";
 
 const PublicationExternalLink = styled(ExternalLink)`
     text-decoration: underline;
@@ -19,22 +23,62 @@ const PublicationExternalLink = styled(ExternalLink)`
 `
 const Publications = props => {
   const language = getCurrentLanguageString(props.languages)
-
+  let publication = Convert.toPublicationModel(props.pageContext)
+  let title = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(publication[props.pageContext.language.toUpperCase()].title)
+      )
+    : ""
+  let description = publication[props.pageContext.language.toUpperCase()]
+    ? truncateText(
+        striptags(
+          publication[props.pageContext.language.toUpperCase()].description
+        )
+      )
+    : ""
   let path = pageMap.find(pg => {
-    return pg["EN"] == "publications"
+    return pg["EN"] == "publication"
   })
   const renderComponent = (
-    <PageWrapper>
+    <TwoColumnPageWrapper>
       <SEO
-        title={content[props.pageContext.language.toUpperCase()].title}
-        description={content[props.pageContext.language.toUpperCase()].title}
+        title={title}
+        description={description}
         lang={props.pageContext.language}
-        // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-        //   publication.slug
-        // }`}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+          publication.slug
+        }`}
       />
-      <PublicationList />
-    </PageWrapper>
+      <div>
+        <PublicationNavbar currentSlug={publication.slug} />
+      </div>
+
+      <div>
+        {publication[language].publication_thumbnail ? (
+          <ImageResource withCaption={false} id={publication[language].publication_thumbnail} />
+        ) : null}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: publication[language].title,
+          }}
+        />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: publication[language].description,
+          }}
+        />
+        <p> {publication[language].publisher} </p>
+        <p>
+          {" "}
+          {publication[language].language} / {publication.dimensions} /{" "}
+          {publication.pageCount} pages / {publication[language].format}
+        </p>
+        <PublicationExternalLink href={`${publication[language].order_link}`} target="__blank" rel="noopener noreferrer">
+          {" "}
+          buy in shop{" "}
+        </PublicationExternalLink>
+      </div>
+    </TwoColumnPageWrapper>
   )
 
   let thirdColumn = (
@@ -51,15 +95,6 @@ const Publications = props => {
       thirdColumn={thirdColumn}
     />
   )
-}
-
-let content = {
-  EN: {
-    title: "Publications",
-  },
-  DE: {
-    title: "Publikationen",
-  },
 }
 
 const mapStateToProps = state => {

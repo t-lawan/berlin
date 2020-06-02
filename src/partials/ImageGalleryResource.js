@@ -7,8 +7,10 @@ import { size } from "../index.styles"
 import styled from "styled-components"
 import { Animated } from "react-animated-css"
 import ImageResource from "./ImageResource"
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
+import "../assets/carousel.css"
+import { Carousel } from "react-responsive-carousel"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 
 const leftArrow =
@@ -94,6 +96,23 @@ const SliderSettings = {
   swipeToSlide: true,
   variableWidth: false,
 }
+export const AnimatedCarousel = styled(Carousel)`
+  z-index: 100;
+  > ${Caption} {
+    margin-bottom: 0.7em !important;
+    color: black !important;
+  }
+  .carousel .slide {
+    background: transparent;
+    list-style-type: none;
+  }
+  @media (min-width: ${size.laptop}) {
+    margin-bottom: -0.5em;
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-bottom: -0.7em;
+  }
+`
 
 export const GalleryImage = styled.img``
 class ImageGalleryResource extends React.Component {
@@ -155,6 +174,17 @@ class ImageGalleryResource extends React.Component {
               onClick={() => this.nextImage()}
             />
           </NavigationButtons>
+
+          {/* <AnimatedCarousel
+            selectedItem={this.state.index}
+            showThumbs={false}
+            showArrows={false}
+            showIndicators={false}
+            showStatus={false}
+            centerMode={false}
+            swipeable={true}
+            dynamicHeight={true}
+          > */}
           <AnimatedSlider {...SliderSettings} ref={c => (this.slider = c)}>
             {this.props.ids.map((id, index) => (
               <ImageWrapper key={index}>
@@ -167,6 +197,8 @@ class ImageGalleryResource extends React.Component {
               </ImageWrapper>
             ))}
           </AnimatedSlider>
+
+          {/* </AnimatedCarousel> */}
         </NavigationSpace>
       </ImageGalleryWrapper>
     )

@@ -32,23 +32,18 @@ export  const pageMap = [
   { EN: "resources", DE: "resources" },
   { EN: "exhibition", DE: "austellung" },
   { EN: "venue", DE: "ort" },
-  { EN: "venues", DE: "orte" },
   { EN: "documentation", DE: "dokumentation" },
-  { EN: "participant", DE: "beteiligten" },
-  { EN: "participants", DE: "beteiligte" },
+  { EN: "participant", DE: "beteiligte" },
   { EN: "news", DE: "news" },
   { EN: "current", DE: "aktuell" },
   { EN: "calendar", DE: "kalender" },
   { EN: "data-privacy", DE: "datenschutz" },
   { EN: "imprint", DE: "impressum" },
-  { EN: "media", DE: "mediathek" },
-  { EN: "press", DE: "presse" },
-  { EN: "publications", DE: "publikationen" },
-  { EN: "publication", DE: "publikation" },
-  { EN: "press-images", DE: "pressebilder" },
   { EN: "practical-information", DE: "praktische-information" },
-  { EN: "practical-information/admission", DE: "praktische-information/admission" },
-
+  { EN: "media", DE: "mediathek" },
+  { EN: "publication", DE: "publikation" },
+  { EN: "press", DE: "presse" },
+  { EN: "press-images", DE: "pressebilder" },
 
 ]
 

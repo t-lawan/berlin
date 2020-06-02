@@ -9,40 +9,14 @@ import {
   FirstColumnWrapper,
   FixedNavbar,
   FixedTopExpMob,
+  ExperienceCarousel,
   StickyFooter,
 } from "./columns.styles"
 import ExperienceControllerMobile from "../experiencecontroller/experiencecontroller.mobile"
 import NavbarMobile from "../navbar/navbar-mobile"
 import { transitionTimes } from "../../utility/helper"
 import MainSection from "./main-section"
-import DataPrivacy from "../data-privacy/data-privacy"
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick"
-import styled from "styled-components"
-
-export const AnimatedSlider = styled(Slider)`
-  z-index: 100;
-  /* max-width: 100% !important; */
-  width: inherit;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  height: 100vh;
-
-`
-
-const SliderSettings = {
-  dots: false,
-  arrows: false,
-  infinite: false,
-  speed: 800,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  adaptiveHeight: false,
-  autoplay: false,
-  swipeToSlide: false,
-  variableWidth: false,
-}
+import DataPrivacy from "../data-privacy/data-privacy";
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo
@@ -60,12 +34,6 @@ class Columns extends React.Component {
       showFooter: false,
       scrollHeight: 0,
       scrollTop: 0,
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if(prevProps.experience !== this.props.experience) {
-      this.slider.slickGoTo(this.props.experience - 1)
     }
   }
 
@@ -97,8 +65,17 @@ class Columns extends React.Component {
           <ExperienceControllerMobile showInTablet={true} />
           {/* <Header hideInMobile={true} /> */}
         </FixedTopExpMob>
-        <AnimatedSlider {...SliderSettings} ref={c => (this.slider = c)}>
-          {/* Middle Column */}
+        {/* Middle Column */}
+        <ExperienceCarousel
+          selectedItem={this.props.experience - 1}
+          showThumbs={false}
+          showArrows={false}
+          showIndicators={false}
+          showStatus={false}
+          centerMode={false}
+          swipeable={false}
+          transitionTime={900}
+        >
           <div>
             <MainSection
               firstColumn={this.props.firstColumn}
@@ -140,8 +117,7 @@ class Columns extends React.Component {
               exhibitionExperience={this.props.exhibitionExperience}
             />
           </div>
-        </AnimatedSlider>
-
+        </ExperienceCarousel>
         <StickyFooter show={!this.props.agreed_to_terms} showInTablet>
           <DataPrivacy show={!this.props.agreed_to_terms} />
         </StickyFooter>
@@ -175,4 +151,7 @@ const mapStateToProps = state => {
     documents: state.documents,
   }
 }
-export default connect(mapStateToProps, null)(Columns)
+export default connect(
+  mapStateToProps,
+  null
+)(Columns)

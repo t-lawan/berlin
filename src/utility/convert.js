@@ -39,10 +39,10 @@ export class Convert {
       wordpressModel.slug,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
+      wordpressModel.acf.dimensions,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,
-      wordpressModel.acf.image_gallery,
-      wordpressModel.acf.social_media_image,
+      wordpressModel.acf.page_count
     )
   }
 
@@ -200,11 +200,11 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.firstname,
       wordpressModel.acf.lastname,
-      wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.is_artist_in_exhibition,
-      wordpressModel.acf.participant_group
+      wordpressModel.acf.participant_group,
+      wordpressModel.acf.participant_venue
     )
   }
 

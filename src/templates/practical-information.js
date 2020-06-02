@@ -19,8 +19,6 @@ import {
 import ImageResource from "../partials/ImageResource"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
-import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar";
-import PracticalInformationComponents from "../components/practical-information/practical-information-components";
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -42,9 +40,7 @@ const PracticalInformation = props => {
         lang={pageInfo.language}
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
       />
-      <PracticalInformationNavbar currentPage={pageInfo.slug} />
-      <PracticalInformationComponents content={pageInfo}/>
-      {/* <div>
+      <div>
         <PageTitle
           dangerouslySetInnerHTML={{
             __html: content[language].title,
@@ -82,8 +78,8 @@ const PracticalInformation = props => {
         </TextBlockSideBarPage>
       </div>
 
-      <div> */}
-        {/* <TextBlockTwoColumnPage
+      <div>
+        <TextBlockTwoColumnPage
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].corona_notice,
           }}
@@ -99,7 +95,7 @@ const PracticalInformation = props => {
           withCaption={false}
         />
         <PaddingDiv></PaddingDiv>
-      </div> */}
+      </div>
     </TwoColumnPageWrapper>
   )
 

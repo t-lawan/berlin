@@ -6,40 +6,35 @@ import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
-import NewsList from "../components/news/newslist"
-import { TwoColumnPageWrapper } from "./page.styles"
-
+import NewsList from "../components/news/newslist";
+const ParticipantPageWrapper = styled.div`
+  padding: 2em 1em;
+`
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
   const participant = Convert.toParticipantModel(props.pageContext)
   const renderComponent = (
-    <TwoColumnPageWrapper>
+    <ParticipantPageWrapper>
       <SEO
         title={`${participant.firstname} ${participant.lastname}`}
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
-      <div>
-        <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
-        <p> Was also part of: exp. 1 and exp. 2</p>
-      </div>
-      <div>
-        <h3>
-          {participant.firstname} {participant.lastname}
-        </h3>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].project_description,
-          }}
-        />
+      <h3>
+        {participant.firstname} {participant.lastname}
+      </h3>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: participant[language].project_description,
+        }}
+      />
 
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].short_bio,
-          }}
-        />
-      </div>
-    </TwoColumnPageWrapper>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: participant[language].short_bio,
+        }}
+      />
+    </ParticipantPageWrapper>
   )
 
   let thirdColumn = (
@@ -48,7 +43,7 @@ const Participant = props => {
       <UpcomingEvents />
     </>
   )
-
+  
   return (
     <Layout
       firstColumn={renderComponent}
@@ -64,4 +59,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(Participant)
+export default connect(
+  mapStateToProps,
+  null
+)(Participant)

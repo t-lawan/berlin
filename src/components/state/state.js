@@ -233,29 +233,23 @@ const State = props => {
           #       acf {
           #         exp_number
           #         firstname
+          #         # image_gallery
           #         is_artist_in_exhibition
           #         lastname
           #         participant_group
           #         personal_website
+          #         # related_resources
           #         EN {
+          #           # group_bios
           #           project_description
-          #           participant_group_members
-          #           participant_group_name
-          #           participant_venue
-          #           participant_video_caption
-          #           short_bio
-          #           works_list
+          #           # short_bio
           #         }
+          #         participant_venue
           #         DE {
+          #           # group_bios
           #           project_description
-          #           participant_group_members
-          #           participant_group_name
-          #           participant_venue
-          #           participant_video_caption
           #           short_bio
-          #           works_list
           #         }
-          #         sorting_name
           #       }
           #     }
           #   }
@@ -351,32 +345,50 @@ const State = props => {
               }
             }
           }
-          allWordpressWpPublications {
-            edges {
-              node {
-                wordpress_id
-                slug
-                acf {
-                  DE {
-                    description
-                    publisher
-                    subtitle
-                    title
-                  }
-                  EN {
-                    publisher
-                    subtitle
-                    title
-                    description
-                  }
-                  exp_number
-                  isbn
-                  image_gallery
-                  social_media_image
-                }
-              }
-            }
-          }
+          # allWordpressWpPublications {
+          #   edges {
+          #     node {
+          #       wordpress_id
+          #       slug
+          #       acf {
+          #         DE {
+          #           biennale_context_note
+          #           description
+          #           contributors
+          #           design
+          #           editor
+          #           format
+          #           language
+          #           order_link
+          #           price
+          #           publication_thumbnail
+          #           publisher
+          #           subtitle
+          #           title
+          #         }
+          #         EN {
+          #           biennale_context_note
+          #           contributors
+          #           description
+          #           design
+          #           editor
+          #           format
+          #           language
+          #           order_link
+          #           price
+          #           publication_thumbnail
+          #           publisher
+          #           subtitle
+          #           title
+          #         }
+          #         dimensions
+          #         exp_number
+          #         isbn
+          #         page_count
+          #       }
+          #     }
+          #   }
+          # }
           allWordpressWpVenue {
             edges {
               node {
@@ -387,12 +399,10 @@ const State = props => {
                   english {
                     access_info
                     venue_name
-                    venue_description
                   }
                   deutsch {
                     access_info
                     venue_name
-                    venue_description
                   }
                   google_map_link
                   thumbnail_image
@@ -454,6 +464,7 @@ const State = props => {
       data.allWordpressWpNews,
       Convert.toNewsModel
     )
+    // let news = generateNewsArticles(20)
 
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
@@ -465,10 +476,10 @@ const State = props => {
       Convert.toResourceGenreModel
     )
 
-    let publications = Convert.toModelArray(
-      data.allWordpressWpPublications,
-      Convert.toPublicationModel
-    )
+    // let publications = Convert.toModelArray(
+    //   data.allWordpressWpPublications,
+    //   Convert.toPublicationModel
+    // )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -516,7 +527,7 @@ const State = props => {
         "publications",
         "publikationen",
         false,
-        true
+        false
       ),
       new NavbarModel("media", "media", "mediathek", false, true),
     ]
@@ -529,7 +540,7 @@ const State = props => {
         false,
         true
       ),
-      new NavbarModel("venues", "venues", "orte", false, true),
+      new NavbarModel("venues", "venues", "orte", false, false),
       new NavbarModel("about", "about", "über", false, true),
       new NavbarModel("press", "press", "presse", false, true),
       new NavbarModel(
@@ -569,7 +580,7 @@ const State = props => {
     props.setResources(resources)
     props.setDocumentation(documentation)
     // props.setPages(pages)
-    props.setPublications(publications)
+    // props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)
