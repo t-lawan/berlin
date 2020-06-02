@@ -1,6 +1,6 @@
 
 export class ParticipantModel {
-    constructor(id, slug, experience, en, de, firstname, lastname, personal_website, image_gallery, in_exhibition, group, venues) {
+    constructor(id, slug, experience, en, de, firstname, lastname, sorting_name, personal_website, in_exhibition, group) {
         this.id = id;
         this.slug = slug;
         this.experience = experience;
@@ -8,10 +8,9 @@ export class ParticipantModel {
         this.DE = de;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.sorting_name = sorting_name;
         this.personal_website = personal_website;
-        this.image_gallery = image_gallery;
         this.in_exhibition = in_exhibition;
         this.group = group;
-        this.venues = venues;
     }
 }
