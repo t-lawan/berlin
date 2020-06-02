@@ -13,19 +13,31 @@ const VenueItemWrapper = styled.div`
 const VenueLink = styled(ExternalLink)`
   padding-bottom: 1em;
 `
+
+const ImageWrapper = styled.div`
+  padding-bottom: 1rem;
+`
+
+const VenueAddress = styled.p`
+  display: inline-block;
+  padding-right:0.2rem !important;
+`
 const VenueItem = props => {
   let language = getCurrentLanguageString(props.languages)
   let venue = props.venue
+  console.log('VEN|UE', venue)
   return (
     <VenueItemWrapper>
-      <p id={`ven-${venue.slug}`}>{venue[language].venue_name}</p>
-      <ImageResource id={venue.thumbnail_image} withCaption={false} />
+      <p>{venue[language].venue_name}</p>
+      <ImageWrapper id={`ven-${venue.slug}`}>
+        <ImageResource id={venue.thumbnail_image ? venue.thumbnail_image : 411} withCaption={false} />
+      </ImageWrapper>
       <TextBlock>
         {venue.address.map((address, index) => (
-          <p key={index}> {address.address_line}</p>
+          <VenueAddress key={index}> {`${address.address_line},`}</VenueAddress>
         ))}
-        <p> {venue.city}</p>
-        <p> {venue.venue_plz}</p>
+        <VenueAddress> {`${venue.plz}, `} </VenueAddress>
+        <VenueAddress> {` ${venue.city}`}</VenueAddress>
       </TextBlock>
       <p> {content[language].directions} </p>
       {venue.public_transit ? <TextBlock>

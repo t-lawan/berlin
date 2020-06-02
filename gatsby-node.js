@@ -489,10 +489,12 @@ exports.createPages = async ({ graphql, actions }) => {
               english {
                 access_info
                 venue_name
+                venue_description
               }
               deutsch {
                 access_info
                 venue_name
+                venue_description
               }
               google_map_link
               thumbnail_image

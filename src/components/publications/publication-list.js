@@ -21,7 +21,7 @@ const AnchorDiv = styled.div`
 `
 
 const PublicationAnchorLink = styled.p`
-  color: ${props => (props.inView ? Color.red : "black")};
+  /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 25%;
   @media (max-width: ${size.tabletL}) {
     width: 100%;
@@ -39,12 +39,22 @@ const PublicationContentWrapper = styled.div`
 `
 
 class PublicationList extends Component {
-  language
+  language;
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isScrolling: false,
+    }
+  }
 
   scrollToAnchor = id => {
     const parent = document.getElementById(`column-one`)
     const element = document.getElementById(`pub-${id}`)
     if (element) {
+      // this.setState({
+      //   isScrolling: true,
+      // })
       scrollIntoView(element, {
         scrollMode: "if-needed",
         block: "center",
@@ -52,6 +62,10 @@ class PublicationList extends Component {
         behavior: "smooth",
         boundary: parent,
         skipOverflowHiddenElements: true,
+      })
+
+      this.setState({
+        isScrolling: false,
       })
     }
   }
@@ -62,9 +76,11 @@ class PublicationList extends Component {
       return false
     }
 
+
     let rect = element.getBoundingClientRect()
     let elemTop = rect.top
     let elemBottom = rect.bottom
+
     let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
     return isVisible
   }
