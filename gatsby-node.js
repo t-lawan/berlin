@@ -543,7 +543,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "event", DE: "veranstaltung" },
     { EN: "about", DE: "uber" },
     { EN: "team", DE: "team" },
-    { EN: "organization-2", DE: "verein" },
+    { EN: "organization", DE: "verein" },
     { EN: "advisory-board", DE: "beirat" },
     { EN: "support", DE: "unterstutzung" },
     { EN: "resources", DE: "resources" },
@@ -826,6 +826,7 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
+
 
   const venueTemplate = path.resolve(`./src/templates/venue.js`)
   allWordpressWpVenue.edges.forEach(edge => {

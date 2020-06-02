@@ -26,7 +26,7 @@ export  const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "about", DE: "uber" },
   { EN: "about/team", DE: "uber/team" },
-  { EN: "about/organization-2", DE: "uber/verein" },
+  { EN: "about/organization", DE: "uber/verein" },
   { EN: "about/advisory-board", DE: "uber/beirat" },
   { EN: "about/support", DE: "uber/unterstutzung" },
   { EN: "resources", DE: "resources" },
