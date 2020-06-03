@@ -28,8 +28,7 @@ const PublicationItem = props => {
   return (
     <PublicationItemWrapper>
       <PublicationImageWrapper id={`pub-${publication.slug}`}>
-        <ImageResource id={publication.image_gallery[0]} withCaption={false} />
-        {/* <ImageGalleryResource ids={publication.image_gallery} /> */}
+        <ImageGalleryResource ids={publication.image_gallery} />
       </PublicationImageWrapper>
       <div
         dangerouslySetInnerHTML={{
