@@ -11,13 +11,14 @@ import { size, Color } from "../../index.styles"
 const VenueListWrapper = styled(TwoColumnPageWrapper)``
 const VenuesAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin: 1rem;
+  }
 `
 const VenueAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 30%;
-  @media (max-width: ${size.tabletL}) {
-    width: 100%;
-  }
 `
 
 const AnchorDiv = styled.div`
@@ -39,7 +40,7 @@ class VenueList extends Component {
   }
 
   scrollToAnchor = id => {
-    if (typeof window !== "undefined" || window.document) {
+    if (typeof window !== "undefined") {
       const parent = document.getElementById(`column-one`)
       const element = document.getElementById(`ven-${id}`)
       if (element) {
@@ -63,7 +64,7 @@ class VenueList extends Component {
   }
 
   inView = id => {
-    if (typeof window !== "undefined" || window.document) {
+    if (typeof window !== "undefined") {
       const element = document.getElementById(`ven-${id}`)
       if (!element) {
         return false
