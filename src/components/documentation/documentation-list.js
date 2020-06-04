@@ -75,10 +75,12 @@ const DocumentationList = props => {
   let language = getCurrentLanguageString(props.languages)
   let documentation = props.documentation.filter((d) => {
     return d.list_on_media_overview;
+  }).sort((a, b) => {
+    return new Date(b.published_date).valueOf() - new Date(a.published_date).valueOf();
   })
   const createComponent = (doc, index) => {
     let renderComponent;
-    
+      
       renderComponent = (
         <DocumentationLink
           to={createPath(language, `documentation/${doc.slug}`)}

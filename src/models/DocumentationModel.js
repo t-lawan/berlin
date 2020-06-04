@@ -13,7 +13,8 @@ export class DocumentationModel {
     thumbnail;
     attached_to_event;
     list_on_media_overview;
-    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery, thumbnail, attached_to_event, list_on_media_overview) {
+    published_date;
+    constructor(id, slug, DE, EN, type, related_events, experience, language, audio, video, image_gallery, thumbnail, attached_to_event, list_on_media_overview, date) {
         this.id = id;
         this.slug = slug;
         this.DE = DE;
@@ -28,5 +29,6 @@ export class DocumentationModel {
         this.thumbnail = thumbnail;
         this.attached_to_event = attached_to_event;
         this.list_on_media_overview = list_on_media_overview;
+        this.published_date = date
     }
 }

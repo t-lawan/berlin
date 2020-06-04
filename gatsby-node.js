@@ -345,6 +345,7 @@ exports.createPages = async ({ graphql, actions }) => {
               documentation_not_attached_to_event
               unlist_document_on_media_overview
             }
+            date
           }
         }
       }
