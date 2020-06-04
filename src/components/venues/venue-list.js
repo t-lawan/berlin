@@ -18,7 +18,7 @@ const VenuesAnchorLinkWrapper = styled.div`
 `
 const VenueAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
-  width: 30%;
+  width: 70%;
   @media (max-width: ${size.tabletL}) {
     width: 100%;
 
