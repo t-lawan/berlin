@@ -396,7 +396,15 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               exp_number
               isbn
-              image_gallery
+              image_gallery {
+                acf {
+                  caption_de
+                  caption_en
+                }
+                wordpress_id
+                alt_text
+                media_type
+              }
               social_media_image
             }
           }
