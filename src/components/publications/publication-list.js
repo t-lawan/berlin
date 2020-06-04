@@ -17,12 +17,13 @@ const AnchorDiv = styled.div`
   overflow-y: scroll;
   @media (max-width: ${size.tabletL}) {
     position: relative;
+    margin-bottom: 1rem;
   }
 `
 
 const PublicationAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
-  width: 25%;
+  width: 30%;
   @media (max-width: ${size.tabletL}) {
     width: 100%;
   }
@@ -39,7 +40,7 @@ const PublicationContentWrapper = styled.div`
 `
 
 class PublicationList extends Component {
-  language;
+  language
 
   constructor(props) {
     super(props)
@@ -49,40 +50,45 @@ class PublicationList extends Component {
   }
 
   scrollToAnchor = id => {
-    const parent = document.getElementById(`column-one`)
-    const element = document.getElementById(`pub-${id}`)
-    if (element) {
-      // this.setState({
-      //   isScrolling: true,
-      // })
-      scrollIntoView(element, {
-        scrollMode: "if-needed",
-        block: "center",
-        inline: "nearest",
-        behavior: "smooth",
-        boundary: parent,
-        skipOverflowHiddenElements: true,
-      })
 
-      this.setState({
-        isScrolling: false,
-      })
+    if (typeof window !== "undefined") {
+      const parent = document.getElementById(`column-one`)
+      const element = document.getElementById(`pub-${id}`)
+      if (element) {
+        // this.setState({
+        //   isScrolling: true,
+        // })
+        scrollIntoView(element, {
+          scrollMode: "if-needed",
+          block: "center",
+          inline: "nearest",
+          behavior: "smooth",
+          boundary: parent,
+          skipOverflowHiddenElements: true,
+        })
+
+        this.setState({
+          isScrolling: false,
+        })
+      }
     }
   }
 
   inView = id => {
-    const element = document.getElementById(`pub-${id}`)
-    if (!element) {
-      return false
+    if (typeof window !== "undefined") {
+      const element = document.getElementById(`pub-${id}`)
+      if (!element) {
+        return false
+      }
+
+      let rect = element.getBoundingClientRect()
+      let elemTop = rect.top
+      let elemBottom = rect.bottom
+
+      let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
+      return isVisible
     }
-
-
-    let rect = element.getBoundingClientRect()
-    let elemTop = rect.top
-    let elemBottom = rect.bottom
-
-    let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
-    return isVisible
+    return false;
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
