@@ -17,12 +17,13 @@ const AnchorDiv = styled.div`
   overflow-y: scroll;
   @media (max-width: ${size.tabletL}) {
     position: relative;
+    margin-bottom: 1rem;
   }
 `
 
 const PublicationAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
-  width: 25%;
+  width: 30%;
   @media (max-width: ${size.tabletL}) {
     width: 100%;
   }
@@ -49,7 +50,7 @@ class PublicationList extends Component {
   }
 
   scrollToAnchor = id => {
-    
+
     if (typeof window !== "undefined") {
       const parent = document.getElementById(`column-one`)
       const element = document.getElementById(`pub-${id}`)

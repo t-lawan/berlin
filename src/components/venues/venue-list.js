@@ -13,12 +13,16 @@ const VenuesAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
   @media (max-width: ${size.tabletL}) {
     position: relative;
-    margin: 1rem;
+    margin-bottom: 1rem;
   }
 `
 const VenueAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 30%;
+  @media (max-width: ${size.tabletL}) {
+    width: 100%;
+
+  }
 `
 
 const AnchorDiv = styled.div`
