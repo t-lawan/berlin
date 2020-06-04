@@ -325,7 +325,7 @@ export const StickyFooterWithHighZIndex = styled(StickyFooter)`
 export const FixedFooter = styled.div`
   z-index: 500;
   bottom: -150px;
-  position: fixed;
+  position: absolute;
   grid-area: footer;
   @media (min-width: ${size.mobileSL}) {
     width: 100%;

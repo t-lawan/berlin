@@ -34,15 +34,18 @@ export class Convert {
   }
 
   static toPublicationModel = wordpressModel => {
+    let image_gallery = wordpressModel.acf.image_gallery.map((image) => {
+      return image.wordpress_id
+    })
     return new PublicationModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
       wordpressModel.acf.EN,
       wordpressModel.acf.DE,
-      wordpressModel.acf.dimensions,
       wordpressModel.acf.exp_number,
       wordpressModel.acf.isbn,
-      wordpressModel.acf.page_count
+      image_gallery,
+      wordpressModel.acf.social_media_image,
     )
   }
 
@@ -200,11 +203,11 @@ export class Convert {
       wordpressModel.acf.DE,
       wordpressModel.acf.firstname,
       wordpressModel.acf.lastname,
+      wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.is_artist_in_exhibition,
-      wordpressModel.acf.participant_group,
-      wordpressModel.acf.participant_venue
+      wordpressModel.acf.participant_group
     )
   }
 
