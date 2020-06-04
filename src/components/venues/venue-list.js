@@ -5,7 +5,7 @@ import scrollIntoView from "scroll-into-view-if-needed"
 import { TwoColumnPageWrapper } from "../../templates/page.styles"
 import VenueItem from "./venue-item"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { size, Color } from "../../index.styles";
+import { size, Color } from "../../index.styles"
 // import striptags from "striptags"
 
 const VenueListWrapper = styled(TwoColumnPageWrapper)``
@@ -13,7 +13,7 @@ const VenuesAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
 `
 const VenueAnchorLink = styled.p`
-  /* color: ${props => (props.inView ? Color.red: "black")}; */
+  /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 30%;
   @media (max-width: ${size.tabletL}) {
     width: 100%;
@@ -39,39 +39,44 @@ class VenueList extends Component {
   }
 
   scrollToAnchor = id => {
-    const parent = document.getElementById(`column-one`)
-    const element = document.getElementById(`ven-${id}`)
-    if (element) {
-      this.setState({
-        isScrolling: true,
-      })
-      scrollIntoView(element, {
-        scrollMode: "if-needed",
-        block: "center",
-        inline: "nearest",
-        behavior: "smooth",
-        boundary: parent,
-        skipOverflowHiddenElements: true,
-      })
+    if (typeof window !== "undefined" || window.document) {
+      const parent = document.getElementById(`column-one`)
+      const element = document.getElementById(`ven-${id}`)
+      if (element) {
+        this.setState({
+          isScrolling: true,
+        })
+        scrollIntoView(element, {
+          scrollMode: "if-needed",
+          block: "center",
+          inline: "nearest",
+          behavior: "smooth",
+          boundary: parent,
+          skipOverflowHiddenElements: true,
+        })
 
-      this.setState({
-        isScrolling: false,
-      })
+        this.setState({
+          isScrolling: false,
+        })
+      }
     }
   }
 
   inView = id => {
-    const element = document.getElementById(`ven-${id}`)
-    if (!element) {
-      return false
-    }
-    const parent = document.getElementById(`column-one`)
-    let parentRect = parent.getBoundingClientRect()
-    let rect = element.getBoundingClientRect()
-    let elemTop = rect.top
-    let elemBottom = rect.bottom
-    let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
-    return isVisible
+    if (typeof window !== "undefined" || window.document) {
+      const element = document.getElementById(`ven-${id}`)
+      if (!element) {
+        return false
+      }
+      const parent = document.getElementById(`column-one`)
+      let parentRect = parent.getBoundingClientRect()
+      let rect = element.getBoundingClientRect()
+      let elemTop = rect.top
+      let elemBottom = rect.bottom
+      let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
+      return isVisible
+    } 
+    return false;
   }
 
   render() {

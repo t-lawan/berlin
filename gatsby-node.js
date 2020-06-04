@@ -657,7 +657,6 @@ exports.createPages = async ({ graphql, actions }) => {
             let prePath = pageMap.find(pageType => {
               return pageType.EN === "practical-information"
             }) 
-            console.log('EDGE=====', edge.node)
 
             let endPath = pageMap.find(pageType => {
               return pageType.EN === slug
