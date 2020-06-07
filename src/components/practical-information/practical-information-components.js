@@ -5,7 +5,11 @@ import { startTransition } from "../../store/action"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { AboutComponentWrapper } from "../about/about.styles"
 import PracticalInformationPage from "./practical-information-page"
-import PracticalInformationAdmission from "./practical-information-admission";
+import PracticalInformationAdmission from "./practical-information-admission"
+import PracticalInformationAccess from "./practical-information-access"
+import PracticalInformationOpening from "./practical-information-opening"
+import PracticalInformationFaq from "./practical-information-faq"
+import PracticalInformationAccommodation from "./practical-information-accommodation";
 
 const PracticalInformationComponents = props => {
   const content = props.content
@@ -23,7 +27,31 @@ const PracticalInformationComponents = props => {
       renderComponent = <PracticalInformationAdmission content={content} />
       break
     case "/de/praktische-information/eintritt":
-      renderComponent = <p> Admission</p>
+      renderComponent = <PracticalInformationAdmission content={content} />
+      break
+    case "/practical-information/accommodation":
+      renderComponent = <PracticalInformationAccommodation content={content} />
+      break
+    case "/de/praktische-information/accommodation":
+      renderComponent = <PracticalInformationAccommodation content={content} />
+      break
+    case "/practical-information/access":
+      renderComponent = <PracticalInformationAccess content={content} />
+      break
+    case "/de/praktische-information/access":
+      renderComponent = <PracticalInformationAccess content={content} />
+      break
+    case "/practical-information/opening-hours":
+      renderComponent = <PracticalInformationOpening content={content} />
+      break
+    case "/de/praktische-information/opening-hours":
+      renderComponent = <PracticalInformationOpening content={content} />
+      break
+    case "/practical-information/faq":
+      renderComponent = <PracticalInformationFaq content={content} />
+      break
+    case "/de/praktische-information/faq":
+      renderComponent = <PracticalInformationFaq content={content} />
       break
     default:
       renderComponent = <p> </p>

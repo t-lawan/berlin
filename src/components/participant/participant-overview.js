@@ -113,7 +113,7 @@ class ParticipantOverView extends Component {
       id: 4,
       isText: false,
       display:
-        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/bb11_logo_nav.svg",
+        "https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg",
     },
   ]
 

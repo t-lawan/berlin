@@ -57,7 +57,7 @@ export const ExperienceButton = styled.div`
   :last-child img {
     @media (min-width: ${size.laptop}) {
       max-width: 32px;
-      opacity: 0.3;
+      /* opacity: 0.3; */
     }
     @media (min-width: ${size.laptopM}) {
       max-width: 37px;
