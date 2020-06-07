@@ -573,6 +573,10 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "venues", DE: "orte" },
     { EN: "practical-information", DE: "praktische-information" },
     { EN: "admission", DE: "admission" },
+    { EN: "accommodation", DE: "accommodation" },
+    { EN: "faq", DE: "faq" },
+    { EN: "opening-hours", DE: "opening-hours" },
+    { EN: "access", DE: "access" },
 
   ]
 
