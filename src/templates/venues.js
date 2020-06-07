@@ -1,28 +1,28 @@
 import React from "react"
-import { connect } from "react-redux"
+import Layout from "../components/layout/layout"
+import UpcomingEvents from "../components/events/upcomingevents"
 import {
   getCurrentLanguageString,
-  createProperty
+  pageMap,
 } from "../utility/helper"
-import NewsList from "../components/news/newslist"
-import UpcomingEvents from "../components/events/upcomingevents"
+import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
-// import { getCurrentLanguageString, pageMap } from "../utility/helper"
-import Layout from "../components/layout/layout"
-import VenueList from "../components/venues/venue-list";
-import { PageWrapper, PageTitle } from "./page.styles";
+import { PageWrapper, PageTitle } from "./page.styles"
+import { Color } from "../index.styles"
+import NewsList from "../components/news/newslist";
+import VenueItem from "../components/venues/venue-item";
 
-const Venues = props => {
+const Venue = props => {
   const language = getCurrentLanguageString(props.languages)
+  const venuePageInfo = props.pageContext
+  const venue = Convert.toVenueModel(props.pageContext)
+
   const renderComponent = (
-    <PageWrapper>
+    <PageWrapper colour={Color.yellow}>
       <SEO
-        title={content[props.pageContext.language.toUpperCase()].title}
-        description={content[props.pageContext.language.toUpperCase()].title}
-        lang={props.pageContext.language}
-        // pathname={`${path[props.pageContext.language.toUpperCase()]}/${
-        //   publication.slug
-        // }`}
+        title={venue[venuePageInfo.language.toUpperCase()].venue_name}
+        description={venue[venuePageInfo.language.toUpperCase()].venue_name}
+        lang={venuePageInfo.language}
       />
       <PageTitle
           dangerouslySetInnerHTML={{
@@ -48,6 +48,12 @@ const Venues = props => {
   )
 }
 
+const mapStateToProps = state => {
+  return {
+    languages: state.languages,
+  }
+}
+
 let content = {
     EN: {
       title: "Venues",
@@ -55,12 +61,8 @@ let content = {
     DE: {
       title: "Orte",
     },
-  }
-
-const mapStateToProps = state => {
-  return {
-    languages: state.languages,
-  }
 }
+
+
 
 export default connect(mapStateToProps, null)(Venues)
