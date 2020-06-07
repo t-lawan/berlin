@@ -25,7 +25,8 @@ const mapStateToProps = state => {
       title: "opening hours",
     },
     DE: {
-      title: "opening hours",
+      title: "offnungszeiten",
+
     },
   }
   

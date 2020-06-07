@@ -29,7 +29,7 @@ const PracticalInformationNavbar = props => {
       },
       DE: {
         title: "Admission",
-        slug: "praktische-information/admission",
+        slug: "praktische-information/eintritt",
       },
       isLive: false,
     },

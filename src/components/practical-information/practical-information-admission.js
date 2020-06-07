@@ -25,7 +25,7 @@ const mapStateToProps = state => {
       title: "admission",
     },
     DE: {
-      title: "admission",
+      title: "eintritt",
     },
   }
   
