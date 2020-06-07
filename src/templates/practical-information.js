@@ -12,7 +12,7 @@ import {
   TwoColumnPageWrapper,
   ResourcePublisherLink,
   PageTitle,
-  TextBlockTwoColumnPage,
+  TextBlock,
   TextBlockSideBarPage,
   PaddingDiv,
 } from "./page.styles"
@@ -83,13 +83,13 @@ const PracticalInformation = props => {
       </div>
 
       <div> */}
-        {/* <TextBlockTwoColumnPage
+        {/* <TextBlock
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].corona_notice,
           }}
         />
         <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
-        <TextBlockTwoColumnPage
+        <TextBlock
           dangerouslySetInnerHTML={{
             __html: pageInfo.acf[language].venue_description,
           }}
