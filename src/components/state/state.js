@@ -464,10 +464,10 @@ const State = props => {
       Convert.toResourceGenreModel
     )
 
-    // let publications = Convert.toModelArray(
-    //   data.allWordpressWpPublications,
-    //   Convert.toPublicationModel
-    // )
+    let publications = Convert.toModelArray(
+    data.allWordpressWpPublications,
+    Convert.toPublicationModel
+    )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
@@ -568,7 +568,7 @@ const State = props => {
     props.setResources(resources)
     props.setDocumentation(documentation)
     // props.setPages(pages)
-    // props.setPublications(publications)
+    props.setPublications(publications)
     props.setCalendarItems(calendarItems)
     props.setCalendar(calendar)
     props.setDocuments(documents)
