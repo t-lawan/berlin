@@ -48,8 +48,10 @@ export  const pageMap = [
   { EN: "press-images", DE: "pressebilder" },
   { EN: "practical-information", DE: "praktische-information" },
   { EN: "practical-information/admission", DE: "praktische-information/admission" },
-
-
+  { EN: "practical-information/access", DE: "praktische-information/access" },
+  { EN: "practical-information/opening-hours", DE: "praktische-information/opening-hours" },
+  { EN: "practical-information/faq", DE: "praktische-information/faq" },
+  { EN: "practical-information/accommodation", DE: "praktische-information/accommodation" },
 ]
 
 export const transitionBackground = "url(https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"

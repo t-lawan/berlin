@@ -26,6 +26,7 @@ const mapStateToProps = state => {
     },
     DE: {
       title: "unterkunft",
+
     },
   }
   

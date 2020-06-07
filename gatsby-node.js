@@ -578,6 +578,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "opening-hours", DE: "offnungszeiten" },
     { EN: "access", DE: "anfahrt" },
 
+
   ]
 
   allWordpressPage.edges.forEach(edge => {

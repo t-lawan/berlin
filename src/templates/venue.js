@@ -1,7 +1,4 @@
 import React from "react"
-import styled from "styled-components"
-import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
@@ -20,7 +17,7 @@ const VenueTitle = styled.div`
   font-size: 1.3em;
 `
 const Venue = props => {
-  const language = getCurrentLanguageString(props.languages)
+  // const language = getCurrentLanguageString(props.languages)
   const venuePageInfo = props.pageContext
   const venue = Convert.toVenueModel(props.pageContext)
 
@@ -64,13 +61,14 @@ const content = {
   },
 }
 
-const mapStateToProps = state => {
-  return {
-    languages: state.languages,
-  }
-}
+// const mapStateToProps = state => {
+//   return {
+//     languages: state.languages,
+//   }
+// }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Venue)
+// export default connect(
+//   mapStateToProps,
+//   null
+// )(Venue)
+export default Venue;
