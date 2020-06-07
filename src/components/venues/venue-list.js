@@ -8,20 +8,33 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import { size, Color } from "../../index.styles"
 // import striptags from "striptags"
 
-const VenueListWrapper = styled(TwoColumnPageWrapper)``
+const VenueListWrapper = styled(TwoColumnPageWrapper)`
+padding-top: 0 !important;
+position: relative;
+
+`
 const VenuesAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
+  position: relative;
   @media (max-width: ${size.tabletL}) {
     position: relative;
     margin-bottom: 1rem;
   }
+  display: none;
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
 `
 const VenueAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
-  width: 70%;
+  width: 75%;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+    cursor: pointer;
+  }
   @media (max-width: ${size.tabletL}) {
     width: 100%;
-
   }
 `
 
@@ -53,7 +66,7 @@ class VenueList extends Component {
         })
         scrollIntoView(element, {
           scrollMode: "if-needed",
-          block: "center",
+          block: "start",
           inline: "nearest",
           behavior: "smooth",
           boundary: parent,

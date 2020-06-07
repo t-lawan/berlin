@@ -6,7 +6,7 @@ import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
-import { PageWrapper } from "./page.styles"
+import { PageWrapper, PageTitle } from "./page.styles"
 import { Color, ExternalLink } from "../index.styles"
 import NewsList from "../components/news/newslist";
 import VenueItem from "../components/venues/venue-item";
@@ -17,7 +17,6 @@ const VenueLink = styled(ExternalLink)`
 
 const VenueTitle = styled.div`
   margin-bottom: 1em;
-
   font-size: 1.3em;
 `
 const Venue = props => {
@@ -32,6 +31,11 @@ const Venue = props => {
         description={venue[venuePageInfo.language.toUpperCase()].venue_name}
         lang={venuePageInfo.language}
       />
+      <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[language].title,
+          }}
+        />
       <VenueItem venue={venue} />
     </PageWrapper>
   )
@@ -50,6 +54,14 @@ const Venue = props => {
       thirdColumn={thirdColumn}
     />
   )
+}
+const content = {
+  EN: {
+    title: "venues",
+  },
+  DE: {
+    title: "orte",
+  },
 }
 
 const mapStateToProps = state => {
