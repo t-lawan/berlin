@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { TextBlockTwoColumnPage, PageTitle } from "../../templates/page.styles"
+import { ContentBlock, PageTitle } from "../../templates/page.styles"
 import ImageResource from "../../partials/ImageResource"
 
 
@@ -12,13 +12,13 @@ const PracticalInformationPage = props => {
   return (
     <>
       <PageTitle> {page_title[language].title}</PageTitle>
-      <TextBlockTwoColumnPage
+      <ContentBlock
         dangerouslySetInnerHTML={{
           __html: content.acf[language].corona_notice,
         }}
       />
       <ImageResource id={content.acf.thumbnail_image} withCaption={true} />
-      <TextBlockTwoColumnPage
+      <ContentBlock
         dangerouslySetInnerHTML={{
           __html: content.acf[language].venue_description,
         }}

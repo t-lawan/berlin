@@ -26,7 +26,7 @@ const PracticalInformationComponents = props => {
     case "/practical-information/admission":
       renderComponent = <PracticalInformationAdmission content={content} />
       break
-    case "/de/praktische-information/admission":
+    case "/de/praktische-information/eintritt":
       renderComponent = <PracticalInformationAdmission content={content} />
       break
     case "/practical-information/accommodation":
