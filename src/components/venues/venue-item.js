@@ -4,14 +4,25 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
 import { TextBlock } from "../../templates/page.styles"
-import { ExternalLink, Color } from "../../index.styles"
+import { ExternalLink, Color, size } from "../../index.styles"
 
 const VenueItemWrapper = styled.div`
   margin-bottom: 3rem;
+  @media (min-width: ${size.laptop}) {
+    margin-top: 225px;
+    padding-bottom: -110px;
+    :first-child {
+      margin-top: 0;
+    }
+  }
 `
 
 const VenueLink = styled(ExternalLink)`
-  padding-bottom: 1em;
+  border-bottom: solid 1px ${Color.red};
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red}; 
+  }
 `
 
 const VenueDescription = styled.div``
@@ -28,9 +39,9 @@ const VenueItem = props => {
   let language = getCurrentLanguageString(props.languages)
   let venue = props.venue;
   return (
-    <VenueItemWrapper>
+    <VenueItemWrapper id={`ven-${venue.slug}`}>
       <p>{venue[language].venue_name}</p>
-      <ImageWrapper id={`ven-${venue.slug}`}>
+      <ImageWrapper >
         <ImageResource
           id={venue.thumbnail_image ? venue.thumbnail_image : 411}
           withCaption={false}
@@ -40,31 +51,52 @@ const VenueItem = props => {
         {venue.address.map((address, index) => (
           <VenueAddress key={index}> {`${address.address_line},`}</VenueAddress>
         ))}
-        <VenueAddress> {`${venue.plz}, `} </VenueAddress>
+        <VenueAddress> {`${venue.plz}`} </VenueAddress>
         <VenueAddress> {` ${venue.city}`}</VenueAddress>
       </TextBlock>
 
-      <TextBlock>
-        <VenueDescription
+      {venue[language].access_info ? (
+        <TextBlock>
+              <VenueDescription
           dangerouslySetInnerHTML={{
             __html: venue[language].access_info,
           }}
         />
-      </TextBlock>
+        </TextBlock>
+        ) : null}
+      
+      
+      {venue.opening_hours ? (
+        <TextBlock>
+          <p> {content[language].hours} </p>
+          {venue.opening_hours.map((hours, index) => (
+            <p key={index}> {hours.hours}</p>
+          ))}
+          </TextBlock>
+      ) : null}
+
       {venue.public_transit ? (
         <TextBlock>
           <p> {content[language].directions} </p>
           {venue.public_transit.map((direction, index) => (
             <p key={index}> {direction.transit_option}</p>
           ))}
-        </TextBlock>
-      ) : null}
-      <TextBlock>
-        <p hidden={!venue.wheelchair_access}>
+          <p><VenueLink
+          colour={Color.red}
+          href={venue.google_map_link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {content[language].link_to_map}
+        </VenueLink></p>
+          <p hidden={!venue.wheelchair_access}>
           {" "}
           {content[language].wheelchair_access}{" "}
-        </p>
-      </TextBlock>
+          </p>
+
+        </TextBlock>
+      ) : null}
+      
       <TextBlock>
         <VenueDescription
           dangerouslySetInnerHTML={{
@@ -72,30 +104,23 @@ const VenueItem = props => {
           }}
         />
       </TextBlock>
-      <TextBlock>
-        <VenueLink
-          colour={Color.red}
-          href={venue.google_map_link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {content[language].link_to_map}
-        </VenueLink>
-      </TextBlock>
+      
     </VenueItemWrapper>
   )
 }
 
 let content = {
   EN: {
-    directions: "Directions",
-    wheelchair_access: "Wheelchair access",
-    link_to_map: "Link to map",
+    directions: "Access",
+    wheelchair_access: "Wheelchair accessible",
+    link_to_map: "Directions",
+    hours: "Opening hours",
   },
   DE: {
-    directions: "Directions",
-    wheelchair_access: "Wheelchair access",
-    link_to_map: "Link to map",
+    directions: "Anfahrt",
+    wheelchair_access: "Barrierefrei",
+    link_to_map: "Karte",
+    hours: "Öffnungszeiten",
   },
 }
 

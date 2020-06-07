@@ -3,12 +3,13 @@ import { connect } from "react-redux"
 import NewsList from "../components/news/newslist"
 import UpcomingEvents from "../components/events/upcomingevents"
 import SEO from "../components/seo/seo"
-// import { getCurrentLanguageString, pageMap } from "../utility/helper"
+import { getCurrentLanguageString, pageMap } from "../utility/helper"
 import Layout from "../components/layout/layout"
 import VenueList from "../components/venues/venue-list";
-import { PageWrapper } from "./page.styles";
+import { PageWrapper, PageTitle } from "./page.styles";
 
 const Venues = props => {
+  const language = getCurrentLanguageString(props.languages)
   const renderComponent = (
     <PageWrapper>
       <SEO
@@ -19,7 +20,11 @@ const Venues = props => {
         //   publication.slug
         // }`}
       />
-
+  <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[language].title,
+          }}
+        />
       <VenueList />
     </PageWrapper>
   )
@@ -41,10 +46,10 @@ const Venues = props => {
 
 let content = {
     EN: {
-      title: "Venues",
+      title: "venues",
     },
     DE: {
-      title: "Venues",
+      title: "orte",
     },
   }
 
@@ -55,3 +60,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(Venues)
+

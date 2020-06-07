@@ -55,10 +55,11 @@ const BottomRow = styled.div`
   padding-top: 1rem;
   display: flex;
   flex-direction: row;
-  @media (max-width: ${size.tablet}) {
-    display:none;
-  }
   /* justify-content: space-between; */
+   @media (max-width: ${size.mobileM}) {
+    padding-top: 0.8rem;
+    margin-bottom: 0.8rem;
+   }
 `
 
 const ImageWrapper = styled.div`
@@ -107,6 +108,9 @@ const FooterLink = styled(AniLink)`
   :hover {
     cursor: pointer;
     color: ${Color.red};
+  }
+  @media (max-width: ${size.mobileL}) {
+    font-size: 0.9em;
   }
   @media (min-width: ${size.laptopM}) {
     padding-right: 1.5em;
