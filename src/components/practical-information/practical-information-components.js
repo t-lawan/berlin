@@ -23,7 +23,7 @@ const PracticalInformationComponents = props => {
       renderComponent = <PracticalInformationAdmission content={content} />
       break
     case "/de/praktische-information/admission":
-      renderComponent = <p> Admission</p>
+      renderComponent = <PracticalInformationAdmission content={content} />
       break
     default:
       renderComponent = <p> </p>
