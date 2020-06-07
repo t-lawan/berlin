@@ -42,6 +42,7 @@ const SliderSettings = {
   autoplay: false,
   swipeToSlide: false,
   variableWidth: false,
+  draggable: false
 }
 class Columns extends React.Component {
   renderedComponents
