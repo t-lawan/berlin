@@ -8,11 +8,22 @@ import { ExternalLink, Color, size } from "../../index.styles"
 
 const VenueItemWrapper = styled.div`
   margin-bottom: 3rem;
+
   @media (min-width: ${size.laptop}) {
+    padding-top:96px;
     margin-top: 225px;
     padding-bottom: -110px;
     :first-child {
-      margin-top: 0;
+      margin-top: -96px;
+    }
+  }
+
+  @media (min-width: ${size.laptopL}) {
+    padding-top:105px;
+    /* margin-top: 225px;
+    padding-bottom: -110px; */
+    :first-child {
+      margin-top: -105px;
     }
   }
 `
