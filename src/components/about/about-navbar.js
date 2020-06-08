@@ -1,7 +1,7 @@
 import React from "react"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { connect } from "react-redux"
-import { AboutSideNavbar, AboutNavItem, AboutNavItemLink } from "./about.styles"
+import { AboutSideNavbar, AboutNavItem, AboutNavItemLink, MobileSub, DesktopSub } from "./about.styles"
 import PropTypes from "prop-types"
 import * as actionTypes from '../../store/action'
 const AboutNavbar = props => {
@@ -10,50 +10,60 @@ const AboutNavbar = props => {
     {
       EN: {
         title: "About",
+        titlemob: "About",
         slug: "about"
       },
       DE: {
         title: "über",
+        titlemob: "über",
         slug: "uber"
       },
     },
     {
       EN: {
         title: "team",
+        titlemob: "team",
         slug: "about/team"
       },
       DE: {
         title: "team",
+        titlemob: "team",
         slug: "uber/team"
       },
     },
     {
       EN: {
         title: "organization",
+        titlemob: "organization",
         slug: "about/organization"
       },
       DE: {
         title: "verein",
+        titlemob: "verein",
         slug: "uber/verein"
       },
     },
     {
       EN: {
         title: "advisory board",
+        titlemob: "board",
         slug: "about/advisory-board"
       },
       DE: {
         title: "beirat",
+        titlemob: "beirat",
         slug: "uber/beirat"
       },
     },
     {
       EN: {
         title: "support",
+        titlemob: "support",
         slug: "about/support"
       },
       DE: {
         title: "unterstützung",
+        titlemob: "unterstützung",
         slug: "uber/unterstutzung"
       },
     },
@@ -72,8 +82,10 @@ const AboutNavbar = props => {
         <AboutNavItemLink to={createPath(language, item[language].slug)} key={index} onClick={() => props.startTransition()}>
         {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
-            {item[language].title.toLowerCase()}
+            <DesktopSub>{item[language].title.toLowerCase()}</DesktopSub>
+            <MobileSub>{item[language].titlemob.toLowerCase()}</MobileSub>
           </AboutNavItem>
+          
         </AboutNavItemLink>
       ))}
     </AboutSideNavbar>

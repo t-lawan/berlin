@@ -569,7 +569,16 @@ export const ResourcePublisherLink = styled.a`
     color:${Color.red};
   }
 `
-
+export const ContentBlock = styled.div`
+>p > a {
+  border-bottom: solid 1px ${Color.red};
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    color: ${Color.red};
+  }
+}
+`
 export const TextBlock = styled.div`
   > p {
     padding: 0;
@@ -585,6 +594,9 @@ export const TextBlock = styled.div`
     }
     @media (min-width: ${size.laptop}) {
       line-height:1.3;
+    }
+    > a {
+      font-size: 1em;
     }
   }
   > h1,h2,h3,h4,h5,h6 {

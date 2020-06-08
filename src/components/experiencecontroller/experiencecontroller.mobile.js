@@ -75,9 +75,9 @@ class ExperienceControllerMobile extends React.Component {
       })
 
       let isReady = exhibition ? true : false
-      if (index === 3) {
-        isReady = false
-      }
+       if (index === 3) {
+         isReady = false
+       }
       return {
         id: item.id,
         isReady: isReady,

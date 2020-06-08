@@ -279,7 +279,7 @@ const State = props => {
                     document_download_label
                     document_language
                     free_text_entry
-                    document_upload
+                    #document_upload
                   }
                   floating_resource
                   image_gallery {
@@ -343,53 +343,45 @@ const State = props => {
                   }
                   publicURL
                 }
+                
               }
             }
           }
-          # allWordpressWpPublications {
-          #   edges {
-          #     node {
-          #       wordpress_id
-          #       slug
-          #       acf {
-          #         DE {
-          #           biennale_context_note
-          #           description
-          #           contributors
-          #           design
-          #           editor
-          #           format
-          #           language
-          #           order_link
-          #           price
-          #           publication_thumbnail
-          #           publisher
-          #           subtitle
-          #           title
-          #         }
-          #         EN {
-          #           biennale_context_note
-          #           contributors
-          #           description
-          #           design
-          #           editor
-          #           format
-          #           language
-          #           order_link
-          #           price
-          #           publication_thumbnail
-          #           publisher
-          #           subtitle
-          #           title
-          #         }
-          #         dimensions
-          #         exp_number
-          #         isbn
-          #         page_count
-          #       }
-          #     }
-          #   }
-          # }
+          allWordpressWpPublications {
+              edges {
+               node {
+                 wordpress_id
+                 slug
+                 acf {
+                   DE {
+                     description
+                     publisher
+                     subtitle
+                     title
+                   }
+                   EN {
+                     description
+                     publisher
+                     subtitle
+                     title
+                   }
+                   exp_number
+                   isbn
+                   image_gallery {
+                    alt_text
+                    wordpress_id
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    media_type
+                  }
+                   social_media_image
+                 }
+               }
+             }
+           }
           allWordpressWpVenue {
             edges {
               node {
@@ -400,10 +392,18 @@ const State = props => {
                   english {
                     access_info
                     venue_name
+                    venue_description
+                    opening_hours {
+                      hours
+                    }
                   }
                   deutsch {
                     access_info
                     venue_name
+                    venue_description
+                    opening_hours {
+                      hours
+                    }
                   }
                   google_map_link
                   thumbnail_image
@@ -477,10 +477,10 @@ const State = props => {
       Convert.toResourceGenreModel
     )
 
-    // let publications = Convert.toModelArray(
-    //   data.allWordpressWpPublications,
-    //   Convert.toPublicationModel
-    // )
+    let publications = Convert.toModelArray(
+    data.allWordpressWpPublications,
+    Convert.toPublicationModel
+    )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [

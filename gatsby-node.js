@@ -377,6 +377,40 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpPublications {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              DE {
+                description
+                publisher
+                subtitle
+                title
+              }
+              EN {
+                publisher
+                subtitle
+                title
+                description
+              }
+              exp_number
+              isbn
+              image_gallery {
+                acf {
+                  caption_de
+                  caption_en
+                }
+                wordpress_id
+                alt_text
+                media_type
+              }
+              social_media_image
+            }
+          }
+        }
+      }
       allWordpressWpExhibitions {
         edges {
           node {
@@ -464,10 +498,18 @@ exports.createPages = async ({ graphql, actions }) => {
               english {
                 access_info
                 venue_name
+                venue_description
+                opening_hours {
+                  hours
+                }
               }
               deutsch {
                 access_info
                 venue_name
+                venue_description
+                opening_hours {
+                  hours
+                }
               }
               google_map_link
               thumbnail_image
@@ -533,7 +575,15 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "press", DE: "presse" },
     { EN: "media", DE: "mediathek" },
     { EN: "publication", DE: "publikation" },
-    { EN: "press-images", DE: "pressebilder" },
+    { EN: "venues", DE: "orte" },
+    { EN: "practical-information", DE: "praktische-information" },
+    { EN: "admission", DE: "eintritt" },
+    { EN: "accommodation", DE: "unterkunft" },
+    { EN: "faq", DE: "faq" },
+    { EN: "opening-hours", DE: "offnungszeiten" },
+    { EN: "access", DE: "anfahrt" },
+
+
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -616,8 +666,46 @@ exports.createPages = async ({ graphql, actions }) => {
 
         }
       } else {
-        if (edge.node.acf.template === "calendar") {
-          path = language === "en" ? "/calendar" : "/de/kalender"
+        if (
+          (edge.node.parent_element &&
+            edge.node.parent_element.slug === "practical-information") ||
+          slug === "practical-information"
+        ) {
+          if (
+            edge.node.parent_element &&
+            edge.node.parent_element.slug === "practical-information"
+          ) {
+            let prePath = pageMap.find(pageType => {
+              return pageType.EN === "practical-information"
+            }) 
+
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+
+            path =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+          } else {
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+            path =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+          }
         } else {
           let p
           switch (edge.node.slug) {
@@ -758,6 +846,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // const venueTemplate = path.resolve(`./src/templates/venue.js`)
 
+  // const venueTemplate = path.resolve(`./src/templates/venue.js`)
   // allWordpressWpVenue.edges.forEach(edge => {
   //   let prePath = pageMap.find(pageType => {
   //     return pageType.EN === "venue"
