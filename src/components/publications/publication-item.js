@@ -1,13 +1,29 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { Color } from "../../index.styles"
-import ImageResource from "../../partials/ImageResource"
+import { Color, size } from "../../index.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { getCurrentLanguageString } from "../../utility/helper"
 
 const PublicationItemWrapper = styled.div`
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
+
+  @media (min-width: ${size.laptop}) {
+    padding-top: calc(97px + 2.5em);
+    margin-top: 225px;
+    padding-bottom: -110px;
+    :first-child {
+      margin-top: calc(-97px - 2.5em);
+    }
+  }
+
+  @media (min-width: ${size.laptopL}) {
+    padding-top: calc(110px + 2.7em);
+    padding-bottom: -110px; 
+    :first-child {
+      margin-top: calc(-110px - 2.7em);
+    }
+  }
 `
 
 const PublicationDescription = styled.div`
@@ -30,8 +46,8 @@ const PublicationItem = props => {
   let publication = props.publication
 
   return (
-    <PublicationItemWrapper>
-      <PublicationImageWrapper id={`pub-${publication.slug}`}>
+    <PublicationItemWrapper id={`pub-${publication.slug}`}r>
+      <PublicationImageWrapper >
         <ImageGalleryResource ids={publication.image_gallery} />
       </PublicationImageWrapper>
       <div
