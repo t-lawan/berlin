@@ -16,7 +16,37 @@ import ExperienceControllerMobile from "../experiencecontroller/experiencecontro
 import NavbarMobile from "../navbar/navbar-mobile"
 import { transitionTimes } from "../../utility/helper"
 import MainSection from "./main-section"
-import DataPrivacy from "../data-privacy/data-privacy";
+import DataPrivacy from "../data-privacy/data-privacy"
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick"
+import styled from "styled-components"
+
+export const AnimatedSlider = styled(Slider)`
+  z-index: 100;
+  /* max-width: 100% !important; */
+  width: inherit;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100vh;
+
+`
+
+const SliderSettings = {
+  dots: false,
+  arrows: false,
+  infinite: false,
+  speed: 800,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  adaptiveHeight: false,
+  autoplay: false,
+  swipeToSlide: false,
+  variableWidth: false,
+  draggable: false,
+  swipe: false,
+  touchMove: false
+}
 class Columns extends React.Component {
   renderedComponents
   numberOfColumnsIsTwo = this.props.numberOfColumnsIsTwo

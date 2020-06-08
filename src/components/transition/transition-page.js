@@ -9,9 +9,9 @@ let transitionName = "transition-page"
 
 const TransitionPageWrapper = styled.div`
   z-index: 4500;
-  width: calc(66.66% - 1px);
+  width: calc(16.66% - 1px);
   @media (max-width: ${size.mobileL}) {
-    width: 100%;
+    width: 25%;
   }
   height: 100%;
   background: white;
@@ -42,6 +42,7 @@ const TransitionImage = styled.img`
   /* transform: translate(-50%, -50%); */
   width: 120px !important;
   z-index: inherit;
+  display: inline !important;
 `
 
 class TransitionPage extends React.Component {

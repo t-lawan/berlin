@@ -8,17 +8,12 @@ import {
   pageMap,
 } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import {
-  TwoColumnPageWrapper,
-  ResourcePublisherLink,
-  PageTitle,
-  TextBlockTwoColumnPage,
-  TextBlockSideBarPage,
-  PaddingDiv,
-} from "./page.styles"
-import ImageResource from "../partials/ImageResource"
+import { TwoColumnPageWrapper, PaddingDiv, PageTitle, TextBlockSideBarPage, ResourcePublisherLink } from "./page.styles"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
+import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
+// import PracticalInformationComponents from "../components/practical-information/practical-information-components";
+import PracticalInformationPage from "../components/practical-information/practical-information-page"
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -76,26 +71,13 @@ const PracticalInformation = props => {
             <p key={index}> {item.access_line} </p>
           ))}
         </TextBlockSideBarPage>
+        {/* <PracticalInformationNavbar currentPage={pageInfo.slug} /> */}
       </div>
-
       <div>
-        <TextBlockTwoColumnPage
-          dangerouslySetInnerHTML={{
-            __html: pageInfo.acf[language].corona_notice,
-          }}
-        />
-        <ImageResource id={pageInfo.acf.thumbnail_image} withCaption={true} />
-        <TextBlockTwoColumnPage
-          dangerouslySetInnerHTML={{
-            __html: pageInfo.acf[language].venue_description,
-          }}
-        />
-        <ImageResource
-          id={pageInfo.acf.venue_map_graphic}
-          withCaption={false}
-        />
-        <PaddingDiv></PaddingDiv>
+        <PracticalInformationPage content={pageInfo} />
+        <PaddingDiv> </PaddingDiv>
       </div>
+      {/* <PracticalInformationComponents content={pageInfo}/> */}
     </TwoColumnPageWrapper>
   )
 
@@ -120,14 +102,14 @@ const content = {
     access: "Access",
     title: "practical information",
     directions: "Directions",
-    seo_title: "Practical information"
+    seo_title: "Practical information",
   },
   DE: {
     opening_hours: "Öffnungszeiten",
     title: "praktische information",
     access: "Anfahrt",
     directions: "Karte",
-    seo_title: "Praktische Information"
+    seo_title: "Praktische Information",
   },
 }
 const mapStateToProps = state => {
