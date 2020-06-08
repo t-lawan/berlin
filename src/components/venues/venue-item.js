@@ -66,10 +66,10 @@ const VenueItem = props => {
         ) : null}
       
       
-      {venue.opening_hours ? (
+      {venue[language].opening_hours ? (
         <TextBlock>
           <p> {content[language].hours} </p>
-          {venue.opening_hours.map((hours, index) => (
+          {venue[language].opening_hours.map((hours, index) => (
             <p key={index}> {hours.hours}</p>
           ))}
           </TextBlock>
