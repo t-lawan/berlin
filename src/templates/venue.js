@@ -1,4 +1,5 @@
 import React from "react"
+import { connect } from "react-redux"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
@@ -62,8 +63,8 @@ const mapStateToProps = state => {
   }
  }
 
-// export default connect(
-//   mapStateToProps,
-//   null
-// )(Venue)
-export default Venue;
+export default connect(
+  mapStateToProps,
+  null
+)(Venue)
+// export default Venue;
