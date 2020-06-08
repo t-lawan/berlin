@@ -20,7 +20,7 @@ const Venues = props => {
         //   publication.slug
         // }`}
       />
-  <PageTitle
+        <PageTitle
           dangerouslySetInnerHTML={{
             __html: content[language].title,
           }}
@@ -46,10 +46,10 @@ const Venues = props => {
 
 let content = {
     EN: {
-      title: "venues",
+      title: "Venues",
     },
     DE: {
-      title: "orte",
+      title: "Orte",
     },
   }
 
