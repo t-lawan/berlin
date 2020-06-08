@@ -22,6 +22,7 @@ const PublicationItemWrapper = styled.div`
     padding-bottom: -110px; 
     :first-child {
       margin-top: calc(-110px - 2.7em);
+
     }
   }
 `

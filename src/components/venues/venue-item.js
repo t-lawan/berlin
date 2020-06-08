@@ -15,14 +15,17 @@ const VenueItemWrapper = styled.div`
     padding-bottom: -110px;
     :first-child {
       margin-top: calc(-97px - 2.5em);
+
     }
   }
 
   @media (min-width: ${size.laptopL}) {
+
     padding-top: calc(110px + 2.7em);
     padding-bottom: -110px; 
     :first-child {
       margin-top: calc(-110px - 2.7em);
+
     }
   }
 `
