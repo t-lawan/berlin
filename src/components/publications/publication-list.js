@@ -37,6 +37,12 @@ const PublicationAnchorLink = styled.div`
     width: 100%;
     } 
   }
+
+  @media (min-width: ${size.laptop}) and (max-width: ${size.laptop}) {
+    p {
+    width: 25%;
+    } 
+  }
 `
 
 const PublicationAnchorLinkWrapper = styled.div`

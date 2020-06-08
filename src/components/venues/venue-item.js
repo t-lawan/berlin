@@ -17,6 +17,15 @@ const VenueItemWrapper = styled.div`
       margin-top: -96px;
     }
   }
+
+  @media (min-width: ${size.laptopL}) {
+    padding-top:105px;
+    /* margin-top: 225px;
+    padding-bottom: -110px; */
+    :first-child {
+      margin-top: -105px;
+    }
+  }
 `
 
 const VenueLink = styled(ExternalLink)`
