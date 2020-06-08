@@ -55,7 +55,7 @@ class ExperienceController extends React.Component {
   incrementExperience = () => {
     // temporarily disable experience 4 by checking before incrementing
     if (
-      this.props.experience < this.state.experiences.length
+      this.props.experience < this.state.experiences.length && this.props.experience + 1 !== 4
     ) {
       // this.props.experienceIncreased()
       this.props.experience + 1
@@ -112,9 +112,9 @@ class ExperienceController extends React.Component {
       })
       let isReady = exhibition ? true : false;
       // Temporarily disable for the last exhibition
-      // if(index === 3) {
-      //   isReady = false;
-      // }
+      if(index === 3) {
+        isReady = false;
+      }
       return {
         id: item.id,
         isReady: isReady,
@@ -126,7 +126,6 @@ class ExperienceController extends React.Component {
     this.experiences = this.experiences.filter(experience =>
       this.filterBasedOnPosition(experience)
     )
-
     return (
       <ExperienceControllerWrapper left={this.props.left}>
         <ExperienceButtonTitle hidden={this.experiences.length === 0} show>

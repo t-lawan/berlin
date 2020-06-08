@@ -20,6 +20,7 @@ const ResourceTextDiv = styled.div`
     border-bottom: solid thin;
     font-size: 1em;
     border-color: ${Color.red};
+    word-break: break-all;
     transition: all 0.2s ease-in-out;
     :hover {
       color: ${Color.red};

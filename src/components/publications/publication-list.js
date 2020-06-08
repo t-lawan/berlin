@@ -22,16 +22,20 @@ const AnchorDiv = styled.div`
   }
 `
 
-const PublicationAnchorLink = styled.p`
+const PublicationAnchorLink = styled.div`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
-  width: 30%;
+  p {
+    width: 30%;
+  } 
   transition: all 0.2s ease-in-out;
   :hover {
     cursor: pointer;
     color: ${Color.red};
   }
   @media (max-width: ${size.tabletL}) {
+    p {
     width: 100%;
+    } 
   }
 `
 
@@ -56,7 +60,6 @@ class PublicationList extends Component {
   }
 
   scrollToAnchor = id => {
-
     if (typeof window !== "undefined") {
       const parent = document.getElementById(`column-one`)
       const element = document.getElementById(`pub-${id}`)
@@ -94,11 +97,10 @@ class PublicationList extends Component {
       let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
       return isVisible
     }
-    return false;
+    return false
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-
     return (
       <PublicationListWrapper>
         <PublicationAnchorLinkWrapper>
@@ -108,10 +110,10 @@ class PublicationList extends Component {
                 inView={this.inView(pub.slug)}
                 key={i}
                 onClick={() => this.scrollToAnchor(pub.slug)}
-              >
-                {" "}
-                {striptags(pub[this.language].title)}
-              </PublicationAnchorLink>
+                dangerouslySetInnerHTML={{
+                  __html: striptags(pub[this.language].title, ['p', 'em']),
+                }}
+              />
             ))}
           </AnchorDiv>
         </PublicationAnchorLinkWrapper>
