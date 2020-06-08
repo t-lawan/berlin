@@ -10,20 +10,22 @@ const VenueItemWrapper = styled.div`
   margin-bottom: 3rem;
 
   @media (min-width: ${size.laptop}) {
-    padding-top:96px;
+    padding-top: calc(97px + 2.5em);
     margin-top: 225px;
     padding-bottom: -110px;
     :first-child {
-      margin-top: -96px;
+      margin-top: calc(-97px - 2.5em);
+
     }
   }
 
   @media (min-width: ${size.laptopL}) {
-    padding-top:105px;
-    /* margin-top: 225px;
-    padding-bottom: -110px; */
+
+    padding-top: calc(110px + 2.7em);
+    padding-bottom: -110px; 
     :first-child {
-      margin-top: -105px;
+      margin-top: calc(-110px - 2.7em);
+
     }
   }
 `
