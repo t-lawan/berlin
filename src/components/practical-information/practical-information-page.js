@@ -11,7 +11,7 @@ const PracticalInformationPage = props => {
 
   return (
     <>
-      <PageTitle> {page_title[language].title}</PageTitle>
+      {/* <PageTitle> {page_title[language].title}</PageTitle> */}
       <ContentBlock
         dangerouslySetInnerHTML={{
           __html: content.acf[language].corona_notice,
