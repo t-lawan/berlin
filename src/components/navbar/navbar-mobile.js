@@ -118,17 +118,7 @@ class NavbarMobile extends React.Component {
             )}
           </NavMobileInner>
 
-          <NavMobileLinks>
-            {this.navLinks.map((navLink, index) => (
-              <NavMobileLink
-                key={index}
-                to={createPath(this.language, `about/${navLink.path}`)}
-                onClick={() => this.toggleContent(true)}
-              >
-                {navLink[this.language]}
-              </NavMobileLink>
-            ))}
-          </NavMobileLinks>
+          
 
           <NavMobileLinks>
             <div>
@@ -146,20 +136,7 @@ class NavbarMobile extends React.Component {
                 </NavMobileOuterLinkSmall>
               ))}
             </div>
-            <div>
-              <NavMobileLinkSmall
-                to={createPath(this.language, "imprint")}
-                onClick={() => this.toggleContent(true)}
-              >
-                {content[this.language]["imprint"]}
-              </NavMobileLinkSmall>
-              <NavMobileLinkSmall
-                to={createPath(this.language, "data-privacy")}
-                onClick={() => this.toggleContent(true)}
-              >
-                {content[this.language]["data-privacy"]}
-              </NavMobileLinkSmall>
-            </div>
+            
           </NavMobileLinks>
         </NavMobileContent>
       </NavMobileWrapper>

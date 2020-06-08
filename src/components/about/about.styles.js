@@ -7,14 +7,27 @@ export const AboutSideNavbar = styled.nav`
   display: flex;
   flex-direction: column;
   line-height: 1;
-  @media (max-width: ${size.tabletL}) {
-    display: none;
-  }
   @media (max-width: ${size.mobileM}) {
-    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: calc(100% + 1.4em);
+    margin: -0.2em 0 1.3em -0.7em;
+    padding: 0 0 0.2em;
+    border-bottom: solid 1px #000;
   }
 `
-
+export const MobileSub = styled.span`
+display: none;
+@media (max-width: ${size.mobileL}) {
+display: inline-block;
+}
+`
+export const DesktopSub = styled.span`
+display: block;
+@media (max-width: ${size.mobileL}) {
+display: none;
+}
+`
 export const AboutNavItem = styled.p`
   color: ${props => (props.current ? Color.red : "inherit")};
   padding: 0em;
@@ -25,11 +38,28 @@ export const AboutNavItem = styled.p`
     cursor: pointer;
     color: ${Color.red};
   }
+  @media (max-width: ${size.mobileM}) {
+    padding: 0em 0 0 0.7em !important;
+  }
   @media (max-width: ${size.tabletL}) {
     padding: 0.5em 0.5em;
   }
-  @media (max-width: ${size.mobileL}) {
-    display: none;
+`
+export const AboutNavItemMob = styled.p`
+  color: ${props => (props.current ? Color.red : "inherit")};
+  padding: 0em;
+  margin: 0 0 0.6em;
+  line-height: 1.2;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    cursor: pointer;
+    color: ${Color.red};
+  }
+  @media (max-width: ${size.mobileM}) {
+    padding: 0em 0 0 0.7em !important;
+  }
+  @media (max-width: ${size.tabletL}) {
+    padding: 0.5em 0.5em;
   }
 `
 
@@ -37,6 +67,9 @@ export const AboutNavItemLink = styled(AniLink)`
   text-decoration: none;
   > p {
     font-size: 1em;
+  }
+  @media (max-width: ${size.mobileM}) {
+    font-size: 1.1em;
   }
 `
 

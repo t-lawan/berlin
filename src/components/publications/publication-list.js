@@ -10,6 +10,7 @@ import PublicationItem from "./publication-item"
 
 const PublicationListWrapper = styled(TwoColumnPageWrapper)`
   height: 100%;
+  padding-top: 0 !important;
 `
 
 const AnchorDiv = styled.div`
@@ -24,6 +25,11 @@ const AnchorDiv = styled.div`
 const PublicationAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 30%;
+  transition: all 0.2s ease-in-out;
+  :hover {
+    cursor: pointer;
+    color: ${Color.red};
+  }
   @media (max-width: ${size.tabletL}) {
     width: 100%;
   }
@@ -60,7 +66,7 @@ class PublicationList extends Component {
         // })
         scrollIntoView(element, {
           scrollMode: "if-needed",
-          block: "center",
+          block: "start",
           inline: "nearest",
           behavior: "smooth",
           boundary: parent,

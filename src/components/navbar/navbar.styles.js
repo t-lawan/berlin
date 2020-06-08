@@ -53,9 +53,9 @@ export const NavInner = styled.div`
 
 export const NavMobileInner = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   padding: 0.7em 0em 0.7em 1.3em;
-  column-gap: 1em;
+  column-gap: 0em;
   @media (min-width: ${size.mobileL}) {
     padding: 0.5em 0.7em 0.0em;
     grid-template-columns: 1fr 1fr;
@@ -180,10 +180,10 @@ export const NavIconSVG = styled.img`
 
 export const NavMobileLinks = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 1em;
   line-height: 1.3;
-  padding: 0.5em 0 0.5em 1.3em;
+  padding: 0.9em 0 0.5em 0em;
   > a {
     font-size:1.1em;
   }
@@ -257,8 +257,8 @@ export const NavMobileLinkSmall = styled(AniLink)`
 
 export const NavMobileOuterLinkSmall = styled.a`
   text-decoration: none;
-  font-size: 1.1em;
-  padding-bottom: 0.0rem;
+  font-size: 1.15em;
+  padding-bottom: 0.3rem;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size:0.80em;
@@ -293,8 +293,8 @@ export const NavMobileOuterLink = styled.a`
 `
 
 export const NavMobileModal = styled.p`
-  font-size: 1.1em;
-  padding-bottom: 0.0rem;
+  font-size: 1.15em;
+  padding-bottom: 0.3rem;
   margin: 0;
   display: block;
   @media (min-width: ${size.mobileL}) {
@@ -311,6 +311,8 @@ export const NavMobileContent = styled.div`
   max-height: ${props => (props.show ? "1200px" : "0")};
   transition: all 0.3s ease-in-out;
   padding-bottom: 0.0em;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   @media (min-width: ${size.mobileL}) {
     max-height: calc(100vh - 40px);
     position: fixed;

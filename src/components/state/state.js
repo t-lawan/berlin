@@ -233,29 +233,23 @@ const State = props => {
           #       acf {
           #         exp_number
           #         firstname
+          #         # image_gallery
           #         is_artist_in_exhibition
           #         lastname
           #         participant_group
           #         personal_website
+          #         # related_resources
           #         EN {
+          #           # group_bios
           #           project_description
-          #           participant_group_members
-          #           participant_group_name
-          #           participant_venue
-          #           participant_video_caption
-          #           short_bio
-          #           works_list
+          #           # short_bio
           #         }
+          #         participant_venue
           #         DE {
+          #           # group_bios
           #           project_description
-          #           participant_group_members
-          #           participant_group_name
-          #           participant_venue
-          #           participant_video_caption
           #           short_bio
-          #           works_list
           #         }
-          #         sorting_name
           #       }
           #     }
           #   }
@@ -284,7 +278,7 @@ const State = props => {
                     document_download_label
                     document_language
                     free_text_entry
-                    document_upload
+                    #document_upload
                   }
                   floating_resource
                   image_gallery {
@@ -348,43 +342,45 @@ const State = props => {
                   }
                   publicURL
                 }
+                
               }
             }
           }
           allWordpressWpPublications {
-            edges {
-              node {
-                wordpress_id
-                slug
-                acf {
-                  DE {
-                    description
-                    publisher
-                    subtitle
-                    title
-                  }
-                  EN {
-                    publisher
-                    subtitle
-                    title
-                    description
-                  }
-                  exp_number
-                  isbn
-                  image_gallery {
+              edges {
+               node {
+                 wordpress_id
+                 slug
+                 acf {
+                   DE {
+                     description
+                     publisher
+                     subtitle
+                     title
+                   }
+                   EN {
+                     description
+                     publisher
+                     subtitle
+                     title
+                   }
+                   exp_number
+                   isbn
+                   image_gallery {
+                    alt_text
+                    wordpress_id
                     acf {
                       caption_de
                       caption_en
+                      external_url
                     }
-                    wordpress_id
-                    alt_text
                     media_type
                   }
-                  social_media_image
-                }
-              }
-            }
-          }
+                   social_media_image
+                 }
+               }
+             }
+           }
           allWordpressWpVenue {
             edges {
               node {
@@ -396,11 +392,17 @@ const State = props => {
                     access_info
                     venue_name
                     venue_description
+                    opening_hours {
+                      hours
+                    }
                   }
                   deutsch {
                     access_info
                     venue_name
                     venue_description
+                    opening_hours {
+                      hours
+                    }
                   }
                   google_map_link
                   thumbnail_image
@@ -462,6 +464,7 @@ const State = props => {
       data.allWordpressWpNews,
       Convert.toNewsModel
     )
+    // let news = generateNewsArticles(20)
 
     let exhibitions = Convert.toModelArray(
       data.allWordpressWpExhibitions,
@@ -474,8 +477,8 @@ const State = props => {
     )
 
     let publications = Convert.toModelArray(
-      data.allWordpressWpPublications,
-      Convert.toPublicationModel
+    data.allWordpressWpPublications,
+    Convert.toPublicationModel
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
