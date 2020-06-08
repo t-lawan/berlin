@@ -12,8 +12,12 @@ const PublicationItemWrapper = styled.div`
 
 const PublicationDescription = styled.div`
   a {
-    text-decoration: underline;
-    text-decoration-color: ${Color.red};
+    font-size: 1em;
+    border-bottom: solid 1px ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
   }
 `
 const PublicationImageWrapper = styled.div`
