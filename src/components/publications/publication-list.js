@@ -26,6 +26,7 @@ const PublicationAnchorLink = styled.div`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
   p {
     width: 30%;
+    line-height: 1.3;
   } 
   transition: all 0.2s ease-in-out;
   :hover {
