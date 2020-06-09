@@ -97,11 +97,11 @@ export const FormInput = styled.input`
     line-height: 1.4;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
     line-height: 1.4;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
     line-height: 1.45;
   }
 `
@@ -202,10 +202,10 @@ export const FormText = styled.p`
     font-size: 1em;
   }
   @media (min-width: ${size.laptopM}) {
-    font-size: 1.1em;
+    font-size: 1.05em;
   }
   @media (min-width: ${size.laptopL}) {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 `
 
@@ -258,7 +258,7 @@ export const FormLabel = styled.label`
     font-size: 1em;
     line-height: 1.4;
     > a {
-      /* font-size: 1em; */
+      font-size: 1em; 
     }
   }
   @media (min-width: ${size.laptopM}) {
@@ -268,14 +268,14 @@ export const FormLabel = styled.label`
       /* font-size: 1em; */
     }
     > a {
-      /* font-size: 1.1em; */
+      font-size: 1.0em; 
     }
   }
   @media (min-width: ${size.laptopL}) {
     font-size: 1.1em;
     line-height: 1.45;
     > a {
-      /* font-size: 1.2em; */
+       font-size: 1.0em; 
     }
   }
   > p {

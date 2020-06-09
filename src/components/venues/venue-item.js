@@ -7,25 +7,24 @@ import { TextBlock } from "../../templates/page.styles"
 import { ExternalLink, Color, size } from "../../index.styles"
 
 const VenueItemWrapper = styled.div`
-  margin-bottom: 3rem;
-
+  margin-bottom: 2rem;
+  
   @media (min-width: ${size.laptop}) {
     padding-top: calc(97px + 2.5em);
-    margin-top: 225px;
-    padding-bottom: -110px;
+    margin-bottom: -6rem;
+    :last-child {
+    margin-bottom: 3rem;
+    }
+    margin-top: 0px;
     :first-child {
-      margin-top: calc(-97px - 2.5em);
-
+    margin-top: calc(-97px - 2.5em);
     }
   }
 
   @media (min-width: ${size.laptopL}) {
-
     padding-top: calc(110px + 2.7em);
-    padding-bottom: -110px; 
     :first-child {
-      margin-top: calc(-110px - 2.7em);
-
+    margin-top: calc(-110px - 2.7em);
     }
   }
 `
@@ -57,7 +56,7 @@ const VenueItem = props => {
       <ImageWrapper >
         <ImageResource
           id={venue.thumbnail_image ? venue.thumbnail_image : 411}
-          withCaption={false}
+          withCaption={true}
         />
       </ImageWrapper>
       <TextBlock>

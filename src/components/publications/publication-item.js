@@ -6,23 +6,24 @@ import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { getCurrentLanguageString } from "../../utility/helper"
 
 const PublicationItemWrapper = styled.div`
-  margin-bottom: 3rem;
-
+  margin-bottom: 2rem;
+  
   @media (min-width: ${size.laptop}) {
     padding-top: calc(97px + 2.5em);
-    margin-top: 225px;
-    padding-bottom: -110px;
+    margin-bottom: -6rem;
+    :last-child {
+    margin-bottom: 3rem;
+    }
+    margin-top: 0px;
     :first-child {
-      margin-top: calc(-97px - 2.5em);
+    margin-top: calc(-97px - 2.5em);
     }
   }
 
   @media (min-width: ${size.laptopL}) {
     padding-top: calc(110px + 2.7em);
-    padding-bottom: -110px; 
     :first-child {
-      margin-top: calc(-110px - 2.7em);
-
+    margin-top: calc(-110px - 2.7em);
     }
   }
 `

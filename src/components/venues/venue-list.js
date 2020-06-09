@@ -28,6 +28,7 @@ const VenuesAnchorLinkWrapper = styled.div`
 const VenueAnchorLink = styled.p`
   /* color: ${props => (props.inView ? Color.red : "black")}; */
   width: 75%;
+  line-height: 1.3;
   transition: all 0.2s ease-in-out;
   :hover {
     color: ${Color.red};
