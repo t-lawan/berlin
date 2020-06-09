@@ -53,6 +53,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_resourcesAcfText_based_resource implements Node @dontInfer {
       document_upload: Int
     }
+
+    type wordpress__wp_newsAcf implements Node {
+      thumbnail_image: Int
+    }
   `
   createTypes(typeDefs)
 }
