@@ -1,7 +1,7 @@
 import React from "react"
 import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
-import { PageWrapper } from "./page.styles"
+import { PageWrapper, PageTitle } from "./page.styles"
 import { connect } from "react-redux"
 import {
   getCurrentLanguageString,
@@ -33,6 +33,11 @@ const Publications = props => {
         //   publication.slug
         // }`}
       />
+      <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[language].title,
+          }}
+        />
       <PublicationList />
     </PageWrapper>
   )
