@@ -47,8 +47,16 @@ const PublicationAnchorLink = styled.div`
 `
 
 const PublicationAnchorLinkWrapper = styled.div`
-  overflow-y: scroll;
-  height: 100%;
+  overflow-y: hidden;
+  position: relative;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  display: none;
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
 `
 
 const PublicationContentWrapper = styled.div`
