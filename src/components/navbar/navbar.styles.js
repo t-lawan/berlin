@@ -211,7 +211,7 @@ export const NavMobileInactiveLink = styled.p`
   font-size: 1.55em;
   line-height: 1.2;
   padding-bottom: 0.0rem;
-  margin-bottom:0.1em;
+  margin-bottom:0.2em;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
@@ -221,7 +221,6 @@ export const NavMobileInactiveLink = styled.p`
     font-size: 1.2em;
     line-height: 1.3;
   }
-  margin-bottom: 0;
   opacity: 0.3;
 `
 
@@ -230,7 +229,7 @@ export const NavMobileLink = styled(AniLink)`
   font-size: 1.55em;
   line-height: 1.2;
   padding-bottom: 0.0rem;
-  margin-bottom:0.1em;
+  margin-bottom:0.2em;
   display: block;
   @media (min-width: ${size.mobileL}) {
     font-size: 1.0em;
