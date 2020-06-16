@@ -42,8 +42,8 @@ function SEO({ description, lang, meta, title, image, pathname }) {
   const metaDescription =
     description ||
     (lang === "en"
-      ? "The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From June 13 to September 13, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city."
-      : "Die 11. Berlin Biennale für zeitgenössische Kunst wird von María Berríos, Renata Cervetto, Lisette Lagnado und Agustín Pérez Rubio kuratiert. Sie stellen sich die kommende Ausgabe als eine Folge gelebter Erfahrungen vor. Vom 13. Juni bis zum 13. September 2020 bringt die 11. Berlin Biennale diese Erfahrungen an mehreren Ausstellungsorten in der Stadt zusammen.")
+      ? "The 11th Berlin Biennale for Contemporary Art is curated by María Berríos, Renata Cervetto, Lisette Lagnado, and Agustín Pérez Rubio. They envision the forthcoming edition as a series of lived experiences. From September 5 to November 1, 2020, the 11th Berlin Biennale will bring forth these experiences at various venues throughout the city."
+      : "Die 11. Berlin Biennale für zeitgenössische Kunst wird von María Berríos, Renata Cervetto, Lisette Lagnado und Agustín Pérez Rubio kuratiert. Sie stellen sich die kommende Ausgabe als eine Folge gelebter Erfahrungen vor. Vom 5. September bis zum 1. November 2020 bringt die 11. Berlin Biennale diese Erfahrungen an mehreren Ausstellungsorten in der Stadt zusammen.")
   const siteUrl = "https://11.berlinbiennale.de"
 
   // Set default image
