@@ -9,19 +9,47 @@ import {
 } from "../../utility/helper"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { Link } from "gatsby"
-import { startTransition } from "../../store/action";
+import { startTransition } from "../../store/action"
+import { size } from "../../index.styles"
 
 const AlphabetContainer = styled.div`
   margin-bottom: 3rem;
+  /* width: 40%; */
+  @media (min-width: ${size.laptop}) and (max-width: ${size.laptopL}) {
+    width: 40%;
+  }
 `
 
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
   margin-bottom: 7rem;
+  position: relative;
 `
 
 const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
+`
+
+const ParticipantAnchorLinkWrapper = styled.div`
+  overflow-y: hidden;
+  position: relative;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  display: none;
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
+`
+
+const AnchorDiv = styled.div`
+  position: fixed;
+  overflow-y: scroll;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
 `
 
 const ExperienceContainer = styled.div``
@@ -63,7 +91,7 @@ const ExperienceImage = styled.img`
   }
 `
 class ParticipantOverView extends Component {
-  language;
+  language
   alphabet = [
     "a",
     "b",
@@ -125,7 +153,7 @@ class ParticipantOverView extends Component {
     this.partipants = this.alphabet.map(value => {
       return {
         participants: [
-          { name: `${value + "elena"}`, experience: 1 },
+          { name: `${value + "atricia"}`, experience: 1 },
           { name: `${value + "homas"}`, experience: 2 },
         ],
         letter: value,
@@ -156,7 +184,7 @@ class ParticipantOverView extends Component {
     if (element) {
       scrollIntoView(element, {
         scrollMode: "if-needed",
-        block: "center",
+        block: "start",
         inline: "nearest",
         behavior: "smooth",
         boundary: parent,
@@ -179,40 +207,42 @@ class ParticipantOverView extends Component {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
-        <div>
-          <AlphabetContainer>
-            {this.alphabet.map((value, index) => (
-              <AlphabetText
-                key={index}
-                onClick={() => this.scrollToAnchor(value)}
-              >
-                {" "}
-                {value.toUpperCase()}{" "}
-              </AlphabetText>
-            ))}
-          </AlphabetContainer>
-          <ExperienceContainer>
-            {this.experiences.map((value, index) => (
-              <>
-                {value.isText ? (
-                  <ExperienceText
-                    onClick={() => this.changeExperience(value.id)}
-                    key={index}
-                  >
-                    {" "}
-                    {value.display}{" "}
-                  </ExperienceText>
-                ) : (
-                  <ExperienceImage
-                    onClick={() => this.changeExperience(value.id)}
-                    src={value.display}
-                    key={index}
-                  />
-                )}
-              </>
-            ))}
-          </ExperienceContainer>
-        </div>
+        <ParticipantAnchorLinkWrapper>
+          <AnchorDiv>
+            <AlphabetContainer>
+              {this.alphabet.map((value, index) => (
+                <AlphabetText
+                  key={index}
+                  onClick={() => this.scrollToAnchor(value)}
+                >
+                  {" "}
+                  {value.toUpperCase()}{" "}
+                </AlphabetText>
+              ))}
+            </AlphabetContainer>
+            <ExperienceContainer>
+              {this.experiences.map((value, index) => (
+                <>
+                  {value.isText ? (
+                    <ExperienceText
+                      onClick={() => this.changeExperience(value.id)}
+                      key={index}
+                    >
+                      {" "}
+                      {value.display}{" "}
+                    </ExperienceText>
+                  ) : (
+                    <ExperienceImage
+                      onClick={() => this.changeExperience(value.id)}
+                      src={value.display}
+                      key={index}
+                    />
+                  )}
+                </>
+              ))}
+            </ExperienceContainer>
+          </AnchorDiv>
+        </ParticipantAnchorLinkWrapper>
         <div>
           {this.partipants.map((value, index) => (
             <AlphabetLanguageContainer
