@@ -98,6 +98,7 @@ const ParticipantName = styled.p`
 const ExperienceText = styled.span`
   display: block;
   margin-bottom: 0.4rem;
+  opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
   }
@@ -106,6 +107,7 @@ const ExperienceText = styled.span`
 const ExperienceImage = styled.img`
   margin-top: 1rem;
   width: 10% !important;
+  opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
   }
@@ -168,29 +170,29 @@ class ParticipantOverView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      chosenExperience: ExperienceState.TWO,
+      chosenExperience: ExperienceState.ONE,
     }
     this.partipants = this.alphabet.map(value => {
       return {
         participants: [
-          { name: `${value + "atricia"}`, experience: 1 },
-          { name: `${value + "homas"}`, experience: 2 },
+          { name: `${value + "atricia"}`, experience: [1, 4] },
+          { name: `${value + "homas"}`, experience: [2] },
         ],
         letter: value,
       }
     })
   }
 
-  experienceHasChosen = experience => {
+  isPartOfExperience = experience => {
     switch (this.state.chosenExperience) {
       case ExperienceState.ONE:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience)
       case ExperienceState.TWO:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience)
       case ExperienceState.THREE:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience)
       case ExperienceState.FOUR:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience)
       case ExperienceState.ALL:
         return true
       default:
@@ -246,6 +248,7 @@ class ParticipantOverView extends Component {
                   {value.isText ? (
                     <ExperienceText
                       onClick={() => this.changeExperience(value.id)}
+                      isChosenExperience={(this.state.chosenExperience === value.id) || (this.state.chosenExperience === ExperienceState.ALL)}
                       key={index}
                     >
                       {" "}
@@ -254,6 +257,7 @@ class ParticipantOverView extends Component {
                   ) : (
                     <ExperienceImage
                       onClick={() => this.changeExperience(value.id)}
+                      isChosenExperience={(this.state.chosenExperience === value.id) || (this.state.chosenExperience === ExperienceState.ALL)}
                       src={value.display}
                       key={index}
                     />
@@ -280,7 +284,7 @@ class ParticipantOverView extends Component {
                     to={createPath(this.language, "participant/dodie-bellamy")}
                   >
                     <ParticipantName
-                      isSelected={this.experienceHasChosen(
+                      isSelected={this.isPartOfExperience(
                         participant.experience
                       )}
                     >
