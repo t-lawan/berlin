@@ -15,19 +15,39 @@ import { size } from "../../index.styles"
 const AlphabetContainer = styled.div`
   margin-bottom: 3rem;
   /* width: 40%; */
-  @media (min-width: ${size.laptop}) and (max-width: ${size.laptopL}) {
+  @media (min-width: ${size.laptop}) {
     width: 40%;
   }
 `
 
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
-  margin-bottom: 7rem;
+  /* margin-bottom: 7rem; */
   position: relative;
+
 `
 
 const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
+  @media (min-width: ${size.laptop}) {
+    padding-top: calc(97px + 1.5em);
+    margin-bottom: -6rem;
+    :last-child {
+    margin-bottom: 3rem;
+    }
+    margin-top: 0px;
+    :first-child {
+    padding-top: calc(97px + 2.5em);
+    margin-top: calc(-97px - 2.5em);
+    }
+  }
+
+  @media (min-width: ${size.laptopL}) {
+    padding-top: calc(110px + 2.7em);
+    :first-child {
+    margin-top: calc(-110px - 2.7em);
+    }
+  }
 `
 
 const ParticipantAnchorLinkWrapper = styled.div`
