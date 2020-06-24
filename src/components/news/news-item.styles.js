@@ -29,9 +29,10 @@ export const NewsText = styled.p`
   } */
 `
 
+
 export const NewsItemLink = styled(Link)`
   > p {
-  line-height: 1.3;
+   line-height: 1.3;
    transition: all 0.2s ease-in-out; 
    @media (min-width: ${size.mobileSL}) {
     font-size: 1em ;
@@ -45,14 +46,19 @@ export const NewsItemLink = styled(Link)`
   } 
   :hover > p > span {
     color: ${Color.red}
-  };
+  }
+  :hover {
+    cursor: pointer;
+  }
 
 `
 export const NewsItemContainer = styled.div`
   transition: all 0.2s ease-in-out;
-  cursor:pointer;
   p {
     margin:0;
+  }
+  > div > p {
+    line-height: 1.3;
   }
 
 `
