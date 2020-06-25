@@ -527,8 +527,9 @@ exports.createPages = async ({ graphql, actions }) => {
               venue_tel
               venue_wheelchair_access
             }
+            date
           }
-        }
+        }      
       }
     }
   `)
