@@ -6,6 +6,7 @@ import * as actionTypes from "../../store/action"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 import moment from "moment"
+import { DateManager } from "../../utility/date";
 const State = props => {
   if (!props.isLoaded) {
     const data = useStaticQuery(
@@ -342,31 +343,30 @@ const State = props => {
                   }
                   publicURL
                 }
-                
               }
             }
           }
           allWordpressWpPublications {
-              edges {
-               node {
-                 wordpress_id
-                 slug
-                 acf {
-                   DE {
-                     description
-                     publisher
-                     subtitle
-                     title
-                   }
-                   EN {
-                     description
-                     publisher
-                     subtitle
-                     title
-                   }
-                   exp_number
-                   isbn
-                   image_gallery {
+            edges {
+              node {
+                wordpress_id
+                slug
+                acf {
+                  DE {
+                    description
+                    publisher
+                    subtitle
+                    title
+                  }
+                  EN {
+                    description
+                    publisher
+                    subtitle
+                    title
+                  }
+                  exp_number
+                  isbn
+                  image_gallery {
                     alt_text
                     wordpress_id
                     acf {
@@ -376,11 +376,11 @@ const State = props => {
                     }
                     media_type
                   }
-                   social_media_image
-                 }
-               }
-             }
-           }
+                  social_media_image
+                }
+              }
+            }
+          }
           allWordpressWpVenue {
             edges {
               node {
@@ -417,6 +417,7 @@ const State = props => {
                   venue_tel
                   venue_wheelchair_access
                 }
+                date
               }
             }
           }
@@ -477,8 +478,8 @@ const State = props => {
     )
 
     let publications = Convert.toModelArray(
-    data.allWordpressWpPublications,
-    Convert.toPublicationModel
+      data.allWordpressWpPublications,
+      Convert.toPublicationModel
     )
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
@@ -507,6 +508,10 @@ const State = props => {
       data.allWordpressWpVenue,
       Convert.toVenueModel
     )
+
+    venues = venues.sort((a, b) => {
+      return DateManager.isFirstGreaterThanSecond(a.date, b.date);
+    })
 
     let documents = Convert.toModelArray(
       data.allWordpressWpMedia,
