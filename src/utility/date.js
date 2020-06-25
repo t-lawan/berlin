@@ -33,6 +33,10 @@ export class DateManager {
     return moment(date).diff(moment(), 'day');
   }
 
+  static isFirstGreaterThanSecond = (first_date, second_date) => {
+    return moment(first_date).isSameOrAfter(moment(second_date))
+  }
+
   static getNumberOfDaysInMonth = (monthNum, year) => {
     const calendar = this.getCalendar();
     return calendar[year][monthNum].numberOfDays
