@@ -508,10 +508,11 @@ const State = props => {
       data.allWordpressWpVenue,
       Convert.toVenueModel
     )
-
     venues = venues.sort((a, b) => {
-      return DateManager.isFirstGreaterThanSecond(a.date, b.date);
+      return DateManager.daysBetween(a.date, b.date);
     })
+
+
 
     let documents = Convert.toModelArray(
       data.allWordpressWpMedia,
