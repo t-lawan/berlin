@@ -71,7 +71,7 @@ const AboutTitle  = {
   },
   "support": {
     EN: 'Support',
-    DE: 'Unterstutzung'
+    DE: 'Unterstützung'
   },
 
 }
