@@ -6,6 +6,7 @@ import * as actionTypes from "../../store/action"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 import moment from "moment"
+import { DateManager } from "../../utility/date";
 const State = props => {
   if (!props.isLoaded) {
     const data = useStaticQuery(
@@ -422,6 +423,7 @@ const State = props => {
                   venue_tel
                   venue_wheelchair_access
                 }
+                date
               }
             }
           }
@@ -512,6 +514,11 @@ const State = props => {
       data.allWordpressWpVenue,
       Convert.toVenueModel
     )
+    venues = venues.sort((a, b) => {
+      return DateManager.daysBetween(a.date, b.date);
+    })
+
+
 
     let documents = Convert.toModelArray(
       data.allWordpressWpMedia,

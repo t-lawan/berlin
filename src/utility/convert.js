@@ -215,6 +215,7 @@ export class Convert {
     return new VenueModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
+      wordpressModel.date,
       wordpressModel.acf.deutsch,
       wordpressModel.acf.english,
       wordpressModel.acf.google_map_link,
