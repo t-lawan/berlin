@@ -10,7 +10,7 @@ import {
 import scrollIntoView from "scroll-into-view-if-needed"
 import { Link } from "gatsby"
 import { startTransition } from "../../store/action"
-import { size } from "../../index.styles"
+import { size, Color } from "../../index.styles"
 
 const AlphabetContainer = styled.div`
   margin-bottom: 3rem;
@@ -77,8 +77,10 @@ const AlphabetText = styled.span`
   padding: 0.4rem 0.3rem;
   display: inline-block;
   :hover {
-    cursor: pointer;
+    cursor: ${props => props.hasParticipants ? 'pointer' : 'default'};
+    color: ${props => props.hasParticipants ? Color.red : 'black'};
   }
+  opacity: ${props => props.hasParticipants ? 1 : 0.3};
 `
 
 const ExperienceState = {
@@ -184,7 +186,6 @@ class ParticipantOverView extends Component {
   }
 
   isPartOfExperience = experience => {
-    console.log('EXP', experience)
     switch (this.state.chosenExperience) {
       case ExperienceState.ONE:
         return experience.includes(this.state.chosenExperience.toString())
@@ -228,19 +229,19 @@ class ParticipantOverView extends Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
-    console.log('PARTICIPANTS', this.participants)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
         <ParticipantAnchorLinkWrapper>
           <AnchorDiv>
             <AlphabetContainer>
-              {this.alphabet.map((value, index) => (
+              {this.participants.map((value, index) => (
                 <AlphabetText
                   key={index}
-                  onClick={() => this.scrollToAnchor(value)}
+                  onClick={() => this.scrollToAnchor(value.letter)}
+                  hasParticipants={value.participants.length > 0}
                 >
                   {" "}
-                  {value.toUpperCase()}{" "}
+                  {value.letter.toUpperCase()}{" "}
                 </AlphabetText>
               ))}
             </AlphabetContainer>
@@ -277,25 +278,32 @@ class ParticipantOverView extends Component {
         </ParticipantAnchorLinkWrapper>
         <div>
           {this.participants.map((value, index) => (
-            <AlphabetLanguageContainer
-              key={index}
-              id={`anchor-${value.letter}`}
-            >
-              <div>
-                <p> {value.letter.toUpperCase()}</p>
-              </div>
-              <div>
-                {value.participants.map((participant, i) => (
-                  <ParticipantName
-                    key={i}
-                    isSelected={this.isPartOfExperience(participant.experience)}
-                  >
-                    {" "}
-                    {capitalise(participant.firstname)} {capitalise(participant.lastname)}
-                  </ParticipantName>
-                ))}
-              </div>
-            </AlphabetLanguageContainer>
+            <>
+              {value.participants.length > 0 ? (
+                <AlphabetLanguageContainer
+                  key={index}
+                  id={`anchor-${value.letter}`}
+                >
+                  <div>
+                    <p> {value.letter.toUpperCase()}</p>
+                  </div>
+                  <div>
+                    {value.participants.map((participant, i) => (
+                      <ParticipantName
+                        key={i}
+                        isSelected={this.isPartOfExperience(
+                          participant.experience
+                        )}
+                      >
+                        {" "}
+                        {capitalise(participant.firstname)}{" "}
+                        {capitalise(participant.lastname)}
+                      </ParticipantName>
+                    ))}
+                  </div>
+                </AlphabetLanguageContainer>
+              ) : null}
+            </>
           ))}
         </div>
       </ParticipantOverviewWrapper>
@@ -306,7 +314,7 @@ class ParticipantOverView extends Component {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    participants: state.participants
+    participants: state.participants,
   }
 }
 const mapDispatchToProps = dispatch => {
