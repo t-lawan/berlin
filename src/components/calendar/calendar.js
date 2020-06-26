@@ -1,10 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import MonthCards from "./monthcards"
-import { CalendarWrapper } from "./calendar.styles"
+import { CalendarWrapper, CalendarFilterWrapper, CalendarFilter, CalendarFilterButton, CalendarFilterDates } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { startTransition, setFreshLoadToTrue } from "../../store/action"
+import styled from "styled-components"
+import { Color } from "../../index.styles"
 
 class Calendar extends React.Component {
   calendar
@@ -17,6 +19,9 @@ class Calendar extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      showFilter: false
+    }
     this.calendarRef = React.createRef()
     this.calendar = this.props.calendar
     this.months = Object.keys(this.calendar)
@@ -86,11 +91,17 @@ class Calendar extends React.Component {
         scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
-        behavior: 'smooth',
+        behavior: "smooth",
         boundary: parent,
-        skipOverflowHiddenElements: true
+        skipOverflowHiddenElements: true,
       })
     }
+  }
+
+  toggleFilterDates = () => {
+    this.setState({
+      showFilter: !this.state.showFilter
+    })
   }
 
   componentDidMount() {
@@ -101,20 +112,33 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <CalendarWrapper id="calendar-wrapper">
-        {this.months.map((month, index) => (
-          <MonthCards
-            isStart={index === 0}
-            startDate={this.startDate}
-            isEnd={this.months.length === index + 1}
-            endDate={this.endDate}
-            key={index}
-            month={this.calendar[month]}
-            title={month.split("-")[1]}
-            year={month.split("-")[0]}
-          />
-        ))}
-      </CalendarWrapper>
+      <>
+        <CalendarFilterWrapper>
+          <CalendarFilter>
+            <CalendarFilterButton onClick={() => this.toggleFilterDates()}> filter by date </CalendarFilterButton>
+          </CalendarFilter>
+          <CalendarFilterDates show={this.state.showFilter}>
+            <p>Dates</p>
+            <p>Dates</p>
+            <p>Dates</p>
+            <p>Dates</p>
+          </CalendarFilterDates>
+        </CalendarFilterWrapper>
+        <CalendarWrapper id="calendar-wrapper">
+          {this.months.map((month, index) => (
+            <MonthCards
+              isStart={index === 0}
+              startDate={this.startDate}
+              isEnd={this.months.length === index + 1}
+              endDate={this.endDate}
+              key={index}
+              month={this.calendar[month]}
+              title={month.split("-")[1]}
+              year={month.split("-")[0]}
+            />
+          ))}
+        </CalendarWrapper>
+      </>
     )
   }
 }
