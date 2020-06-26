@@ -76,6 +76,10 @@ export class DateManager {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM");
   }
 
+  static isTheSame = (first_date, second_date) => {
+    return moment(first_date).isSame(moment(second_date));
+  } 
+
   static createShortDayString = (day, month, year, language) => {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format(language == "DE" ? "dd" : "ddd");
   }

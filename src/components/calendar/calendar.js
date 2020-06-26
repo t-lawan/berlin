@@ -3,14 +3,6 @@ import { connect } from "react-redux"
 import MonthCards from "./monthcards"
 import {
   CalendarWrapper,
-  CalendarFilterWrapper,
-  CalendarFilter,
-  CalendarFilterButton,
-  CalendarFilterDates,
-  CalendarFilterMonthsWrapper,
-  CalendarFilterMonth,
-  SmallCalendarWrapper,
-  SmallCalendarDates,
 } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
