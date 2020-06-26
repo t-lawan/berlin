@@ -1,12 +1,18 @@
 import React from "react"
 import { connect } from "react-redux"
 import MonthCards from "./monthcards"
-import { CalendarWrapper, CalendarFilterWrapper, CalendarFilter, CalendarFilterButton, CalendarFilterDates } from "./calendar.styles"
+import {
+  CalendarWrapper,
+  CalendarFilterWrapper,
+  CalendarFilter,
+  CalendarFilterButton,
+  CalendarFilterDates,
+  CalendarFilterMonthsWrapper,
+  CalendarFilterMonth,
+} from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { startTransition, setFreshLoadToTrue } from "../../store/action"
-import styled from "styled-components"
-import { Color } from "../../index.styles"
 
 class Calendar extends React.Component {
   calendar
@@ -20,7 +26,7 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      showFilter: false
+      showFilter: false,
     }
     this.calendarRef = React.createRef()
     this.calendar = this.props.calendar
@@ -100,7 +106,7 @@ class Calendar extends React.Component {
 
   toggleFilterDates = () => {
     this.setState({
-      showFilter: !this.state.showFilter
+      showFilter: !this.state.showFilter,
     })
   }
 
@@ -111,17 +117,22 @@ class Calendar extends React.Component {
   }
 
   render() {
+    console.log("MONTHS", this.months)
     return (
       <>
         <CalendarFilterWrapper>
           <CalendarFilter>
-            <CalendarFilterButton onClick={() => this.toggleFilterDates()}> filter by date </CalendarFilterButton>
+            <CalendarFilterButton onClick={() => this.toggleFilterDates()}>
+              {" "}
+              filter by date{" "}
+            </CalendarFilterButton>
           </CalendarFilter>
           <CalendarFilterDates show={this.state.showFilter}>
-            <p>Dates</p>
-            <p>Dates</p>
-            <p>Dates</p>
-            <p>Dates</p>
+            <CalendarFilterMonthsWrapper>
+              {this.months.map((mon, index) => (
+                <CalendarFilterMonth key={index}>{DateManager.getFilter(mon, "month")}</CalendarFilterMonth>
+              ))}
+            </CalendarFilterMonthsWrapper>
           </CalendarFilterDates>
         </CalendarFilterWrapper>
         <CalendarWrapper id="calendar-wrapper">

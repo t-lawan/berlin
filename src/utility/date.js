@@ -19,6 +19,10 @@ export class DateManager {
     return moment(date, "YYYY-MM-DD HH:mm Z").get(type);
   }
 
+  static getFilter = (date, type = "year" | "month" | "date") => {
+    return moment(date, "YYYY-M").format('MMM');
+  }
+
   static add = (number = 1, date) => {
     return moment(date).add(number, 'days').format('YYYYMMDD');
   }

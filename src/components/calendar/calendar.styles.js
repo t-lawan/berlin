@@ -47,13 +47,28 @@ export const CalendarFilterButton = styled.p`
   }
 `
 
+export const CalendarFilterMonthsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 export const CalendarFilterDates = styled.div`
   display: ${props => props.show ? 'block': 'none'};
   background: ${Color.yellow};
   border: 1px solid black !important;
   border-top: 0 !important;
-  width: 7.5%;
+  width: auto;
   position: absolute;
   margin-left: 5%;
   text-align: center;
+  padding: 0.5rem;
+`
+
+export const CalendarFilterMonth =  styled.p`
+  display: inline-flex;
+  padding: 0 0.25em;
+  cursor: pointer;
+  :hover {
+    color: ${Color.red};
+  }
 `
