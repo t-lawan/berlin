@@ -82,7 +82,8 @@ export const SmallCalendarDates = styled.p`
   color: ${props => (props.isDate ? Color.red : "black")};
   opacity: ${props => (props.isValid ? 1 : 0.4)};
   display: inline-block;
+  cursor: ${props => (props.isValid ? 'pointer' : 'default')};
   :hover {
-    color: ${Color.red};
+    color: ${props => (props.isValid ? Color.red : "black")};
   }
 `
