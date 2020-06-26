@@ -37,6 +37,16 @@ export class DateManager {
     return moment(date).diff(moment(), 'day');
   }
 
+  static getArrayOfDays = (month, year) => {
+    let days = DateManager.getNumberOfDaysInMonth(month, year)
+    let array =  new Array(days).fill(0)
+    array = array.map((num, index) => {
+      return index + 1;
+    })
+
+    return array;
+  }
+
   static isFirstGreaterThanSecond = (first_date, second_date) => {
     return moment(first_date).isSameOrAfter(moment(second_date))
   }

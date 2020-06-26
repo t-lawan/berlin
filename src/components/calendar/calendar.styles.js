@@ -19,10 +19,7 @@ ${changeGridToThreeEqualRows};
 ${changeGridToTwoEqualColumns}; */
 `
 
-export const CalendarScrollArea = styled.div`
-
-`
-
+export const CalendarScrollArea = styled.div``
 
 export const CalendarFilter = styled.div`
   background: ${Color.yellow};
@@ -53,7 +50,7 @@ export const CalendarFilterMonthsWrapper = styled.div`
 `
 
 export const CalendarFilterDates = styled.div`
-  display: ${props => props.show ? 'block': 'none'};
+  display: ${props => (props.show ? "block" : "none")};
   background: ${Color.yellow};
   border: 1px solid black !important;
   border-top: 0 !important;
@@ -64,10 +61,25 @@ export const CalendarFilterDates = styled.div`
   padding: 0.5rem;
 `
 
-export const CalendarFilterMonth =  styled.p`
+export const CalendarFilterMonth = styled.p`
   display: inline-flex;
   padding: 0 0.25em;
   cursor: pointer;
+  color: ${props => (props.isMonth ? Color.red : "black")};
+  :hover {
+    color: ${Color.red};
+  }
+`
+
+export const SmallCalendarWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+`
+
+export const SmallCalendarDates = styled.p`
+  color: ${props => (props.isDate ? Color.red : "black")};
+  opacity: ${props => (props.isValid ? 1 : 0.4)};
+  display: inline-block;
   :hover {
     color: ${Color.red};
   }
