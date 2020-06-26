@@ -23,7 +23,6 @@ const AlphabetContainer = styled.div`
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
   /* margin-bottom: 7rem; */
   position: relative;
-
 `
 
 const AlphabetLanguageContainer = styled.div`
@@ -33,19 +32,19 @@ const AlphabetLanguageContainer = styled.div`
     padding-top: calc(97px + 1.5em);
     margin-bottom: -6rem;
     :last-child {
-    margin-bottom: 3rem;
+      margin-bottom: 3rem;
     }
     margin-top: 0px;
     :first-child {
-    padding-top: calc(97px + 2.5em);
-    margin-top: calc(-97px - 2.5em);
+      padding-top: calc(97px + 2.5em);
+      margin-top: calc(-97px - 2.5em);
     }
   }
 
   @media (min-width: ${size.laptopL}) {
     padding-top: calc(110px + 2.7em);
     :first-child {
-    margin-top: calc(-110px - 2.7em);
+      margin-top: calc(-110px - 2.7em);
     }
   }
 `
@@ -248,7 +247,10 @@ class ParticipantOverView extends Component {
                   {value.isText ? (
                     <ExperienceText
                       onClick={() => this.changeExperience(value.id)}
-                      isChosenExperience={(this.state.chosenExperience === value.id) || (this.state.chosenExperience === ExperienceState.ALL)}
+                      isChosenExperience={
+                        this.state.chosenExperience === value.id ||
+                        this.state.chosenExperience === ExperienceState.ALL
+                      }
                       key={index}
                     >
                       {" "}
@@ -257,7 +259,10 @@ class ParticipantOverView extends Component {
                   ) : (
                     <ExperienceImage
                       onClick={() => this.changeExperience(value.id)}
-                      isChosenExperience={(this.state.chosenExperience === value.id) || (this.state.chosenExperience === ExperienceState.ALL)}
+                      isChosenExperience={
+                        this.state.chosenExperience === value.id ||
+                        this.state.chosenExperience === ExperienceState.ALL
+                      }
                       src={value.display}
                       key={index}
                     />
@@ -278,20 +283,13 @@ class ParticipantOverView extends Component {
               </div>
               <div>
                 {value.participants.map((participant, i) => (
-                  <Link
+                  <ParticipantName
                     key={i}
-                    onClick={() => this.props.startTransition()}
-                    to={createPath(this.language, "participant/dodie-bellamy")}
+                    isSelected={this.isPartOfExperience(participant.experience)}
                   >
-                    <ParticipantName
-                      isSelected={this.isPartOfExperience(
-                        participant.experience
-                      )}
-                    >
-                      {" "}
-                      {capitalise(participant.name)}{" "}
-                    </ParticipantName>
-                  </Link>
+                    {" "}
+                    {capitalise(participant.name)}{" "}
+                  </ParticipantName>
                 ))}
               </div>
             </AlphabetLanguageContainer>
