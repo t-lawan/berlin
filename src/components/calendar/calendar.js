@@ -13,6 +13,7 @@ import {
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { startTransition, setFreshLoadToTrue } from "../../store/action"
+import { getCurrentLanguageString } from "../../utility/helper";
 
 class Calendar extends React.Component {
   calendar
@@ -118,6 +119,7 @@ class Calendar extends React.Component {
 
   render() {
     console.log("MONTHS", this.months)
+    this.language = getCurrentLanguageString(this.props.languages)
     return (
       <>
         <CalendarFilterWrapper>
@@ -130,7 +132,7 @@ class Calendar extends React.Component {
           <CalendarFilterDates show={this.state.showFilter}>
             <CalendarFilterMonthsWrapper>
               {this.months.map((mon, index) => (
-                <CalendarFilterMonth key={index}>{DateManager.getFilter(mon, "month")}</CalendarFilterMonth>
+                <CalendarFilterMonth key={index}>{DateManager.getFilter(mon, this.language.toLowerCase())}</CalendarFilterMonth>
               ))}
             </CalendarFilterMonthsWrapper>
           </CalendarFilterDates>
