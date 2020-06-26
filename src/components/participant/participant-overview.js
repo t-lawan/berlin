@@ -92,6 +92,7 @@ const ExperienceState = {
 const ParticipantName = styled.p`
   opacity: ${props => (props.isSelected ? 1 : 0.3)};
   margin: 0;
+  margin-bottom: 0.25rem;
 `
 
 const ExperienceText = styled.span`
@@ -141,7 +142,7 @@ class ParticipantOverView extends Component {
     "y",
     "z",
   ]
-  partipants = []
+  participants = []
   experiences = [
     {
       id: 1,
@@ -171,27 +172,28 @@ class ParticipantOverView extends Component {
     this.state = {
       chosenExperience: ExperienceState.ONE,
     }
-    this.partipants = this.alphabet.map(value => {
+    this.participants = this.alphabet.map(value => {
+      let part = props.participants.filter((p, i) => {
+        return p.sorting_name[0].toLowerCase() === value
+      })
       return {
-        participants: [
-          { name: `${value + "atricia"}`, experience: [1, 4] },
-          { name: `${value + "homas"}`, experience: [2] },
-        ],
+        participants: part,
         letter: value,
       }
     })
   }
 
   isPartOfExperience = experience => {
+    console.log('EXP', experience)
     switch (this.state.chosenExperience) {
       case ExperienceState.ONE:
-        return experience.includes(this.state.chosenExperience)
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.TWO:
-        return experience.includes(this.state.chosenExperience)
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.THREE:
-        return experience.includes(this.state.chosenExperience)
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.FOUR:
-        return experience.includes(this.state.chosenExperience)
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.ALL:
         return true
       default:
@@ -226,6 +228,7 @@ class ParticipantOverView extends Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages)
+    console.log('PARTICIPANTS', this.participants)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
         <ParticipantAnchorLinkWrapper>
@@ -246,12 +249,12 @@ class ParticipantOverView extends Component {
                 <>
                   {value.isText ? (
                     <ExperienceText
+                      key={index}
                       onClick={() => this.changeExperience(value.id)}
                       isChosenExperience={
                         this.state.chosenExperience === value.id ||
                         this.state.chosenExperience === ExperienceState.ALL
                       }
-                      key={index}
                     >
                       {" "}
                       {value.display}{" "}
@@ -273,7 +276,7 @@ class ParticipantOverView extends Component {
           </AnchorDiv>
         </ParticipantAnchorLinkWrapper>
         <div>
-          {this.partipants.map((value, index) => (
+          {this.participants.map((value, index) => (
             <AlphabetLanguageContainer
               key={index}
               id={`anchor-${value.letter}`}
@@ -288,7 +291,7 @@ class ParticipantOverView extends Component {
                     isSelected={this.isPartOfExperience(participant.experience)}
                   >
                     {" "}
-                    {capitalise(participant.name)}{" "}
+                    {capitalise(participant.firstname)} {capitalise(participant.lastname)}
                   </ParticipantName>
                 ))}
               </div>
@@ -303,6 +306,7 @@ class ParticipantOverView extends Component {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    participants: state.participants
   }
 }
 const mapDispatchToProps = dispatch => {

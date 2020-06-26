@@ -205,7 +205,6 @@ export class Convert {
       wordpressModel.acf.lastname,
       wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
-      wordpressModel.acf.image_gallery,
       wordpressModel.acf.is_artist_in_exhibition,
       wordpressModel.acf.participant_group
     )
