@@ -245,7 +245,7 @@ class ParticipantOverView extends Component {
       <ParticipantOverviewWrapper id="anchor-parent">
       <PageTitle
           dangerouslySetInnerHTML={{
-            __html: content[language].title,
+            __html: content[this.language].title,
           }}
         />
         <ParticipantAnchorLinkWrapper>
