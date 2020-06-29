@@ -172,7 +172,7 @@ class ParticipantOverView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      chosenExperience: ExperienceState.ONE,
+      chosenExperience: ExperienceState.ALL,
     }
     this.participants = this.alphabet.map(value => {
       let part = props.participants.filter((p, i) => {
