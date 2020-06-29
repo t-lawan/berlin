@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { TwoColumnPageWrapper } from "../../templates/page.styles"
+import { TwoColumnPageWrapper, PageTitle } from "../../templates/page.styles"
 import {
   capitalise,
   createPath,
@@ -17,6 +17,10 @@ const AlphabetContainer = styled.div`
   /* width: 40%; */
   @media (min-width: ${size.laptop}) {
     width: 40%;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: ${size.laptopM}) {
+    width: 37%;
   }
 `
 
@@ -29,8 +33,8 @@ const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
   @media (min-width: ${size.laptop}) {
-    padding-top: calc(97px + 1.5em);
-    margin-bottom: -6rem;
+    padding-top: calc(97px + 2.5em);
+    margin-bottom: calc(-97px - 2.5em);
     :last-child {
       margin-bottom: 3rem;
     }
@@ -40,7 +44,15 @@ const AlphabetLanguageContainer = styled.div`
       margin-top: calc(-97px - 2.5em);
     }
   }
-
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 1fr 12fr;
+    padding-top: calc(97px + 3em);
+    margin-bottom: calc(-97px - 3em);
+    :first-child {
+      padding-top: calc(97px + 3em);
+      margin-top: calc(-97px - 3em);
+    }
+  }
   @media (min-width: ${size.laptopL}) {
     padding-top: calc(110px + 2.7em);
     :first-child {
@@ -56,7 +68,6 @@ const ParticipantAnchorLinkWrapper = styled.div`
     position: relative;
     margin-bottom: 1rem;
   }
-  display: none;
   @media (min-width: ${size.tabletL}) {
     display: block;
   }
@@ -74,7 +85,7 @@ const AnchorDiv = styled.div`
 const ExperienceContainer = styled.div``
 
 const AlphabetText = styled.span`
-  padding: 0.4rem 0.3rem;
+  padding: 0.2rem 0.5rem 0.2rem 0;
   display: inline-block;
   :hover {
     cursor: ${props => props.hasParticipants ? 'pointer' : 'default'};
@@ -94,7 +105,6 @@ const ExperienceState = {
 const ParticipantName = styled.p`
   opacity: ${props => (props.isSelected ? 1 : 0.3)};
   margin: 0;
-  margin-bottom: 0.25rem;
 `
 
 const ExperienceText = styled.span`
@@ -107,8 +117,10 @@ const ExperienceText = styled.span`
 `
 
 const ExperienceImage = styled.img`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   width: 10% !important;
+  max-width: 30px;
+  margin-left: 0.1rem;
   opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
@@ -149,17 +161,17 @@ class ParticipantOverView extends Component {
     {
       id: 1,
       isText: true,
-      display: "exp 1",
+      display: "exp. 1",
     },
     {
       id: 2,
       isText: true,
-      display: "exp 2",
+      display: "exp. 2",
     },
     {
       id: 3,
       isText: true,
-      display: "exp 3",
+      display: "exp. 3",
     },
     {
       id: 4,
@@ -231,6 +243,11 @@ class ParticipantOverView extends Component {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
+      <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[language].title,
+          }}
+        />
         <ParticipantAnchorLinkWrapper>
           <AnchorDiv>
             <AlphabetContainer>
@@ -309,6 +326,15 @@ class ParticipantOverView extends Component {
       </ParticipantOverviewWrapper>
     )
   }
+}
+
+let content = {
+  EN: {
+    title: "Participants",
+  },
+  DE: {
+    title: "Beteiligte",
+  },
 }
 
 const mapStateToProps = state => {
