@@ -19,6 +19,10 @@ export class DateManager {
     return moment(date, "YYYY-MM-DD HH:mm Z").get(type);
   }
 
+  static getFilter = (date, lang) => {
+    return moment(date, "YYYY-M").locale(lang).format('MMM');
+  }
+
   static add = (number = 1, date) => {
     return moment(date).add(number, 'days').format('YYYYMMDD');
   }
@@ -31,6 +35,20 @@ export class DateManager {
 
   static getDaysFromCurrentDate = (date) => {
     return moment(date).diff(moment(), 'day');
+  }
+
+  static getArrayOfDays = (month, year) => {
+    let days = DateManager.getNumberOfDaysInMonth(month, year)
+    let array =  new Array(days).fill(0)
+    array = array.map((num, index) => {
+      return index + 1;
+    })
+
+    return array;
+  }
+
+  static isFirstGreaterThanSecond = (first_date, second_date) => {
+    return moment(first_date).isSameOrAfter(moment(second_date))
   }
 
   static getNumberOfDaysInMonth = (monthNum, year) => {
@@ -57,6 +75,10 @@ export class DateManager {
   static createShortMonthString = (day, month, year, language) => {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format("MMM");
   }
+
+  static isTheSame = (first_date, second_date) => {
+    return moment(first_date).isSame(moment(second_date));
+  } 
 
   static createShortDayString = (day, month, year, language) => {
     return moment(`${year}-${month}-${day}`, 'YYYY-MM-DD').locale(language).format(language == "DE" ? "dd" : "ddd");

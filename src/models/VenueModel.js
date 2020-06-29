@@ -2,6 +2,7 @@ export class VenueModel {
   constructor(
     id,
     slug,
+    date,
     deutsch,
     english,
     google_map_link,
@@ -11,10 +12,11 @@ export class VenueModel {
     plz,
     public_transit,
     tel,
-    wheelchair_access
+    wheelchair_access,
   ) {
     this.id = id
     this.slug = slug
+    this.date = date;
     this.DE = deutsch
     this.EN = english
     this.google_map_link = google_map_link

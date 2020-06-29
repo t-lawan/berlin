@@ -205,7 +205,6 @@ export class Convert {
       wordpressModel.acf.lastname,
       wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
-      wordpressModel.acf.image_gallery,
       wordpressModel.acf.is_artist_in_exhibition,
       wordpressModel.acf.participant_group
     )
@@ -215,6 +214,7 @@ export class Convert {
     return new VenueModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
+      wordpressModel.date,
       wordpressModel.acf.deutsch,
       wordpressModel.acf.english,
       wordpressModel.acf.google_map_link,

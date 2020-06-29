@@ -491,6 +491,41 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allWordpressWpParticipants {
+        edges {
+          node {
+            wordpress_id
+            slug
+            acf {
+              exp_number
+              firstname
+              is_artist_in_exhibition
+              lastname
+              participant_group
+              personal_website
+              EN {
+                project_description
+                participant_group_members
+                participant_group_name
+                participant_venue
+                participant_video_caption
+                short_bio
+                works_list
+              }
+              DE {
+                project_description
+                short_bio
+                participant_group_members
+                participant_group_name
+                participant_venue
+                participant_video_caption
+                works_list
+              }
+              sorting_name
+            }
+          }
+        }
+      }
       allWordpressWpVenue {
         edges {
           node {
@@ -527,8 +562,9 @@ exports.createPages = async ({ graphql, actions }) => {
               venue_tel
               venue_wheelchair_access
             }
+            date
           }
-        }
+        }      
       }
     }
   `)
@@ -540,7 +576,7 @@ exports.createPages = async ({ graphql, actions }) => {
     allWordpressPage,
     allWordpressWpEvents,
     allWordpressWpExhibitions,
-    // allWordpressWpParticipants,
+    allWordpressWpParticipants,
     allWordpressWpVenue,
     allWordpressWpResources,
     allWordpressWpDocumentation,
@@ -952,20 +988,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // const participantsTemplate = path.resolve("./src/templates/participants.js")
-  // languages.forEach(language => {
-  //   let prePath = pageMap.find(pageType => {
-  //     return pageType.EN === "participants"
-  //   })
-  //   let path =
-  //     language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
+  const participantsTemplate = path.resolve("./src/templates/participants.js")
+  languages.forEach(language => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "participants"
+    })
+    let path =
+      language === "en" ? `/${prePath.EN}` : `/${language}/${prePath.DE}`
 
-  //   createPage({
-  //     path: path,
-  //     component: slash(participantsTemplate),
-  //     context: { language: language, slug: prePath[language.toUpperCase()] },
-  //   })
-  // })
+    createPage({
+      path: path,
+      component: slash(participantsTemplate),
+      context: { language: language, slug: prePath[language.toUpperCase()] },
+    })
+  })
 
   const mediaTemplate = path.resolve("./src/templates/media.js")
   languages.forEach(language => {
