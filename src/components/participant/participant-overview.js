@@ -22,6 +22,9 @@ const AlphabetContainer = styled.div`
   @media (min-width: ${size.laptopM}) {
     width: 37%;
   }
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 1rem;
+  }
 `
 
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
@@ -32,6 +35,13 @@ const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
 const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
+  @media (max-width: ${size.mobileM}) {
+    padding-top: 1em;
+    margin-bottom: -1em;
+    :last-child {
+      margin-bottom: 3rem;
+    }
+  }
   @media (min-width: ${size.laptop}) {
     padding-top: calc(97px + 2.5em);
     margin-bottom: calc(-97px - 2.5em);
@@ -54,9 +64,11 @@ const AlphabetLanguageContainer = styled.div`
     }
   }
   @media (min-width: ${size.laptopL}) {
-    padding-top: calc(110px + 2.7em);
+    padding-top: calc(107px + 3em);
+    margin-bottom: calc(-107px - 3em);
     :first-child {
-      margin-top: calc(-110px - 2.7em);
+      margin-top: calc(-107px - 3em);
+      padding-top: calc(107px + 3em);
     }
   }
 `
@@ -64,6 +76,9 @@ const AlphabetLanguageContainer = styled.div`
 const ParticipantAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
   position: relative;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0 !important;
+  }
   @media (max-width: ${size.tabletL}) {
     position: relative;
     margin-bottom: 1rem;
@@ -82,7 +97,12 @@ const AnchorDiv = styled.div`
   }
 `
 
-const ExperienceContainer = styled.div``
+const ExperienceContainer = styled.div`
+@media (max-width: ${size.mobileM}) {
+display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+`
 
 const AlphabetText = styled.span`
   padding: 0.2rem 0.5rem 0.2rem 0;
@@ -92,6 +112,9 @@ const AlphabetText = styled.span`
     color: ${props => props.hasParticipants ? Color.red : 'black'};
   }
   opacity: ${props => props.hasParticipants ? 1 : 0.3};
+  @media (max-width: ${size.mobileM}) {
+    padding: 0rem 1rem 0.5rem 0;
+  }
 `
 
 const ExperienceState = {
@@ -114,6 +137,11 @@ const ExperienceText = styled.span`
   :hover {
     cursor: pointer;
   }
+  @media (max-width: ${size.mobileM}) {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 0;
+  }
 `
 
 const ExperienceImage = styled.img`
@@ -124,6 +152,11 @@ const ExperienceImage = styled.img`
   opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display: inline-block !important;
+    margin: 0;
+    width: 30px !important;
   }
 `
 class ParticipantOverView extends Component {
