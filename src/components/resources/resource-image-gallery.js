@@ -98,7 +98,7 @@ const ResourceImageGallery = props => {
           />
         </div>
       </TwoColumnPageWrapperInternalDoc>
-      <RelatedResources border={true} ids={[r.id]} />
+      <RelatedResources border={true} ids={[r.id]} id={r.id} />
     </PageWrapperRes>
   )
 }
