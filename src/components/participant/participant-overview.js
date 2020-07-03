@@ -35,6 +35,9 @@ const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
 const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
+  > div:first-child > p {
+    margin-bottom: 0;
+  }
   @media (max-width: ${size.mobileM}) {
     padding-top: 1em;
     margin-bottom: -1em;
@@ -349,7 +352,6 @@ class ParticipantOverView extends Component {
                         {!participant.group ? 
                           `${capitalise(participant.firstname)} ${capitalise(participant.lastname)}` : `${capitalise(participant[this.language].participant_group_name)}`
                         }
-  
                       </ParticipantName>
                     ))}
                   </div>
