@@ -57,7 +57,18 @@ const ResLink = styled.div`
     }
   }
 `
-
+const ResourceTextDiv = styled.div`
+  a {
+    border-bottom: solid thin;
+    font-size: 1em;
+    border-color: ${Color.red};
+    word-break: break-all;
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+  }
+`
 const ResourceImageGallery = props => {
   const language = getCurrentLanguageString(props.languages)
   const r = props.resource
@@ -80,18 +91,17 @@ const ResourceImageGallery = props => {
           
         </div>
         <div>
-          <div
+          <ResourceTextDiv
             dangerouslySetInnerHTML={{
               __html: r.description,
             }}
           />
         </div>
       </TwoColumnPageWrapperInternalDoc>
-      <RelatedResources border={true} ids={[r.id]} />
+      <RelatedResources border={true} ids={[r.id]} id={r.id} />
     </PageWrapperRes>
   )
 }
-
 
 ResourceImageGallery.propTypes = {
   resource: PropTypes.object,
