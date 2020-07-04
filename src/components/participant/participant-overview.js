@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { TwoColumnPageWrapper } from "../../templates/page.styles"
+import { TwoColumnPageWrapper, PageTitle } from "../../templates/page.styles"
 import {
   capitalise,
   createPath,
@@ -9,28 +9,114 @@ import {
 } from "../../utility/helper"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { Link } from "gatsby"
-import { startTransition } from "../../store/action";
+import { startTransition } from "../../store/action"
+import { size, Color } from "../../index.styles"
 
 const AlphabetContainer = styled.div`
   margin-bottom: 3rem;
+  /* width: 40%; */
+  @media (min-width: ${size.laptop}) {
+    width: 40%;
+    margin-bottom: 2rem;
+  }
+  @media (min-width: ${size.laptopM}) {
+    width: 37%;
+  }
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 1rem;
+  }
 `
 
 const ParticipantOverviewWrapper = styled(TwoColumnPageWrapper)`
-  margin-bottom: 7rem;
+  /* margin-bottom: 7rem; */
+  position: relative;
 `
 
 const AlphabetLanguageContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 9fr;
+  > div:first-child > p {
+    margin-bottom: 0;
+  }
+  @media (max-width: ${size.mobileM}) {
+    padding-top: 1em;
+    margin-bottom: -1em;
+    :last-child {
+      margin-bottom: 3rem;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    padding-top: calc(97px + 2.5em);
+    margin-bottom: calc(-97px - 2.5em);
+    :last-child {
+      margin-bottom: 3rem;
+    }
+    margin-top: 0px;
+    :first-child {
+      padding-top: calc(97px + 2.5em);
+      margin-top: calc(-97px - 2.5em);
+    }
+  }
+  @media (min-width: ${size.laptopM}) {
+    grid-template-columns: 1fr 12fr;
+    padding-top: calc(97px + 3em);
+    margin-bottom: calc(-97px - 3em);
+    :first-child {
+      padding-top: calc(97px + 3em);
+      margin-top: calc(-97px - 3em);
+    }
+  }
+  @media (min-width: ${size.laptopL}) {
+    padding-top: calc(107px + 3em);
+    margin-bottom: calc(-107px - 3em);
+    :first-child {
+      margin-top: calc(-107px - 3em);
+      padding-top: calc(107px + 3em);
+    }
+  }
 `
 
-const ExperienceContainer = styled.div``
+const ParticipantAnchorLinkWrapper = styled.div`
+  overflow-y: hidden;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0 !important;
+  }
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
+`
+
+const AnchorDiv = styled.div`
+  position: fixed;
+  overflow-y: scroll;
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+`
+
+const ExperienceContainer = styled.div`
+@media (max-width: ${size.mobileM}) {
+display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+`
 
 const AlphabetText = styled.span`
-  padding: 0.4rem 0.3rem;
+  padding: 0.2rem 0.5rem 0.2rem 0;
   display: inline-block;
   :hover {
-    cursor: pointer;
+    cursor: ${props => props.hasParticipants ? 'pointer' : 'default'};
+    color: ${props => props.hasParticipants ? Color.red : 'black'};
+  }
+  opacity: ${props => props.hasParticipants ? 1 : 0.3};
+  @media (max-width: ${size.mobileM}) {
+    padding: 0rem 1rem 0.5rem 0;
   }
 `
 
@@ -50,20 +136,34 @@ const ParticipantName = styled.p`
 const ExperienceText = styled.span`
   display: block;
   margin-bottom: 0.4rem;
+  opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
+  }
+  @media (max-width: ${size.mobileM}) {
+    display: inline-block;
+    margin-right: 1em;
+    margin-bottom: 0;
   }
 `
 
 const ExperienceImage = styled.img`
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   width: 10% !important;
+  max-width: 30px;
+  margin-left: 0.1rem;
+  opacity: ${props => (props.isChosenExperience ? 1 : 0.3)};
   :hover {
     cursor: pointer;
   }
+  @media (max-width: ${size.mobileM}) {
+    display: inline-block !important;
+    margin: 0;
+    width: 30px !important;
+  }
 `
 class ParticipantOverView extends Component {
-  language;
+  language
   alphabet = [
     "a",
     "b",
@@ -92,22 +192,22 @@ class ParticipantOverView extends Component {
     "y",
     "z",
   ]
-  partipants = []
+  participants = []
   experiences = [
     {
       id: 1,
       isText: true,
-      display: "exp 1",
+      display: "exp. 1",
     },
     {
       id: 2,
       isText: true,
-      display: "exp 2",
+      display: "exp. 2",
     },
     {
       id: 3,
       isText: true,
-      display: "exp 3",
+      display: "exp. 3",
     },
     {
       id: 4,
@@ -120,29 +220,29 @@ class ParticipantOverView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      chosenExperience: ExperienceState.TWO,
+      chosenExperience: ExperienceState.ALL,
     }
-    this.partipants = this.alphabet.map(value => {
+    this.participants = this.alphabet.map(value => {
+      let part = props.participants.filter((p, i) => {
+        return p.sorting_name[0].toLowerCase() === value
+      })
       return {
-        participants: [
-          { name: `${value + "elena"}`, experience: 1 },
-          { name: `${value + "homas"}`, experience: 2 },
-        ],
+        participants: part,
         letter: value,
       }
     })
   }
 
-  experienceHasChosen = experience => {
+  isPartOfExperience = experience => {
     switch (this.state.chosenExperience) {
       case ExperienceState.ONE:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.TWO:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.THREE:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.FOUR:
-        return experience === this.state.chosenExperience
+        return experience.includes(this.state.chosenExperience.toString())
       case ExperienceState.ALL:
         return true
       default:
@@ -156,7 +256,7 @@ class ParticipantOverView extends Component {
     if (element) {
       scrollIntoView(element, {
         scrollMode: "if-needed",
-        block: "center",
+        block: "start",
         inline: "nearest",
         behavior: "smooth",
         boundary: parent,
@@ -179,68 +279,85 @@ class ParticipantOverView extends Component {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
-        <div>
-          <AlphabetContainer>
-            {this.alphabet.map((value, index) => (
-              <AlphabetText
-                key={index}
-                onClick={() => this.scrollToAnchor(value)}
-              >
-                {" "}
-                {value.toUpperCase()}{" "}
-              </AlphabetText>
-            ))}
-          </AlphabetContainer>
-          <ExperienceContainer>
-            {this.experiences.map((value, index) => (
-              <>
-                {value.isText ? (
-                  <ExperienceText
-                    onClick={() => this.changeExperience(value.id)}
-                    key={index}
-                  >
-                    {" "}
-                    {value.display}{" "}
-                  </ExperienceText>
-                ) : (
-                  <ExperienceImage
-                    onClick={() => this.changeExperience(value.id)}
-                    src={value.display}
-                    key={index}
-                  />
-                )}
-              </>
-            ))}
-          </ExperienceContainer>
-        </div>
-        <div>
-          {this.partipants.map((value, index) => (
-            <AlphabetLanguageContainer
-              key={index}
-              id={`anchor-${value.letter}`}
-            >
-              <div>
-                <p> {value.letter.toUpperCase()}</p>
-              </div>
-              <div>
-                {value.participants.map((participant, i) => (
-                  <Link
-                    key={i}
-                    onClick={() => this.props.startTransition()}
-                    to={createPath(this.language, "participant/dodie-bellamy")}
-                  >
-                    <ParticipantName
-                      isSelected={this.experienceHasChosen(
-                        participant.experience
-                      )}
+      <PageTitle
+          dangerouslySetInnerHTML={{
+            __html: content[this.language].title,
+          }}
+        />
+        <ParticipantAnchorLinkWrapper>
+          <AnchorDiv>
+            <AlphabetContainer>
+              {this.participants.map((value, index) => (
+                <AlphabetText
+                  key={index}
+                  onClick={() => this.scrollToAnchor(value.letter)}
+                  hasParticipants={value.participants.length > 0}
+                >
+                  {" "}
+                  {value.letter.toUpperCase()}{" "}
+                </AlphabetText>
+              ))}
+            </AlphabetContainer>
+            <ExperienceContainer>
+              {this.experiences.map((value, index) => (
+                <>
+                  {value.isText ? (
+                    <ExperienceText
+                      key={index}
+                      onClick={() => this.changeExperience(value.id)}
+                      isChosenExperience={
+                        this.state.chosenExperience === value.id ||
+                        this.state.chosenExperience === ExperienceState.ALL
+                      }
                     >
                       {" "}
-                      {capitalise(participant.name)}{" "}
-                    </ParticipantName>
-                  </Link>
-                ))}
-              </div>
-            </AlphabetLanguageContainer>
+                      {value.display}{" "}
+                    </ExperienceText>
+                  ) : (
+                    <ExperienceImage
+                      onClick={() => this.changeExperience(value.id)}
+                      isChosenExperience={
+                        this.state.chosenExperience === value.id ||
+                        this.state.chosenExperience === ExperienceState.ALL
+                      }
+                      src={value.display}
+                      key={index}
+                    />
+                  )}
+                </>
+              ))}
+            </ExperienceContainer>
+          </AnchorDiv>
+        </ParticipantAnchorLinkWrapper>
+        <div>
+          {this.participants.map((value, index) => (
+            <>
+              {value.participants.length > 0 ? (
+                <AlphabetLanguageContainer
+                  key={index}
+                  id={`anchor-${value.letter}`}
+                >
+                  <div>
+                    <p> {value.letter.toUpperCase()}</p>
+                  </div>
+                  <div>
+                    {value.participants.map((participant, i) => (
+                      <ParticipantName
+                        key={i}
+                        isSelected={this.isPartOfExperience(
+                          participant.experience
+                        )}
+                      >
+                        {" "}
+                        {!participant.group ? 
+                          `${capitalise(participant.firstname)} ${capitalise(participant.lastname)}` : `${capitalise(participant[this.language].participant_group_name)}`
+                        }
+                      </ParticipantName>
+                    ))}
+                  </div>
+                </AlphabetLanguageContainer>
+              ) : null}
+            </>
           ))}
         </div>
       </ParticipantOverviewWrapper>
@@ -248,9 +365,19 @@ class ParticipantOverView extends Component {
   }
 }
 
+let content = {
+  EN: {
+    title: "Participants",
+  },
+  DE: {
+    title: "Beteiligte",
+  },
+}
+
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    participants: state.participants,
   }
 }
 const mapDispatchToProps = dispatch => {

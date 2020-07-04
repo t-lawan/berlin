@@ -1,11 +1,14 @@
 import React from "react"
 import { connect } from "react-redux"
 import MonthCards from "./monthcards"
-import { CalendarWrapper } from "./calendar.styles"
+import {
+  CalendarWrapper,
+} from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
 import { startTransition, setFreshLoadToTrue } from "../../store/action"
-
+import { getCurrentLanguageString } from "../../utility/helper";
+import CalendarFilterDropDown from './calendar-filter'
 class Calendar extends React.Component {
   calendar
   months
@@ -86,9 +89,9 @@ class Calendar extends React.Component {
         scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
-        behavior: 'smooth',
+        behavior: "smooth",
         boundary: parent,
-        skipOverflowHiddenElements: true
+        skipOverflowHiddenElements: true,
       })
     }
   }
@@ -100,21 +103,25 @@ class Calendar extends React.Component {
   }
 
   render() {
+    this.language = getCurrentLanguageString(this.props.languages)
     return (
-      <CalendarWrapper id="calendar-wrapper">
-        {this.months.map((month, index) => (
-          <MonthCards
-            isStart={index === 0}
-            startDate={this.startDate}
-            isEnd={this.months.length === index + 1}
-            endDate={this.endDate}
-            key={index}
-            month={this.calendar[month]}
-            title={month.split("-")[1]}
-            year={month.split("-")[0]}
-          />
-        ))}
-      </CalendarWrapper>
+      <>
+        {/* <CalendarFilterDropDown startDate={this.startDate} endDate={this.endDate} months={this.months}/> */}
+        <CalendarWrapper id="calendar-wrapper">
+          {this.months.map((month, index) => (
+            <MonthCards
+              isStart={index === 0}
+              startDate={this.startDate}
+              isEnd={this.months.length === index + 1}
+              endDate={this.endDate}
+              key={index}
+              month={this.calendar[month]}
+              title={month.split("-")[1]}
+              year={month.split("-")[0]}
+            />
+          ))}
+        </CalendarWrapper>
+      </>
     )
   }
 }
