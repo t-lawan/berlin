@@ -531,7 +531,7 @@ const State = props => {
         "participants",
         "beteiligte",
         false,
-        true
+        false
       ),
       new NavbarModel("exchange", "exchange", "austausch", false, false),
       new NavbarModel(
