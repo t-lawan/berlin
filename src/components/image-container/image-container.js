@@ -141,7 +141,7 @@ class ImageContainer extends React.Component {
               </ImageGalleryWrapper>
             </>
           ) : null}
-          {this.exhibition && !this.exhibition.has_gallery_images ? (
+          {this.exhibition && !this.exhibition.has_gallery_images && this.exhibition.floor_plan ? (
             <ImageResource
               id={
                 this.exhibition && this.exhibition.floor_plan
