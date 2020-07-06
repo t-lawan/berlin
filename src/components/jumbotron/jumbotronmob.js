@@ -14,10 +14,10 @@ const Jumbotron = props => {
   let image = getDocument(props.documents, exhibition[language].exp_bb11_right_header);
   let imagedate = getDocument(props.documents, exhibition[language].exp_dates_header);
   return(
-  <JumbotronWrapperMob showOnHomePage={props.showOnHomePage} showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
+  <JumbotronWrapperMob isExperience4={props.experience == 4} showOnHomePage={props.showOnHomePage} showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader to={createPath(language, '')}>
       {imagedate ? <img src={imagedate.publicUrl} alt={imagedate.slug}/> : null}
-      {image ? <img src={image.publicUrl} alt={image.slug}/> : null}
+      {image && props.experience != 4 ? <img src={image.publicUrl} alt={image.slug}/> : null}
     </JumbotronHeader>
   </JumbotronWrapperMob>
 )
