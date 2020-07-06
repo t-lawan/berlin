@@ -134,7 +134,6 @@ const Author = styled.p`
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
   let resources = shuffle(props.resources).slice(0, 6);
-
   const createComponent = (index) => {
     const resource = resources[index]
     let renderComponent
@@ -147,12 +146,12 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem>
-              <ImageResource
-                id={resource.thumbnail_image}
-                withCaption={false}
-              />
+              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
+
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
+
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -165,6 +164,8 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem>
+            {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
+
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
                  {resource.subtitle.length > 0 ? <ResourceTitle> {resource.subtitle} </ResourceTitle> : ""}
@@ -183,9 +184,10 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
-              <ImageResource id={resource.thumbnail_image} withCaption={false} />
+              <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -198,6 +200,8 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
+              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
+
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
                 {resource.author.length > 0 ? <ResourceTitle> {resource.author} </ResourceTitle> : ""}
@@ -216,7 +220,10 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
+            {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
+
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
             </ResourceItem>
           </ResourceItemLink>
         )
