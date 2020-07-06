@@ -153,6 +153,11 @@ const RelatedResources = props => {
 
   // Add to resources function
   resources.push(...resourceGenres)
+  if(props.id) {
+    resources = resources.filter((re) => {
+      return re.id !== props.id
+    })
+  }
 
   // Reduce to 9
   if(resources.length > 9) {
