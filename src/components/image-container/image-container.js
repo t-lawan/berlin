@@ -25,10 +25,11 @@ const ImageContainerWrapper = styled.section`
   z-index: 0;
 
   @media (min-width: ${size.laptop}) {
-    padding: 0.2em 1em 0;
+    padding:${props => props.hasImage ? '0.2em 1em 0' : '0'};
   }
   @media (max-width: ${size.tabletL}) {
-    padding: 0.7em 0.7em 0;
+    padding:${props => props.hasImage ? '0.7em 0.7em 0' : '0'};
+
   }
 
   &.${transitionName}-enter {
@@ -116,6 +117,7 @@ class ImageContainer extends React.Component {
           hideOnHomePage={this.props.hideOnHomePage}
           hideInMobile={this.props.hideInMobile}
           hideInTablet={this.props.hideInTablet}
+          hasImage={this.exhibition && (this.exhibition.has_gallery_images || this.exhibition.floor_plan)}
         >
           {this.exhibition && this.exhibition.has_gallery_images ? (
             <>
@@ -141,7 +143,7 @@ class ImageContainer extends React.Component {
               </ImageGalleryWrapper>
             </>
           ) : null}
-          {this.exhibition && !this.exhibition.has_gallery_images ? (
+          {this.exhibition && !this.exhibition.has_gallery_images && this.exhibition.floor_plan ? (
             <ImageResource
               id={
                 this.exhibition && this.exhibition.floor_plan

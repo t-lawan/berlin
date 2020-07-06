@@ -146,7 +146,7 @@ class ExperienceController extends React.Component {
           />
         </ExperienceButtonTitle>
         <ExperienceButtonTitle bold hidden={this.experiences.length === 0} show>
-          <span> exp. </span>
+          {this.props.experience != 4 ?  <span> exp. </span> :null} 
         </ExperienceButtonTitle>
         {this.experiences.map(experience => (
           <ExperienceButton
