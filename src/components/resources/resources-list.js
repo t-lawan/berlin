@@ -184,7 +184,7 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
-              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
+              <ImageResource id={resource.image} withCaption={false} />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
               {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
