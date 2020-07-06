@@ -16,7 +16,7 @@ const EventCard = props => {
   return (
     <EventCardWrapper>
       <EventCardLink onClick={() => props.startTransition()} to={createPath(language, event.slug)}>
-        <EventHeading>{event[language].display_time}</EventHeading>
+        {props.experience != 4 ? <EventHeading>{event[language].display_time}</EventHeading> : null}
         {event.item === "exhibition" ? (
           <p> <em> {event[language].title} </em></p>
         ) : (
@@ -35,6 +35,7 @@ EventCard.propTypes = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    experience: state.experience
   }
 }
 
