@@ -59,10 +59,10 @@ export const JumbotronWrapperMob = styled.div`
   margin: 0em;
   position:relative;
   @media (min-width: ${size.mobileS}) {
-    padding-bottom: ${props => props.isExperience4 ? '200px' : '130px'};
+    padding-bottom: ${props => props.isExperience4 ? '230px' : '130px'};
   }
   @media (min-width: ${size.mobileM}) {
-    padding-bottom: ${props => props.isExperience4 ? '240px' : '145px'};
+    padding-bottom: ${props => props.isExperience4 ? '230px' : '145px'};
   }
   width:100%;
   z-index:2;
