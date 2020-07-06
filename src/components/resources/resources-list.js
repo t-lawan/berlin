@@ -134,7 +134,6 @@ const Author = styled.p`
 const ResourcesList = props => {
   let language = getCurrentLanguageString(props.languages)
   let resources = shuffle(props.resources).slice(0, 6);
-
   const createComponent = (index) => {
     const resource = resources[index]
     let renderComponent
@@ -153,6 +152,8 @@ const ResourcesList = props => {
               />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
+
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -186,6 +187,7 @@ const ResourcesList = props => {
               <ImageResource id={resource.thumbnail_image} withCaption={false} />
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
             </ResourceItem>
           </ResourceItemLink>
         )
@@ -217,6 +219,7 @@ const ResourcesList = props => {
           >
             <ResourceItem key={index}>
               <ResourceTitle> {resource.title} </ResourceTitle>
+              {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
             </ResourceItem>
           </ResourceItemLink>
         )
