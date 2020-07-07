@@ -49,7 +49,7 @@ const AlphabetLanguageContainer = styled.div`
     padding-top: calc(97px + 2.5em);
     margin-bottom: calc(-97px - 2.5em);
     :last-child {
-      margin-bottom: 3rem;
+      margin-bottom: 9rem;
     }
     margin-top: 0px;
     :first-child {
@@ -352,6 +352,7 @@ class ParticipantOverView extends Component {
                         {!participant.group ? 
                           `${capitalise(participant.firstname)} ${capitalise(participant.lastname)}` : `${capitalise(participant[this.language].participant_group_name)}`
                         }
+  
                       </ParticipantName>
                     ))}
                   </div>
