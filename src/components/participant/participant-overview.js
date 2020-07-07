@@ -350,7 +350,7 @@ class ParticipantOverView extends Component {
                       >
                         {" "}
                         {!participant.group ? 
-                          `${capitalise(participant.firstname)} ${capitalise(participant.lastname)}` : `${capitalise(participant[this.language].participant_group_name)}`
+                          `${participant.firstname} ${participant.lastname}` : `${participant[this.language].participant_group_name}`
                         }
   
                       </ParticipantName>
