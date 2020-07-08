@@ -227,7 +227,7 @@ class ParticipantOverView extends Component {
         return p.sorting_name[0].toLowerCase() === value
       })
       part = part.sort((a,b) => {
-        return (a.sorting_name.toLowerCase().attr > b.sorting_name.toLowerCase().attr) - (a.sorting_name.toLowerCase().attr < b.sorting_name.toLowerCase().attr)
+        return  a.sorting_name.localeCompare((b.sorting_name))
       });
       return {
         participants: part,
