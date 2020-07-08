@@ -164,8 +164,7 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem>
-            {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
-
+              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
                  {resource.subtitle.length > 0 ? <ResourceTitle> {resource.subtitle} </ResourceTitle> : ""}
@@ -184,7 +183,7 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem key={index}>
-              <ImageResource id={resource.image} withCaption={false} />
+              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
               <ResourceTitleImage> {resource.title} </ResourceTitleImage>
               {resource.author.length > 0 ? <Author> {resource.author} </Author> : ""}
               {resource[language].label ?  <ResourceLabel> {resource[language].label} </ResourceLabel> : null}
