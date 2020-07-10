@@ -49,13 +49,12 @@ const Year = styled.p`
 const ResourceVideo = props => {
     let language = getCurrentLanguageString(props.languages);
     let r = props.resource;
-
   return (
-    <PageWrapperRes color={Color.yellow}>
+    <PageWrapperRes colour={Color.yellow}>
         <ResourceNavigator id={r.id} />
           <VideoContainer
           dangerouslySetInnerHTML={{
-            __html: props.r.video,
+            __html: r.video,
           }}
           />
         <TwoColumnPageWrapper>
