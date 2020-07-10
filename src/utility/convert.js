@@ -190,7 +190,8 @@ export class Convert {
       wordpressModel.acf.image_gallery,
       wordpressModel.acf.mp3_file_upload,
       wordpressModel.acf.mp3_file_upload_label,
-      wordpressModel.resource_genre
+      wordpressModel.resource_genre,
+      wordpressModel.acf.video
     )
   }
 

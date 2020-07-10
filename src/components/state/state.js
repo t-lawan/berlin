@@ -6,7 +6,7 @@ import * as actionTypes from "../../store/action"
 import { CalendarModel } from "../../models/CalendarModel"
 import { NavbarModel, NavbarTitleConfig } from "../../models/NavbarModel"
 import moment from "moment"
-import { DateManager } from "../../utility/date";
+import { DateManager } from "../../utility/date"
 const State = props => {
   if (!props.isLoaded) {
     const data = useStaticQuery(
@@ -285,7 +285,6 @@ const State = props => {
                     document_download_label
                     document_language
                     free_text_entry
-                    #document_upload
                   }
                   floating_resource
                   image_gallery {
@@ -307,6 +306,7 @@ const State = props => {
                   resource_label_de
                   resource_author_de
                   resource_url
+                  video
                 }
                 resource_genre
               }
@@ -515,10 +515,8 @@ const State = props => {
       Convert.toVenueModel
     )
     venues = venues.sort((a, b) => {
-      return DateManager.daysBetween(a.date, b.date);
+      return DateManager.daysBetween(a.date, b.date)
     })
-
-
 
     let documents = Convert.toModelArray(
       data.allWordpressWpMedia,

@@ -278,7 +278,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 document_download_label
                 document_language
                 free_text_entry
-                document_upload
               }
               floating_resource
               image_gallery {
@@ -300,6 +299,7 @@ exports.createPages = async ({ graphql, actions }) => {
               resource_label_de
               resource_author_de
               resource_url
+              video
             }
             resource_genre
           }
