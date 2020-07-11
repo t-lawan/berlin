@@ -164,8 +164,7 @@ const ResourcesList = props => {
             onClick={() => props.startTransition()}
           >
             <ResourceItem>
-            {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
-
+              {resource.thumbnail_image ? <ImageResource id={resource.thumbnail_image} withCaption={false} /> : null}
               <TextBox>
                 <ResourceTitle> {resource.title} </ResourceTitle>
                  {resource.subtitle.length > 0 ? <ResourceTitle> {resource.subtitle} </ResourceTitle> : ""}

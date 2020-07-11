@@ -24,7 +24,8 @@ export class ResourceModel {
     image_gallery,
     mp3_file_upload,
     mp3_file_upload_label,
-    resource_genre
+    resource_genre,
+    video
   ) {
     this.id = id
     this.slug = slug
@@ -45,6 +46,7 @@ export class ResourceModel {
       file: mp3_file_upload,
       label: mp3_file_upload_label
     }
+    this.video = video;
     this.publisher = {
         title: publisher,
         external_url: publisher_external_url
