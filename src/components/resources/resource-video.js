@@ -46,6 +46,19 @@ const Year = styled.p`
   margin-bottom: 0;
   margin-top: 1em;
 `
+const ResourceTextDiv = styled.div`
+  a {
+    border-bottom: solid thin;
+    font-size: 1em;
+    border-color: ${Color.red};
+    word-break: break-all;
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+  }
+`
+
 const ResourceVideo = props => {
     let language = getCurrentLanguageString(props.languages);
     let r = props.resource;
@@ -74,7 +87,7 @@ const ResourceVideo = props => {
             </div>
 
             <div>
-                <div
+                <ResourceTextDiv
                 dangerouslySetInnerHTML={{
                   __html: r.description,
                 }}
