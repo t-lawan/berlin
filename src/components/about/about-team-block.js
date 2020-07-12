@@ -67,7 +67,7 @@ const AboutTeamBlock = props => {
         renderComponent = (
           <PaddedSection key={index}><ul>
             {item.block_names.map((person, i) => (
-              <li key={person.full_name + i}>{person.full_name} {person.additional_info_en}</li>
+              <li key={person.full_name + i}>{person.full_name} {person[createProperty("additional_info", language)]}</li>
             ))}</ul>
           </PaddedSection>
         )
