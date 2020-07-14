@@ -117,7 +117,7 @@ class CalendarFilterDropDown extends React.Component {
       const parent = document.getElementById(`column-one`)
       if (element) {
         scrollIntoView(element, {
-          scrollMode: "if-needed",
+          // scrollMode: "if-needed",
           block: "start",
           inline: "nearest",
           behavior: "smooth",

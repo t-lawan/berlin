@@ -258,7 +258,7 @@ class ParticipantOverView extends Component {
     const element = document.getElementById(`anchor-${anchor}`)
     if (element) {
       scrollIntoView(element, {
-        scrollMode: "if-needed",
+        // scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
         behavior: "smooth",
