@@ -49,7 +49,7 @@ const AlphabetLanguageContainer = styled.div`
     padding-top: calc(97px + 2.5em);
     margin-bottom: calc(-97px - 2.5em);
     :last-child {
-      margin-bottom: 3rem;
+      margin-bottom: 9rem;
     }
     margin-top: 0px;
     :first-child {
@@ -226,6 +226,9 @@ class ParticipantOverView extends Component {
       let part = props.participants.filter((p, i) => {
         return p.sorting_name[0].toLowerCase() === value
       })
+      part = part.sort((a,b) => {
+        return  a.sorting_name.localeCompare((b.sorting_name))
+      });
       return {
         participants: part,
         letter: value,
@@ -350,8 +353,9 @@ class ParticipantOverView extends Component {
                       >
                         {" "}
                         {!participant.group ? 
-                          `${capitalise(participant.firstname)} ${capitalise(participant.lastname)}` : `${capitalise(participant[this.language].participant_group_name)}`
+                          `${participant.firstname} ${participant.lastname}` : `${participant[this.language].participant_group_name}`
                         }
+  
                       </ParticipantName>
                     ))}
                   </div>

@@ -112,10 +112,6 @@ class ExperienceController extends React.Component {
       })
       let isReady = exhibition ? true : false;
       // Temporarily disable for the last exhibition
-      // if(index === 3) {
-      //   isReady = false;
-
-      // }
       return {
         id: item.id,
         isReady: isReady,

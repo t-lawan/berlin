@@ -31,6 +31,18 @@ const ResourceTitle = styled.h1`
     font-size: 1.1em;
   }
 `
+const ResourceTextDiv = styled.div`
+  a {
+    border-bottom: solid thin;
+    font-size: 1em;
+    border-color: ${Color.red};
+    word-break: break-all;
+    transition: all 0.2s ease-in-out;
+    :hover {
+      color: ${Color.red};
+    }
+  }
+`
 const Author = styled.p`
   margin-bottom: 0;
 `
@@ -64,7 +76,7 @@ const ResourceAudio = props => {
           </ResourcePublisherLink>
         </div>
         <div>
-          <div
+          <ResourceTextDiv
             dangerouslySetInnerHTML={{
               __html: r.description,
             }}
