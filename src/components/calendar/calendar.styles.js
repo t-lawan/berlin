@@ -75,6 +75,7 @@ export const CalendarFilterMonth = styled.p`
 
 export const SmallCalendarWrapper = styled.div`
   display: grid;
+  grid-column-gap: 0.5rem;
   grid-template-columns: repeat(7, 1fr);
 `
 
