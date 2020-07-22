@@ -104,6 +104,8 @@ exports.createPages = async ({ graphql, actions }) => {
                   block_type
                   text
                 }
+                page_slug
+                page_title
               }
               contact_data {
                 contact_data_line
@@ -195,6 +197,20 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               EN_row {
                 description
+              }
+              english {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
+              }
+              german {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
               }
             }
           }

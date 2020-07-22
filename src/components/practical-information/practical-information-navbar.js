@@ -77,7 +77,7 @@ const PracticalInformationNavbar = props => {
         title: "FAQ",
         slug: "praktische-information/faq",
       },
-      isLive: false,
+      isLive: true,
     },
   ]
   let language = getCurrentLanguageString(props.languages)
