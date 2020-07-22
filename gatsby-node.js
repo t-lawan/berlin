@@ -102,6 +102,8 @@ exports.createPages = async ({ graphql, actions }) => {
                 corona_notice
                 content_block {
                   block_type
+                  image
+                  file
                   text
                 }
                 page_slug
@@ -188,12 +190,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 press_notice
                 title
                 venue_description
-                corona_notice
                 page_title
                 content_block {
                   block_type
+                  file
+                  image
                   text
                 }
+                corona_notice
               }
               EN_row {
                 description
