@@ -522,25 +522,31 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
-    let topNavbarItems = [
+    let bottomNavbarItems = [
       new NavbarModel(
         "practical-information",
         "c/o ExRotaprint",
         "c/o ExRotaprint",
+        "practical information",
+        "praktische information",
         false,
         true
       ),
-      new NavbarModel("calendar", "calendar", "kalender", false, true),
+      new NavbarModel("calendar", "calendar", "kalender",  "calendar", "kalender",false, true),
       new NavbarModel(
         "publications",
+        "publications",
+        "publikationen",
         "publications",
         "publikationen",
         false,
         true
       ),
-      new NavbarModel("media", "media", "mediathek", false, true),
+      new NavbarModel("media", "media", "mediathek", "media", "mediathek",false, true),
       new NavbarModel(
         "participants",
+        "participants",
+        "beteiligte",
         "participants",
         "beteiligte",
         false,
@@ -549,13 +555,15 @@ const State = props => {
 
     ]
 
-    let bottomNavbarItems = [
-      new NavbarModel("exchange", "exchange", "austausch", false, false),
-      new NavbarModel("venues", "venues", "orte", false, true),
-      new NavbarModel("about", "about", "über", false, true),
-      new NavbarModel("press", "press", "presse", false, true),
+    let topNavbarItems  = [
+      new NavbarModel("exchange", "exchange", "austausch", "exchange", "austausch", false, false),
+      new NavbarModel("venues", "venues", "orte", "venues", "orte", false, true),
+      new NavbarModel("about", "about", "über", "about", "über", false, true),
+      new NavbarModel("press", "press", "presse", "press", "presse", false, true),
       new NavbarModel(
         "https://bb-shop.visitate.net/en/",
+        "shop",
+        NavbarTitleConfig["shop"].DE,
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,
