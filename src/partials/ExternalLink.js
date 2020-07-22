@@ -3,10 +3,14 @@ import PropTypes from "prop-types"
 import { getDocument } from "../store/selector"
 import { connect } from "react-redux"
 import styled from "styled-components"
+import { Color } from "../index.styles";
 
 const Link = styled.a`
     color: black;
-    text-decoration: none;
+    text-decoration: underline;
+    :hover {
+      color: ${Color.red}
+    }
 `
 class ExternalLink extends Component {
   static propTypes = {
