@@ -24,6 +24,17 @@ const PracticalInformationNavbar = props => {
     },
     {
       EN: {
+        title: "Opening Hours",
+        slug: "practical-information/opening-hours",
+      },
+      DE: {
+        title: "Opening Hours",
+        slug: "praktische-information/öffnungszeiten",
+      },
+      isLive: false,
+    },
+    {
+      EN: {
         title: "Admission",
         slug: "practical-information/admission",
       },
@@ -31,18 +42,7 @@ const PracticalInformationNavbar = props => {
         title: "Admission",
         slug: "praktische-information/eintritt",
       },
-      isLive: false,
-    },
-    {
-      EN: {
-        title: "Accommodation",
-        slug: "practical-information/accommodation",
-      },
-      DE: {
-        title: "Accommodation",
-        slug: "praktische-information/accommodation",
-      },
-      isLive: false,
+      isLive: true,
     },
     {
       EN: {
@@ -51,21 +51,23 @@ const PracticalInformationNavbar = props => {
       },
       DE: {
         title: "Access",
-        slug: "praktische-information/access",
+        slug: "praktische-information/anfahrt",
       },
-      isLive: false,
+      isLive: true,
     },
     {
       EN: {
-        title: "Opening Hours",
-        slug: "practical-information/opening-hours",
+        title: "Accommodation",
+        slug: "practical-information/accommodation",
       },
       DE: {
-        title: "Opening Hours",
-        slug: "praktische-information/opening-hours",
+        title: "Accommodation",
+        slug: "praktische-information/unterkunft",
       },
       isLive: false,
     },
+
+
     {
       EN: {
         title: "FAQ",
