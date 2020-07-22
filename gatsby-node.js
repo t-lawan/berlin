@@ -100,6 +100,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 corona_notice
+                content_block {
+                  block_type
+                  text
+                }
+                page_slug
+                page_title
               }
               contact_data {
                 contact_data_line
@@ -183,9 +189,28 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 corona_notice
+                page_title
+                content_block {
+                  block_type
+                  text
+                }
               }
               EN_row {
                 description
+              }
+              english {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
+              }
+              german {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
               }
             }
           }
@@ -621,7 +646,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "admission", DE: "eintritt" },
     { EN: "accommodation", DE: "unterkunft" },
     { EN: "faq", DE: "faq" },
-    { EN: "opening-hours", DE: "offnungszeiten" },
+    { EN: "opening-hours", DE: "öffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
 
 

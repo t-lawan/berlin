@@ -12,7 +12,7 @@ import { TwoColumnPageWrapper, PaddingDiv, PageTitle, TextBlockSideBarPage, Reso
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
-// import PracticalInformationComponents from "../components/practical-information/practical-information-components";
+import PracticalInformationComponents from "../components/practical-information/practical-information-components";
 import PracticalInformationPage from "../components/practical-information/practical-information-page"
 
 const PracticalInformation = props => {
@@ -41,43 +41,14 @@ const PracticalInformation = props => {
             __html: content[language].title,
           }}
         />
-        <TextBlockSideBarPage>
-          {pageInfo.acf[language].address_info.map((address, index) => (
-            <p key={index}> {address.address_line} </p>
-          ))}
-        </TextBlockSideBarPage>
-        <TextBlockSideBarPage>
-          <p>{content[language].opening_hours}</p>
-          {pageInfo.acf[language].opening_times.map((time, index) => (
-            <p key={index}> {time.opening_time_line} </p>
-          ))}
-        </TextBlockSideBarPage>
-        <TextBlockSideBarPage>
-          <p>{content[language].access}</p>
-          {pageInfo.acf.directions.map((directions, index) => (
-            <p key={index}> {directions.directions_line} </p>
-          ))}
-          <ResourcePublisherLink
-            target="_blank"
-            rel="noopener noreferrer"
-            href={pageInfo.acf.google_map_venue_link}
-          >
-            {" "}
-            {content[language].directions}
-          </ResourcePublisherLink>
-        </TextBlockSideBarPage>
-        <TextBlockSideBarPage>
-          {pageInfo.acf[language].access_block.map((item, index) => (
-            <p key={index}> {item.access_line} </p>
-          ))}
-        </TextBlockSideBarPage>
-        {/* <PracticalInformationNavbar currentPage={pageInfo.slug} /> */}
+
+        <PracticalInformationNavbar currentPage={pageInfo.slug} />
       </div>
-      <div>
+      {/* <div>
         <PracticalInformationPage content={pageInfo} />
         <PaddingDiv> </PaddingDiv>
-      </div>
-      {/* <PracticalInformationComponents content={pageInfo}/> */}
+      </div> */}
+      <PracticalInformationComponents content={pageInfo}/>
     </TwoColumnPageWrapper>
   )
 
