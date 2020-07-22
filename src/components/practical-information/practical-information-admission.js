@@ -30,26 +30,26 @@ export const PracticalInformationContentBlock = (item, index) => {
     case "text":
       renderComponent = (
         <ContentBlockWrapper>
-          <div
+          {item.text ? <div
             key={index}
             dangerouslySetInnerHTML={{
               __html: item.text,
             }}
-          />
+          /> : null}
         </ContentBlockWrapper>
       )
       break
     case "image":
       renderComponent = (
         <ContentBlockWrapper>
-          <ImageResource id={item.image} /> 
+          {item.image ? <ImageResource id={item.image} />  : null}
         </ContentBlockWrapper>        
       )
       break
     case "pdf":
       renderComponent = (
         <ContentBlockWrapper>
-          <ExternalLink id={item.file}> Link </ExternalLink>
+          {item.file ? <ExternalLink id={item.file}> Link </ExternalLink> : null}
         </ContentBlockWrapper>
       )
       break
