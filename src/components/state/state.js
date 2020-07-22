@@ -523,6 +523,13 @@ const State = props => {
       Convert.toDocumentModel
     )
     let topNavbarItems = [
+      new NavbarModel(
+        "practical-information",
+        "c/o ExRotaprint",
+        "c/o ExRotaprint",
+        false,
+        true
+      ),
       new NavbarModel("calendar", "calendar", "kalender", false, true),
       new NavbarModel(
         "publications",
@@ -539,13 +546,7 @@ const State = props => {
         false,
         true
       ),
-      new NavbarModel(
-        "practical-information",
-        "c/o ExRotaprint",
-        "praktische information ",
-        false,
-        true
-      ),
+
     ]
 
     let bottomNavbarItems = [
