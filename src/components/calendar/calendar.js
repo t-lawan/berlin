@@ -86,7 +86,7 @@ class Calendar extends React.Component {
     const parent = document.getElementById(`column-one`)
     if (element) {
       scrollIntoView(element, {
-        scrollMode: "if-needed",
+        // scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
         behavior: "smooth",
@@ -106,7 +106,7 @@ class Calendar extends React.Component {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
       <>
-        {/* <CalendarFilterDropDown startDate={this.startDate} endDate={this.endDate} months={this.months}/> */}
+        {this.props.experience === 4 ? <CalendarFilterDropDown startDate={this.startDate} endDate={this.endDate} months={this.months}/> : null}
         <CalendarWrapper id="calendar-wrapper">
           {this.months.map((month, index) => (
             <MonthCards

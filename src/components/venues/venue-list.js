@@ -66,7 +66,7 @@ class VenueList extends Component {
           isScrolling: true,
         })
         scrollIntoView(element, {
-          scrollMode: "if-needed",
+          // scrollMode: "if-needed",
           block: "start",
           inline: "nearest",
           behavior: "smooth",

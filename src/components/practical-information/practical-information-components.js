@@ -32,19 +32,19 @@ const PracticalInformationComponents = props => {
     case "/practical-information/accommodation":
       renderComponent = <PracticalInformationAccommodation content={content} />
       break
-    case "/de/praktische-information/accommodation":
+    case "/de/praktische-information/unterkunft":
       renderComponent = <PracticalInformationAccommodation content={content} />
       break
     case "/practical-information/access":
       renderComponent = <PracticalInformationAccess content={content} />
       break
-    case "/de/praktische-information/access":
+    case "/de/praktische-information/anfahrt":
       renderComponent = <PracticalInformationAccess content={content} />
       break
     case "/practical-information/opening-hours":
       renderComponent = <PracticalInformationOpening content={content} />
       break
-    case "/de/praktische-information/opening-hours":
+    case "/de/praktische-information/öffnungszeiten":
       renderComponent = <PracticalInformationOpening content={content} />
       break
     case "/practical-information/faq":

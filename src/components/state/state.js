@@ -523,15 +523,14 @@ const State = props => {
       Convert.toDocumentModel
     )
     let topNavbarItems = [
-      new NavbarModel("calendar", "calendar", "kalender", false, true),
       new NavbarModel(
-        "participants",
-        "participants",
-        "beteiligte",
+        "practical-information",
+        "c/o ExRotaprint",
+        "c/o ExRotaprint",
         false,
         true
       ),
-      new NavbarModel("exchange", "exchange", "austausch", false, false),
+      new NavbarModel("calendar", "calendar", "kalender", false, true),
       new NavbarModel(
         "publications",
         "publications",
@@ -540,16 +539,18 @@ const State = props => {
         true
       ),
       new NavbarModel("media", "media", "mediathek", false, true),
-    ]
-
-    let bottomNavbarItems = [
       new NavbarModel(
-        "practical-information",
-        "practical information",
-        "praktische information ",
+        "participants",
+        "participants",
+        "beteiligte",
         false,
         true
       ),
+
+    ]
+
+    let bottomNavbarItems = [
+      new NavbarModel("exchange", "exchange", "austausch", false, false),
       new NavbarModel("venues", "venues", "orte", false, true),
       new NavbarModel("about", "about", "über", false, true),
       new NavbarModel("press", "press", "presse", false, true),
