@@ -11,7 +11,7 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import * as actionTypes from "../../store/action"
 const Navbar = props => {
-  const generateLink = (item, language, experience, index) => {
+  const generateLink = (item, language, index) => {
     let comp
     if (item.isExternal) {
       let slug = language === "EN" ? item.slug : item.slug.replace("en", "de")
@@ -72,19 +72,20 @@ const Navbar = props => {
 
   return (
     <NavWrapper hideInTablet={props.hideInTablet}>
-      {props.experience === 4 ? (
+      
         <NavInner>
           {topNavbar.map((item, index) =>
-            generateLink(item, language, props.experience, index)
+            generateLink(item, language, index)
           )}
         </NavInner>
-      ) : null}
-
+      {props.experience === 4 ? (
       <NavInner>
         {bottomNavbar.map((item, index) =>
-          generateLink(item, language, props.experience, index)
+          generateLink(item, language, index)
         )}
       </NavInner>
+      ) : null}
+
     </NavWrapper>
   )
 }
