@@ -522,7 +522,7 @@ const State = props => {
       data.allWordpressWpMedia,
       Convert.toDocumentModel
     )
-    let bottomNavbarItems = [
+    let topNavbarItems = [
       new NavbarModel("calendar", "calendar", "kalender", false, true, true, true),
       new NavbarModel(
         "practical-information",
@@ -557,7 +557,7 @@ const State = props => {
 
     ]
 
-    let topNavbarItems  = [
+    let bottomNavbarItems = [
       new NavbarModel(
         "practical-information",
         "practical information",
