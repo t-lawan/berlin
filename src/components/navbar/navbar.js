@@ -11,7 +11,7 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import * as actionTypes from "../../store/action"
 const Navbar = props => {
-  const generateLink = (item, language) => {
+  const generateLink = (item, language, experience) => {
     let comp
     if (item.isExternal) {
       let slug = language === "EN" ? item.slug : item.slug.replace("en", "de")
@@ -36,7 +36,9 @@ const Navbar = props => {
           // cover direction="down"
           // bg={transitionBackground}
         >
-          {item[language].title.toLowerCase()}
+          {experience != 4
+            ? item[language].title.toLowerCase()
+            : item[language].exp_4_title.toLowerCase()}{" "}
         </NavItem>
       )
     }
@@ -45,7 +47,9 @@ const Navbar = props => {
       comp = (
         <InactiveLink key={item.slug}>
           {" "}
-          {item[language].title.toLowerCase()}{" "}
+          {experience != 4
+            ? item[language].title.toLowerCase()
+            : item[language].exp_4_title.toLowerCase()}{" "}
         </InactiveLink>
       )
     }
@@ -56,14 +60,19 @@ const Navbar = props => {
   const language = getCurrentLanguageString(props.languages)
   return (
     <NavWrapper hideInTablet={props.hideInTablet}>
-      <NavInner>
-        {props.navbar_top.map(item => generateLink(item, language))}
-      </NavInner>
       {props.experience === 4 ? (
         <NavInner>
-          {props.navbar_bottom.map(item => generateLink(item, language))}
+          {props.navbar_top.map(item =>
+            generateLink(item, language, props.experience)
+          )}
         </NavInner>
       ) : null}
+
+      <NavInner>
+        {props.navbar_bottom.map(item =>
+          generateLink(item, language, props.experience)
+        )}
+      </NavInner>
     </NavWrapper>
   )
 }
