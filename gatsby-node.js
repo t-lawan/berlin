@@ -92,7 +92,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 content
                 exrota_info
-                image_gallery
+                image_gallery {
+                  id
+                }
                 images_note
                 opening_times {
                   opening_time_line
@@ -599,7 +601,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             date
           }
-        }      
+        }
       }
     }
   `)
@@ -627,9 +629,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
+  const exRotaprintTemplate = path.resolve(`./src/templates/ex-rotaprint.js`)
   const languages = ["en", "de"]
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
+    { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
     { EN: "about", DE: "uber" },
     { EN: "team", DE: "team" },
     { EN: "organization", DE: "verein" },
@@ -658,8 +662,6 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "faq", DE: "faq" },
     { EN: "opening-hours", DE: "öffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
-
-
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -682,6 +684,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "press_images":
         template = pressImagesTemplate
+        break
+      case "ex_rotaprint":
+        template = exRotaprintTemplate
         break
       default:
         template = pageTemplate
@@ -750,7 +755,7 @@ exports.createPages = async ({ graphql, actions }) => {
           ) {
             let prePath = pageMap.find(pageType => {
               return pageType.EN === "practical-information"
-            }) 
+            })
 
             let endPath = pageMap.find(pageType => {
               return pageType.EN === slug
@@ -806,6 +811,9 @@ exports.createPages = async ({ graphql, actions }) => {
                   ? "/practical-information"
                   : "/de/praktische-information"
               break
+            case 'ex-rotaprint':
+              path = language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
+              break;
             default:
               path =
                 language === "en"
@@ -919,7 +927,6 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-
 
   // const venueTemplate = path.resolve(`./src/templates/venue.js`)
   // allWordpressWpVenue.edges.forEach(edge => {
