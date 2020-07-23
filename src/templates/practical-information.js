@@ -8,7 +8,13 @@ import {
   pageMap,
 } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { TwoColumnPageWrapper, PaddingDiv, PageTitle, TextBlockSideBarPage, ResourcePublisherLink } from "./page.styles"
+import {
+  TwoColumnPageWrapper,
+  PaddingDiv,
+  PageTitle,
+  TextBlockSideBarPage,
+  ResourcePublisherLink,
+} from "./page.styles"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
@@ -41,36 +47,43 @@ const PracticalInformation = props => {
             __html: content[language].title,
           }}
         />
-        <TextBlockSideBarPage>
-          {pageInfo.acf[language].address_info.map((address, index) => (
-            <p key={index}> {address.address_line} </p>
-          ))}
-        </TextBlockSideBarPage>
-        <TextBlockSideBarPage>
-          <p>{content[language].opening_hours}</p>
-          {pageInfo.acf[language].opening_times.map((time, index) => (
-            <p key={index}> {time.opening_time_line} </p>
-          ))}
-        </TextBlockSideBarPage>
-        <TextBlockSideBarPage>
-          <p>{content[language].access}</p>
-          {pageInfo.acf.directions.map((directions, index) => (
-            <p key={index}> {directions.directions_line} </p>
-          ))}
-          <ResourcePublisherLink
-            target="_blank"
-            rel="noopener noreferrer"
-            href={pageInfo.acf.google_map_venue_link}
-          >
-            {" "}
-            {content[language].directions}
-          </ResourcePublisherLink>
-        </TextBlockSideBarPage>
+        {pageInfo.acf[language].address_info ? (
+          <TextBlockSideBarPage>
+            {pageInfo.acf[language].address_info.map((address, index) => (
+              <p key={index}> {address.address_line} </p>
+            ))}
+          </TextBlockSideBarPage>
+        ) : null}
+        {pageInfo.acf[language].opening_times ? (
+          <TextBlockSideBarPage>
+            <p>{content[language].opening_hours}</p>
+            {pageInfo.acf[language].opening_times.map((time, index) => (
+              <p key={index}> {time.opening_time_line} </p>
+            ))}
+          </TextBlockSideBarPage>
+        ) : null}
+        {pageInfo.acf.directions ? (
+          <TextBlockSideBarPage>
+            <p>{content[language].access}</p>
+            {pageInfo.acf.directions.map((directions, index) => (
+              <p key={index}> {directions.directions_line} </p>
+            ))}
+            <ResourcePublisherLink
+              target="_blank"
+              rel="noopener noreferrer"
+              href={pageInfo.acf.google_map_venue_link}
+            >
+              {" "}
+              {content[language].directions}
+            </ResourcePublisherLink>
+          </TextBlockSideBarPage>
+        ) : null}
+        {pageInfo.acf[language].access_block ?
         <TextBlockSideBarPage>
           {pageInfo.acf[language].access_block.map((item, index) => (
             <p key={index}> {item.access_line} </p>
           ))}
-        </TextBlockSideBarPage>
+        </TextBlockSideBarPage> : null}
         {/* <PracticalInformationNavbar currentPage={pageInfo.slug} /> */}
       </div>
       <div>
