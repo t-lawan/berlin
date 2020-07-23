@@ -22,7 +22,7 @@ class ExternalLink extends Component {
   render() {
     this.doc = getDocument(this.props.documents, this.props.id)
     return (
-      <Link target="_blank" rel="noopener noreferrer" href={this.doc.url}>
+      <Link target="_blank" rel="noopener noreferrer" href={this.doc.publicUrl}>
         {this.props.children}
       </Link>
     )
