@@ -45,7 +45,6 @@ class CalendarFilterDropDown extends React.Component {
       month = lowestMonth;
     }
 
-
     this.setState({
       month: month,
       year: year,
