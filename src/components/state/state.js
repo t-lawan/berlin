@@ -525,7 +525,7 @@ const State = props => {
     let topNavbarItems = [
       new NavbarModel("calendar", "calendar", "kalender", false, true, true, true),
       new NavbarModel(
-        "practical-information",
+        "c-o-exrotaprint",
         "c/o ExRotaprint",
         "c/o ExRotaprint",
         false,
@@ -561,7 +561,7 @@ const State = props => {
       new NavbarModel(
         "practical-information",
         "practical information",
-        "practical information",
+        "praktische information",
         false,
         true,
         true,
