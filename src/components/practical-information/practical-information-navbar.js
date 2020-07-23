@@ -30,7 +30,7 @@ const PracticalInformationNavbar = props => {
         slug: "practical-information/opening-hours",
       },
       DE: {
-        title: "Opening Hours",
+        title: "öffnungszeiten",
         slug: "praktische-information/öffnungszeiten",
       },
       isLive: true,
@@ -41,7 +41,7 @@ const PracticalInformationNavbar = props => {
         slug: "practical-information/admission",
       },
       DE: {
-        title: "Admission",
+        title: "eintritt",
         slug: "praktische-information/eintritt",
       },
       isLive: true,
@@ -52,7 +52,7 @@ const PracticalInformationNavbar = props => {
         slug: "practical-information/access",
       },
       DE: {
-        title: "Access",
+        title: "anfahrt",
         slug: "praktische-information/anfahrt",
       },
       isLive: true,
