@@ -561,7 +561,7 @@ const State = props => {
       new NavbarModel(
         "practical-information",
         "practical information",
-        "practical information",
+        "praktische information",
         false,
         true,
         true,
