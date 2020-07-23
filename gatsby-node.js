@@ -91,6 +91,8 @@ exports.createPages = async ({ graphql, actions }) => {
                   address_line
                 }
                 content
+                exrota_info
+                image_gallery
                 images_note
                 opening_times {
                   opening_time_line
@@ -105,6 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   image
                   file
                   text
+                  file_label
                 }
                 page_slug
                 page_title
@@ -190,12 +193,15 @@ exports.createPages = async ({ graphql, actions }) => {
                 press_notice
                 title
                 venue_description
+                exrota_info
+                image_gallery
                 page_title
                 content_block {
                   block_type
                   file
                   image
                   text
+                  file_label
                 }
                 corona_notice
               }
