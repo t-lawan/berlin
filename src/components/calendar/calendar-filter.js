@@ -145,7 +145,7 @@ class CalendarFilterDropDown extends React.Component {
         <CalendarFilter>
           <CalendarFilterButton onClick={() => this.toggleFilterDates()}>
             {" "}
-            filter by date{" "}
+            filter{" "}
           </CalendarFilterButton>
         </CalendarFilter>
         <CalendarFilterDates show={this.state.showFilter}>
