@@ -26,8 +26,8 @@ export const CalendarScrollArea = styled.div``
 export const CalendarFilter = styled.div`
   background: ${Color.yellow};
   border-bottom: 1px solid black;
-  text-align: center;
-  padding: 1rem;
+  text-align: left;
+  padding: 0.85em 0;
   position: relative;
 `
 
@@ -43,6 +43,9 @@ export const CalendarFilterButton = styled.p`
   cursor: pointer;
   :hover {
     color: ${Color.red};
+  }
+  @media (max-width: ${size.laptop}) {
+    margin-left: calc(20% + 1em);
   }
 `
 
@@ -61,11 +64,16 @@ export const CalendarFilterDates = styled.div`
   margin-left: 5%;
   text-align: center;
   padding: 0.5rem;
+  @media (max-width: ${size.laptop}) {
+    margin-left: calc(20% - 0.05em);
+    padding: 0.85em 0.85em 0.30em 0.85em;
+  }
 `
 
 export const CalendarFilterMonth = styled.p`
   display: inline-flex;
-  padding: 0 0.25em;
+  padding: 0 0.85em 0 0.25em;
+  margin-bottom: 0.85em;
   cursor: pointer;
   color: ${props => (props.isMonth ? Color.red : "black")};
   :hover {
@@ -75,7 +83,7 @@ export const CalendarFilterMonth = styled.p`
 
 export const SmallCalendarWrapper = styled.div`
   display: grid;
-  grid-column-gap: 0.5rem;
+  grid-column-gap: 0.75rem;
   grid-template-columns: repeat(7, 1fr);
 `
 
@@ -87,4 +95,5 @@ export const SmallCalendarDates = styled.p`
   :hover {
     color: ${props => (props.isValid ? Color.red : "black")};
   }
+  margin-bottom: 0.5em;
 `

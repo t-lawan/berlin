@@ -3,11 +3,34 @@ import { connect } from "react-redux"
 import { PageTitle } from "../../templates/page.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 import styled from 'styled-components';
+import { Color, size } from "../index.styles";
 
 const FAQQuestionWrapper =  styled.div`
+> p > a {
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+  border-bottom: solid thin ${Color.red}; 
+    :hover {
+      color: ${Color.red}
+    }
+}
 `
 
 const FAQAnswerWrapper =  styled.div`
+margin-left: 1em;
+margin-top: -0.9em;
+@media (min-width: ${size.laptop}) {
+  margin-left: 1.2em;
+  }
+> ul {
+  list-style: none;
+  margin: 0;
+  > li::before {
+    content: "–";
+    display: inline-block;
+    width: 10px;
+  }
+}
 `
 
 const FAQWrapper = styled.div`
