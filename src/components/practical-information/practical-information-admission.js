@@ -49,7 +49,7 @@ export const PracticalInformationContentBlock = (item, index) => {
     case "pdf":
       renderComponent = (
         <ContentBlockWrapper>
-          {item.file ? <ExternalLink id={item.file}> Link </ExternalLink> : null}
+          {item.file ? <ExternalLink id={item.file}> {item.file_label} </ExternalLink> : null}
         </ContentBlockWrapper>
       )
       break

@@ -105,6 +105,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   image
                   file
                   text
+                  file_label
                 }
                 page_slug
                 page_title
@@ -196,6 +197,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   file
                   image
                   text
+                  file_label
                 }
                 corona_notice
               }
