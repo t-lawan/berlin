@@ -28,6 +28,7 @@ class CalendarFilterDropDown extends React.Component {
     })
   }
 
+
   toggleFilterDates = () => {
     this.setState({
       showFilter: !this.state.showFilter,
@@ -38,6 +39,12 @@ class CalendarFilterDropDown extends React.Component {
     let d = new Date()
     let year = d.getFullYear()
     let month = d.getMonth() + 1
+    let lowestMonth = parseInt(this.props.months[0].split("-")[1]) 
+
+    if(lowestMonth > month) {
+      month = lowestMonth;
+    }
+
 
     this.setState({
       month: month,
