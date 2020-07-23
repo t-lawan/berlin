@@ -7,7 +7,9 @@ import { Color } from "../index.styles";
 
 const Link = styled.a`
     color: black;
-    text-decoration: underline;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border-bottom: solid thin ${Color.red}; 
     :hover {
       color: ${Color.red}
     }
