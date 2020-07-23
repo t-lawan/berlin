@@ -523,47 +523,55 @@ const State = props => {
       Convert.toDocumentModel
     )
     let bottomNavbarItems = [
+      new NavbarModel("calendar", "calendar", "kalender", false, true, true, true),
       new NavbarModel(
         "practical-information",
         "c/o ExRotaprint",
         "c/o ExRotaprint",
-        "practical information",
-        "praktische information",
         false,
-        true
+        true,
+        true,
+        false
       ),
-      new NavbarModel("calendar", "calendar", "kalender",  "calendar", "kalender",false, true),
-      new NavbarModel(
-        "publications",
-        "publications",
-        "publikationen",
-        "publications",
-        "publikationen",
-        false,
-        true
-      ),
-      new NavbarModel("media", "media", "mediathek", "media", "mediathek",false, true),
       new NavbarModel(
         "participants",
         "participants",
         "beteiligte",
-        "participants",
-        "beteiligte",
         false,
+        true,
+        false, 
         true
       ),
+      new NavbarModel("exchange", "exchange", "austausch", false, false, false, true),
+      new NavbarModel(
+        "publications",
+        "publications",
+        "publikationen",
+        false,
+        true,
+        true,
+        true
+      ),
+      new NavbarModel("media", "media", "mediathek",false, true),
+
 
     ]
 
     let topNavbarItems  = [
-      new NavbarModel("exchange", "exchange", "austausch", "exchange", "austausch", false, false),
-      new NavbarModel("venues", "venues", "orte", "venues", "orte", false, true),
-      new NavbarModel("about", "about", "über", "about", "über", false, true),
-      new NavbarModel("press", "press", "presse", "press", "presse", false, true),
+      new NavbarModel(
+        "practical-information",
+        "practical information",
+        "practical information",
+        false,
+        true,
+        true,
+        true
+      ),
+      new NavbarModel("venues", "venues", "orte", false, true),
+      new NavbarModel("about", "about", "über", false, true),
+      new NavbarModel("press", "press", "presse", false, true),
       new NavbarModel(
         "https://bb-shop.visitate.net/en/",
-        "shop",
-        NavbarTitleConfig["shop"].DE,
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,

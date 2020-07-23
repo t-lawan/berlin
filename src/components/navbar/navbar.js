@@ -11,13 +11,13 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import * as actionTypes from "../../store/action"
 const Navbar = props => {
-  const generateLink = (item, language, experience) => {
+  const generateLink = (item, language, experience, index) => {
     let comp
     if (item.isExternal) {
       let slug = language === "EN" ? item.slug : item.slug.replace("en", "de")
       comp = (
         <NavLink
-          key={item.slug}
+          key={index}
           href={slug}
           target="__blank"
           rel="noopener noreferrer"
@@ -30,26 +30,22 @@ const Navbar = props => {
         <NavItem
           activeStyle={{ color: "#D9515C" }}
           to={createPath(language, item.slug)}
-          key={item.slug}
+          key={index}
           onClick={() => props.startTransition()}
           // fade
           // cover direction="down"
           // bg={transitionBackground}
         >
-          {experience != 4
-            ? item[language].title.toLowerCase()
-            : item[language].exp_4_title.toLowerCase()}{" "}
+          {item[language].title.toLowerCase()}{" "}
         </NavItem>
       )
     }
 
     if (!item.isActive) {
       comp = (
-        <InactiveLink key={item.slug}>
+        <InactiveLink key={index}>
           {" "}
-          {experience != 4
-            ? item[language].title.toLowerCase()
-            : item[language].exp_4_title.toLowerCase()}{" "}
+          {item[language].title.toLowerCase()}{" "}
         </InactiveLink>
       )
     }
@@ -58,19 +54,35 @@ const Navbar = props => {
   }
 
   const language = getCurrentLanguageString(props.languages)
+  let topNavbar = props.navbar_top.filter(item => {
+    if(props.experience == 4) {
+      return item.isInExp4
+    } else {
+      return item.isInExp13
+    }
+  })
+
+  let bottomNavbar = props.navbar_bottom.filter(item => {
+    if(props.experience == 4) {
+      return item.isInExp4
+    } else {
+      return item.isInExp13
+    }
+  })
+
   return (
     <NavWrapper hideInTablet={props.hideInTablet}>
       {props.experience === 4 ? (
         <NavInner>
-          {props.navbar_top.map(item =>
-            generateLink(item, language, props.experience)
+          {topNavbar.map((item, index) =>
+            generateLink(item, language, props.experience, index)
           )}
         </NavInner>
       ) : null}
 
       <NavInner>
-        {props.navbar_bottom.map(item =>
-          generateLink(item, language, props.experience)
+        {bottomNavbar.map((item, index) =>
+          generateLink(item, language, props.experience, index)
         )}
       </NavInner>
     </NavWrapper>
