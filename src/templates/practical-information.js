@@ -27,6 +27,7 @@ const PracticalInformation = props => {
   let path = pageMap.find(pg => {
     return pg["EN"] == "practical-information"
   })
+
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
@@ -35,19 +36,7 @@ const PracticalInformation = props => {
         lang={pageInfo.language}
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
       />
-      <div>
-        <PageTitle
-          dangerouslySetInnerHTML={{
-            __html: content[language].title,
-          }}
-        />
-
-        <PracticalInformationNavbar currentPage={pageInfo.slug} />
-      </div>
-      {/* <div>
-        <PracticalInformationPage content={pageInfo} />
-        <PaddingDiv> </PaddingDiv>
-      </div> */}
+      <PracticalInformationNavbar currentPage={pageInfo.slug} />
       <PracticalInformationComponents content={pageInfo}/>
     </TwoColumnPageWrapper>
   )
