@@ -9,9 +9,9 @@ import {
 export const CalendarWrapper = styled.div`
 display: grid;
 grid-template-columns: 1fr;
- overflow-y: scroll;
- margin-top: -100px;
- padding-top: 100px;
+overflow-y: scroll;
+padding-top: ${props => props.isExp4 ? '100px' : '100px'};
+margin-top: ${props => props.isExp4 ? '-100px' : '-100px'};
 @media (max-width: ${size.mobileM}) {
     background:#FFF;
     }

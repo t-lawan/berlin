@@ -107,7 +107,7 @@ class Calendar extends React.Component {
     return (
       <>
         {this.props.experience === 4 ? <CalendarFilterDropDown startDate={this.startDate} endDate={this.endDate} months={this.months}/> : null}
-        <CalendarWrapper id="calendar-wrapper">
+        <CalendarWrapper id="calendar-wrapper" isExp4={this.props.experience === 4}>
           {this.months.map((month, index) => (
             <MonthCards
               isStart={index === 0}
