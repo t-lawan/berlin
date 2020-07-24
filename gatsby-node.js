@@ -92,7 +92,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 content
                 exrota_info
-                image_gallery
+                image_gallery {
+                  id
+                }
                 images_note
                 opening_times {
                   opening_time_line
@@ -194,7 +196,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 exrota_info
-                image_gallery
+                image_gallery {
+                  id
+                }
                 page_title
                 content_block {
                   block_type
@@ -630,6 +634,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const languages = ["en", "de"]
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
+    { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
     { EN: "about", DE: "uber" },
     { EN: "team", DE: "team" },
     { EN: "organization", DE: "verein" },
@@ -683,6 +688,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "press_images":
         template = pressImagesTemplate
+        break
+      case "ex_rotaprint":
+        template = exRotaprintTemplate
         break
       default:
         template = pageTemplate
@@ -807,6 +815,9 @@ exports.createPages = async ({ graphql, actions }) => {
                   ? "/practical-information"
                   : "/de/praktische-information"
               break
+            case 'ex-rotaprint':
+              path = language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
+              break;
             default:
               path =
                 language === "en"

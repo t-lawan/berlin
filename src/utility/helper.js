@@ -24,6 +24,7 @@ export const transitionTimes = {
 
 export  const pageMap = [
   { EN: "event", DE: "veranstaltung" },
+  { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
   { EN: "about", DE: "uber" },
   { EN: "about/team", DE: "uber/team" },
   { EN: "about/organization", DE: "uber/verein" },
@@ -51,6 +52,7 @@ export  const pageMap = [
   { EN: "practical-information/access", DE: "praktische-information/anfahrt" },
   { EN: "practical-information/opening-hours", DE: "praktische-information/öffnungszeiten" },
   { EN: "practical-information/faq", DE: "praktische-information/faq" },
+  { EN: "practical-information/anti-discrimination-clause", DE: "praktische-information/antidiskriminierungsklausel" },
   { EN: "practical-information/accommodation", DE: "praktische-information/unterkunft" },
 ]
 
