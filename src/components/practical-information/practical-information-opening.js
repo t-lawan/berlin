@@ -7,7 +7,6 @@ import { PracticalInformationContentBlock } from "./practical-information-admiss
 const PracticalInformationOpening = props => {
     let language = getCurrentLanguageString(props.languages)
     let content = props.content.acf[language]
-
     return (
         <>
             <PageTitle> {page_title[language].title}</PageTitle>

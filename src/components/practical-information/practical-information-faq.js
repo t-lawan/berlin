@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { PageTitle } from "../../templates/page.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 import styled from 'styled-components';
-import { Color, size } from "../index.styles";
+import { Color, size } from "../../index.styles";
 
 const FAQQuestionWrapper =  styled.div`
 > p > a {

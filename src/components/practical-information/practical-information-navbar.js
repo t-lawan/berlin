@@ -7,6 +7,8 @@ import {
   AboutNavItemLink,
   AboutNavItem,
   AboutSideNavbar,
+  DesktopSub,
+  MobileSub,
 } from "../about/about.styles"
 
 const PracticalInformationNavbar = props => {
@@ -112,7 +114,9 @@ const PracticalInformationNavbar = props => {
         >
           {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
-            {item[language].title.toLowerCase()}
+            <DesktopSub>{item[language].title.toLowerCase()}</DesktopSub>
+            <MobileSub>{item[language].title.toLowerCase()}</MobileSub>
+            {/* {item[language].title.toLowerCase()} */}
           </AboutNavItem>
         </AboutNavItemLink>
       ))}
