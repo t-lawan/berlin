@@ -1,93 +1,46 @@
 import React from "react"
-import UpcomingEvents from "../components/events/upcomingevents"
-import Layout from "../components/layout/layout"
 import { connect } from "react-redux"
-import {
-  getCurrentLanguageString,
-  truncateText,
-  pageMap,
-} from "../utility/helper"
-import SEO from "../components/seo/seo"
-import { TwoColumnPageWrapper, PaddingDiv, PageTitle, TextBlockSideBarPage, ResourcePublisherLink } from "./page.styles"
-import NewsList from "../components/news/newslist"
-import striptags from "striptags"
-import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
-import PracticalInformationComponents from "../components/practical-information/practical-information-components";
-import PracticalInformationPage from "../components/practical-information/practical-information-page"
+import { getCurrentLanguageString } from "../../utility/helper"
+import { ContentBlock, PageTitle } from "../../templates/page.styles"
+import ImageResource from "../../partials/ImageResource"
 
-const PracticalInformation = props => {
-  const language = getCurrentLanguageString(props.languages)
-  const pageInfo = props.pageContext
-  // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
-  let description = truncateText(
-    striptags(
-      pageInfo.acf[`${pageInfo.language.toUpperCase()}`].venue_description
-    )
-  )
-  let path = pageMap.find(pg => {
-    return pg["EN"] == "practical-information"
-  })
-  const renderComponent = (
-    <TwoColumnPageWrapper>
-      <SEO
-        title={`${content[pageInfo.language.toUpperCase()].seo_title}`}
-        description={description}
-        lang={pageInfo.language}
-        pathname={`${path[props.pageContext.language.toUpperCase()]}`}
-      />
-      <div>
-        <PageTitle
-          dangerouslySetInnerHTML={{
-            __html: content[language].title,
-          }}
-        />
 
-        <PracticalInformationNavbar currentPage={pageInfo.slug} />
-      </div>
-      {/* <div>
-        <PracticalInformationPage content={pageInfo} />
-        <PaddingDiv> </PaddingDiv>
-      </div> */}
-      <PracticalInformationComponents content={pageInfo}/>
-    </TwoColumnPageWrapper>
-  )
-
-  let thirdColumn = (
-    <>
-      <NewsList />
-      <UpcomingEvents />
-    </>
-  )
+const PracticalInformationPage = props => {
+  let language = getCurrentLanguageString(props.languages)
+  let content = props.content
 
   return (
-    <Layout
-      firstColumn={renderComponent}
-      numberOfColumnsIsTwo={false}
-      thirdColumn={thirdColumn}
-    />
+    <>
+      {/* <PageTitle> {page_title[language].title}</PageTitle> */}
+      <ContentBlock
+        dangerouslySetInnerHTML={{
+          __html: content.acf[language].corona_notice,
+        }}
+      />
+      <ImageResource id={content.acf.thumbnail_image} withCaption={true} />
+      <ContentBlock
+        dangerouslySetInnerHTML={{
+          __html: content.acf[language].venue_description,
+        }}
+      />
+      <ImageResource id={content.acf.venue_map_graphic} withCaption={false} />
+    </>
   )
 }
-const content = {
-  EN: {
-    opening_hours: "Opening hours",
-    access: "Access",
-    title: "practical information",
-    directions: "Directions",
-    seo_title: "Practical information",
-  },
-  DE: {
-    opening_hours: "Öffnungszeiten",
-    title: "praktische information",
-    access: "Anfahrt",
-    directions: "Karte",
-    seo_title: "Praktische Information",
-  },
-}
+
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    documents: state.documents,
   }
 }
 
-export default connect(mapStateToProps, null)(PracticalInformation)
+let page_title = {
+  EN: {
+    title: "practical information",
+  },
+  DE: {
+    title: "praktische information",
+  },
+}
+
+export default connect(mapStateToProps, null)(PracticalInformationPage)

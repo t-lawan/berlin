@@ -11,6 +11,7 @@ import PracticalInformationOpening from "./practical-information-opening"
 import PracticalInformationAntidisc from "./practical-information-anti-discrimination-clause"
 import PracticalInformationFaq from "./practical-information-faq"
 import PracticalInformationAccommodation from "./practical-information-accommodation";
+import PracticalInformationAntiDiscriminationClause from "./practical-information-anti-discrimination-clause";
 
 const PracticalInformationComponents = props => {
   const content = props.content
@@ -49,10 +50,10 @@ const PracticalInformationComponents = props => {
       renderComponent = <PracticalInformationOpening content={content} />
       break
     case "/practical-information/anti-discrimination-clause":
-      renderComponent = <PracticalInformationAntidisc content={content} />
+      renderComponent = <PracticalInformationAntiDiscriminationClause content={content} />
       break
     case "/de/praktische-information/antidiskriminierungsklausel":
-      renderComponent = <PracticalInformationAntidisc content={content} />
+      renderComponent = <PracticalInformationAntiDiscriminationClause content={content} />
       break
     case "/practical-information/faq":
       renderComponent = <PracticalInformationFaq content={content} />

@@ -31,7 +31,7 @@ const PracticalInformationNavbar = props => {
       },
       DE: {
         title: "öffnungszeiten",
-        slug: "praktische-information/oeffnungszeiten",
+        slug: "praktische-information/öffnungszeiten",
       },
       isLive: true,
     },
@@ -68,7 +68,8 @@ const PracticalInformationNavbar = props => {
       },
       isLive: false,
     },
-    EN: {
+    {
+      EN: {
         title: "anti-discrimination clause",
         slug: "practical-information/anti-discrimination-clause",
       },
@@ -78,7 +79,7 @@ const PracticalInformationNavbar = props => {
       },
       isLive: true,
     },
-
+  
     {
       EN: {
         title: "FAQ",
