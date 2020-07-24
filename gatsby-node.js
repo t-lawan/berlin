@@ -196,9 +196,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 exrota_info
-                image_gallery {
-                  id
-                }
+                image_gallery
                 page_title
                 content_block {
                   block_type
