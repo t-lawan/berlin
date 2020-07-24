@@ -36,8 +36,9 @@ export const DateCardWrapper = styled.div`
     }
   }
   @media (min-width: ${size.laptopL}) {
-    padding-top:106px;
-    margin-top:-106px;
+    /* padding-top:106px; */
+    padding-top: ${props => props.isExp4 ? '167px' : '106px'};
+    margin-top: ${props => props.isExp4 ? '-106px' : '-106px'};
     :last-child {
       padding-bottom:140px;
     }

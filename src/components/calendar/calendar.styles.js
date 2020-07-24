@@ -44,7 +44,7 @@ export const CalendarFilterButton = styled.p`
   :hover {
     color: ${Color.red};
   }
-  @media (max-width: ${size.laptop}) {
+  @media (min-width: ${size.laptop}) {
     margin-left: calc(20% + 1em);
   }
 `
@@ -64,7 +64,7 @@ export const CalendarFilterDates = styled.div`
   margin-left: 5%;
   text-align: center;
   padding: 0.5rem;
-  @media (max-width: ${size.laptop}) {
+  @media (min-width: ${size.laptop}) {
     margin-left: calc(20% - 0.05em);
     padding: 0.85em 0.85em 0.30em 0.85em;
   }

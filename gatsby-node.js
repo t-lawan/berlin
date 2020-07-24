@@ -660,6 +660,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "admission", DE: "eintritt" },
     { EN: "accommodation", DE: "unterkunft" },
     { EN: "faq", DE: "faq" },
+    { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
     { EN: "opening-hours", DE: "öffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
   ]

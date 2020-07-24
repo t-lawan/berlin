@@ -15,18 +15,18 @@ const PracticalInformationNavbar = props => {
   let items = [
     {
       EN: {
-        title: "Practical Information",
+        title: "practical information",
         slug: "practical-information",
       },
       DE: {
-        title: "Praktische Information",
+        title: "praktische information",
         slug: "praktische-information",
       },
       isLive: true,
     },
     {
       EN: {
-        title: "Opening Hours",
+        title: "opening hours",
         slug: "practical-information/opening-hours",
       },
       DE: {
@@ -37,7 +37,7 @@ const PracticalInformationNavbar = props => {
     },
     {
       EN: {
-        title: "Admission",
+        title: "admission",
         slug: "practical-information/admission",
       },
       DE: {
@@ -48,7 +48,7 @@ const PracticalInformationNavbar = props => {
     },
     {
       EN: {
-        title: "Access",
+        title: "access",
         slug: "practical-information/access",
       },
       DE: {
@@ -59,17 +59,27 @@ const PracticalInformationNavbar = props => {
     },
     {
       EN: {
-        title: "Accommodation",
+        title: "accommodation",
         slug: "practical-information/accommodation",
       },
       DE: {
-        title: "Accommodation",
+        title: "unterkunft",
         slug: "praktische-information/unterkunft",
       },
       isLive: false,
     },
-
-
+    {
+      EN: {
+        title: "anti-discrimination clause",
+        slug: "practical-information/anti-discrimination-clause",
+      },
+      DE: {
+        title: "antidiskriminierungsklausel",
+        slug: "praktische-information/antidiskriminierungsklausel",
+      },
+      isLive: true,
+    },
+  
     {
       EN: {
         title: "FAQ",
