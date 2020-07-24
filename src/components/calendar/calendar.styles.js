@@ -11,9 +11,10 @@ display: grid;
 grid-template-columns: 1fr;
  overflow-y: scroll;
  margin-top: -100px;
- padding-top: 100px;
-@media (max-width: ${size.mobileM}) {
+ padding-top: ${props.isExp4 ? '151px' : '100px'};
+@media (max-width: ${size.mobileL}) {
     background:#FFF;
+    padding-top: ${props.isExp4 ? '194px' : '100px'};
     }
     transform: translate3d(0px, 0px,0px);
 /* grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -35,7 +36,13 @@ export const CalendarFilterWrapper = styled.div`
   z-index: 250;
   position: fixed;
   width: 100%;
-  /* top: 0; */
+  @media (max-width: ${size.mobileL}) {
+    width: 100vw;
+    top: 88px;
+  }
+  @media (min-width: ${size.laptop}) {
+    width: calc(59.927vw - 1px);
+  }
 `
 
 export const CalendarFilterButton = styled.p`
@@ -43,6 +50,9 @@ export const CalendarFilterButton = styled.p`
   cursor: pointer;
   :hover {
     color: ${Color.red};
+  }
+  @media (max-width: ${size.mobileM}) {
+    margin-left: 0.7em;
   }
   @media (min-width: ${size.laptop}) {
     margin-left: calc(20% + 1em);
@@ -64,8 +74,12 @@ export const CalendarFilterDates = styled.div`
   margin-left: 5%;
   text-align: center;
   padding: 0.5rem;
+  @media (max-width: ${size.mobileL}) {
+    margin-left: 0;
+    padding: 0.7em;
+  }
   @media (min-width: ${size.laptop}) {
-    margin-left: calc(20% - 0.05em);
+    margin-left: calc(20% - 1px);
     padding: 0.85em 0.85em 0.30em 0.85em;
   }
 `
@@ -75,6 +89,9 @@ export const CalendarFilterMonth = styled.p`
   padding: 0 0.85em 0 0.25em;
   margin-bottom: 0.85em;
   cursor: pointer;
+  @media (max-width: ${size.mobileL}) {
+    padding: 0 0.85em 0 0em;
+  }
   color: ${props => (props.isMonth ? Color.red : "black")};
   :hover {
     color: ${Color.red};

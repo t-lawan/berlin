@@ -73,6 +73,7 @@ class DateCard extends React.Component {
             this.props.month,
             this.props.year
           )}`}
+          isExp4={this.props.experience === 4}
         >
           <CurrentDate>
             <DateText>{date}</DateText>
@@ -152,6 +153,7 @@ DateCard.propTypes = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    experience: state.experience,
   }
 }
 
