@@ -196,7 +196,9 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 exrota_info
-                image_gallery
+                image_gallery {
+                  id
+                }
                 page_title
                 content_block {
                   block_type
@@ -660,6 +662,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "admission", DE: "eintritt" },
     { EN: "accommodation", DE: "unterkunft" },
     { EN: "faq", DE: "faq" },
+    { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
     { EN: "opening-hours", DE: "öffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
   ]
