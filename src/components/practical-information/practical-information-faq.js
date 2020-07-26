@@ -19,6 +19,14 @@ const FAQQuestionWrapper =  styled.div`
 const FAQAnswerWrapper =  styled.div`
 margin-left: 1em;
 margin-top: -0.9em;
+> p > a {
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+  border-bottom: solid thin ${Color.red}; 
+    :hover {
+      color: ${Color.red}
+    }
+}
 @media (min-width: ${size.laptop}) {
   margin-left: 1.2em;
   }
