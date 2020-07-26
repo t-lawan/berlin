@@ -13,11 +13,11 @@ import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
 import PracticalInformationComponents from "../components/practical-information/practical-information-components";
-import PracticalInformationPage from "../components/practical-information/practical-information-page"
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
+  let title =  PracticalInformationTitle[pageInfo.title] ? PracticalInformationTitle[pageInfo.title][`${pageInfo.language.toUpperCase()}`] : PracticalInformationTitle['Practical Information'][`${pageInfo.language.toUpperCase()}`]
   // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
   let description = truncateText(
     striptags(
@@ -31,7 +31,7 @@ const PracticalInformation = props => {
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${content[pageInfo.language.toUpperCase()].seo_title}`}
+        title={`${title}`}
         description={description}
         lang={pageInfo.language}
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
@@ -71,6 +71,38 @@ const content = {
     directions: "Karte",
     seo_title: "Praktische Information",
   },
+}
+
+const PracticalInformationTitle  = {
+  "Practical Information": {
+    EN: 'Practical Information',
+    DE: 'Praktische Information'
+  },
+  "Admission": {
+    EN: 'Admission',
+    DE: 'Eintritt'
+  },
+  "Accommodation": {
+    EN: 'Accommodation',
+    DE: 'Unterkunft'
+  },
+  "Access": {
+    EN: 'Access',
+    DE: 'Anfahrt'
+  },
+  "Opening Hours": {
+    EN: 'Opening Hours',
+    DE: 'Offnungszeiten'
+  },
+  "Anti-discrimination clause": {
+    EN: 'Anti-discrimination Clause',
+    DE: 'Antidiskriminierungsklausel'
+  },
+  "FAQ": {
+    EN: 'FAQ',
+    DE: 'FAQ'
+  },
+
 }
 const mapStateToProps = state => {
   return {
