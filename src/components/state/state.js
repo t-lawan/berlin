@@ -337,18 +337,7 @@ const State = props => {
                   external_url
                 }
                 slug
-                localFile {
-                  childImageSharp {
-                    fluid(quality: 90, maxWidth: 1000) {
-                      aspectRatio
-                      src
-                      srcSet
-                      sizes
-                      presentationWidth
-                    }
-                  }
-                  publicURL
-                }
+                
               }
             }
           }
@@ -526,8 +515,8 @@ const State = props => {
       new NavbarModel("calendar", "calendar", "kalender", false, true, true, true),
       new NavbarModel(
         "c-o-exrotaprint",
-        "c/o ExRotaprint",
-        "c/o ExRotaprint",
+        "c/o exrotaprint",
+        "c/o exrotaprint",
         false,
         true,
         true,
