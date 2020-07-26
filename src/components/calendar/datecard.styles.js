@@ -12,14 +12,16 @@ export const DateCardWrapper = styled.div`
   display: inline-grid;
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 2fr 6fr;
-    padding-top: ${props => props.isExp4 ? '0px' : '0px'};
-    margin-top: ${props => props.isExp4 ? '0px' : '0px'};
+    padding-top: ${props => props.isExp4 ? '90px' : '0px'};
+    margin-top: ${props => props.isExp4 ? '-90px' : '0px'};
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 1fr 4fr;
   }
   @media (min-width: ${size.mobileSL}) {
     grid-template-columns: 1.3fr 4fr;
+    padding-top: ${props => props.isExp4 ? '87px' : '92px'};
+    margin-top: ${props => props.isExp4 ? '-87px' : '-92px'};
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 4fr;
