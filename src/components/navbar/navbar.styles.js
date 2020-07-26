@@ -319,7 +319,7 @@ export const NavMobileContent = styled.div`
     max-height: calc(100vh - 40px);
     position: fixed;
     background: #FFF;
-    width: calc(33.33% - 1px);
+    width: calc(33.33% - 0px);
     top: 40px;
     height: calc(100vh - 40px);
     margin-top: 0em;
