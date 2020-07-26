@@ -21,7 +21,7 @@ const ExRotaprint = props => {
         lang={props.pageContext.language}
       />
 
-      <PageTitle> {title} </PageTitle>
+      <PageTitle>c/o exrotaprint</PageTitle>
         {content.acf[language].image_gallery ? <ImageGalleryResource ids={content.acf[language].image_gallery} /> : null}
       <div
         dangerouslySetInnerHTML={{
@@ -54,6 +54,7 @@ const mapStateToProps = state => {
     languages: state.languages,
   }
 }
+
 
 export default connect(
   mapStateToProps,

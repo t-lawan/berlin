@@ -92,9 +92,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 content
                 exrota_info
-                image_gallery {
-                  id
-                }
+                image_gallery
                 images_note
                 opening_times {
                   opening_time_line
@@ -198,7 +196,6 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 exrota_info
-                image_gallery
                 page_title
                 content_block {
                   block_type
@@ -209,6 +206,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 corona_notice
                 new_practical_info
+                image_gallery
               }
               EN_row {
                 description
