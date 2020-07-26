@@ -14,16 +14,10 @@ const PracticalInformationPage = props => {
       <PageTitle> {page_title[language].title}</PageTitle>
       <ContentBlock
         dangerouslySetInnerHTML={{
-          __html: content.acf[language].corona_notice,
+          __html: content.acf[language].new_practical_info,
         }}
       />
-      <ImageResource id={content.acf.thumbnail_image} withCaption={true} />
-      <ContentBlock
-        dangerouslySetInnerHTML={{
-          __html: content.acf[language].venue_description,
-        }}
-      />
-      <ImageResource id={content.acf.venue_map_graphic} withCaption={false} />
+      
     </>
   )
 }
@@ -42,6 +36,5 @@ let page_title = {
     title: "praktische information",
   },
 }
-
 
 export default connect(mapStateToProps, null)(PracticalInformationPage)
