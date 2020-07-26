@@ -104,6 +104,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 corona_notice
+                new_practical_info
                 content_block {
                   block_type
                   image
@@ -206,6 +207,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   file_label
                 }
                 corona_notice
+                new_practical_info
               }
               EN_row {
                 description
