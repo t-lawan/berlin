@@ -11,10 +11,10 @@ display: grid;
 grid-template-columns: 1fr;
  overflow-y: scroll;
  margin-top: -100px;
- padding-top: ${props.isExp4 ? '151px' : '100px'};
+ padding-top: ${props => props.isExp4 ? '151px' : '100px'};
 @media (max-width: ${size.mobileL}) {
     background:#FFF;
-    padding-top: ${props.isExp4 ? '194px' : '100px'};
+    padding-top: ${props => props.isExp4 ? '194px' : '100px'};
     }
     transform: translate3d(0px, 0px,0px);
 /* grid-template-columns: 1fr 1fr 1fr 1fr;

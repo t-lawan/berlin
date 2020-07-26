@@ -12,8 +12,8 @@ export const DateCardWrapper = styled.div`
   display: inline-grid;
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 2fr 6fr;
-    padding-top: ${props.isExp4 ? '94px' : '0px'};
-    margin-bottom: ${props.isExp4 ? '-94px' : '0px'};
+    padding-top: ${props => props.isExp4 ? '94px' : '0px'};
+    margin-bottom: ${props => props.isExp4 ? '-94px' : '0px'};
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 1fr 4fr;
@@ -23,7 +23,7 @@ export const DateCardWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 4fr;
-    padding-top: ${props.isExp4 ? '143px' : '106px'};
+    padding-top: ${props => props.isExp4 ? '143px' : '106px'};
     margin-top:-92px;
     :last-child {
       padding-bottom:45px;
@@ -31,14 +31,14 @@ export const DateCardWrapper = styled.div`
     }
   }
   @media (min-width: ${size.laptopM}) {
-    padding-top: ${props.isExp4 ? '147px' : '106px'};
+    padding-top: ${props => props.isExp4 ? '147px' : '106px'};
     margin-top:-96px;
     :last-child {
       padding-bottom:130px;
     }
   }
   @media (min-width: ${size.laptopL}) {
-    padding-top: ${props.isExp4 ? '167px' : '106px'};
+    padding-top: ${props => props.isExp4 ? '167px' : '106px'};
     margin-top:-106px;
     :last-child {
       padding-bottom:140px;
