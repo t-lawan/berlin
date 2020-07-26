@@ -17,7 +17,6 @@ const PracticalInformationPage = props => {
           __html: content.acf[language].new_practical_info,
         }}
       />
-      
     </>
   )
 }
@@ -36,5 +35,6 @@ let page_title = {
     title: "praktische information",
   },
 }
+
 
 export default connect(mapStateToProps, null)(PracticalInformationPage)
