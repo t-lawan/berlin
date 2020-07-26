@@ -160,6 +160,14 @@ const OtherVenue = styled.div`
     width: 100% !important;
     display: block;
   }
+  > p > a {
+    font-size: 1em;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      }
+  }
 `
 
 const EventRsvpText = styled.div`
@@ -218,18 +226,20 @@ class Event extends React.Component {
   hasUpdated = false
 
   componentDidMount() {
-    let exp = parseInt(this.event.experience[0])
-    if (exp !== this.props.experience) {
+    let exp = parseInt(this.event.experience[this.event.experience.length - 1])
+    if (this.event.experience && !this.event.experience.includes(this.props.active_experience.toString())) {
       this.props.changeExperience(exp)
+
     }
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.experience !== this.props.experience) {
       let exp = parseInt(this.event.experience[0])
-      if (exp !== this.props.experience && !this.hasUpdated) {
+      if (this.event.experience && !this.event.experience.includes(this.props.experience.toString())) {
         this.props.changeExperience(exp)
         this.hasUpdated = true
+  
       }
     }
   }
@@ -504,6 +514,7 @@ const mapStateToProps = state => {
     experience: state.experience,
     documentation: state.documentation,
     documents: state.documents,
+    active_experience: state.active_experience
   }
 }
 

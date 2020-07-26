@@ -69,7 +69,26 @@ class NavbarMobile extends React.Component {
   }
   render() {
     this.language = getCurrentLanguageString(this.props.languages);
-    let navbarItems = [...this.props.navbar_top, ...this.props.navbar_bottom]
+    let topNavbar = this.props.navbar_top.filter(item => {
+      if(this.props.experience == 4) {
+        return item.isInExp4
+      } else {
+        return item.isInExp13
+      }
+    })
+  
+    let bottomNavbar = this.props.navbar_bottom.filter(item => {
+      if(this.props.experience == 4) {
+        return item.isInExp4
+      } else {
+        return item.isInExp13
+
+      }
+    })
+    let navbarItems = [...topNavbar]
+    if(this.props.experience === 4) {
+      navbarItems = [...navbarItems, ...bottomNavbar]
+    }
     return (
       <NavMobileWrapper
         showInTablet={this.props.showInTablet}

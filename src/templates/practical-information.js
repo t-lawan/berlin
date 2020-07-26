@@ -18,12 +18,12 @@ import {
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
-// import PracticalInformationComponents from "../components/practical-information/practical-information-components";
-import PracticalInformationPage from "../components/practical-information/practical-information-page"
+import PracticalInformationComponents from "../components/practical-information/practical-information-components";
 
 const PracticalInformation = props => {
   const language = getCurrentLanguageString(props.languages)
   const pageInfo = props.pageContext
+  let title =  PracticalInformationTitle[pageInfo.title] ? PracticalInformationTitle[pageInfo.title][`${pageInfo.language.toUpperCase()}`] : PracticalInformationTitle['Practical Information'][`${pageInfo.language.toUpperCase()}`]
   // let title = truncateText(striptags(pageInfo.acf[`${pageInfo.language.toUpperCase()}`]))
   let description = truncateText(
     striptags(
@@ -33,64 +33,18 @@ const PracticalInformation = props => {
   let path = pageMap.find(pg => {
     return pg["EN"] == "practical-information"
   })
+
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${content[pageInfo.language.toUpperCase()].seo_title}`}
+        title={`${title}`}
         description={description}
         lang={pageInfo.language}
         pathname={`${path[props.pageContext.language.toUpperCase()]}`}
       />
-      <div>
-        <PageTitle
-          dangerouslySetInnerHTML={{
-            __html: content[language].title,
-          }}
-        />
-        {pageInfo.acf[language].address_info ? (
-          <TextBlockSideBarPage>
-            {pageInfo.acf[language].address_info.map((address, index) => (
-              <p key={index}> {address.address_line} </p>
-            ))}
-          </TextBlockSideBarPage>
-        ) : null}
-        {pageInfo.acf[language].opening_times ? (
-          <TextBlockSideBarPage>
-            <p>{content[language].opening_hours}</p>
-            {pageInfo.acf[language].opening_times.map((time, index) => (
-              <p key={index}> {time.opening_time_line} </p>
-            ))}
-          </TextBlockSideBarPage>
-        ) : null}
-        {pageInfo.acf.directions ? (
-          <TextBlockSideBarPage>
-            <p>{content[language].access}</p>
-            {pageInfo.acf.directions.map((directions, index) => (
-              <p key={index}> {directions.directions_line} </p>
-            ))}
-            <ResourcePublisherLink
-              target="_blank"
-              rel="noopener noreferrer"
-              href={pageInfo.acf.google_map_venue_link}
-            >
-              {" "}
-              {content[language].directions}
-            </ResourcePublisherLink>
-          </TextBlockSideBarPage>
-        ) : null}
-        {pageInfo.acf[language].access_block ?
-        <TextBlockSideBarPage>
-          {pageInfo.acf[language].access_block.map((item, index) => (
-            <p key={index}> {item.access_line} </p>
-          ))}
-        </TextBlockSideBarPage> : null}
-        {/* <PracticalInformationNavbar currentPage={pageInfo.slug} /> */}
-      </div>
-      <div>
-        <PracticalInformationPage content={pageInfo} />
-        <PaddingDiv> </PaddingDiv>
-      </div>
-      {/* <PracticalInformationComponents content={pageInfo}/> */}
+      <PracticalInformationNavbar currentPage={pageInfo.slug} />
+      <PracticalInformationComponents content={pageInfo}/>
+
     </TwoColumnPageWrapper>
   )
 
@@ -124,6 +78,38 @@ const content = {
     directions: "Karte",
     seo_title: "Praktische Information",
   },
+}
+
+const PracticalInformationTitle  = {
+  "Practical Information": {
+    EN: 'Practical Information',
+    DE: 'Praktische Information'
+  },
+  "Admission": {
+    EN: 'Admission',
+    DE: 'Eintritt'
+  },
+  "Accommodation": {
+    EN: 'Accommodation',
+    DE: 'Unterkunft'
+  },
+  "Access": {
+    EN: 'Access',
+    DE: 'Anfahrt'
+  },
+  "Opening Hours": {
+    EN: 'Opening Hours',
+    DE: 'Öffnungszeiten'
+  },
+  "Anti-discrimination clause": {
+    EN: 'Anti-discrimination Clause',
+    DE: 'Antidiskriminierungsklausel'
+  },
+  "FAQ": {
+    EN: 'FAQ',
+    DE: 'FAQ'
+  },
+
 }
 const mapStateToProps = state => {
   return {

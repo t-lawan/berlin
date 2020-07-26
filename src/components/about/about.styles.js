@@ -15,6 +15,27 @@ export const AboutSideNavbar = styled.nav`
     padding: 0 0 0.2em;
     border-bottom: solid 1px #000;
   }
+  @media (min-width: ${size.mobileL}) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: solid 1px #000;
+    width: calc(100% + 1.4em);
+    padding-left: 0.2em;
+    margin: -0.2em 0 1.3em -0.7em;
+  }
+  @media (min-width: ${size.tablet}) {
+    margin-top: -0.7em;
+    padding-bottom: 0.25em;
+  }
+  @media (min-width: ${size.laptop}) {
+    display: flex;
+    padding-left: 0;
+    padding-bottom: 0;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+    border-bottom: none;
+  }
 `
 export const MobileSub = styled.span`
 display: none;
@@ -67,6 +88,16 @@ export const AboutNavItemLink = styled(AniLink)`
   text-decoration: none;
   > p {
     font-size: 1em;
+  }
+  @media (min-width: ${size.tablet}) {
+    > p {
+      margin-bottom: 0;
+    }
+  }
+  @media (min-width: ${size.laptop}) {
+    > p {
+      margin-bottom: 0.6em;
+    }
   }
   @media (max-width: ${size.mobileM}) {
     font-size: 1.1em;

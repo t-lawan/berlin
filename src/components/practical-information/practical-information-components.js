@@ -8,8 +8,10 @@ import PracticalInformationPage from "./practical-information-page"
 import PracticalInformationAdmission from "./practical-information-admission"
 import PracticalInformationAccess from "./practical-information-access"
 import PracticalInformationOpening from "./practical-information-opening"
+import PracticalInformationAntidisc from "./practical-information-anti-discrimination-clause"
 import PracticalInformationFaq from "./practical-information-faq"
 import PracticalInformationAccommodation from "./practical-information-accommodation";
+import PracticalInformationAntiDiscriminationClause from "./practical-information-anti-discrimination-clause";
 
 const PracticalInformationComponents = props => {
   const content = props.content
@@ -32,20 +34,26 @@ const PracticalInformationComponents = props => {
     case "/practical-information/accommodation":
       renderComponent = <PracticalInformationAccommodation content={content} />
       break
-    case "/de/praktische-information/accommodation":
+    case "/de/praktische-information/unterkunft":
       renderComponent = <PracticalInformationAccommodation content={content} />
       break
     case "/practical-information/access":
       renderComponent = <PracticalInformationAccess content={content} />
       break
-    case "/de/praktische-information/access":
+    case "/de/praktische-information/anfahrt":
       renderComponent = <PracticalInformationAccess content={content} />
       break
     case "/practical-information/opening-hours":
       renderComponent = <PracticalInformationOpening content={content} />
       break
-    case "/de/praktische-information/opening-hours":
+    case "/de/praktische-information/oeffnungszeiten":
       renderComponent = <PracticalInformationOpening content={content} />
+      break
+    case "/practical-information/anti-discrimination-clause":
+      renderComponent = <PracticalInformationAntiDiscriminationClause content={content} />
+      break
+    case "/de/praktische-information/antidiskriminierungsklausel":
+      renderComponent = <PracticalInformationAntiDiscriminationClause content={content} />
       break
     case "/practical-information/faq":
       renderComponent = <PracticalInformationFaq content={content} />

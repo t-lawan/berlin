@@ -91,6 +91,8 @@ exports.createPages = async ({ graphql, actions }) => {
                   address_line
                 }
                 content
+                exrota_info
+                image_gallery
                 images_note
                 opening_times {
                   opening_time_line
@@ -100,6 +102,17 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 corona_notice
+                new_practical_info
+                content_block {
+                  block_type
+                  image
+                  file
+                  text
+                  file_label
+                }
+                page_slug
+                page_title
+                new_practical_info
               }
               contact_data {
                 contact_data_line
@@ -182,10 +195,35 @@ exports.createPages = async ({ graphql, actions }) => {
                 press_notice
                 title
                 venue_description
+                exrota_info
+                page_title
+                content_block {
+                  block_type
+                  file
+                  image
+                  text
+                  file_label
+                }
                 corona_notice
+                new_practical_info
+                image_gallery
               }
               EN_row {
                 description
+              }
+              english {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
+              }
+              german {
+                faq_repeater {
+                  faq_answer
+                  faq_question
+                  section_header
+                }
               }
             }
           }
@@ -564,7 +602,7 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             date
           }
-        }      
+        }
       }
     }
   `)
@@ -592,9 +630,11 @@ exports.createPages = async ({ graphql, actions }) => {
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
+  const exRotaprintTemplate = path.resolve(`./src/templates/ex-rotaprint.js`)
   const languages = ["en", "de"]
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
+    { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
     { EN: "about", DE: "uber" },
     { EN: "team", DE: "team" },
     { EN: "organization", DE: "verein" },
@@ -622,10 +662,8 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "accommodation", DE: "unterkunft" },
     { EN: "faq", DE: "faq" },
     { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
-    { EN: "opening-hours", DE: "offnungszeiten" },
+    { EN: "opening-hours", DE: "oeffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
-
-
 
   ]
 
@@ -649,6 +687,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "press_images":
         template = pressImagesTemplate
+        break
+      case "ex_rotaprint":
+        template = exRotaprintTemplate
         break
       default:
         template = pageTemplate
@@ -717,7 +758,7 @@ exports.createPages = async ({ graphql, actions }) => {
           ) {
             let prePath = pageMap.find(pageType => {
               return pageType.EN === "practical-information"
-            }) 
+            })
 
             let endPath = pageMap.find(pageType => {
               return pageType.EN === slug
@@ -773,6 +814,9 @@ exports.createPages = async ({ graphql, actions }) => {
                   ? "/practical-information"
                   : "/de/praktische-information"
               break
+            case 'ex-rotaprint':
+              path = language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
+              break;
             default:
               path =
                 language === "en"
@@ -886,7 +930,6 @@ exports.createPages = async ({ graphql, actions }) => {
       })
     })
   })
-
 
   // const venueTemplate = path.resolve(`./src/templates/venue.js`)
   // allWordpressWpVenue.edges.forEach(edge => {

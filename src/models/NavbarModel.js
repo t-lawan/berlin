@@ -1,5 +1,5 @@
 export class NavbarModel {
-  constructor(slug, title_en, title_de, isExternal = false, isActive = true) {
+  constructor(slug, title_en, title_de, isExternal = false, isActive = true, isInExp13 = true, isInExp4 = true) {
     this.slug = slug
     this.EN = {
       title: title_en
@@ -10,6 +10,9 @@ export class NavbarModel {
     this.title = title_en
     this.isExternal = isExternal
     this.isActive =  isActive;
+    this.isInExp13 = isInExp13;
+    this.isInExp4 = isInExp4;
+
   }
 }
 
