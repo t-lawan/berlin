@@ -483,14 +483,15 @@ export const PageTitleCalendar = styled.h1`
   display: none;
   @media (max-width: ${size.mobileL}) {
     font-size: 1.55rem;
+    display: block;
     margin-bottom: 0 !important;
     background: #FFF;
-    padding: 0.3em 0.4em;
+    padding: 0.4em 0.4em;
     border-bottom: solid 1px #000;
     width: 100%;
-    top: 0;
+    top: 40px;
     z-index: 3;
-    position: sticky;
+    position: fixed;
     margin-bottom: 1.0rem;
   }
   @media (min-width: ${size.mobileSL}) {
