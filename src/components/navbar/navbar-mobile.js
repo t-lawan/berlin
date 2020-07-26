@@ -85,7 +85,10 @@ class NavbarMobile extends React.Component {
 
       }
     })
-    let navbarItems = [...topNavbar, ...bottomNavbar]
+    let navbarItems = [...topNavbar]
+    if(this.props.experience === 4) {
+      navbarItems = [...navbarItems, ...bottomNavbar]
+    }
     return (
       <NavMobileWrapper
         showInTablet={this.props.showInTablet}

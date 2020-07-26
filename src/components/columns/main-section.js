@@ -145,7 +145,7 @@ class MainSection extends React.Component {
             </FixedTickerOnlyInMobile>
 
             {/* Only In Mobile */}
-            <FixedFooter isHome={this.props.isHome} showInTablet>
+            <FixedFooter isHome={this.props.isHome} hideInTablet={true} showInMobile={true}>
               <FooterComponent />
             </FixedFooter>
             {/* Only In Mobile */}

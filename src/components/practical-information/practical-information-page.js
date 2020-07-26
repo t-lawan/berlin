@@ -8,7 +8,6 @@ import ImageResource from "../../partials/ImageResource"
 const PracticalInformationPage = props => {
   let language = getCurrentLanguageString(props.languages)
   let content = props.content
-
   return (
     <>
       <PageTitle> {page_title[language].title}</PageTitle>
@@ -17,7 +16,6 @@ const PracticalInformationPage = props => {
           __html: content.acf[language].new_practical_info,
         }}
       />
-    </>
   )
 }
 

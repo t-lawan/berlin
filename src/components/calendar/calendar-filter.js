@@ -131,6 +131,11 @@ class CalendarFilterDropDown extends React.Component {
           skipOverflowHiddenElements: true,
         })
       }
+
+      this.setState({
+        showFilter: false
+      })
+
     }
   }
 

@@ -114,6 +114,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 page_slug
                 page_title
+                new_practical_info
               }
               contact_data {
                 contact_data_line
@@ -663,7 +664,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "accommodation", DE: "unterkunft" },
     { EN: "faq", DE: "faq" },
     { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
-    { EN: "opening-hours", DE: "öffnungszeiten" },
+    { EN: "opening-hours", DE: "oeffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
   ]
 
