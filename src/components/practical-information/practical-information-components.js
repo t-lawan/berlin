@@ -46,7 +46,7 @@ const PracticalInformationComponents = props => {
     case "/practical-information/opening-hours":
       renderComponent = <PracticalInformationOpening content={content} />
       break
-    case "/de/praktische-information/öffnungszeiten":
+    case "/de/praktische-information/oeffnungszeiten":
       renderComponent = <PracticalInformationOpening content={content} />
       break
     case "/practical-information/anti-discrimination-clause":
