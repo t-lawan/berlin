@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { PageTitle } from "../../templates/page.styles"
+import { Color } from "../../index.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
 import ExternalLink from "../../partials/ExternalLink"
@@ -8,6 +9,14 @@ import styled from "styled-components"
 
 const ContentBlockWrapper = styled.div`
   margin-bottom: 2rem;
+  > div > p > a {
+    font-size: 1em;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      }
+  }
 `
 
 const PracticalInformationAdmission = props => {
