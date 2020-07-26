@@ -526,8 +526,8 @@ const State = props => {
       new NavbarModel("calendar", "calendar", "kalender", false, true, true, true),
       new NavbarModel(
         "c-o-exrotaprint",
-        "c/o ExRotaprint",
-        "c/o ExRotaprint",
+        "c/o exrotaprint",
+        "c/o exrotaprint",
         false,
         true,
         true,
