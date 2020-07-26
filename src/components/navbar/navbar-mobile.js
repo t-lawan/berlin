@@ -73,7 +73,7 @@ class NavbarMobile extends React.Component {
       if(this.props.experience == 4) {
         return item.isInExp4
       } else {
-        return item.isInExp3
+        return item.isInExp13
       }
     })
   
@@ -81,7 +81,8 @@ class NavbarMobile extends React.Component {
       if(this.props.experience == 4) {
         return item.isInExp4
       } else {
-        return item.isInExp3
+        return item.isInExp13
+
       }
     })
     let navbarItems = [...topNavbar, ...bottomNavbar]

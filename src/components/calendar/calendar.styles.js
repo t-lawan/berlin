@@ -15,6 +15,7 @@ grid-template-columns: 1fr;
 @media (max-width: ${size.mobileL}) {
     background:#FFF;
     padding-top: ${props => props.isExp4 ? '192px' : '100px'};
+
     }
 @media (min-width: ${size.laptopM}) {
   padding-top: ${props => props.isExp4 ? '151px' : '100px'};

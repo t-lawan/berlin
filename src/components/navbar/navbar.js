@@ -22,7 +22,7 @@ const Navbar = props => {
           target="__blank"
           rel="noopener noreferrer"
         >
-          {item[language].title.toLowerCase()}
+          {item[language].title}
         </NavLink>
       )
     } else {
@@ -36,7 +36,7 @@ const Navbar = props => {
           // cover direction="down"
           // bg={transitionBackground}
         >
-          {item[language].title.toLowerCase()}{" "}
+          {item[language].title}{" "}
         </NavItem>
       )
     }
@@ -45,7 +45,7 @@ const Navbar = props => {
       comp = (
         <InactiveLink key={index}>
           {" "}
-          {item[language].title.toLowerCase()}{" "}
+          {item[language].title}{" "}
         </InactiveLink>
       )
     }
