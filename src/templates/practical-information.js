@@ -92,7 +92,7 @@ const PracticalInformationTitle  = {
   },
   "Opening Hours": {
     EN: 'Opening Hours',
-    DE: 'Offnungszeiten'
+    DE: 'Öffnungszeiten'
   },
   "Anti-discrimination clause": {
     EN: 'Anti-discrimination Clause',
