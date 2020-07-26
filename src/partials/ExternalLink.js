@@ -11,7 +11,8 @@ const Link = styled.a`
     transition: all 0.2s ease-in-out;
     border-bottom: solid thin ${Color.red}; 
     :hover {
-      color: ${Color.red}
+      color: ${Color.red};
+      cursor: pointer;
     }
 `
 class ExternalLink extends Component {
