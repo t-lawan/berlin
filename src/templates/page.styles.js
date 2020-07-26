@@ -507,6 +507,9 @@ export const PageTitleCalendar = styled.h1`
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.55em;
+    width: calc(66.66vw - 1px);
+    position: fixed;
+    top: auto;
   }
   @media (min-width: ${size.laptop}) {
     display: none;

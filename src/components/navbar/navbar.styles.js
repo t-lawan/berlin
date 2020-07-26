@@ -63,6 +63,7 @@ export const NavMobileInner = styled.div`
   }
   @media (min-width: ${size.tablet}) {
     padding: 0.5em 0.7em 0.7em;
+    display: block;
     grid-template-columns: 1fr;
     > a:first-child {
       display:none;
@@ -219,6 +220,7 @@ export const NavMobileInactiveLink = styled.p`
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.2em;
+    margin-bottom: 0.4em;
     line-height: 1.3;
   }
   opacity: 0.3;
@@ -237,6 +239,7 @@ export const NavMobileLink = styled(AniLink)`
   }
   @media (min-width: ${size.tablet}) {
     font-size: 1.2em;
+    margin-bottom: 0.4em;
     line-height: 1.3;
   }
 `

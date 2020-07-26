@@ -82,6 +82,7 @@ class NavbarMobile extends React.Component {
         return item.isInExp4
       } else {
         return item.isInExp13
+
       }
     })
     let navbarItems = [...topNavbar, ...bottomNavbar]

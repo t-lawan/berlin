@@ -342,6 +342,8 @@ export const FixedFooter = styled.div`
   ${showDisplayForTablet};
   ${hideDisplayForTablet};
   ${hideDisplayForMobile};
+  ${showDisplayForMobile};
+
   transition: all 0.3s ease-in-out;
 `
 

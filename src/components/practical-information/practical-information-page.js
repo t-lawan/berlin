@@ -11,7 +11,7 @@ const PracticalInformationPage = props => {
 
   return (
     <>
-      {/* <PageTitle> {page_title[language].title}</PageTitle> */}
+      <PageTitle> {page_title[language].title}</PageTitle>
       <ContentBlock
         dangerouslySetInnerHTML={{
           __html: content.acf[language].corona_notice,
@@ -42,5 +42,6 @@ let page_title = {
     title: "praktische information",
   },
 }
+
 
 export default connect(mapStateToProps, null)(PracticalInformationPage)

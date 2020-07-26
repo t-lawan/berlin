@@ -31,7 +31,7 @@ const PracticalInformationNavbar = props => {
       },
       DE: {
         title: "öffnungszeiten",
-        slug: "praktische-information/öffnungszeiten",
+        slug: "praktische-information/oeffnungszeiten",
       },
       isLive: true,
     },
