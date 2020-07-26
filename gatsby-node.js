@@ -113,6 +113,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 page_slug
                 page_title
+                new_practical_info
               }
               contact_data {
                 contact_data_line
@@ -206,6 +207,7 @@ exports.createPages = async ({ graphql, actions }) => {
                   file_label
                 }
                 corona_notice
+                new_practical_info
               }
               EN_row {
                 description
