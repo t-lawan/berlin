@@ -15,6 +15,9 @@ import { size, Color } from "../../index.styles"
 const AlphabetContainer = styled.div`
   margin-bottom: 3rem;
   /* width: 40%; */
+  @media (min-width: ${size.tablet}) {
+    margin-bottom: 1rem;
+  }
   @media (min-width: ${size.laptop}) {
     width: 40%;
     margin-bottom: 2rem;
@@ -101,7 +104,7 @@ const AnchorDiv = styled.div`
 `
 
 const ExperienceContainer = styled.div`
-@media (max-width: ${size.mobileM}) {
+@media (max-width: ${size.tabletL}) {
 display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -156,7 +159,7 @@ const ExperienceImage = styled.img`
   :hover {
     cursor: pointer;
   }
-  @media (max-width: ${size.mobileM}) {
+  @media (max-width: ${size.tabletL}) {
     display: inline-block !important;
     margin: 0;
     width: 30px !important;
@@ -258,7 +261,7 @@ class ParticipantOverView extends Component {
     const element = document.getElementById(`anchor-${anchor}`)
     if (element) {
       scrollIntoView(element, {
-        scrollMode: "if-needed",
+        // scrollMode: "if-needed",
         block: "start",
         inline: "nearest",
         behavior: "smooth",

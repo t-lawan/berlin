@@ -12,32 +12,39 @@ export const DateCardWrapper = styled.div`
   display: inline-grid;
   @media (max-width: ${size.mobileM}) {
     grid-template-columns: 2fr 6fr;
+    padding-top: ${props => props.isExp4 ? '90px' : '0px'};
+    margin-top: ${props => props.isExp4 ? '-90px' : '0px'};
   }
   @media (min-width: ${size.mobileL}) {
     grid-template-columns: 1fr 4fr;
   }
   @media (min-width: ${size.mobileSL}) {
     grid-template-columns: 1.3fr 4fr;
+    padding-top: ${props => props.isExp4 ? '87px' : '92px'};
+    margin-top: ${props => props.isExp4 ? '-87px' : '-92px'};
   }
   @media (min-width: ${size.laptop}) {
     grid-template-columns: 1fr 4fr;
-    padding-top:92px;
-    margin-top:-92px;
+    padding-top: ${props => props.isExp4 ? '143px' : '92px'};
+    margin-top: ${props => props.isExp4 ? '-143px' : '-92px'};
+
     :last-child {
       padding-bottom:45px;
       border-bottom:none;
     }
   }
   @media (min-width: ${size.laptopM}) {
-    padding-top:96px;
-    margin-top:-96px;
+    padding-top: ${props => props.isExp4 ? '147px' : '106px'};
+    margin-top: ${props => props.isExp4 ? '-147px' : '-106px'};
+
     :last-child {
       padding-bottom:130px;
     }
   }
   @media (min-width: ${size.laptopL}) {
-    padding-top:106px;
-    margin-top:-106px;
+    padding-top: ${props => props.isExp4 ? '160px' : '106px'};
+    margin-top: ${props => props.isExp4 ? '-160px' : '-106px'};
+
     :last-child {
       padding-bottom:140px;
     }
@@ -200,7 +207,7 @@ export const MonthHeading = styled.p`
   }
   @media (min-width: ${size.laptop}) {
    font-size: 1.8em;
-   padding: 0.25em 0.5em;
+   padding: 0.3em 0.5em;
   }
   @media (min-width: ${size.laptopM}) {
     font-size: 1.85em;

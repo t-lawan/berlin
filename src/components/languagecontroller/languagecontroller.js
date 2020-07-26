@@ -66,8 +66,12 @@ class LanguageController extends React.Component {
     if (typeof window !== `undefined`) {
       let path = window.location.pathname.substr(1);
       let pathArray = path.split("/")
+
       if (pathArray[0] === "de") {
         pathArray.splice(0, 1)
+        if(pathArray[pathArray.length - 1] === "") {
+          pathArray.pop();
+        }
       }
       return createPath(chosenLanguage, pathArray.join('/'))
 

@@ -7,65 +7,79 @@ import {
   AboutNavItemLink,
   AboutNavItem,
   AboutSideNavbar,
+  DesktopSub,
+  MobileSub,
 } from "../about/about.styles"
 
 const PracticalInformationNavbar = props => {
   let items = [
     {
       EN: {
-        title: "Practical Information",
+        title: "practical information",
         slug: "practical-information",
       },
       DE: {
-        title: "Praktische Information",
+        title: "praktische information",
         slug: "praktische-information",
       },
       isLive: true,
     },
     {
       EN: {
-        title: "Admission",
-        slug: "practical-information/admission",
-      },
-      DE: {
-        title: "Admission",
-        slug: "praktische-information/eintritt",
-      },
-      isLive: false,
-    },
-    {
-      EN: {
-        title: "Accommodation",
-        slug: "practical-information/accommodation",
-      },
-      DE: {
-        title: "Accommodation",
-        slug: "praktische-information/accommodation",
-      },
-      isLive: false,
-    },
-    {
-      EN: {
-        title: "Access",
-        slug: "practical-information/access",
-      },
-      DE: {
-        title: "Access",
-        slug: "praktische-information/access",
-      },
-      isLive: false,
-    },
-    {
-      EN: {
-        title: "Opening Hours",
+        title: "opening hours",
         slug: "practical-information/opening-hours",
       },
       DE: {
-        title: "Opening Hours",
-        slug: "praktische-information/opening-hours",
+        title: "öffnungszeiten",
+        slug: "praktische-information/oeffnungszeiten",
+      },
+      isLive: true,
+    },
+    {
+      EN: {
+        title: "admission",
+        slug: "practical-information/admission",
+      },
+      DE: {
+        title: "eintritt",
+        slug: "praktische-information/eintritt",
+      },
+      isLive: true,
+    },
+    {
+      EN: {
+        title: "access",
+        slug: "practical-information/access",
+      },
+      DE: {
+        title: "anfahrt",
+        slug: "praktische-information/anfahrt",
+      },
+      isLive: true,
+    },
+    {
+      EN: {
+        title: "accommodation",
+        slug: "practical-information/accommodation",
+      },
+      DE: {
+        title: "unterkunft",
+        slug: "praktische-information/unterkunft",
       },
       isLive: false,
     },
+    {
+      EN: {
+        title: "anti-discrimination clause",
+        slug: "practical-information/anti-discrimination-clause",
+      },
+      DE: {
+        title: "antidiskriminierungsklausel",
+        slug: "praktische-information/antidiskriminierungsklausel",
+      },
+      isLive: true,
+    },
+  
     {
       EN: {
         title: "FAQ",
@@ -75,7 +89,7 @@ const PracticalInformationNavbar = props => {
         title: "FAQ",
         slug: "praktische-information/faq",
       },
-      isLive: false,
+      isLive: true,
     },
   ]
   let language = getCurrentLanguageString(props.languages)
@@ -101,7 +115,9 @@ const PracticalInformationNavbar = props => {
         >
           {/* <AboutNavItemLink cover direction="down" bg={transitionBackground} to={createPath(language, item['EN'].slug)} key={index}> */}
           <AboutNavItem current={isCurrentPage(index)}>
-            {item[language].title.toLowerCase()}
+            <DesktopSub>{item[language].title.toLowerCase()}</DesktopSub>
+            <MobileSub>{item[language].title.toLowerCase()}</MobileSub>
+            {/* {item[language].title.toLowerCase()} */}
           </AboutNavItem>
         </AboutNavItemLink>
       ))}

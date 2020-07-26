@@ -28,6 +28,7 @@ class CalendarFilterDropDown extends React.Component {
     })
   }
 
+
   toggleFilterDates = () => {
     this.setState({
       showFilter: !this.state.showFilter,
@@ -38,6 +39,11 @@ class CalendarFilterDropDown extends React.Component {
     let d = new Date()
     let year = d.getFullYear()
     let month = d.getMonth() + 1
+    let lowestMonth = parseInt(this.props.months[0].split("-")[1]) 
+
+    if(lowestMonth > month) {
+      month = lowestMonth;
+    }
 
     this.setState({
       month: month,
@@ -117,7 +123,7 @@ class CalendarFilterDropDown extends React.Component {
       const parent = document.getElementById(`column-one`)
       if (element) {
         scrollIntoView(element, {
-          scrollMode: "if-needed",
+          // scrollMode: "if-needed",
           block: "start",
           inline: "nearest",
           behavior: "smooth",
@@ -125,6 +131,11 @@ class CalendarFilterDropDown extends React.Component {
           skipOverflowHiddenElements: true,
         })
       }
+
+      this.setState({
+        showFilter: false
+      })
+
     }
   }
 
@@ -139,7 +150,7 @@ class CalendarFilterDropDown extends React.Component {
         <CalendarFilter>
           <CalendarFilterButton onClick={() => this.toggleFilterDates()}>
             {" "}
-            filter by date{" "}
+            filter{" "}
           </CalendarFilterButton>
         </CalendarFilter>
         <CalendarFilterDates show={this.state.showFilter}>
@@ -150,7 +161,7 @@ class CalendarFilterDropDown extends React.Component {
                 onClick={() => this.changeMonth(parseInt(mon.split("-")[1]))}
                 isMonth={this.isCurrentMonth(parseInt(mon.split("-")[1]))}
               >
-                {DateManager.getFilter(mon, this.language.toLowerCase())}
+                {DateManager.getFilter(mon, this.language.toLowerCase())}{this.language === 'DE' ? '.' : ''}
               </CalendarFilterMonth>
             ))}
           </CalendarFilterMonthsWrapper>
