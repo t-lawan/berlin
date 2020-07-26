@@ -11,12 +11,14 @@ display: grid;
 grid-template-columns: 1fr;
  overflow-y: scroll;
  margin-top: -100px;
- padding-top: ${props => props.isExp4 ? '147px' : '100px'};
+ padding-top: ${props => props.isExp4 ? '187px' : '100px'};
 @media (max-width: ${size.mobileL}) {
-    background:#FFF;
     padding-top: ${props => props.isExp4 ? '192px' : '100px'};
 
     }
+@media (min-width: ${size.laptop}) {
+  padding-top: ${props => props.isExp4 ? '147px' : '100px'};
+}
 @media (min-width: ${size.laptopM}) {
   padding-top: ${props => props.isExp4 ? '151px' : '100px'};
 }
@@ -52,9 +54,11 @@ export const CalendarFilterWrapper = styled.div`
   }
   @media (min-width: ${size.tablet}) {
     width: calc(66.66vw - 1px);
+    margin-top: 43px;
   }
   @media (min-width: ${size.laptop}) {
     width: calc(58.6608vw - 1px);
+    margin-top: 0;
   }
   @media (min-width: ${size.laptopM}) {
     width: calc(59.927vw - 1px);
@@ -75,10 +79,13 @@ export const CalendarFilterButton = styled.p`
     margin-left: 24.5%;
   }
   @media (min-width: ${size.laptop}) {
-    margin-left: calc(20% + 1em);
+    margin-left: calc(18% + 1em);
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-left: calc(18% + 1.1em);
   }
   @media (min-width: ${size.laptopL}) {
-    margin-left: calc(16% + 1.2em);
+    margin-left: calc(14.5% + 1.2em);
   }
 `
 
@@ -102,7 +109,7 @@ export const CalendarFilterDates = styled.div`
     padding: 0.7em;
   }
   @media (min-width: ${size.tablet}) {
-    margin-left: calc(24.5% - 0px);
+    margin-left: calc(24.5% - 1px);
   }
   @media (min-width: ${size.laptop}) {
     margin-left: calc(20% - 1px);
