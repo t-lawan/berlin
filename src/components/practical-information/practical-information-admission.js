@@ -42,7 +42,7 @@ export const PracticalInformationContentBlock = (item, index) => {
     case "image":
       renderComponent = (
         <ContentBlockWrapper>
-          {item.image ? <ImageResource id={item.image} />  : null}
+          {item.image ? <ImageResource id={item.image} withCaption={true}/>  : null}
         </ContentBlockWrapper>        
       )
       break
