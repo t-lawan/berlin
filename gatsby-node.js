@@ -666,6 +666,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
     { EN: "opening-hours", DE: "oeffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
+
   ]
 
   allWordpressPage.edges.forEach(edge => {
