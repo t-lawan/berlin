@@ -11,11 +11,14 @@ display: grid;
 grid-template-columns: 1fr;
  overflow-y: scroll;
  margin-top: -100px;
- padding-top: ${props.isExp4 ? '151px' : '100px'};
+ padding-top: ${props => props.isExp4 ? '147px' : '100px'};
 @media (max-width: ${size.mobileL}) {
     background:#FFF;
-    padding-top: ${props.isExp4 ? '194px' : '100px'};
+    padding-top: ${props => props.isExp4 ? '192px' : '100px'};
     }
+@media (min-width: ${size.laptopM}) {
+  padding-top: ${props => props.isExp4 ? '151px' : '100px'};
+}
     transform: translate3d(0px, 0px,0px);
 /* grid-template-columns: 1fr 1fr 1fr 1fr;
 ${changeGridToThreeEqualRows};
@@ -28,8 +31,14 @@ export const CalendarFilter = styled.div`
   background: ${Color.yellow};
   border-bottom: 1px solid black;
   text-align: left;
-  padding: 0.85em 0;
+  padding: 0.75em 0;
   position: relative;
+  @media (max-width: ${size.mobileL}) {
+    padding: 0.65em 0;
+  }
+  @media (min-width: ${size.laptopM}) {
+    padding: 0.85em 0;
+  }
 `
 
 export const CalendarFilterWrapper = styled.div`
@@ -40,7 +49,13 @@ export const CalendarFilterWrapper = styled.div`
     width: 100vw;
     top: 88px;
   }
+  @media (min-width: ${size.tablet}) {
+    width: calc(66.66vw - 1px);
+  }
   @media (min-width: ${size.laptop}) {
+    width: calc(58.6608vw - 1px);
+  }
+  @media (min-width: ${size.laptopM}) {
     width: calc(59.927vw - 1px);
   }
 `
@@ -54,8 +69,15 @@ export const CalendarFilterButton = styled.p`
   @media (max-width: ${size.mobileM}) {
     margin-left: 0.7em;
   }
+  @media (min-width: ${size.tablet}) {
+    padding-left: 0.8em;
+    margin-left: 24.5%;
+  }
   @media (min-width: ${size.laptop}) {
     margin-left: calc(20% + 1em);
+  }
+  @media (min-width: ${size.laptopL}) {
+    margin-left: calc(16% + 1.2em);
   }
 `
 
@@ -78,9 +100,15 @@ export const CalendarFilterDates = styled.div`
     margin-left: 0;
     padding: 0.7em;
   }
+  @media (min-width: ${size.tablet}) {
+    margin-left: calc(24.5% - 0px);
+  }
   @media (min-width: ${size.laptop}) {
     margin-left: calc(20% - 1px);
     padding: 0.85em 0.85em 0.30em 0.85em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    margin-left: calc(16.6% - 1px);
   }
 `
 
