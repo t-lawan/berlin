@@ -39,9 +39,19 @@ const PublicationAnchorLink = styled.div`
     } 
   }
 
-  @media (min-width: ${size.laptop}) and (max-width: ${size.laptop}) {
+  @media (min-width: ${size.laptop}) {
     p {
     width: 25%;
+    } 
+  }
+  @media (min-width: ${size.laptopM}) {
+    p {
+    width: 29%;
+    } 
+  }
+  @media (min-width: ${size.laptopL}) {
+    p {
+    width: 30%;
     } 
   }
 `

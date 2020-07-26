@@ -16,14 +16,6 @@ const PracticalInformationPage = props => {
           __html: content.acf[language].new_practical_info,
         }}
       />
-      {/* <ImageResource id={content.acf.thumbnail_image} withCaption={true} />
-      <ContentBlock
-        dangerouslySetInnerHTML={{
-          __html: content.acf[language].venue_description,
-        }}
-      />
-      <ImageResource id={content.acf.venue_map_graphic} withCaption={false} /> */}
-    </>
   )
 }
 

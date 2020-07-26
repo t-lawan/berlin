@@ -96,7 +96,7 @@ export const AboutNavItemLink = styled(AniLink)`
   }
   @media (min-width: ${size.laptop}) {
     > p {
-      margin-bottom: 0.5em;
+      margin-bottom: 0.6em;
     }
   }
   @media (max-width: ${size.mobileM}) {
