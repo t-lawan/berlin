@@ -25,6 +25,7 @@ export const DateCardWrapper = styled.div`
     grid-template-columns: 1fr 4fr;
     padding-top: ${props => props.isExp4 ? '143px' : '92px'};
     margin-top: ${props => props.isExp4 ? '-143px' : '-92px'};
+
     :last-child {
       padding-bottom:45px;
       border-bottom:none;
@@ -33,6 +34,7 @@ export const DateCardWrapper = styled.div`
   @media (min-width: ${size.laptopM}) {
     padding-top: ${props => props.isExp4 ? '147px' : '106px'};
     margin-top: ${props => props.isExp4 ? '-147px' : '-106px'};
+
     :last-child {
       padding-bottom:130px;
     }
@@ -40,6 +42,7 @@ export const DateCardWrapper = styled.div`
   @media (min-width: ${size.laptopL}) {
     padding-top: ${props => props.isExp4 ? '160px' : '106px'};
     margin-top: ${props => props.isExp4 ? '-160px' : '-106px'};
+
     :last-child {
       padding-bottom:140px;
     }
