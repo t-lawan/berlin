@@ -24,6 +24,7 @@ export const transitionTimes = {
 
 export  const pageMap = [
   { EN: "event", DE: "veranstaltung" },
+  { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
   { EN: "about", DE: "uber" },
   { EN: "about/team", DE: "uber/team" },
   { EN: "about/organization", DE: "uber/verein" },
@@ -47,11 +48,12 @@ export  const pageMap = [
   { EN: "publication", DE: "publikation" },
   { EN: "press-images", DE: "pressebilder" },
   { EN: "practical-information", DE: "praktische-information" },
-  { EN: "practical-information/admission", DE: "praktische-information/admission" },
-  { EN: "practical-information/access", DE: "praktische-information/access" },
-  { EN: "practical-information/opening-hours", DE: "praktische-information/opening-hours" },
+  { EN: "practical-information/admission", DE: "praktische-information/eintritt" },
+  { EN: "practical-information/access", DE: "praktische-information/anfahrt" },
+  { EN: "practical-information/opening-hours", DE: "praktische-information/oeffnungszeiten" },
   { EN: "practical-information/faq", DE: "praktische-information/faq" },
-  { EN: "practical-information/accommodation", DE: "praktische-information/accommodation" },
+  { EN: "practical-information/anti-discrimination-clause", DE: "praktische-information/antidiskriminierungsklausel" },
+  { EN: "practical-information/accommodation", DE: "praktische-information/unterkunft" },
 ]
 
 export const transitionBackground = "url(https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
@@ -70,7 +72,7 @@ export const capitalise = (s) => {
  export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {
     let type;
-    if(path.includes('about') || path.includes('uber')) {
+    if(path.includes('about') || path.includes('uber') || path.includes('practical-information') || path.includes('praktische-information')) {
       type = path.toLowerCase();
     } else {
       type = path.split('/')[0].toLowerCase();
@@ -81,9 +83,11 @@ export const capitalise = (s) => {
   });
 
 
+
+
   let newPath;
   if(prePath && prePath.length !== 0) {
-    if(path.includes('about') || path.includes('uber')) {
+    if(path.includes('about') || path.includes('uber') || path.includes('practical-information')  || path.includes('praktische-information')) {
       newPath =
       language === "EN" ? `/${prePath[language]}` : `/${language.toLowerCase()}/${prePath[language]}`
     } else {

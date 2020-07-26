@@ -3,10 +3,17 @@ import PropTypes from "prop-types"
 import { getDocument } from "../store/selector"
 import { connect } from "react-redux"
 import styled from "styled-components"
+import { Color } from "../index.styles";
 
 const Link = styled.a`
     color: black;
     text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border-bottom: solid thin ${Color.red}; 
+    :hover {
+      color: ${Color.red};
+      cursor: pointer;
+    }
 `
 class ExternalLink extends Component {
   static propTypes = {
@@ -18,7 +25,7 @@ class ExternalLink extends Component {
   render() {
     this.doc = getDocument(this.props.documents, this.props.id)
     return (
-      <Link target="_blank" rel="noopener noreferrer" href={this.doc.url}>
+      <Link target="_blank" rel="noopener noreferrer" href={this.doc.publicUrl}>
         {this.props.children}
       </Link>
     )

@@ -2,14 +2,16 @@ import React from "react"
 import { connect } from "react-redux"
 import { PageTitle } from "../../templates/page.styles";
 import { getCurrentLanguageString } from "../../utility/helper";
+import { PracticalInformationContentBlock } from "./practical-information-admission";
 
 const PracticalInformationAccess = props => {
     let language = getCurrentLanguageString(props.languages)
+    let content = props.content.acf[language]
 
     return (
         <>
             <PageTitle> {page_title[language].title}</PageTitle>
-            <p> access text</p>
+            {content.content_block.map((item, index) => PracticalInformationContentBlock(item, index))}
         </>
     )
 }
