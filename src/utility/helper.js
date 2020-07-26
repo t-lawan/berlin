@@ -50,7 +50,7 @@ export  const pageMap = [
   { EN: "practical-information", DE: "praktische-information" },
   { EN: "practical-information/admission", DE: "praktische-information/eintritt" },
   { EN: "practical-information/access", DE: "praktische-information/anfahrt" },
-  { EN: "practical-information/opening-hours", DE: "praktische-information/öffnungszeiten" },
+  { EN: "practical-information/opening-hours", DE: "praktische-information/oeffnungszeiten" },
   { EN: "practical-information/faq", DE: "praktische-information/faq" },
   { EN: "practical-information/anti-discrimination-clause", DE: "praktische-information/antidiskriminierungsklausel" },
   { EN: "practical-information/accommodation", DE: "praktische-information/unterkunft" },
