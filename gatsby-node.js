@@ -57,6 +57,16 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_newsAcf implements Node {
       thumbnail_image: Int
     }
+
+    type wordpress__PAGEAcfENContent_block implements Node {
+      image: Int
+      file: Int
+    }
+    type wordpress__PAGEAcfDEContent_block implements Node {
+      image: Int
+      file: Int
+    }
+    
   `
   createTypes(typeDefs)
 }
