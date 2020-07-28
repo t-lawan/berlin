@@ -88,6 +88,9 @@ export const AboutNavItemLink = styled(AniLink)`
   text-decoration: none;
   > p {
     font-size: 1em;
+    > span {
+      font-size: 1em;
+    }
   }
   @media (min-width: ${size.tablet}) {
     > p {

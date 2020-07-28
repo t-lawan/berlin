@@ -161,7 +161,7 @@ class CalendarFilterDropDown extends React.Component {
                 onClick={() => this.changeMonth(parseInt(mon.split("-")[1]))}
                 isMonth={this.isCurrentMonth(parseInt(mon.split("-")[1]))}
               >
-                {DateManager.getFilter(mon, this.language.toLowerCase())}{this.language === 'DE' ? '.' : ''}
+                {DateManager.getFilter(mon, this.language.toLowerCase())}{this.language === 'DE' ? '' : ''}
               </CalendarFilterMonth>
             ))}
           </CalendarFilterMonthsWrapper>
