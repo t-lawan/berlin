@@ -42,7 +42,9 @@ const VenueDescription = styled.div``
 const ImageWrapper = styled.div`
   padding-bottom: 1rem;
 `
-
+const VenueAccess = styled.p`
+margin-top: 0.7em !important;
+`
 const VenueAddress = styled.p`
   display: inline-block;
   padding-right: 0.2rem !important;
@@ -101,10 +103,10 @@ const VenueItem = props => {
         >
           {content[language].link_to_map}
         </VenueLink></p>
-          <p hidden={!venue.wheelchair_access}>
+          <VenueAccess hidden={!venue.wheelchair_access}>
           {" "}
           {content[language].wheelchair_access}{" "}
-          </p>
+          </VenueAccess>
 
         </TextBlock>
       ) : null}
