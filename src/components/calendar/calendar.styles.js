@@ -122,6 +122,7 @@ export const CalendarFilterDates = styled.div`
 
 export const CalendarFilterMonth = styled.p`
   display: inline-flex;
+  text-transform: lowercase;
   padding: 0 0.85em 0 0.25em;
   margin-bottom: 0.85em;
   cursor: pointer;
