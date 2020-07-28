@@ -75,8 +75,8 @@ const content = {
 
 const PracticalInformationTitle  = {
   "Practical Information": {
-    EN: 'Practical Information',
-    DE: 'Praktische Information'
+    EN: 'Practical information',
+    DE: 'Praktische information'
   },
   "Admission": {
     EN: 'Admission',
@@ -91,11 +91,11 @@ const PracticalInformationTitle  = {
     DE: 'Anfahrt'
   },
   "Opening Hours": {
-    EN: 'Opening Hours',
-    DE: 'Öffnungszeiten'
+    EN: 'Opening hours',
+    DE: 'Oeffnungszeiten'
   },
   "Anti-discrimination clause": {
-    EN: 'Anti-discrimination Clause',
+    EN: 'Anti-discrimination clause',
     DE: 'Antidiskriminierungsklausel'
   },
   "FAQ": {
