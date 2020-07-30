@@ -18,7 +18,9 @@ const Participant = props => {
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${participant.firstname} ${participant.lastname}`}
+        title = {participant.group
+          ? `${participant[language].participant_group_name}`
+          : `${participant.firstname} ${participant.lastname}`}
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
