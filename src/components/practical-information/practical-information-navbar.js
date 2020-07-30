@@ -66,7 +66,7 @@ const PracticalInformationNavbar = props => {
         title: "unterkunft",
         slug: "praktische-information/unterkunft",
       },
-      isLive: false,
+      isLive: true,
     },
     {
       EN: {
