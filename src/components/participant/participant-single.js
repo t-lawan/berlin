@@ -8,7 +8,6 @@ const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
 
-  participant.experience[1] = '3'
   let isInExperience123 = () => {
     return (
       participant.experience.includes("1") |
@@ -35,9 +34,9 @@ const ParticipantSingle = props => {
               {participant.experience.map((exp, index) => {
                 return (
                   <>
-                    {participant.experience.length === index + 1 ? "and" : ""}
+                    {participant.experience.length === index + 1 && participant.experience.length > 1 ? "and" : ""}
                     <span> exp. {exp} </span>
-                    {participant.experience.length === index + 1 || participant.experience.length === index ? "" : ","}
+                    {participant.experience.length === index + 1  || participant.experience.length - 1 === index + 1 ? "" : ","}
                   </>
                 )
               })}
