@@ -8,10 +8,13 @@ import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
 import { TwoColumnPageWrapper } from "./page.styles"
+import ParticipantSingle from "../components/participant/participant-single";
 
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
   const participant = Convert.toParticipantModel(props.pageContext)
+  console.log('PROPS', participant)
+
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
@@ -19,26 +22,7 @@ const Participant = props => {
         description={`${participant.slug}`}
         lang={props.pageContext.language}
       />
-      <div>
-        <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
-        <p> Was also part of: exp. 1 and exp. 2</p>
-      </div>
-      <div>
-        <h3>
-          {participant.firstname} {participant.lastname}
-        </h3>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].project_description,
-          }}
-        />
-
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].short_bio,
-          }}
-        />
-      </div>
+      <ParticipantSingle participant={participant} />
     </TwoColumnPageWrapper>
   )
 
