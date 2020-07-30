@@ -179,13 +179,14 @@ export const AboutTeamSectionHeader = styled.p`
 export const AboutCorporateImageItem = styled.section`
   /* padding: 1em; */
   width: 20%;
+  max-width: 75px;
   @media (min-width: ${size.laptop}) {
     width: 20%;
-    max-width: 90px;
+    max-width: 75px;
   }
-
   @media (max-width: ${size.mobileXL}) {
     width: 15%;
+    max-width: 75px;
   }
 `
 
