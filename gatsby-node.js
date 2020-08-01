@@ -570,6 +570,14 @@ exports.createPages = async ({ graphql, actions }) => {
                 works_list
               }
               sorting_name
+              participant_video
+              social_media_image
+              related_documentation {
+                wordpress_id
+              }
+              related_resources {
+                wordpress_id
+              }
             }
           }
         }
@@ -884,24 +892,24 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // const participantTemplate = path.resolve(`./src/templates/participant.js`)
+  const participantTemplate = path.resolve(`./src/templates/participant.js`)
 
-  // allWordpressWpParticipants.edges.forEach(edge => {
-  //   let prePath = pageMap.find(pageType => {
-  //     return pageType.EN === "participant"
-  //   })
-  //   languages.forEach(language => {
-  //     let path =
-  //       language === "en"
-  //         ? `/${prePath.EN}/${edge.node.slug}`
-  //         : `/${language}/${prePath.DE}/${edge.node.slug}`
-  //     createPage({
-  //       path: path,
-  //       component: slash(participantTemplate),
-  //       context: { ...edge.node, language: language },
-  //     })
-  //   })
-  // })
+  allWordpressWpParticipants.edges.forEach(edge => {
+    let prePath = pageMap.find(pageType => {
+      return pageType.EN === "participant"
+    })
+    languages.forEach(language => {
+      let path =
+        language === "en"
+          ? `/${prePath.EN}/${edge.node.slug}`
+          : `/${language}/${prePath.DE}/${edge.node.slug}`
+      createPage({
+        path: path,
+        component: slash(participantTemplate),
+        context: { ...edge.node, language: language },
+      })
+    })
+  })
 
   const resourcesTemplate = path.resolve(`./src/templates/resource.js`)
 
