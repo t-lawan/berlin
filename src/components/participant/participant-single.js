@@ -27,10 +27,9 @@ const ParticipantSingle = props => {
       <div>
         {isInExperience123() ? (
           <>
-            <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
+            <p> {participant[language].participant_venue}</p>
             <p>
-              {" "}
-              Was also part of:{" "}
+              {ParticipantSingleText[language].was_part_of}
               {participant.experience.map((exp, index) => {
                 return (
                   <>
@@ -71,6 +70,15 @@ const ParticipantSingle = props => {
       </div>
     </>
   )
+}
+
+const ParticipantSingleText = {
+  EN: {
+    was_part_of: "Was also part of:"
+  }, 
+  DE: {
+    was_part_of: "War Teil von:"
+  }
 }
 
 const mapStateToProps = state => {

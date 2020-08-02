@@ -323,13 +323,13 @@ class ParticipantOverView extends Component {
                     </ExperienceText>
                   ) : (
                     <ExperienceImage
+                      key={index}
                       onClick={() => this.changeExperience(value.id)}
                       isChosenExperience={
                         this.state.chosenExperience === value.id ||
                         this.state.chosenExperience === ExperienceState.ALL
                       }
                       src={value.display}
-                      key={index}
                     />
                   )}
                 </>
