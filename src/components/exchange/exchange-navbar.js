@@ -125,7 +125,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-PracticalInformationNavbar.propTypes = {
+ExchangeNavbar.propTypes = {
   currentPage: PropTypes.string,
 }
 
