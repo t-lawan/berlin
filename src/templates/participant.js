@@ -1,44 +1,36 @@
 import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
-import { getCurrentLanguageString } from "../utility/helper"
+import { getCurrentLanguageString, pageMap } from "../utility/helper"
 import Layout from "../components/layout/layout"
 import UpcomingEvents from "../components/events/upcomingevents"
 import { Convert } from "../utility/convert"
 import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
 import { TwoColumnPageWrapper } from "./page.styles"
+import ParticipantSingle from "../components/participant/participant-single";
 
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
   const participant = Convert.toParticipantModel(props.pageContext)
+  console.log('PROPS', participant)
+  let path = pageMap.find(pg => {
+    return pg["EN"] == "participant"
+  })
   const renderComponent = (
     <TwoColumnPageWrapper>
       <SEO
-        title={`${participant.firstname} ${participant.lastname}`}
+        title = {participant.group
+          ? `${participant[language].participant_group_name}`
+          : `${participant.firstname} ${participant.lastname}`}
         description={`${participant.slug}`}
         lang={props.pageContext.language}
+        image={participant.social_media_image}
+        pathname={`${path[props.pageContext.language.toUpperCase()]}/${
+          participant.slug
+            }`}
       />
-      <div>
-        <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
-        <p> Was also part of: exp. 1 and exp. 2</p>
-      </div>
-      <div>
-        <h3>
-          {participant.firstname} {participant.lastname}
-        </h3>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].project_description,
-          }}
-        />
-
-        <p
-          dangerouslySetInnerHTML={{
-            __html: participant[language].short_bio,
-          }}
-        />
-      </div>
+      <ParticipantSingle participant={participant} />
     </TwoColumnPageWrapper>
   )
 

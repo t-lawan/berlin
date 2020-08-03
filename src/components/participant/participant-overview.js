@@ -104,20 +104,20 @@ const AnchorDiv = styled.div`
 `
 
 const ExperienceContainer = styled.div`
-@media (max-width: ${size.tabletL}) {
-display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-}
+  @media (max-width: ${size.tabletL}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `
 
 const AlphabetText = styled.span`
   padding: 0.2rem 0.5rem 0.2rem 0;
   display: inline-block;
   :hover {
-    cursor: ${props => props.hasParticipants ? 'pointer' : 'default'};
-    color: ${props => props.hasParticipants ? Color.red : 'black'};
+    cursor: ${props => (props.hasParticipants ? "pointer" : "default")};
+    color: ${props => (props.hasParticipants ? Color.red : "black")};
   }
-  opacity: ${props => props.hasParticipants ? 1 : 0.3};
+  opacity: ${props => (props.hasParticipants ? 1 : 0.3)};
   @media (max-width: ${size.mobileM}) {
     padding: 0rem 1rem 0.5rem 0;
   }
@@ -135,6 +135,8 @@ const ParticipantName = styled.p`
   opacity: ${props => (props.isSelected ? 1 : 0.3)};
   margin: 0;
 `
+
+const ParticipantLink = styled(Link)``
 
 const ExperienceText = styled.span`
   display: block;
@@ -229,9 +231,9 @@ class ParticipantOverView extends Component {
       let part = props.participants.filter((p, i) => {
         return p.sorting_name[0].toLowerCase() === value
       })
-      part = part.sort((a,b) => {
-        return  a.sorting_name.localeCompare((b.sorting_name))
-      });
+      part = part.sort((a, b) => {
+        return a.sorting_name.localeCompare(b.sorting_name)
+      })
       return {
         participants: part,
         letter: value,
@@ -285,7 +287,7 @@ class ParticipantOverView extends Component {
     this.language = getCurrentLanguageString(this.props.languages)
     return (
       <ParticipantOverviewWrapper id="anchor-parent">
-      <PageTitle
+        <PageTitle
           dangerouslySetInnerHTML={{
             __html: content[this.language].title,
           }}
@@ -321,13 +323,13 @@ class ParticipantOverView extends Component {
                     </ExperienceText>
                   ) : (
                     <ExperienceImage
+                      key={index}
                       onClick={() => this.changeExperience(value.id)}
                       isChosenExperience={
                         this.state.chosenExperience === value.id ||
                         this.state.chosenExperience === ExperienceState.ALL
                       }
                       src={value.display}
-                      key={index}
                     />
                   )}
                 </>
@@ -348,18 +350,21 @@ class ParticipantOverView extends Component {
                   </div>
                   <div>
                     {value.participants.map((participant, i) => (
-                      <ParticipantName
-                        key={i}
-                        isSelected={this.isPartOfExperience(
-                          participant.experience
-                        )}
-                      >
-                        {" "}
-                        {!participant.group ? 
-                          `${participant.firstname} ${participant.lastname}` : `${participant[this.language].participant_group_name}`
-                        }
-  
-                      </ParticipantName>
+                      <ParticipantLink to={createPath(this.language, `participant/${participant.slug}`)} key={i}>
+                        <ParticipantName
+                          isSelected={this.isPartOfExperience(
+                            participant.experience
+                          )}
+                        >
+                          {" "}
+                          {!participant.group
+                            ? `${participant.firstname} ${participant.lastname}`
+                            : `${
+                                participant[this.language]
+                                  .participant_group_name
+                              }`}
+                        </ParticipantName>
+                      </ParticipantLink>
                     ))}
                   </div>
                 </AlphabetLanguageContainer>
