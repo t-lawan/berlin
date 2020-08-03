@@ -7,15 +7,17 @@ import RelatedResources from "../resources/related-resources";
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
-
+  let experience = participant.experience;
+  experience = experience.filter((exp) => {
+    return exp != "4"
+  })
   let isInExperience123 = () => {
     return (
-      participant.experience.includes("1") |
-      participant.experience.includes("2") |
-      participant.experience.includes("3")
+      experience.includes("1") |
+      experience.includes("2") |
+      experience.includes("3")
     )
   }
-  console.log("PROPS", participant)
   return (
     <>
       <PageTitle>
@@ -27,17 +29,16 @@ const ParticipantSingle = props => {
       <div>
         {isInExperience123() ? (
           <>
-            <p> Venue: KW Institute for Contemporary Art and ExRotaprint</p>
+            <p> {participant[language].participant_venue}</p>
             <p>
-              {" "}
-              Was also part of:{" "}
-              {participant.experience.map((exp, index) => {
+              {ParticipantSingleText[language].was_part_of}
+              {experience.map((exp, index) => {
                 return (
-                  <>
-                    {participant.experience.length === index + 1 && participant.experience.length > 1 ? "and" : ""}
+                  <React.Fragment key={index}>
+                    {experience.length === index + 1 && experience.length > 1 ? "and" : ""}
                     <span> exp. {exp} </span>
-                    {participant.experience.length === index + 1  || participant.experience.length - 1 === index + 1 ? "" : ","}
-                  </>
+                    {experience.length === index + 1  || experience.length - 1 === index + 1 ? "" : ","}
+                  </React.Fragment>
                 )
               })}
             </p>
@@ -71,6 +72,15 @@ const ParticipantSingle = props => {
       </div>
     </>
   )
+}
+
+const ParticipantSingleText = {
+  EN: {
+    was_part_of: "Was also part of:"
+  }, 
+  DE: {
+    was_part_of: "War Teil von:"
+  }
 }
 
 const mapStateToProps = state => {
