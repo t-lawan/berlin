@@ -645,11 +645,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const practicalInformationTemplate = path.resolve(
     `./src/templates/practical-information.js`
   )
+  const exchangeTemplate = path.resolve(`./src/templates/exchange.js`)
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
   const exRotaprintTemplate = path.resolve(`./src/templates/ex-rotaprint.js`)
   const languages = ["en", "de"]
+
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
     { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
@@ -682,6 +684,12 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
     { EN: "opening-hours", DE: "oeffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
+    { EN: "exchange", DE: "austausch" },
+    { EN: "gatherings", DE: "gatherings" },
+    { EN: "tours", DE: "rundgaenge" },
+    { EN: "tandem-thursday", DE: "tandem-donnerstag" },
+    { EN: "family-hours", DE: "familienzeit" },
+    { EN: "curatorial-workshop", DE: "curatorial-workshop" },
 
   ]
 
@@ -697,6 +705,9 @@ exports.createPages = async ({ graphql, actions }) => {
       case "practical_information":
         template = practicalInformationTemplate
         break
+      case "exchange":
+        template = exchangeTemplate
+        break
       case "press":
         template = pressTemplate
         break
@@ -711,6 +722,7 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       default:
         template = pageTemplate
+        break
     }
 
     if (edge.node.parent_element && edge.node.parent_element.slug === "about") {
@@ -806,41 +818,84 @@ exports.createPages = async ({ graphql, actions }) => {
                 : `/${language}/${endPath.DE}`
           }
         } else {
-          let p
-          switch (edge.node.slug) {
-            case "data-privacy":
-              p = pageMap.find(page => {
-                return page.EN === edge.node.slug
+          if (
+            (edge.node.parent_element &&
+              edge.node.parent_element.slug === "exchange") ||
+            slug === "exchange"
+          ) {
+            if (
+              edge.node.parent_element &&
+              edge.node.parent_element.slug === "exchange"
+            ) {
+              let prePath = pageMap.find(pageType => {
+                return pageType.EN === "exchange"
               })
-              path = language === "en" ? "/data-privacy" : "/de/datenschutz"
-              break
-            case "imprint":
-              path = language === "en" ? "/imprint" : "/de/impressum"
-              break
-            case "press":
-              path = language === "en" ? "/press" : "/de/presse"
-              break
-            case "press-images":
-              path = language === "en" ? "/press-images" : "/de/pressebilder"
-              break
-            case "calendar":
-              path = language === "en" ? "/calendar" : "/de/kalender"
-              break
-            case "practical-information":
+
+              let endPath = pageMap.find(pageType => {
+                return pageType.EN === slug
+              })
+
               path =
                 language === "en"
-                  ? "/practical-information"
-                  : "/de/praktische-information"
-              break
-            case 'ex-rotaprint':
-              path = language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
-              break;
-            default:
+                  ? `/${prePath.EN}/${endPath.EN}`
+                  : `/${language}/${prePath.DE}/${endPath.DE}`
+
+              edge.node.slug =
+                language === "en"
+                  ? `/${prePath.EN}/${endPath.EN}`
+                  : `/${language}/${prePath.DE}/${endPath.DE}`
+            } else {
+              let endPath = pageMap.find(pageType => {
+                return pageType.EN === slug
+              })
               path =
                 language === "en"
-                  ? `/${edge.node.slug}`
-                  : `/${language}/${edge.node.slug}`
-              break
+                  ? `/${endPath.EN}`
+                  : `/${language}/${endPath.DE}`
+
+              edge.node.slug =
+                language === "en"
+                  ? `/${endPath.EN}`
+                  : `/${language}/${endPath.DE}`
+            }
+          } else {
+            let p
+            switch (edge.node.slug) {
+              case "data-privacy":
+                p = pageMap.find(page => {
+                  return page.EN === edge.node.slug
+                })
+                path = language === "en" ? "/data-privacy" : "/de/datenschutz"
+                break
+              case "imprint":
+                path = language === "en" ? "/imprint" : "/de/impressum"
+                break
+              case "press":
+                path = language === "en" ? "/press" : "/de/presse"
+                break
+              case "press-images":
+                path = language === "en" ? "/press-images" : "/de/pressebilder"
+                break
+              case "calendar":
+                path = language === "en" ? "/calendar" : "/de/kalender"
+                break
+              case "practical-information":
+                path =
+                  language === "en"
+                    ? "/practical-information"
+                    : "/de/praktische-information"
+                break
+              case "ex-rotaprint":
+                path =
+                  language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
+                break
+              default:
+                path =
+                  language === "en"
+                    ? `/${edge.node.slug}`
+                    : `/${language}/${edge.node.slug}`
+                break
+            }
           }
         }
       }

@@ -337,6 +337,7 @@ const State = props => {
                   external_url
                 }
                 slug
+
                 localFile {
                   childImageSharp {
                     fluid(quality: 90, maxWidth: 1000) {
@@ -555,8 +556,8 @@ const State = props => {
         "exchange",
         "austausch",
         false,
-        false,
-        false,
+        true,
+        true,
         true
       ),
       new NavbarModel(
