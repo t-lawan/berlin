@@ -8,7 +8,13 @@ import {
   pageMap,
 } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import { TwoColumnPageWrapper, PaddingDiv, PageTitle, TextBlockSideBarPage, ResourcePublisherLink } from "./page.styles"
+import {
+  TwoColumnPageWrapper,
+  PaddingDiv,
+  PageTitle,
+  TextBlockSideBarPage,
+  ResourcePublisherLink,
+} from "./page.styles"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import PracticalInformationNavbar from "../components/practical-information/practical-information-navbar"
@@ -38,6 +44,7 @@ const PracticalInformation = props => {
       />
       <PracticalInformationNavbar currentPage={pageInfo.slug} />
       <PracticalInformationComponents content={pageInfo}/>
+
     </TwoColumnPageWrapper>
   )
 
