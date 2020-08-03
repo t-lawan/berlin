@@ -7,15 +7,17 @@ import RelatedResources from "../resources/related-resources";
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
-
+  let experience = participant.experience;
+  experience = experience.filter((exp) => {
+    return exp != "4"
+  })
   let isInExperience123 = () => {
     return (
-      participant.experience.includes("1") |
-      participant.experience.includes("2") |
-      participant.experience.includes("3")
+      experience.includes("1") |
+      experience.includes("2") |
+      experience.includes("3")
     )
   }
-  console.log("PROPS", participant)
   return (
     <>
       <PageTitle>
@@ -30,13 +32,13 @@ const ParticipantSingle = props => {
             <p> {participant[language].participant_venue}</p>
             <p>
               {ParticipantSingleText[language].was_part_of}
-              {participant.experience.map((exp, index) => {
+              {experience.map((exp, index) => {
                 return (
-                  <>
-                    {participant.experience.length === index + 1 && participant.experience.length > 1 ? "and" : ""}
+                  <React.Fragment key={index}>
+                    {experience.length === index + 1 && experience.length > 1 ? "and" : ""}
                     <span> exp. {exp} </span>
-                    {participant.experience.length === index + 1  || participant.experience.length - 1 === index + 1 ? "" : ","}
-                  </>
+                    {experience.length === index + 1  || experience.length - 1 === index + 1 ? "" : ","}
+                  </React.Fragment>
                 )
               })}
             </p>
