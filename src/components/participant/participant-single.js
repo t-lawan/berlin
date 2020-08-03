@@ -4,13 +4,13 @@ import { getCurrentLanguageString } from "../../utility/helper"
 
 import { PageTitle, ExpNumber } from "../../templates/page.styles"
 
-import RelatedResources from "../resources/related-resources";
+import RelatedResources from "../resources/related-resources"
 
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
-  let experience = participant.experience;
-  experience = experience.filter((exp) => {
+  let experience = participant.experience
+  experience = experience.filter(exp => {
     return exp != "4"
   })
   let isInExperience123 = () => {
@@ -31,15 +31,24 @@ const ParticipantSingle = props => {
       <div>
         {isInExperience123() ? (
           <>
-            <p> {participant[language].participant_venue}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: participant[language].participant_venue,
+              }}
+            />
             <p>
               {ParticipantSingleText[language].was_part_of}
               {experience.map((exp, index) => {
                 return (
                   <React.Fragment key={index}>
-                    {experience.length === index + 1 && experience.length > 1 ? "and" : ""}
+                    {experience.length === index + 1 && experience.length > 1
+                      ? "and"
+                      : ""}
                     <span> exp. {exp} </span>
-                    {experience.length === index + 1  || experience.length - 1 === index + 1 ? "" : ","}
+                    {experience.length === index + 1 ||
+                    experience.length - 1 === index + 1
+                      ? ""
+                      : ","}
                   </React.Fragment>
                 )
               })}
@@ -70,7 +79,9 @@ const ParticipantSingle = props => {
             __html: participant[language].works_list,
           }}
         />
-        {participant.related_resources ? <RelatedResources ids={participant.related_resources} /> : null}
+        {participant.related_resources ? (
+          <RelatedResources ids={participant.related_resources} />
+        ) : null}
       </div>
     </>
   )
@@ -78,11 +89,11 @@ const ParticipantSingle = props => {
 
 const ParticipantSingleText = {
   EN: {
-    was_part_of: "Was also part of:"
-  }, 
+    was_part_of: "Was also part of:",
+  },
   DE: {
-    was_part_of: "War Teil von:"
-  }
+    was_part_of: "War Teil von:",
+  },
 }
 
 const mapStateToProps = state => {
