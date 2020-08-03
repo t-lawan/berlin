@@ -1,7 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-import { PageTitle } from "../../templates/page.styles"
+
+import { PageTitle, ExpNumber } from "../../templates/page.styles"
+
 import RelatedResources from "../resources/related-resources";
 
 const ParticipantSingle = props => {

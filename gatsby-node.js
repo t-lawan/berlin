@@ -645,6 +645,9 @@ exports.createPages = async ({ graphql, actions }) => {
   const practicalInformationTemplate = path.resolve(
     `./src/templates/practical-information.js`
   )
+  const exchangeTemplate = path.resolve(
+    `./src/templates/exchange.js`
+  )
   const pressTemplate = path.resolve(`./src/templates/press.js`)
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
@@ -682,6 +685,12 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "anti-discrimination-clause", DE: "antidiskriminierungsklausel" },
     { EN: "opening-hours", DE: "oeffnungszeiten" },
     { EN: "access", DE: "anfahrt" },
+    { EN: "exchange", DE: "austausch" },
+    { EN: "gatherings", DE: "gatherings" },
+    { EN: "tours", DE: "rundgaenge" },
+    { EN: "tandem-thursday", DE: "tandem-donnerstag" },
+    { EN: "family-hours", DE: "familienzeit" },
+    { EN: "curatorial-workshop", DE: "curatorial-workshop" },
   ]
 
   allWordpressPage.edges.forEach(edge => {
@@ -695,6 +704,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "practical_information":
         template = practicalInformationTemplate
+        break
+      case "exchange":
+        template = exchangeTemplate
         break
       case "press":
         template = pressTemplate
@@ -721,6 +733,13 @@ exports.createPages = async ({ graphql, actions }) => {
       edge.node.parent_element.slug === "practical-information"
     ) {
       template = practicalInformationTemplate
+    }
+
+    if (
+      edge.node.parent_element &&
+      edge.node.parent_element.slug === "exchange"
+    ) {
+      template = exchangeTemplate
     }
     // Create pages for both EN and DE
     let slug = edge.node.slug
@@ -805,6 +824,47 @@ exports.createPages = async ({ graphql, actions }) => {
                 : `/${language}/${endPath.DE}`
           }
         } else {
+        if (
+          (edge.node.parent_element &&
+            edge.node.parent_element.slug === "exchange") ||
+          slug === "exchange"
+        ) {
+          if (
+            edge.node.parent_element &&
+            edge.node.parent_element.slug === "exchange"
+          ) {
+            let prePath = pageMap.find(pageType => {
+              return pageType.EN === "exchange"
+            })
+
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+
+            path =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${prePath.EN}/${endPath.EN}`
+                : `/${language}/${prePath.DE}/${endPath.DE}`
+          } else {
+            let endPath = pageMap.find(pageType => {
+              return pageType.EN === slug
+            })
+            path =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+
+            edge.node.slug =
+              language === "en"
+                ? `/${endPath.EN}`
+                : `/${language}/${endPath.DE}`
+          }
+        } else {
           let p
           switch (edge.node.slug) {
             case "data-privacy":
@@ -830,6 +890,12 @@ exports.createPages = async ({ graphql, actions }) => {
                 language === "en"
                   ? "/practical-information"
                   : "/de/praktische-information"
+              break
+            case "exchange":
+              path =
+                language === "en"
+                  ? "/exchange"
+                  : "/de/austausch"
               break
             case 'ex-rotaprint':
               path = language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
