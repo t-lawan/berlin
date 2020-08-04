@@ -20,6 +20,11 @@ const ParticipantVideo = styled.div`
     height: 100%;
   }
 `
+const ExpNumber = styled.span`
+font-size: 1em;
+font-style: italic;
+`
+
 
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -58,13 +63,13 @@ const ParticipantSingle = props => {
                 return (
                   <React.Fragment key={index}>
                     {experience.length === index + 1 && experience.length > 1
-                      ? "and"
+                      ? `${ParticipantSingleText[language].and}`
                       : ""}
-                    <span> exp. {exp} </span>
+                    <ExpNumber> exp. {exp} </ExpNumber>
                     {experience.length === index + 1 ||
                     experience.length - 1 === index + 1
                       ? ""
-                      : ","}
+                      : ""}
                   </React.Fragment>
                 )
               })}
@@ -84,11 +89,13 @@ const ParticipantSingle = props => {
           }}
         />
 
+        {participant[language].short_bio ? (
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].short_bio,
           }}
         />
+        ) : null}
 
         {participant[language].group_bios ? (
           <div>
@@ -104,21 +111,22 @@ const ParticipantSingle = props => {
             ))}
           </div>
         ) : null}
-        <div
-          dangerouslySetInnerHTML={{
-            __html: participant[language].short_bio,
-          }}
-        />
+        
+        {participant.video ? (
         <ParticipantVideo
           dangerouslySetInnerHTML={{
             __html: participant.video,
           }}
         />
+         ) : null}
+        {participant[language].participant_video_caption ? (
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].participant_video_caption,
           }}
         />
+         ) : null}
+
       </div>
     </>
   )
@@ -127,9 +135,11 @@ const ParticipantSingle = props => {
 const ParticipantSingleText = {
   EN: {
     was_part_of: "Was also part of:",
+    and: "and ",
   },
   DE: {
     was_part_of: "War Teil von:",
+    and: "und ",
   },
 }
 
@@ -140,3 +150,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(ParticipantSingle)
+

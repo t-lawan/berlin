@@ -136,7 +136,15 @@ const ParticipantName = styled.p`
   margin: 0;
 `
 
-const ParticipantLink = styled(Link)``
+const ParticipantLink = styled(Link)`
+:hover > p {
+  color: ${Color.red};
+}
+> p {
+  transition: all 0.2s ease-in-out;
+  font-size: 1em;
+}
+`
 
 const ExperienceText = styled.span`
   display: block;

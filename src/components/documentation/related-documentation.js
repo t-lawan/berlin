@@ -10,6 +10,7 @@ import {
   truncateText,
   getNumberOfWords,
 } from "../../utility/helper"
+import striptags from "striptags"
 import { startTransition } from "../../store/action"
 
 export const RelatedDocumentationWrapper = styled.div`
@@ -60,19 +61,49 @@ const DocumentationLink = styled(AniLink)`
 
 const RelatedDocument = styled.div`
   background-color: rgb(237, 219, 159);
-  /* background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")}; */
   min-height: 9em;
   height: 100%;
   position: relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em 0.35em 0 0.35em;
   :hover {
-    > p {
+    > div > p {
       color: ${Color.red};
     }
   }
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
+const DocumentationTextWrap = styled.div`
+> p {
+  font-size: 0.85em;
+  transition: all 0.2s ease-in-out;
+  margin-top: 0;
+  :first-child {
+    font-size: 1em !important;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+  }
+  :last-child {
+    margin-bottom: 0em;
+    position: absolute;
+    bottom: 0.7em;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.1em !important;
+  }
+  @media (min-width: ${size.mobileSL}) {
+    font-size: 0.85em !important;
+  }
+  @media (min-width: ${size.tablet}) {
+    font-size: 0.9em !important;
+  }
+  @media (min-width: ${size.laptop}) {
+    :last-child {
+      font-size: 0.85em !important;
+    }
+  }
+}
+
 
 const DocumentationText = styled.p`
   font-size: 0.85em;
@@ -127,16 +158,13 @@ const RelatedDocumentation = props => {
             border={props.border}
             directlyRelated={doc.directlyRelated}
           >
-            <div
-              dangerouslySetInnerHTML={{
-                __html: doc[language].title,
-              }}
-            />
-            {/* <DocumentationText>
-              {getNumberOfWords(doc.title) > 11
-                ? `${truncateText(doc.title, 9)} ...`
-                : doc.title}
-            </DocumentationText> */}
+
+            <DocumentationTextWrap>
+              {getNumberOfWords(doc[language].title) > 11
+                ? `<p>${truncateText(striptags(doc[language].title), ["em",], 9)} ...</p>`
+                : doc[language].title}
+              <DocumentationText>{DocLabel[language].label}</DocumentationText>
+            </DocumentationTextWrap>
           </RelatedDocument>
         </DocumentationLink>
       ))}
@@ -155,6 +183,15 @@ const mapStateToProps = state => {
     resources: state.resources,
     documentation: state.documentation,
   }
+}
+
+const DocLabel = {
+  EN: {
+    label: "Documentation",
+  },
+  DE: {
+    label: "Dokumentation",
+  },
 }
 
 const mapDispatchToProps = dispatch => {

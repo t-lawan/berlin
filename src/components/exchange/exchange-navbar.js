@@ -48,7 +48,7 @@ const ExchangeNavbar = props => {
     },
     {
       EN: {
-        title: "tandem-thursday",
+        title: "tandem thursday",
         slug: "exchange/tandem-thursday",
       },
       DE: {
