@@ -9,8 +9,7 @@ import SEO from "../components/seo/seo"
 import NewsList from "../components/news/newslist"
 import { TwoColumnPageWrapper } from "./page.styles"
 import ParticipantSingle from "../components/participant/participant-single"
-import RelatedResources from "../components/resources/related-resources";
-import RelatedDocumentation from "../components/documentation/related-documentation";
+import ParticipantRelatedMaterial from "../components/participant/participant-related-material";
 
 const ParticipantText = {
   EN: {
@@ -33,6 +32,8 @@ const Participant = props => {
   let path = pageMap.find(pg => {
     return pg["EN"] == "participant"
   })
+    console.log("PA", participant)
+  // console.log("RESO", resources)
   const renderComponent = (
     <>
       <TwoColumnPageWrapper>
@@ -53,14 +54,7 @@ const Participant = props => {
       </TwoColumnPageWrapper>
       {participant.related_documentation ? (
         <>
-          <RelatedTitle> {ParticipantText[language].related_documentation}</RelatedTitle>
-          <RelatedDocumentation ids={participant.related_documentation} />
-        </>
-      ) : null}
-      {participant.related_resources ? (
-        <>
-          <RelatedTitle> {ParticipantText[language].related_resources}</RelatedTitle>
-          <RelatedResources showRelated={false} ids={participant.related_resources} />
+          <ParticipantRelatedMaterial doc_ids={participant.related_documentation} res_ids={participant.related_resources} />
         </>
       ) : null}
     </>
