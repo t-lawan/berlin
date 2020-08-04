@@ -1,8 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-
+import styled from 'styled-components'
 import { PageTitle } from "../../templates/page.styles"
+
+const ParticipantVideo = styled.div`
+  /* width: 80%; */
+`
 
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -92,13 +96,17 @@ const ParticipantSingle = props => {
             __html: participant[language].short_bio,
           }}
         />
-        
-        <p> {participant[language].participant_video_caption}</p>
-        <div
+        <ParticipantVideo
           dangerouslySetInnerHTML={{
             __html: participant.video,
           }}
         />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: participant[language].participant_video_caption
+          }}
+        />
+
       </div>
     </>
   )
