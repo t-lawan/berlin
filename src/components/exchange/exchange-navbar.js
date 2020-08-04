@@ -48,7 +48,7 @@ const ExchangeNavbar = props => {
     },
     {
       EN: {
-        title: "tandem-thursday",
+        title: "tandem thursday",
         slug: "exchange/tandem-thursday",
       },
       DE: {
@@ -125,7 +125,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-PracticalInformationNavbar.propTypes = {
+ExchangeNavbar.propTypes = {
   currentPage: PropTypes.string,
 }
 
