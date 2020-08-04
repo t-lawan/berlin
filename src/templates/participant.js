@@ -10,6 +10,22 @@ import NewsList from "../components/news/newslist"
 import { TwoColumnPageWrapper } from "./page.styles"
 import ParticipantSingle from "../components/participant/participant-single"
 import RelatedResources from "../components/resources/related-resources";
+import RelatedDocumentation from "../components/documentation/related-documentation";
+
+const ParticipantText = {
+  EN: {
+    related_documentation: "Related Documentation",
+    related_resources: "Related Resources"
+  },
+  DE: {
+    related_documentation: "Related Documentation",
+    related_resources: "Related Resources"
+  },
+}
+
+const RelatedTitle = styled.p`
+  padding: 0 1rem;
+`
 
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
@@ -35,8 +51,17 @@ const Participant = props => {
         />
         <ParticipantSingle participant={participant} />
       </TwoColumnPageWrapper>
+      {participant.related_documentation ? (
+        <>
+          <RelatedTitle> {ParticipantText[language].related_documentation}</RelatedTitle>
+          <RelatedDocumentation ids={participant.related_documentation} />
+        </>
+      ) : null}
       {participant.related_resources ? (
-        <RelatedResources showRelated={false} ids={participant.related_resources} />
+        <>
+          <RelatedTitle> {ParticipantText[language].related_resources}</RelatedTitle>
+          <RelatedResources showRelated={false} ids={participant.related_resources} />
+        </>
       ) : null}
     </>
   )
@@ -47,6 +72,8 @@ const Participant = props => {
       <UpcomingEvents />
     </>
   )
+
+ 
 
   return (
     <Layout
