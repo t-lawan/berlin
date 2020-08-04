@@ -36,7 +36,7 @@ export const RelatedResourcesWrapper = styled.div`
   }
 `
 
-const ResourceLink = styled(AniLink)`
+export const ResourceLink = styled(AniLink)`
   text-decoration: none;
   color: black;
   margin-bottom: 0.7em;
@@ -58,7 +58,7 @@ const ResourceLink = styled(AniLink)`
   }
 `
 
-const RelatedResource = styled.div`
+export const RelatedResource = styled.div`
   background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")};
   min-height: 9em;
   height: 100%;
@@ -73,7 +73,7 @@ const RelatedResource = styled.div`
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 
-const ResourceText = styled.p`
+export const ResourceText = styled.p`
   font-size: 0.85em;
   transition: all 0.2s ease-in-out;
   margin-top: 0;

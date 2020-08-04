@@ -12,6 +12,7 @@ import {
 } from "../../utility/helper"
 import striptags from "striptags"
 import { startTransition } from "../../store/action"
+import { ResourceText, RelatedResource, ResourceLink } from "../resources/related-resources";
 
 export const RelatedDocumentationWrapper = styled.div`
   display: flex;
@@ -135,16 +136,30 @@ const DocumentationText = styled.p`
   }
 `
 
-const RelatedDocumentation = props => {
+
+
+const ParticipantRelatedMaterial = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentations = []
-  props.ids.forEach(id => {
-    let r = props.documentation.find(doc => {
-      return doc.id == id
+  let resources = []
+  if(props.doc_ids) {
+    props.doc_ids.forEach(id => {
+      let r = props.documentation.find(doc => {
+        return doc.id == id
+      })
+      documentations.push({ ...r, directlyRelated: true })
     })
-    documentations.push({ ...r, directlyRelated: true })
-  })
-  console.log("DOCUM", documentations)
+  }
+
+  if(props.res_ids){
+    props.res_ids.forEach(id => {
+      let r = props.resources.find(res => {
+        return res.id == id
+      })
+      resources.push({ ...r, directlyRelated: true })
+    })
+  }
+
   return (
     <RelatedDocumentationWrapper>
       {documentations.map((doc, index) => (
@@ -176,12 +191,37 @@ const RelatedDocumentation = props => {
           </RelatedDocument>
         </DocumentationLink>
       ))}
+
+      {resources.map((resource, index) => (
+        <ResourceLink
+          key={index}
+          onClick={() => props.startTransition()}
+          to={createPath(language, `resources/${resource.slug}`)}
+          fade
+          // cover direction="down"
+          // bg={transitionBackground}
+        >
+          <RelatedResource
+            border={props.border}
+            directlyRelated={resource.directlyRelated}
+          >
+            <ResourceText>
+              {getNumberOfWords(resource.title) > 11
+                ? `${truncateText(resource.title, 9)} ...`
+                : resource.title}
+            </ResourceText>
+            <ResourceText>{resource.author}</ResourceText>
+            <ResourceText>{resource[language].label}</ResourceText>
+          </RelatedResource>
+        </ResourceLink>
+      ))}
     </RelatedDocumentationWrapper>
   )
 }
 
-RelatedDocumentation.propTypes = {
-  ids: PropTypes.array,
+ParticipantRelatedMaterial.propTypes = {
+  doc_ids: PropTypes.array,
+  res_ids: PropTypes.array,
   border: PropTypes.bool,
 }
 
@@ -211,4 +251,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RelatedDocumentation)
+)(ParticipantRelatedMaterial)
