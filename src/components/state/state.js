@@ -246,6 +246,10 @@ const State = props => {
                     participant_video_caption
                     short_bio
                     works_list
+                    group_bios {
+                      biography
+                      full_name
+                    }
                   }
                   DE {
                     project_description
@@ -255,8 +259,20 @@ const State = props => {
                     participant_venue
                     participant_video_caption
                     works_list
+                    group_bios {
+                      biography
+                      full_name
+                    }
                   }
                   sorting_name
+                  participant_video
+                  social_media_image
+                  related_documentation {
+                    wordpress_id
+                  }
+                  related_resources {
+                    wordpress_id
+                  }
                 }
               }
             }
@@ -385,6 +401,7 @@ const State = props => {
                   }
                   social_media_image
                 }
+                date
               }
             }
           }
@@ -489,6 +506,10 @@ const State = props => {
       Convert.toPublicationModel
     )
 
+    publications = publications.sort((a, b) => {
+      return DateManager.secondsBetween(b.date, a.date)
+    })
+
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
       ...calendarItems,
@@ -516,7 +537,7 @@ const State = props => {
       Convert.toVenueModel
     )
     venues = venues.sort((a, b) => {
-      return DateManager.daysBetween(a.date, b.date)
+      return DateManager.secondsBetween(b.date, a.date)
     })
 
     let documents = Convert.toModelArray(

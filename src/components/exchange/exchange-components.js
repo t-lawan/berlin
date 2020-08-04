@@ -71,7 +71,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-PracticalInformationComponents.propTypes = {
+ExchangeComponents.propTypes = {
   currentPage: PropTypes.string,
 }
 

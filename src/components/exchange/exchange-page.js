@@ -10,7 +10,7 @@ const ExchangePage = props => {
     return (
         <>
             <PageTitle> {page_title[language].title}</PageTitle>
-            {content.content_block.map((item, index) => ExchangeContentBlock(item, index))}
+            {content.content_block ? content.content_block.map((item, index) => ExchangeContentBlock(item, index)) : null}
         </>
     )
 }

@@ -483,6 +483,7 @@ class Event extends React.Component {
         </TwoColumnPageWrapper>
         <RelatedResources
           border={false}
+          showRelated={true}
           ids={
             this.event.related_resource &&
             this.event.related_resource.length > 0
