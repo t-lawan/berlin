@@ -137,13 +137,13 @@ const ParticipantName = styled.p`
 `
 
 const ParticipantLink = styled(Link)`
-:hover > p {
-  color: ${Color.red};
-}
-> p {
-  transition: all 0.2s ease-in-out;
-  font-size: 1em;
-}
+  :hover > p {
+    color: ${Color.red};
+  }
+  > p {
+    transition: all 0.2s ease-in-out;
+    font-size: 1em;
+  }
 `
 
 const ExperienceText = styled.span`
@@ -358,11 +358,14 @@ class ParticipantOverView extends Component {
                   </div>
                   <div>
                     {value.participants.map((participant, i) => (
-                      <ParticipantLink to={createPath(this.language, `participant/${participant.slug}`)} key={i}>
+                      <>
+                        {/* <ParticipantLink to={createPath(this.language, `participant/${participant.slug}`)} key={i}> */}
+
                         <ParticipantName
                           isSelected={this.isPartOfExperience(
                             participant.experience
                           )}
+                          key={i}
                         >
                           {" "}
                           {!participant.group
@@ -372,7 +375,8 @@ class ParticipantOverView extends Component {
                                   .participant_group_name
                               }`}
                         </ParticipantName>
-                      </ParticipantLink>
+                        {/* </ParticipantLink> */}
+                      </>
                     ))}
                   </div>
                 </AlphabetLanguageContainer>
