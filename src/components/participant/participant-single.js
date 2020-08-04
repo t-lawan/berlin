@@ -87,10 +87,16 @@ const ParticipantSingle = props => {
             ))}
           </div>
         ) : null}
-
         <div
           dangerouslySetInnerHTML={{
-            __html: participant[language].works_list,
+            __html: participant[language].short_bio,
+          }}
+        />
+        
+        <p> {participant[language].participant_video_caption}</p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: participant.video,
           }}
         />
       </div>
