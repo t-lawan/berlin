@@ -1,11 +1,24 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-import styled from 'styled-components'
+import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
 `
 
 const ParticipantSingle = props => {
@@ -103,10 +116,9 @@ const ParticipantSingle = props => {
         />
         <div
           dangerouslySetInnerHTML={{
-            __html: participant[language].participant_video_caption
+            __html: participant[language].participant_video_caption,
           }}
         />
-
       </div>
     </>
   )
