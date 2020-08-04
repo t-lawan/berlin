@@ -16,6 +16,7 @@ const PracticalInformationPage = props => {
           __html: content.acf[language].new_practical_info,
         }}
       />
+    </>
   )
 }
 

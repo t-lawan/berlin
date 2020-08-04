@@ -337,6 +337,19 @@ const State = props => {
                   external_url
                 }
                 slug
+
+                localFile {
+                  childImageSharp {
+                    fluid(quality: 90, maxWidth: 1000) {
+                      aspectRatio
+                      src
+                      srcSet
+                      sizes
+                      presentationWidth
+                    }
+                  }
+                  publicURL
+                }
               }
             }
           }
