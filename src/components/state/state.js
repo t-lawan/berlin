@@ -385,6 +385,7 @@ const State = props => {
                   }
                   social_media_image
                 }
+                date
               }
             }
           }
@@ -489,6 +490,10 @@ const State = props => {
       Convert.toPublicationModel
     )
 
+    publications = publications.sort((a, b) => {
+      return DateManager.secondsBetween(b.date, a.date)
+    })
+
     let calendarItems = Convert.eventsToCalendarItemArray(events)
     calendarItems = [
       ...calendarItems,
@@ -501,6 +506,8 @@ const State = props => {
       Convert.toParticipantModel
     )
 
+    
+
     let resources = Convert.toModelArray(
       data.allWordpressWpResources,
       Convert.toResourceModel
@@ -511,12 +518,14 @@ const State = props => {
       Convert.toDocumentationModel
     )
 
+
+
     let venues = Convert.toModelArray(
       data.allWordpressWpVenue,
       Convert.toVenueModel
     )
     venues = venues.sort((a, b) => {
-      return DateManager.daysBetween(a.date, b.date)
+      return DateManager.secondsBetween(b.date, a.date)
     })
 
     let documents = Convert.toModelArray(

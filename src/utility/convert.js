@@ -46,6 +46,7 @@ export class Convert {
       wordpressModel.acf.isbn,
       image_gallery,
       wordpressModel.acf.social_media_image,
+      wordpressModel.date
     )
   }
 
