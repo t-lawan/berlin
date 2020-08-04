@@ -507,7 +507,7 @@ const State = props => {
     )
 
     publications = publications.sort((a, b) => {
-      return DateManager.secondsBetween(b.date, a.date)
+      return DateManager.secondsBetween(a.date, b.date)
     })
 
     let calendarItems = Convert.eventsToCalendarItemArray(events)
