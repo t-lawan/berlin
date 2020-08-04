@@ -76,7 +76,7 @@ const content = {
 const PracticalInformationTitle  = {
   "Practical Information": {
     EN: 'Practical information',
-    DE: 'Praktische information'
+    DE: 'Praktische Information'
   },
   "Admission": {
     EN: 'Admission',
