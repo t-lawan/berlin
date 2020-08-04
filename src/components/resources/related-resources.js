@@ -4,8 +4,13 @@ import styled from "styled-components"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { createPath, getCurrentLanguageString, truncateText, getNumberOfWords } from "../../utility/helper"
-import { startTransition } from "../../store/action";
+import {
+  createPath,
+  getCurrentLanguageString,
+  truncateText,
+  getNumberOfWords,
+} from "../../utility/helper"
+import { startTransition } from "../../store/action"
 
 export const RelatedResourcesWrapper = styled.div`
   display: flex;
@@ -37,51 +42,50 @@ const ResourceLink = styled(AniLink)`
   margin-bottom: 0.7em;
   position: relative;
   @media (max-width: ${size.mobileM}) {
-  width:50%;
+    width: 50%;
   }
   @media (min-width: ${size.mobileL}) {
-  width:50%;
+    width: 50%;
   }
   @media (min-width: ${size.mobileXL}) {
-  width:33.33%;
+    width: 33.33%;
   }
   @media (min-width: ${size.laptopM}) {
-  width:25%;
+    width: 25%;
   }
   @media (min-width: ${size.laptopL}) {
-  width:20%;
+    width: 20%;
   }
 `
 
 const RelatedResource = styled.div`
-  background: ${props => props.directlyRelated ? '#fbf95d' :  '#fbf95d'};
+  background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")};
   min-height: 9em;
   height: 100%;
   position: relative;
   padding: 0.5em 0.5em 1.5em;
   margin: 0.35em 0.35em 0 0.35em;
-  :hover{
-    >p{
-      color: ${Color.red}
+  :hover {
+    > p {
+      color: ${Color.red};
     }
   }
-  border: ${props => props.border ? '1px solid black' :  ''} !important;
-
+  border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 
 const ResourceText = styled.p`
   font-size: 0.85em;
   transition: all 0.2s ease-in-out;
-  margin-top:0;
+  margin-top: 0;
   :first-child {
-    font-size:1em !important;
-    line-height:1.2;
-    margin-bottom:0.5em;
+    font-size: 1em !important;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
   }
   :last-child {
-    margin-bottom:0em;
-    position:absolute;
-    bottom:0.7em;
+    margin-bottom: 0em;
+    position: absolute;
+    bottom: 0.7em;
   }
   @media (min-width: ${size.mobileL}) {
     font-size: 1.1em !important;
@@ -101,70 +105,68 @@ const ResourceText = styled.p`
 
 const RelatedResources = props => {
   const language = getCurrentLanguageString(props.languages)
-  let resources = [];
-  props.ids.forEach((id) => {
-    let r = props.resources.find((res) => {
-      return res.id == id;
+  let resources = []
+  props.ids.forEach(id => {
+    let r = props.resources.find(res => {
+      return res.id == id
     })
-    resources.push({...r, directlyRelated: true});
+    resources.push({ ...r, directlyRelated: true })
   })
 
-  // Get genres from resources
-  let genres = [];
-  resources.forEach((resource )=> {
-    resource.genre.forEach((g) => {
-      if(!genres.includes(g)) {
-        genres.push(g);
+  if (props.showRelated) {
+    // Get genres from resources
+    let genres = []
+    resources.forEach(resource => {
+      resource.genre.forEach(g => {
+        if (!genres.includes(g)) {
+          genres.push(g)
+        }
+      })
+    })
+
+    if (genres.length > 0) {
+      // Get all resources belonging to genres
+      let resourceGenres = []
+      genres.forEach(genre => {
+        let rs = props.resources.filter(resource => {
+          return resource.genre.includes(genre)
+        })
+        resourceGenres.push(...rs)
+      })
+
+      // Filter duplicates
+      resourceGenres = resourceGenres.filter(
+        (r, i) => resourceGenres.map(rm => rm.id).indexOf(r.id) === i
+      )
+      // Filter resources passed in
+      resources.forEach(resource => {
+        resourceGenres = resourceGenres.filter(rg => rg.id !== resource.id)
+      })
+      // Shuffle array
+      resourceGenres = resourceGenres.sort(() => Math.random() - 0.5)
+
+      // add class to resource genres
+
+      resourceGenres = resourceGenres.map(rg => {
+        return {
+          ...rg,
+          directlyRelated: false,
+        }
+      })
+
+      // Add to resources function
+      resources.push(...resourceGenres)
+      if (props.id) {
+        resources = resources.filter(re => {
+          return re.id !== props.id
+        })
       }
-    })
-  })
 
-
-
-  if(genres.length > 0) {
-
-  // Get all resources belonging to genres
-  let resourceGenres = []
-  genres.forEach((genre) => {
-    let rs = props.resources.filter((resource) => {
-      return resource.genre.includes(genre);
-    })
-    resourceGenres.push(...rs);
-  });
-
-
-  // Filter duplicates
-  resourceGenres = resourceGenres.filter((r, i) => resourceGenres.map((rm) => rm.id).indexOf(r.id) === i );
-  // Filter resources passed in
-  resources.forEach((resource) => {
-    resourceGenres = resourceGenres.filter((rg) => rg.id !== resource.id);
-  })
-  // Shuffle array
-  resourceGenres = resourceGenres.sort(() => Math.random() - 0.5);
-
-  // add class to resource genres
-
-  resourceGenres = resourceGenres.map((rg) => {
-    return {
-      ...rg,
-      directlyRelated: false
+      // Reduce to 9
+      if (resources.length > 9) {
+        resources = resources.slice(0, 9)
+      }
     }
-  })
-
-  // Add to resources function
-  resources.push(...resourceGenres)
-  if(props.id) {
-    resources = resources.filter((re) => {
-      return re.id !== props.id
-    })
-  }
-
-  // Reduce to 9
-  if(resources.length > 9) {
-    resources = resources.slice(0, 9);
-  }
-
-
   }
 
   return (
@@ -178,8 +180,15 @@ const RelatedResources = props => {
           // cover direction="down"
           // bg={transitionBackground}
         >
-          <RelatedResource border={props.border} directlyRelated={resource.directlyRelated}>
-            <ResourceText>{getNumberOfWords(resource.title) > 11 ?  `${truncateText(resource.title, 9)} ...` : resource.title}</ResourceText>
+          <RelatedResource
+            border={props.border}
+            directlyRelated={resource.directlyRelated}
+          >
+            <ResourceText>
+              {getNumberOfWords(resource.title) > 11
+                ? `${truncateText(resource.title, 9)} ...`
+                : resource.title}
+            </ResourceText>
             <ResourceText>{resource.author}</ResourceText>
             <ResourceText>{resource[language].label}</ResourceText>
           </RelatedResource>
@@ -191,7 +200,7 @@ const RelatedResources = props => {
 
 RelatedResources.propTypes = {
   ids: PropTypes.array,
-  border: PropTypes.bool
+  border: PropTypes.bool,
 }
 
 const mapStateToProps = state => {
@@ -203,12 +212,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    startTransition: () =>
-      dispatch(startTransition()),
+    startTransition: () => dispatch(startTransition()),
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RelatedResources)
+export default connect(mapStateToProps, mapDispatchToProps)(RelatedResources)

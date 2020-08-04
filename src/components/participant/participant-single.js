@@ -25,6 +25,7 @@ font-size: 1em;
 font-style: italic;
 `
 
+
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
@@ -95,6 +96,7 @@ const ParticipantSingle = props => {
           }}
         />
         ) : null}
+
         {participant[language].group_bios ? (
           <div>
             {participant[language].group_bios.map((member, index) => (
@@ -124,6 +126,7 @@ const ParticipantSingle = props => {
           }}
         />
          ) : null}
+
       </div>
     </>
   )

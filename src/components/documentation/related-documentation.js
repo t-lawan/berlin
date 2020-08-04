@@ -104,7 +104,7 @@ const DocumentationTextWrap = styled.div`
   }
 }
 
-`
+
 const DocumentationText = styled.p`
   font-size: 0.85em;
   transition: all 0.2s ease-in-out;
@@ -165,8 +165,6 @@ const RelatedDocumentation = props => {
                 : doc[language].title}
               <DocumentationText>{DocLabel[language].label}</DocumentationText>
             </DocumentationTextWrap>
-            
-            
           </RelatedDocument>
         </DocumentationLink>
       ))}
