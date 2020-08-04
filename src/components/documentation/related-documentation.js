@@ -12,7 +12,7 @@ import {
 } from "../../utility/helper"
 import { startTransition } from "../../store/action"
 
-export const RelatedResourcesWrapper = styled.div`
+export const RelatedDocumentationWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -36,7 +36,7 @@ export const RelatedResourcesWrapper = styled.div`
   }
 `
 
-const ResourceLink = styled(AniLink)`
+const DocumentationLink = styled(AniLink)`
   text-decoration: none;
   color: black;
   margin-bottom: 0.7em;
@@ -58,8 +58,9 @@ const ResourceLink = styled(AniLink)`
   }
 `
 
-const RelatedResource = styled.div`
-  background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")};
+const RelatedDocument = styled.div`
+  background-color: rgb(237, 219, 159);
+  /* background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")}; */
   min-height: 9em;
   height: 100%;
   position: relative;
@@ -73,7 +74,7 @@ const RelatedResource = styled.div`
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 
-const ResourceText = styled.p`
+const DocumentationText = styled.p`
   font-size: 0.85em;
   transition: all 0.2s ease-in-out;
   margin-top: 0;
@@ -103,102 +104,47 @@ const ResourceText = styled.p`
   }
 `
 
-const RelatedResources = props => {
+const RelatedDocumentation = props => {
   const language = getCurrentLanguageString(props.languages)
-  let resources = []
+  let documentations = []
   props.ids.forEach(id => {
-    let r = props.resources.find(res => {
-      return res.id == id
+    let r = props.documentation.find(doc => {
+      return doc.id == id
     })
-    resources.push({ ...r, directlyRelated: true })
+    documentations.push({ ...r, directlyRelated: true })
   })
 
-  if (props.showRelated) {
-    // Get genres from resources
-    let genres = []
-    resources.forEach(resource => {
-      resource.genre.forEach(g => {
-        if (!genres.includes(g)) {
-          genres.push(g)
-        }
-      })
-    })
-
-    if (genres.length > 0) {
-      // Get all resources belonging to genres
-      let resourceGenres = []
-      genres.forEach(genre => {
-        let rs = props.resources.filter(resource => {
-          return resource.genre.includes(genre)
-        })
-        resourceGenres.push(...rs)
-      })
-
-      // Filter duplicates
-      resourceGenres = resourceGenres.filter(
-        (r, i) => resourceGenres.map(rm => rm.id).indexOf(r.id) === i
-      )
-      // Filter resources passed in
-      resources.forEach(resource => {
-        resourceGenres = resourceGenres.filter(rg => rg.id !== resource.id)
-      })
-      // Shuffle array
-      resourceGenres = resourceGenres.sort(() => Math.random() - 0.5)
-
-      // add class to resource genres
-
-      resourceGenres = resourceGenres.map(rg => {
-        return {
-          ...rg,
-          directlyRelated: false,
-        }
-      })
-
-      // Add to resources function
-      resources.push(...resourceGenres)
-      if (props.id) {
-        resources = resources.filter(re => {
-          return re.id !== props.id
-        })
-      }
-
-      // Reduce to 9
-      if (resources.length > 9) {
-        resources = resources.slice(0, 9)
-      }
-    }
-  }
-
   return (
-    <RelatedResourcesWrapper>
-      {resources.map((resource, index) => (
-        <ResourceLink
+    <RelatedDocumentationWrapper>
+      {documentations.map((doc, index) => (
+        <DocumentationLink
           key={index}
           onClick={() => props.startTransition()}
-          to={createPath(language, `resources/${resource.slug}`)}
+          to={createPath(language, `documentation/${doc.slug}`)}
           fade
-          // cover direction="down"
-          // bg={transitionBackground}
         >
-          <RelatedResource
+          <RelatedDocument
             border={props.border}
-            directlyRelated={resource.directlyRelated}
+            directlyRelated={doc.directlyRelated}
           >
-            <ResourceText>
-              {getNumberOfWords(resource.title) > 11
-                ? `${truncateText(resource.title, 9)} ...`
-                : resource.title}
-            </ResourceText>
-            <ResourceText>{resource.author}</ResourceText>
-            <ResourceText>{resource[language].label}</ResourceText>
-          </RelatedResource>
-        </ResourceLink>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: doc[language].title,
+              }}
+            />
+            {/* <DocumentationText>
+              {getNumberOfWords(doc.title) > 11
+                ? `${truncateText(doc.title, 9)} ...`
+                : doc.title}
+            </DocumentationText> */}
+          </RelatedDocument>
+        </DocumentationLink>
       ))}
-    </RelatedResourcesWrapper>
+    </RelatedDocumentationWrapper>
   )
 }
 
-RelatedResources.propTypes = {
+RelatedDocumentation.propTypes = {
   ids: PropTypes.array,
   border: PropTypes.bool,
 }
@@ -207,6 +153,7 @@ const mapStateToProps = state => {
   return {
     languages: state.languages,
     resources: state.resources,
+    documentation: state.documentation,
   }
 }
 
@@ -216,4 +163,7 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RelatedResources)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RelatedDocumentation)
