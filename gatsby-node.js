@@ -559,6 +559,10 @@ exports.createPages = async ({ graphql, actions }) => {
                 participant_video_caption
                 short_bio
                 works_list
+                group_bios {
+                  biography
+                  full_name
+                }
               }
               DE {
                 project_description
@@ -568,6 +572,10 @@ exports.createPages = async ({ graphql, actions }) => {
                 participant_venue
                 participant_video_caption
                 works_list
+                group_bios {
+                  biography
+                  full_name
+                }
               }
               sorting_name
               participant_video

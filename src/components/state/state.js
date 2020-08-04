@@ -246,6 +246,10 @@ const State = props => {
                     participant_video_caption
                     short_bio
                     works_list
+                    group_bios {
+                      biography
+                      full_name
+                    }
                   }
                   DE {
                     project_description
@@ -255,8 +259,20 @@ const State = props => {
                     participant_venue
                     participant_video_caption
                     works_list
+                    group_bios {
+                      biography
+                      full_name
+                    }
                   }
                   sorting_name
+                  participant_video
+                  social_media_image
+                  related_documentation {
+                    wordpress_id
+                  }
+                  related_resources {
+                    wordpress_id
+                  }
                 }
               }
             }
@@ -506,8 +522,6 @@ const State = props => {
       Convert.toParticipantModel
     )
 
-    
-
     let resources = Convert.toModelArray(
       data.allWordpressWpResources,
       Convert.toResourceModel
@@ -517,8 +531,6 @@ const State = props => {
       data.allWordpressWpDocumentation,
       Convert.toDocumentationModel
     )
-
-
 
     let venues = Convert.toModelArray(
       data.allWordpressWpVenue,
