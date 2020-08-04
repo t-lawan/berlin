@@ -4,7 +4,6 @@ import { getCurrentLanguageString } from "../../utility/helper"
 
 import { PageTitle } from "../../templates/page.styles"
 
-
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
@@ -19,6 +18,7 @@ const ParticipantSingle = props => {
       experience.includes("3")
     )
   }
+
   return (
     <>
       <PageTitle>
@@ -72,6 +72,21 @@ const ParticipantSingle = props => {
             __html: participant[language].short_bio,
           }}
         />
+
+        {participant[language].group_bios ? (
+          <div>
+            {participant[language].group_bios.map((member, index) => (
+              <>
+                <p key={index}> {member.full_name}</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: member.biography,
+                  }}
+                />
+              </>
+            ))}
+          </div>
+        ) : null}
 
         <div
           dangerouslySetInnerHTML={{
