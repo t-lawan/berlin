@@ -74,36 +74,36 @@ const RelatedDocument = styled.div`
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 const DocumentationTextWrap = styled.div`
-> p {
-  font-size: 0.85em;
-  transition: all 0.2s ease-in-out;
-  margin-top: 0;
-  :first-child {
-    font-size: 1em !important;
-    line-height: 1.2;
-    margin-bottom: 0.5em;
-  }
-  :last-child {
-    margin-bottom: 0em;
-    position: absolute;
-    bottom: 0.7em;
-  }
-  @media (min-width: ${size.mobileL}) {
-    font-size: 1.1em !important;
-  }
-  @media (min-width: ${size.mobileSL}) {
-    font-size: 0.85em !important;
-  }
-  @media (min-width: ${size.tablet}) {
-    font-size: 0.9em !important;
-  }
-  @media (min-width: ${size.laptop}) {
+  > p {
+    font-size: 0.85em;
+    transition: all 0.2s ease-in-out;
+    margin-top: 0;
+    :first-child {
+      font-size: 1em !important;
+      line-height: 1.2;
+      margin-bottom: 0.5em;
+    }
     :last-child {
+      margin-bottom: 0em;
+      position: absolute;
+      bottom: 0.7em;
+    }
+    @media (min-width: ${size.mobileL}) {
+      font-size: 1.1em !important;
+    }
+    @media (min-width: ${size.mobileSL}) {
       font-size: 0.85em !important;
     }
+    @media (min-width: ${size.tablet}) {
+      font-size: 0.9em !important;
+    }
+    @media (min-width: ${size.laptop}) {
+      :last-child {
+        font-size: 0.85em !important;
+      }
+    }
   }
-}
-
+`
 
 const DocumentationText = styled.p`
   font-size: 0.85em;
@@ -144,7 +144,7 @@ const RelatedDocumentation = props => {
     })
     documentations.push({ ...r, directlyRelated: true })
   })
-
+  console.log("DOCUM", documentations)
   return (
     <RelatedDocumentationWrapper>
       {documentations.map((doc, index) => (
@@ -158,11 +158,19 @@ const RelatedDocumentation = props => {
             border={props.border}
             directlyRelated={doc.directlyRelated}
           >
-
             <DocumentationTextWrap>
-              {getNumberOfWords(doc[language].title) > 11
-                ? `<p>${truncateText(striptags(doc[language].title), ["em",], 9)} ...</p>`
-                : doc[language].title}
+              <div
+                dangerouslySetInnerHTML={{
+                  __html:
+                    getNumberOfWords(striptags(doc[language].title)) > 11
+                      ? `<p> ${truncateText(
+                          striptags(doc[language].title, ["em"]),
+                          9
+                        )} </p>`
+                      : `<p> ${striptags(doc[language].title, ["em"])} </p>`,
+                }}
+              />
+
               <DocumentationText>{DocLabel[language].label}</DocumentationText>
             </DocumentationTextWrap>
           </RelatedDocument>
