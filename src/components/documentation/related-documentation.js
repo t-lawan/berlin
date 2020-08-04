@@ -59,7 +59,8 @@ const DocumentationLink = styled(AniLink)`
 `
 
 const RelatedDocument = styled.div`
-  background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")};
+  background-color: rgb(237, 219, 159);
+  /* background: ${props => (props.directlyRelated ? "#fbf95d" : "#fbf95d")}; */
   min-height: 9em;
   height: 100%;
   position: relative;
