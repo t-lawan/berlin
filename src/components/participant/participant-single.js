@@ -79,9 +79,6 @@ const ParticipantSingle = props => {
             __html: participant[language].works_list,
           }}
         />
-        {participant.related_resources ? (
-          <RelatedResources ids={participant.related_resources} />
-        ) : null}
       </div>
     </>
   )
