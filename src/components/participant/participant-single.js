@@ -1,16 +1,35 @@
 import React from "react"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
+import styled from "styled-components"
+import { PageTitle } from "../../templates/page.styles"
 
-import { PageTitle, ExpNumber } from "../../templates/page.styles"
-
-import RelatedResources from "../resources/related-resources";
+const ParticipantVideo = styled.div`
+  /* width: 80%; */
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+`
+const ExpNumber = styled.span`
+font-size: 1em;
+font-style: italic;
+`
 
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
   let participant = props.participant
-  let experience = participant.experience;
-  experience = experience.filter((exp) => {
+  let experience = participant.experience
+  experience = experience.filter(exp => {
     return exp != "4"
   })
   let isInExperience123 = () => {
@@ -20,6 +39,7 @@ const ParticipantSingle = props => {
       experience.includes("3")
     )
   }
+
   return (
     <>
       <PageTitle>
@@ -31,15 +51,24 @@ const ParticipantSingle = props => {
       <div>
         {isInExperience123() ? (
           <>
-            <p> {participant[language].participant_venue}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: participant[language].participant_venue,
+              }}
+            />
             <p>
               {ParticipantSingleText[language].was_part_of}
               {experience.map((exp, index) => {
                 return (
                   <React.Fragment key={index}>
-                    {experience.length === index + 1 && experience.length > 1 ? "and" : ""}
-                    <span> exp. {exp} </span>
-                    {experience.length === index + 1  || experience.length - 1 === index + 1 ? "" : ","}
+                    {experience.length === index + 1 && experience.length > 1
+                      ? `${ParticipantSingleText[language].and}`
+                      : ""}
+                    <ExpNumber> exp. {exp} </ExpNumber>
+                    {experience.length === index + 1 ||
+                    experience.length - 1 === index + 1
+                      ? ""
+                      : ""}
                   </React.Fragment>
                 )
               })}
@@ -59,18 +88,42 @@ const ParticipantSingle = props => {
           }}
         />
 
+        {participant[language].short_bio ? (
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].short_bio,
           }}
         />
-
-        <div
+        ) : null}
+        {participant[language].group_bios ? (
+          <div>
+            {participant[language].group_bios.map((member, index) => (
+              <>
+                <p key={index}> {member.full_name}</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: member.biography,
+                  }}
+                />
+              </>
+            ))}
+          </div>
+        ) : null}
+        
+        {participant.video ? (
+        <ParticipantVideo
           dangerouslySetInnerHTML={{
-            __html: participant[language].works_list,
+            __html: participant.video,
           }}
         />
-        {participant.related_resources ? <RelatedResources ids={participant.related_resources} /> : null}
+         ) : null}
+        {participant[language].participant_video_caption ? (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: participant[language].participant_video_caption,
+          }}
+        />
+         ) : null}
       </div>
     </>
   )
@@ -78,11 +131,13 @@ const ParticipantSingle = props => {
 
 const ParticipantSingleText = {
   EN: {
-    was_part_of: "Was also part of:"
-  }, 
+    was_part_of: "Was also part of:",
+    and: "and ",
+  },
   DE: {
-    was_part_of: "War Teil von:"
-  }
+    was_part_of: "War Teil von:",
+    and: "und ",
+  },
 }
 
 const mapStateToProps = state => {
@@ -92,3 +147,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(ParticipantSingle)
+
