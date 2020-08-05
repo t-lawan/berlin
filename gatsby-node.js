@@ -66,6 +66,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       image: Int
       file: Int
     }
+
+    type wordpress__wp_venueAcfEnglishOpening_hours implements Node {
+        hours: String
+    }
     
   `
   createTypes(typeDefs)
@@ -601,17 +605,11 @@ exports.createPages = async ({ graphql, actions }) => {
                 access_info
                 venue_name
                 venue_description
-                opening_hours {
-                  hours
-                }
               }
               deutsch {
                 access_info
                 venue_name
                 venue_description
-                opening_hours {
-                  hours
-                }
               }
               google_map_link
               thumbnail_image
