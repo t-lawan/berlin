@@ -416,17 +416,17 @@ const State = props => {
                     access_info
                     venue_name
                     venue_description
-                    # opening_hours {
-                    #   hours
-                    # }
+                    opening_hours {
+                      hours
+                    }
                   }
                   deutsch {
                     access_info
                     venue_name
                     venue_description
-                    # opening_hours {
-                    #   hours
-                    # }
+                    opening_hours {
+                      hours
+                    }
                   }
                   google_map_link
                   thumbnail_image
