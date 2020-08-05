@@ -572,13 +572,12 @@ const State = props => {
         false,
         true
       ),
-      // REMOVE: Temporary set isActive to false
       new NavbarModel(
         "exchange",
         "exchange",
         "austausch",
         false,
-        false,
+        true,
         true,
         true
       ),
