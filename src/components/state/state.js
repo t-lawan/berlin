@@ -537,7 +537,7 @@ const State = props => {
       Convert.toVenueModel
     )
     venues = venues.sort((a, b) => {
-      return DateManager.secondsBetween(b.date, a.date)
+      return DateManager.secondsBetween(a.date, b.date)
     })
 
     let documents = Convert.toModelArray(
