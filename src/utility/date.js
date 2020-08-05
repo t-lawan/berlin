@@ -125,6 +125,10 @@ export class DateManager {
     return moment(end).diff(moment(start), "d")
   }
 
+  static secondsBetween = (start, end) => {
+    return moment(end).diff(moment(start))
+  }
+
   static getCalendar = () => {
     return {
       2019 : {

@@ -17,7 +17,7 @@ const Jumbotron = props => {
   <JumbotronWrapperMob isExperience4={props.experience == 4} showOnHomePage={props.showOnHomePage} showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader to={createPath(language, '')}>
       {imagedate ? <img src={imagedate.publicUrl} alt={imagedate.slug}/> : null}
-      {image && props.experience != 4 ? <img src={image.publicUrl} alt={image.slug}/> : null}
+      {image ? <img src={image.publicUrl} alt={image.slug}/> : null}
     </JumbotronHeader>
   </JumbotronWrapperMob>
 )

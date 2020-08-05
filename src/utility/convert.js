@@ -46,6 +46,7 @@ export class Convert {
       wordpressModel.acf.isbn,
       image_gallery,
       wordpressModel.acf.social_media_image,
+      wordpressModel.date
     )
   }
 
@@ -196,6 +197,12 @@ export class Convert {
   }
 
   static toParticipantModel = wordpressModel => {
+    let related_documentation = wordpressModel.acf.related_documentation ? wordpressModel.acf.related_documentation.map((docu) => {
+      return docu.wordpress_id
+    }) : null;
+    let related_resources = wordpressModel.acf.related_resources ? wordpressModel.acf.related_resources.map((resource) => {
+      return resource.wordpress_id
+    }) : null;
     return new ParticipantModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -207,7 +214,11 @@ export class Convert {
       wordpressModel.acf.sorting_name,
       wordpressModel.acf.personal_website,
       wordpressModel.acf.is_artist_in_exhibition,
-      wordpressModel.acf.participant_group
+      wordpressModel.acf.participant_group,
+      wordpressModel.acf.participant_video,
+      wordpressModel.acf.social_media_image,
+      related_documentation,
+      related_resources,
     )
   }
 
