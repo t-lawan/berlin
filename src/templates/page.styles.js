@@ -221,6 +221,16 @@ export const TwoColumnPageWrapperNoPad = styled.div`
   }
   ${changeGridToOneRow}
 `
+export const ExpNumber = styled.span`
+  font-size: 1em;
+  font-style: italic;
+  :after {
+    content: ", "
+  }
+  :last-child:after {
+    content: ""
+  }
+`
 
 export const PressWrapper = styled.div`
   padding: 2.5em 1em 2em;

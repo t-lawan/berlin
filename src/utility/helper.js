@@ -54,6 +54,12 @@ export  const pageMap = [
   { EN: "practical-information/faq", DE: "praktische-information/faq" },
   { EN: "practical-information/anti-discrimination-clause", DE: "praktische-information/antidiskriminierungsklausel" },
   { EN: "practical-information/accommodation", DE: "praktische-information/unterkunft" },
+  { EN: "exchange", DE: "austausch" },
+  { EN: "exchange/gatherings", DE: "austausch/gatherings" },
+  { EN: "exchange/tours", DE: "austausch/rundgaenge" },
+  { EN: "exchange/tandem-thursday", DE: "austausch/tandem-donnerstag" },
+  { EN: "exchange/family-hours", DE: "austausch/familienzeit" },
+  { EN: "exchange/curatorial-workshop", DE: "austausch/curatorial-workshop" },
 ]
 
 export const transitionBackground = "url(https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"
