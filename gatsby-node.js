@@ -66,10 +66,20 @@ exports.createSchemaCustomization = ({ actions }) => {
       image: Int
       file: Int
     }
-
-    type wordpress__wp_venueAcfEnglishOpening_hours implements Node {
-        hours: String
+    type OpeningHours {
+      hours: String!
     }
+
+    type wordpress__wp_venueAcfEnglish implements Node {
+        opening_hours: OpeningHours
+    }
+
+    type wordpress__wp_venueAcfDeutsch implements Node {
+      opening_hours: OpeningHours
+    }
+    
+
+
     
   `
   createTypes(typeDefs)
