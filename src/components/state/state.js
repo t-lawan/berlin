@@ -533,6 +533,10 @@ const State = props => {
       Convert.toDocumentationModel
     )
 
+    documentation = documentation.sort((a, b) => {
+      return DateManager.secondsBetween(a.date, b.date)
+    })
+
     let venues = Convert.toModelArray(
       data.allWordpressWpVenue,
       Convert.toVenueModel
