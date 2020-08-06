@@ -13,9 +13,10 @@ import { startTransition } from "../../store/action";
 const EventCard = props => {
   const language = getCurrentLanguageString(props.languages)
   const event = props.event
+  let slug = props.experience == 4 && event.item === "exhibition" ? "practical-information/opening-hours": event.slug;
   return (
     <EventCardWrapper>
-      <EventCardLink onClick={() => props.startTransition()} to={createPath(language, event.slug)}>
+      <EventCardLink onClick={() => props.startTransition()} to={createPath(language, slug)}>
         {props.experience != 4 || event.item === "event" ? <EventHeading>{event[language].display_time}</EventHeading> : null}
         {event.item === "exhibition" ? (
           <p> <em> {event[language].title} </em></p>
