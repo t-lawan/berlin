@@ -77,6 +77,10 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_venueAcfDeutsch implements Node {
       opening_hours: OpeningHours
     }
+
+    type wordpress__wp_exhibitionsAcf implements Node {
+      exhibition_floorplan: Int
+    }
     
 
 
