@@ -25,6 +25,7 @@ export const transitionTimes = {
 export  const pageMap = [
   { EN: "event", DE: "veranstaltung" },
   { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
+  { EN: "plain-language", DE: "leichte-sprache" },
   { EN: "about", DE: "uber" },
   { EN: "about/team", DE: "uber/team" },
   { EN: "about/organization", DE: "uber/verein" },
@@ -78,7 +79,7 @@ export const capitalise = (s) => {
  export const createPath = (language, path) => {
   let prePath = pageMap.find((pageType) => {
     let type;
-    if(path.includes('about') || path.includes('uber') || path.includes('practical-information') || path.includes('praktische-information')) {
+    if(path.includes('about') || path.includes('uber') || path.includes('practical-information') || path.includes('praktische-information') || path.includes('exchange') || path.includes('austausch')) {
       type = path.toLowerCase();
     } else {
       type = path.split('/')[0].toLowerCase();
@@ -93,7 +94,7 @@ export const capitalise = (s) => {
 
   let newPath;
   if(prePath && prePath.length !== 0) {
-    if(path.includes('about') || path.includes('uber') || path.includes('practical-information')  || path.includes('praktische-information')) {
+    if(path.includes('about') || path.includes('uber') || path.includes('practical-information')  || path.includes('praktische-information') || path.includes('exchange') || path.includes('austausch')) {
       newPath =
       language === "EN" ? `/${prePath[language]}` : `/${language.toLowerCase()}/${prePath[language]}`
     } else {

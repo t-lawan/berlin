@@ -66,6 +66,24 @@ exports.createSchemaCustomization = ({ actions }) => {
       image: Int
       file: Int
     }
+    type OpeningHours {
+      hours: String!
+    }
+
+    type wordpress__wp_venueAcfEnglish implements Node {
+        opening_hours: OpeningHours
+    }
+
+    type wordpress__wp_venueAcfDeutsch implements Node {
+      opening_hours: OpeningHours
+    }
+
+    type wordpress__wp_exhibitionsAcf implements Node {
+      exhibition_floorplan: Int
+    }
+    
+
+
     
   `
   createTypes(typeDefs)
@@ -102,6 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 }
                 content
                 exrota_info
+                plain_language
                 image_gallery
                 images_note
                 opening_times {
@@ -206,6 +225,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 title
                 venue_description
                 exrota_info
+                plain_language
                 page_title
                 content_block {
                   block_type
@@ -397,6 +417,7 @@ exports.createPages = async ({ graphql, actions }) => {
               documentation_not_attached_to_event
               unlist_document_on_media_overview
             }
+            date
           }
         }
       }
@@ -658,11 +679,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const pressImagesTemplate = path.resolve(`./src/templates/press-images.js`)
   const exRotaprintTemplate = path.resolve(`./src/templates/ex-rotaprint.js`)
+  const plainLanguageTemplate = path.resolve(`./src/templates/plain-language.js`)
   const languages = ["en", "de"]
 
   const pageMap = [
     { EN: "event", DE: "veranstaltung" },
     { EN: "c-o-exrotaprint", DE: "c-o-exrotaprint" },
+    { EN: "plain-language", DE: "leichte-sprache" },
     { EN: "about", DE: "uber" },
     { EN: "team", DE: "team" },
     { EN: "organization", DE: "verein" },
@@ -727,6 +750,9 @@ exports.createPages = async ({ graphql, actions }) => {
         break
       case "ex_rotaprint":
         template = exRotaprintTemplate
+        break
+      case "plain_language":
+        template = plainLanguageTemplate
         break
       default:
         template = pageTemplate
@@ -896,6 +922,10 @@ exports.createPages = async ({ graphql, actions }) => {
               case "ex-rotaprint":
                 path =
                   language === "en" ? "/c-o-exrotaprint" : "/de/c-o-exrotaprint"
+                break
+              case "plain-language":
+                path =
+                  language === "en" ? "/plain-language" : "/de/leichte-sprache"
                 break
               default:
                 path =
