@@ -1,11 +1,9 @@
 import React from "react"
-import UpcomingEvents from "../components/events/upcomingevents"
 import Layout from "../components/layout/layout"
 import { PageWrapper,PageTitle } from "./page.styles"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../utility/helper"
 import SEO from "../components/seo/seo"
-import NewsList from "../components/news/newslist";
 
 
 const plainLanguage = props => {
@@ -15,12 +13,12 @@ const plainLanguage = props => {
   const renderComponent = (
     <PageWrapper>
       <SEO
-        title={title}
+        title={PlainTitle[language].label}
         description={`${props.pageContext.slug}`}
         lang={props.pageContext.language}
       />
 
-      <PageTitle>Template Test</PageTitle>
+      <PageTitle>{PlainTitle[language].label}</PageTitle>
         
       <div
         dangerouslySetInnerHTML={{
@@ -34,8 +32,7 @@ const plainLanguage = props => {
 
   let thirdColumn = (
     <>
-     <NewsList />
-     <UpcomingEvents /> 
+ 
     </>
   )
 
@@ -54,6 +51,14 @@ const mapStateToProps = state => {
   }
 }
 
+const PlainTitle = {
+  EN: {
+    label: "Plain language",
+  },
+  DE: {
+    label: "Leichte Sprache",
+  },
+}
 
 export default connect(
   mapStateToProps,
