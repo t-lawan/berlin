@@ -79,6 +79,7 @@ const DocumentationTextWrap = styled.div`
       font-size: 1.0em;
       line-height: 1.2;
     }
+
   > p {
     font-size: 0.85em;
     transition: all 0.2s ease-in-out;
@@ -187,6 +188,7 @@ const ParticipantRelatedMaterial = props => {
                           striptags(doc[language].title, ["em"]),
                           9
                         )} ...</p>`
+
                       : `<p> ${striptags(doc[language].title, ["em"])} </p>`,
                 }}
               />

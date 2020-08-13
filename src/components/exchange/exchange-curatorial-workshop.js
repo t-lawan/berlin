@@ -38,7 +38,7 @@ export const ExchangeContentBlock = (item, index) => {
   switch (item.block_type) {
     case "text":
       renderComponent = (
-        <ContentBlockWrapper>
+        <ContentBlockWrapper key={index}>
           {item.text ? <div
             key={index}
             dangerouslySetInnerHTML={{
@@ -50,14 +50,14 @@ export const ExchangeContentBlock = (item, index) => {
       break
     case "image":
       renderComponent = (
-        <ContentBlockWrapper>
+        <ContentBlockWrapper key={index}>
           {item.image ? <ImageResource id={item.image} withCaption={true}/>  : null}
         </ContentBlockWrapper>        
       )
       break
     case "pdf":
       renderComponent = (
-        <ContentBlockWrapper>
+        <ContentBlockWrapper key={index}>
           {item.file ? <ExternalLink id={item.file}> {item.file_label} </ExternalLink> : null}
         </ContentBlockWrapper>
       )

@@ -195,6 +195,7 @@ const State = props => {
                   documentation_not_attached_to_event
                   unlist_document_on_media_overview
                 }
+                date
               }
             }
           }
@@ -521,6 +522,10 @@ const State = props => {
       data.allWordpressWpDocumentation,
       Convert.toDocumentationModel
     )
+
+    documentation = documentation.sort((a, b) => {
+      return DateManager.secondsBetween(a.date, b.date)
+    })
 
     let venues = Convert.toModelArray(
       data.allWordpressWpVenue,
