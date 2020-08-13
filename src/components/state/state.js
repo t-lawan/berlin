@@ -354,17 +354,7 @@ const State = props => {
                   external_url
                 }
                 slug
-
                 localFile {
-                  childImageSharp {
-                    fluid(quality: 90, maxWidth: 1000) {
-                      aspectRatio
-                      src
-                      srcSet
-                      sizes
-                      presentationWidth
-                    }
-                  }
                   publicURL
                 }
               }
@@ -577,6 +567,7 @@ const State = props => {
         false,
         true
       ),
+      // REMOVE: Temporary set isActive to false
       new NavbarModel(
         "exchange",
         "exchange",
@@ -596,6 +587,7 @@ const State = props => {
         true
       ),
       new NavbarModel("media", "media", "mediathek", false, true),
+      new NavbarModel("plain-language", "plain language", "leichte sprache", false, true),
     ]
 
     let bottomNavbarItems = [
