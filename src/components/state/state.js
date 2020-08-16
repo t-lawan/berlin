@@ -596,13 +596,6 @@ const State = props => {
         true
       ),
       new NavbarModel("media", "media", "mediathek", false, true),
-      new NavbarModel(
-        "plain-language",
-        "plain language",
-        "leichte sprache",
-        false,
-        true
-      ),
     ]
 
     let bottomNavbarItems = [
@@ -623,6 +616,13 @@ const State = props => {
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,
+        true
+      ),
+      new NavbarModel(
+        "plain-language",
+        "plain language",
+        "leichte sprache",
+        false,
         true
       ),
     ]
