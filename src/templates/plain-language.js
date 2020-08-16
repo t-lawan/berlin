@@ -12,6 +12,9 @@ const PlainLangBody = styled.div`
     font-family: Arial, sans-serif;
     font-weight: bold;
   }
+  > p > span {
+    font-size: 1em;
+  }
   > ul {
     margin-top: 0 !important;
     margin-bottom: 1em !important;
