@@ -354,7 +354,6 @@ const State = props => {
                   external_url
                 }
                 slug
-
                 localFile {
                   childImageSharp {
                     fluid(quality: 90, maxWidth: 1000) {
@@ -577,6 +576,7 @@ const State = props => {
         false,
         true
       ),
+      // REMOVE: Temporary set isActive to false
       new NavbarModel(
         "exchange",
         "exchange",
@@ -616,6 +616,13 @@ const State = props => {
         "shop",
         NavbarTitleConfig["shop"].DE,
         true,
+        true
+      ),
+      new NavbarModel(
+        "plain-language",
+        "plain language",
+        "leichte sprache",
+        false,
         true
       ),
     ]
