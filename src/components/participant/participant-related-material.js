@@ -75,6 +75,11 @@ const RelatedDocument = styled.div`
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 const DocumentationTextWrap = styled.div`
+   > div > p {
+      font-size: 1.0em;
+      line-height: 1.2;
+    }
+
   > p {
     font-size: 0.85em;
     transition: all 0.2s ease-in-out;
@@ -89,6 +94,7 @@ const DocumentationTextWrap = styled.div`
       position: absolute;
       bottom: 0.7em;
     }
+
     @media (min-width: ${size.mobileL}) {
       font-size: 1.1em !important;
     }
@@ -181,7 +187,8 @@ const ParticipantRelatedMaterial = props => {
                       ? `<p> ${truncateText(
                           striptags(doc[language].title, ["em"]),
                           9
-                        )} </p>`
+                        )} ...</p>`
+
                       : `<p> ${striptags(doc[language].title, ["em"])} </p>`,
                 }}
               />
