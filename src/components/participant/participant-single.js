@@ -79,7 +79,7 @@ const ParticipantSingle = props => {
               }}
             />
             <p>
-              {ParticipantSingleText[language].was_part_of}
+              {experience && experience.length > 0 ? ParticipantSingleText[language].was_part_of : null}
               {experience.map((exp, index) => {
                 return (
                   <React.Fragment key={index}>
