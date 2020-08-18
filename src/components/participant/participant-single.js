@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
 import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
+import ImageGalleryResource from "../../partials/ImageGalleryResource";
+import { size } from "../../index.styles";
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
@@ -23,6 +25,25 @@ const ParticipantVideo = styled.div`
 const ExpNumber = styled.span`
 font-size: 1em;
 font-style: italic;
+`
+
+const ParticipantImageWrapper = styled.div`
+  padding: 0rem;
+`
+
+const ParticipantColumn = styled.div`
+  overflow-y: hidden;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0 !important;
+  }
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
 `
 
 
@@ -50,7 +71,7 @@ const ParticipantSingle = props => {
           : `${participant.firstname} ${participant.lastname}`}
       </PageTitle>
       <div>
-        {isInExperience123() ? (
+        {!isInExperience123() ? (
           <>
             <div
               dangerouslySetInnerHTML={{
@@ -110,6 +131,12 @@ const ParticipantSingle = props => {
               </>
             ))}
           </div>
+        ) : null}
+
+        {participant.image_gallery ? (
+          <ParticipantImageWrapper> 
+            <ImageGalleryResource ids={participant.image_gallery}/>
+          </ParticipantImageWrapper>
         ) : null}
         
         {participant.video ? (
