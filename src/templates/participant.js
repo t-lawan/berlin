@@ -37,6 +37,7 @@ const Participant = props => {
   let path = pageMap.find(pg => {
     return pg["EN"] == "participant"
   })
+    console.log("PA", participant)
   // console.log("RESO", resources)
   const renderComponent = (
     <ParticipantWrapper>

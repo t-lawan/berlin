@@ -359,7 +359,8 @@ class ParticipantOverView extends Component {
                   <div>
                     {value.participants.map((participant, i) => (
                       <>
-                        <ParticipantLink key={i} to={createPath(this.language, `participant/${participant.slug}`)}>
+                        <ParticipantLink to={createPath(this.language, `participant/${participant.slug}`)} key={i}>
+
                         <ParticipantName
                           isSelected={this.isPartOfExperience(
                             participant.experience

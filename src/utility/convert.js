@@ -203,9 +203,6 @@ export class Convert {
     let related_resources = wordpressModel.acf.related_resources ? wordpressModel.acf.related_resources.map((resource) => {
       return resource.wordpress_id
     }) : null;
-    let image_gallery = wordpressModel.acf.image_gallery ? wordpressModel.acf.image_gallery.map((resource) => {
-      return resource.wordpress_id
-    }) : null;
     return new ParticipantModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -222,7 +219,6 @@ export class Convert {
       wordpressModel.acf.social_media_image,
       related_documentation,
       related_resources,
-      image_gallery
     )
   }
 
