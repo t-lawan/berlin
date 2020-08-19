@@ -3,6 +3,8 @@ import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
 import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
+import ImageGalleryResource from "../../partials/ImageGalleryResource"
+import { size } from "../../index.styles"
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
@@ -21,10 +23,45 @@ const ParticipantVideo = styled.div`
   }
 `
 const ExpNumber = styled.span`
-font-size: 1em;
-font-style: italic;
+  font-size: 1em;
+  font-style: italic;
 `
 
+const ParticipantImageWrapper = styled.div`
+  padding: 0rem;
+  /* max-width: 100%; */
+  display: inherit;
+`
+const ParticipantName = styled.h1`
+  padding-bottom: 0.5rem;
+  font-size: 1.6em;
+  display: none;
+  @media (min-width: ${size.laptop}) {
+    display: block;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.7em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.9em;
+  }
+  line-height: 1.2;
+`
+
+const ParticipantColumn = styled.div`
+  overflow-y: hidden;
+  position: relative;
+  @media (max-width: ${size.mobileM}) {
+    margin-bottom: 0 !important;
+  }
+  @media (max-width: ${size.tabletL}) {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: ${size.tabletL}) {
+    display: block;
+  }
+`
 
 const ParticipantSingle = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -50,15 +87,17 @@ const ParticipantSingle = props => {
           : `${participant.firstname} ${participant.lastname}`}
       </PageTitle>
       <div>
-        {isInExperience123() ? (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: participant[language].participant_venue,
+          }}
+        />
+        {!isInExperience123() ? (
           <>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: participant[language].participant_venue,
-              }}
-            />
             <p>
-              {ParticipantSingleText[language].was_part_of}
+              {experience && experience.length > 0
+                ? ParticipantSingleText[language].was_part_of
+                : null}
               {experience.map((exp, index) => {
                 return (
                   <React.Fragment key={index}>
@@ -77,12 +116,20 @@ const ParticipantSingle = props => {
           </>
         ) : null}
       </div>
-      <div>
-        <h2>
+      <ParticipantColumn>
+        <ParticipantName>
           {participant.group
             ? `${participant[language].participant_group_name}`
             : `${participant.firstname} ${participant.lastname}`}
-        </h2>
+        </ParticipantName>
+        <div>
+          {participant.image_gallery ? (
+            <ParticipantImageWrapper>
+              <ImageGalleryResource ids={participant.image_gallery} />
+            </ParticipantImageWrapper>
+          ) : null}
+        </div>
+
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].project_description,
@@ -90,11 +137,11 @@ const ParticipantSingle = props => {
         />
 
         {participant[language].short_bio ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: participant[language].short_bio,
-          }}
-        />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].short_bio,
+            }}
+          />
         ) : null}
 
         {participant[language].group_bios ? (
@@ -111,23 +158,22 @@ const ParticipantSingle = props => {
             ))}
           </div>
         ) : null}
-        
-        {participant.video ? (
-        <ParticipantVideo
-          dangerouslySetInnerHTML={{
-            __html: participant.video,
-          }}
-        />
-         ) : null}
-        {participant[language].participant_video_caption ? (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: participant[language].participant_video_caption,
-          }}
-        />
-         ) : null}
 
-      </div>
+        {participant.video ? (
+          <ParticipantVideo
+            dangerouslySetInnerHTML={{
+              __html: participant.video,
+            }}
+          />
+        ) : null}
+        {participant[language].participant_video_caption ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].participant_video_caption,
+            }}
+          />
+        ) : null}
+      </ParticipantColumn>
     </>
   )
 }
@@ -150,4 +196,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, null)(ParticipantSingle)
-
