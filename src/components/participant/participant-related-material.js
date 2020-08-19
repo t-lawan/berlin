@@ -78,6 +78,7 @@ const DocumentationTextWrap = styled.div`
    > div > p {
       font-size: 1.0em;
       line-height: 1.2;
+      word-break: break-word;
     }
 
   > p {
