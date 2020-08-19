@@ -17,6 +17,10 @@ const ParticipantNavigatorWrapper = styled.div`
     display: block;
     margin-top: 0em;
     padding: 0.0em 0 0.7 0em;
+    padding-left: 0.7em;
+    margin-bottom: 0.5em;
+
+
     width: 100%;
     :after {
       content: "";
@@ -37,19 +41,21 @@ const ParticipantNavigatorWrapper = styled.div`
   }
   @media (min-width: ${size.tablet}) {
     padding: 0.2em 0 0 0em;
+    padding-left: 0.7em;
+
     margin-bottom: 0.5em;
   }
   @media (min-width: ${size.laptop}) {
     /* margin-top:-2em; */
     padding-top: 0.5em;
-    padding-left: 0;
+    padding-left: 1.1em;
     margin-bottom: -0.2em;
   }
   @media (min-width: ${size.laptopM}) {
     margin-top: 0.5em;
     padding-top: 0.1em;
     margin-bottom: 1.6em;
-    padding-left: 0;
+    padding-left: 1.1em;
   }
 `
 
