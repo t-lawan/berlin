@@ -154,8 +154,6 @@ const ParticipantSingle = props => {
             ))}
           </div>
         ) : null}
-
-        
         
         {participant.video ? (
         <ParticipantVideo
