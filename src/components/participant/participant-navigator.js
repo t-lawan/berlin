@@ -46,15 +46,15 @@ const ParticipantNavigatorWrapper = styled.div`
     margin-bottom: 0.5em;
   }
   @media (min-width: ${size.laptop}) {
-    /* margin-top:-2em; */
-    padding-top: 0.5em;
+    margin-top: -0.5em;
+    padding-top: 0;
+    margin-bottom: 1.0em;
     padding-left: 1.1em;
-    margin-bottom: -0.2em;
   }
   @media (min-width: ${size.laptopM}) {
-    margin-top: 0.5em;
-    padding-top: 0.1em;
-    margin-bottom: 1.6em;
+    margin-top: -0.5em;
+    padding-top: 0;
+    margin-bottom: 1.0em;
     padding-left: 1.1em;
   }
 `
