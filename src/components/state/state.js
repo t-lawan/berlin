@@ -531,6 +531,10 @@ const State = props => {
       Convert.toParticipantModel
     )
 
+    participants = participants.sort((a, b) => {
+      return b.sorting_name.localeCompare(a.sorting_name) 
+    })
+
     let resources = Convert.toModelArray(
       data.allWordpressWpResources,
       Convert.toResourceModel

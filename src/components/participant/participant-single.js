@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { size } from "../../index.styles"
+import ParticipantNavigator from "./participant-navigator";
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
@@ -92,8 +93,7 @@ const ParticipantSingle = props => {
             __html: participant[language].participant_venue,
           }}
         />
-        {!isInExperience123() ? (
-          <>
+        {/* {!isInExperience123() ? ( */}
             <p>
               {experience && experience.length > 0
                 ? ParticipantSingleText[language].was_part_of
@@ -113,8 +113,7 @@ const ParticipantSingle = props => {
                 )
               })}
             </p>
-          </>
-        ) : null}
+        {/* ) : null} */}
       </div>
       <ParticipantColumn>
         <ParticipantName>
@@ -122,19 +121,20 @@ const ParticipantSingle = props => {
             ? `${participant[language].participant_group_name}`
             : `${participant.firstname} ${participant.lastname}`}
         </ParticipantName>
-        <div>
-          {participant.image_gallery ? (
-            <ParticipantImageWrapper>
-              <ImageGalleryResource ids={participant.image_gallery} />
-            </ParticipantImageWrapper>
-          ) : null}
-        </div>
+        {participant[language].participant_group_members ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].participant_group_members,
+            }}
+          />
+        ) : null}
+        {participant.image_gallery ? (
+          <ParticipantImageWrapper>
+            <ImageGalleryResource ids={participant.image_gallery} />
+          </ParticipantImageWrapper>
+        ) : null}
 
-        <div
-          dangerouslySetInnerHTML={{
-            __html: participant[language].project_description,
-          }}
-        />
+
 
         {participant[language].short_bio ? (
           <div
@@ -159,6 +159,12 @@ const ParticipantSingle = props => {
           </div>
         ) : null}
 
+        <div
+          dangerouslySetInnerHTML={{
+            __html: participant[language].project_description,
+          }}
+        />
+
         {participant.video ? (
           <ParticipantVideo
             dangerouslySetInnerHTML={{
@@ -173,6 +179,16 @@ const ParticipantSingle = props => {
             }}
           />
         ) : null}
+        {participant[language].works_list ? (
+          <p>{ParticipantSingleText[language].list}</p>
+        ) : null}
+        {participant[language].works_list ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].works_list,
+            }}
+          />
+        ) : null}
       </ParticipantColumn>
     </>
   )
@@ -182,16 +198,19 @@ const ParticipantSingleText = {
   EN: {
     was_part_of: "Was also part of:",
     and: "and ",
+    list: "List of works",
   },
   DE: {
     was_part_of: "War Teil von:",
     and: "und ",
+    list: "Werkliste",
   },
 }
 
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    experience: state.experience
   }
 }
 
