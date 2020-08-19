@@ -125,13 +125,15 @@ const ParticipantSingle = props => {
             ? `${participant[language].participant_group_name}`
             : `${participant.firstname} ${participant.lastname}`}
         </ParticipantName>
-        <div>
+
+         <div>
           {participant.image_gallery ? (
             <ParticipantImageWrapper>
               <ImageGalleryResource ids={participant.image_gallery} />
             </ParticipantImageWrapper>
           ) : null}
         </div>
+
         {participant[language].short_bio ? (
           <div
             dangerouslySetInnerHTML={{
@@ -173,12 +175,16 @@ const ParticipantSingle = props => {
             }}
           />
         ) : null}
-        <p>{ParticipantSingleText[language].list}</p>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: participant[language].works_list,
-          }}
-        />
+        {participant[language].works_list ? (
+          <p>{ParticipantSingleText[language].list}</p>
+        ) : null}
+        {participant[language].works_list ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].works_list,
+            }}
+          />
+        ) : null}
       </ParticipantColumn>
     </>
   )
