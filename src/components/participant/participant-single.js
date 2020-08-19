@@ -47,9 +47,6 @@ const ParticipantName = styled.h1`
     font-size: 1.9em;
   }
   line-height: 1.2;
-  @media (min-width: ${size.laptop}) {
-    margin-bottom: 8rem;
-  }
 `
 
 const ParticipantColumn = styled.div`
