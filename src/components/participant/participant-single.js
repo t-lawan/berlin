@@ -125,6 +125,13 @@ const ParticipantSingle = props => {
             ? `${participant[language].participant_group_name}`
             : `${participant.firstname} ${participant.lastname}`}
         </ParticipantName>
+        {participant[language].participant_group_members ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: participant[language].participant_group_members,
+            }}
+          />
+        ) : null}
 
          <div>
           {participant.image_gallery ? (
