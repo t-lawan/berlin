@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { size } from "../../index.styles"
+import ParticipantNavigator from "./participant-navigator";
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
@@ -61,9 +62,6 @@ const ParticipantColumn = styled.div`
   @media (min-width: ${size.tabletL}) {
     display: block;
   }
-  @media (min-width: ${size.laptop}) {
-    margin-bottom: 8rem;
-  }
 `
 
 const ParticipantSingle = props => {
@@ -95,8 +93,7 @@ const ParticipantSingle = props => {
             __html: participant[language].participant_venue,
           }}
         />
-        {!isInExperience123() ? (
-          <>
+        {/* {!isInExperience123() ? ( */}
             <p>
               {experience && experience.length > 0
                 ? ParticipantSingleText[language].was_part_of
@@ -116,8 +113,7 @@ const ParticipantSingle = props => {
                 )
               })}
             </p>
-          </>
-        ) : null}
+        {/* ) : null} */}
       </div>
       <ParticipantColumn>
         <ParticipantName>
@@ -132,14 +128,13 @@ const ParticipantSingle = props => {
             }}
           />
         ) : null}
+        {participant.image_gallery ? (
+          <ParticipantImageWrapper>
+            <ImageGalleryResource ids={participant.image_gallery} />
+          </ParticipantImageWrapper>
+        ) : null}
 
-         <div>
-          {participant.image_gallery ? (
-            <ParticipantImageWrapper>
-              <ImageGalleryResource ids={participant.image_gallery} />
-            </ParticipantImageWrapper>
-          ) : null}
-        </div>
+
 
         {participant[language].short_bio ? (
           <div
@@ -163,11 +158,13 @@ const ParticipantSingle = props => {
             ))}
           </div>
         ) : null}
+
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].project_description,
           }}
         />
+
         {participant.video ? (
           <ParticipantVideo
             dangerouslySetInnerHTML={{
@@ -213,6 +210,7 @@ const ParticipantSingleText = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
+    experience: state.experience
   }
 }
 
