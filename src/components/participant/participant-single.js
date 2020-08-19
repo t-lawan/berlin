@@ -29,6 +29,22 @@ font-style: italic;
 
 const ParticipantImageWrapper = styled.div`
   padding: 0rem;
+  max-width: 100%;
+`
+const ParticipantName = styled.h1`
+  padding-bottom: 0.5rem;
+  font-size: 1.6em;
+  display: none;
+  @media (min-width: ${size.laptop}) {
+    display: block;
+  }
+  @media (min-width: ${size.laptopM}) {
+    font-size: 1.7em;
+  }
+  @media (min-width: ${size.laptopL}) {
+    font-size: 1.9em;
+  }
+  line-height: 1.2;
 `
 
 const ParticipantColumn = styled.div`
@@ -71,13 +87,14 @@ const ParticipantSingle = props => {
           : `${participant.firstname} ${participant.lastname}`}
       </PageTitle>
       <div>
-        {!isInExperience123() ? (
-          <>
-            <div
+      <div
               dangerouslySetInnerHTML={{
                 __html: participant[language].participant_venue,
               }}
             />
+        {!isInExperience123() ? (
+          <>
+          
             <p>
               {experience && experience.length > 0 ? ParticipantSingleText[language].was_part_of : null}
               {experience.map((exp, index) => {
@@ -99,11 +116,16 @@ const ParticipantSingle = props => {
         ) : null}
       </div>
       <div>
-        <h2>
+        <ParticipantName>
           {participant.group
             ? `${participant[language].participant_group_name}`
             : `${participant.firstname} ${participant.lastname}`}
-        </h2>
+        </ParticipantName>
+        {participant.image_gallery ? (
+          <ParticipantImageWrapper> 
+            <ImageGalleryResource ids={participant.image_gallery}/>
+          </ParticipantImageWrapper>
+        ) : null}
         <div
           dangerouslySetInnerHTML={{
             __html: participant[language].project_description,
@@ -131,12 +153,6 @@ const ParticipantSingle = props => {
               </>
             ))}
           </div>
-        ) : null}
-
-        {participant.image_gallery ? (
-          <ParticipantImageWrapper> 
-            <ImageGalleryResource ids={participant.image_gallery}/>
-          </ParticipantImageWrapper>
         ) : null}
         
         {participant.video ? (
