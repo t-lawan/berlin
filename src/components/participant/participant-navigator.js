@@ -40,13 +40,13 @@ const ParticipantNavigatorWrapper = styled.div`
     margin-bottom: 0.5em;
   }
   @media (min-width: ${size.laptop}) {
-    margin-top:-2em;
+    /* margin-top:-2em; */
     padding-top: 0.5em;
     padding-left: 0;
     margin-bottom: -0.2em;
   }
   @media (min-width: ${size.laptopM}) {
-    margin-top: -2.3em;
+    margin-top: 0.5em;
     padding-top: 0.1em;
     margin-bottom: 1.6em;
     padding-left: 0;
