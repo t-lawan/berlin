@@ -62,6 +62,13 @@ const ParticipantColumn = styled.div`
   @media (min-width: ${size.tabletL}) {
     display: block;
   }
+
+  @media (min-width: ${size.laptop}) {
+    margin-bottom: ${props => props.addMargin ? '7em' : '0' };
+  }
+  @media (min-width: ${size.laptopM}) {
+    margin-bottom: ${props => props.addMargin ? '10em' : '0' };
+  }
 `
 
 const ParticipantSingle = props => {
@@ -115,7 +122,7 @@ const ParticipantSingle = props => {
             </p>
         {/* ) : null} */}
       </div>
-      <ParticipantColumn>
+      <ParticipantColumn addMargin={!(participant.related_documentation || participant.related_resources)}>
         <ParticipantName>
           {participant.group
             ? `${participant[language].participant_group_name}`
