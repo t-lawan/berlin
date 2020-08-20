@@ -57,7 +57,7 @@ const Participant = props => {
         />
         <ParticipantSingle participant={participant} />
       </TwoColumnPageWrapper>
-      {participant.related_documentation ? (
+      {participant.related_documentation || participant.related_resources ? (
         <>
           <ParticipantRelatedMaterial doc_ids={participant.related_documentation} res_ids={participant.related_resources} />
         </>
