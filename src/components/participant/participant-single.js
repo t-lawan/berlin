@@ -203,7 +203,7 @@ const ParticipantSingle = props => {
 
 const ParticipantSingleText = {
   EN: {
-    was_part_of: "Was also part of:",
+    was_part_of: "Was part of:",
     and: "and ",
     list: "List of works",
   },
