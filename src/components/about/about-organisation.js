@@ -68,7 +68,7 @@ const AboutOrganisation = props => {
         renderComponent = (
           <AboutTextBlock key={index}>
             {teamBlockItem.block_names.map((nameItem, nameIndex) => (
-              <p key={nameIndex}> {nameItem.full_name}</p>
+              <p key={nameIndex}> {nameItem.full_name} {nameItem[createProperty("additional_info", language)]}</p>
             ))}
           </AboutTextBlock>
         )
