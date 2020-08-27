@@ -223,7 +223,7 @@ export const UpcomingEventsContent = {
     limited_capacity: "limited capacity",
     en: "In English",
     de: "In German",
-    rsvp: "RSVP Required",
+    rsvp: "RSVP required",
   },
 }
 
