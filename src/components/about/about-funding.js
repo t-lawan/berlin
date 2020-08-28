@@ -9,6 +9,7 @@ import {
   AboutPartnerImage,
   AboutCorporateImageItem,
   AboutPrimaryImageContainer,
+  AboutPageContent,
 } from "./about.styles"
 import { Section } from "../../index.styles";
 import { PageTitle } from "../../templates/page.styles";
@@ -54,6 +55,18 @@ const AboutFunding = props => {
             <AboutCorporateImageItem>
                 <AboutPartnerImage id={fundingItem.logo_upload} withCaption={false} />
             </AboutCorporateImageItem>
+          </AboutFundingBlock>
+        )
+        break
+      case "project":
+        renderComponent = (
+          <AboutFundingBlock key={index}>
+            <AboutFundingHeader>
+              {fundingItem[createProperty("support_header", language)]}
+            </AboutFundingHeader>
+            <AboutPageContent>
+            {fundingItem[createProperty("project_funding_list", language)]}
+            </AboutPageContent>
           </AboutFundingBlock>
         )
         break
