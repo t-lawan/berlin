@@ -9,7 +9,7 @@ import {
   AboutPartnerImage,
   AboutCorporateImageItem,
   AboutPrimaryImageContainer,
-  AboutPageContent
+  AboutPageContent,
 } from "./about.styles"
 import { Section } from "../../index.styles"
 import { PageTitle } from "../../templates/page.styles"
@@ -21,7 +21,7 @@ const ImageSection = styled(Section)`
 
 const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
-  const funding = props.funding
+  const funding = props.funding;
   const generateSection = (fundingItem, index) => {
     let renderComponent
     switch (fundingItem.funding_type) {
@@ -68,9 +68,11 @@ const AboutFunding = props => {
             <AboutFundingHeader>
               {fundingItem[createProperty("support_header", language)]}
             </AboutFundingHeader>
-            <AboutPageContent>
-              {fundingItem[createProperty("project_funding_list", language)]}
-            </AboutPageContent>
+            <AboutPageContent
+              dangerouslySetInnerHTML={{
+                __html: fundingItem["project_funding_list"]
+              }}
+            />
           </AboutFundingBlock>
         )
         break
