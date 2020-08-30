@@ -10,6 +10,7 @@ import NewsList from "../components/news/newslist"
 import { TwoColumnPageWrapper } from "./page.styles"
 import ParticipantSingle from "../components/participant/participant-single"
 import ParticipantRelatedMaterial from "../components/participant/participant-related-material";
+import ParticipantNavigator from "../components/participant/participant-navigator";
 
 const ParticipantText = {
   EN: {
@@ -26,16 +27,20 @@ const RelatedTitle = styled.p`
   padding: 0 1rem;
 `
 
+const ParticipantWrapper = styled.div`
+  padding: 1rem 0;
+`
+
 const Participant = props => {
   const language = getCurrentLanguageString(props.languages)
   const participant = Convert.toParticipantModel(props.pageContext)
   let path = pageMap.find(pg => {
     return pg["EN"] == "participant"
   })
-    console.log("PA", participant)
   // console.log("RESO", resources)
   const renderComponent = (
-    <>
+    <ParticipantWrapper>
+      <ParticipantNavigator id={participant.id} />
       <TwoColumnPageWrapper>
         <SEO
           title={
@@ -52,12 +57,12 @@ const Participant = props => {
         />
         <ParticipantSingle participant={participant} />
       </TwoColumnPageWrapper>
-      {participant.related_documentation ? (
+      {participant.related_documentation || participant.related_resources ? (
         <>
           <ParticipantRelatedMaterial doc_ids={participant.related_documentation} res_ids={participant.related_resources} />
         </>
       ) : null}
-    </>
+    </ParticipantWrapper>
   )
 
   let thirdColumn = (

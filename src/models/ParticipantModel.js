@@ -1,6 +1,6 @@
 
 export class ParticipantModel {
-    constructor(id, slug, experience, en, de, firstname, lastname, sorting_name, personal_website, in_exhibition, group, video, social_media_image, related_documentation, related_resources) {
+    constructor(id, slug, experience, en, de, firstname, lastname, sorting_name, personal_website, in_exhibition, group, video, social_media_image, related_documentation, related_resources, image_gallery) {
         this.id = id;
         this.slug = slug;
         this.experience = experience;
@@ -16,6 +16,7 @@ export class ParticipantModel {
         this.social_media_image = social_media_image;
         this.related_documentation = related_documentation;
         this.related_resources = related_resources;
+        this.image_gallery = image_gallery;
 
     }
 }
