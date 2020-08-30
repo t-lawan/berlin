@@ -9,10 +9,11 @@ import {
   AboutPartnerImage,
   AboutCorporateImageItem,
   AboutPrimaryImageContainer,
+  AboutPageContent,
 } from "./about.styles"
-import { Section } from "../../index.styles";
-import { PageTitle } from "../../templates/page.styles";
-import styled from 'styled-components'
+import { Section } from "../../index.styles"
+import { PageTitle } from "../../templates/page.styles"
+import styled from "styled-components"
 
 const ImageSection = styled(Section)`
   align-self: center;
@@ -22,7 +23,6 @@ const AboutFunding = props => {
   const language = getCurrentLanguageString(props.languages)
   const funding = props.funding;
   const generateSection = (fundingItem, index) => {
-
     let renderComponent
     switch (fundingItem.funding_type) {
       case "primary":
@@ -38,10 +38,12 @@ const AboutFunding = props => {
             />
             {fundingItem.logo_upload ? (
               <AboutPrimaryImageContainer>
-                <AboutPartnerImage id={fundingItem.logo_upload} withCaption={false} />
-              </AboutPrimaryImageContainer> 
-              ) : null}
-
+                <AboutPartnerImage
+                  id={fundingItem.logo_upload}
+                  withCaption={false}
+                />
+              </AboutPrimaryImageContainer>
+            ) : null}
           </AboutFundingBlock>
         )
         break
@@ -52,8 +54,25 @@ const AboutFunding = props => {
               {fundingItem[createProperty("support_header", language)]}
             </AboutFundingHeader>
             <AboutCorporateImageItem>
-                <AboutPartnerImage id={fundingItem.logo_upload} withCaption={false} />
+              <AboutPartnerImage
+                id={fundingItem.logo_upload}
+                withCaption={false}
+              />
             </AboutCorporateImageItem>
+          </AboutFundingBlock>
+        )
+        break
+      case "project":
+        renderComponent = (
+          <AboutFundingBlock key={index}>
+            <AboutFundingHeader>
+              {fundingItem[createProperty("support_header", language)]}
+            </AboutFundingHeader>
+            <AboutPageContent
+              dangerouslySetInnerHTML={{
+                __html: fundingItem["project_funding_list"]
+              }}
+            />
           </AboutFundingBlock>
         )
         break
@@ -85,11 +104,10 @@ const AboutFunding = props => {
   }
 
   return (
-  <>
-  <PageTitle> {content[language].title}</PageTitle>
-    <div>{funding.map((item, index) => generateSection(item, index))}</div>
-  </>
-  
+    <>
+      <PageTitle> {content[language].title}</PageTitle>
+      <div>{funding.map((item, index) => generateSection(item, index))}</div>
+    </>
   )
 }
 
@@ -101,18 +119,15 @@ const mapStateToProps = state => {
 
 let content = {
   EN: {
-    title: 'support'
+    title: "support",
   },
   DE: {
-    title: 'unterstützung'
-  }
+    title: "unterstützung",
+  },
 }
 
 AboutFunding.propTypes = {
   funding: PropTypes.array,
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(AboutFunding)
+export default connect(mapStateToProps, null)(AboutFunding)

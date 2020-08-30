@@ -274,6 +274,15 @@ const State = props => {
                   related_resources {
                     wordpress_id
                   }
+                  image_gallery {
+                    wordpress_id
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    alt_text
+                  }
                 }
               }
             }
@@ -521,6 +530,10 @@ const State = props => {
       data.allWordpressWpParticipants,
       Convert.toParticipantModel
     )
+
+    participants = participants.sort((a, b) => {
+      return b.sorting_name.localeCompare(a.sorting_name) 
+    })
 
     let resources = Convert.toModelArray(
       data.allWordpressWpResources,
