@@ -86,6 +86,12 @@ const ParticipantSingle = props => {
     )
   }
 
+  let isInExperience4 = () => {
+    return participant.experience.includes('4')
+  }
+
+
+
   return (
     <>
       <PageTitle>
@@ -103,7 +109,7 @@ const ParticipantSingle = props => {
         {/* {!isInExperience123() ? ( */}
             <p>
               {experience && experience.length > 0
-                ? ParticipantSingleText[language].was_part_of
+                ? (isInExperience4() ? ParticipantSingleText[language].was_also_part_of : ParticipantSingleText[language].was_part_of)
                 : null}
               {experience.map((exp, index) => {
                 return (
@@ -204,11 +210,13 @@ const ParticipantSingle = props => {
 const ParticipantSingleText = {
   EN: {
     was_part_of: "Was part of:",
+    was_also_part_of: "Was also part of:",
     and: "and ",
     list: "List of works",
   },
   DE: {
     was_part_of: "War Teil von:",
+    was_also_part_of: "War auch Teil von:",
     and: "und ",
     list: "Werkliste",
   },
