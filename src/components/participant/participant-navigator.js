@@ -15,12 +15,10 @@ const ParticipantNavigatorWrapper = styled.div`
   background: 'white';
   @media (max-width: ${size.mobileM}) {
     display: block;
-    margin-top: 0em;
+    margin-top: -0.5em;
     padding: 0.0em 0 0.7 0em;
     padding-left: 0.7em;
-    margin-bottom: 0.5em;
-
-
+    margin-bottom: 1em;
     width: 100%;
     :after {
       content: "";
