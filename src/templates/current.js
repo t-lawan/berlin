@@ -5,7 +5,7 @@ import NewsList from "../components/news/newslist"
 import UpcomingEvents from "../components/events/upcomingevents"
 import ResourcesList from "../components/resources/resources-list"
 import { getCurrentLanguageString, pageMap } from "../utility/helper"
-import { PageTitle, TextBlock, PageWrapper } from "./page.styles"
+import { PageTitleCurrent, TextBlock, PageWrapper } from "./page.styles"
 import SEO from "../components/seo/seo";
 
 const Current = props => {
@@ -18,7 +18,7 @@ const Current = props => {
     <PageWrapper>
       <SEO title={path[props.pageContext.language.toUpperCase()]} lang={props.pageContext.language} pathname={path ? path[props.pageContext.language.toUpperCase()] : null} />
       <TextBlock>
-        <PageTitle> {content[language].title} </PageTitle>
+        <PageTitleCurrent> {content[language].title} </PageTitleCurrent>
       </TextBlock>
       <NewsList isCurrent={true} />
       <UpcomingEvents isCurrent={true} />
@@ -52,6 +52,7 @@ const mapStateToProps = state => {
     languages: state.languages,
   }
 }
+
 
 export default connect(
   mapStateToProps,

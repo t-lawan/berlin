@@ -487,6 +487,19 @@ export const PageTitle = styled.h1`
     margin-bottom: 1.5rem;
   }
 `
+export const PageTitleCurrent = styled.h1`
+  font-size: 1.55em;
+  margin: -0.3em 0 0em;
+  text-transform: lowercase;
+  display: none;
+  @media (max-width: ${size.tabletL}) {
+    display: block;
+  }
+  @media (min-width: ${size.mobileL}) {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+`
 export const PageTitleCalendar = styled.h1`
   font-size: 1.55em;
   margin: 0;
