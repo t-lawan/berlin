@@ -4,7 +4,7 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
-import { size } from "../../index.styles"
+import { size, Color } from "../../index.styles"
 import ParticipantNavigator from "./participant-navigator";
 
 const ParticipantVideo = styled.div`
@@ -62,12 +62,21 @@ const ParticipantColumn = styled.div`
   @media (min-width: ${size.tabletL}) {
     display: block;
   }
-  
+
   @media (min-width: ${size.laptop}) {
     margin-bottom: ${props => props.addMargin ? '7em' : '0' };
   }
   @media (min-width: ${size.laptopM}) {
     margin-bottom: ${props => props.addMargin ? '10em' : '0' };
+  }
+  > div > p > a {
+    font-size: 1.0em;
+    border-bottom: solid thin ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      cursor: pointer;
+      color: ${Color.red};
+    }
   }
 `
 
@@ -86,6 +95,12 @@ const ParticipantSingle = props => {
     )
   }
 
+  let isInExperience4 = () => {
+    return participant.experience.includes('4')
+  }
+
+
+
   return (
     <>
       <PageTitle>
@@ -103,7 +118,7 @@ const ParticipantSingle = props => {
         {/* {!isInExperience123() ? ( */}
             <p>
               {experience && experience.length > 0
-                ? ParticipantSingleText[language].was_part_of
+                ? (isInExperience4() ? ParticipantSingleText[language].was_also_part_of : ParticipantSingleText[language].was_part_of)
                 : null}
               {experience.map((exp, index) => {
                 return (
@@ -204,11 +219,13 @@ const ParticipantSingle = props => {
 const ParticipantSingleText = {
   EN: {
     was_part_of: "Was part of:",
+    was_also_part_of: "Was also part of:",
     and: "and ",
     list: "List of works",
   },
   DE: {
     was_part_of: "War Teil von:",
+    was_also_part_of: "War auch Teil von:",
     and: "und ",
     list: "Werkliste",
   },
