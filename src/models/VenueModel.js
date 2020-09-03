@@ -13,6 +13,7 @@ export class VenueModel {
     public_transit,
     tel,
     wheelchair_access,
+    image_gallery
   ) {
     this.id = id
     this.slug = slug
@@ -27,5 +28,6 @@ export class VenueModel {
     this.public_transit = public_transit
     this.tel = tel
     this.wheelchair_access = wheelchair_access
+    this.image_gallery = image_gallery
   }
 }

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { connect } from "react-redux"
 import { getCurrentLanguageString } from "../../utility/helper"
-import ImageResource from "../../partials/ImageResource"
+import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { TextBlock } from "../../templates/page.styles"
 import { ExternalLink, Color, size } from "../../index.styles"
 
@@ -55,61 +55,12 @@ const VenueItem = props => {
   return (
     <VenueItemWrapper id={`ven-${venue.slug}`}>
       <p>{venue[language].venue_name}</p>
-      <ImageWrapper >
-        <ImageResource
-          id={venue.thumbnail_image ? venue.thumbnail_image : 411}
-          withCaption={true}
-        />
-      </ImageWrapper>
-      <TextBlock>
-        {venue.address.map((address, index) => (
-          <VenueAddress key={index}> {`${address.address_line},`}</VenueAddress>
-        ))}
-        <VenueAddress> {`${venue.plz}`} </VenueAddress>
-        <VenueAddress> {` ${venue.city}`}</VenueAddress>
-      </TextBlock>
-
-      {venue[language].access_info ? (
-        <TextBlock>
-              <VenueDescription
-          dangerouslySetInnerHTML={{
-            __html: venue[language].access_info,
-          }}
-        />
-        </TextBlock>
+      
+      {venue.image_gallery ? (
+          <ImageWrapper >
+            <ImageGalleryResource ids={venue.image_gallery} />
+          </ImageWrapper>
         ) : null}
-      
-      
-      {venue[language].opening_hours ? (
-        <TextBlock>
-          <p> {content[language].hours} </p>
-          {venue[language].opening_hours.map((hours, index) => (
-            <p key={index}> {hours.hours}</p>
-          ))}
-          </TextBlock>
-      ) : null}
-
-      {venue.public_transit ? (
-        <TextBlock>
-          <p> {content[language].directions} </p>
-          {venue.public_transit.map((direction, index) => (
-            <p key={index}> {direction.transit_option}</p>
-          ))}
-          <p><VenueLink
-          colour={Color.red}
-          href={venue.google_map_link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {content[language].link_to_map}
-        </VenueLink></p>
-          <VenueAccess hidden={!venue.wheelchair_access}>
-          {" "}
-          {content[language].wheelchair_access}{" "}
-          </VenueAccess>
-
-        </TextBlock>
-      ) : null}
       
       <TextBlock>
         <VenueDescription
