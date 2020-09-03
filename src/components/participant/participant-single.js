@@ -4,7 +4,7 @@ import { getCurrentLanguageString } from "../../utility/helper"
 import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
-import { size } from "../../index.styles"
+import { size, Color } from "../../index.styles"
 import ParticipantNavigator from "./participant-navigator"
 
 const ParticipantVideo = styled.div`

@@ -86,6 +86,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       group_bios: GroupBios
     }
 
+    type wordpress__wp_participantsAcfDE implements Node {
+      group_bios: GroupBios
+    }
+
     type GroupBios {
       full_name: String!
       biography: String!
