@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { PageTitle } from "../../templates/page.styles"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import { size } from "../../index.styles"
-import ParticipantNavigator from "./participant-navigator";
+import ParticipantNavigator from "./participant-navigator"
 
 const ParticipantVideo = styled.div`
   /* width: 80%; */
@@ -64,10 +64,19 @@ const ParticipantColumn = styled.div`
   }
 
   @media (min-width: ${size.laptop}) {
-    margin-bottom: ${props => props.addMargin ? '7em' : '0' };
+    margin-bottom: ${props => (props.addMargin ? "7em" : "0")};
   }
   @media (min-width: ${size.laptopM}) {
-    margin-bottom: ${props => props.addMargin ? '10em' : '0' };
+    margin-bottom: ${props => (props.addMargin ? "10em" : "0")};
+  }
+  > div > p > a {
+    font-size: 1em;
+    border-bottom: solid thin ${Color.red};
+    transition: all 0.2s ease-in-out;
+    :hover {
+      cursor: pointer;
+      color: ${Color.red};
+    }
   }
 `
 
@@ -87,10 +96,8 @@ const ParticipantSingle = props => {
   }
 
   let isInExperience4 = () => {
-    return participant.experience.includes('4')
+    return participant.experience.includes("4")
   }
-
-
 
   return (
     <>
@@ -107,28 +114,34 @@ const ParticipantSingle = props => {
           }}
         />
         {/* {!isInExperience123() ? ( */}
-            <p>
-              {experience && experience.length > 0
-                ? (isInExperience4() ? ParticipantSingleText[language].was_also_part_of : ParticipantSingleText[language].was_part_of)
-                : null}
-              {experience.map((exp, index) => {
-                return (
-                  <React.Fragment key={index}>
-                    {experience.length === index + 1 && experience.length > 1
-                      ? `${ParticipantSingleText[language].and}`
-                      : ""}
-                    <ExpNumber> exp. {exp} </ExpNumber>
-                    {experience.length === index + 1 ||
-                    experience.length - 1 === index + 1
-                      ? ""
-                      : ""}
-                  </React.Fragment>
-                )
-              })}
-            </p>
+        <p>
+          {experience && experience.length > 0
+            ? isInExperience4()
+              ? ParticipantSingleText[language].was_also_part_of
+              : ParticipantSingleText[language].was_part_of
+            : null}
+          {experience.map((exp, index) => {
+            return (
+              <React.Fragment key={index}>
+                {experience.length === index + 1 && experience.length > 1
+                  ? `${ParticipantSingleText[language].and}`
+                  : ""}
+                <ExpNumber> exp. {exp} </ExpNumber>
+                {experience.length === index + 1 ||
+                experience.length - 1 === index + 1
+                  ? ""
+                  : ""}
+              </React.Fragment>
+            )
+          })}
+        </p>
         {/* ) : null} */}
       </div>
-      <ParticipantColumn addMargin={!(participant.related_documentation || participant.related_resources)}>
+      <ParticipantColumn
+        addMargin={
+          !(participant.related_documentation || participant.related_resources)
+        }
+      >
         <ParticipantName>
           {participant.group
             ? `${participant[language].participant_group_name}`
@@ -146,8 +159,6 @@ const ParticipantSingle = props => {
             <ImageGalleryResource ids={participant.image_gallery} />
           </ParticipantImageWrapper>
         ) : null}
-
-
 
         {participant[language].short_bio ? (
           <div
@@ -225,7 +236,7 @@ const ParticipantSingleText = {
 const mapStateToProps = state => {
   return {
     languages: state.languages,
-    experience: state.experience
+    experience: state.experience,
   }
 }
 
