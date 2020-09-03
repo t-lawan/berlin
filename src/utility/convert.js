@@ -227,6 +227,10 @@ export class Convert {
   }
 
   static toVenueModel = wordpressModel => {
+    let image_gallery = wordpressModel.acf.image_gallery.map((image) => {
+      return image.wordpress_id
+    })
+
     return new VenueModel(
       wordpressModel.wordpress_id,
       wordpressModel.slug,
@@ -240,7 +244,8 @@ export class Convert {
       wordpressModel.acf.venue_plz,
       wordpressModel.acf.venue_public_transit,
       wordpressModel.acf.venue_tel,
-      wordpressModel.acf.venue_wheelchair_access
+      wordpressModel.acf.venue_wheelchair_access,
+      image_gallery
     )
   }
 

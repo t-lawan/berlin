@@ -55,11 +55,17 @@ const EventTextBlock = styled(TextBlock)`
   }
   @media (max-width: ${size.tabletL}) {
     width: 90%;
-    > div:first-child > p:first-child {
+    > div {
+      margin-bottom: 0.2em;
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+    > div > p:first-child {
       width: 60%;
       display: inline-block;
     }
-    > div:first-child > p:last-child {
+    > div > p:last-child {
       width: 40%;
       display: inline-block;
     }

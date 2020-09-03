@@ -70,7 +70,7 @@ const AboutFunding = props => {
             </AboutFundingHeader>
             <AboutPageContent
               dangerouslySetInnerHTML={{
-                __html: fundingItem["project_funding_list"]
+                __html: language === "DE" ? fundingItem["project_funding_list"] : fundingItem["project_funding_list_en"]
               }}
             />
           </AboutFundingBlock>
