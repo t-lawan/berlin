@@ -81,9 +81,15 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_exhibitionsAcf implements Node {
       exhibition_floorplan: Int
     }
-    
 
+    type wordpress__wp_participantsAcfEN implements Node {
+      group_bios: GroupBios
+    }
 
+    type GroupBios {
+      full_name: String!
+      biography: String!
+    }
     
   `
   createTypes(typeDefs)
