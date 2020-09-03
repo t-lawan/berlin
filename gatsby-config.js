@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
+    `gatsby-plugin-netlify-cache`,
     'gatsby-plugin-eslint',
     'gatsby-plugin-optimize-svgs',
     `gatsby-plugin-styled-components`,
@@ -140,12 +141,6 @@ module.exports = {
         plugins: [`gatsby-remark-responsive-iframe`],
       },
     },
-    {
-      resolve: "gatsby-plugin-netlify-cache",
-      options: {
-        cachePublic: true
-      }
-    }
     // {
     //   resolve: `gatsby-plugin-netlify`,
     //   options: {
