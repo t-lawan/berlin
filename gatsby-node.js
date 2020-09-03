@@ -1008,7 +1008,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allWordpressWpParticipants.edges.forEach(edge => {
     let prePath = pageMap.find(pageType => {
-      return pageType.EN === "participant"
+      return pageType.EN === "participants"
     })
     languages.forEach(language => {
       let path =
