@@ -6,7 +6,7 @@ import {
 } from "./calendar.styles"
 import { DateManager } from "../../utility/date"
 import scrollIntoView from "scroll-into-view-if-needed"
-import { startTransition, setFreshLoadToTrue } from "../../store/action"
+import { startTransition } from "../../store/action"
 import { getCurrentLanguageString } from "../../utility/helper";
 import CalendarFilterDropDown from './calendar-filter'
 class Calendar extends React.Component {
@@ -138,7 +138,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     startTransition: () => dispatch(startTransition()),
-    setFreshLoadToTrue: () => dispatch(setFreshLoadToTrue()),
   }
 }
 
