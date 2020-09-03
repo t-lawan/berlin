@@ -9,9 +9,10 @@ import { size, Color } from "../../index.styles"
 // import striptags from "striptags"
 
 const VenueListWrapper = styled(TwoColumnPageWrapper)`
-padding-top: 0 !important;
-position: relative;
-
+  /* padding-top: 0 !important;
+position: relative; */
+  height: 100%;
+  padding-top: 0 !important;
 `
 const VenuesAnchorLinkWrapper = styled.div`
   overflow-y: hidden;
@@ -37,6 +38,20 @@ const VenueAnchorLink = styled.p`
   @media (max-width: ${size.tabletL}) {
     width: 100%;
   }
+
+  @media (max-width: ${size.tabletL}) {
+    width: 100%;
+  }
+
+  @media (min-width: ${size.laptop}) {
+    width: 75%;
+  }
+  @media (min-width: ${size.laptopM}) {
+    width: 75%;
+  }
+  @media (min-width: ${size.laptopL}) {
+    width: 75%;
+  }
 `
 
 const AnchorDiv = styled.div`
@@ -44,7 +59,13 @@ const AnchorDiv = styled.div`
   overflow-y: scroll;
   @media (max-width: ${size.tabletL}) {
     position: relative;
+    margin-bottom: 1rem;
   }
+`
+
+const VenueContentWrapper = styled.div`
+  overflow-y: scroll;
+  height: 100%;
 `
 
 class VenueList extends Component {
@@ -94,8 +115,8 @@ class VenueList extends Component {
       let elemBottom = rect.bottom
       let isVisible = elemTop >= 0 && elemBottom <= window.innerHeight
       return isVisible
-    } 
-    return false;
+    }
+    return false
   }
 
   render() {
@@ -115,11 +136,11 @@ class VenueList extends Component {
             ))}
           </AnchorDiv>
         </VenuesAnchorLinkWrapper>
-        <div>
+        <VenueContentWrapper>
           {this.props.venues.map((ven, i) => (
             <VenueItem key={i} venue={ven} />
           ))}
-        </div>
+        </VenueContentWrapper>
       </VenueListWrapper>
     )
   }

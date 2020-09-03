@@ -437,7 +437,6 @@ const State = props => {
                       hours
                     }
                   }
-                  google_map_link
                   thumbnail_image
                   venue_address {
                     address_line
@@ -449,6 +448,17 @@ const State = props => {
                   }
                   venue_tel
                   venue_wheelchair_access
+                  google_map_link
+                  image_gallery {
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    alt_text
+                    wordpress_id
+                    media_type
+                  }
                 }
                 date
               }
@@ -532,7 +542,7 @@ const State = props => {
     )
 
     participants = participants.sort((a, b) => {
-      return b.sorting_name.localeCompare(a.sorting_name) 
+      return b.sorting_name.localeCompare(a.sorting_name)
     })
 
     let resources = Convert.toModelArray(
