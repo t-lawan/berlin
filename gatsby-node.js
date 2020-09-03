@@ -175,6 +175,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 project_funding_list
                 support_header_de
                 support_header_en
+                project_funding_list_en
               }
               external_url
               google_map_venue_link
