@@ -17,6 +17,14 @@ const ContentBlockWrapper = styled.div`
         color: ${Color.red};
       }
   }
+  > div > p > em > a {
+    font-size: 1em;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      }
+  }
 `
 
 const ExchangeCuratorialWorkshop = props => {
