@@ -7,7 +7,12 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-transition-link`,
-    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        cachePublic: true
+      }
+    },
     'gatsby-plugin-eslint',
     'gatsby-plugin-optimize-svgs',
     `gatsby-plugin-styled-components`,

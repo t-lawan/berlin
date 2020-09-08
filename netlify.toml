@@ -1,2 +1,5 @@
+[build]
+  base = "project/"
 [[plugins]]
   package = "netlify-plugin-gatsby-cache"
+
