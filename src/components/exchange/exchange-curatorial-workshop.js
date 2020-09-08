@@ -11,6 +11,16 @@ const ContentBlockWrapper = styled.div`
   margin-bottom: 2rem;
   > div > p > a {
     font-size: 1em;
+    transition: 0.2 all ease-in-out;
+      border-bottom: solid thin;
+      border-color: ${Color.red};
+      :hover {
+        color: ${Color.red};
+      }
+  }
+  > div > p > em > a {
+    font-size: 1em;
+    transition: 0.2 all ease-in-out;
       border-bottom: solid thin;
       border-color: ${Color.red};
       :hover {
