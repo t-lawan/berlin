@@ -233,15 +233,16 @@ class Event extends React.Component {
 
   componentDidMount() {
     let exp = parseInt(this.event.experience[this.event.experience.length - 1])
-    if (this.event.experience && !this.event.experience.includes(this.props.active_experience.toString())) {
+    if (this.event.experience && !this.event.experience.includes(this.props.experience.toString())) {
       this.props.changeExperience(exp)
+      this.hasUpdated = true
 
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.experience !== this.props.experience) {
-      let exp = parseInt(this.event.experience[0])
+    if (prevProps.experience !== this.props.experience && !this.hasUpdated) {
+      let exp = parseInt(this.event.experience[this.event.experience.length - 1])
       if (this.event.experience && !this.event.experience.includes(this.props.experience.toString())) {
         this.props.changeExperience(exp)
         this.hasUpdated = true
