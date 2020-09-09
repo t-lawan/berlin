@@ -84,6 +84,7 @@ const ResourceText = props => {
   if (r.text_based_resource[0].document_upload) {
     doc = getDocument(props.documents, r.text_based_resource[0].document_upload)
   }
+
   return (
     <PageWrapperRes colour={Color.yellow}>
       <ResourceNavigator hidden={!r.id} id={r.id} />
