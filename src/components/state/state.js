@@ -365,7 +365,7 @@ const State = props => {
                 slug
                 localFile {
                   childImageSharp {
-                    fluid(quality: 50, maxWidth: 600) {
+                    fluid(quality: 90, maxWidth: 900) {
                       aspectRatio
                       src
                       srcSet
