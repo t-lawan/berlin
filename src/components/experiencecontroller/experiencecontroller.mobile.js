@@ -61,7 +61,7 @@ class ExperienceControllerMobile extends React.Component {
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
       }, transitionTimes.changeExperienceDelayTime)
-      navigate(createPath(this.language, "/"))
+      navigate(createPath(this.language, ""))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
       }, this.visibleTransitionTime)
