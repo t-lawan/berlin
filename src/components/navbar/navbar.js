@@ -32,9 +32,6 @@ const Navbar = props => {
           to={createPath(language, item.slug)}
           key={index}
           onClick={() => props.startTransition()}
-          // fade
-          // cover direction="down"
-          // bg={transitionBackground}
         >
           {item[language].title}{" "}
         </NavItem>

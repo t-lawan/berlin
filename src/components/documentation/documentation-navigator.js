@@ -7,8 +7,9 @@ import {
 } from "../../utility/helper"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import * as actionTypes from "../../store/action"
+import { Link } from "gatsby";
+
 
 const DocumentationNavigatorWrapper = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ const DocumentationNavigatorWrapper = styled.div`
   }
 `
 
-const DocumentationNavigatorButton = styled(AniLink)`
+const DocumentationNavigatorButton = styled(Link)`
   font-size: 1em;
   line-height: 1;
   padding: 0.5em 0 0 1em;

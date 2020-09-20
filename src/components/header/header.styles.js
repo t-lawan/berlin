@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { changeGridToOneRow, size } from "../../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
-
+import { Link } from "gatsby";
 export const HeaderWrapper = styled.header`
   opacity: 1;
   backface-visibility: hidden; 
@@ -36,7 +35,7 @@ export const HeaderWrapper = styled.header`
   }
 `
 
-export const HeaderLink = styled(AniLink)`
+export const HeaderLink = styled(Link)`
   text-decoration: none;
   margin-bottom:0;
   display: grid;

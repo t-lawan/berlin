@@ -107,13 +107,9 @@ class NavbarMobile extends React.Component {
           </div>
           <div>
             <NavImageLink
-              // cover
-              // direction="down"
-              // bg={transitionBackground}
               onClick={() =>
                 this.props.changeExperience(this.props.active_experience)
               }
-              fade
               to={createPath(this.language, "")}
             >
               <NavImage src="https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans/images/bb11_logo_mob.svg" />

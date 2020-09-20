@@ -86,16 +86,16 @@ class ParticipantNavigator extends React.Component {
   currentIndex;
   nextPage = () => {
     if (this.currentIndex + 1 === this.props.participants.length) {
-      return `participant/${this.props.participants[0].slug}`
+      return `participants/${this.props.participants[0].slug}`
     }
-    return `participant/${this.props.participants[this.currentIndex + 1].slug}`
+    return `participants/${this.props.participants[this.currentIndex + 1].slug}`
   }
 
   previousPage = () => {
     if (this.currentIndex === 0) {
-      return `participant/${this.props.participants[this.props.participants.length - 1].slug}`
+      return `participants/${this.props.participants[this.props.participants.length - 1].slug}`
     }
-    return `participant/${this.props.participants[this.currentIndex - 1].slug}`
+    return `participants/${this.props.participants[this.currentIndex - 1].slug}`
   }
 
   render() {
