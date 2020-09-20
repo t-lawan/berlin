@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { Color, size } from "../../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import ImageResource from "../../partials/ImageResource"
+import { Link } from "gatsby";
+
 export const AboutSideNavbar = styled.nav`
   padding: 0em 1em 0 0;
   display: flex;
@@ -84,7 +85,7 @@ export const AboutNavItemMob = styled.p`
   }
 `
 
-export const AboutNavItemLink = styled(AniLink)`
+export const AboutNavItemLink = styled(Link)`
   text-decoration: none;
   > p {
     font-size: 1em;

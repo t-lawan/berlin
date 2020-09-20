@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { Color, size, TextSection } from "../../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby";
 
 export const EventSection = styled(TextSection)`
     font-size: 1em;
@@ -52,7 +52,7 @@ export const EventCardWrapper = styled.div`
 
 
 
-export const EventCardLink = styled(AniLink)`
+export const EventCardLink = styled(Link)`
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   > p {

@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import styled from "styled-components"
 import { Color, size } from "../../index.styles"
 import PropTypes from "prop-types"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {
   createPath,
   getCurrentLanguageString,
@@ -13,6 +12,8 @@ import {
 import striptags from "striptags"
 import { startTransition } from "../../store/action"
 import { ResourceText, RelatedResource, ResourceLink } from "../resources/related-resources";
+import { Link } from "gatsby";
+
 
 export const RelatedDocumentationWrapper = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ export const RelatedDocumentationWrapper = styled.div`
   }
 `
 
-const DocumentationLink = styled(AniLink)`
+const DocumentationLink = styled(Link)`
   text-decoration: none;
   color: black;
   margin-bottom: 0.7em;
@@ -174,7 +175,6 @@ const ParticipantRelatedMaterial = props => {
           key={index}
           onClick={() => props.startTransition()}
           to={createPath(language, `documentation/${doc.slug}`)}
-          fade
         >
           <RelatedDocument
             border={props.border}
@@ -205,7 +205,6 @@ const ParticipantRelatedMaterial = props => {
           key={index}
           onClick={() => props.startTransition()}
           to={createPath(language, `resources/${resource.slug}`)}
-          fade
           // cover direction="down"
           // bg={transitionBackground}
         >

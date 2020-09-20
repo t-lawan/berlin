@@ -48,7 +48,6 @@ const Header = props => {
       hideInMobile={props.hideInMobile}
     >
       <HeaderLink
-        // fade
         onClick={() => click()}
         to={createPath(language, "")}
       >

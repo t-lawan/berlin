@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import {
   showDisplayForTablet,
   size,
   showDisplayForMobile,
 } from "../../index.styles"
+import { Link } from "gatsby";
 
 export const JumbotronWrapper = styled.div`
   background: white;
@@ -45,7 +45,7 @@ export const JumbotronWrapper = styled.div`
   }
 `
 
-export const JumbotronHeader = styled(AniLink)`
+export const JumbotronHeader = styled(Link)`
   text-decoration: none;
   color: black;
   position: relative;

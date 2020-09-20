@@ -4,8 +4,8 @@ import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { size, Color } from "../../index.styles";
 import PropTypes from "prop-types"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import * as actionTypes from '../../store/action'
+import { Link } from "gatsby";
 const RelatedNavigatorWrapper = styled.div`
   display: flex;
   margin-top:-2em;
@@ -52,7 +52,7 @@ const RelatedNavigatorWrapper = styled.div`
   }
 `
 
-const RelatedNavigatorButton = styled(AniLink)`
+const RelatedNavigatorButton = styled(Link)`
   font-size: 1.0em;
   padding: 0.0em 1em 0 0em;
   text-decoration: none;
@@ -99,14 +99,12 @@ class ResourceNavigator extends React.Component {
     return (
       <RelatedNavigatorWrapper>
         <RelatedNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.previousPage())}
         >
           {`<`}
         </RelatedNavigatorButton>
         <RelatedNavigatorButton
-          fade
           onClick={() => this.props.startTransition()}
           to={createPath(this.language, this.nextPage())}
         >

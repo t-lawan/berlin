@@ -1,8 +1,7 @@
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Color, size } from "../../index.styles"
-
+import { Link } from "gatsby";
 export const EventNavigatorWrapper = styled.section`
   display: flex;
   flex-direction: row;
@@ -34,7 +33,7 @@ export const EventNavigatorWrapper = styled.section`
   }
 `
 
-export const EventNavigatorButton = styled(AniLink)`
+export const EventNavigatorButton = styled(Link)`
   font-size: 1em;
   line-height:1;
   padding: 0.5em 0 0 1em;
