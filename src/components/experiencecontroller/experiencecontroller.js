@@ -63,7 +63,7 @@ class ExperienceController extends React.Component {
         this.props.changeExperience(this.props.experience + 1)
       }, this.changeExperienceDelayTime)
 
-      navigate(createPath(this.language, "/"))
+      navigate(createPath(this.language, ""))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
       }, this.visibleTransitionTime)
@@ -79,7 +79,7 @@ class ExperienceController extends React.Component {
       setTimeout(() => {
         this.props.changeExperience(this.props.experience - 1)
       }, this.changeExperienceDelayTime)
-      navigate(createPath(this.language, "/"))
+      navigate(createPath(this.language, ""))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
       }, this.visibleTransitionTime)
@@ -91,7 +91,7 @@ class ExperienceController extends React.Component {
       setTimeout(() => {
         this.props.changeExperience(chosenExperience.id)
       }, this.changeExperienceDelayTime)
-      navigate(createPath(this.language, "/"))
+      navigate(createPath(this.language, ""))
       setTimeout(() => {
         this.props.setIsVisibleToTrue()
       }, this.visibleTransitionTime)

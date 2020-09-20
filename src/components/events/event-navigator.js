@@ -35,14 +35,12 @@ class EventNavigator extends React.Component {
         <EventNavigatorButton
           to={createPath(this.language, this.previousPage())}
           onClick={() => this.props.startTransition()}
-          fade
         >
           {`<`}
         </EventNavigatorButton>
         <EventNavigatorButton
           to={createPath(this.language, this.nextPage())}
           onClick={() => this.props.startTransition()}
-          fade
         >
           {`>`}
         </EventNavigatorButton>

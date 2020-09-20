@@ -1,5 +1,6 @@
 import styled, { css, createGlobalStyle, keyframes } from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+import { Link } from "gatsby";
 // import "~slick-carousel/slick/slick.css"; 
 // import "~slick-carousel/slick/slick-theme.css";
 export const Color = {
@@ -562,14 +563,14 @@ export const Section = styled.section`
   }
 `
 
-export const UnderlineTransitionLink = styled(AniLink)`
+export const UnderlineTransitionLink = styled(Link)`
   text-decoration: none;
   border-bottom: solid thin;
   border-color: ${props => props.colour};
   color: ${props => props.colour};
 `
 
-export const UnderlineSectionLink = styled(AniLink)`
+export const UnderlineSectionLink = styled(Link)`
   padding-top: 1em;
   text-decoration: none;
   color: ${props => props.colour};

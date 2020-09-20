@@ -4,8 +4,9 @@ import styled from "styled-components"
 import { getCurrentLanguageString, createPath } from "../../utility/helper"
 import { changeGridToOneRow, size, Color, showDisplayForMobile, hideDisplayForMobile } from "../../index.styles"
 import ImageResource from "../../partials/ImageResource"
-import AniLink from "gatsby-plugin-transition-link/AniLink";
 import * as actionTypes from '../../store/action';
+import { Link } from "gatsby";
+
 const FooterWrapper = styled.footer`
   display: grid;
   transform: translateZ(0);
@@ -100,7 +101,7 @@ const FooterOuterLink = styled.a`
   ${showDisplayForMobile};
 `
 
-const FooterLink = styled(AniLink)`
+const FooterLink = styled(Link)`
   margin: 0;
   padding-right: 1rem;
   -webkit-font-smoothing: antialiased;
@@ -134,10 +135,8 @@ const FooterComponent = props => {
       <DoubleDecker>
         <FooterText>{content[language].description}</FooterText>
         <BottomRow>
-          <FooterLink onClick={() => props.startTransition()} fade to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
-          {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink> */}
-          <FooterLink onClick={() => props.startTransition()} fade to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
-          {/* <FooterLink cover direction="down" bg={transitionBackground} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink> */}
+          <FooterLink onClick={() => props.startTransition()} to={createPath(language, 'imprint')}>{content[language].imprint}</FooterLink>
+          <FooterLink onClick={() => props.startTransition()} to={createPath(language, 'data-privacy')} >{content[language].dataPrivacy}</FooterLink>
         </BottomRow>
       </DoubleDecker>
       <ImageWrapper>
