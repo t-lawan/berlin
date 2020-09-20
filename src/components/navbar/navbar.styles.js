@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { hideDisplayForTablet, showDisplayForTablet, Color, size } from "../../index.styles"
+import { Link } from "gatsby";
 
 export const NavWrapper = styled.nav`
   ${hideDisplayForTablet};
@@ -76,7 +76,7 @@ export const NavMobileInner = styled.div`
   }
 `
 
-export const NavImageLink = styled(AniLink)`
+export const NavImageLink = styled(Link)`
   text-decoration: none;
   line-height: 1;
   > img {
@@ -86,7 +86,7 @@ export const NavImageLink = styled(AniLink)`
 
 
 
-export const NavItem = styled(AniLink)`
+export const NavItem = styled(Link)`
   /* color: white; */
   display: block;
   line-height:1.2;
@@ -226,7 +226,7 @@ export const NavMobileInactiveLink = styled.p`
   opacity: 0.3;
 `
 
-export const NavMobileLink = styled(AniLink)`
+export const NavMobileLink = styled(Link)`
   text-decoration: none;
   font-size: 1.55em;
   line-height: 1.2;
@@ -243,7 +243,7 @@ export const NavMobileLink = styled(AniLink)`
     line-height: 1.3;
   }
 `
-export const NavMobileLinkSmall = styled(AniLink)`
+export const NavMobileLinkSmall = styled(Link)`
   text-decoration: none;
   font-size: 1.1em;
   padding-bottom: 0.0rem;

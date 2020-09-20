@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { size, Color } from "../../index.styles";
-
+import { Link } from "gatsby";
 export const LanguageControllerWrapper = styled.div`
   display: flex;
   z-index: 5000;
@@ -29,7 +28,7 @@ export const LanguageControllerWrapper = styled.div`
   }
 `
 
-export const LanguageButton = styled(AniLink)`
+export const LanguageButton = styled(Link)`
   text-decoration: none;
   color: black;
   opacity: ${props => props.selected ? 1 : 0.3};
