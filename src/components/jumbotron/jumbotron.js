@@ -15,7 +15,6 @@ const Jumbotron = props => {
   return(
   <JumbotronWrapper showInTablet={props.showInTablet} showInMobile={props.showInMobile}>
     <JumbotronHeader 
-      fade
       to={createPath(language, '')}>
     {/* <JumbotronHeader 
     bg={transitionBackground}

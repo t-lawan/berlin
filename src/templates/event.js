@@ -19,11 +19,11 @@ import { TwoColumnPageWrapper, TextBlock } from "./page.styles"
 import RelatedResources from "../components/resources/related-resources"
 import EventNavigator from "../components/events/event-navigator"
 import { Color, size, hideDisplayForMobile, LargeButton } from "../index.styles"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import NewsList from "../components/news/newslist"
 import striptags from "striptags"
 import * as actionTypes from "../store/action"
 import { DateManager } from "../utility/date"
+import { Link } from "gatsby";
 
 const EventColumn = styled.div`
   :first-child {
@@ -189,7 +189,7 @@ const EventRsvpText = styled.div`
   }
 `
 
-const VenueLink = styled(AniLink)`
+const VenueLink = styled(Link)`
   text-decoration: none;
   border-bottom: solid thin;
   border-color: ${Color.red};
@@ -395,7 +395,6 @@ class Event extends React.Component {
                     ? `documentation/${documentation[0].slug}`
                     : ``
                 )}
-                // fade
                 onClick={() => this.props.startTransition()}
                 // bg={transitionBackground}
                 // cover
