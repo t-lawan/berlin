@@ -10,6 +10,7 @@ import ExchangeTours from "./exchange-tours"
 import ExchangeTandemThursday from "./exchange-tandem-thursday"
 import ExchangeFamilyHours from "./exchange-family-hours"
 import ExchangeCuratorialWorkshop from "./exchange-curatorial-workshop"
+import ExchangeMediattionKit from "./exchange-mediation-kit"
 
 const ExchangeComponents = props => {
   const content = props.content
@@ -52,6 +53,12 @@ const ExchangeComponents = props => {
       break
     case "/de/austausch/curatorial-workshop":
       renderComponent = <ExchangeCuratorialWorkshop content={content} />
+      break
+    case "/exchange/mediation-kit":
+      renderComponent = <ExchangeMediationKit content={content} />
+      break
+    case "/de/austausch/vermittlungskit":
+      renderComponent = <ExchangeMediationKit content={content} />
       break
     default:
       renderComponent = <p> </p>
