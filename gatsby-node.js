@@ -741,6 +741,8 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "tandem-thursday", DE: "tandem-donnerstag" },
     { EN: "family-hours", DE: "familienzeit" },
     { EN: "curatorial-workshop", DE: "curatorial-workshop" },
+    { EN: "mediation-kit", DE: "vermittlungskit" },
+    
 
   ]
 

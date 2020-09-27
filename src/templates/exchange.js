@@ -90,6 +90,10 @@ const ExchangeTitle  = {
     EN: 'Curatorial workshop',
     DE: 'Curatorial Workshop'
   },
+  "Mediation Kit": {
+    EN: 'Mediation kit',
+    DE: 'Vermittlungskit'
+  },
 }
 const mapStateToProps = state => {
   return {
