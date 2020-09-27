@@ -61,6 +61,7 @@ export  const pageMap = [
   { EN: "exchange/tandem-thursday", DE: "austausch/tandem-donnerstag" },
   { EN: "exchange/family-hours", DE: "austausch/familienzeit" },
   { EN: "exchange/curatorial-workshop", DE: "austausch/curatorial-workshop" },
+  { EN: "exchange/mediation-kit", DE: "austausch/vermittlungskit" },
 ]
 
 export const transitionBackground = "url(https://admin11.berlinbiennale.de/wp-content/themes/bb11-car-trans2/images/waitaminute1.gif) center no-repeat fixed white"

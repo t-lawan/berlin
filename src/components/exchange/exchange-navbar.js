@@ -79,6 +79,17 @@ const ExchangeNavbar = props => {
       },
       isLive: true,
     },
+    {
+      EN: {
+        title: "mediation kit",
+        slug: "exchange/mediation-kit",
+      },
+      DE: {
+        title: "vermittlungskit",
+        slug: "austausch/vermittlungskit",
+      },
+      isLive: true,
+    }
   ]
   let language = getCurrentLanguageString(props.languages)
   const isCurrentPage = index => {
