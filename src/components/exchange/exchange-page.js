@@ -18,7 +18,7 @@ const ExchangePage = props => {
     })
   }
   return (
-    <>
+    <div>
       <PageTitle> {page_title[language].title}</PageTitle>
       {image_gallery ? (
         <ContentBlockWrapper>
@@ -30,7 +30,7 @@ const ExchangePage = props => {
             ExchangeContentBlock(item, index)
           )
         : null}
-    </>
+    </div>
   )
 }
 
