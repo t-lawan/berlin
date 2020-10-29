@@ -8,7 +8,7 @@ import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import ExternalLink from "../../partials/ExternalLink"
 import styled from "styled-components"
 
-const ContentBlockWrapper = styled.div`
+export const ContentBlockWrapper = styled.div`
   margin-bottom: 2rem;
   > div > p > a {
     font-size: 1em;
