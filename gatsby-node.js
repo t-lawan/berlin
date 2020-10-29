@@ -276,6 +276,16 @@ exports.createPages = async ({ graphql, actions }) => {
                   section_header
                 }
               }
+              image_gallery {
+                alt_text
+                wordpress_id
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                media_type
+              }
             }
           }
         }
