@@ -8,10 +8,15 @@ import {
 } from "./exchange-curatorial-workshop"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import styled from 'styled-components';
+import { size } from "../../index.styles";
 
 
 const ImageWrapper = styled.div`
-  /* width: inherit; */
+  width: 45vw;
+  @media (max-width: ${size.tabletL}) {
+    width: 90vw;
+  }
+
 `; 
 const ExchangePage = props => {
   let language = getCurrentLanguageString(props.languages)
