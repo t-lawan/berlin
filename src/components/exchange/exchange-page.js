@@ -7,7 +7,17 @@ import {
   ContentBlockWrapper,
 } from "./exchange-curatorial-workshop"
 import ImageGalleryResource from "../../partials/ImageGalleryResource"
+import styled from 'styled-components';
+import { size } from "../../index.styles";
 
+
+const ImageWrapper = styled.div`
+  width: 45vw;
+  @media (max-width: ${size.tabletL}) {
+    width: 90vw;
+  }
+
+`; 
 const ExchangePage = props => {
   let language = getCurrentLanguageString(props.languages)
   let content = props.content.acf[language]
@@ -21,9 +31,9 @@ const ExchangePage = props => {
     <div>
       <PageTitle> {page_title[language].title}</PageTitle>
       {image_gallery ? (
-        <ContentBlockWrapper>
+        <ImageWrapper>
           <ImageGalleryResource ids={image_gallery} />{" "}
-        </ContentBlockWrapper>
+        </ImageWrapper>
       ) : null}
       {content.content_block
         ? content.content_block.map((item, index) =>
