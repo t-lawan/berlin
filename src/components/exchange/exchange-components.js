@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
+import styled from 'styled-components';
 import { startTransition } from "../../store/action"
 import { getCurrentLanguageString } from "../../utility/helper"
 import { AboutComponentWrapper } from "../about/about.styles"
@@ -11,6 +12,11 @@ import ExchangeTandemThursday from "./exchange-tandem-thursday"
 import ExchangeFamilyHours from "./exchange-family-hours"
 import ExchangeCuratorialWorkshop from "./exchange-curatorial-workshop"
 import ExchangeMediationKit from "./exchange-mediation-kit"
+
+const ExchangeWrapper = styled(AboutComponentWrapper)`
+  overflow-y: scroll;
+`
+
 const ExchangeComponents = props => {
   const content = props.content
   let renderComponent
@@ -62,7 +68,7 @@ const ExchangeComponents = props => {
     default:
       renderComponent = <p> </p>
   }
-  return <AboutComponentWrapper> {renderComponent}</AboutComponentWrapper>
+  return <ExchangeWrapper> {renderComponent}</ExchangeWrapper>
 }
 
 const mapStateToProps = state => {
