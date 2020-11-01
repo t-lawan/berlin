@@ -12,11 +12,16 @@ import { size } from "../../index.styles";
 
 
 const ImageWrapper = styled.div`
-  width: 45vw;
-  @media (max-width: ${size.tabletL}) {
-    width: 90vw;
+  width: 93vw;
+  @media (min-width: ${size.mobileL}) {
+    width: 94vw;
   }
-
+  @media (min-width: ${size.tablet}) {
+    width: 64vw;
+  }
+  @media (min-width: ${size.tabletL}) {
+    width: 45vw;
+  }
 `; 
 const ExchangePage = props => {
   let language = getCurrentLanguageString(props.languages)
