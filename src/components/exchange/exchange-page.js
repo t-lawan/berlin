@@ -12,16 +12,7 @@ import { size } from "../../index.styles";
 
 
 const ImageWrapper = styled.div`
-  width: 93vw;
-  @media (min-width: ${size.mobileL}) {
-    width: 94vw;
-  }
-  @media (min-width: ${size.tablet}) {
-    width: 64vw;
-  }
-  @media (min-width: ${size.tabletL}) {
-    width: 45vw;
-  }
+  
 `; 
 const ExchangePage = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -33,7 +24,7 @@ const ExchangePage = props => {
     })
   }
   return (
-    <div>
+    <ContentBlockWrapper>
       <PageTitle> {page_title[language].title}</PageTitle>
       {image_gallery ? (
         <ImageWrapper>
@@ -45,7 +36,7 @@ const ExchangePage = props => {
             ExchangeContentBlock(item, index)
           )
         : null}
-    </div>
+    </ContentBlockWrapper>
   )
 }
 
