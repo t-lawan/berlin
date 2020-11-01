@@ -33,19 +33,20 @@ const ExchangePage = props => {
     })
   }
   return (
-    <div>
+    <>
       <PageTitle> {page_title[language].title}</PageTitle>
+      <ContentBlockWrapper>
       {image_gallery ? (
-        <ImageWrapper>
-          <ImageGalleryResource ids={image_gallery} />{" "}
-        </ImageWrapper>
+          <ImageGalleryResource ids={image_gallery} />
       ) : null}
+      </ContentBlockWrapper>
+
       {content.content_block
         ? content.content_block.map((item, index) =>
             ExchangeContentBlock(item, index)
           )
         : null}
-    </div>
+    </>
   )
 }
 
