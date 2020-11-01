@@ -4,10 +4,11 @@ import { PageTitle } from "../../templates/page.styles"
 import { Color } from "../../index.styles"
 import { getCurrentLanguageString } from "../../utility/helper"
 import ImageResource from "../../partials/ImageResource"
+import ImageGalleryResource from "../../partials/ImageGalleryResource"
 import ExternalLink from "../../partials/ExternalLink"
 import styled from "styled-components"
 
-const ContentBlockWrapper = styled.div`
+export const ContentBlockWrapper = styled.div`
   margin-bottom: 2rem;
   > div > p > a {
     font-size: 1em;
@@ -57,14 +58,28 @@ export const ExchangeContentBlock = (item, index) => {
           /> : null}
         </ContentBlockWrapper>
       )
-      break
+      break;
     case "image":
       renderComponent = (
         <ContentBlockWrapper key={index}>
           {item.image ? <ImageResource id={item.image} withCaption={true}/>  : null}
         </ContentBlockWrapper>        
       )
-      break
+      break;
+    case "image_gallery": {
+      let image_gallery;
+      if(item.image_gallery) {
+        image_gallery = item.image_gallery.map(image => {
+          return image.wordpress_id
+        });
+      }
+      renderComponent = (
+        <ContentBlockWrapper key={index}>
+          {image_gallery ? <ImageGalleryResource ids={image_gallery} />  : null}
+        </ContentBlockWrapper>        
+      )
+      break;
+    }
     case "pdf":
       renderComponent = (
         <ContentBlockWrapper key={index}>
