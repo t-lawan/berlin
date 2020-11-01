@@ -148,6 +148,16 @@ exports.createPages = async ({ graphql, actions }) => {
                   file
                   text
                   file_label
+                  image_gallery {
+                    alt_text
+                    wordpress_id
+                    acf {
+                      caption_de
+                      caption_en
+                      external_url
+                    }
+                    media_type
+                  }
                 }
                 page_slug
                 page_title
@@ -265,6 +275,16 @@ exports.createPages = async ({ graphql, actions }) => {
                   faq_question
                   section_header
                 }
+              }
+              image_gallery {
+                alt_text
+                wordpress_id
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                media_type
               }
             }
           }
