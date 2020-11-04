@@ -12,7 +12,7 @@ import { size } from "../../index.styles";
 
 
 const ImageWrapper = styled.div`
-  width: 93vw;
+  /* width: 93vw;
   @media (min-width: ${size.mobileL}) {
     width: 94vw;
   }
@@ -21,7 +21,7 @@ const ImageWrapper = styled.div`
   }
   @media (min-width: ${size.tabletL}) {
     width: 45vw;
-  }
+  } */
 `; 
 const ExchangePage = props => {
   let language = getCurrentLanguageString(props.languages)
@@ -35,11 +35,13 @@ const ExchangePage = props => {
   return (
     <>
       <PageTitle> {page_title[language].title}</PageTitle>
-      <ContentBlockWrapper>
+      {/* <ContentBlockWrapper> */}
       {image_gallery ? (
+        <ImageWrapper>
           <ImageGalleryResource ids={image_gallery} />
+        </ImageWrapper>
       ) : null}
-      </ContentBlockWrapper>
+      {/* </ContentBlockWrapper> */}
 
       {content.content_block
         ? content.content_block.map((item, index) =>
