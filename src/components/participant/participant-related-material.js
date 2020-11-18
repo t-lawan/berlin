@@ -11,9 +11,12 @@ import {
 } from "../../utility/helper"
 import striptags from "striptags"
 import { startTransition } from "../../store/action"
-import { ResourceText, RelatedResource, ResourceLink } from "../resources/related-resources";
-import { Link } from "gatsby";
-
+import {
+  ResourceText,
+  RelatedResource,
+  ResourceLink,
+} from "../resources/related-resources"
+import { Link } from "gatsby"
 
 export const RelatedDocumentationWrapper = styled.div`
   display: flex;
@@ -76,11 +79,11 @@ const RelatedDocument = styled.div`
   border: ${props => (props.border ? "1px solid black" : "")} !important;
 `
 const DocumentationTextWrap = styled.div`
-   > div > p {
-      font-size: 1.0em;
-      line-height: 1.2;
-      word-break: break-word;
-    }
+  > div > p {
+    font-size: 1em;
+    line-height: 1.2;
+    word-break: break-word;
+  }
 
   > p {
     font-size: 0.85em;
@@ -144,13 +147,11 @@ const DocumentationText = styled.p`
   }
 `
 
-
-
 const ParticipantRelatedMaterial = props => {
   const language = getCurrentLanguageString(props.languages)
   let documentations = []
   let resources = []
-  if(props.doc_ids) {
+  if (props.doc_ids) {
     props.doc_ids.forEach(id => {
       let r = props.documentation.find(doc => {
         return doc.id == id
@@ -159,7 +160,7 @@ const ParticipantRelatedMaterial = props => {
     })
   }
 
-  if(props.res_ids){
+  if (props.res_ids) {
     props.res_ids.forEach(id => {
       let r = props.resources.find(res => {
         return res.id == id
@@ -181,18 +182,19 @@ const ParticipantRelatedMaterial = props => {
             directlyRelated={doc.directlyRelated}
           >
             <DocumentationTextWrap>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html:
-                    getNumberOfWords(striptags(doc[language].title)) > 11
-                      ? `<p> ${truncateText(
-                          striptags(doc[language].title, ["em"]),
-                          9
-                        )} ...</p>`
-
-                      : `<p> ${striptags(doc[language].title, ["em"])} </p>`,
-                }}
-              />
+              {doc[language] && doc[language].title ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      getNumberOfWords(striptags(doc[language].title)) > 11
+                        ? `<p> ${truncateText(
+                            striptags(doc[language].title, ["em"]),
+                            9
+                          )} ...</p>`
+                        : `<p> ${striptags(doc[language].title, ["em"])} </p>`,
+                  }}
+                />
+              ) : null}
 
               <DocumentationText>{DocLabel[language].label}</DocumentationText>
             </DocumentationTextWrap>
