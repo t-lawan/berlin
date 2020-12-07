@@ -81,9 +81,19 @@ exports.createSchemaCustomization = ({ actions }) => {
     type wordpress__wp_exhibitionsAcf implements Node {
       exhibition_floorplan: Int
     }
-    
 
+    type wordpress__wp_participantsAcfEN implements Node {
+      group_bios: GroupBios
+    }
 
+    type wordpress__wp_participantsAcfDE implements Node {
+      group_bios: GroupBios
+    }
+
+    type GroupBios {
+      full_name: String!
+      biography: String!
+    }
     
   `
   createTypes(typeDefs)
@@ -146,11 +156,6 @@ exports.createPages = async ({ graphql, actions }) => {
               contact_data {
                 contact_data_line
               }
-              contact_people {
-                full_name
-                position_de
-                position_en
-              }
               directions {
                 directions_line
               }
@@ -165,6 +170,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 project_funding_list
                 support_header_de
                 support_header_en
+                project_funding_list_en
               }
               external_url
               google_map_venue_link
@@ -607,6 +613,15 @@ exports.createPages = async ({ graphql, actions }) => {
               related_resources {
                 wordpress_id
               }
+              image_gallery {
+                wordpress_id
+                acf {
+                  caption_de
+                  caption_en
+                  external_url
+                }
+                alt_text
+              }
             }
           }
         }
@@ -721,6 +736,7 @@ exports.createPages = async ({ graphql, actions }) => {
     { EN: "tandem-thursday", DE: "tandem-donnerstag" },
     { EN: "family-hours", DE: "familienzeit" },
     { EN: "curatorial-workshop", DE: "curatorial-workshop" },
+    { EN: "mediation-kit", DE: "vermittlungskit" },
 
   ]
 
@@ -989,7 +1005,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   allWordpressWpParticipants.edges.forEach(edge => {
     let prePath = pageMap.find(pageType => {
-      return pageType.EN === "participant"
+      return pageType.EN === "participants"
     })
     languages.forEach(language => {
       let path =
