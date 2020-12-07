@@ -17,7 +17,6 @@ import {
   FormText,
 } from "./page.styles"
 import { getDocument } from "../store/selector"
-import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 import { DateManager } from "../utility/date";
@@ -112,7 +111,7 @@ class Press extends React.Component {
               __html: this.pressInfo.acf[this.language].images_note,
             }}
           />
-          <PressForm />
+          
         </div>
       </PressWrapper>
     )
