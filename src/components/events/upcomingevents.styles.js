@@ -22,35 +22,6 @@ export const EventItem = styled.div`
   color: black;
   background-color:#FFF;
   position:relative;
-  &:first-of-type {
-    border: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''};
-    @media (max-width: ${size.mobileL}) {
-      border: ${props => props.isCurrent ? `4px solid ${Color.yellow}` : ''};
-      border-bottom: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''} !important;
-      border-left: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''} !important;
-    } 
-    @media (min-width: ${size.tablet}) {
-    padding: ${props => props.isActive ? `1em 0.7em` : ''};
-    border-bottom: ${props => props.isActive ? `4px solid ${Color.yellow}` : ''} !important;
-    }
-    @media (min-width: ${size.laptop}) {
-      padding: ${props => props.isActive ? `1.1em 1em` : ''};
-    }
-    @media (min-width: ${size.laptopM}) {
-      padding: ${props => props.isActive ? `1.3em 2em` : ''};
-    }
-  };
-  
-  &:first-of-type:after {
-    content:" ";
-    position:absolute;
-    display:block;
-    bottom:-4px;
-    height:1px;
-    left:-4px;
-    width:calc(100% + 8px);
-    background:#000;
-  };
   :last-child {
     border-bottom:none;
   }
