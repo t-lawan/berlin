@@ -46,12 +46,12 @@ class Press extends React.Component {
               }}
             />
           <p>{content[this.language].contact}</p>
-          {this.pressInfo.acf.contact_people.map((person, index) => (
+          {this.pressInfo.acf.contact_people ? this.pressInfo.acf.contact_people.map((person, index) => (
             <div key={index}>
               <p> {person.full_name}</p>
               <p> {person[createProperty("position", this.language)]}</p>
             </div>
-          ))}
+          )) : null}
           <ul>
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
               <li key={index}> {contact_data.contact_data_line}</li>
