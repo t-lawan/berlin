@@ -125,7 +125,7 @@ class ImageResource extends React.Component {
     let isLandscape = true
     let hasLongCaption = true
     let captionLength = 0;
-    if (this.state.image) {
+    if (this.state.image && this.state.image.fluid) {
       isLandscape = this.state.image.fluid.aspectRatio < 1 ? false : true
       // hasLongCaption =
       //   this.state.image[this.language].caption &&

@@ -66,6 +66,12 @@ exports.createSchemaCustomization = ({ actions }) => {
       image: Int
       file: Int
     }
+
+    type wordpress__PAGEAcfcontact_people implements Node {
+      full_name: String!
+      position_de: String!
+      position_en: String!
+    }
     type OpeningHours {
       hours: String!
     }
@@ -155,11 +161,6 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               contact_data {
                 contact_data_line
-              }
-              contact_people {
-                full_name
-                position_de
-                position_en
               }
               directions {
                 directions_line
