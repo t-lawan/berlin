@@ -81,11 +81,11 @@ const ExchangeNavbar = props => {
     },
     {
       EN: {
-        title: "mediation kit",
+        title: "mediation kits",
         slug: "exchange/mediation-kit",
       },
       DE: {
-        title: "vermittlungskit",
+        title: "vermittlungskits",
         slug: "austausch/vermittlungskit",
       },
       isLive: true,
