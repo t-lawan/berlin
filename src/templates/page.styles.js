@@ -337,7 +337,7 @@ export const PressWrapper = styled.div`
   }
   ${changeGridToOneRow};
   @media (min-width: ${size.laptop}) {
-    padding-bottom:115px;
+    padding-bottom:155px;
     border-top: none;
   }
 `
