@@ -137,9 +137,6 @@ class NavbarMobile extends React.Component {
 
           <NavMobileLinks>
             <div>
-              <NavMobileModal onClick={() => this.showModal()}>
-                {content[this.language]["newsletter"]}
-              </NavMobileModal>
               {socialMediaLinks.map(link => (
                 <NavMobileOuterLinkSmall
                   key={link.name}
