@@ -13,15 +13,9 @@ export const socialMediaLinks = [
 ]
 
 const SocialMedia = props => {
-  const toggleNewsletterInput = () => {
-    props.showModal()
-  }
   return (
     <SocialMediaWrapper>
       <div>
-        <SocialMediaText onClick={() => toggleNewsletterInput()}>
-          newsletter
-        </SocialMediaText>
         {socialMediaLinks.map(link => (
           <SocialMediaLink key={link.name} target="_blank" rel="noopener noreferrer" href={link.url}>
             {link.name}

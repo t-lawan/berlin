@@ -112,7 +112,7 @@ class Press extends React.Component {
               __html: this.pressInfo.acf[this.language].images_note,
             }}
           />
-          <PressForm />
+          {/* <PressForm /> */}
         </div>
       </PressWrapper>
     )

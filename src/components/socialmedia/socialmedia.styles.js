@@ -24,11 +24,11 @@ export const SocialMediaWrapper = styled.div`
   }
   @media (min-width: ${size.laptop}) {
     height:55px;
-    padding:0.8em 1.2em 1em;
+    padding:0.8em 1.2em 1em ;
   }
   @media (min-width: ${size.laptopM}) {
     height:60px;
-    padding:1em 2em 1em 2.1em;
+    padding:1em 2em 1em 1.6em;
   }
 `
 

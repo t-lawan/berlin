@@ -401,7 +401,7 @@ class Event extends React.Component {
                 // direction="down"
               >
                 <DocumentationButton bgColour={"black"}>
-                  Documentation
+                  {EventContent[this.language].documentation}
                 </DocumentationButton>
               </DocumentationLink>
             </EventTextBlock>
@@ -510,6 +510,15 @@ class Event extends React.Component {
         thirdColumn={this.thirdColumn}
       />
     )
+  }
+}
+
+const EventContent = {
+  EN: {
+    documentation: "Documentation"
+  }, 
+  DE: {
+    documentation: "Dokumentation"
   }
 }
 
