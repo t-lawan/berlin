@@ -17,6 +17,7 @@ import {
   FormText,
 } from "./page.styles"
 import { getDocument } from "../store/selector"
+import PressForm from "../components/forms/press-form"
 import NewsList from "../components/news/newslist";
 import striptags from 'striptags';
 import { DateManager } from "../utility/date";
@@ -45,12 +46,12 @@ class Press extends React.Component {
               }}
             />
           <p>{content[this.language].contact}</p>
-          {this.pressInfo.acf.contact_people.map((person, index) => (
+          {this.pressInfo.acf.contact_people ? this.pressInfo.acf.contact_people.map((person, index) => (
             <div key={index}>
               <p> {person.full_name}</p>
               <p> {person[createProperty("position", this.language)]}</p>
             </div>
-          ))}
+          )) : null}
           <ul>
           {this.pressInfo.acf.contact_data.map((contact_data, index) => (
               <li key={index}> {contact_data.contact_data_line}</li>
@@ -105,13 +106,8 @@ class Press extends React.Component {
             </PressReleaseWrapper>
           ))}
 
-          <ImagesCont><p> {content[this.language].images} </p></ImagesCont>
-          <FormText
-            dangerouslySetInnerHTML={{
-              __html: this.pressInfo.acf[this.language].images_note,
-            }}
-          />
           
+          {/* <PressForm /> */}
         </div>
       </PressWrapper>
     )
@@ -145,14 +141,12 @@ const content = {
     title: "press",
     previewtitle: "Current information",
     press_release: "Downloads",
-    images: "Press images",
   },
   DE: {
     contact: "Pressekontakt",
     title: "presse",
     previewtitle: "Aktuelle Information",
     press_release: "Downloads",
-    images: "Pressebilder",
   },
 }
 
