@@ -105,13 +105,6 @@ class Press extends React.Component {
               {/* </PressReleaseText> */}
             </PressReleaseWrapper>
           ))}
-
-          <ImagesCont><p> {content[this.language].images} </p></ImagesCont>
-          <FormText
-            dangerouslySetInnerHTML={{
-              __html: this.pressInfo.acf[this.language].images_note,
-            }}
-          />
           {/* <PressForm /> */}
         </div>
       </PressWrapper>
